@@ -1,5 +1,7 @@
 $main-width: 1000px;
-
+*{
+  box-sizing: border-box;
+}
 @mixin layout {
   font: {
     family: Arial;

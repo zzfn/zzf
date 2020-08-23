@@ -28,7 +28,7 @@ export default function ArticleDetail({serverProps}) {
             </ul>
         </div>
         <div
-            className={['markdown-template'].join(' ')}
+            className={['markdown-template',styles.content].join(' ')}
             dangerouslySetInnerHTML={{
                 __html: translateMarkdown(serverProps.content),
             }}

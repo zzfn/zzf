@@ -1,6 +1,10 @@
 .home{
+  padding: 30px 0;
   width: 100%;
   min-height: calc(100vh - 175px);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
   .bg{
     width: 100%;
   }

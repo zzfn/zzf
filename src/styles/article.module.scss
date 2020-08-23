@@ -1,13 +1,15 @@
 .detail {
+  width: 100%;
   .title {
+    width: 100%;
     margin: auto;
-    @media (max-width: 768px) {
-      width: 95%;
-    }
-
-    @media (min-width: 768px) {
-      width: 800px;
-    }
+    //@media (max-width: 768px) {
+    //  width: 95%;
+    //}
+    //
+    //@media (min-width: 768px) {
+    //  width: 800px;
+    //}
     padding: 140px 0 20px 30px;
     background: rgb(0, 59, 92);
     h1 {
@@ -20,13 +22,13 @@
     }
   }
   .tip {
-    @media (max-width: 768px) {
-      width: 95%;
-    }
-
-    @media (min-width: 768px) {
-      width: 800px;
-    }
+    //@media (max-width: 768px) {
+    //  width: 95%;
+    //}
+    //
+    //@media (min-width: 768px) {
+    //  width: 800px;
+    //}
     padding: 20px 30px;
     background-color: rgb(249, 249, 249);
     overflow: hidden;
@@ -51,16 +53,15 @@
     }
   }
   .content {
-    min-height: 100vh;
     background: #fff;
     padding: 20px;
-    @media (max-width: 768px) {
-      width: 95%;
-    }
-
-    @media (min-width: 768px) {
-      width: 800px;
-    }
+    //@media (max-width: 768px) {
+    //  width: 95%;
+    //}
+    //
+    //@media (min-width: 768px) {
+    //  width: 800px;
+    //}
     margin: auto;
   }
 }
