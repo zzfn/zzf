@@ -1,0 +1,33 @@
+
+  .header {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    img{
+      height: 80%;
+    }
+    a+a{
+      margin-left: 10px;
+    }
+  }
+//
+//  main {
+//    width: 100%;
+//    min-height: calc(100vh - $height);
+//    margin-top: $height;
+//    display: flex;
+//    flex-flow: column nowrap;
+//    align-items: center;
+//    background: #dee3e7;
+//  }
+//
+  .footer {
+    background: #26282c;
+    color: #ffffffb3;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+  }

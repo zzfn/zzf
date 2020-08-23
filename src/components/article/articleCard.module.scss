@@ -1,0 +1,30 @@
+.page {
+  font-family: 'serif';
+  @media (max-width: 768px) {
+    width: 90%;
+    li {
+      margin-right: 10px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 800px;
+    li {
+      width: 150px;
+    }
+  }
+  margin: 0 auto 20px;
+  border-radius: 20px;
+  background: #eee;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  ul {
+    list-style: none;
+    display: flex;
+    li {
+      //width: 150px;
+    }
+  }
+}
