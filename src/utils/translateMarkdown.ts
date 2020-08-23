@@ -10,6 +10,9 @@ export const translateMarkdown = (text = '') => {
       hljs.highlightAuto(code).value
     }</code><a style="position: absolute;right: 10px;top: 10px;color:#8c8c8ccc;border:none">复制代码</a></pre>`;
   };
+  renderer.heading = function (text, level) {
+    return `<h${level} id=${encodeURIComponent(text)}>${text}</h${level}>`;
+  }
   return marked(text, {
     renderer: renderer,
     gfm: true,
@@ -19,6 +22,7 @@ export const translateMarkdown = (text = '') => {
     smartLists: true,
     smartypants: true,
     xhtml: true,
+    headerIds:true,
     // highlight: function(code: string) {
     //   return hljs.highlightAuto(code).value;
     // },

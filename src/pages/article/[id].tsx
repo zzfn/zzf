@@ -3,6 +3,8 @@ import {getArticle} from "@/services/article";
 import {translateMarkdown} from "@/utils/translateMarkdown";
 import styles from '@/styles/article.module.scss'
 import Head from "next/head";
+import MarkdownNavbar from 'markdown-navbar';
+
 export default function ArticleDetail({serverProps}) {
     return <div className={styles.detail}>
         <Head>
@@ -27,6 +29,8 @@ export default function ArticleDetail({serverProps}) {
                 </li>
             </ul>
         </div>
+        {/*<MarkdownNavbar className={styles.active} ordered={false} onNavItemClick={(event, element, hashValue)=>{*/}
+        {/*    window.location.hash=`#${encodeURIComponent(hashValue)}`}} declarative source={serverProps.content} />*/}
         <div
             className={['markdown-template',styles.content].join(' ')}
             dangerouslySetInnerHTML={{

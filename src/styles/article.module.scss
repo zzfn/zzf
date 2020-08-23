@@ -1,10 +1,18 @@
 .detail {
+  :global {
+    .active {
+      color: #52c41a;
+    }
+  }
+
   width: 100%;
+
   .title {
     width: 100%;
     margin: auto;
     padding: 140px 0 20px 30px;
     background: rgb(0, 59, 92);
+
     h1 {
       font-family: japanese;
       font-size: 2.0736rem;
@@ -14,6 +22,7 @@
       margin-bottom: 12px;
     }
   }
+
   .tip {
     padding: 20px 30px;
     background-color: rgb(249, 249, 249);
@@ -22,14 +31,17 @@
     font-size: 14px;
     line-height: 20px;
     vertical-align: middle;
+
     ul {
       list-style: none;
       display: flex;
       @media (max-width: 768px) {
         flex-flow: column;
       }
+
       li {
         margin-right: 20px;
+
         span {
           &::after {
             content: ':';
@@ -38,8 +50,11 @@
       }
     }
   }
-  .content {
 
+  .content {
+    @media (max-width: 768px) {
+      padding: 10px;
+    }
     @media (min-width: 768px) {
       padding: 20px;
     }

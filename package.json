@@ -12,6 +12,7 @@
     "antd": "^4.6.0",
     "axios": "^0.20.0",
     "highlight.js": "^10.1.2",
+    "markdown-navbar": "^1.4.3",
     "marked": "^1.1.1",
     "next": "9.5.2",
     "react": "16.13.1",
