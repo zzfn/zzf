@@ -10,6 +10,7 @@ function MyApp({Component, pageProps}) {
     const [height,setHeight]=useState(0)
     useEffect(()=>{
         const zooming = new Zooming({
+            enableGrab:false,
             bgColor: 'rgb(0, 0, 0)',
             bgOpacity: '0.5'
         });
