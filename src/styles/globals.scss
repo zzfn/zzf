@@ -8,8 +8,9 @@ $main-width: 1000px;
   }
   color: #ff0000;
 }
-:global {
 body{
-  background: #dee3e7;
+  background: #dee3e7!important;
 }
+:global {
+
 }
