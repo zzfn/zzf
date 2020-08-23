@@ -17,7 +17,13 @@
 }
 
 .main {
-  width: 1000px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    width: 800px;
+  }
   min-height: calc(100vh - 175px);
   margin: 13px auto;
   display: flex;
