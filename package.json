@@ -18,6 +18,7 @@
     "react": "16.13.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "16.13.1",
+    "viewerjs": "^1.6.1",
     "zooming": "^2.1.1"
   },
   "devDependencies": {

@@ -1,9 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {getArticle} from "@/services/article";
 import {translateMarkdown} from "@/utils/translateMarkdown.tsx";
 import styles from '@/styles/article.module.scss'
 import Head from "next/head";
-import MarkdownNavbar from 'markdown-navbar';
 
 export default function ArticleDetail({serverProps}) {
     return <div className={styles.detail}>
@@ -29,10 +28,8 @@ export default function ArticleDetail({serverProps}) {
                 </li>
             </ul>
         </div>
-        {/*<MarkdownNavbar className={styles.active} ordered={false} onNavItemClick={(event, element, hashValue)=>{*/}
-        {/*    window.location.hash=`#${encodeURIComponent(hashValue)}`}} declarative source={serverProps.content} />*/}
         <div
-            className={['markdown-template',styles.content].join(' ')}
+            className={['markdown-template', styles.content].join(' ')}
             dangerouslySetInnerHTML={{
                 __html: translateMarkdown(serverProps.content),
             }}

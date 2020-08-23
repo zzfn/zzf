@@ -6,15 +6,15 @@ import {Affix} from "antd";
 import Link from "next/link";
 import { Scrollbars } from 'react-custom-scrollbars';
 import Zooming from 'zooming'
-
 function MyApp({Component, pageProps}) {
     const [height,setHeight]=useState(0)
     useEffect(()=>{
         const zooming = new Zooming({
-            // options...
-        })
-
-        zooming.listen('.zoom')
+            scaleBase: 0.5,
+            bgColor: 'rgb(0, 0, 0)',
+            bgOpacity: '0.5'
+        });
+        zooming.listen('.zoom');
         setHeight(window.innerHeight-75)
     },[])
     return <>
@@ -46,20 +46,20 @@ function MyApp({Component, pageProps}) {
                 </div>
             </header>
         </Affix>
-        <Scrollbars
-            autoHide
-            autoHideTimeout={1000}
-            autoHideDuration={200}
-            autoHeight
-            autoHeightMin={0}
-            autoHeightMax={height}
-            thumbMinSize={30}
-            universal={true}>
+        {/*<Scrollbars*/}
+        {/*    autoHide*/}
+        {/*    autoHideTimeout={1000}*/}
+        {/*    autoHideDuration={200}*/}
+        {/*    autoHeight*/}
+        {/*    autoHeightMin={0}*/}
+        {/*    autoHeightMax={height}*/}
+        {/*    thumbMinSize={30}*/}
+        {/*    universal={true}>*/}
             <main className={styles.main}>
                 <Component {...pageProps} />
             </main>
             <footer className={styles.footer}>Powered by Zzf</footer>
-        </Scrollbars>
+        {/*</Scrollbars>*/}
     </>
 }
 

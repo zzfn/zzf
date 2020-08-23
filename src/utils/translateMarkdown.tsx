@@ -3,6 +3,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/rainbow.css';
 import '@/styles/markdown.scss'
 
+
 export const translateMarkdown = (text = '') => {
   const renderer = new marked.Renderer();
   renderer.code = function(code, language) {
@@ -14,7 +15,7 @@ export const translateMarkdown = (text = '') => {
     return `<h${level} id=${encodeURIComponent(text)}>${text}</h${level}>`;
   }
   renderer.image = function (href,title,text) {
-    return `<img src=${href}  class="zoom" />`;
+    return `<div><img src=${href}  class="zoom" /></div>`;
   }
   return marked(text, {
     renderer: renderer,
