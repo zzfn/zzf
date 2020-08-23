@@ -18,24 +18,26 @@ function MyApp({Component, pageProps}) {
         </Head>
         <Affix offsetTop={0}>
             <header className={styles.header}>
-                <img src={'/static/img/img-3.png'} alt="logo"/>
-                <nav>
-                    <Link href="/">
-                        <a>首页</a>
-                    </Link>
-                    <Link href="/archive">
-                        <a>归档</a>
-                    </Link>
-                    <Link href="/tag">
-                        <a>标签</a>
-                    </Link>
-                    <Link href="/changelog">
-                        <a>更新日志</a>
-                    </Link>
-                    <Link href="/about">
-                        <a>关于本站</a>
-                    </Link>
-                </nav>
+                <div className={styles['header_main']}>
+                    <img src={'/static/img/img-3.png'} alt="logo"/>
+                    <nav>
+                        <Link href="/">
+                            <a>首页</a>
+                        </Link>
+                        <Link href="/archive">
+                            <a>归档</a>
+                        </Link>
+                        <Link href="/tag">
+                            <a>标签</a>
+                        </Link>
+                        <Link href="/changelog">
+                            <a>更新日志</a>
+                        </Link>
+                        <Link href="/about">
+                            <a>关于本站</a>
+                        </Link>
+                    </nav>
+                </div>
             </header>
         </Affix>
         <Scrollbars
