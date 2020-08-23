@@ -15,13 +15,6 @@
     }
   }
   .tip {
-    //@media (max-width: 768px) {
-    //  width: 95%;
-    //}
-    //
-    //@media (min-width: 768px) {
-    //  width: 800px;
-    //}
     padding: 20px 30px;
     background-color: rgb(249, 249, 249);
     overflow: hidden;
@@ -46,15 +39,11 @@
     }
   }
   .content {
+
+    @media (min-width: 768px) {
+      padding: 20px;
+    }
     background: #fff;
-    padding: 20px;
-    //@media (max-width: 768px) {
-    //  width: 95%;
-    //}
-    //
-    //@media (min-width: 768px) {
-    //  width: 800px;
-    //}
     margin: auto;
   }
 }
