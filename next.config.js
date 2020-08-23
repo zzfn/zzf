@@ -39,7 +39,7 @@ module.exports = withPlugins(
         [withLess, {
             lessLoaderOptions: {
                 javascriptEnabled: true,
-                modifyVars:  { "@primary-color": "#d4380d" },
+                modifyVars:  { "@primary-color": "#00a7de" },
             },
         }],
         [withSass, {
