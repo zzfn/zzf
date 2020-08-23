@@ -1,6 +1,11 @@
 .home{
+  width: 100%;
   min-height: calc(100vh - 175px);
   .bg{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
     width: 100%;
   }
 }

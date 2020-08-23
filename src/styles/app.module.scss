@@ -13,17 +13,17 @@
       margin-left: 10px;
     }
   }
-//
-//  main {
-//    width: 100%;
-//    min-height: calc(100vh - $height);
-//    margin-top: $height;
-//    display: flex;
-//    flex-flow: column nowrap;
-//    align-items: center;
-//    background: #dee3e7;
-//  }
-//
+
+  .main {
+    width: 1000px;
+    min-height: calc(100vh - 175px);
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background: #fff;
+  }
+
   .footer {
     background: #26282c;
     color: #ffffffb3;

@@ -1,6 +1,7 @@
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/rainbow.css';
+import '@/styles/markdown.scss'
 
 export const translateMarkdown = (text = '') => {
   const renderer = new marked.Renderer();
