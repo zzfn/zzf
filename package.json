@@ -17,7 +17,8 @@
     "next": "9.5.2",
     "react": "16.13.1",
     "react-custom-scrollbars": "^4.2.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "zooming": "^2.1.1"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",

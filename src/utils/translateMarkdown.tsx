@@ -13,6 +13,9 @@ export const translateMarkdown = (text = '') => {
   renderer.heading = function (text, level) {
     return `<h${level} id=${encodeURIComponent(text)}>${text}</h${level}>`;
   }
+  renderer.image = function (href,title,text) {
+    return `<img src=${href}  class="zoom" />`;
+  }
   return marked(text, {
     renderer: renderer,
     gfm: true,
@@ -23,8 +26,5 @@ export const translateMarkdown = (text = '') => {
     smartypants: true,
     xhtml: true,
     headerIds:true,
-    // highlight: function(code: string) {
-    //   return hljs.highlightAuto(code).value;
-    // },
   });
 };

@@ -5,10 +5,16 @@ import styles from '@/styles/app.module.scss'
 import {Affix} from "antd";
 import Link from "next/link";
 import { Scrollbars } from 'react-custom-scrollbars';
+import Zooming from 'zooming'
 
 function MyApp({Component, pageProps}) {
     const [height,setHeight]=useState(0)
     useEffect(()=>{
+        const zooming = new Zooming({
+            // options...
+        })
+
+        zooming.listen('.zoom')
         setHeight(window.innerHeight-75)
     },[])
     return <>

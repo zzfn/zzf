@@ -1,6 +1,6 @@
 import React from "react";
 import {getArticle} from "@/services/article";
-import {translateMarkdown} from "@/utils/translateMarkdown";
+import {translateMarkdown} from "@/utils/translateMarkdown.tsx";
 import styles from '@/styles/article.module.scss'
 import Head from "next/head";
 import MarkdownNavbar from 'markdown-navbar';
