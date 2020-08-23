@@ -12,7 +12,7 @@ export default function Home(props) {
     return (
         <div className={styles.home}>
             <Head>
-                <title>zzf-首页</title>
+                <title>zzf~首页</title>
             </Head>
             <ZImg className={styles.bg} src={'/static/img/img-8.jfif'}/>
             {

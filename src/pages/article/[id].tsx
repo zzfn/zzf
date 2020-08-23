@@ -2,8 +2,12 @@ import React from "react";
 import {getArticle} from "@/services/article";
 import {translateMarkdown} from "@/utils/translateMarkdown";
 import styles from '@/styles/article.module.scss'
+import Head from "next/head";
 export default function ArticleDetail({serverProps}) {
     return <div className={styles.detail}>
+        <Head>
+            <title>zzf~{serverProps.title}</title>
+        </Head>
         <div className={styles.title}>
             <h1>{serverProps.title}</h1>
         </div>
