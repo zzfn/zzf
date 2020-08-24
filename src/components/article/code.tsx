@@ -1,7 +1,11 @@
 import React from 'react';
 import hljs from 'highlight.js';
 import styles from './code.module.scss'
+import CopyToClipboard from "react-copy-to-clipboard";
+import { message } from 'antd';
+
 export default function Code({ language, code }) {
+    
     return (
         <div className={styles.code}>
             <pre>
@@ -15,7 +19,16 @@ export default function Code({ language, code }) {
             </pre>
             <div className={styles.action} >
                 <div>
-                    <a lang={language} style={{ color: '#8c8c8ccc', border: 'none' }}>复制代码</a></div>
+                    <CopyToClipboard
+                        onCopy={(text): void => {
+                            message.destroy();
+                            message.success(text);
+                        }}
+                        text={"https://cdn.annyyy.com/"}
+                    >
+                        <a lang={language} style={{ color: '#8c8c8ccc', border: 'none' }}>复制代码</a>
+                    </CopyToClipboard>
+                </div>
             </div>
         </div>
     );
