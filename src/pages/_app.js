@@ -20,7 +20,7 @@ function MyApp({Component, pageProps}) {
     return <>
         <Head>
             <title>zzf</title>
-            <link rel="icon" href="/favicon.ico"/>
+            <link rel="icon" href="/static/favicon.ico"/>
         </Head>
         <Affix offsetTop={0}>
             <header className={styles.header}>
