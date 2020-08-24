@@ -49,32 +49,16 @@
     pre {
       border-radius: 5px;
       padding: 10px;
-      overflow: auto;
       margin: 20px 0;
       font-size: 13px;
       color: #cfd2d1;
       background: #151718;
       line-height: 1.6;
-      position: relative;
-      &::before {
-        content: attr(lang);
-        height: 15px;
-        background: url('/static/img/img-7.png') no-repeat;
-        background-size: 40px;
-        display: block;
-      }
 
       code {
+      overflow: auto;
         color: #cfd2d1;
         background: transparent;
-        &::before {
-          color: #8c8c8ccc;
-          display: inline-block;
-          content: attr(lang);
-          position: absolute;
-          right: 70px;
-          top: 10px;
-        }
       }
     }
     ul {

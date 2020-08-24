@@ -11,7 +11,7 @@ export default function ArticleDetail({ serverProps }) {
         <Head>
             <title>zzf~{serverProps.title}</title>
         </Head>
-        <div style={{width:'70%',float:'left'}}>
+        <div className={styles.left}>
             <div className={styles.title}>
                 <h1>{serverProps.title}</h1>
             </div>
@@ -38,7 +38,7 @@ export default function ArticleDetail({ serverProps }) {
                 }}
             />
         </div>
-        <Affix style={{width:'30%',float:'left'}} offsetTop={80}>
+        <Affix className={styles.nav} offsetTop={80}>
             <MarkdownNavbar ordered={false} className={'markdown-nav'} headingTopOffset={80} source={serverProps.content} />
         </Affix>
     </div>

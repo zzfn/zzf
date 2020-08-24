@@ -1,12 +1,29 @@
 .detail {
+  width: 100%;
   :global {
     .active {
       color: #52c41a;
     }
   }
+  .left{
+    @media (max-width: 768px) {
+      width:100%;
+    }
+    @media (min-width: 768px) {
+      width:70%;
+      float:left;
+    }
+  }
+.nav{
+  @media (max-width: 768px) {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    float: right;
+    width: 30%;
+  }
 
-  width: 100%;
-
+}
   .title {
     width: 100%;
     margin: auto;

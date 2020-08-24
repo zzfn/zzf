@@ -1,15 +1,12 @@
 import marked from 'marked';
-import hljs from 'highlight.js';
 import 'highlight.js/styles/rainbow.css';
 import '@/styles/markdown.scss'
-
-
+import { renderToString } from 'react-dom/server'
+import Code from '@/components/article/code'
 export const translateMarkdown = (text = '') => {
   const renderer = new marked.Renderer();
   renderer.code = function (code, language) {
-    return `<pre><code class="language-${language}" lang=${language}>${
-      language ? hljs.highlight(language, code).value : hljs.highlightAuto(code).value
-      }</code><a style="position: absolute;right: 10px;top: 10px;color:#8c8c8ccc;border:none">复制代码</a></pre>`;
+    return renderToString(<Code language={language} code={code} />)
   };
   renderer.image = function (href, title, text) {
     return `<div><img src=${href}  class="zoom" alt=${text} /></div>`;
