@@ -11,3 +11,7 @@ export const getArticle = (params: object): Promise<Res<any>> => {
 export const listTags = (params: object): Promise<Res<any>> => {
   return http("get", "/article/listTags", { params });
 };
+
+export const listArchives = (params: object): Promise<Res<any>> => {
+  return http("get", "/article/listArchives", { params });
+};
