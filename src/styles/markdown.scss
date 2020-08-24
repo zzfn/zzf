@@ -1,4 +1,12 @@
 :global{
+  .markdown-nav{
+    font-size: 12px !important;
+    text-overflow: ellipsis;
+    white-space:nowrap; 
+   .title-anchor{
+      margin: 0.4em !important;
+    }
+  }
   .markdown-template {
     color: #595959;
     a {

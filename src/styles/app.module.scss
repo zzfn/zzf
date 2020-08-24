@@ -1,3 +1,4 @@
+$main-width:1000px;
 .header {
   width: 100%;
   background: #fff;
@@ -12,7 +13,7 @@
     }
 
     @media (min-width: 768px) {
-      width: 800px;
+      width: $main-width;
     }
     img {
       height: 80%;
@@ -30,7 +31,7 @@
   }
 
   @media (min-width: 768px) {
-    width: 800px;
+    width: $main-width;
   }
   min-height: calc(100vh - 175px);
   margin: 13px auto;

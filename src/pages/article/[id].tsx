@@ -11,36 +11,36 @@ export default function ArticleDetail({ serverProps }) {
         <Head>
             <title>zzf~{serverProps.title}</title>
         </Head>
-        <div className={styles.title}>
-            <h1>{serverProps.title}</h1>
+        <div style={{width:'70%',float:'left'}}>
+            <div className={styles.title}>
+                <h1>{serverProps.title}</h1>
+            </div>
+            <div className={styles.tip}>
+                <ul>
+                    <li>
+                        <span>标签</span>
+                        {serverProps.tagDesc}
+                    </li>
+                    <li>
+                        <span>阅读量</span>
+                        {serverProps.viewCount}
+                    </li>
+                    <li>
+                        <span>发布于</span>
+                        {serverProps.createTime}
+                    </li>
+                </ul>
+            </div>
+            <div
+                className={['markdown-template', styles.content].join(' ')}
+                dangerouslySetInnerHTML={{
+                    __html: translateMarkdown(serverProps.content),
+                }}
+            />
         </div>
-        <div className={styles.tip}>
-            <ul>
-                <li>
-                    <span>标签</span>
-                    {serverProps.tagDesc}
-                </li>
-                <li>
-                    <span>阅读量</span>
-                    {serverProps.viewCount}
-                </li>
-                <li>
-                    <span>发布于</span>
-                    {serverProps.createTime}
-                </li>
-            </ul>
-        </div>
-        {/* <Affix offsetTop={50}> */}
-            <MarkdownNavbar headingTopOffset={80} onNavItemClick={(e, el, v) => {
-                console.log(v);
-            }} source={serverProps.content} />
-        {/* </Affix> */}
-        <div
-            className={['markdown-template', styles.content].join(' ')}
-            dangerouslySetInnerHTML={{
-                __html: translateMarkdown(serverProps.content),
-            }}
-        />
+        <Affix style={{width:'30%',float:'left'}} offsetTop={80}>
+            <MarkdownNavbar ordered={false} className={'markdown-nav'} headingTopOffset={80} source={serverProps.content} />
+        </Affix>
     </div>
 }
 
