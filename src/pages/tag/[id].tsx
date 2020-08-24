@@ -7,6 +7,7 @@ import MarkdownNavbar from "markdown-navbar";
 import "markdown-navbar/dist/navbar.css";
 import { Affix } from "antd";
 import moment from "moment";
+import Link from "next/link";
 
 export default function ArticleDetail({ serverProps, name }) {
   return (
@@ -21,7 +22,10 @@ export default function ArticleDetail({ serverProps, name }) {
             <span style={{ color: "#8a8a8a" }}>
               {moment(item.createTime).format("YYYY-MM-DD")}
             </span>
-            -<span style={{ color: "#4183c4" }}>{item.title}</span>
+            -
+            <Link href={`/article/${item.id}`}>
+              <a style={{ color: "#4183c4" }}>{item.title}</a>
+            </Link>
           </li>
         ))}
       </ul>

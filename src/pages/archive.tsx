@@ -4,6 +4,7 @@ import Head from "next/head";
 import "markdown-navbar/dist/navbar.css";
 import { listArchives } from "@/services/article";
 import moment from "moment";
+import Link from "next/link";
 export default function About({ serverProps }) {
   return (
     <div className={styles.detail}>
@@ -17,7 +18,10 @@ export default function About({ serverProps }) {
               <span style={{ color: "#8a8a8a" }}>
                 {moment(item.createTime).format("YYYY-MM-DD")}
               </span>
-              -<span style={{ color: "#4183c4" }}>{item.title}</span>
+              -
+              <Link href={`/article/${item.id}`}>
+                <a style={{ color: "#4183c4" }}>{item.title}</a>
+              </Link>
             </li>
           ))}
         </ul>
