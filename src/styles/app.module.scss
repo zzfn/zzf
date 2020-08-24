@@ -15,12 +15,16 @@ $main-width:1000px;
     @media (min-width: 768px) {
       width: $main-width;
     }
-    img {
+    .logo {
       height: 80%;
+      cursor: pointer;
+      transition: .3s;
+      &:hover{
+        transform: scale(1.08);
+      }
     }
-
-    a + a {
-      margin-left: 10px;
+    a{
+      margin:0 10px 0 5px;
     }
   }
 }
