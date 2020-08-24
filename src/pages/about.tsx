@@ -7,12 +7,13 @@ export default function About({ serverProps }) {
         <Head>
             <title>zzf~关于</title>
         </Head>
-        <h3>GitHub https://github.com/nanaouyang/zzf</h3>
+        <img style={{width:'100%'}} src="http://zzf-oss.annyyy.com/15982408470437WId4h.jpeg" alt="bg"/>
+        <h3>前端github https://github.com/nanaouyang/zzf</h3>
         <h3>
-            该系统采用 react typescript nextjs 编写。
+            后端 https://github.com/nanaouyang/jello
         </h3>
         <h3>
-            后台地址 https://github.com/nanaouyang/jello.git
+            该系统采用 react typescript nextjs 编写。   
         </h3>
         <h3> 支持特性：</h3>
 
