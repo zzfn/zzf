@@ -5,4 +5,5 @@ interface Article {
     viewCount: number;
     createTime: string;
     content: string;
+    order: number
 }

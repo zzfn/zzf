@@ -47,6 +47,8 @@ export default function ArticleDetail({ serverProps }) {
 export const getServerSideProps = async (context) => {
     const { params: { id } } = context
     const { data } = await getArticle({ id });
+    console.log(data);
+    
     return {
         props: {
             serverProps: data

@@ -16,7 +16,9 @@ export default function ArticleCard<ArticleCardProps>({dataSource}) {
 
     return (
         <div onClick={() => toDetail(dataSource.id)} className={styles.page}>
-            <h3>{dataSource.title}</h3>
+            <h3>{dataSource.title}
+            {dataSource.order&&<Tag color="#108ee9">置顶</Tag>}
+            </h3>
             <ul>
                 <li>
                     <Tag color="#108ee9">{dataSource.tagDesc}</Tag>
