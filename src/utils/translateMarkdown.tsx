@@ -6,16 +6,13 @@ import '@/styles/markdown.scss'
 
 export const translateMarkdown = (text = '') => {
   const renderer = new marked.Renderer();
-  renderer.code = function(code, language) {
+  renderer.code = function (code, language) {
     return `<pre><code class="language-${language}" lang=${language}>${
-      language?hljs.highlight(language, code).value:hljs.highlightAuto(code).value
-    }</code><a style="position: absolute;right: 10px;top: 10px;color:#8c8c8ccc;border:none">复制代码</a></pre>`;
+      language ? hljs.highlight(language, code).value : hljs.highlightAuto(code).value
+      }</code><a style="position: absolute;right: 10px;top: 10px;color:#8c8c8ccc;border:none">复制代码</a></pre>`;
   };
-  renderer.heading = function (text, level) {
-    return `<h${level} id=${encodeURIComponent(text)}>${text}</h${level}>`;
-  }
-  renderer.image = function (href,title,text) {
-    return `<div><img src=${href}  class="zoom" alt=${title} /></div>`;
+  renderer.image = function (href, title, text) {
+    return `<div><img src=${href}  class="zoom" alt=${text} /></div>`;
   }
   return marked(text, {
     renderer: renderer,
@@ -26,6 +23,6 @@ export const translateMarkdown = (text = '') => {
     smartLists: true,
     smartypants: true,
     xhtml: true,
-    headerIds:true,
+    headerIds: true,
   });
 };
