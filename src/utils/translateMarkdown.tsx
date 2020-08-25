@@ -11,6 +11,9 @@ export const translateMarkdown = (text = '') => {
   renderer.image = function (href, title, text) {
     return `<div><img src=${href}  class="zoom" alt=${text} /></div>`;
   }
+  renderer.link = function (href, title, text) {
+    return `<a target="_blank" href=${href}>${text}</a>`;
+  }
   return marked(text, {
     renderer: renderer,
     gfm: true,
