@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }) {
   }, []);
   return (
     <>
-      <Head></Head>
       <Affix offsetTop={0}>
         <header className={styles.header}>
           <div className={styles["header_main"]}>
