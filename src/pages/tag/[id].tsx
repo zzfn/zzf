@@ -14,6 +14,7 @@ export default function ArticleDetail({ serverProps, name }) {
     <div className={styles.detail}>
       <Head>
         <title>zzf~{name}</title>
+        <meta name="description" content="zzf的个人网站,记录个人学习" />
       </Head>
       <h2>{name}</h2>
       <ul>
