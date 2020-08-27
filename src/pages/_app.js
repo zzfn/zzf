@@ -27,10 +27,6 @@ function MyApp({ Component, pageProps }) {
   }, []);
   return (
     <>
-      <Head>
-        <title>zzf</title>
-        <link rel="icon" href="/static/favicon.ico" />
-      </Head>
       <Affix offsetTop={0}>
         <header className={styles.header}>
           <div className={styles["header_main"]}>
