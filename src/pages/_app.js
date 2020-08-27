@@ -87,6 +87,7 @@ function MyApp({ Component, pageProps }) {
       <footer className={styles.footer}>
         <div>2020</div>
         <div>Powered by Zzf</div>
+        <div>苏ICP备18059856号</div>
       </footer>
       {/*</Scrollbars>*/}
     </>
