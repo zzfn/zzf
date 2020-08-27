@@ -48,7 +48,7 @@ $main-width:1000px;
 .footer {
   background: #26282c;
   color: #ffffffb3;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

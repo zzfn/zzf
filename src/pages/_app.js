@@ -84,7 +84,10 @@ function MyApp({ Component, pageProps }) {
       <main className={styles.main}>
         <Component {...pageProps} />
       </main>
-      <footer className={styles.footer}>Powered by Zzf</footer>
+      <footer className={styles.footer}>
+        <div>2020</div>
+        <div>Powered by Zzf</div>
+      </footer>
       {/*</Scrollbars>*/}
     </>
   );
