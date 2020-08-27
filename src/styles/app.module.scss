@@ -49,6 +49,7 @@ $main-width:1000px;
   background: #26282c;
   color: #ffffffb3;
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 }
