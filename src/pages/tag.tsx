@@ -11,11 +11,11 @@ export default function About({ serverProps }) {
       <Head>
         <title>zzf~标签</title>
       </Head>
-      <img
+      {/* <img
         style={{ width: "100%" }}
         src="http://zzf-oss.annyyy.com/1598245775968FEzbxi.jpeg"
         alt="bg"
-      />
+      /> */}
       {serverProps.map((item) => (
         <div
           key={item.code}
