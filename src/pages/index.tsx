@@ -7,7 +7,7 @@ import { listArticles } from "@/services/article";
 import ArticleCard from "com/article/articleCard";
 import { selectSysConfig } from "@/services/common";
 
-export default function Home(props) {
+export default function Home(props): React.FC {
   const { serverProps, bg } = props;
   const [total, setTotal] = useState(serverProps.total);
   const [page, setPage] = useState(serverProps.page);

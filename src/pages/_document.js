@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
 import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -11,7 +11,6 @@ class MyDocument extends Document {
     return (
       <Html lang="zh">
         <Head>
-          <title>zzf</title>
           <link rel="icon" href="/static/favicon.ico" />
           <meta name="keywords" content="vue,react,正则表达式,webpack,docker" />
           <meta name="description" content="zzf的个人网站,记录个人学习" />
