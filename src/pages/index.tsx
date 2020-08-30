@@ -24,7 +24,7 @@ export default function Home(props) {
             <Head>
                 <title>zzf~首页</title>
             </Head>
-            <ZImg className={styles.bg} src={'/static/img/img-8.jfif'}/>
+            <ZImg className={styles.bg} src={'http://zzf-oss.annyyy.com/83977624_p0.png'}/>
             {
                 records.map((item: Article) => <ArticleCard key={item.id} dataSource={item}/>)
             }
