@@ -19,7 +19,6 @@ export default function Home(props): JSX.Element {
       setPage(data.current);
       setRecords(data.records);
     });
-    console.log(bg);
   }, [page]);
   return (
     <div className={styles.home}>
