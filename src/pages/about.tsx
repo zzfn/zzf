@@ -7,7 +7,7 @@ export default function About({ serverProps }) {
         <Head>
             <title>zzf~关于</title>
         </Head>
-        <img style={{width:'100%'}} src="http://zzf-oss.annyyy.com/15982408470437WId4h.jpeg" alt="bg"/>
+        {/* <img style={{width:'100%'}} src="http://zzf-oss.annyyy.com/15982408470437WId4h.jpeg" alt="bg"/> */}
         <h3>前端github https://github.com/nanaouyang/zzf</h3>
         <h3>
             后端 https://github.com/nanaouyang/jello
