@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 6688"
+    "start": "next start -p 9600"
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",

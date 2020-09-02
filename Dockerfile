@@ -1,12 +1,7 @@
 FROM node:lts-alpine
-WORKDIR /app
 COPY ./ /app
-
+COPY nginx.conf /etc/nginx/nginx.conf
+WORKDIR /app
 RUN npm install && npm run build
-
-# FROM nginx
-# RUN mkdir /app
-# COPY --from=0 /app/dist /app
-# COPY nginx.conf /etc/nginx/nginx.conf
-CMD [ "npm", "start" ]
-EXPOSE 80
+EXPOSE 9600
+ENTRYPOINT ["npm", "run","start"]
