@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 cd /root
 
-container_name=react
+container_name=zzf
 # docker部署
 docker pull registry.docker.annyyy.com/$container_name
 docker stop $container_name
