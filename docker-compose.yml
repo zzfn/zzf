@@ -1,9 +1,0 @@
-# yaml 配置
-version: '3'
-services:
-  web:
-#    build: .
-    image: registry.cn-shanghai.aliyuncs.com/zzf2001/example_cicd
-    container_name: example_cicd
-    ports:
-      - "80:80"
