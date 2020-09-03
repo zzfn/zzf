@@ -7,4 +7,4 @@ COPY next.config.js /app/
 RUN npm install --production
 EXPOSE 9600
 ENTRYPOINT ["npm", "run","start"]
-#CMD [ "npm","run", "start" ]
+#CMD [ "npm","run", "start" ]m np
