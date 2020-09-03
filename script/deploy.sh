@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-cd /root
+cd /root/zzf
 
 container_name=zzf
 # docker部署
