@@ -5,7 +5,7 @@ const withPlugins = require("next-compose-plugins");
 const path = require("path");
 
 const nextConfig = {
-  distDir: "build",
+  // distDir: "build",
   typescript: {
     ignoreBuildErrors: true,
   },
