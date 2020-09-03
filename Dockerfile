@@ -6,4 +6,4 @@ COPY build /app/build
 COPY public /app/public
 RUN npm install --production
 EXPOSE 9600
-CMD [ "npm", "start" ]
+CMD [ "npm","run", "start" ]
