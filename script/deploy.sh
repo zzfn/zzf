@@ -17,8 +17,8 @@
 #docker-compose up -d --force-recreate
 
 #docker image prune -f
-cd /www/wwwroot/zzfzzf.com
-git clone https://github.com/nanaouyang/zzf.git
+cd /www/wwwroot/zzfzzf.com/zzf
+git pull
 npm i
 npm run build
 pm2 delete zzf
