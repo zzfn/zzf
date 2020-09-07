@@ -25,7 +25,7 @@ export default function Home(props): JSX.Element {
       <Head>
         <title>zzf~首页</title>
       </Head>
-      <ZImg className={styles.bg} src={bg.value} />
+      <ZImg className={styles.bg} src={bg?.value} />
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />
       ))}
@@ -42,7 +42,7 @@ export const getServerSideProps = async () => {
   const num = 1;
   const size = 10;
   const { data } = await listArticles({ pageNumber: num, pageSize: size });
-  const { data: data0 } = await selectSysConfig({ key: "bg" });
+  const { data: data0 } = await selectSysConfig({ field: "bg" });
   return {
     props: {
       serverProps: data,
