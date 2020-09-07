@@ -13,6 +13,7 @@ export default function About({ serverProps }) {
         <li>2020-08-18～网站上线</li>
         <li>2020-08-24～网站基础功能完成</li>
         <li>2020-09-03～网站和后端改用docker部署</li>
+        <li>2020-09-07～网站和后端改用取消docker部署</li>
       </ul>
     </div>
   );
