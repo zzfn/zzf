@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
 import "markdown-navbar/dist/navbar.css";
-import { listTags } from "@/services/article";
-export default function About({ serverProps }) {
+
+export default function ChangeLog() {
   return (
     <div className={styles.detail}>
       <Head>
@@ -18,12 +18,3 @@ export default function About({ serverProps }) {
     </div>
   );
 }
-
-export const getServerSideProps = async () => {
-  const { data } = await listTags({});
-  return {
-    props: {
-      serverProps: data,
-    },
-  };
-};
