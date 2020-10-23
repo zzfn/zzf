@@ -1,7 +1,6 @@
-import axios from 'axios';
-import { message } from 'antd';
-import baseUrl from './index';
-import { Method } from 'axios';
+import axios, { Method } from "axios";
+import { message } from "antd";
+import baseUrl from "./index";
 
 /**
  * http封装请求
@@ -12,7 +11,7 @@ import { Method } from 'axios';
 const http = async (
   method: Method,
   url: string,
-  request?: { data?: object; params?: object },
+  request?: { data?: object; params?: object }
 ): Promise<Res<any>> => {
   try {
     const res = await axios({
@@ -23,7 +22,7 @@ const http = async (
       timeout: 120000,
       baseURL: baseUrl,
       headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
+        "Content-Type": "application/json;charset=UTF-8",
       },
       validateStatus: () => {
         return true;
@@ -38,11 +37,11 @@ const http = async (
       }
       return data;
     } else if (status === 404) {
-      message.error('api地址不存在');
+      message.error("api地址不存在");
       return {
         code: 4004,
         data: null,
-        message: 'api地址不存在',
+        message: "api地址不存在",
       };
     } else {
       message.error(data.message);
@@ -62,22 +61,22 @@ const http = async (
   }
 };
 axios.interceptors.request.use(
-  function(config) {
+  function (config) {
     return config;
   },
-  function(error) {
+  function (error) {
     // Do something with request error
     return Promise.reject(error);
-  },
+  }
 );
 axios.interceptors.response.use(
-  function(response) {
+  function (response) {
     // Do something with response data
     return response;
   },
-  function(error) {
+  function (error) {
     // Do something with response error
     return Promise.reject(error);
-  },
+  }
 );
 export default http;

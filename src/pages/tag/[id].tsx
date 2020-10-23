@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
-import { getArticle, listArchives } from "@/services/article";
-import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
+import React from "react";
+import { listArchives } from "@/services/article";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
-import MarkdownNavbar from "markdown-navbar";
 import "markdown-navbar/dist/navbar.css";
-import { Affix } from "antd";
 import moment from "moment";
 import Link from "next/link";
 
