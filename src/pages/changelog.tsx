@@ -14,6 +14,7 @@ export default function ChangeLog() {
         <li>2020-08-24～网站基础功能完成</li>
         <li>2020-09-03～网站和后端改用docker部署</li>
         <li>2020-09-07～网站和后端取消docker部署</li>
+        <li>2020-10-23～网站部署到https://vercel.com</li>
       </ul>
     </div>
   );
