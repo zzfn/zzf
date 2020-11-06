@@ -17,16 +17,20 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
 
   return (
     <div onClick={() => toDetail(dataSource.id)} className={styles.card}>
+      <div className={styles.time}>
+        {dayjs(dataSource.createTime).format("YYYY-MM-DD")}
+      </div>
       <h3>
         {dataSource.orderNum ? <Tag color="#9494E3">置顶</Tag> : null}
-        {dataSource.title}
+        <span style={{ marginLeft: "10px" }}>{dataSource.title}</span>
       </h3>
       <ul>
-        <li>
+        <li title={"标签"}>
           <Tag color="#0095C7">{dataSource.tagDesc}</Tag>
         </li>
-        <li>{dataSource.viewCount}</li>
-        <li>{dayjs(dataSource.createTime).format("YYYY-MM-DD")}</li>
+        <li title={"浏览量"}>
+          <span className={styles.num}>{dataSource.viewCount}</span>
+        </li>
       </ul>
     </div>
   );
