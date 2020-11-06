@@ -3,6 +3,7 @@ import styles from "@/styles/article.module.scss";
 import Head from "next/head";
 import { listTags } from "@/services/article";
 import Link from "next/link";
+import { Tag } from "com/Tag/Tag";
 
 export default function About({ serverProps }) {
   return (
@@ -16,8 +17,10 @@ export default function About({ serverProps }) {
           style={{ margin: "20px", display: "inline-block" }}
         >
           <Link href={`/tag/${item.code}?name=${item.tag}`}>
-            <span style={{ cursor: "pointer" }} color="#108ee9">
-              {item.tag}-{item.count}
+            <span style={{ cursor: "pointer" }}>
+              <Tag color={"#108ee9"}>
+                {item.tag}-{item.count}
+              </Tag>
             </span>
           </Link>
         </div>

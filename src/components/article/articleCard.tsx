@@ -22,7 +22,9 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
       </div>
       <h3>
         {dataSource.orderNum ? <Tag color="#9494E3">置顶</Tag> : null}
-        <span style={{ marginLeft: "10px" }}>{dataSource.title}</span>
+        <span className={styles.title} style={{ marginLeft: "10px" }}>
+          {dataSource.title}
+        </span>
       </h3>
       <ul>
         <li title={"标签"}>
