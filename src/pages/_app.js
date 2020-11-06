@@ -59,12 +59,6 @@ function MyApp({ Component, pageProps }) {
                   <a>标签</a>
                 </span>
               </Link>
-              <Link href="/changelog">
-                <span>
-                  <BugOutlined style={{ color: "#00a7de" }} />
-                  <a>更新日志</a>
-                </span>
-              </Link>
               <Link href="/about">
                 <span>
                   <PaperClipOutlined style={{ color: "#00a7de" }} />

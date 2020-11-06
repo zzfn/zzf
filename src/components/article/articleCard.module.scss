@@ -10,7 +10,7 @@
   @media (min-width: 768px) {
     width: 800px;
     li {
-      width: 150px;
+      width: 200px;
     }
   }
   margin: 0 auto 20px;
@@ -21,10 +21,15 @@
   align-items: center;
   justify-content: center;
   ul {
+    width: 60%;
+    margin: auto;
+    padding-left: 0;
+    padding-bottom: 10px;
     list-style: none;
     display: flex;
+    justify-content: space-between;
     li {
-      //width: 150px;
+      flex: 1
     }
   }
 }

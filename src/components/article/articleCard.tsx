@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './articleCard.module.scss';
 import {Tag} from 'antd';
 import {useRouter} from "next/router";
-
+import {ClockCircleOutlined} from '@ant-design/icons'
 interface ArticleCardProps {
     dataSource: Article
 }
@@ -24,7 +24,7 @@ export default function ArticleCard<ArticleCardProps>({dataSource}) {
                     <Tag color="#0095C7">{dataSource.tagDesc}</Tag>
                 </li>
                 <li>{dataSource.viewCount}</li>
-                <li>{dataSource.createTime}</li>
+                <li><ClockCircleOutlined />发布于{dataSource.createTime}</li>
             </ul>
         </div>
     );
