@@ -4,9 +4,11 @@ import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
 import MarkdownNavbar from "markdown-navbar";
+import Progress from "com/article/Progress";
 export default function ArticleDetail({ serverProps }) {
   return (
     <div className={styles.detail}>
+      <Progress />
       <Head>
         <title>zzf~{serverProps.title}</title>
       </Head>

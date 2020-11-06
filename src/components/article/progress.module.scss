@@ -1,0 +1,26 @@
+.progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: #35a935;
+}
+
+.progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+
+.progress::-webkit-progress-value {
+  background-color: #35a935;
+}
+
+.progress::-moz-progress-bar {
+  background-color: #35a935;
+}
