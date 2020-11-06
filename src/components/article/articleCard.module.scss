@@ -1,5 +1,5 @@
 .page {
-  font-family: 'serif';
+  background: #fff;
   @media (max-width: 768px) {
     width: 90%;
     li {
@@ -15,7 +15,6 @@
   }
   margin: 0 auto 20px;
   border-radius: 20px;
-  background: #eee;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

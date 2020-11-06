@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./articleCard.module.scss";
 import { useRouter } from "next/router";
 import { ClockCircleOutlined } from "@ant-design/icons";
+import { Tag } from "com/Tag/Tag";
 interface ArticleCardProps {
   dataSource: Article;
 }
@@ -16,7 +17,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
   return (
     <div onClick={() => toDetail(dataSource.id)} className={styles.page}>
       <h3>
-        {dataSource.orderNum ? <span color="#9494E3">置顶</span> : null}
+        {dataSource.orderNum ? <Tag color="#9494E3">置顶</Tag> : null}
         {dataSource.title}
       </h3>
       <ul>

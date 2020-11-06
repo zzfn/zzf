@@ -24,7 +24,7 @@ export default function Home(props): JSX.Element {
       <Head>
         <title>zzf~首页</title>
       </Head>
-      <ZImg className={styles.bg} src={bg?.value} />
+      {/*<ZImg className={styles.bg} src={bg?.value} />*/}
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />
       ))}
