@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { getArticle } from "@/services/article";
 import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
 import styles from "@/styles/article.module.scss";
