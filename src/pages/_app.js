@@ -35,22 +35,22 @@ function MyApp({ Component, pageProps }) {
           </Link>
           <nav>
             <Link href="/">
-              <>
+              <span>
                 <HomeOutlined style={{ color: "#00a7de" }} />
                 <a>首页</a>
-              </>
+              </span>
             </Link>
             <Link href="/archive">
-              <>
+              <span>
                 <DatabaseOutlined style={{ color: "#00a7de" }} />
                 <a>归档</a>
-              </>
+              </span>
             </Link>
             <Link href="/tag">
-              <>
+              <span>
                 <TagOutlined style={{ color: "#00a7de" }} />
                 <a>标签</a>
-              </>
+              </span>
             </Link>
           </nav>
         </div>
