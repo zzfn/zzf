@@ -4,6 +4,7 @@ import styles from "@/styles/article.module.scss";
 import Head from "next/head";
 import MarkdownNavbar from "markdown-navbar";
 import Progress from "com/article/Progress";
+
 export default function ArticleDetail({ serverProps }) {
   return (
     <div className={styles.detail}>
@@ -48,7 +49,14 @@ export default function ArticleDetail({ serverProps }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { id: "33e2b0b1ca8301270159d2f40e83a7d9" } }],
+    fallback: true,
+  };
+}
+
+export const getStaticProps = async (context) => {
   const {
     params: { id },
   } = context;
@@ -58,5 +66,6 @@ export const getServerSideProps = async (context) => {
     props: {
       serverProps: data,
     },
+    revalidate: 1,
   };
 };
