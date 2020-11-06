@@ -24,8 +24,13 @@ $main-width:1000px;
       }
     }
     a{
+      cursor: pointer;
       position: relative;
       margin:0 10px 0 5px;
+      transition: .3s;
+      &:hover{
+        color: #3baafa;
+      }
     }
   }
 }
