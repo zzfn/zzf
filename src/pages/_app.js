@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import "@/styles/globals.scss";
 import styles from "@/styles/app.module.scss";
-import { Affix } from "antd";
 import Link from "next/link";
 import {
   HomeOutlined,
@@ -28,45 +27,43 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>zzf</title>
       </Head>
-      <Affix offsetTop={0}>
-        <header className={styles.header}>
-          <div className={styles["header_main"]}>
+      <header className={styles.header}>
+        <div className={styles["header_main"]}>
+          <Link href="/">
+            <img
+              className={styles.logo}
+              src={"/static/img/img-3.png"}
+              alt="logo"
+            />
+          </Link>
+          <nav>
             <Link href="/">
-              <img
-                className={styles.logo}
-                src={"/static/img/img-3.png"}
-                alt="logo"
-              />
+              <span>
+                <HomeOutlined style={{ color: "#00a7de" }} />
+                <a>首页</a>
+              </span>
             </Link>
-            <nav>
-              <Link href="/">
-                <span>
-                  <HomeOutlined style={{ color: "#00a7de" }} />
-                  <a>首页</a>
-                </span>
-              </Link>
-              <Link href="/archive">
-                <span>
-                  <DatabaseOutlined style={{ color: "#00a7de" }} />
-                  <a>归档</a>
-                </span>
-              </Link>
-              <Link href="/tag">
-                <span>
-                  <TagOutlined style={{ color: "#00a7de" }} />
-                  <a>标签</a>
-                </span>
-              </Link>
-              <Link href="/about">
-                <span>
-                  <PaperClipOutlined style={{ color: "#00a7de" }} />
-                  <a>关于本站</a>
-                </span>
-              </Link>
-            </nav>
-          </div>
-        </header>
-      </Affix>
+            <Link href="/archive">
+              <span>
+                <DatabaseOutlined style={{ color: "#00a7de" }} />
+                <a>归档</a>
+              </span>
+            </Link>
+            <Link href="/tag">
+              <span>
+                <TagOutlined style={{ color: "#00a7de" }} />
+                <a>标签</a>
+              </span>
+            </Link>
+            <Link href="/about">
+              <span>
+                <PaperClipOutlined style={{ color: "#00a7de" }} />
+                <a>关于本站</a>
+              </span>
+            </Link>
+          </nav>
+        </div>
+      </header>
       <main className={styles.main}>
         <Component {...pageProps} />
       </main>

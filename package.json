@@ -10,9 +10,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "@zeit/next-css": "^1.0.1",
-    "@zeit/next-less": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
-    "antd": "^4.8.0",
     "axios": "^0.20.0",
     "highlight.js": "^10.3.2",
     "markdown-navbar": "^1.4.3",
@@ -40,7 +38,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
-    "less": "^3.12.2",
     "node-sass": "^4.14.1",
     "null-loader": "^4.0.0",
     "prettier": "^2.1.0",

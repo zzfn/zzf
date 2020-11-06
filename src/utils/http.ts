@@ -1,5 +1,4 @@
 import axios, { Method } from "axios";
-import { message } from "antd";
 import baseUrl from "./index";
 
 /**
@@ -32,19 +31,15 @@ const http = async (
     if (status === 200) {
       const { code, message: msg } = data;
       if (code !== 0) {
-        message.destroy();
-        message.error(msg);
       }
       return data;
     } else if (status === 404) {
-      message.error("api地址不存在");
       return {
         code: 4004,
         data: null,
         message: "api地址不存在",
       };
     } else {
-      message.error(data.message);
       return {
         code: 4000,
         data: null,
@@ -52,7 +47,6 @@ const http = async (
       };
     }
   } catch (e) {
-    message.error(e.toString());
     return {
       code: 5000,
       data: null,
