@@ -1,34 +1,22 @@
-.page {
+.card{
   background: #fff;
-  @media (max-width: 768px) {
-    width: 90%;
-    li {
-      margin-right: 10px;
-    }
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #3baafa;
+  padding: 20px;
+  h3{
+    font-size: 18px;
+    color: #151718;
   }
-
-  @media (min-width: 768px) {
-    width: 800px;
-    li {
-      width: 200px;
-    }
-  }
-  margin: 0 auto 20px;
-  border-radius: 20px;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  ul {
-    width: 60%;
-    margin: auto;
-    padding-left: 0;
-    padding-bottom: 10px;
+  ul{
+    margin-top: 5px;
     list-style: none;
     display: flex;
-    justify-content: space-between;
-    li {
-      flex: 1
+    li{
+      width: 100px;
     }
   }
+}
+.card+.card{
+  margin-top: 10px;
 }

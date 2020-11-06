@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
-import "markdown-navbar/dist/navbar.css";
 
 export default function ChangeLog() {
   return (

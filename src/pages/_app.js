@@ -2,6 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import "@/styles/globals.scss";
 import styles from "@/styles/app.module.scss";
+import "markdown-navbar/dist/navbar.css";
+import "../styles/markdown.scss";
+import "highlight.js/styles/rainbow.css";
+
 import Link from "next/link";
 import {
   HomeOutlined,
@@ -53,12 +57,6 @@ function MyApp({ Component, pageProps }) {
               <span>
                 <TagOutlined style={{ color: "#00a7de" }} />
                 <a>标签</a>
-              </span>
-            </Link>
-            <Link href="/about">
-              <span>
-                <PaperClipOutlined style={{ color: "#00a7de" }} />
-                <a>关于本站</a>
               </span>
             </Link>
           </nav>

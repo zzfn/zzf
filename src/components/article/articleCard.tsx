@@ -3,6 +3,7 @@ import styles from "./articleCard.module.scss";
 import { useRouter } from "next/router";
 import { ClockCircleOutlined } from "@ant-design/icons";
 import { Tag } from "com/Tag/Tag";
+import dayjs from "dayjs";
 interface ArticleCardProps {
   dataSource: Article;
 }
@@ -15,20 +16,17 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
   }
 
   return (
-    <div onClick={() => toDetail(dataSource.id)} className={styles.page}>
+    <div onClick={() => toDetail(dataSource.id)} className={styles.card}>
       <h3>
         {dataSource.orderNum ? <Tag color="#9494E3">置顶</Tag> : null}
         {dataSource.title}
       </h3>
       <ul>
         <li>
-          <span color="#0095C7">{dataSource.tagDesc}</span>
+          <Tag color="#0095C7">{dataSource.tagDesc}</Tag>
         </li>
         <li>{dataSource.viewCount}</li>
-        <li>
-          <ClockCircleOutlined />
-          发布于{dataSource.createTime}
-        </li>
+        <li>{dayjs(dataSource.createTime).format("YYYY-MM-DD")}</li>
       </ul>
     </div>
   );

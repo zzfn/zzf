@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
-import "markdown-navbar/dist/navbar.css";
 import { listArchives } from "@/services/article";
 import Link from "next/link";
 export default function About({ serverProps }) {

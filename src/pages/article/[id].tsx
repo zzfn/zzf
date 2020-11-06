@@ -4,7 +4,6 @@ import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
 import MarkdownNavbar from "markdown-navbar";
-import "markdown-navbar/dist/navbar.css";
 export default function ArticleDetail({ serverProps }) {
   return (
     <div className={styles.detail}>

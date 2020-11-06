@@ -10,16 +10,15 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "axios": "^0.20.0",
+    "dayjs": "^1.9.5",
     "highlight.js": "^10.3.2",
     "markdown-navbar": "^1.4.3",
     "marked": "^1.2.3",
     "next": "9.5.2",
-    "next-compose-plugins": "^2.2.0",
     "react": "16.13.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "16.13.1",
-    "viewerjs": "^1.6.1",
     "zooming": "^2.1.1"
   },
   "devDependencies": {
@@ -32,7 +31,6 @@
     "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
