@@ -1,4 +1,4 @@
-import { getArticle } from "@/services/article";
+import { getArticle, listArticles } from "@/services/article";
 import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
@@ -50,8 +50,12 @@ export default function ArticleDetail({ serverProps }) {
 }
 
 export async function getStaticPaths() {
+  const {
+    data: { records },
+  } = await listArticles({ pageNumber: 1, pageSize: 10 });
+  const paths = records.map((_) => ({ params: { id: _.id } }));
   return {
-    paths: [{ params: { id: "33e2b0b1ca8301270159d2f40e83a7d9" } }],
+    paths,
     fallback: true,
   };
 }
