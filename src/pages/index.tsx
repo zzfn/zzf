@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "@/styles/home.module.scss";
-import { Pagination } from "antd";
 import ZImg from "com/common/zImg";
 import { listArticles } from "@/services/article";
 import ArticleCard from "com/article/articleCard";
@@ -29,12 +28,8 @@ export default function Home(props): JSX.Element {
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />
       ))}
-      <Pagination
-        onChange={(page) => setPage(page)}
-        current={page}
-        size="small"
-        total={total}
-      />
+      <span onClick={() => setPage(page - 1)}>上一页</span>
+      <span onClick={() => setPage(page + 1)}>下一页</span>
     </div>
   );
 }

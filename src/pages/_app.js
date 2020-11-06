@@ -8,10 +8,8 @@ import {
   HomeOutlined,
   DatabaseOutlined,
   TagOutlined,
-  BugOutlined,
   PaperClipOutlined,
 } from "@ant-design/icons";
-import { Scrollbars } from "react-custom-scrollbars";
 import Zooming from "zooming";
 
 function MyApp({ Component, pageProps }) {
@@ -69,15 +67,6 @@ function MyApp({ Component, pageProps }) {
           </div>
         </header>
       </Affix>
-      {/*<Scrollbars*/}
-      {/*    autoHide*/}
-      {/*    autoHideTimeout={1000}*/}
-      {/*    autoHideDuration={200}*/}
-      {/*    autoHeight*/}
-      {/*    autoHeightMin={0}*/}
-      {/*    autoHeightMax={height}*/}
-      {/*    thumbMinSize={30}*/}
-      {/*    universal={true}>*/}
       <main className={styles.main}>
         <Component {...pageProps} />
       </main>
@@ -86,7 +75,6 @@ function MyApp({ Component, pageProps }) {
         <div>Powered by Zzf</div>
         <div>苏ICP备18059856号</div>
       </footer>
-      {/*</Scrollbars>*/}
     </>
   );
 }
