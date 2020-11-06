@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import "@/styles/globals.scss";
 import styles from "@/styles/app.module.scss";
@@ -7,16 +7,10 @@ import "../styles/markdown.scss";
 import "highlight.js/styles/rainbow.css";
 
 import Link from "next/link";
-import {
-  HomeOutlined,
-  DatabaseOutlined,
-  TagOutlined,
-  PaperClipOutlined,
-} from "@ant-design/icons";
+import { DatabaseOutlined, HomeOutlined, TagOutlined } from "@ant-design/icons";
 import Zooming from "zooming";
 
 function MyApp({ Component, pageProps }) {
-  const [height, setHeight] = useState(0);
   useEffect(() => {
     const zooming = new Zooming({
       enableGrab: false,
@@ -24,7 +18,6 @@ function MyApp({ Component, pageProps }) {
       bgOpacity: "0.5",
     });
     zooming.listen(".zoom");
-    setHeight(window.innerHeight - 75);
   }, []);
   return (
     <>

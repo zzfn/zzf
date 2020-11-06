@@ -2,7 +2,6 @@ import React from "react";
 import { listArchives } from "@/services/article";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
-import "markdown-navbar/dist/navbar.css";
 import Link from "next/link";
 
 export default function ArticleDetail({ serverProps, name }) {
