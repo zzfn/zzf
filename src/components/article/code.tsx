@@ -1,7 +1,6 @@
 import React from "react";
 import hljs from "highlight.js";
 import styles from "./code.module.scss";
-import CopyToClipboard from "react-copy-to-clipboard";
 
 export default function Code({ language, code }) {
   return (
@@ -19,16 +18,9 @@ export default function Code({ language, code }) {
       </pre>
       <div className={styles.action}>
         <div>
-          <CopyToClipboard
-            onCopy={(text): void => {
-              console.log(text);
-            }}
-            text={"https://cdn.annyyy.com/"}
-          >
-            <a lang={language} style={{ color: "#8c8c8ccc", border: "none" }}>
-              复制代码
-            </a>
-          </CopyToClipboard>
+          <a lang={language} style={{ color: "#8c8c8ccc", border: "none" }}>
+            复制代码
+          </a>
         </div>
       </div>
     </div>

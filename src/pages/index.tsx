@@ -4,6 +4,7 @@ import styles from "@/styles/home.module.scss";
 import { listArticles } from "@/services/article";
 import ArticleCard from "com/article/articleCard";
 import { useDebounce } from "@/hooks/useDebounce";
+import { GetServerSideProps } from "next";
 
 export default function Home(props): JSX.Element {
   const { serverProps } = props;
@@ -45,7 +46,7 @@ export default function Home(props): JSX.Element {
     </div>
   );
 }
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const num = 1;
   const size = 10;
   const { data } = await listArticles({ pageNumber: num, pageSize: size });
