@@ -10,32 +10,32 @@ export default function ArticleDetail({ serverProps }) {
     <div className={styles.detail}>
       <Progress />
       <Head>
-        <title>zzf~{serverProps.title}</title>
+        <title>zzf~{serverProps?.title}</title>
       </Head>
       <div className={styles.left}>
         <div className={styles.title}>
-          <h1>{serverProps.title}</h1>
+          <h1>{serverProps?.title}</h1>
         </div>
         <div className={styles.tip}>
           <ul>
             <li>
               <span>标签</span>
-              {serverProps.tagDesc}
+              {serverProps?.tagDesc}
             </li>
             <li>
               <span>阅读量</span>
-              {serverProps.viewCount}
+              {serverProps?.viewCount}
             </li>
             <li>
               <span>发布于</span>
-              {serverProps.createTime}
+              {serverProps?.createTime}
             </li>
           </ul>
         </div>
         <div
           className={["markdown-template", styles.content].join(" ")}
           dangerouslySetInnerHTML={{
-            __html: translateMarkdown(serverProps.content),
+            __html: translateMarkdown(serverProps?.content),
           }}
         />
       </div>
@@ -43,24 +43,24 @@ export default function ArticleDetail({ serverProps }) {
         ordered={false}
         className={"markdown-nav"}
         headingTopOffset={80}
-        source={serverProps.content}
+        source={serverProps?.content}
       />
     </div>
   );
 }
 
 export async function getStaticPaths() {
-  const {
-    data: { records },
-  } = await listArticles({ pageNumber: 1, pageSize: 10 });
-  const paths = records.map((_) => ({ params: { id: _.id } }));
+  // const {
+  //   data: { records },
+  // } = await listArticles({ pageNumber: 1, pageSize: 10 });
+  // const paths = records.map((_) => ({ params: { id: _.id } }));
   return {
-    paths,
+    paths: [],
     fallback: true,
   };
 }
 
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
   const {
     params: { id },
   } = context;
@@ -72,4 +72,4 @@ export const getStaticProps = async (context) => {
     },
     revalidate: 1,
   };
-};
+}
