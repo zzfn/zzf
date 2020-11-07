@@ -45,5 +45,6 @@ export async function getStaticProps(context) {
       serverProps: data,
       name: context.query ? context.query.name : null,
     },
+    revalidate: 1,
   };
 }
