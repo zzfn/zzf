@@ -1,10 +1,11 @@
 import React from "react";
-import { listArchives } from "@/services/article";
+import { getArticle, listArchives, listTags } from "@/services/article";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function ArticleDetail({ serverProps, name }) {
+export default function ArticleDetail(props) {
+  const { serverProps = [], name = "" } = props;
   return (
     <div className={styles.detail}>
       <Head>
@@ -25,16 +26,24 @@ export default function ArticleDetail({ serverProps, name }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
+export async function getStaticPaths() {
+  const { data } = await listTags({});
+  const paths = data.map((_) => ({ params: { id: _.code } }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context) {
   const {
     params: { id },
-    query: { name },
   } = context;
   const { data } = await listArchives({ code: id });
   return {
     props: {
       serverProps: data,
-      name,
+      name: context.query ? context.query.name : null,
     },
   };
-};
+}
