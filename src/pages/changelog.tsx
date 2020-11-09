@@ -2,7 +2,7 @@ import React from "react";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
 
-export default function ChangeLog() {
+export default function ChangeLog(): JSX.Element {
   return (
     <div className={styles.detail}>
       <Head>
