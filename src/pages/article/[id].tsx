@@ -1,4 +1,5 @@
-import {getArticle, listArchives, listArticles} from "@/services/article";
+import React from "react";
+import { getArticle, listArchives } from "@/services/article";
 import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
@@ -9,10 +10,10 @@ export default function ArticleDetail(props) {
   const { serverProps = {} } = props;
   return (
     <div className={styles.detail}>
-      <Progress />
       <Head>
         <title>zzf~{serverProps.title}</title>
       </Head>
+      <Progress />
       <div className={styles.left}>
         <div className={styles.title}>
           <h1>{serverProps.title}</h1>
@@ -40,12 +41,14 @@ export default function ArticleDetail(props) {
           }}
         />
       </div>
-      <MarkdownNavbar
-        ordered={false}
-        className={"markdown-nav"}
-        headingTopOffset={80}
-        source={serverProps.content}
-      />
+      <div className={styles.sidebar}>
+        <MarkdownNavbar
+          ordered={false}
+          className={"markdown-nav"}
+          headingTopOffset={80}
+          source={serverProps.content}
+        />
+      </div>
     </div>
   );
 }

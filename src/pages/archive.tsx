@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
-import styles from "@/styles/article.module.scss";
+import React from "react";
+import styles from "@/styles/archive.module.scss";
 import Head from "next/head";
 import { listArchives } from "@/services/article";
 import Link from "next/link";
 import dayjs from "dayjs";
+
 export default function About({ serverProps }) {
   return (
-    <div className={styles.detail}>
+    <div className={styles.archiveWrap}>
       <Head>
         <title>zzf~归档</title>
       </Head>

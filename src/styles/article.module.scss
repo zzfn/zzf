@@ -1,19 +1,19 @@
 .detail {
-  background: #fff;
-  width: 100%;
-  padding:20px;
+  margin: 2rem 0;
+  position: relative;
+  box-sizing:border-box;
   :global {
     .active {
       color: #52c41a;
     }
   }
   .left{
+    position: relative;
     @media (max-width: 768px) {
       width:100%;
     }
     @media (min-width: 768px) {
-      width:100%;
-      float:left;
+      width:700px;
     }
   }
 .nav{
@@ -80,4 +80,9 @@
     background: #fff;
     margin: auto;
   }
+}
+.sidebar{
+  width: 20rem;
+  position: absolute;
+  right: 0;
 }

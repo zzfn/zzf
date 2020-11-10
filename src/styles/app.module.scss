@@ -1,13 +1,16 @@
-$main-width:1000px;
+$main-width:960px;
 .header {
+  height: 60px;
   width: 100%;
   background: #fff;
   &_main{
-    height: 75px;
+    width:$main-width;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    position: relative;
     @media (max-width: 768px) {
       width: 95%;
     }
@@ -36,18 +39,14 @@ $main-width:1000px;
 }
 
 .main {
-  @media (max-width: 768px) {
-    width: 100%;
+  margin: auto;
+  position: relative;
+  @media (max-width: 960px) {
+    max-width: 100%;
   }
-
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     width: $main-width;
   }
-  min-height: calc(100vh - 175px);
-  margin: 13px auto;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
 }
 
 .footer {

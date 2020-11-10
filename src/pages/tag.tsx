@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/article.module.scss";
+import styles from "@/styles/tag.module.scss";
 import Head from "next/head";
 import { listTags } from "@/services/article";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { Tag } from "com/Tag/Tag";
 
 export default function About({ serverProps }) {
   return (
-    <div className={styles.detail}>
+    <div className={styles.tagWrap}>
       <Head>
         <title>zzf~标签</title>
       </Head>
