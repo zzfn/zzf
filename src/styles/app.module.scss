@@ -12,11 +12,11 @@ $main-width:960px;
     align-items: center;
     margin: 0 auto;
     position: relative;
-    @media (max-width: 768px) {
+    @media (max-width: 960px) {
       width: 95%;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 960px) {
       width: $main-width;
     }
     .logo {

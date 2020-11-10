@@ -3,6 +3,7 @@
   position: relative;
   box-sizing:border-box;
   font-size:1.1rem;
+  overflow:hidden;
   :global {
     .active {
       color: #52c41a;

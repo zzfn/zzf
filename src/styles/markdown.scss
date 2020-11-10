@@ -1,4 +1,7 @@
 .markdown-nav{
+  @media(max-width:960px){
+    display: none;
+  }
   background: #fff;
   position: fixed;
   top: 8rem;
