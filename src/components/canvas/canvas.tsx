@@ -27,7 +27,8 @@ export function Canvas(): JSX.Element {
       ];
       const ctx = (ins as any).current.getContext("2d");
       let balls: any[] = [];
-      for (let i = 0; i < 100; i++) {
+      let mouseBall;
+      for (let i = 0; i < 120; i++) {
         balls.push(
           new Ball({
             ctx,
@@ -39,14 +40,27 @@ export function Canvas(): JSX.Element {
           })
         );
       }
+      let delayTime = 0;
+      // 上一帧的时间
+      let lastTime = +new Date();
       const loopDraw = () => {
         requestAnimationFrame(loopDraw);
+        const now = +new Date();
+        delayTime = now - lastTime;
+        lastTime = now;
+        if (delayTime > 50) delayTime = 50;
         // ctx.fillStyle = "rgba(255,255,255,0.3)";
         // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         balls.forEach((ball, index) => {
           ball.render();
-          ball.update();
+          ball.update(delayTime && delayTime);
+          if (mouseBall) {
+            const lineMouse = twoPointDistance(ball, mouseBall);
+            if (lineMouse && lineMouse < 200) {
+              ball.renderLine(mouseBall);
+            }
+          }
           balls.forEach((ball2) => {
             const distance = twoPointDistance(ball, ball2);
             if (distance && distance < 100) {
@@ -56,6 +70,16 @@ export function Canvas(): JSX.Element {
         });
       };
       loopDraw();
+      window.addEventListener("mousemove", (e) => {
+        console.log(e);
+        mouseBall = new Ball({
+          ctx,
+          x: e.pageX,
+          y: e.pageY,
+          radius: 5,
+          color: "#000",
+        });
+      });
     }
   });
   return (
@@ -88,7 +112,7 @@ class Ball {
     this.vy = (Math.random() - 0.5) * 10; // 刚开始是静止的
     this.vx = (Math.random() - 0.5) * 10; // 刚开始是静止的
   }
-  update() {
+  update(delayTime) {
     this.y += this.vy;
     this.x += this.vx;
     if (this.y >= this.ctx.canvas.height - this.radius) {
