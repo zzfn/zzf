@@ -10,7 +10,7 @@ export function Canvas(): JSX.Element {
   const ins = useRef();
   useEffect(() => {
     if (ins) {
-      const ele = ins.current.getBoundingClientRect();
+      const ele = (ins as any).current.getBoundingClientRect();
       setHeight(ele.height);
       setWidth(ele.width);
     }
@@ -26,10 +26,10 @@ export function Canvas(): JSX.Element {
         "#ff0033",
         "#FFF2B0",
       ];
-      const ctx = ins.current.getContext("2d");
+      const ctx = (ins as any).current.getContext("2d");
       ctx.width = width * window.devicePixelRatio;
       ctx.height = height * window.devicePixelRatio;
-      let balls = [];
+      let balls: any[] = [];
       for (let i = 0; i < 100; i++) {
         balls.push(
           new Ball({
@@ -67,7 +67,14 @@ export function Canvas(): JSX.Element {
 }
 class Ball {
   // 初始化的特征
-  constructor(options = {}) {
+  private x: number;
+  private ctx: any;
+  private radius: number;
+  private color: string;
+  private y: number;
+  private vy: number;
+  private vx: number;
+  constructor(options: any = {}) {
     const {
       x = 0, // x坐标
       y = 0, // y坐标
@@ -82,7 +89,7 @@ class Ball {
     this.color = color;
     // 速度
     this.vy = (Math.random() - 0.5) * 10; // 刚开始是静止的
-    this.vx = (Math.random() - 0.5) * 10; // 刚开始是静止的
+    this.vy = (Math.random() - 0.5) * 10; // 刚开始是静止的
   }
   update() {
     this.y += this.vy;
@@ -114,7 +121,7 @@ class Ball {
   }
 
   renderLine(target) {
-    var lingrad = this.ctx.createLinearGradient(
+    const lingrad = this.ctx.createLinearGradient(
       this.x,
       this.y,
       target.x,
