@@ -41,6 +41,8 @@ export function Canvas(): JSX.Element {
       }
       const loopDraw = () => {
         requestAnimationFrame(loopDraw);
+        // ctx.fillStyle = "rgba(255,255,255,0.3)";
+        // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
         balls.forEach((ball, index) => {
           ball.render();
@@ -52,8 +54,6 @@ export function Canvas(): JSX.Element {
             }
           });
         });
-        ctx.fillStyle = "rgba(255,255,255,0.3)";
-        ctx.fillRect(0, 0, ctx.width, ctx.height);
       };
       loopDraw();
     }
