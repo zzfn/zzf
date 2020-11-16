@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./canvas.module.scss";
 function twoPointDistance(p1, p2) {
-  let distance = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
-  return distance;
+  return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
 }
 export function Canvas(): JSX.Element {
   const [width, setWidth] = useState(0);
@@ -11,8 +10,8 @@ export function Canvas(): JSX.Element {
   useEffect(() => {
     if (ins) {
       const ele = (ins as any).current.getBoundingClientRect();
-      setHeight(ele.height);
-      setWidth(ele.width);
+      setHeight(ele.height * window.devicePixelRatio);
+      setWidth(ele.width * window.devicePixelRatio);
     }
   }, []);
   useEffect(() => {
@@ -27,8 +26,6 @@ export function Canvas(): JSX.Element {
         "#FFF2B0",
       ];
       const ctx = (ins as any).current.getContext("2d");
-      ctx.width = width * window.devicePixelRatio;
-      ctx.height = height * window.devicePixelRatio;
       let balls: any[] = [];
       for (let i = 0; i < 100; i++) {
         balls.push(
@@ -68,10 +65,10 @@ export function Canvas(): JSX.Element {
 class Ball {
   // 初始化的特征
   private x: number;
+  private y: number;
   private ctx: any;
   private radius: number;
   private color: string;
-  private y: number;
   private vy: number;
   private vx: number;
   constructor(options: any = {}) {
@@ -89,7 +86,7 @@ class Ball {
     this.color = color;
     // 速度
     this.vy = (Math.random() - 0.5) * 10; // 刚开始是静止的
-    this.vy = (Math.random() - 0.5) * 10; // 刚开始是静止的
+    this.vx = (Math.random() - 0.5) * 10; // 刚开始是静止的
   }
   update() {
     this.y += this.vy;
