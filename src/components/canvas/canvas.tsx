@@ -57,7 +57,7 @@ export function Canvas(): JSX.Element {
           ball.update(delayTime && delayTime);
           if (mouseBall) {
             const lineMouse = twoPointDistance(ball, mouseBall);
-            if (lineMouse && lineMouse < 200) {
+            if (lineMouse && lineMouse < 220) {
               ball.renderLine(mouseBall);
             }
           }
