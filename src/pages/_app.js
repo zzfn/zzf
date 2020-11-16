@@ -9,6 +9,7 @@ import "highlight.js/styles/rainbow.css";
 import Link from "next/link";
 import { DatabaseOutlined, HomeOutlined, TagOutlined } from "@ant-design/icons";
 import Zooming from "zooming";
+import { Canvas } from "../components/canvas/canvas";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>zzf</title>
       </Head>
+      <Canvas />
       <header className={styles.header}>
         <div className={styles["header_main"]}>
           <Link href="/">
