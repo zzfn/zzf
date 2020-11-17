@@ -71,11 +71,10 @@ export function Canvas(): JSX.Element {
       };
       loopDraw();
       window.addEventListener("mousemove", (e) => {
-        console.log(e);
         mouseBall = new Ball({
           ctx,
-          x: e.pageX,
-          y: e.pageY,
+          x: e.x,
+          y: e.y,
           radius: 5,
           color: "#000",
         });
