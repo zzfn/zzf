@@ -5,7 +5,7 @@ import styles from "@/styles/app.module.scss";
 import "markdown-navbar/dist/navbar.css";
 import "../styles/markdown.scss";
 import "highlight.js/styles/rainbow.css";
-
+import dayjs from "dayjs";
 import Link from "next/link";
 import { DatabaseOutlined, HomeOutlined, TagOutlined } from "@ant-design/icons";
 import Zooming from "zooming";
@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </main>
       <footer className={styles.footer}>
-        <div>2020-{new Date().getFullYear}</div>
+        <div>2020-{dayjs().format("YYYY")}</div>
         <div>Powered by zzfn</div>
         <div>苏ICP备18059856号</div>
       </footer>
