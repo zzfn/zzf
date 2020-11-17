@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { getArticle, listArchives, updateViews } from "@/services/article";
-import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
-import styles from "@/styles/article.module.scss";
-import Head from "next/head";
-import MarkdownNavbar from "markdown-navbar";
-import Progress from "com/article/Progress";
+import React, { useEffect } from 'react';
+import { getArticle, listArchives, updateViews } from '@/services/article';
+import { translateMarkdown } from '@/utils/translateMarkdown.tsx';
+import styles from '@/styles/article.module.scss';
+import Head from 'next/head';
+import MarkdownNavbar from 'markdown-navbar';
+import Progress from 'com/article/Progress';
 
 export default function ArticleDetail(props) {
   const { serverProps = {} } = props;
@@ -38,7 +38,7 @@ export default function ArticleDetail(props) {
           </ul>
         </div>
         <div
-          className={["markdown-template", styles.content].join(" ")}
+          className={['markdown-template', styles.content].join(' ')}
           dangerouslySetInnerHTML={{
             __html: translateMarkdown(serverProps.content),
           }}
@@ -47,7 +47,7 @@ export default function ArticleDetail(props) {
       <div className={styles.sidebar}>
         <MarkdownNavbar
           ordered={false}
-          className={"markdown-nav"}
+          className={'markdown-nav'}
           headingTopOffset={80}
           source={serverProps.content}
         />

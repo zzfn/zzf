@@ -43,6 +43,10 @@
       display: inline-block;
       margin-right: 10px;
     }
+    transition: .2s;
+    &:hover{
+      transform: translate3d(2px,0,0);
+    }
   }
   code {
     padding: 0.065em 0.4em;
