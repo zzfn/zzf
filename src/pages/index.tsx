@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Head from "next/head";
-import styles from "@/styles/home.module.scss";
-import { listArticles } from "@/services/article";
-import ArticleCard from "com/article/articleCard";
-import { useDebounce } from "@/hooks/useDebounce";
-import { GetServerSideProps } from "next";
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
+import styles from '@/styles/home.module.scss';
+import { listArticles } from '@/services/article';
+import ArticleCard from 'com/article/articleCard';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export default function Home(props): JSX.Element {
   const { serverProps } = props;
@@ -14,13 +13,11 @@ export default function Home(props): JSX.Element {
   const [records, setRecords] = useState(serverProps.records);
   const de = useDebounce(change, 500);
   function change(v) {
-    listArticles({ pageNumber: page, pageSize: 10, title: val }).then(
-      ({ data }) => {
-        setTotal(data.total);
-        setPage(data.current);
-        setRecords(data.records);
-      }
-    );
+    listArticles({ pageNumber: page, pageSize: 10, title: val }).then(({ data }) => {
+      setTotal(data.total);
+      setPage(data.current);
+      setRecords(data.records);
+    });
   }
   useEffect(() => {
     de();
@@ -32,11 +29,11 @@ export default function Home(props): JSX.Element {
         <title>zzf~首页</title>
       </Head>
       <input
-        placeholder="🔍   请输入关键字搜索文章"
+        placeholder='🔍   请输入关键字搜索文章'
         className={styles.input}
         value={val}
         onChange={(event) => setVal(event.target.value)}
-        type="text"
+        type='text'
       />
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />
