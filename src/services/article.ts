@@ -15,3 +15,7 @@ export const listTags = (params: object): Promise<Res<any>> => {
 export const listArchives = (params: object): Promise<Res<any>> => {
   return http("get", "/article/listArchives", { params });
 };
+
+export const updateViews = (data: object): Promise<Res<any>> => {
+  return http("post", "/views/updateViews", { data });
+};

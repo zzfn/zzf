@@ -1,5 +1,5 @@
 import React from "react";
-import { getArticle, listArchives } from "@/services/article";
+import { getArticle, listArchives, updateViews } from "@/services/article";
 import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
 import styles from "@/styles/article.module.scss";
 import Head from "next/head";
@@ -67,6 +67,7 @@ export async function getStaticProps(context) {
     params: { id },
   } = context;
   const { data } = await getArticle({ id });
+  await updateViews({ id });
 
   return {
     props: {
