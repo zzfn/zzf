@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { getArticle, listArchives, updateViews } from "@/services/article";
 import { translateMarkdown } from "@/utils/translateMarkdown.tsx";
 import styles from "@/styles/article.module.scss";
@@ -8,6 +8,9 @@ import Progress from "com/article/Progress";
 
 export default function ArticleDetail(props) {
   const { serverProps = {} } = props;
+  useEffect(() => {
+    updateViews({ id: serverProps.id });
+  }, []);
   return (
     <div className={styles.detail}>
       <Head>
@@ -67,7 +70,6 @@ export async function getStaticProps(context) {
     params: { id },
   } = context;
   const { data } = await getArticle({ id });
-  await updateViews({ id });
 
   return {
     props: {
