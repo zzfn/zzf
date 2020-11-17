@@ -76,11 +76,11 @@ export function Canvas(): JSX.Element {
           x: e.x,
           y: e.y,
           radius: 5,
-          color: "#000",
+          color: "#f00",
         });
       });
     }
-  });
+  }, [width, height]);
   return (
     <canvas width={width} height={height} className={styles.canvas} ref={ins} />
   );
@@ -108,8 +108,8 @@ class Ball {
     this.radius = radius;
     this.color = color;
     // 速度
-    this.vy = (Math.random() - 0.5) * 10; // 刚开始是静止的
-    this.vx = (Math.random() - 0.5) * 10; // 刚开始是静止的
+    this.vy = (Math.random() - 0.5) * 3; // 刚开始是静止的
+    this.vx = (Math.random() - 0.5) * 3; // 刚开始是静止的
   }
   update(delayTime) {
     this.y += this.vy;
