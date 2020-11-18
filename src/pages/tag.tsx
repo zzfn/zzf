@@ -5,7 +5,7 @@ import { listTags } from '@/services/article';
 import Link from 'next/link';
 import { Tag } from 'com/Tag/Tag';
 
-export default function About({ serverProps }): JSX.Element {
+export default function TagPage({ serverProps }): JSX.Element {
   return (
     <div className={styles.tagWrap}>
       <Head>

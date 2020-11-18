@@ -17,7 +17,10 @@ export default function Code({ language, code }) {
         </code>
       </pre>
       <div className={styles.action}>
-        <a lang={language} style={{ color: '#8c8c8ccc', border: 'none', cursor: 'pointer' }}>
+        <a
+          lang={language}
+          style={{ color: '#8c8c8ccc', border: 'none', cursor: 'pointer', userSelect: 'none' }}
+        >
           复制代码
         </a>
       </div>

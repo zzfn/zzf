@@ -5,11 +5,11 @@ import { listArchives } from '@/services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
 
-interface AboutProps {
+interface ArchiveProps {
   serverProps: any;
 }
 
-const About: React.FC<AboutProps> = ({ serverProps }) => {
+const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
   return (
     <div className={styles.archiveWrap}>
       <Head>
@@ -43,4 +43,4 @@ export const getStaticProps = async () => {
     revalidate: 1,
   };
 };
-export default About;
+export default Archive;
