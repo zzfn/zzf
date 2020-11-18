@@ -1,6 +1,6 @@
-import React from "react";
-import hljs from "highlight.js";
-import styles from "./code.module.scss";
+import React from 'react';
+import hljs from 'highlight.js';
+import styles from './code.module.scss';
 
 export default function Code({ language, code }) {
   return (
@@ -17,11 +17,9 @@ export default function Code({ language, code }) {
         </code>
       </pre>
       <div className={styles.action}>
-        <div>
-          <a lang={language} style={{ color: "#8c8c8ccc", border: "none" }}>
-            复制代码
-          </a>
-        </div>
+        <a lang={language} style={{ color: '#8c8c8ccc', border: 'none', cursor: 'pointer' }}>
+          复制代码
+        </a>
       </div>
     </div>
   );
