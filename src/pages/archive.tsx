@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { listArchives } from '@/services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
+import { Tag } from 'com/Tag/Tag';
 
 interface ArchiveProps {
   serverProps: any;
@@ -24,15 +25,14 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
     return (
       <div key={time}>
         <h3>
-          {time}-{list.length}篇文章
+          {time} 共 <Tag color={'#af00fa'}>{list.length}</Tag> 篇文章
         </h3>
         <ul>
           {list?.map((item) => (
-            <li key={item.id}>
-              <span style={{ color: '#8a8a8a' }}>
-                {dayjs(item.createTime).format('YYYY_MM_DD')}
+            <li key={item.id} style={{ borderBottom: '1px dashed #ccc' }}>
+              <span style={{ color: '#8a8a8a', marginRight: '10px' }}>
+                {dayjs(item.createTime).format('YYYY-MM-DD')}
               </span>
-              -
               <Link href={`/article/${item.id}`}>
                 <a style={{ color: '#4183c4' }}>{item.title}</a>
               </Link>

@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./tag.module.scss";
+import React from 'react';
+import styles from './tag.module.scss';
 interface TagProps {
   color: string;
 }
