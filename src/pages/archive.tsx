@@ -10,14 +10,22 @@ interface ArchiveProps {
 }
 
 const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
-  return (
-    <div className={styles.archiveWrap}>
-      <Head>
-        <title>zzf~归档</title>
-      </Head>
+  const timeLine = serverProps.reduce((prev, curr) => {
+    const time = dayjs(curr.createTime).format('YYYY-MM');
+    if (Object.prototype.hasOwnProperty.call(prev, time)) {
+      prev[time].push(curr);
+    } else {
+      prev[time] = [];
+      prev[time].push(curr);
+    }
+    return prev;
+  }, {});
+  function renderMonth(time, list = []) {
+    return (
       <div>
+        <h3>{time}</h3>
         <ul>
-          {serverProps.map((item) => (
+          {list?.map((item) => (
             <li key={item.id}>
               <span style={{ color: '#8a8a8a' }}>
                 {dayjs(item.createTime).format('YYYY_MM_DD')}
@@ -29,6 +37,29 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
             </li>
           ))}
         </ul>
+      </div>
+    );
+  }
+  return (
+    <div className={styles.archiveWrap}>
+      <Head>
+        <title>zzf~归档</title>
+      </Head>
+      <div>
+        {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
+        {/*<ul>*/}
+        {/*  {serverProps.map((item) => (*/}
+        {/*    <li key={item.id}>*/}
+        {/*      <span style={{ color: '#8a8a8a' }}>*/}
+        {/*        {dayjs(item.createTime).format('YYYY_MM_DD')}*/}
+        {/*      </span>*/}
+        {/*      -*/}
+        {/*      <Link href={`/article/${item.id}`}>*/}
+        {/*        <a style={{ color: '#4183c4' }}>{item.title}</a>*/}
+        {/*      </Link>*/}
+        {/*    </li>*/}
+        {/*  ))}*/}
+        {/*</ul>*/}
       </div>
     </div>
   );
