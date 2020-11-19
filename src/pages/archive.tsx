@@ -23,7 +23,9 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
   function renderMonth(time, list = []) {
     return (
       <div key={time}>
-        <h3>{time}</h3>
+        <h3>
+          {time}-{list.length}篇文章
+        </h3>
         <ul>
           {list?.map((item) => (
             <li key={item.id}>
