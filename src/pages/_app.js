@@ -34,31 +34,31 @@ function MyApp({ Component, pageProps }) {
           <nav>
             <Link href='/'>
               <span>
-                <HomeOutlined style={{ color: '#00a7de' }} />
-                <a>首页</a>
+                <HomeOutlined style={{ color: '#fdbf2e' }} />
+                <a href='/'>首页</a>
               </span>
             </Link>
             <Link href='/archive'>
               <span>
-                <DatabaseOutlined style={{ color: '#00a7de' }} />
-                <a>归档</a>
+                <DatabaseOutlined style={{ color: '#fdbf2e' }} />
+                <a href='/archive'>归档</a>
               </span>
             </Link>
             <Link href='/tag'>
               <span>
-                <TagOutlined style={{ color: '#00a7de' }} />
+                <TagOutlined style={{ color: '#fdbf2e' }} />
                 <a>标签</a>
               </span>
             </Link>
             {/*<Link href='/talk'>*/}
             {/*  <span>*/}
-            {/*    <FontColorsOutlined style={{ color: '#00a7de' }} />*/}
+            {/*    <FontColorsOutlined style={{ color: '#fdbf2e' }} />*/}
             {/*    <a>说说</a>*/}
             {/*  </span>*/}
             {/*</Link>*/}
             <Link href='/about'>
               <span>
-                <FontColorsOutlined style={{ color: '#00a7de' }} />
+                <FontColorsOutlined style={{ color: '#fdbf2e' }} />
                 <a>关于</a>
               </span>
             </Link>

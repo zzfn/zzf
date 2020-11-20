@@ -1,28 +1,33 @@
 $main-width: 1000px;
-$color1:#00A7DE;
-$color2:#4F86E3;
-$color3:#6664FA;
-$color4:#8C4FE3;
-$color5:#DE58FD;
-html{
+$color1: #00A7DE;
+$color2: #4F86E3;
+$color3: #6664FA;
+$color4: #8C4FE3;
+$color5: #DE58FD;
+html {
   font-size: 12px;
 }
+
 html,
 body {
   padding: 0;
   margin: 0;
 }
-h3{
+
+h3 {
   margin: 0;
 }
-ul{
+
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-*{
+
+* {
   box-sizing: border-box;
 }
+
 @mixin layout {
   font: {
     family: Arial;
@@ -31,7 +36,12 @@ ul{
   }
   color: #ff0000;
 }
-body{
-  background: #dee3e7!important;
+
+body {
+  background: #dee3e7 !important;
 }
 
+:root {
+  --light-mode: #e0e9f0;
+  --dark-mode: #1c2433;
+}

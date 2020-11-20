@@ -2,7 +2,7 @@ $main-width:960px;
 .header {
   height: 60px;
   width: 100%;
-  background: #fff;
+  background: #1c2433;
   font-size: 1.2rem;
   &_main{
     width:$main-width;
@@ -28,6 +28,7 @@ $main-width:960px;
       }
     }
     a{
+      color: #fdbf2e;
       cursor: pointer;
       position: relative;
       margin:0 10px 0 5px;
