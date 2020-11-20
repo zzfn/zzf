@@ -1,0 +1,16 @@
+$light-primary-color:#1b95e0;
+$light-content-color:#fff;
+$dark-primary-color:#1b95e0;
+@media (prefers-color-scheme: light) {
+  :root{
+    --primary-color:$light-primary-color
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root{
+    --primary-color:$dark-primary-color
+  }
+}
+
+
