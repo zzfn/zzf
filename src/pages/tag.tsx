@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '@/styles/tag.module.scss';
+import styles from 'styles/tag.module.scss';
 import Head from 'next/head';
-import { listTags } from '@/services/article';
+import { listTags } from 'services/article';
 import Link from 'next/link';
-import { Tag } from 'com/Tag/Tag';
+import { Tag } from 'components/Tag/Tag';
 
 export default function TagPage({ serverProps }): JSX.Element {
   return (

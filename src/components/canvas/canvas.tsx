@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./canvas.module.scss";
+import React, { useEffect, useRef, useState } from 'react';
+import styles from './canvas.module.scss';
 function twoPointDistance(p1, p2) {
   return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
 }
@@ -16,16 +16,8 @@ export function Canvas(): JSX.Element {
   }, []);
   useEffect(() => {
     if (ins) {
-      const colors = [
-        "#66cccc",
-        "#ccff66",
-        "#ff99cc",
-        "#ff9999",
-        "#666699",
-        "#ff0033",
-        "#FFF2B0",
-      ];
-      const ctx = (ins as any).current.getContext("2d");
+      const colors = ['#66cccc', '#ccff66', '#ff99cc', '#ff9999', '#666699', '#ff0033', '#FFF2B0'];
+      const ctx = (ins as any).current.getContext('2d');
       let balls: any[] = [];
       let mouseBall;
       for (let i = 0; i < 120; i++) {
@@ -37,7 +29,7 @@ export function Canvas(): JSX.Element {
             y: Math.floor(Math.random() * ctx.canvas.height),
             radius: 5,
             color: colors[Math.floor(Math.random() * 7)],
-          })
+          }),
         );
       }
       let delayTime = 0;
@@ -70,20 +62,18 @@ export function Canvas(): JSX.Element {
         });
       };
       loopDraw();
-      window.addEventListener("mousemove", (e) => {
+      window.addEventListener('mousemove', (e) => {
         mouseBall = new Ball({
           ctx,
           x: e.x,
           y: e.y,
           radius: 5,
-          color: "#f00",
+          color: '#f00',
         });
       });
     }
   }, [width, height]);
-  return (
-    <canvas width={width} height={height} className={styles.canvas} ref={ins} />
-  );
+  return <canvas width={width} height={height} className={styles.canvas} ref={ins} />;
 }
 class Ball {
   // 初始化的特征
@@ -100,7 +90,7 @@ class Ball {
       y = 0, // y坐标
       ctx = null, // 神奇的画笔🖌️
       radius = 1, // 球的半径
-      color = "#000", // 颜色
+      color = '#000', // 颜色
     } = options;
     this.x = x;
     this.y = y;
@@ -141,16 +131,11 @@ class Ball {
   }
 
   renderLine(target) {
-    const lingrad = this.ctx.createLinearGradient(
-      this.x,
-      this.y,
-      target.x,
-      target.y
-    );
+    const lingrad = this.ctx.createLinearGradient(this.x, this.y, target.x, target.y);
     lingrad.addColorStop(0, this.color);
     lingrad.addColorStop(1, target.color);
     this.ctx.beginPath();
-    this.ctx.strokeStyle = "ccc";
+    this.ctx.strokeStyle = 'ccc';
     this.ctx.moveTo(this.x, this.y);
     this.ctx.lineTo(target.x, target.y);
     this.ctx.stroke();

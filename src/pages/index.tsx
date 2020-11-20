@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import styles from '@/styles/home.module.scss';
-import { listArticles } from '@/services/article';
-import ArticleCard from 'com/article/articleCard';
-import { useDebounce } from '@/hooks/useDebounce';
+import styles from 'styles/home.module.scss';
+import { listArticles } from 'api/article';
+import ArticleCard from 'components/article/articleCard';
+import { useDebounce } from 'hooks/useDebounce';
 
 export default function Home(props): JSX.Element {
   const { serverProps } = props;

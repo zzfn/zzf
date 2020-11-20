@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { getArticle, listArchives, updateViews } from '@/services/article';
-import { translateMarkdown } from '@/utils/translateMarkdown.tsx';
-import styles from '@/styles/article.module.scss';
+import { getArticle, listArchives, updateViews } from 'services/article';
+import { translateMarkdown } from 'utils/translateMarkdown';
+import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import MarkdownNavbar from 'markdown-navbar';
-import Progress from 'com/article/Progress';
+import Progress from 'components/article/Progress';
 
 export default function ArticleDetail(props) {
   const { serverProps = {} } = props;

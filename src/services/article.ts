@@ -1,4 +1,4 @@
-import http from '../utils/http';
+import http from 'utils/http';
 
 export const listArticles = (params: any): Promise<Res<Page<any>>> => {
   return http('get', '/article/listArticles', { params });

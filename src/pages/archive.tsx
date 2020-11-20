@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from '@/styles/archive.module.scss';
+import styles from 'styles/archive.module.scss';
 import Head from 'next/head';
-import { listArchives } from '@/services/article';
+import { listArchives } from 'services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
-import { Tag } from 'com/Tag/Tag';
+import { Tag } from 'components/Tag/Tag';
 
 interface ArchiveProps {
   serverProps: any;

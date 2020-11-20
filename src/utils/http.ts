@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, Method } from 'axios';
-import envConfig from 'env';
+import envConfig from '../../env';
 const instance = axios.create({
   baseURL: envConfig.baseUrl,
   timeout: 10000,

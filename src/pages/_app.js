@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
-import '@/styles/globals.scss';
-import styles from '@/styles/app.module.scss';
+import 'styles/globals.scss';
+import styles from 'styles/app.module.scss';
 import 'markdown-navbar/dist/navbar.css';
-import '../styles/markdown.scss';
+import 'styles/markdown.scss';
 import 'highlight.js/styles/rainbow.css';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { DatabaseOutlined, HomeOutlined, TagOutlined, FontColorsOutlined } from '@ant-design/icons';
 import Zooming from 'zooming';
-import { Canvas } from '../components/canvas/canvas';
+import { Canvas } from 'components/canvas/canvas';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -50,10 +50,16 @@ function MyApp({ Component, pageProps }) {
                 <a>标签</a>
               </span>
             </Link>
-            <Link href='/talk'>
+            {/*<Link href='/talk'>*/}
+            {/*  <span>*/}
+            {/*    <FontColorsOutlined style={{ color: '#00a7de' }} />*/}
+            {/*    <a>说说</a>*/}
+            {/*  </span>*/}
+            {/*</Link>*/}
+            <Link href='/about'>
               <span>
                 <FontColorsOutlined style={{ color: '#00a7de' }} />
-                <a>说说</a>
+                <a>关于</a>
               </span>
             </Link>
           </nav>
