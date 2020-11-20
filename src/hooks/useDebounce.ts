@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from 'react';
 
 export function useDebounce(fn, delay, dep = []) {
   const { current } = useRef({ fn, timer: null });
@@ -6,7 +6,7 @@ export function useDebounce(fn, delay, dep = []) {
     function () {
       current.fn = fn;
     },
-    [fn]
+    [fn],
   );
 
   return useCallback(function f(...args) {

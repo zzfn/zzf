@@ -12,6 +12,7 @@ export default function Home(props): JSX.Element {
   const [page, setPage] = useState(serverProps.page);
   const [records, setRecords] = useState(serverProps.records);
   const de = useDebounce(change, 500);
+
   function change(v) {
     listArticles({ pageNumber: page, pageSize: 10, title: val }).then(({ data }) => {
       setTotal(data.total);
@@ -19,6 +20,7 @@ export default function Home(props): JSX.Element {
       setRecords(data.records);
     });
   }
+
   useEffect(() => {
     de();
   }, [page, val]);
@@ -38,8 +40,14 @@ export default function Home(props): JSX.Element {
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />
       ))}
-      <span onClick={() => setPage(page - 1)}>上一页</span>
-      <span onClick={() => setPage(page + 1)}>下一页</span>
+      <div>
+        <span className={styles.page} onClick={() => setPage(page - 1)}>
+          上一页
+        </span>
+        <span className={styles.page} onClick={() => setPage(page + 1)}>
+          下一页
+        </span>
+      </div>
     </div>
   );
 }
