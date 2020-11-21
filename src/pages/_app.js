@@ -12,6 +12,12 @@ import Zooming from 'zooming';
 import { Canvas } from 'components/canvas/canvas';
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
+    const mode = localStorage.getItem('mode');
+    if (mode) {
+      console.log(mode);
+    } else {
+      localStorage.setItem('mode', 'light');
+    }
     const zooming = new Zooming({
       enableGrab: false,
       bgColor: 'rgb(0, 0, 0)',
@@ -61,6 +67,8 @@ function MyApp({ Component, pageProps }) {
                 <a>关于</a>
               </span>
             </Link>
+            <span>浅色模式</span>
+            <span>深色模式</span>
           </nav>
         </div>
       </header>
