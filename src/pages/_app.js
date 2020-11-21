@@ -4,6 +4,7 @@ import 'styles/globals.scss';
 import styles from 'styles/app.module.scss';
 import 'markdown-navbar/dist/navbar.css';
 import 'styles/markdown.scss';
+import 'styles/theme.scss';
 import 'highlight.js/styles/rainbow.css';
 import dayjs from 'dayjs';
 import Link from 'next/link';

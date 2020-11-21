@@ -6,7 +6,8 @@ $dark-font-color:#eee;
 $dark-bg-color:#1a1919;
 @media (prefers-color-scheme: light) {
   :root{
-    --primary-color:$light-primary-color
+    --primary-color:$light-primary-color;
+    --bg-color:$light-bg-color;
   }
 }
 
