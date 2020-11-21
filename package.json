@@ -8,7 +8,6 @@
     "start": "next start -p 9600"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.3.0",
     "axios": "^0.20.0",
     "dayjs": "^1.9.6",
     "highlight.js": "^10.4.0",

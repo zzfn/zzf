@@ -44,6 +44,7 @@
 .main {
   margin: auto;
   position: relative;
+  min-height: calc(100vh - 164px);
   @media (max-width: 960px) {
     max-width: 100%;
   }

@@ -8,7 +8,6 @@ import 'styles/theme.scss';
 import 'highlight.js/styles/rainbow.css';
 import dayjs from 'dayjs';
 import Link from 'next/link';
-import { DatabaseOutlined, HomeOutlined, TagOutlined, FontColorsOutlined } from '@ant-design/icons';
 import Zooming from 'zooming';
 import { Canvas } from 'components/canvas/canvas';
 
@@ -39,30 +38,10 @@ function MyApp({ Component, pageProps }) {
             <img className={styles.logo} src={'/static/img/img-3.png'} alt='logo' />
           </Link>
           <nav>
-            <Link href='/'>
-              <span>
-                <HomeOutlined style={{ color: '#fdbf2e' }} />
-                <a href='/'>首页</a>
-              </span>
-            </Link>
-            <Link href='/archive'>
-              <span>
-                <DatabaseOutlined style={{ color: '#fdbf2e' }} />
-                <a href='/archive'>归档</a>
-              </span>
-            </Link>
-            <Link href='/tag'>
-              <span>
-                <TagOutlined style={{ color: '#fdbf2e' }} />
-                <a>标签</a>
-              </span>
-            </Link>
-            <Link href='/about'>
-              <span>
-                <FontColorsOutlined style={{ color: '#fdbf2e' }} />
-                <a>关于</a>
-              </span>
-            </Link>
+            <Link href='/'>首页</Link>
+            <Link href='/archive'>归档</Link>
+            <Link href='/tag'>标签</Link>
+            <Link href='/about'>关于</Link>
           </nav>
         </div>
       </header>
