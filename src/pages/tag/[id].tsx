@@ -1,11 +1,11 @@
-import React from "react";
-import { getArticle, listArchives, listTags } from "@/services/article";
-import styles from "@/styles/article.module.scss";
-import Head from "next/head";
-import Link from "next/link";
+import React from 'react';
+import { getArticle, listArchives, listTags } from 'services/article';
+import styles from 'styles/article.module.scss';
+import Head from 'next/head';
+import Link from 'next/link';
 
 export default function ArticleDetail(props) {
-  const { serverProps = [], name = "" } = props;
+  const { serverProps = [], name = '' } = props;
   return (
     <div className={styles.detail}>
       <Head>
@@ -15,9 +15,9 @@ export default function ArticleDetail(props) {
       <ul>
         {serverProps.map((item) => (
           <li key={item.id}>
-            <span style={{ color: "#8a8a8a" }}>{item.createTime}</span>-
+            <span style={{ color: '#8a8a8a' }}>{item.createTime}</span>-
             <Link href={`/article/${item.id}`}>
-              <a style={{ color: "#4183c4" }}>{item.title}</a>
+              <a style={{ color: '#4183c4' }}>{item.title}</a>
             </Link>
           </li>
         ))}
