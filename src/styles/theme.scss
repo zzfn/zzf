@@ -1,6 +1,9 @@
-$light-primary-color:#1b95e0;
-$light-content-color:#fff;
-$dark-primary-color:#1b95e0;
+$light-primary-color: #1b95e0;
+$light-font-color:#111;
+$light-bg-color:#fff;
+$dark-primary-color:#1a1919;
+$dark-font-color:#eee;
+$dark-bg-color:#1a1919;
 @media (prefers-color-scheme: light) {
   :root{
     --primary-color:$light-primary-color
