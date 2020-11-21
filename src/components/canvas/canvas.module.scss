@@ -1,5 +1,6 @@
+@import "../../styles/variable";
 .canvas{
-  background: #F8F8F8;
+  background: $bg-color;
   position: fixed;
   z-index: -1;
   top: 0;

@@ -1,3 +1,4 @@
+@import "variable";
 .home{
   .input{
     width: 100%;
@@ -7,6 +8,7 @@
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
+    background: $bg-color;
   }
   padding: 30px 0;
   width: 100%;

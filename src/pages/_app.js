@@ -56,20 +56,12 @@ function MyApp({ Component, pageProps }) {
                 <a>标签</a>
               </span>
             </Link>
-            {/*<Link href='/talk'>*/}
-            {/*  <span>*/}
-            {/*    <FontColorsOutlined style={{ color: '#fdbf2e' }} />*/}
-            {/*    <a>说说</a>*/}
-            {/*  </span>*/}
-            {/*</Link>*/}
             <Link href='/about'>
               <span>
                 <FontColorsOutlined style={{ color: '#fdbf2e' }} />
                 <a>关于</a>
               </span>
             </Link>
-            <span>浅色模式</span>
-            <span>深色模式</span>
           </nav>
         </div>
       </header>
