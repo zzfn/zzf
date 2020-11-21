@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from '@/styles/tag.module.scss';
 import Head from 'next/head';
-import { listTags } from '@/services/article';
-import Link from 'next/link';
-import { Tag } from 'com/Tag/Tag';
+import { listTags } from 'services/article';
 
 export default function Talk({ serverProps }): JSX.Element {
   return (
