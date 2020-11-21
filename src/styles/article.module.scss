@@ -1,3 +1,4 @@
+@import "variable";
 .detail {
   margin: 2rem 0;
   position: relative;
@@ -45,8 +46,9 @@
   }
 
   .tip {
+    color: $font-color;
     padding: 20px 30px;
-    background-color: rgb(249, 249, 249);
+    background-color: $bg-color;
     overflow: hidden;
     margin: 0 auto 16px;
     font-size: 14px;
@@ -79,7 +81,7 @@
     @media (min-width: 768px) {
       padding: 20px;
     }
-    background: #fff;
+    background: $bg-color;
     margin: auto;
   }
 }

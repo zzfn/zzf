@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { DatabaseOutlined, HomeOutlined, TagOutlined, FontColorsOutlined } from '@ant-design/icons';
 import Zooming from 'zooming';
 import { Canvas } from 'components/canvas/canvas';
+
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const mode = localStorage.getItem('mode');

@@ -4,6 +4,7 @@
   width: 100%;
   background: $bg-color;
   font-size: 1.2rem;
+  opacity: 0.8;
   &_main{
     width:$main-width;
     height: 60px;
@@ -28,7 +29,7 @@
       }
     }
     a{
-      color: #fdbf2e;
+      color: $primary-color;
       cursor: pointer;
       position: relative;
       margin:0 10px 0 5px;

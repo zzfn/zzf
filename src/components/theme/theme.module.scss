@@ -1,0 +1,34 @@
+.themeWrap{
+  color: #1b95e0;
+  position: relative;
+  .mask{
+
+    background: #52c41a;
+    width: 100px;
+    right: 0;
+    top: 20px;
+    z-index: 999;
+    position: absolute;
+    .btn{
+      background: #1b95e0;
+      border:1px solid #eee;
+      color: #fff;
+      position: relative;
+      width: 100px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      .handler{
+        position: absolute;
+        background: #1a1919;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+      .text{
+        position: absolute;
+        margin: 0 0 0 30px;
+      }
+    }
+  }
+}
