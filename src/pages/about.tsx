@@ -8,6 +8,7 @@ export default function About({ serverProps }): JSX.Element {
         <title>zzf~关于</title>
       </Head>
       <p>博客前端采用react+nextjs完成,后端采用springboot+MyBatis-Plus完成，数据库采用mysql</p>
+      <p>支持跟随系统深色与浅色模式</p>
     </div>
   );
 }
