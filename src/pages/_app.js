@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 import Zooming from 'zooming';
 import { Canvas } from 'components/canvas/canvas';
-
+import Image from 'next/image';
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const mode = localStorage.getItem('mode');
@@ -35,7 +35,13 @@ function MyApp({ Component, pageProps }) {
       <header className={styles.header}>
         <div className={styles['header_main']}>
           <Link href='/'>
-            <img className={styles.logo} src={'/static/img/img-3.png'} alt='logo' />
+            <Image
+              height={'50px'}
+              width={'120px'}
+              className={styles.logo}
+              src={'/static/img/img-3.png'}
+              alt='logo'
+            />
           </Link>
           <nav>
             <Link href='/'>首页</Link>
