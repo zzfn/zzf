@@ -41,6 +41,7 @@ export default function Home(props): JSX.Element {
         <ArticleCard key={item.id} dataSource={item} />
       ))}
       <div>
+        <span>共{total}篇文章</span>
         <span className={styles.page} onClick={() => setPage(page - 1)}>
           上一页
         </span>
