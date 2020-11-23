@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
       <header className={styles.header}>
         <div className={styles['header_main']}>
           <Link href='/'>
-            <img className={styles.logo} src={'/static/img/img-3.png'} alt='logo' />
+            <img className={styles.logo} src={'/static/img/logo.png'} alt='logo' />
           </Link>
           <nav>
             <Link href='/'>首页</Link>
