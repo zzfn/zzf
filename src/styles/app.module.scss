@@ -27,7 +27,7 @@
     .logo {
       cursor: pointer;
       transition: .3s;
-
+      height: 80%;
       &:hover {
         transform: scale(1.08);
       }

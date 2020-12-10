@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from 'styles/home.module.scss';
-import { listArticles } from 'api/article';
+import { esList, listArticles } from 'api/article';
 import ArticleCard from 'components/article/articleCard';
 import { useDebounce } from 'hooks/useDebounce';
 
@@ -14,10 +14,16 @@ export default function Home(props): JSX.Element {
   const de = useDebounce(change, 500);
 
   async function change() {
-    const { data } = await listArticles({ pageNumber: page, pageSize: 10, title: val });
-    setTotal(data.total);
-    setPage(data.current);
-    setRecords(data.records);
+    if (val) {
+      const { data } = await esList({ key: val });
+      setRecords(data);
+      setTotal(data.length);
+    } else {
+      const { data } = await listArticles({ pageNumber: page, pageSize: 10, title: val });
+      setTotal(data.total);
+      setPage(data.current);
+      setRecords(data.records);
+    }
   }
 
   useEffect(() => {
