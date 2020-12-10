@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import 'styles/globals.scss';
 import styles from 'styles/app.module.scss';
@@ -10,8 +10,9 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 import Zooming from 'zooming';
 import { Canvas } from 'components/canvas/canvas';
-import Image from 'next/image';
+
 function MyApp({ Component, pageProps }) {
+  const [isShow, setIsShow] = useState(false);
   useEffect(() => {
     const mode = localStorage.getItem('mode');
     if (mode) {
@@ -28,6 +29,24 @@ function MyApp({ Component, pageProps }) {
   }, []);
   return (
     <>
+      {isShow && (
+        <div onClick={() => setIsShow(!isShow)} className={styles.mask}>
+          <ul>
+            <li>
+              <Link href='/'>首页</Link>
+            </li>
+            <li>
+              <Link href='/archive'>归档</Link>
+            </li>
+            <li>
+              <Link href='/tag'>标签</Link>
+            </li>
+            <li>
+              <Link href='/about'>关于</Link>
+            </li>
+          </ul>
+        </div>
+      )}
       <Head>
         <title>zzf</title>
       </Head>
@@ -35,19 +54,21 @@ function MyApp({ Component, pageProps }) {
       <header className={styles.header}>
         <div className={styles['header_main']}>
           <Link href='/'>
-            <Image
-              height={'50px'}
-              width={'120px'}
-              className={styles.logo}
-              src={'/static/img/img-3.png'}
-              alt='logo'
-            />
+            <img className={styles.logo} src={'/static/img/logo.png'} alt='logo' />
           </Link>
-          <nav>
+          <nav className={styles.lg}>
             <Link href='/'>首页</Link>
             <Link href='/archive'>归档</Link>
             <Link href='/tag'>标签</Link>
             <Link href='/about'>关于</Link>
+          </nav>
+          <nav className={styles.sm}>
+            <img
+              onClick={() => setIsShow(!isShow)}
+              style={{ width: '50px', height: '50px' }}
+              src='/static/svg/menu.svg'
+              alt=''
+            />
           </nav>
         </div>
       </header>

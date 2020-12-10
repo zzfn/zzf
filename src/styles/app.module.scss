@@ -1,12 +1,14 @@
 @import "variable";
+
 .header {
   height: 60px;
   width: 100%;
   background: $bg-color;
   font-size: 1.2rem;
   opacity: 0.8;
-  &_main{
-    width:$main-width;
+
+  &_main {
+    width: $main-width;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -20,20 +22,24 @@
     @media (min-width: 960px) {
       width: $main-width;
     }
+
     .logo {
       cursor: pointer;
       transition: .3s;
-      &:hover{
+
+      &:hover {
         transform: scale(1.08);
       }
     }
-    a{
+
+    a {
       color: $primary-color;
       cursor: pointer;
       position: relative;
-      margin:0 10px 0 5px;
+      margin: 0 10px 0 5px;
       transition: .3s;
-      &:hover{
+
+      &:hover {
         color: #3baafa;
       }
     }
@@ -60,4 +66,37 @@
   justify-content: center;
   align-items: center;
   padding: 20px 0;
+}
+
+.lg {
+  @media (max-width: $main-width) {
+    display: none;
+  }
+  @media (min-width: $main-width) {
+  }
+}
+
+.sm {
+  @media (max-width: $main-width) {
+
+  }
+  @media (min-width: $main-width) {
+    display: none;
+  }
+}
+.mask{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,.8);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a{
+    color: #fff;
+    font-size: 2rem;
+  }
 }
