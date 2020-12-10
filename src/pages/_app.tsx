@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 import Zooming from 'zooming';
 import { Canvas } from 'components/canvas/canvas';
+import Header from 'components/header/header';
 
 function MyApp({ Component, pageProps }) {
   const [isShow, setIsShow] = useState(false);
@@ -29,27 +30,14 @@ function MyApp({ Component, pageProps }) {
   }, []);
   return (
     <>
-      {isShow && (
-        <div onClick={() => setIsShow(!isShow)} className={styles.mask}>
-          <ul>
-            <li>
-              <Link href='/'>首页</Link>
-            </li>
-            <li>
-              <Link href='/archive'>归档</Link>
-            </li>
-            <li>
-              <Link href='/tag'>标签</Link>
-            </li>
-            <li>
-              <Link href='/about'>关于</Link>
-            </li>
-          </ul>
-        </div>
-      )}
       <Head>
         <title>zzf</title>
       </Head>
+      {isShow && (
+        <div onClick={() => setIsShow(!isShow)} className={styles.mask}>
+          <Header />
+        </div>
+      )}
       <Canvas />
       <header className={styles.header}>
         <div className={styles['header_main']}>
@@ -58,9 +46,9 @@ function MyApp({ Component, pageProps }) {
           </Link>
           <nav className={styles.lg}>
             <Link href='/'>首页</Link>
-            <Link href='/archive'>归档</Link>
-            <Link href='/tag'>标签</Link>
-            <Link href='/about'>关于</Link>
+            <Link href={'/archive'}>归档</Link>
+            <Link href={'/tag'}>标签</Link>
+            <Link href={'/about'}>关于</Link>
           </nav>
           <nav className={styles.sm}>
             <img

@@ -6,6 +6,7 @@
   background: $bg-color;
   font-size: 1.2rem;
   opacity: 0.8;
+  border-bottom: 1px solid #ddd;
 
   &_main {
     width: $main-width;
@@ -37,10 +38,14 @@
       cursor: pointer;
       position: relative;
       margin: 0 10px 0 5px;
-      transition: .3s;
-
+      transition: color .3s;
+      text-decoration: none;
+      line-height: 60px;
+      display: inline-block;
+      height: 60px;
       &:hover {
         color: #3baafa;
+        border-bottom: 3px solid #3baafa;
       }
     }
   }
