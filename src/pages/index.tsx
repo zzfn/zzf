@@ -15,7 +15,7 @@ export default function Home(props): JSX.Element {
 
   async function change() {
     if (val) {
-      const { data } = await esList({ key: val });
+      const { data } = await esList({ keyword: val });
       setRecords(data);
       setTotal(data.length);
     } else {
