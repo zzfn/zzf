@@ -15,9 +15,11 @@ export default function Home(props): JSX.Element {
 
   async function change() {
     if (val) {
-      const { data } = await esList({ keyword: val });
-      setRecords(data);
-      setTotal(data.length);
+      const {
+        data: { content },
+      } = await esList({ keyword: val });
+      setRecords(content);
+      setTotal(content.length);
     } else {
       const { data } = await listArticles({ pageNumber: page, pageSize: 10, title: val });
       setTotal(data.total);
