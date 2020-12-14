@@ -9,29 +9,29 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "dayjs": "^1.9.6",
-    "highlight.js": "^10.4.0",
+    "dayjs": "^1.9.7",
+    "highlight.js": "^10.4.1",
     "markdown-navbar": "^1.4.3",
-    "marked": "^1.2.5",
+    "marked": "^1.2.6",
     "next": "^10.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "zooming": "^2.1.1"
   },
   "devDependencies": {
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.13",
     "@types/react": "^16.14.2",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.14.0",
+    "eslint": "^7.15.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.2.1",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
