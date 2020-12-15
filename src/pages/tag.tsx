@@ -15,8 +15,8 @@ export default function TagPage({ serverProps }): JSX.Element {
         <div key={item.code} style={{ margin: '20px', display: 'inline-block' }}>
           <Link href={`/tag/${item.code}?name=${item.tag}`}>
             <span style={{ cursor: 'pointer' }}>
-              <Arrow color={'#108ee9'}>
-                {item.tag}-{item.count}
+              <Arrow color={'#108ee9'} number={item.count}>
+                {item.tag}
               </Arrow>
             </span>
           </Link>
