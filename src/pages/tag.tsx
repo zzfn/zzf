@@ -3,7 +3,7 @@ import styles from 'styles/tag.module.scss';
 import Head from 'next/head';
 import { listTags } from 'services/article';
 import Link from 'next/link';
-import { Tag } from 'components/Tag/Tag';
+import Arrow from 'components/arrow/arrow';
 
 export default function TagPage({ serverProps }): JSX.Element {
   return (
@@ -15,9 +15,9 @@ export default function TagPage({ serverProps }): JSX.Element {
         <div key={item.code} style={{ margin: '20px', display: 'inline-block' }}>
           <Link href={`/tag/${item.code}?name=${item.tag}`}>
             <span style={{ cursor: 'pointer' }}>
-              <Tag color={'#108ee9'}>
+              <Arrow color={'#108ee9'}>
                 {item.tag}-{item.count}
-              </Tag>
+              </Arrow>
             </span>
           </Link>
         </div>
