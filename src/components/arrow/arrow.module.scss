@@ -1,16 +1,24 @@
 .wrap{
   display: flex;
+  border-radius: 5px;
+  &:hover{
+    background: #40b8fa;
+    color: #fff;
+  }
   .content{
     padding: 5px 15px;
     border: 1px solid #1b95e0;
     border-right-color: transparent;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
   }
   .arrow {
     height: 30px;
     border: 1px solid #1b95e0;
     padding: 5px;
     position: relative;
-
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
     &::before {
       content: '';
       display: block;
