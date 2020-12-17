@@ -24,17 +24,17 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
   function renderMonth(time, list = []) {
     return (
       <div key={time}>
-        <h3>
+        <h3 className={styles.title}>
           {time} 共 <Tag color={'#af00fa'}>{list.length}</Tag> 篇文章
         </h3>
         <ul>
           {list?.map((item) => (
-            <li key={item.id} style={{ borderBottom: '1px dashed #ccc' }}>
+            <li className={styles.item} key={item.id} style={{ borderBottom: '1px dashed #ccc' }}>
               <span style={{ color: '#8a8a8a', marginRight: '10px' }}>
                 {dayjs(item.createTime).format('YYYY-MM-DD')}
               </span>
               <Link href={`/article/${item.id}`}>
-                <a style={{ color: '#4183c4' }}>{item.title}</a>
+                <a style={{ color: '#2e405b' }}>{item.title}</a>
               </Link>
             </li>
           ))}
@@ -47,21 +47,9 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
       <Head>
         <title>zzf~归档</title>
       </Head>
-      <div>
+      很好! 目前共计 {serverProps.length} 篇日志。 继续努力。
+      <div className={styles.timeLine}>
         {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
-        {/*<ul>*/}
-        {/*  {serverProps.map((item) => (*/}
-        {/*    <li key={item.id}>*/}
-        {/*      <span style={{ color: '#8a8a8a' }}>*/}
-        {/*        {dayjs(item.createTime).format('YYYY_MM_DD')}*/}
-        {/*      </span>*/}
-        {/*      -*/}
-        {/*      <Link href={`/article/${item.id}`}>*/}
-        {/*        <a style={{ color: '#4183c4' }}>{item.title}</a>*/}
-        {/*      </Link>*/}
-        {/*    </li>*/}
-        {/*  ))}*/}
-        {/*</ul>*/}
       </div>
     </div>
   );
