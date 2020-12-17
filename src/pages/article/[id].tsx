@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getArticle, listArchives, updateViews } from 'services/article';
+import { getArticle, listArchives } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
@@ -8,9 +8,6 @@ import Progress from 'components/article/Progress';
 
 export default function ArticleDetail(props) {
   const { serverProps = {} } = props;
-  useEffect(() => {
-    updateViews({ id: serverProps.id });
-  }, []);
   return (
     <div className={styles.detail}>
       <Head>

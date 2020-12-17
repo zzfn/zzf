@@ -1,0 +1,28 @@
+.header{
+  height: 90px;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .img{
+    cursor: pointer;
+  }
+  ul{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 16px;
+    a{
+      padding: 5px;
+      color: #fff;
+      transition: .3s;
+      &:hover{
+        background: #e1e1e1;
+        color: rgba(0,0,0,.6);
+      }
+    }
+    li+li{
+      margin-left: 20px;
+    }
+  }
+}
