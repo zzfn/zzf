@@ -16,7 +16,7 @@ function Header(): JSX.Element {
         layout={'intrinsic'}
         src={'/static/img/logo.png'}
       />
-      <ul>
+      <ul className={'md'}>
         <li>
           <Link href={'/'}>首页</Link>
         </li>
@@ -33,6 +33,13 @@ function Header(): JSX.Element {
           <span>🔍搜索</span>
         </li>
       </ul>
+      <Image
+        className={'sm'}
+        height={60}
+        width={60}
+        layout={'intrinsic'}
+        src={'/static/img/menu.png'}
+      />
     </div>
   );
 }

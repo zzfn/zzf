@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import 'styles/globals.scss';
+import 'styles/response.scss';
 import 'markdown-navbar/dist/navbar.css';
 import 'styles/markdown.scss';
 import 'styles/theme.scss';

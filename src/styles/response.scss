@@ -1,0 +1,30 @@
+//xs
+@media (max-width: 575.98px) {
+  .md,.lg,.xl{
+    display: none!important;
+  }
+}
+//sm
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .md,.lg,.xl{
+    display: none!important;
+  }
+}
+//md
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .lg,.xl{
+    display: none;
+  }
+}
+//lg
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .xs,.sm{
+    display: none;
+  }
+}
+//xl
+@media (min-width: 1200px) {
+  .xs,.sm{
+    display: none;
+  }
+}
