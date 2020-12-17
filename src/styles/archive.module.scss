@@ -48,6 +48,7 @@
     border: 1px solid #bbb8b8;
   }
   &:hover{
+    background: rgba(0,0,0,.1);
     &::before{
       background: #49b1f5;
     }

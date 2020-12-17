@@ -2,10 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './header.module.scss';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+
 function Header(): JSX.Element {
+  const router = useRouter();
   return (
     <div className={styles.header}>
       <Image
+        onClick={() => router.push('/')}
         className={styles.img}
         height={60}
         width={150}
