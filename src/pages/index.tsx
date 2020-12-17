@@ -35,13 +35,6 @@ export default function Home(props): JSX.Element {
       <Head>
         <title>zzf~首页</title>
       </Head>
-      <input
-        placeholder='🔍   请输入关键字搜索文章'
-        className={styles.input}
-        value={val}
-        onChange={(event) => setVal(event.target.value)}
-        type='text'
-      />
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />
       ))}
