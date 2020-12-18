@@ -19,9 +19,7 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
 
   return (
     <div onClick={() => toDetail(dataSource.id)} className={styles.card}>
-      <div className={styles.time}>{dayjs(dataSource.createTime).format('YYYY-MM-DD')}</div>
       <h3>
-        {dataSource.orderNum ? <Tag color='#9494E3'>置顶</Tag> : null}
         <span className={styles.title} style={{ marginLeft: '10px' }}>
           <div
             dangerouslySetInnerHTML={{
@@ -38,7 +36,7 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
       />
       <ul>
         <li title={'标签'}>
-          <Tag color='#0095C7'>
+          <Tag color='#333'>
             <div
               dangerouslySetInnerHTML={{
                 __html: dataSource.tagDesc,
