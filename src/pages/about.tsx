@@ -6,7 +6,7 @@ export default function About({ serverProps }): JSX.Element {
   return (
     <div className={styles.about}>
       <Head>
-        <title>zzf~关于</title>
+        <title>关于~zzf</title>
       </Head>
       <ul>
         <li>博客前端采用react+nextjs完成,后端采用springboot+MyBatis-Plus完成，数据库采用mysql</li>

@@ -9,7 +9,7 @@ export default function TagPage({ serverProps }): JSX.Element {
   return (
     <div className={styles.tagWrap}>
       <Head>
-        <title>zzf~标签</title>
+        <title>标签~zzf</title>
       </Head>
       {serverProps.map((item) => (
         <div key={item.code} style={{ margin: '20px', display: 'inline-block' }}>

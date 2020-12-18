@@ -11,7 +11,7 @@ export default function ArticleDetail(props) {
   return (
     <div className={styles.detail}>
       <Head>
-        <title>zzf~{serverProps.title}</title>
+        <title>{serverProps.title}~zzf</title>
       </Head>
       <Progress />
       <div className={styles.left}>

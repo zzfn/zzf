@@ -33,7 +33,7 @@ export default function Home(props): JSX.Element {
   return (
     <div className={styles.home}>
       <Head>
-        <title>zzf~首页</title>
+        <title>首页~zzf</title>
       </Head>
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />

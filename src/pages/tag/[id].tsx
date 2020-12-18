@@ -9,7 +9,7 @@ export default function ArticleDetail(props) {
   return (
     <div className={styles.detail}>
       <Head>
-        <title>zzf~{name}</title>
+        <title>{name}~zzf</title>
       </Head>
       <h2>{name}</h2>
       <ul>

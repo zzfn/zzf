@@ -45,7 +45,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
   return (
     <div className={styles.archiveWrap}>
       <Head>
-        <title>zzf~归档</title>
+        <title>归档~zzf</title>
       </Head>
       很好! 目前共计 {serverProps.length} 篇文章。 继续努力。
       <div className={styles.timeLine}>
