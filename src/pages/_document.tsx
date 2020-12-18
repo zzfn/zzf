@@ -14,7 +14,10 @@ class MyDocument extends Document {
       <Html lang='zh'>
         <Head>
           <link rel='icon' href='/static/favicon.ico' />
-          <meta name='keywords' content='vue,react,正则表达式,webpack,docker' />
+          <meta
+            name='keywords'
+            content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker'
+          />
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
         </Head>
