@@ -34,9 +34,7 @@ function Header(): JSX.Element {
             <Link href={'/about'}>关于</Link>
           </li>
           <li>
-            <Search>
-              <a style={{ cursor: 'pointer' }}>🔍搜索</a>
-            </Search>
+            <Link href={'/search'}>搜索</Link>
           </li>
         </ul>
       ) : (

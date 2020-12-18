@@ -67,15 +67,24 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  const {
-    params: { id },
-  } = context;
-  const { data } = await getArticle({ id });
+  try {
+    const {
+      params: { id },
+    } = context;
+    const { data } = await getArticle({ id });
 
-  return {
-    props: {
-      serverProps: data,
-    },
-    revalidate: 1,
-  };
+    return {
+      props: {
+        serverProps: data,
+      },
+      revalidate: 1,
+    };
+  } catch (e) {
+    return {
+      props: {
+        serverProps: {},
+      },
+      revalidate: 1,
+    };
+  }
 }

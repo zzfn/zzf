@@ -1,0 +1,37 @@
+@import "src/styles/variable";
+.card{
+  color: $font-color;
+  background: rgba(255,255,255,.5);
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px dashed #ccc;
+  :global{
+    em{
+      font-style: normal;
+      color: #1b95e0;
+    }
+  }
+  .time{
+    font-size: 12px;
+    color: #ccc;
+  }
+  h3{
+    font-size: 18px;
+    color: $font-color;
+    .title{
+      cursor: pointer;
+    }
+  }
+  ul{
+    margin-top: 5px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    li{
+      width: 100px;
+      .num{
+        font-size: 12px;
+      }
+    }
+  }
+}
