@@ -1,19 +1,14 @@
 .search {
-  position: fixed;
   width: 992px;
-  height: auto;
   min-height: 200px;
-  top: 30vh;
-  left: 0;
-  right: 0;
-  margin: auto;
   z-index: 999;
-  background: rgba(0, 0, 0, .3);
+  color: #666;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin: 1px 0;
   .content {
     margin: auto;
     .ipt {
