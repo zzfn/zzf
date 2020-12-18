@@ -32,6 +32,10 @@ export default function ArticleDetail(props) {
               <span>发布于</span>
               {serverProps.createTime}
             </li>
+            <li>
+              <span>更新于</span>
+              {serverProps.updateTime}
+            </li>
           </ul>
         </div>
         <div

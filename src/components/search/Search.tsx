@@ -3,6 +3,7 @@ import styles from './search.module.scss';
 import useClickOutside from 'hooks/useClickOutside';
 import { esList } from 'api/article';
 import { useRouter } from 'next/router';
+import { translateMarkdown } from '../../utils/translateMarkdown';
 
 function Search({ children }) {
   const [keyword, setKeyword] = useState('');
@@ -34,15 +35,24 @@ function Search({ children }) {
             </button>
           </div>
           {result.length
-            ? result.map((item) => (
+            ? result.map((item, idx) => (
                 <span
                   onClick={() => {
                     router.push(`/article/${item.id}`);
                     setIsShow(false);
                   }}
-                  key={item.id}
+                  key={idx}
                 >
-                  {item.title}
+                  {item.title &&
+                    item.title.map((_, a) => (
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: _,
+                        }}
+                        key={a}
+                        className={['markdown-template', styles.content].join(' ')}
+                      ></div>
+                    ))}
                 </span>
               ))
             : '暂无数据'}
