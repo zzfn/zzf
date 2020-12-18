@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './header.module.scss';
 import Image from 'next/image';
-import Search from '../search/Search';
 import { useRouter } from 'next/router';
 import useLg from 'hooks/useLg';
 
