@@ -13,7 +13,7 @@
     margin: auto;
     .ipt {
       height: 30px;
-      border: none;
+      border: 1px solid #40a9ff;
       outline: none;
       border-radius: 5px 0 0 5px;
     }
@@ -22,7 +22,7 @@
       height: 30px;
       background: #fff;
       outline: none;
-      border: 1px solid transparent;
+      border: 1px solid #40a9ff;
       border-radius: 0 5px 5px 0;
       padding: 0 10px;
       &:hover {
