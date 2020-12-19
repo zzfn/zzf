@@ -1,5 +1,7 @@
+@import "src/styles/variable";
+
 .main {
-  background: rgba(250, 250, 250, .8);
+  background: $bg-color;
   max-width: 992px;
   margin: auto;
   min-height: calc(100vh - 180px);

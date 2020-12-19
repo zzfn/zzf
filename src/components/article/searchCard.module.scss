@@ -1,7 +1,7 @@
 @import "src/styles/variable";
 .card{
   color: $font-color;
-  background: rgba(255,255,255,.5);
+  background: $bg-color;
   width: 100%;
   padding: 20px;
   border-bottom: 1px dashed #ccc;

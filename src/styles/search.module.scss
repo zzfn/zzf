@@ -1,8 +1,10 @@
+@import "src/styles/variable";
+
 .search {
   width: 992px;
   min-height: 200px;
   z-index: 999;
-  color: #666;
+  color: $font-color;
   border-radius: 30px;
   display: flex;
   flex-direction: column;
