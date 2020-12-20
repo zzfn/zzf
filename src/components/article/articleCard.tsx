@@ -3,6 +3,7 @@ import styles from './articleCard.module.scss';
 import { useRouter } from 'next/router';
 import { Tag } from 'components/Tag/Tag';
 import dayjs from 'dayjs';
+import abstractFn from 'utils/abstractFn';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -24,6 +25,11 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
           {dataSource.title}
         </span>
       </h3>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: abstractFn(dataSource.content),
+        }}
+      />
       <ul>
         <li title={'标签'}>
           <Tag color='#0095C7'>{dataSource.tagDesc}</Tag>
