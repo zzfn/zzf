@@ -25,11 +25,11 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
           {dataSource.title}
         </span>
       </h3>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: abstractFn(dataSource.content),
-        }}
-      />
+      {/*<div*/}
+      {/*  dangerouslySetInnerHTML={{*/}
+      {/*    __html: abstractFn(dataSource.content),*/}
+      {/*  }}*/}
+      {/*/>*/}
       <ul>
         <li title={'标签'}>
           <Tag color='#0095C7'>{dataSource.tagDesc}</Tag>
