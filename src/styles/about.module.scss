@@ -3,4 +3,17 @@
   width: 100%;
   font-size: 16px;
   height: 100%;
+  padding: 10px;
+  header{
+    border:1px solid #c8e1ff;
+    background: #f1f8ff;
+    color: #24292e;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  article{
+    border: 1px solid #e1e4e8;
+    padding: 40px;
+  }
 }
