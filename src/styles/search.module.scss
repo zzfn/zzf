@@ -14,14 +14,15 @@
   .content {
     margin: auto;
     .ipt {
-      height: 30px;
+      height: 35px;
       border: 1px solid #40a9ff;
       outline: none;
       border-radius: 5px 0 0 5px;
+      border-right: none;
     }
 
     .btn {
-      height: 30px;
+      height: 35px;
       background: #fff;
       outline: none;
       border: 1px solid #40a9ff;

@@ -30,8 +30,7 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
       </h3>
       <div
         dangerouslySetInnerHTML={{
-          // __html: abstractFn(dataSource.content),
-          __html: dataSource.content,
+          __html: abstractFn(dataSource.content),
         }}
       />
       <ul>
