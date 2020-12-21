@@ -10,35 +10,37 @@ function Header(): JSX.Element {
   const isLg = useLg();
   return (
     <div className={styles.header}>
-      <Image
-        onClick={() => router.push('/')}
-        className={styles.img}
-        height={60}
-        width={150}
-        layout={'intrinsic'}
-        src={'/static/img/logo.png'}
-      />
-      {isLg ? (
-        <ul>
-          <li>
-            <Link href={'/'}>首页</Link>
-          </li>
-          <li>
-            <Link href={'/archive'}>归档</Link>
-          </li>
-          <li>
-            <Link href={'/tag'}>标签</Link>
-          </li>
-          <li>
-            <Link href={'/about'}>关于</Link>
-          </li>
-          <li>
-            <Link href={'/search'}>搜索</Link>
-          </li>
-        </ul>
-      ) : (
-        <Image height={60} width={60} layout={'intrinsic'} src={'/static/img/menu.png'} />
-      )}
+      <div className={`${styles['header_main']} box-responsive`}>
+        <Image
+          onClick={() => router.push('/')}
+          className={styles.img}
+          height={60}
+          width={150}
+          layout={'intrinsic'}
+          src={'/static/img/logo.png'}
+        />
+        {isLg ? (
+          <ul>
+            <li>
+              <Link href={'/'}>首页</Link>
+            </li>
+            <li>
+              <Link href={'/archive'}>归档</Link>
+            </li>
+            <li>
+              <Link href={'/tag'}>标签</Link>
+            </li>
+            <li>
+              <Link href={'/about'}>关于</Link>
+            </li>
+            <li>
+              <Link href={'/search'}>搜索</Link>
+            </li>
+          </ul>
+        ) : (
+          <Image height={60} width={60} layout={'intrinsic'} src={'/static/img/menu.png'} />
+        )}
+      </div>
     </div>
   );
 }

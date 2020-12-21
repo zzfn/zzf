@@ -1,8 +1,6 @@
 @import "src/styles/variable";
-
 .main {
   background: $bg-color;
-  max-width: 992px;
-  margin:16px auto;
+  margin: auto;
   min-height: calc(100vh - 180px);
 }

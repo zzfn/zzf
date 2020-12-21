@@ -1,30 +1,34 @@
-//xs
-@media (max-width: 575.98px) {
-  .md,.lg,.xl{
-    display: none!important;
+.box-responsive{
+  max-width: 1280px;
+  @media (max-width: 767.98px) {
+    padding: 0 16px;
+  }
+  @media (min-width: 768px) and (max-width: 1011.98px) {
+    padding: 0 24px;
+  }
+  @media (min-width: 1012px) {
+    padding: 0 32px;
   }
 }
-//sm
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .md,.lg,.xl{
-    display: none!important;
+.box-responsive-main{
+  @media (max-width: 767.98px) {
+    padding: 0 8px;
+  }
+  @media (min-width: 768px) and (max-width: 1011.98px) {
+    padding: 0 24px;
+  }
+  @media (min-width: 1012px) {
+    padding: 0 16px;
   }
 }
-//md
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .lg,.xl{
-    display: none!important;
+.box-responsive-slider{
+  @media (max-width: 767.98px) {
+    padding: 0 8px;
   }
-}
-//lg
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .xs,.sm{
-    display: none!important;
+  @media (max-width: 1011.98px) {
+    padding: 0 8px;
   }
-}
-//xl
-@media (min-width: 1200px) {
-  .xs,.sm{
-    display: none!important;
+  @media (min-width: 1012px) {
+    padding: 0 16px;
   }
 }

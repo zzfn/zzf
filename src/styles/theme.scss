@@ -1,15 +1,17 @@
 @media (prefers-color-scheme: light) {
   :root {
-    --primary-color: #1b95e0;
-    --bg-color: rgba(250, 250, 250, .8);
-    --font-color: #303030;
+    --color-text-link: #1b95e0;
+    --color-bg-canvas: rgba(250, 250, 250, .8);
+    --color-text-primary: #303030;
+    --color-text-secondary: #8b949e;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #1b95e0;
-    --bg-color: #303030;
-      --font-color: #fff;
+    --color-text-link: #58a6ff;
+    --color-bg-canvas: #0d1117;
+    --color-text-primary: #c9d1d9;
+    --color-text-secondary: #8b949e;
   }
 }
