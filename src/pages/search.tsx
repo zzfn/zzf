@@ -3,7 +3,6 @@ import { esList } from 'api/article';
 import SearchCard from 'components/article/SearchCard';
 import styles from 'styles/search.module.scss';
 import Head from 'next/head';
-import { log } from 'util';
 
 function Search(props) {
   const [keyword, setKeyword] = useState('');

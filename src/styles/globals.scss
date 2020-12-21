@@ -31,5 +31,7 @@ ul {
 }
 
 body {
-  background: url("/static/img/bg.jpg") no-repeat fixed center/cover;
+  @media (min-width: 1012px) {
+    background: url("/static/img/bg.jpg") no-repeat fixed center/cover;
+  }
 }
