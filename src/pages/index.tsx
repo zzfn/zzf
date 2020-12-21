@@ -1,35 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from 'styles/home.module.scss';
-import { esList, listArticles } from 'api/article';
+import { listArticles } from 'api/article';
 import ArticleCard from 'components/article/articleCard';
-import { useDebounce } from 'hooks/useDebounce';
 
 export default function Home(props): JSX.Element {
   const { serverProps } = props;
   const [total, setTotal] = useState(serverProps.total);
-  const [val, setVal] = useState<string>();
   const [page, setPage] = useState(serverProps.page);
   const [records, setRecords] = useState(serverProps.records);
-  const de = useDebounce(change, 500);
 
   async function change() {
-    if (val) {
-      const { data } = await esList({ keyword: val });
-      setRecords(data);
-      setTotal(data.length);
-    } else {
-      const { data } = await listArticles({ pageNumber: page, pageSize: 10, title: val });
-      setTotal(data.total);
-      setPage(data.current);
-      setRecords(data.records);
-    }
+    const { data } = await listArticles({ pageNumber: page, pageSize: 10 });
+    setTotal(data.total);
+    setPage(data.current);
+    setRecords(data.records);
   }
 
   useEffect(() => {
-    de();
-  }, [page, val]);
-
+    change();
+  }, [page]);
   return (
     <div className={styles.home}>
       <Head>
