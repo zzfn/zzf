@@ -3,6 +3,7 @@ import { esList } from 'api/article';
 import SearchCard from 'components/article/SearchCard';
 import styles from 'styles/search.module.scss';
 import Head from 'next/head';
+import { log } from 'util';
 
 function Search(props) {
   const [keyword, setKeyword] = useState('');
@@ -19,6 +20,12 @@ function Search(props) {
         <title>搜索~zzf</title>
       </Head>
       <div className={styles.search}>
+        <form onSubmit={(event) => event.preventDefault()} action=''>
+          <div>
+            <input type='search' placeholder='搜索' />
+          </div>
+          <button>搜索</button>
+        </form>
         <div className={styles.content}>
           <input
             value={keyword}

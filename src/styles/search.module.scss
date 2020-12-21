@@ -13,6 +13,10 @@
   .content {
     margin: auto;
     .ipt {
+      padding: 5px 12px;
+      font-size: 14px;
+      line-height: 20px;
+      color: $font-color;
       height: 35px;
       border: 1px solid #40a9ff;
       outline: none;
