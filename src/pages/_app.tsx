@@ -25,6 +25,10 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>zzf</title>
+        <meta
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;'
+          name='viewport'
+        />
       </Head>
       <Header />
       <Main>
