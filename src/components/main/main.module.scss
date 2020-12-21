@@ -1,6 +1,8 @@
 @import "src/styles/variable";
 .main {
   background: $bg-color;
+  background-clip: content-box;
   margin:1px auto;
+  overflow: hidden;
   min-height: calc(100vh - 154px);
 }

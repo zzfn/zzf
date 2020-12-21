@@ -4,7 +4,7 @@
   color: $font-color;
   //flex-direction: column;
   //align-items: center;
-  padding: 8px 0;
+  padding: 10px;
   //justify-content: center;
   form{
     display: flex;
@@ -46,6 +46,7 @@
   }
 }
 .result{
+  padding: 10px;
   min-height: 200px;
   display: flex;
   flex-wrap: wrap;

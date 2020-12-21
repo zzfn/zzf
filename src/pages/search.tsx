@@ -36,7 +36,7 @@ function Search(props) {
             </button>
           </form>
         </div>
-        <div>
+        <div style={{ padding: '0 10px' }}>
           共找到<strong>{result.length}</strong>条结果
         </div>
         <div className={styles.result}>
