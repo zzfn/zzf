@@ -43,6 +43,9 @@
       background: #bae7ff;
       box-shadow: 0 0 10px #40a9ff;
     }
+    &:focus{
+      outline: none;
+    }
   }
 }
 .result{

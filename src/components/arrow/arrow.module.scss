@@ -30,18 +30,18 @@
       border-color: transparent #1b95e0 transparent transparent;
     }
 
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 6px;
-      left: -9px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 9px 9px 9px 0;
-      border-color: transparent #e6f7ff transparent transparent;
-    }
+    //&::after {
+    //  content: '';
+    //  display: block;
+    //  position: absolute;
+    //  top: 6px;
+    //  left: -9px;
+    //  width: 0;
+    //  height: 0;
+    //  border-style: solid;
+    //  border-width: 9px 9px 9px 0;
+    //  border-color: transparent #e6f7ff transparent transparent;
+    //}
   }
 
 }
