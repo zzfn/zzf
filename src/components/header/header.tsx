@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './header.module.scss';
 import Image from 'next/image';
@@ -7,18 +7,33 @@ import useLg from 'hooks/useLg';
 
 function Header(): JSX.Element {
   const router = useRouter();
+  const [isShow, setIsShow] = useState(false);
   const isLg = useLg();
   return (
     <div className={styles.header}>
       <div className={`${styles['header_main']} box-responsive`}>
-        <Image
-          onClick={() => router.push('/')}
-          className={styles.img}
-          height={60}
-          width={150}
-          layout={'intrinsic'}
-          src={'/static/img/logo.png'}
-        />
+        {!isLg && (
+          <Image
+            onClick={() => setIsShow(!isShow)}
+            height={24}
+            width={24}
+            layout={'intrinsic'}
+            src={'/static/img/menu.png'}
+          />
+        )}
+
+        <Link href={'/'}>
+          <a>
+            <Image
+              onClick={() => router.push('/')}
+              height={32}
+              width={32}
+              layout={'intrinsic'}
+              src={'/static/img/logo.png'}
+            />
+          </a>
+        </Link>
+
         {isLg ? (
           <ul>
             <li>
@@ -38,9 +53,34 @@ function Header(): JSX.Element {
             </li>
           </ul>
         ) : (
-          <Image height={60} width={60} layout={'intrinsic'} src={'/static/img/menu.png'} />
+          <Link href={'/search'}>
+            <a>
+              <Image height={24} width={24} layout={'intrinsic'} src={'/static/img/search.png'} />
+            </a>
+          </Link>
         )}
       </div>
+      {isShow && (
+        <>
+          <ul className={`${styles.select} box-responsive`}>
+            <li>
+              <Link href={'/'}>首页</Link>
+            </li>
+            <li>
+              <Link href={'/archive'}>归档</Link>
+            </li>
+            <li>
+              <Link href={'/tag'}>标签</Link>
+            </li>
+            <li>
+              <Link href={'/about'}>关于</Link>
+            </li>
+            <li>
+              <Link href={'/search'}>搜索</Link>
+            </li>
+          </ul>
+        </>
+      )}
     </div>
   );
 }
