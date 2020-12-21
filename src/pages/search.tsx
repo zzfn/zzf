@@ -13,40 +13,41 @@ function Search(props) {
     const { data } = await esList({ keyword });
     setResult(data);
   }
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    alert('aa');
+    await query();
   }
   return (
     <>
       <Head>
         <title>搜索~zzf</title>
       </Head>
-      <div className={styles.search}>
-        <form onSubmit={handleSubmit} action=''>
-          <div>
-            <input type='search' placeholder='搜索' />
-          </div>
-          <button>搜索</button>
-        </form>
-        <div className={styles.content}>
-          <input
-            value={keyword}
-            onChange={(event) => setKeyword(event.target.value)}
-            className={styles.ipt}
-            type='text'
-          />
-          <button onClick={query} className={styles.btn}>
-            搜索
-          </button>
-          <span>
-            共找到<strong>{result.length}</strong>条结果
-          </span>
+      <>
+        <div className={styles.search}>
+          <form onSubmit={handleSubmit}>
+            <input
+              className={styles.ipt}
+              onChange={(event) => setKeyword(event.target.value)}
+              value={keyword}
+              type='search'
+              placeholder='elasticsearch强力驱动'
+            />
+            <button className={styles.btn} type={'submit'}>
+              搜索
+            </button>
+          </form>
         </div>
-        {result.length
-          ? result.map((item) => <SearchCard dataSource={item} key={item.id} />)
-          : '暂无数据'}
-      </div>
+        <div>
+          共找到<strong>{result.length}</strong>条结果
+        </div>
+        <div className={styles.result}>
+          {result.length ? (
+            result.map((item) => <SearchCard dataSource={item} key={item.id} />)
+          ) : (
+            <div style={{ margin: 'auto' }}>暂无数据</div>
+          )}
+        </div>
+      </>
     </>
   );
 }

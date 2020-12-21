@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import 'styles/variable.scss';
 import 'styles/globals.scss';
 import 'styles/response.scss';
 import 'markdown-navbar/dist/navbar.css';
@@ -26,7 +27,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>zzf</title>
         <meta
-          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;'
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
           name='viewport'
         />
       </Head>

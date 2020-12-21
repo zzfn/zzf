@@ -15,9 +15,11 @@
     padding: 0 8px;
   }
   @media (min-width: 768px) and (max-width: 1011.98px) {
+    width: 75%;
     padding: 0 24px;
   }
   @media (min-width: 1012px) {
+    width: 25%;
     padding: 0 16px;
   }
 }
@@ -26,6 +28,7 @@
     padding: 0 8px;
   }
   @media (max-width: 1011.98px) {
+    width: 75%;
     padding: 0 8px;
   }
   @media (min-width: 1012px) {
