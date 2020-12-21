@@ -13,14 +13,17 @@ function Search(props) {
     const { data } = await esList({ keyword });
     setResult(data);
   }
-
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert('aa');
+  }
   return (
     <>
       <Head>
         <title>搜索~zzf</title>
       </Head>
       <div className={styles.search}>
-        <form onSubmit={(event) => event.preventDefault()} action=''>
+        <form onSubmit={handleSubmit} action=''>
           <div>
             <input type='search' placeholder='搜索' />
           </div>
