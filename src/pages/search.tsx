@@ -24,7 +24,7 @@ function Search(props) {
       </Head>
       <>
         <div className={styles.search}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} action={''}>
             <input
               className={styles.ipt}
               onChange={(event) => setKeyword(event.target.value)}

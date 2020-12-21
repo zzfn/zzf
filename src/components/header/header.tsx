@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './header.module.scss';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import useLg from 'hooks/useLg';
 
 function Header(): JSX.Element {
-  const router = useRouter();
   const [isShow, setIsShow] = useState(false);
   const isLg = useLg();
   return (
@@ -24,13 +22,7 @@ function Header(): JSX.Element {
 
         <Link href={'/'}>
           <a>
-            <Image
-              onClick={() => router.push('/')}
-              height={32}
-              width={32}
-              layout={'intrinsic'}
-              src={'/static/img/logo.png'}
-            />
+            <Image height={32} width={32} layout={'intrinsic'} src={'/static/img/logo.png'} />
           </a>
         </Link>
 
