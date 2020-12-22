@@ -1,6 +1,6 @@
 @import "src/styles/variable";
 .card{
-  color: $font-color;
+  color: $color-text-primary;
   background: $color-bg-canvas;
   width: 100%;
   padding: 20px 0;
@@ -11,7 +11,7 @@
   }
   h3{
     font-size: 18px;
-    color: $font-color;
+    color: $color-text-primary;
     .title{
       cursor: pointer;
     }
