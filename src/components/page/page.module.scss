@@ -11,6 +11,10 @@
     text-align: center;
     line-height: 32px;
     cursor: pointer;
+    &:hover{
+      background: #3baafa;
+      color: #fff;
+    }
   }
   .active{
     background: #40a9ff;
