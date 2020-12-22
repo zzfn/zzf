@@ -49,7 +49,7 @@
   .tip {
     color: $font-color;
     padding: 20px 30px;
-    background-color: $bg-color;
+    background-color: $color-bg-canvas;
     overflow: hidden;
     margin: 0 auto 16px;
     font-size: 14px;
@@ -82,7 +82,7 @@
     @media (min-width: 768px) {
       padding: 20px;
     }
-    background: $bg-color;
+    background: $color-bg-canvas;
     margin: auto;
   }
 }
