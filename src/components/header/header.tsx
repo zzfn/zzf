@@ -9,7 +9,7 @@ function Header(): JSX.Element {
   const isLg = useLg();
   return (
     <div className={styles.header}>
-      <div className={`${styles['header_main']} box-responsive`}>
+      <div className={`${styles.headerMain} box-responsive`}>
         {!isLg && (
           <Image
             onClick={() => setIsShow(!isShow)}

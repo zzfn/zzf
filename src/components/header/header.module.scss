@@ -1,7 +1,8 @@
+@import "src/styles/variable";
 .header {
-  background: rgba(0, 0, 0, .6);
+  background: $color-header-bg;
 
-  .header_main {
+  .headerMain {
     height: 64px;
     display: flex;
     align-items: center;
