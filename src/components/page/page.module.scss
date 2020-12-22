@@ -1,0 +1,19 @@
+.page{
+  text-align: center;
+  margin: 20px 0;
+  .pageItem{
+    margin-right: 8px;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+  }
+  .active{
+    background: #40a9ff;
+    color: #fff;
+  }
+}

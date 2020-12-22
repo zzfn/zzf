@@ -28,7 +28,7 @@ export default function Home(props): JSX.Element {
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />
       ))}
-      <Page total={total} onChange={(v) => setPage(v)} />
+      <Page current={page} total={total} onChange={(v) => setPage(v)} />
     </div>
   );
 }

@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import styles from './page.module.scss';
 
-function Page({ onChange, total }) {
-  const [totalPage, setTotalPage] = useState(Math.ceil(total / 10));
-  const [pages, setPages] = useState([]);
-  useEffect(() => {
-    for (let i = 0; i < totalPage; i++) {
-      setPages([...pages, i]);
-    }
-  }, [totalPage]);
+function Page({ onChange, total, current }) {
   return (
-    <div style={{ textAlign: 'center' }}>
-      {Array.apply(null, { length: Math.ceil(total / 10) }).map((i, idx) => (
+    <div className={styles.page}>
+      {Array.from({ length: Math.ceil(total / 10) }).map((i, idx) => (
         <span
-          style={{
-            width: '10px',
-            display: 'inline-block',
-            padding: '10px',
-            cursor: 'pointer',
-            border: '1px solid #ccc',
-          }}
+          className={`${styles.pageItem} ${current === idx + 1 && styles.active}`}
           key={idx}
           onClick={() => onChange(idx + 1)}
         >
