@@ -9,14 +9,6 @@
     justify-content: space-between;
     margin: auto;
 
-    .img {
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-
     ul {
       display: flex;
       align-items: center;
