@@ -1,3 +1,4 @@
+@import "src/styles/variable";
 .page{
   text-align: center;
   margin: 20px 0;
@@ -12,12 +13,12 @@
     line-height: 32px;
     cursor: pointer;
     &:hover{
-      background: #3baafa;
-      color: #fff;
+      background: $color-text-link;
+      color: $color-state-selected-primary-text;
     }
   }
   .active{
-    background: #40a9ff;
-    color: #fff;
+    background: $color-state-selected-primary-bg;
+    color: $color-state-selected-primary-text;
   }
 }
