@@ -1,24 +1,4 @@
 @import "variable";
 .home{
-  width: 100%;
-  min-height: calc(100vh - 175px);
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  .page{
-    margin-top: 10px;
-    display: inline-block;
-    background: #3baafa;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-    color: #F8F8F8;
-    &+.page{
-      margin-left: 10px;
-    }
-  }
-  .bg{
-    width: 100%;
-    margin-bottom: 10px;
-  }
+  min-height: $min-height;
 }

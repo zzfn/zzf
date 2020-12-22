@@ -30,15 +30,9 @@ export default function Home(props): JSX.Element {
       ))}
       <div>
         目前第 {page} 頁，共有 {Number.parseInt(String(total / 10))} 頁
-        {page > 1 && (
-          <span className={styles.page} onClick={() => setPage(page - 1)}>
-            上一页
-          </span>
-        )}
+        {page > 1 && <span onClick={() => setPage(page - 1)}>上一页</span>}
         {page < Number.parseInt(String(total / 10)) && (
-          <span className={styles.page} onClick={() => setPage(page + 1)}>
-            下一页
-          </span>
+          <span onClick={() => setPage(page + 1)}>下一页</span>
         )}
         <span>共{total}篇文章</span>
       </div>
