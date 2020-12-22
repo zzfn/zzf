@@ -54,7 +54,7 @@ function Header(): JSX.Element {
       </div>
       {isShow && (
         <>
-          <ul className={`${styles.select} box-responsive`}>
+          <ul onClick={() => setIsShow(false)} className={`${styles.select} box-responsive`}>
             <li>
               <Link href={'/'}>首页</Link>
             </li>
