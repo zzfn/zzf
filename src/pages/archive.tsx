@@ -34,7 +34,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
                 {dayjs(item.createTime).format('YYYY-MM-DD')}
               </span>
               <Link href={`/article/${item.id}`}>
-                <a style={{ color: '#2e405b' }}>{item.title}</a>
+                <a className={styles.subTitle}>{item.title}</a>
               </Link>
             </li>
           ))}

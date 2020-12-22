@@ -1,3 +1,4 @@
+@import "variable";
 .archiveWrap {
   width: 100%;
   margin: auto;
@@ -70,4 +71,7 @@
       background: #49b1f5;
     }
   }
+}
+.subTitle{
+  color:$font-color
 }
