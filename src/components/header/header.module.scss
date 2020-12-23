@@ -1,8 +1,10 @@
 @import "src/styles/variable";
+
 .header {
   background: $color-header-bg;
   color: $color-header-logo;
   font-weight: 600;
+
   .headerMain {
     height: 64px;
     display: flex;
@@ -10,7 +12,7 @@
     justify-content: space-between;
     margin: auto;
 
-    ul {
+    .menu {
       display: flex;
       align-items: center;
       font-size: 16px;
@@ -23,22 +25,24 @@
         &:hover {
           color: $color-header-text;
         }
-      }
-
-      li + li {
-        margin-left: 20px;
+        &:not(:last-child){
+          margin-right: 16px;
+        }
       }
     }
   }
-  .select {
-    padding:0 16px 16px;
+
+  .dropdown {
+    padding: 0 16px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 16px;
+
     li {
       width: 100%;
       border-top: 1px solid #e1e4e8;
+
       a {
         display: block;
         height: 38px;

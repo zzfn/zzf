@@ -11,14 +11,20 @@
   }
   .ipt {
     flex: 1;
-    height: 30px;
+    height: 46px;
     border-radius: 6px;
-    line-height: 20px;
+    line-height: 46px;
     box-sizing: border-box;
-    padding: 5px 5px 5px 12px;
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-input-border);
+    box-shadow:var(--color-shadow-inset) ;
+    padding: 12px;
     font-size: 14px;
-    border: 1px solid #40a9ff;
     outline: none;
+    &:focus{
+      border-color: var(--color-state-focus-border);
+      box-shadow: var(--color-state-focus-shadow);
+    }
   }
 
   .btn {

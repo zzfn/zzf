@@ -27,23 +27,13 @@ function Header(): JSX.Element {
         </Link>
 
         {isLg ? (
-          <ul>
-            <li>
-              <Link href={'/'}>首页</Link>
-            </li>
-            <li>
-              <Link href={'/archive'}>归档</Link>
-            </li>
-            <li>
-              <Link href={'/tag'}>标签</Link>
-            </li>
-            <li>
-              <Link href={'/about'}>关于</Link>
-            </li>
-            <li>
-              <Link href={'/search'}>搜索</Link>
-            </li>
-          </ul>
+          <nav className={styles.menu}>
+            <Link href={'/'}>首页</Link>
+            <Link href={'/archive'}>归档</Link>
+            <Link href={'/tag'}>标签</Link>
+            <Link href={'/about'}>关于</Link>
+            <Link href={'/search'}>搜索</Link>
+          </nav>
         ) : (
           <Link href={'/search'}>
             <a>
@@ -53,25 +43,13 @@ function Header(): JSX.Element {
         )}
       </div>
       {isShow && (
-        <>
-          <ul onClick={() => setIsShow(false)} className={`${styles.select} box-responsive`}>
-            <li>
-              <Link href={'/'}>首页</Link>
-            </li>
-            <li>
-              <Link href={'/archive'}>归档</Link>
-            </li>
-            <li>
-              <Link href={'/tag'}>标签</Link>
-            </li>
-            <li>
-              <Link href={'/about'}>关于</Link>
-            </li>
-            <li>
-              <Link href={'/search'}>搜索</Link>
-            </li>
-          </ul>
-        </>
+        <nav onClick={() => setIsShow(false)} className={`${styles.dropdown} box-responsive`}>
+          <Link href={'/'}>首页</Link>
+          <Link href={'/archive'}>归档</Link>
+          <Link href={'/tag'}>标签</Link>
+          <Link href={'/about'}>关于</Link>
+          <Link href={'/search'}>搜索</Link>
+        </nav>
       )}
     </header>
   );
