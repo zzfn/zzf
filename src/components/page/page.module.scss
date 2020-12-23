@@ -12,6 +12,7 @@
     text-align: center;
     line-height: 32px;
     cursor: pointer;
+    color: $color-text-secondary;
     &:hover{
       background: $color-text-link;
       color: $color-state-selected-primary-text;

@@ -42,7 +42,7 @@ function Header(): JSX.Element {
           </Link>
         )}
       </div>
-      {isShow && (
+      {isShow && !isLg && (
         <nav onClick={() => setIsShow(false)} className={`${styles.dropdown} box-responsive`}>
           <Link href={'/'}>首页</Link>
           <Link href={'/archive'}>归档</Link>

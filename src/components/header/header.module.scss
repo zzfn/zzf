@@ -39,11 +39,8 @@
     align-items: center;
     font-size: 16px;
 
-    li {
-      width: 100%;
-      border-top: 1px solid #e1e4e8;
-
       a {
+        border-top: 1px solid #e1e4e8;
         display: block;
         height: 38px;
         line-height: 38px;
@@ -57,7 +54,6 @@
         &:hover {
           color: $color-header-text;
         }
-      }
     }
   }
 }
