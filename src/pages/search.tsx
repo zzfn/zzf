@@ -43,16 +43,18 @@ function Search(): JSX.Element {
           {loading ? (
             '搜索中'
           ) : (
-            <>
+            <div className={styles.searchResult}>
               共找到<strong>{result.length}</strong>条结果
-            </>
+            </div>
           )}
         </div>
         <div className={styles.result}>
           {result.length ? (
             result.map((item) => <SearchCard dataSource={item} key={item.id} />)
           ) : (
-            <div style={{ margin: 'auto' }}>暂无数据</div>
+            <div className={styles.no} style={{ margin: 'auto' }}>
+              暂无数据
+            </div>
           )}
         </div>
       </>
