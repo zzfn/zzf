@@ -33,7 +33,10 @@ ul {
 
 body {
   @media (min-width: 1012px) {
-    background: $color-bg-canvas;
+    background: $color-bg-primary;
     // background: url("/static/img/bg.jpg") no-repeat fixed center/cover;
   }
+}
+a{
+  text-decoration: none;
 }

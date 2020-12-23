@@ -1,7 +1,8 @@
 @import "src/styles/variable";
 .header {
   background: $color-header-bg;
-
+  color: $color-header-logo;
+  font-weight: 600;
   .headerMain {
     height: 64px;
     display: flex;
@@ -12,17 +13,15 @@
     ul {
       display: flex;
       align-items: center;
-      color: #fff;
       font-size: 16px;
 
       a {
         padding: 5px;
-        color: #fff;
+        color: inherit;
         transition: .3s;
 
         &:hover {
-          background: #e1e1e1;
-          color: rgba(0, 0, 0, .6);
+          color: $color-header-text;
         }
       }
 
@@ -36,7 +35,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #fff;
     font-size: 16px;
     li {
       width: 100%;
@@ -47,14 +45,13 @@
         line-height: 38px;
         box-sizing: border-box;
         width: 100%;
-        color: #fff;
+        color: inherit;
         transition: .3s;
         text-decoration: none;
         font-weight: 600;
 
         &:hover {
-          background: #e1e1e1;
-          color: rgba(0, 0, 0, .6);
+          color: $color-header-text;
         }
       }
     }

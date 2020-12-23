@@ -8,7 +8,7 @@ function Header(): JSX.Element {
   const [isShow, setIsShow] = useState(false);
   const isLg = useLg();
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={`${styles.headerMain} box-responsive`}>
         {!isLg && (
           <Image
@@ -73,7 +73,7 @@ function Header(): JSX.Element {
           </ul>
         </>
       )}
-    </div>
+    </header>
   );
 }
 
