@@ -1,7 +1,8 @@
+@import "src/styles/variable";
 .footer{
   height: 90px;
-  background: rgba(0,0,0,.6);
-  color: #ffffffb3;
+  background: $color-header-bg;
+  color: $color-header-text;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './footer.module.scss';
 import dayjs from 'dayjs';
-function Footer(props) {
+function Footer(): JSX.Element {
   return (
     <footer className={styles.footer}>
       <div>2020-{dayjs().format('YYYY')}</div>
