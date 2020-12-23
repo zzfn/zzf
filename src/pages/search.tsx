@@ -4,12 +4,15 @@ import SearchCard from 'components/article/SearchCard';
 import styles from 'styles/search.module.scss';
 import Head from 'next/head';
 
-function Search(props) {
+function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
   const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   async function query() {
+    setLoading(true);
     const { data } = await esList({ keyword });
+    setLoading(false);
     setResult(data);
   }
   async function handleSubmit(event) {
@@ -37,7 +40,13 @@ function Search(props) {
           </form>
         </div>
         <div style={{ padding: '0 10px' }}>
-          共找到<strong>{result.length}</strong>条结果
+          {loading ? (
+            '搜索中'
+          ) : (
+            <>
+              共找到<strong>{result.length}</strong>条结果
+            </>
+          )}
         </div>
         <div className={styles.result}>
           {result.length ? (
