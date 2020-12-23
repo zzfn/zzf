@@ -32,8 +32,6 @@
     padding: 3px;
   }
   h1,
-  h2,
-  h3,
   h4,
   h5,
   h6 {
@@ -44,8 +42,42 @@
       margin-right: 10px;
     }
     transition: .2s;
-    &:hover{
-      transform: translate3d(2px,0,0);
+  }
+  h2{
+    color: #40b8fa;
+    position: relative;
+    padding-left: 16px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    font-size: 24px;
+    border-bottom: 1px solid #ececec;
+    &:before{
+      content: "「";
+      position: absolute;
+      top: -6px;
+      left: -10px;
+    }
+    &:after{
+      content: "」";
+      position: absolute;
+      top: 6px;
+      right: auto;
+    }
+  }
+  h3{
+    color: #40b8fa;
+    position: relative;
+    padding-bottom: 0;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #005bb7;
+    padding-left: 6px;
+    &:before{
+      content: "»";
+      padding-right: 6px;
+      color: #2196f3;
     }
   }
   code {
