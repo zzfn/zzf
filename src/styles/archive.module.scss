@@ -20,7 +20,7 @@
 
   &::before {
     content: '';
-    background: $color-border-primary;
+    background: var(--color-bg-tertiary);
     width: 8px;
     height: 100%;
     position: absolute;
