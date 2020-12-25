@@ -13,6 +13,7 @@
     line-height: 32px;
     cursor: pointer;
     color: $color-text-secondary;
+    user-select: none;
     &:hover{
       background: $color-text-link;
       color: $color-state-selected-primary-text;
