@@ -12,7 +12,7 @@ export default function TagPage({ serverProps }): JSX.Element {
         <title>标签~zzf</title>
       </Head>
       {serverProps.map((item) => (
-        <div key={item.code} style={{ margin: '20px', display: 'inline-block' }}>
+        <div key={item.code} style={{ margin: '10px', display: 'inline-block' }}>
           <Link href={`/tag/${item.code}`}>
             <a>
               <Arrow color={'#108ee9'} number={item.count}>
