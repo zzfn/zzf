@@ -11,6 +11,7 @@ export default function About({ serverProps }): JSX.Element {
       <header>zzfn 上次修改2020.12.20</header>
       <article>
         <ul>
+          <li>github风格博客，使用github主题色</li>
           <li>博客前端采用react+nextjs完成,无ui框架,逐步减少依赖,手动实现各个依赖</li>
           <li>后端采用springboot+MyBatis-Plus完成，数据库采用mysql,缓存使用redis</li>
           <li>支持跟随系统深色与浅色模式</li>
