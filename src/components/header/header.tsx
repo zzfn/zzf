@@ -32,6 +32,7 @@ function Header(): JSX.Element {
             <Link href={'/archive'}>归档</Link>
             <Link href={'/tag'}>标签</Link>
             <Link href={'/about'}>关于</Link>
+            <Link href={'/theme'}>主题</Link>
             <Link href={'/search'}>搜索</Link>
           </nav>
         ) : (
@@ -48,6 +49,7 @@ function Header(): JSX.Element {
           <Link href={'/archive'}>归档</Link>
           <Link href={'/tag'}>标签</Link>
           <Link href={'/about'}>关于</Link>
+          <Link href={'/theme'}>主题</Link>
           <Link href={'/search'}>搜索</Link>
         </nav>
       )}
