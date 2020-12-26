@@ -11,9 +11,12 @@ import Zooming from 'zooming';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import Main from 'components/main/main';
+import useDark from 'hooks/useDark';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
+  const isDark = useDark();
+
   useEffect(() => {
     const zooming = new Zooming({
       enableGrab: false,
@@ -21,6 +24,18 @@ function MyApp({ Component, pageProps }) {
       bgOpacity: '0.5',
     });
     zooming.listen('.zoom');
+  }, []);
+  useEffect(() => {
+    const m = localStorage.getItem('mode');
+    if (m) {
+      if (m === 'system') {
+        document.body.className = isDark ? 'dark' : 'light';
+      } else {
+        document.body.className = m;
+      }
+    } else {
+      document.body.className = isDark ? 'dark' : 'light';
+    }
   }, []);
   return (
     <>
