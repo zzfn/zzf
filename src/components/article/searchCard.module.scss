@@ -1,14 +1,15 @@
 @import "src/styles/variable";
 .card{
-  color: $color-text-primary;
+  color: $color-text-secondary;
   background: $color-bg-primary;
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px dashed #ccc;
+  font-size:14px;
   :global{
     em{
       font-style: normal;
-      color: #1b95e0;
+      color: $color-text-link;
     }
   }
   .time{

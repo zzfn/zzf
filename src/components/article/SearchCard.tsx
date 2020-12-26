@@ -18,8 +18,8 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
   }
 
   return (
-    <div onClick={() => toDetail(dataSource.id)} className={styles.card}>
-      <h3>
+    <div className={styles.card}>
+      <h3 onClick={() => toDetail(dataSource.id)}>
         <span className={styles.title} style={{ marginLeft: '10px' }}>
           <div
             dangerouslySetInnerHTML={{
