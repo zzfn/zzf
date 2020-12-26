@@ -25,7 +25,11 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
       </Link>
       <ul>
         <li title={'标签'}>
-          <Tags>{dataSource.tagDesc}</Tags>
+          <Link href={`/tag/${dataSource.tag}`}>
+            <a>
+              <Tags>{dataSource.tagDesc}</Tags>
+            </a>
+          </Link>
         </li>
         <li title={'浏览量'}>
           <span className={styles.num}>{dataSource.viewCount}</span>

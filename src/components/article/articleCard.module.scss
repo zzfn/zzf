@@ -15,6 +15,9 @@
     .title{
       cursor: pointer;
     }
+    &:hover{
+      color: $color-text-tertiary;
+    }
   }
   ul{
     margin-top: 5px;

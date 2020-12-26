@@ -8,4 +8,7 @@
   line-height: 22px;
   color: var(--color-topic-tag-text);
   background-color: var(--color-topic-tag-bg);
+  &:hover{
+    background-color: var(--color-topic-tag-hover-bg);
+  }
 }
