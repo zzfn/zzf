@@ -28,13 +28,9 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const m = localStorage.getItem('mode');
     if (m) {
-      if (m === 'system') {
-        document.body.className = isDark ? 'dark' : 'light';
-      } else {
-        document.body.className = m;
-      }
+      document.body.className = m;
     } else {
-      document.body.className = isDark ? 'dark' : 'light';
+      document.body.className = 'system';
     }
   }, []);
   return (

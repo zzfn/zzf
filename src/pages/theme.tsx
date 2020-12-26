@@ -7,7 +7,7 @@ function Theme(): JSX.Element {
   function handleClick(mode) {
     setMode(mode);
     if (mode === 'system') {
-      document.body.className = isDark ? 'dark' : 'light';
+      document.body.className = 'system';
     } else {
       document.body.className = mode;
     }
@@ -18,14 +18,10 @@ function Theme(): JSX.Element {
 
     if (m) {
       setMode(m);
-      if (mode === 'system') {
-        document.body.className = isDark ? 'dark' : 'light';
-      } else {
-        document.body.className = m;
-      }
+      document.body.className = m;
     } else {
       setMode('system');
-      document.body.className = isDark ? 'dark' : 'light';
+      document.body.className = 'system';
     }
   }, []);
   return (
