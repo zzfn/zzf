@@ -3,6 +3,7 @@ import styles from './articleCard.module.scss';
 import { Tag } from 'components/Tag/Tag';
 import dayjs from 'dayjs';
 import Link from 'next/link';
+import { Tags } from 'components/Tags/Tags';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -24,7 +25,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
       </Link>
       <ul>
         <li title={'标签'}>
-          <Tag color='#0095C7'>{dataSource.tagDesc}</Tag>
+          <Tags>{dataSource.tagDesc}</Tags>
         </li>
         <li title={'浏览量'}>
           <span className={styles.num}>{dataSource.viewCount}</span>

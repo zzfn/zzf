@@ -1,0 +1,11 @@
+@import "src/styles/variable";
+.tags{
+  display: inline-block;
+  border:1px solid transparent;
+  font-size: 12px;
+  padding: 0 10px;
+  border-radius: 2rem;
+  line-height: 22px;
+  color: var(--color-topic-tag-text);
+  background-color: var(--color-topic-tag-bg);
+}
