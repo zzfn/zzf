@@ -15,11 +15,17 @@ function Theme(): JSX.Element {
   }
   useEffect(() => {
     const m = localStorage.getItem('mode');
-    setMode(m);
-    if (mode === 'system') {
-      document.body.className = isDark ? 'dark' : 'light';
+
+    if (m) {
+      setMode(m);
+      if (mode === 'system') {
+        document.body.className = isDark ? 'dark' : 'light';
+      } else {
+        document.body.className = m;
+      }
     } else {
-      document.body.className = m;
+      setMode('system');
+      document.body.className = isDark ? 'dark' : 'light';
     }
   }, []);
   return (
