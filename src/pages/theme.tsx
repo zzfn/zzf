@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import styles from 'styles/theme.module.scss';
-
+import useDark from 'hooks/useDark';
 function Theme(): JSX.Element {
+  const isDark = useDark();
   const [mode, setMode] = useState('system');
   function handleClick(mode) {
     setMode(mode);
-    document.body.className = mode;
+    if (mode === 'system') {
+      document.body.className = isDark ? 'dark' : 'light';
+    } else {
+      document.body.className = mode;
+    }
     localStorage.setItem('mode', mode);
   }
   useEffect(() => {
-    if (localStorage.getItem('mode')) {
-      setMode(localStorage.getItem('mode'));
-      document.body.className = localStorage.getItem('mode');
+    const m = localStorage.getItem('mode');
+    setMode(m);
+    if (mode === 'system') {
+      document.body.className = isDark ? 'dark' : 'light';
+    } else {
+      document.body.className = m;
     }
   }, []);
   return (
