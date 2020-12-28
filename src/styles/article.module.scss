@@ -70,12 +70,6 @@
   }
 
   .content {
-    @media (max-width: 768px) {
-      padding: 10px;
-    }
-    @media (min-width: 768px) {
-      padding: 20px;
-    }
     background: $color-bg-primary;
     margin: auto;
   }

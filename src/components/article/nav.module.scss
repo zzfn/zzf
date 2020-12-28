@@ -1,0 +1,19 @@
+
+.nav{
+  position: fixed; top: 80px;
+  list-style: circle;
+  background-color: #c8e1ff;
+  .navItem{
+    //border: 1px solid #ccc;
+    padding: 5px;
+    cursor: pointer;
+    &:hover{
+      background: var(--color-state-hover-secondary-bg);
+    }
+  }
+
+}
+.active{
+  color: var(--color-text-white);
+  background-color: var(--color-state-selected-primary-bg);
+}

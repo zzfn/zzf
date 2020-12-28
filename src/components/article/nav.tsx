@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import getTitle from 'md-match';
+import styles from './nav.module.scss';
 interface NavProps {
   source: string;
 }
 const Nav: React.FC<NavProps> = ({ source }) => {
   const [list, setList] = useState([]);
+  const [current, setCurrent] = useState('');
   useEffect(() => {
     const matchResult = getTitle(source);
     if (matchResult) {
@@ -31,20 +33,25 @@ const Nav: React.FC<NavProps> = ({ source }) => {
         }
       });
       const hash = window.location.hash;
-      const e = document.querySelector(`[data-id = ${hash.replace('#', '')}]`);
-      e.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+      if (hash) {
+        const e = document.querySelector(`[data-id = ${hash.replace('#', '')}]`);
+        e.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        setCurrent(hash.replace('#', ''));
+      }
     }
   }, []);
   return (
-    <ul style={{ position: 'fixed', top: '80px' }}>
+    <ul className={styles.nav}>
       {list.map((nav) => (
         <li
           onClick={() => {
             window.location.hash = `heading-${nav.index}`;
             const e = document.querySelector(`[data-id = heading-${nav.index}]`);
             e.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+            setCurrent(`heading-${nav.index}`);
           }}
-          style={{ marginLeft: `${nav.level * 10}px`, border: '1px solid #ccc' }}
+          className={`${styles.navItem} ${current === 'heading-' + nav.index ? styles.active : ''}`}
+          style={{ marginLeft: `${nav.level * 10}px` }}
           key={nav.index}
         >
           {nav.text}
