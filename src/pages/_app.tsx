@@ -3,7 +3,6 @@ import Head from 'next/head';
 import 'styles/variable.scss';
 import 'styles/globals.scss';
 import 'styles/response.scss';
-import 'markdown-navbar/dist/navbar.css';
 import 'styles/markdown.scss';
 import 'styles/theme.scss';
 import 'highlight.js/styles/rainbow.css';
@@ -11,12 +10,9 @@ import Zooming from 'zooming';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import Main from 'components/main/main';
-import useDark from 'hooks/useDark';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
-  const isDark = useDark();
-
   useEffect(() => {
     const zooming = new Zooming({
       enableGrab: false,

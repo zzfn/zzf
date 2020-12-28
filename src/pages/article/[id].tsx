@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { getArticle, listArchives } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
-import MarkdownNavbar from 'markdown-navbar';
 import Progress from 'components/article/Progress';
+import Nav from 'components/article/nav';
 
-export default function ArticleDetail(props) {
+interface ServerProps {
+  serverProps: any;
+}
+
+const ArticleDetail: React.FC<ServerProps> = (props) => {
   const { serverProps = {} } = props;
   return (
     <div className={styles.detail}>
@@ -46,16 +50,11 @@ export default function ArticleDetail(props) {
         />
       </div>
       <div className={styles.sidebar}>
-        <MarkdownNavbar
-          ordered={false}
-          className={'markdown-nav'}
-          headingTopOffset={80}
-          source={serverProps.content}
-        />
+        <Nav source={serverProps.content} />
       </div>
     </div>
   );
-}
+};
 
 export async function getStaticPaths() {
   const { data } = await listArchives({});
@@ -88,3 +87,5 @@ export async function getStaticProps(context) {
     };
   }
 }
+
+export default ArticleDetail;

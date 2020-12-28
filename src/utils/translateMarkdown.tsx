@@ -21,6 +21,6 @@ export const translateMarkdown = (text = '') => {
     smartLists: true,
     smartypants: true,
     xhtml: true,
-    headerIds: true,
+    headerIds: false,
   });
 };
