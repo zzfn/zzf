@@ -5,12 +5,14 @@ import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Progress from 'components/article/Progress';
 import Nav from 'components/article/nav';
+import useLg from '../../hooks/useLg';
 
 interface ServerProps {
   serverProps: any;
 }
 
 const ArticleDetail: React.FC<ServerProps> = (props) => {
+  const isLag = useLg();
   const { serverProps = {} } = props;
   return (
     <div className={styles.detail}>
@@ -49,9 +51,11 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
           }}
         />
       </div>
-      <div className={styles.sidebar}>
-        <Nav source={serverProps.content} />
-      </div>
+      {isLag && (
+        <div className={styles.sidebar}>
+          <Nav source={serverProps.content} />
+        </div>
+      )}
     </div>
   );
 };
