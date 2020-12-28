@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './searchCard.module.scss';
 import { useRouter } from 'next/router';
 import { Tag } from 'components/Tag/Tag';
-import dayjs from 'dayjs';
-import abstractFn from '../../utils/abstractFn';
 
 interface SearchCardProps {
   dataSource: Article;
@@ -30,7 +28,7 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
       </h3>
       <div
         dangerouslySetInnerHTML={{
-          __html: abstractFn(dataSource.content),
+          __html: dataSource.content,
         }}
       />
       <ul>

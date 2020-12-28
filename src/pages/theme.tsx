@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from 'styles/theme.module.scss';
-import useDark from 'hooks/useDark';
+
 function Theme(): JSX.Element {
-  const isDark = useDark();
   const [mode, setMode] = useState('system');
   function handleClick(mode) {
     setMode(mode);
