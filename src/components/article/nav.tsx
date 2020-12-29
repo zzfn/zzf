@@ -8,6 +8,9 @@ const Nav: React.FC<NavProps> = ({ source }) => {
   const [list, setList] = useState([]);
   const [current, setCurrent] = useState('');
   useEffect(() => {
+    window.onhashchange = function () {
+      setCurrent(window.location.hash.replace('#', ''));
+    };
     const matchResult = getTitle(source);
     if (matchResult) {
       const navData = matchResult.map((r, i) => ({
@@ -19,9 +22,10 @@ const Nav: React.FC<NavProps> = ({ source }) => {
       const zxxObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            console.log(entry.target.getAttribute('data-id'));
+            window.location.hash = entry.target.getAttribute('data-id');
+            // console.log(entry.target.getAttribute('data-id'));
           } else {
-            console.log(entry.target.getAttribute('data-id'));
+            // console.log(entry.target.getAttribute('data-id'));
           }
         });
       });
