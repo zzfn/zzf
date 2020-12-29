@@ -20,11 +20,12 @@ const Nav: React.FC<NavProps> = ({ source }) => {
       }));
       setList(navData);
       const zxxObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
+        entries.reverse().forEach(function (entry) {
           if (entry.isIntersecting) {
             window.location.hash = entry.target.getAttribute('data-id');
             // console.log(entry.target.getAttribute('data-id'));
           } else {
+            console.log(entry.target);
             // console.log(entry.target.getAttribute('data-id'));
           }
         });
