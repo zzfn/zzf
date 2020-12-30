@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: 'https://service.zzfzzf.com',
+  baseUrl: 'https://service.zzfzzf.com/article',
 };
