@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useMedia = (query: string, defaultState = false) => {
-  const [state, setState] = useState(
-    typeof window === 'object' ? () => window.matchMedia(query).matches : defaultState,
-  );
+  const [state, setState] = useState(defaultState);
 
   useEffect(() => {
     let mounted = true;
