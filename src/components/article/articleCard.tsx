@@ -13,7 +13,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
   return (
     <div className={styles.card}>
       <div className={styles.time}>{dayjs(dataSource.createTime).format('YYYY-MM-DD')}</div>
-      <Link prefetch={false} href={`/article/${dataSource.id}`}>
+      <Link href={`/article/${dataSource.id}`}>
         <a>
           <h3>
             {dataSource.orderNum ? <Tag color='#9494E3'>置顶</Tag> : null}
@@ -25,7 +25,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
       </Link>
       <ul>
         <li title={'标签'}>
-          <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
+          <Link href={`/tag/${dataSource.tag}`}>
             <a>
               <Tags>{dataSource.tagDesc}</Tags>
             </a>
