@@ -4,15 +4,19 @@ import styles from 'styles/home.module.scss';
 import { listArticles } from 'api/article';
 import ArticleCard from 'components/article/articleCard';
 import Page from 'components/page/Page';
+import Loading from '../components/loading/Loading';
 export default function Home(props): JSX.Element {
   const { serverProps } = props;
   const [total, setTotal] = useState(serverProps.total);
   const [click, setClick] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(serverProps.current);
   const [records, setRecords] = useState(serverProps.records);
 
   async function change() {
+    setLoading(true);
     const { data } = await listArticles({ pageNumber: page, pageSize: 10 });
+    setLoading(false);
     setTotal(data.total);
     setPage(data.current);
     setRecords(data.records);
@@ -28,9 +32,11 @@ export default function Home(props): JSX.Element {
       <Head>
         <title>首页~zzf</title>
       </Head>
-      {records.map((item: Article) => (
-        <ArticleCard key={item.id} dataSource={item} />
-      ))}
+      <Loading loading={loading}>
+        {records.map((item: Article) => (
+          <ArticleCard key={item.id} dataSource={item} />
+        ))}
+      </Loading>
       <Page
         current={page}
         total={total}
