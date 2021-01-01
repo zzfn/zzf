@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from 'styles/home.module.scss';
 import { listArticles } from 'api/article';
@@ -34,10 +34,10 @@ export default function Home(props): JSX.Element {
       <Page
         current={page}
         total={total}
-        onChange={(v) => {
+        onChange={useCallback((v) => {
           setClick(true);
           setPage(v);
-        }}
+        }, [])}
       />
     </div>
   );
