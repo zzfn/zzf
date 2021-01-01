@@ -28,3 +28,4 @@
 - Nginx
 - Hutool
 - nacos
+- sentinel
