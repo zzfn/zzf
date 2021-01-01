@@ -1,3 +1,4 @@
 module.exports = {
-  baseUrl: 'http://localhost:8762',
+  baseUrl: 'https://service.zzfzzf.com',
+  // baseUrl: 'http://localhost:8762',
 };
