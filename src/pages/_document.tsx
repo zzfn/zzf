@@ -21,7 +21,7 @@ class MyDocument extends Document {
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
         </Head>
-        <body>
+        <body className={'light'}>
           <Main />
           <NextScript />
         </body>
