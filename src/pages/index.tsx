@@ -38,6 +38,7 @@ export default function Home(props): JSX.Element {
         ))}
       </Loading>
       <Page
+        loading={loading}
         current={page}
         total={total}
         onChange={useCallback((v) => {

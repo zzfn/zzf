@@ -1,14 +1,29 @@
+.loadingWrap{
+  position: relative;
+  .mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
 .loading,
 .loading:before,
 .loading:after {
-  background: #783b3b;
+  background: var(--color-text-secondary);
   -webkit-animation: load1 1s infinite ease-in-out;
   animation: load1 1s infinite ease-in-out;
   width: 1em;
   height: 4em;
 }
 .loading {
-  color: #783b3b;
+  color: var(--color-text-secondary);
   text-indent: -9999em;
   margin: 88px auto;
   position: relative;
