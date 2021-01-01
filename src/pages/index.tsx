@@ -7,7 +7,8 @@ import Page from 'components/page/Page';
 export default function Home(props): JSX.Element {
   const { serverProps } = props;
   const [total, setTotal] = useState(serverProps.total);
-  const [page, setPage] = useState(serverProps.page);
+  const [click, setClick] = useState(false);
+  const [page, setPage] = useState(serverProps.current);
   const [records, setRecords] = useState(serverProps.records);
 
   async function change() {
@@ -18,7 +19,9 @@ export default function Home(props): JSX.Element {
   }
 
   useEffect(() => {
-    change();
+    if (click) {
+      change();
+    }
   }, [page]);
   return (
     <div className={styles.home}>
@@ -28,7 +31,14 @@ export default function Home(props): JSX.Element {
       {records.map((item: Article) => (
         <ArticleCard key={item.id} dataSource={item} />
       ))}
-      <Page current={page} total={total} onChange={(v) => setPage(v)} />
+      <Page
+        current={page}
+        total={total}
+        onChange={(v) => {
+          setClick(true);
+          setPage(v);
+        }}
+      />
     </div>
   );
 }
