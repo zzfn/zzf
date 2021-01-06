@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import styles from 'styles/home.module.scss';
 import { listArticles } from 'api/article';
