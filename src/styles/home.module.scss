@@ -1,4 +1,11 @@
 @import "variable";
 .home{
   min-height: $min-height;
+  .more{
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-link);
+  }
 }

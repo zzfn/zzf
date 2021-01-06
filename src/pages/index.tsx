@@ -1,51 +1,29 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import styles from 'styles/home.module.scss';
 import { listArticles } from 'api/article';
 import ArticleCard from 'components/article/articleCard';
-import Page from 'components/page/Page';
-import Loading from '../components/loading/Loading';
+
 export default function Home(props): JSX.Element {
   const { serverProps } = props;
-  const [total, setTotal] = useState(serverProps.total);
-  const [click, setClick] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(serverProps.current);
   const [records, setRecords] = useState(serverProps.records);
-
-  async function change() {
-    setLoading(true);
-    const { data } = await listArticles({ pageNumber: page, pageSize: 10 });
-    setLoading(false);
-    setTotal(data.total);
+  async function handleLoad(cur) {
+    const { data } = await listArticles({ pageNumber: cur, pageSize: 10 });
+    setRecords([...records, ...data.records]);
     setPage(data.current);
-    setRecords(data.records);
   }
-
-  useEffect(() => {
-    if (click) {
-      change();
-    }
-  }, [page]);
   return (
     <div className={styles.home}>
       <Head>
         <title>首页~zzf</title>
       </Head>
-      <Loading loading={loading}>
-        {records.map((item: Article) => (
-          <ArticleCard key={item.id} dataSource={item} />
-        ))}
-      </Loading>
-      <Page
-        loading={loading}
-        current={page}
-        total={total}
-        onChange={useCallback((v) => {
-          setClick(true);
-          setPage(v);
-        }, [])}
-      />
+      {records.map((item: Article) => (
+        <ArticleCard key={item.id} dataSource={item} />
+      ))}
+      <div className={styles.more} onClick={() => handleLoad(page + 1)}>
+        点击加载更多
+      </div>
     </div>
   );
 }
