@@ -23,7 +23,7 @@ export default function Home(props): JSX.Element {
       <Head>
         <title>首页~zzf</title>
       </Head>
-      <Loading noMore={noMore} key={page.current} onLoad={() => handleLoad()}>
+      <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>
         {records.map((item: Article) => (
           <ArticleCard key={item.id} dataSource={item} />
         ))}
