@@ -1,29 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import styles from 'styles/home.module.scss';
 import { listArticles } from 'api/article';
 import ArticleCard from 'components/article/articleCard';
+import Loading from '../components/loading/Loading';
 
 export default function Home(props): JSX.Element {
   const { serverProps } = props;
-  const [page, setPage] = useState(serverProps.current);
+  const page = useRef(serverProps.current);
+  const [noMore, setNoMore] = useState(false);
   const [records, setRecords] = useState(serverProps.records);
-  async function handleLoad(cur) {
-    const { data } = await listArticles({ pageNumber: cur, pageSize: 10 });
+
+  async function handleLoad() {
+    const { data } = await listArticles({ pageNumber: page.current + 1, pageSize: 10 });
     setRecords([...records, ...data.records]);
-    setPage(data.current);
+    setNoMore(data.records.length === 0);
+    page.current = data.current;
   }
+
   return (
     <div className={styles.home}>
       <Head>
         <title>首页~zzf</title>
       </Head>
-      {records.map((item: Article) => (
-        <ArticleCard key={item.id} dataSource={item} />
-      ))}
-      <div className={styles.more} onClick={() => handleLoad(page + 1)}>
-        点击加载更多
-      </div>
+      <Loading noMore={noMore} key={page.current} onLoad={() => handleLoad()}>
+        {records.map((item: Article) => (
+          <ArticleCard key={item.id} dataSource={item} />
+        ))}
+      </Loading>
     </div>
   );
 }

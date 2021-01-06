@@ -1,18 +1,4 @@
 @import "variable";
 .home{
   min-height: $min-height;
-  .more{
-    margin: 5px 0;
-    cursor: pointer;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text-link);
-    &:hover{
-      transition: .3s;
-      background-color: var(--color-bg-info-inverse);
-      color:var(--color-btn-primary-text)
-    }
-  }
 }
