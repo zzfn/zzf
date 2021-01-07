@@ -51,11 +51,11 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
           }}
         />
       </div>
-      {isLag && (
-        <div className={styles.sidebar}>
-          <Nav source={serverProps.content} />
-        </div>
-      )}
+      {/*{isLag && (*/}
+      {/*  <div className={styles.sidebar}>*/}
+      {/*    <Nav source={serverProps.content} />*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </div>
   );
 };

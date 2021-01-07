@@ -3,9 +3,13 @@
   position: fixed; top: 80px;
   list-style: circle;
   background-color: #c8e1ff;
+  padding: 10px 5px;
   .navItem{
-    //border: 1px solid #ccc;
-    padding: 5px;
+    width: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 2px;
     cursor: pointer;
     &:hover{
       background: var(--color-state-hover-secondary-bg);
