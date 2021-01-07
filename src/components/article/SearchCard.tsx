@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './searchCard.module.scss';
 import { useRouter } from 'next/router';
-import { Tag } from 'components/Tag/Tag';
+import { Tags } from 'components/Tags/Tags';
 
 interface SearchCardProps {
   dataSource: Article;
@@ -33,13 +33,13 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
       />
       <ul>
         <li title={'标签'}>
-          <Tag color='#333'>
+          <Tags>
             <div
               dangerouslySetInnerHTML={{
                 __html: dataSource.tagDesc,
               }}
             />
-          </Tag>
+          </Tags>
         </li>
         <li title={'浏览量'}>
           <span className={styles.num}>{dataSource.viewCount}</span>
