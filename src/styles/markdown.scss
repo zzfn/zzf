@@ -1,5 +1,5 @@
 .markdown-template {
-  color: #595959;
+  color: var(--color-text-secondary);
   a {
     //display: inline-block;
     //padding: 12px;
@@ -20,20 +20,9 @@
     box-sizing: border-box;
     padding: 3px;
   }
-  h1,
-  h4,
-  h5,
-  h6 {
-    color: #40b8fa;
-    &::before {
-      content: '📌';
-      display: inline-block;
-      margin-right: 10px;
-    }
-    transition: .2s;
-  }
-  h2{
-    color: #40b8fa;
+
+  h1,h2{
+    color: var(--color-text-primary);
     position: relative;
     padding-left: 16px;
     padding-right: 10px;
@@ -53,19 +42,19 @@
       right: auto;
     }
   }
-  h3{
+  h3,h4,h5,h6{
     position: relative;
     padding-bottom: 0;
     margin-top: 30px;
     margin-bottom: 10px;
     font-size: 20px;
     line-height: 1.5;
-    color: #005bb7;
+    color: var(--color-text-primary);
     padding-left: 6px;
     &:before{
       content: "»";
       padding-right: 6px;
-      color: #2196f3;
+      color: inherit;
     }
   }
   code {
@@ -77,12 +66,13 @@
     font-size: 13px;
   }
   pre {
+    border: 1px solid var(--color-alert-info-border);
     border-radius: 5px;
     padding: 10px;
     margin: 20px 0;
     font-size: 13px;
     color: #cfd2d1;
-    background: #151718;
+    background: var(--color-bg-canvas);
     line-height: 1.6;
     overflow: auto;
 
@@ -101,15 +91,15 @@
   blockquote {
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid rgba(64, 184, 250, 0.4);
-    background: rgba(64, 184, 250, 0.1);
+    border: 1px solid var(--color-alert-info-border);
+    background: var(--color-bg-canvas);
     border-radius: 6px;
     &::after {
       display: block;
       content: '';
     }
     p {
-      color: #595959;
+      color: var(--color-alert-info-text);
       padding: 8px;
       font-size: 14px;
       line-height: 26px;
@@ -127,7 +117,7 @@
     margin-bottom: 10px;
     thead{
       tr{
-        background: #F8F8F8;
+        background: var(--color-bg-canvas);
       }
     }
     th{
@@ -135,7 +125,7 @@
       border: 1px solid #ddd;
     }
     tr{
-      background-color: #fff;
+      background-color: var(--color-bg-canvas);
       border-top: 1px solid #ccc;
     }
     td{
