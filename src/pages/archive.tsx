@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { listArchives } from 'services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
-import { Tag } from 'components/Tag/Tag';
 import { Tags } from '../components/Tags/Tags';
 
 interface ArchiveProps {
