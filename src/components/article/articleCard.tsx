@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './articleCard.module.scss';
-import { Tag } from 'components/Tag/Tag';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { Tags } from 'components/Tags/Tags';
@@ -16,7 +15,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
       <Link href={`/article/${dataSource.id}`}>
         <a target={'_blank'}>
           <h3>
-            {dataSource.orderNum ? <Tag color='#9494E3'>置顶</Tag> : null}
+            {dataSource.orderNum ? <Tags>置顶</Tags> : null}
             <span className={styles.title} style={{ marginLeft: '10px' }}>
               {dataSource.title}
             </span>
