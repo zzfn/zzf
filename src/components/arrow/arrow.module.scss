@@ -5,8 +5,14 @@
   border-radius: 6px;
   color: $color-text-primary;
   line-height: 20px;
+  box-shadow: 18px 18px 30px rgba(0, 0, 0, 0.2),
+  -18px -18px 30px rgba(255, 255, 255, 1);
+  transition: all 0.2s ease-out;
   &:hover{
     color: var(--color-text-link);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 rgba(255, 255, 255, 0.8),
+    inset 18px 18px 30px rgba(0, 0, 0, 0.1),
+    inset -18px -18px 30px rgba(255, 255, 255, 1);
   }
   .content{
     padding: 5px 15px;
@@ -17,5 +23,4 @@
     padding: 5px 10px;
     position: relative;
   }
-
 }
