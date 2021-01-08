@@ -1,14 +1,18 @@
 import React from 'react';
 import Head from 'next/head';
 import styles from 'styles/about.module.scss';
-
+import pkg from '../version.json';
 export default function About({ serverProps }): JSX.Element {
   return (
     <div className={styles.about}>
       <Head>
         <title>关于~zzf</title>
       </Head>
-      <header>zzfn 上次修改2020.12.20</header>
+      <main>
+        <header>生产环境版本</header>
+        <pre>{JSON.stringify(pkg, null, 2)}</pre>
+      </main>
+      <hr />
       <article>
         <ul>
           <li>github风格博客，使用github主题色</li>
