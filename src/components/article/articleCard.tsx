@@ -3,6 +3,7 @@ import styles from './articleCard.module.scss';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { Tags } from 'components/Tags/Tags';
+import { diff } from '../../utils/time';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -36,10 +37,10 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
           <Tags>{dataSource.viewCount}</Tags>
         </li>
         <li className={styles.time} title={'发布时间'}>
-          Created {dayjs(dataSource.createTime).format('YYYY-MM-DD')}
+          Created {diff(dataSource.createTime)}
         </li>
         <li className={styles.time} title={'更新时间'}>
-          Updated {dayjs(dataSource.updateTime).format('YYYY-MM-DD')}
+          Updated {diff(dataSource.updateTime)}
         </li>
       </ul>
     </div>
