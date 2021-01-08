@@ -5,14 +5,14 @@ import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Progress from 'components/article/Progress';
 import Nav from 'components/article/nav';
-import useLg from '../../hooks/useLg';
+import useLg from 'hooks/useLg';
 
 interface ServerProps {
   serverProps: any;
 }
 
 const ArticleDetail: React.FC<ServerProps> = (props) => {
-  const isLag = useLg();
+  const isLg = useLg();
   const { serverProps = {} } = props;
   return (
     <div className={styles.detail}>
@@ -20,7 +20,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
         <title>{serverProps.title}~zzf</title>
       </Head>
       <Progress />
-      <div className={styles.left}>
+      <main className={styles.article}>
         <div className={styles.title}>
           <h1>{serverProps.title}</h1>
         </div>
@@ -44,18 +44,18 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
             </li>
           </ul>
         </div>
-        <div
+        <article
           className={['markdown-template', styles.content].join(' ')}
           dangerouslySetInnerHTML={{
             __html: translateMarkdown(serverProps.content),
           }}
         />
-      </div>
-      {/*{isLag && (*/}
-      {/*  <div className={styles.sidebar}>*/}
-      {/*    <Nav source={serverProps.content} />*/}
-      {/*  </div>*/}
-      {/*)}*/}
+      </main>
+      {isLg && (
+        <aside className={styles.sidebar}>
+          <Nav source={serverProps.content} />
+        </aside>
+      )}
     </div>
   );
 };

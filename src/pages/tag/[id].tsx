@@ -1,5 +1,5 @@
 import React from 'react';
-import { getArticle, listArchives, listTags } from 'services/article';
+import { listArchives, listTags } from 'services/article';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';

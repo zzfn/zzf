@@ -1,81 +1,73 @@
 @import "variable";
+
 .detail {
-  position: relative;
-  box-sizing:border-box;
   font-size:1.1rem;
-  overflow:hidden;
-  padding:10px 0;
-  margin-bottom:2rem;
-  :global {
-    .active {
-      color: #52c41a;
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0;
+  margin-bottom: 2rem;
+  .article{
+    @media (max-width: 767.98px) {
+      width: 100%;
     }
-  }
-  .left{
-    position: relative;
-  }
-.nav{
-  @media (max-width: 768px) {
-    display: none;
-  }
-  @media (min-width: 768px) {
-    float: right;
-    width: 30%;
-  }
-
-}
-  .title {
-    width: 100%;
-    margin: auto;
-    padding: 30px;
-    background: rgb(0, 59, 92);
-
-    h1 {
-      font-family: japanese;
-      font-size: 2.0736rem;
-      line-height: 1.2;
-      color: #fff;
-      text-shadow: 1px 1px #333;
-      margin-bottom: 12px;
+    @media (min-width: 768px){
+      width: 85%;
     }
-  }
+    .title {
+      width: 100%;
+      margin: auto;
+      padding: 30px;
+      background: rgb(0, 59, 92);
 
-  .tip {
-    color: $color-text-primary;
-    padding: 20px 30px;
-    background-color: $color-bg-primary;
-    overflow: hidden;
-    margin: 0 auto 16px;
-    font-size: 14px;
-    line-height: 20px;
-    vertical-align: middle;
-
-    ul {
-      list-style: none;
-      display: flex;
-      @media (max-width: 768px) {
-        flex-flow: column;
+      h1 {
+        font-size: 2.0736rem;
+        line-height: 1.2;
+        color: #fff;
+        text-shadow: 1px 1px #333;
+        margin-bottom: 12px;
       }
+    }
 
-      li {
-        margin-right: 20px;
+    .tip {
+      color: $color-text-primary;
+      padding: 20px 30px;
+      background-color: $color-bg-primary;
+      overflow: hidden;
+      margin: 0 auto 16px;
+      font-size: 14px;
+      line-height: 20px;
+      vertical-align: middle;
 
-        span {
-          &::after {
-            content: ':';
+      ul {
+        list-style: none;
+        display: flex;
+        @media (max-width: 768px) {
+          flex-flow: column;
+        }
+
+        li {
+          margin-right: 20px;
+
+          span {
+            &::after {
+              content: ':';
+            }
           }
         }
       }
     }
+    .content {
+      background: $color-bg-primary;
+      margin: auto;
+    }
   }
 
-  .content {
-    background: $color-bg-primary;
-    margin: auto;
+  .sidebar {
+    position: absolute;
+    right: 0;
+    @media (min-width: 768px){
+      width: 15%;
+    }
   }
 }
-.sidebar{
-  width: 20rem;
-  position: absolute;
-  right: -20rem;
-}
+

@@ -2,8 +2,8 @@
 .nav{
   position: fixed; top: 80px;
   list-style: circle;
-  background-color: #c8e1ff;
-  padding: 10px 5px;
+  padding: 0 5px;
+  color:var(--color-text-primary);
   .navItem{
     width: 150px;
     white-space: nowrap;
@@ -12,12 +12,12 @@
     padding: 2px;
     cursor: pointer;
     &:hover{
-      background: var(--color-state-hover-secondary-bg);
+      color: var(--color-text-link);
     }
   }
 
 }
 .active{
-  color: var(--color-text-white);
-  background-color: var(--color-state-selected-primary-bg);
+  font-weight: 700;
+  color: var(--color-text-link);
 }

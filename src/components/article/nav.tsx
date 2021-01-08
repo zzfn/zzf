@@ -22,8 +22,7 @@ const Nav: React.FC<NavProps> = ({ source }) => {
       const zxxObserver = new IntersectionObserver(function (entries) {
         entries.reverse().forEach(function (entry) {
           if (entry.isIntersecting) {
-            window.location.hash = entry.target.getAttribute('data-id');
-            // console.log(entry.target.getAttribute('data-id'));
+            setCurrent(entry.target.getAttribute('data-id'));
           } else {
             console.log(entry.target);
             // console.log(entry.target.getAttribute('data-id'));
@@ -56,7 +55,7 @@ const Nav: React.FC<NavProps> = ({ source }) => {
             setCurrent(`heading-${nav.index}`);
           }}
           className={`${styles.navItem} ${current === 'heading-' + nav.index ? styles.active : ''}`}
-          style={{ marginLeft: `${nav.level * 10}px` }}
+          style={{ marginLeft: `${(nav.level - 1) * 10}px` }}
           key={nav.index}
         >
           {nav.text}
