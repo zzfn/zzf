@@ -1,32 +1,39 @@
 @import "src/styles/variable";
-.card{
+
+.card {
   color: $color-text-primary;
   background: $color-bg-primary;
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px dashed #ccc;
-  .time{
+
+  .time {
     font-size: 12px;
-    color: #ccc;
+    color: $color-text-tertiary;
+    display: flex;
   }
-  h3{
+
+  .title {
+    font-weight: 700;
     font-size: 18px;
     color: $color-text-primary;
-    .title{
-      cursor: pointer;
-    }
-    &:hover{
-      color: $color-text-tertiary;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
-  ul{
+
+  ul {
     margin-top: 5px;
     list-style: none;
     display: flex;
     align-items: center;
-    li{
-      width: 100px;
-      .num{
+
+    li {
+      margin-right: 15px;
+
+      .num {
         font-size: 12px;
       }
     }

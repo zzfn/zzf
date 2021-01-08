@@ -11,19 +11,20 @@ interface ArticleCardProps {
 export default function ArticleCard<ArticleCardProps>({ dataSource }) {
   return (
     <div className={styles.card}>
-      <div className={styles.time}>{dayjs(dataSource.createTime).format('YYYY-MM-DD')}</div>
-      <Link href={`/article/${dataSource.id}`}>
-        <a target={'_blank'}>
-          <h3>
-            {dataSource.orderNum ? <Tags>置顶</Tags> : null}
-            <span className={styles.title} style={{ marginLeft: '10px' }}>
-              {dataSource.title}
-            </span>
-          </h3>
-        </a>
-      </Link>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Link href={`/article/${dataSource.id}`}>
+          <a className={styles.title} target={'_blank'}>
+            {dataSource.title}
+          </a>
+        </Link>
+        {dataSource.orderNum ? <Tags>置顶</Tags> : null}
+      </div>
+      <p style={{ padding: '0 10px' }}>
+        {dataSource.content.match(/[\u4e00-\u9fa5\w]/g).slice(0, 100)}
+      </p>
       <ul>
         <li title={'标签'}>
+          标签
           <Link href={`/tag/${dataSource.tag}`}>
             <a>
               <Tags>{dataSource.tagDesc}</Tags>
@@ -31,7 +32,14 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
           </Link>
         </li>
         <li title={'浏览量'}>
-          <span className={styles.num}>{dataSource.viewCount}</span>
+          浏览量
+          <Tags>{dataSource.viewCount}</Tags>
+        </li>
+        <li className={styles.time} title={'发布时间'}>
+          Created {dayjs(dataSource.createTime).format('YYYY-MM-DD')}
+        </li>
+        <li className={styles.time} title={'更新时间'}>
+          Updated {dayjs(dataSource.updateTime).format('YYYY-MM-DD')}
         </li>
       </ul>
     </div>
