@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-export function diff(time) {
+export function diff(time: string): string {
   if (dayjs().diff(time, 'minute') < 60) {
     return `${dayjs().diff(time, 'minute')}分钟前`;
   } else if (dayjs().diff(time, 'hour') < 24) {

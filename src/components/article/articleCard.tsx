@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './articleCard.module.scss';
-import dayjs from 'dayjs';
 import Link from 'next/link';
 import { Tags } from 'components/Tags/Tags';
 import { diff } from '../../utils/time';
