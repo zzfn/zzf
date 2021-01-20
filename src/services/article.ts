@@ -17,5 +17,5 @@ export const listArchives = (params: any): Promise<Res<any>> => {
 };
 
 export const esList = (params: any): Promise<Res<any>> => {
-  return http('get', '/search/non/article/list', { params });
+  return http('get', '/article/non/search', { params });
 };
