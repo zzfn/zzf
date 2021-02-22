@@ -20,14 +20,12 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
     <div className={styles.card}>
       <Link href={`/article/${dataSource.id}`}>
         <a className={styles.title} target={'_blank'}>
-          <h3 onClick={() => toDetail(dataSource.id)}>
-            <span className={styles.title} style={{ marginLeft: '10px' }}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: dataSource.title,
-                }}
-              />
-            </span>
+          <h3 className={styles.title} style={{ marginLeft: '10px' }}>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: dataSource.title,
+              }}
+            />
           </h3>
         </a>
       </Link>
