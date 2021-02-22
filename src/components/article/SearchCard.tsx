@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './searchCard.module.scss';
 import { useRouter } from 'next/router';
 import { Tags } from 'components/Tags/Tags';
+import Link from 'next/link';
 
 interface SearchCardProps {
   dataSource: Article;
@@ -17,15 +18,19 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
 
   return (
     <div className={styles.card}>
-      <h3 onClick={() => toDetail(dataSource.id)}>
-        <span className={styles.title} style={{ marginLeft: '10px' }}>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: dataSource.title,
-            }}
-          />
-        </span>
-      </h3>
+      <Link href={`/article/${dataSource.id}`}>
+        <a className={styles.title} target={'_blank'}>
+          <h3 onClick={() => toDetail(dataSource.id)}>
+            <span className={styles.title} style={{ marginLeft: '10px' }}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: dataSource.title,
+                }}
+              />
+            </span>
+          </h3>
+        </a>
+      </Link>
       <div
         dangerouslySetInnerHTML={{
           __html: dataSource.content,
