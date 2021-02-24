@@ -48,7 +48,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
         <title>归档~zzf</title>
       </Head>
       <header>
-        很好! 目前共计 <strong>{serverProps.length}</strong> 篇文章。 继续努力。
+        很好! 目前共计 <strong>{serverProps.length}</strong> 篇文章。 继续努力。⛽️
       </header>
       <div className={styles.timeLine}>
         {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
