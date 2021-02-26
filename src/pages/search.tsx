@@ -32,10 +32,10 @@ function Search(): JSX.Element {
               onChange={(event) => setKeyword(event.target.value)}
               value={keyword}
               type='search'
-              placeholder='elasticsearch强力驱动,输入完直接按回车即可'
+              placeholder='elasticsearch强力驱动'
             />
             <button className={styles.btn} type={'submit'}>
-              搜索
+              回车搜索
             </button>
           </form>
         </div>
