@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Friend(props) {
+function Friends() {
   return <div>建设中</div>;
 }
 
-export default Friend;
+export default Friends;
