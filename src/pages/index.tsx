@@ -21,7 +21,7 @@ export default function Home(props): JSX.Element {
   return (
     <div className={styles.home}>
       <Head>
-        <title>首页~zzf</title>
+        <title>首页~zzf～前端博客</title>
       </Head>
       <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>
         {records.map((item: Article) => (
