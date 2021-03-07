@@ -6,7 +6,7 @@ export default function About({ serverProps }): JSX.Element {
   return (
     <div className={styles.about}>
       <Head>
-        <title>关于~zzf</title>
+        <title>关于|zzfzzf|前端博客</title>
       </Head>
       <main>
         <header>生产环境版本</header>
