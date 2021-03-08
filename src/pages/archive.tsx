@@ -30,7 +30,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
         <ul>
           {list?.map((item) => (
             <li className={styles.item} key={item.id} style={{ borderBottom: '1px dashed #ccc' }}>
-              <span style={{ color: '#8a8a8a', marginRight: '10px' }}>
+              <span style={{ color: '#8a8a8a', marginRight: '10px', fontFamily: 'Helvetica Neue' }}>
                 {dayjs(item.createTime).format('YYYY-MM-DD')}
               </span>
               <Link href={`/article/${item.id}`}>
