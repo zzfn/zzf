@@ -31,10 +31,6 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
             </a>
           </Link>
         </li>
-        <li title={'浏览量'}>
-          浏览量
-          <Tags>{dataSource.viewCount}</Tags>
-        </li>
         <li className={styles.time} title={'发布时间'}>
           Created {diff(dataSource.createTime)}
         </li>
