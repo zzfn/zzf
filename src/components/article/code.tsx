@@ -10,7 +10,7 @@ export default function Code({ language, code }) {
           <div
             dangerouslySetInnerHTML={{
               __html: language
-                ? hljs.highlight(language, code).value
+                ? hljs.highlight(code, { language }).value
                 : hljs.highlightAuto(code).value,
             }}
           />
