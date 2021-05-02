@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { listArchives } from 'services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
-import { Tags } from '../components/Tags/Tags';
+import { Tag } from '@zzf/design';
 
 interface ArchiveProps {
   serverProps: any;
@@ -25,7 +25,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
     return (
       <div key={time}>
         <h3 className={styles.title}>
-          {time} 共 <Tags>{list.length}</Tags> 篇文章
+          {time} 共 <Tag>{list.length}</Tag> 篇文章
         </h3>
         <ul>
           {list?.map((item) => (
