@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import getTitle from 'md-match';
+import { Markdown } from '@zzf/toolkit';
 import styles from './nav.module.scss';
 interface NavProps {
   source: string;
@@ -11,7 +11,7 @@ const Nav: React.FC<NavProps> = ({ source }) => {
     window.onhashchange = function () {
       setCurrent(window.location.hash.replace('#', ''));
     };
-    const matchResult = getTitle(source);
+    const matchResult = Markdown.getTitle(source);
     if (matchResult) {
       const navData = matchResult.map((r, i) => ({
         index: i,
