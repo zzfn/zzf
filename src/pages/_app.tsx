@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import '@zzf/design/lib/index.min.css';
 import 'styles/variable.scss';
 import 'styles/globals.scss';
 import 'styles/response.scss';
