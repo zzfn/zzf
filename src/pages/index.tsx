@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
+import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import styles from 'styles/home.module.scss';
 import { listArticles } from 'api/article';
 import ArticleCard from 'components/article/articleCard';
 import Loading from '../components/loading/Loading';
-import { Os } from '@zzf/toolkit';
 export default function Home(props): JSX.Element {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
@@ -12,7 +12,7 @@ export default function Home(props): JSX.Element {
   const [records, setRecords] = useState(serverProps.records);
 
   async function handleLoad() {
-    console.log(Os);
+    console.log(Os.getBrowser());
     const { data } = await listArticles({ pageNumber: page.current + 1, pageSize: 10 });
     setRecords([...records, ...data.records]);
     setNoMore(data.records.length === 0);
