@@ -1,14 +1,17 @@
 .markdown-template {
   color: var(--color-text-secondary);
+
   a {
     text-decoration: none;
     color: #40b8fa;
     border-bottom: 1px solid #3baafa;
   }
+
   strong {
     color: #3594f7;
     font-weight: 700;
   }
+
   img {
     cursor: zoom-in;
     max-width: 100%;
@@ -17,7 +20,12 @@
     padding: 3px;
   }
 
-  h1,h2{
+  h1 {
+    color: var(--color-text-primary);
+    font-size: 30px;
+  }
+
+  h2 {
     color: var(--color-text-primary);
     position: relative;
     padding-left: 16px;
@@ -25,34 +33,53 @@
     padding-bottom: 10px;
     font-size: 24px;
     border-bottom: 1px solid #ececec;
-    &:before{
+
+    &:before {
       content: "「";
       position: absolute;
       top: -6px;
       left: -10px;
     }
-    &:after{
+
+    &:after {
       content: "」";
       position: absolute;
       top: 6px;
       right: auto;
     }
   }
-  h3,h4,h5,h6{
+
+  h3 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  h6 {
+    font-size: 12px;
+  }
+
+  h3, h4, h5, h6 {
     position: relative;
     padding-bottom: 0;
     margin-top: 30px;
-    margin-bottom: 10px;
-    font-size: 20px;
     line-height: 1.5;
     color: var(--color-text-primary);
     padding-left: 6px;
-    &:before{
+
+    &:before {
       content: "»";
       padding-right: 6px;
       color: inherit;
     }
   }
+
   code {
     padding: 0.065em 0.4em;
     word-wrap: break-word;
@@ -61,6 +88,7 @@
     border-radius: 3px;
     font-size: 13px;
   }
+
   pre {
     border: 1px solid var(--color-alert-info-border);
     border-radius: 5px;
@@ -77,23 +105,28 @@
       background: transparent;
     }
   }
+
   ul {
     padding-left: 20px;
+
     li {
       line-height: 2;
       list-style: circle;
     }
   }
+
   blockquote {
     margin: 10px 0;
     padding: 10px;
     border: 1px solid var(--color-alert-info-border);
     background: var(--color-bg-canvas);
     border-radius: 6px;
+
     &::after {
       display: block;
       content: '';
     }
+
     p {
       color: var(--color-alert-info-text);
       padding: 8px;
@@ -111,20 +144,24 @@
     overflow: auto;
     word-break: keep-all;
     margin-bottom: 10px;
-    thead{
-      tr{
+
+    thead {
+      tr {
         background: var(--color-bg-canvas);
       }
     }
-    th{
+
+    th {
       padding: 6px 13px;
       border: 1px solid #ddd;
     }
-    tr{
+
+    tr {
       background-color: var(--color-bg-canvas);
       border-top: 1px solid #ccc;
     }
-    td{
+
+    td {
       padding: 6px 13px;
       border: 1px solid #ddd;
     }
