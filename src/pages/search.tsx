@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { esList } from 'api/article';
+import { Button } from '@zzf/design';
 import SearchCard from 'components/article/SearchCard';
 import styles from 'styles/search.module.scss';
 import Head from 'next/head';
@@ -34,9 +35,7 @@ function Search(): JSX.Element {
               type='search'
               placeholder='elasticsearch强力驱动'
             />
-            <button className={styles.btn} type={'submit'}>
-              回车搜索
-            </button>
+            <Button>回车搜索</Button>
           </form>
         </div>
         <div style={{ padding: '0 10px' }}>

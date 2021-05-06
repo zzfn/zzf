@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import '@zzf/design/lib/bundle.css';
 import 'styles/variable.scss';
 import 'styles/globals.scss';
 import 'styles/response.scss';
 import 'styles/markdown.scss';
-import 'styles/theme.scss';
 import 'highlight.js/styles/rainbow.css';
 import Zooming from 'zooming';
 import Header from 'components/header/header';

@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start -p 9600"
   },
   "dependencies": {
+    "@zzf/design": "^1.0.0",
     "@zzf/toolkit": "^1.0.0",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",

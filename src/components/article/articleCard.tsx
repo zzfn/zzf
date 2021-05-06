@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './articleCard.module.scss';
 import Link from 'next/link';
-import { Tags } from 'components/Tags/Tags';
 import { diff } from '../../utils/time';
+import { Tag } from '@zzf/design';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -17,7 +17,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
             {dataSource.title}
           </a>
         </Link>
-        {dataSource.orderNum ? <Tags>置顶</Tags> : null}
+        {dataSource.orderNum ? <Tag>置顶</Tag> : null}
       </div>
       <p style={{ padding: '0 10px' }}>
         {dataSource.content.match(/[\u4e00-\u9fa5\w]/g).slice(0, 100)}
@@ -27,7 +27,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
           标签
           <Link href={`/tag/${dataSource.tag}`}>
             <a>
-              <Tags>{dataSource.tagDesc}</Tags>
+              <Tag>{dataSource.tagDesc}</Tag>
             </a>
           </Link>
         </li>
