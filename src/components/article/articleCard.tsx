@@ -25,7 +25,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
       <ul>
         <li title={'标签'}>
           标签
-          <Link href={`/tag/${dataSource.tag}`}>
+          <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
             <a>
               <Tag>{dataSource.tagDesc}</Tag>
             </a>
