@@ -8,6 +8,8 @@
     "start": "next start -p 9600"
   },
   "dependencies": {
+    "@sentry/react": "^6.3.6",
+    "@sentry/tracing": "^6.3.6",
     "@zzf/design": "^1.0.0",
     "@zzf/toolkit": "^1.0.0",
     "axios": "^0.21.1",
