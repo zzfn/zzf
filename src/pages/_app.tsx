@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
 import Head from 'next/head';
 import '@zzf/design/lib/bundle.css';
 import 'styles/variable.scss';
@@ -10,7 +12,11 @@ import Zooming from 'zooming';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import Main from 'components/main/main';
-
+Sentry.init({
+  dsn: "https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761",
+  integrations: [new Integrations.BrowserTracing()],
+  tracesSampleRate: 1.0,
+});
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
