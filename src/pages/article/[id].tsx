@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getArticle, listArchives } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
@@ -6,6 +6,7 @@ import Head from 'next/head';
 import Progress from 'components/article/Progress';
 import Nav from 'components/article/nav';
 import useLg from 'hooks/useLg';
+import Zooming from 'zooming';
 
 interface ServerProps {
   serverProps: any;
@@ -14,6 +15,17 @@ interface ServerProps {
 const ArticleDetail: React.FC<ServerProps> = (props) => {
   const isLg = useLg();
   const { serverProps = {} } = props;
+  useEffect(() => {
+    const imgList = document.querySelectorAll('.zoom');
+    const zooming = new Zooming({
+      enableGrab: false,
+      bgColor: 'rgb(0, 0, 0)',
+      bgOpacity: '0.5',
+    });
+    imgList.forEach(node => {
+      zooming.listen(node);
+    });
+  }, []);
   return (
     <div className={styles.detail}>
       <Head>
