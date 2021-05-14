@@ -7,7 +7,7 @@ export const translateMarkdown = (text = '') => {
     return renderToString(<Code language={language} code={code} />);
   };
   renderer.image = function (href, title, text) {
-    return `<div><img src=${href}  class="zoom" alt=${text} /></div>`;
+    return `<img loading="lazy" src=${href}  class="zoom" alt=${text} />`;
   };
   renderer.link = function (href, title, text) {
     return `<a target="_blank" href=${href}>${text}</a>`;
