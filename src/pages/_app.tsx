@@ -8,7 +8,6 @@ import 'styles/globals.scss';
 import 'styles/response.scss';
 import 'styles/markdown.scss';
 import 'highlight.js/styles/rainbow.css';
-import Zooming from 'zooming';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import Main from 'components/main/main';
@@ -19,14 +18,6 @@ Sentry.init({
 });
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    const zooming = new Zooming({
-      enableGrab: false,
-      bgColor: 'rgb(0, 0, 0)',
-      bgOpacity: '0.5',
-    });
-    zooming.listen('.zoom');
-  }, []);
   useEffect(() => {
     const m = localStorage.getItem('mode');
     if (m) {
