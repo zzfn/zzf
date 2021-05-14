@@ -20,15 +20,7 @@ ul {
 
 * {
   box-sizing: border-box;
-}
-
-@mixin layout {
-  font: {
-    family: Arial;
-    size: 20px;
-    weight: bold;
-  }
-  color: #ff0000;
+  font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial;
 }
 
 body {
