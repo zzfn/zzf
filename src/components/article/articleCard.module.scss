@@ -6,7 +6,10 @@
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px dashed #ccc;
-
+  cursor: pointer;
+  &:hover{
+    background: var(--color-bg-secondary);
+  }
   p {
     overflow: hidden;
     text-overflow: ellipsis;
