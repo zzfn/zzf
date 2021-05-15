@@ -1,17 +1,20 @@
 @import "variable";
+@import "color";
 
 .detail {
-  font-size:1.1rem;
+  font-size: 1.1rem;
   position: relative;
   padding: 10px 0;
   margin-bottom: 2rem;
-  .article{
+
+  .article {
     @media (max-width: 767.98px) {
       width: 100%;
     }
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
       width: 85%;
     }
+
     .title {
       width: 100%;
       margin: auto;
@@ -55,6 +58,7 @@
         }
       }
     }
+
     .content {
       background: $color-bg-primary;
       margin: auto;
@@ -64,7 +68,7 @@
   .sidebar {
     position: absolute;
     right: 0;
-    @media (min-width: 768px){
+    @media (min-width: 768px) {
       width: 15%;
     }
   }

@@ -23,15 +23,6 @@ ul {
   font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial;
 }
 
-@mixin layout {
-  font: {
-    family: Arial;
-    size: 20px;
-    weight: bold;
-  }
-  color: #ff0000;
-}
-
 body {
   @media (min-width: 1012px) {
     background: $color-bg-primary;

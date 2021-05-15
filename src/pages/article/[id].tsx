@@ -24,7 +24,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
       bgColor: 'rgb(0, 0, 0)',
       bgOpacity: '0.5',
     });
-    imgList.forEach(node => {
+    imgList.forEach((node) => {
       zooming.listen(node);
     });
   }, []);
@@ -45,19 +45,19 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
             <div className={styles.tip}>
               <ul>
                 <li>
-                  <span>标签</span>
+                  <span className={'col-1'}>标签</span>
                   {serverProps.tagDesc}
                 </li>
                 <li>
-                  <span>阅读量</span>
+                  <span className={'col-2'}>阅读量</span>
                   {serverProps.viewCount}
                 </li>
                 <li>
-                  <span>发布于</span>
+                  <span className={'col-3'}>发布于</span>
                   {serverProps.createTime}
                 </li>
                 <li>
-                  <span>更新于</span>
+                  <span className={'col-4'}>更新于</span>
                   {serverProps.updateTime}
                 </li>
               </ul>

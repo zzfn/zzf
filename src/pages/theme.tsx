@@ -1,9 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import styles from 'styles/theme.module.scss';
+import { Tabs } from '@zzf/design';
+
+const options = [
+  {
+    value: 'light',
+    label: '浅色',
+  },
+  {
+    value: 'dark',
+    label: '深色',
+  },
+  {
+    value: 'system',
+    label: '跟随系统',
+  },
+];
 
 function Theme(): JSX.Element {
   const [mode, setMode] = useState('system');
+
   function handleClick(mode) {
+    console.log(mode);
     setMode(mode);
     if (mode === 'system') {
       document.body.className = 'system';
@@ -12,6 +29,7 @@ function Theme(): JSX.Element {
     }
     localStorage.setItem('mode', mode);
   }
+
   useEffect(() => {
     const m = localStorage.getItem('mode');
 
@@ -24,26 +42,10 @@ function Theme(): JSX.Element {
     }
   }, []);
   return (
-    <ul className={styles.theme}>
-      <li
-        onClick={() => handleClick('light')}
-        className={`${styles.themeItem} ${mode === 'light' ? styles.active : styles.inactive}`}
-      >
-        浅色
-      </li>
-      <li
-        onClick={() => handleClick('dark')}
-        className={`${styles.themeItem} ${mode === 'dark' ? styles.active : styles.inactive}`}
-      >
-        深色
-      </li>
-      <li
-        onClick={() => handleClick('system')}
-        className={`${styles.themeItem} ${mode === 'system' ? styles.active : styles.inactive}`}
-      >
-        跟随系统
-      </li>
-    </ul>
+    <div>
+      <Tabs value={mode} onChange={(value) => handleClick(value)} options={options} />
+    </div>
   );
 }
+
 export default Theme;
