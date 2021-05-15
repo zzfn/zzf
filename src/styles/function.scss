@@ -1,0 +1,8 @@
+//变亮
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+//变暗
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
