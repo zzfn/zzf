@@ -20,7 +20,7 @@ function Loading({ children, onLoad, noMore }) {
     }
   });
   return (
-    <div className={styles.loadingWrap}>
+    <div className={`${styles.loadingWrap} box-responsive-main`}>
       <div className={styles.content}>
         {children}
         {noMore ? (

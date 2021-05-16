@@ -6,14 +6,8 @@
   position: relative;
   padding: 10px 0;
   margin-bottom: 2rem;
-
+  display: flex;
   .article {
-    @media (max-width: 767.98px) {
-      width: 100%;
-    }
-    @media (min-width: 768px) {
-      width: 85%;
-    }
 
     .title {
       width: 100%;
@@ -62,14 +56,6 @@
     .content {
       background: $color-bg-primary;
       margin: auto;
-    }
-  }
-
-  .sidebar {
-    position: absolute;
-    right: 0;
-    @media (min-width: 768px) {
-      width: 15%;
     }
   }
 }

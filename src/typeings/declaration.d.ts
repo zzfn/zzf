@@ -22,3 +22,7 @@ interface Page<T> {
   size: number;
   records: T[];
 }
+
+interface NextProps<T> {
+  serverProps: T;
+}

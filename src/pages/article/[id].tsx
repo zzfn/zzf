@@ -8,6 +8,7 @@ import Progress from 'components/article/Progress';
 import Nav from 'components/article/nav';
 import useLg from 'hooks/useLg';
 import Zooming from 'zooming';
+import { Layout } from '@zzf/design';
 
 interface ServerProps {
   serverProps: any;
@@ -38,41 +39,43 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
       ) : (
         <>
           <Progress />
-          <main className={styles.article}>
-            <div className={styles.title}>
-              <h1>{serverProps.title}</h1>
-            </div>
-            <div className={styles.tip}>
-              <ul>
-                <li>
-                  <span className={'col-1'}>标签</span>
-                  {serverProps.tagDesc}
-                </li>
-                <li>
-                  <span className={'col-2'}>阅读量</span>
-                  {serverProps.viewCount}
-                </li>
-                <li>
-                  <span className={'col-3'}>发布于</span>
-                  {serverProps.createTime}
-                </li>
-                <li>
-                  <span className={'col-4'}>更新于</span>
-                  {serverProps.updateTime}
-                </li>
-              </ul>
-            </div>
-            <article
-              className={['markdown-template', styles.content].join(' ')}
-              dangerouslySetInnerHTML={{
-                __html: translateMarkdown(serverProps.content),
-              }}
-            />
-          </main>
+          <Layout.Content>
+            <main className={`${styles.article}`}>
+              <div className={styles.title}>
+                <h1>{serverProps.title}</h1>
+              </div>
+              <div className={styles.tip}>
+                <ul>
+                  <li>
+                    <span className={'col-1'}>标签</span>
+                    {serverProps.tagDesc}
+                  </li>
+                  <li>
+                    <span className={'col-2'}>阅读量</span>
+                    {serverProps.viewCount}
+                  </li>
+                  <li>
+                    <span className={'col-3'}>发布于</span>
+                    {serverProps.createTime}
+                  </li>
+                  <li>
+                    <span className={'col-4'}>更新于</span>
+                    {serverProps.updateTime}
+                  </li>
+                </ul>
+              </div>
+              <article
+                className={['markdown-template', styles.content].join(' ')}
+                dangerouslySetInnerHTML={{
+                  __html: translateMarkdown(serverProps.content),
+                }}
+              />
+            </main>
+          </Layout.Content>
           {isLg && (
-            <aside className={styles.sidebar}>
+            <Layout.Sidebar>
               <Nav source={serverProps.content} />
-            </aside>
+            </Layout.Sidebar>
           )}
         </>
       )}

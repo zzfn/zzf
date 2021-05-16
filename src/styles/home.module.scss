@@ -1,4 +1,14 @@
 @import "variable";
 .home{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   min-height: $min-height;
+  position: relative;
+  .aside{
+    width: 240px;
+    border:1px solid hsla(0,0%,59.2%,.1);
+    position: sticky;
+    top: 5px;
+  }
 }
