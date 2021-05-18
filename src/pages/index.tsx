@@ -27,7 +27,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
   return (
     <div className={styles.home}>
       <Head>
-        <title>时光科技&nbsp;-&nbsp;技术博客</title>
+        <title>小时光&nbsp;-&nbsp;技术博客</title>
       </Head>
       <Layout.Content>
         <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>
@@ -43,7 +43,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
           <div>
             <img
               style={{ width: '100%' }}
-              src='https://wx1.sinaimg.cn/mw690/001tzwrBgy1gpx5w6fr48j60ty18ek1v02.jpg'
+              src='https://cdn.zzfzzf.com/16213140255307Gk6nA.jpeg'
               alt=''
             />
           </div>
