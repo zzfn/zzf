@@ -26,10 +26,9 @@ const Home: React.FC<NextProps<any>> = (props) => {
       <Head>
         <title>小时光&nbsp;-&nbsp;技术博客</title>
       </Head>
-      <Layout>
-        1{/*<Layout.Content>1</Layout.Content>*/}
-        {/*<Layout.Sidebar>2</Layout.Sidebar>*/}
-      </Layout>
+      {/*<Layout>*/}1{/*<Layout.Content>1</Layout.Content>*/}
+      {/*<Layout.Sidebar>2</Layout.Sidebar>*/}
+      {/*</Layout>*/}
     </>
   );
 };
