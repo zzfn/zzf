@@ -2,9 +2,10 @@ import React from 'react';
 import styles from './footer.module.scss';
 import dayjs from 'dayjs';
 import Link from 'next/link';
+import { Layout } from '@zzf/design';
 function Footer(): JSX.Element {
   return (
-    <footer className={styles.footer}>
+    <Layout.Footer className={styles.footer}>
       <div>2020-{dayjs().format('YYYY')}</div>
       <div>Powered by zzfn</div>
       <div>苏ICP备18059856号</div>
@@ -13,7 +14,7 @@ function Footer(): JSX.Element {
           友情链接
         </a>
       </Link>
-    </footer>
+    </Layout.Footer>
   );
 }
 

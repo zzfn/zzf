@@ -12,6 +12,7 @@ import 'highlight.js/styles/rainbow.css';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import Main from 'components/main/main';
+import { Layout } from '@zzf/design';
 Sentry.init({
   dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
   integrations: [new Integrations.BrowserTracing()],
@@ -37,9 +38,9 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <Header />
-      <Main>
+      <Layout>
         <Component {...pageProps} />
-      </Main>
+      </Layout>
       <Footer />
     </>
   );
