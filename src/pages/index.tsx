@@ -3,6 +3,8 @@ import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import { listArticles } from 'api/article';
 import { Layout } from '@zzf/design';
+import Loading from '../components/loading/Loading';
+import ArticleCard from '../components/article/articleCard';
 
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
@@ -26,9 +28,28 @@ const Home: React.FC<NextProps<any>> = (props) => {
       <Head>
         <title>小时光&nbsp;-&nbsp;技术博客</title>
       </Head>
-      {/*<Layout>*/}1{/*<Layout.Content>1</Layout.Content>*/}
-      {/*<Layout.Sidebar>2</Layout.Sidebar>*/}
-      {/*</Layout>*/}
+      <Layout.Main>
+        <Layout.Content>
+          <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>
+            {records.map((item: Article) => (
+              <ArticleCard key={item.id} dataSource={item} />
+            ))}
+          </Loading>
+        </Layout.Content>
+        <Layout.Sidebar>
+          <div>
+            <div>热门专区</div>
+            <p>待开发</p>
+            <div>
+              <img
+                style={{ width: '100%' }}
+                src='https://cdn.zzfzzf.com/16213140255307Gk6nA.jpeg'
+                alt=''
+              />
+            </div>
+          </div>
+        </Layout.Sidebar>
+      </Layout.Main>
     </>
   );
 };
