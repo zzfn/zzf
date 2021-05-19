@@ -1,33 +1,26 @@
 @import "src/styles/variable";
 
 .header {
+  height: 60px;
   background: $color-header-bg;
   color: $color-header-logo;
   font-weight: 600;
 
-  .headerMain {
-    height: 64px;
+  .menu {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: auto;
+    font-size: 16px;
 
-    .menu {
-      display: flex;
-      align-items: center;
-      font-size: 16px;
+    a {
+      padding: 5px;
+      color: inherit;
+      transition: .3s;
 
-      a {
-        padding: 5px;
-        color: inherit;
-        transition: .3s;
-
-        &:hover {
-          color: $color-header-text;
-        }
-        &:not(:last-child){
-          margin-right: 16px;
-        }
+      &:hover {
+        color: $color-header-text;
+      }
+      &:not(:last-child){
+        margin-right: 16px;
       }
     }
   }

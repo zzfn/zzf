@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import { listArticles } from 'api/article';
-import { Layout, Loading } from '@zzf/design';
+import { BackTop, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import { geTitle } from '../utils/geTitle';
 
@@ -28,6 +28,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
       <Head>
         <title>{geTitle('小时光')}</title>
       </Head>
+      <BackTop />
       <Layout>
         <Layout.Content>
           <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>
