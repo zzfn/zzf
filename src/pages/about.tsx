@@ -2,11 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 import styles from 'styles/about.module.scss';
 import pkg from '../version.json';
+import { geTitle } from '../utils/geTitle';
 export default function About({ serverProps }): JSX.Element {
   return (
     <div className={styles.about}>
       <Head>
-        <title>关于|zzfzzf|前端博客</title>
+        <title>{geTitle('关于')}</title>
       </Head>
       <main>
         <header>生产环境版本</header>

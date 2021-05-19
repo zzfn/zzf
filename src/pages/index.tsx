@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { listArticles } from 'api/article';
 import { Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
+import { geTitle } from '../utils/geTitle';
 
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
@@ -25,7 +26,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
   return (
     <>
       <Head>
-        <title>小时光&nbsp;-&nbsp;技术博客</title>
+        <title>{geTitle('小时光')}</title>
       </Head>
       <Layout>
         <Layout.Content>

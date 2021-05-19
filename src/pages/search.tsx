@@ -4,6 +4,7 @@ import { Button } from '@zzf/design';
 import SearchCard from 'components/article/SearchCard';
 import styles from 'styles/search.module.scss';
 import Head from 'next/head';
+import { geTitle } from '../utils/geTitle';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
@@ -23,7 +24,7 @@ function Search(): JSX.Element {
   return (
     <>
       <Head>
-        <title>搜索~zzf</title>
+        <title>{geTitle('搜索')}</title>
       </Head>
       <div className={styles.search}>
         <form onSubmit={handleSubmit} action={''}>

@@ -5,6 +5,7 @@ import { listArchives } from 'services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
 import { Tag } from '@zzf/design';
+import { geTitle } from '../utils/geTitle';
 
 interface ArchiveProps {
   serverProps: any;
@@ -45,7 +46,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
   return (
     <div className={styles.archiveWrap}>
       <Head>
-        <title>归档|zzfzzf|前端博客</title>
+        <title>{geTitle('归档')}</title>
       </Head>
       <header>
         很好! 目前共计 <strong>{serverProps.length}</strong> 篇文章。 继续努力。⛽️

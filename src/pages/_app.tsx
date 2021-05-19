@@ -12,6 +12,7 @@ import 'highlight.js/styles/rainbow.css';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import { Layout } from '@zzf/design';
+import { geTitle } from '../utils/geTitle';
 
 Sentry.init({
   dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
@@ -32,7 +33,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>zzf</title>
+        <title>{geTitle('zzf')}</title>
         <meta
           content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
           name='viewport'
