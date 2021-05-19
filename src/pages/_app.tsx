@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           name='viewport'
         />
       </Head>
-      <Layout>
+      <Layout direction={'column'} className={'zzf-page'}>
         <Header />
         <Layout.Main>
           <Component {...pageProps} />

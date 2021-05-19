@@ -28,7 +28,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
       <Head>
         <title>小时光&nbsp;-&nbsp;技术博客</title>
       </Head>
-      <Layout.Main>
+      <Layout>
         <Layout.Content>
           <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>
             {records.map((item: Article) => (
@@ -41,15 +41,15 @@ const Home: React.FC<NextProps<any>> = (props) => {
             <div>热门专区</div>
             <p>待开发</p>
             <div>
-              <img
-                style={{ width: '100%' }}
-                src='https://cdn.zzfzzf.com/16213140255307Gk6nA.jpeg'
-                alt=''
-              />
+              {/*<img*/}
+              {/*  style={{ width: '100%' }}*/}
+              {/*  src='https://cdn.zzfzzf.com/16213140255307Gk6nA.jpeg'*/}
+              {/*  alt=''*/}
+              {/*/>*/}
             </div>
           </div>
         </Layout.Sidebar>
-      </Layout.Main>
+      </Layout>
     </>
   );
 };

@@ -4,11 +4,10 @@ import { getArticle, listArchives } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
-import Progress from 'components/article/Progress';
 import Nav from 'components/article/nav';
 import useLg from 'hooks/useLg';
 import Zooming from 'zooming';
-import { Layout } from '@zzf/design';
+import { Layout, Progress } from '@zzf/design';
 
 interface ServerProps {
   serverProps: any;
