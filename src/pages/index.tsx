@@ -5,6 +5,7 @@ import { listArticles } from 'api/article';
 import { BackTop, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import { geTitle } from '../utils/geTitle';
+import Image from 'next/image';
 
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
@@ -28,7 +29,9 @@ const Home: React.FC<NextProps<any>> = (props) => {
       <Head>
         <title>{geTitle('小时光')}</title>
       </Head>
-      <BackTop />
+      <BackTop>
+        <Image height={40} width={40} layout={'intrinsic'} src={'/static/img/top.png'} />
+      </BackTop>
       <Layout>
         <Layout.Content>
           <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>

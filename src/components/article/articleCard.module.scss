@@ -7,9 +7,15 @@
   padding: 20px 0;
   border-bottom: 1px dashed #ccc;
   cursor: pointer;
-  &:hover{
+
+  .recommend {
+    float: right;
+  }
+
+  &:hover {
     background: var(--color-bg-secondary);
   }
+
   p {
     overflow: hidden;
     text-overflow: ellipsis;

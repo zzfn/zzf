@@ -3,6 +3,7 @@ import styles from './footer.module.scss';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { Layout } from '@zzf/design';
+
 function Footer(): JSX.Element {
   return (
     <Layout.Footer className={styles.footer}>
@@ -14,6 +15,7 @@ function Footer(): JSX.Element {
           友情链接
         </a>
       </Link>
+      <div>email: admin@annyyy.com</div>
     </Layout.Footer>
   );
 }
