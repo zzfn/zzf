@@ -2,8 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import { listArticles } from 'api/article';
-import { Layout } from '@zzf/design';
-import Loading from '../components/loading/Loading';
+import { Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 
 const Home: React.FC<NextProps<any>> = (props) => {
