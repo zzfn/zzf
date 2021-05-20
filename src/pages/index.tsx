@@ -4,9 +4,10 @@ import Head from 'next/head';
 import { listArticles } from 'api/article';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
-import { geTitle } from '../utils/geTitle';
+import { getTitle } from '../utils/getTitle';
 import Image from 'next/image';
 import styles from 'styles/home.module.scss';
+import { formatImg } from '../utils/formatImg';
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
@@ -27,7 +28,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
   return (
     <>
       <Head>
-        <title>{geTitle('小时光')}</title>
+        <title>{getTitle('小时光')}</title>
       </Head>
       <BackTop>
         <Image height={40} width={40} layout={'intrinsic'} src={'/static/img/top.png'} />
@@ -42,28 +43,56 @@ const Home: React.FC<NextProps<any>> = (props) => {
         </Layout.Content>
         <Layout.Sidebar>
           <div>
-            <Card title={'热门专区'} className={styles.card}>
+            <Card
+              title={
+                <div className={styles.header}>
+                  <img
+                    className={styles.logo}
+                    src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
+                    alt=''
+                  />
+                  关于我
+                </div>
+              }
+              className={styles.card}
+            >
               <div className={styles.wrap}>
                 <img
                   className={styles.avatar}
-                  src='https://cdn.zzfzzf.com/1621500127578INeO4C.jpg?imageView2/5/w/100/h/100/format/webp/interlace/1/q/75'
+                  src={formatImg('https://cdn.zzfzzf.com/1621500127578INeO4C.jpg', 100)}
                   alt='头像'
                 />
               </div>
             </Card>
-            <Card title={'公告'} className={styles.card}>
-              <img
-                style={{ width: '100%' }}
-                src='https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0504cb7bf216467790937ad0a455894d~tplv-k3u1fbpfcp-zoom-mark-crop-v2:0:0:426:240.awebp'
-                alt='1'
-              />
+            <Card
+              title={
+                <div className={styles.header}>
+                  <img
+                    className={styles.logo}
+                    src={formatImg('https://cdn.zzfzzf.com/1621502693811rjP4r7.png', 20)}
+                    alt=''
+                  />
+                  活动
+                </div>
+              }
+              className={styles.card}
+            >
+              This is my Blog
             </Card>
-            <Card title={'活动'} className={styles.card}>
-              <img
-                style={{ width: '100%' }}
-                src='https://cdn.zzfzzf.com/16213140255307Gk6nA.jpeg'
-                alt=''
-              />
+            <Card
+              title={
+                <div className={styles.header}>
+                  <img
+                    className={styles.logo}
+                    src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
+                    alt=''
+                  />
+                  公告
+                </div>
+              }
+              className={styles.card}
+            >
+              暂无
             </Card>
           </div>
         </Layout.Sidebar>

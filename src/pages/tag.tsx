@@ -4,13 +4,13 @@ import Head from 'next/head';
 import { listTags } from 'services/article';
 import Link from 'next/link';
 import Arrow from 'components/arrow/arrow';
-import { geTitle } from '../utils/geTitle';
+import { getTitle } from '../utils/getTitle';
 
 export default function TagPage({ serverProps }): JSX.Element {
   return (
     <div className={styles.tagWrap}>
       <Head>
-        <title>{geTitle('标签')}</title>
+        <title>{getTitle('标签')}</title>
       </Head>
       {serverProps.map((item) => (
         <div key={item.code} style={{ margin: '10px', display: 'inline-block' }}>

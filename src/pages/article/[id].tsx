@@ -8,7 +8,7 @@ import Nav from 'components/article/nav';
 import useLg from 'hooks/useLg';
 import Zooming from 'zooming';
 import { Layout, Progress } from '@zzf/design';
-import { geTitle } from '../../utils/geTitle';
+import { getTitle } from '../../utils/getTitle';
 
 interface ServerProps {
   serverProps: any;
@@ -33,7 +33,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
   return (
     <div className={styles.detail}>
       <Head>
-        <title>{geTitle(serverProps.title)}</title>
+        <title>{getTitle(serverProps.title)}</title>
       </Head>
       {router.isFallback ? (
         <div>加载中</div>
