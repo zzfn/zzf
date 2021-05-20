@@ -50,6 +50,11 @@ const Home: React.FC<NextProps<any>> = (props) => {
               {/*  src='https://cdn.zzfzzf.com/16213140255307Gk6nA.jpeg'*/}
               {/*  alt=''*/}
               {/*/>*/}
+              <img
+                style={{ width: '100%' }}
+                src='https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0504cb7bf216467790937ad0a455894d~tplv-k3u1fbpfcp-zoom-mark-crop-v2:0:0:426:240.awebp'
+                alt=''
+              />
             </div>
           </div>
         </Layout.Sidebar>
