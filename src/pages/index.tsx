@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import { listArticles } from 'api/article';
-import { BackTop, Layout, Loading } from '@zzf/design';
+import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import { geTitle } from '../utils/geTitle';
 import Image from 'next/image';
-
+import styles from 'styles/home.module.scss';
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
@@ -42,20 +42,27 @@ const Home: React.FC<NextProps<any>> = (props) => {
         </Layout.Content>
         <Layout.Sidebar>
           <div>
-            <div>热门专区</div>
-            <p>待开发</p>
-            <div>
-              {/*<img*/}
-              {/*  style={{ width: '100%' }}*/}
-              {/*  src='https://cdn.zzfzzf.com/16213140255307Gk6nA.jpeg'*/}
-              {/*  alt=''*/}
-              {/*/>*/}
+            <Card title={'热门专区'} className={styles.card}>
               <img
                 style={{ width: '100%' }}
                 src='https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0504cb7bf216467790937ad0a455894d~tplv-k3u1fbpfcp-zoom-mark-crop-v2:0:0:426:240.awebp'
                 alt='1'
               />
-            </div>
+            </Card>
+            <Card title={'公告'} className={styles.card}>
+              <img
+                style={{ width: '100%' }}
+                src='https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0504cb7bf216467790937ad0a455894d~tplv-k3u1fbpfcp-zoom-mark-crop-v2:0:0:426:240.awebp'
+                alt='1'
+              />
+            </Card>
+            <Card title={'活动'} className={styles.card}>
+              <img
+                style={{ width: '100%' }}
+                src='https://cdn.zzfzzf.com/16213140255307Gk6nA.jpeg'
+                alt=''
+              />
+            </Card>
           </div>
         </Layout.Sidebar>
       </Layout>
