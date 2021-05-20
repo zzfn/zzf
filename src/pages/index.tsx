@@ -72,12 +72,15 @@ const Home: React.FC<NextProps<any>> = (props) => {
                     src={formatImg('https://cdn.zzfzzf.com/1621502693811rjP4r7.png', 20)}
                     alt=''
                   />
-                  活动
+                  关于本站
                 </div>
               }
               className={styles.card}
             >
-              This is my Blog
+              文章数目 :6 <br />
+              本站访客数 999: <br />
+              本站总访问量 :1000 <br />
+              最后更新时间 : 108 天前
             </Card>
             <Card
               title={
