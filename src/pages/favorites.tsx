@@ -1,21 +1,31 @@
 import React from 'react';
 import Image from 'next/image';
-import favorites from 'favorites.json';
-import styles from 'styles/favorites.module.scss';
 import Link from 'next/link';
+import { favoriteList } from 'api/article';
+import styles from 'styles/favorites.module.scss';
 
-function Favorites(props) {
+function Favorites({ serverProps }: { serverProps: any[] }) {
+  const arr = serverProps.reduce((prev, curr) => {
+    const tag = curr.categoryDesc;
+    if (Object.prototype.hasOwnProperty.call(prev, tag)) {
+      prev[tag].push(curr);
+    } else {
+      prev[tag] = [];
+      prev[tag].push(curr);
+    }
+    return prev;
+  }, {});
   return (
     <>
-      {favorites.map((node) => (
-        <React.Fragment key={node.category}>
-          <h3 className={styles.header}>{node.category}</h3>
+      {Object.keys(arr).map((item) => (
+        <React.Fragment key={item}>
+          <h3>{item}</h3>
           <nav className={styles.ul}>
-            {node.list.map((item) => (
-              <Link key={item.title} href={item.link}>
-                <a>
-                  <Image height={40} width={40} layout={'intrinsic'} src={item.img} />
-                  <section>{item.title}</section>
+            {arr[item].map((node) => (
+              <Link key={node.title} href={node.link}>
+                <a target={'_blank'}>
+                  <Image height={40} width={40} layout={'intrinsic'} src={node.img} />
+                  <section className={styles.title}>{node.title}</section>
                 </a>
               </Link>
             ))}
@@ -26,4 +36,13 @@ function Favorites(props) {
   );
 }
 
+export const getStaticProps = async () => {
+  const { data } = await favoriteList({});
+  return {
+    props: {
+      serverProps: data,
+    },
+    revalidate: 1,
+  };
+};
 export default Favorites;
