@@ -1,0 +1,12 @@
+.header{
+  margin: 15px 0;
+}
+.ul{
+  display: flex;
+  a{
+    cursor: pointer;
+    border: 1px dashed #ddd;
+    margin-right: 5px;
+    padding: 10px;
+  }
+}

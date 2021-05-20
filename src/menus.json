@@ -20,6 +20,10 @@
     "path": "/theme"
   },
   {
+    "name": "收藏夹",
+    "path": "/favorites"
+  },
+  {
     "name": "搜索",
     "path": "/search"
   }
