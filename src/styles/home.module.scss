@@ -14,4 +14,17 @@
 }
 .card{
   margin-bottom: 20px;
+.wrap{
+  text-align: center;
+}
+  .avatar{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    &:hover{
+      transition: .3s;
+      transform: rotate(360deg)
+    }
+  }
 }

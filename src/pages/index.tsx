@@ -43,11 +43,13 @@ const Home: React.FC<NextProps<any>> = (props) => {
         <Layout.Sidebar>
           <div>
             <Card title={'热门专区'} className={styles.card}>
-              <img
-                style={{ width: '100%' }}
-                src='https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0504cb7bf216467790937ad0a455894d~tplv-k3u1fbpfcp-zoom-mark-crop-v2:0:0:426:240.awebp'
-                alt='1'
-              />
+              <div className={styles.wrap}>
+                <img
+                  className={styles.avatar}
+                  src='https://cdn.zzfzzf.com/1621500127578INeO4C.jpg?imageView2/5/w/100/h/100/format/webp/interlace/1/q/75'
+                  alt='头像'
+                />
+              </div>
             </Card>
             <Card title={'公告'} className={styles.card}>
               <img
