@@ -8,15 +8,17 @@ import Nav from 'components/article/nav';
 import useLg from 'hooks/useLg';
 import Zooming from 'zooming';
 import { Layout, Progress } from '@zzf/design';
+import { geTitle } from '../../utils/geTitle';
 
 interface ServerProps {
   serverProps: any;
+  code: number;
 }
 
 const ArticleDetail: React.FC<ServerProps> = (props) => {
   const isLg = useLg();
   const router = useRouter();
-  const { serverProps = {} } = props;
+  const { serverProps = {}, code } = props;
   useEffect(() => {
     const imgList = document.querySelectorAll('.zoom');
     const zooming = new Zooming({
@@ -31,11 +33,11 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
   return (
     <div className={styles.detail}>
       <Head>
-        <title>{serverProps.title}~zzf</title>
+        <title>{geTitle(serverProps.title)}</title>
       </Head>
       {router.isFallback ? (
         <div>加载中</div>
-      ) : (
+      ) : code === 0 ? (
         <>
           <Progress />
           <Layout.Content>
@@ -77,6 +79,8 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
             </Layout.Sidebar>
           )}
         </>
+      ) : (
+        '未找到文章'
       )}
     </div>
   );
@@ -95,10 +99,11 @@ export async function getStaticProps(context) {
   const {
     params: { id },
   } = context;
-  const { data } = await getArticle({ id });
+  const { data, code } = await getArticle({ id });
   return {
     props: {
-      serverProps: data,
+      serverProps: { ...data },
+      code,
     },
     revalidate: 1,
   };
