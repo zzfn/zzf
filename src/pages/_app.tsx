@@ -11,12 +11,15 @@ import 'styles/color.scss';
 import 'highlight.js/styles/rainbow.css';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
-import Main from 'components/main/main';
+import { Layout } from '@zzf/design';
+import { getTitle } from '../utils/getTitle';
+
 Sentry.init({
   dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
 });
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -30,17 +33,19 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>zzf</title>
+        <title>{getTitle('zzf')}</title>
         <meta
           content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
           name='viewport'
         />
       </Head>
-      <Header />
-      <Main>
-        <Component {...pageProps} />
-      </Main>
-      <Footer />
+      <Layout direction={'column'} className={'zzf-page'}>
+        <Header />
+        <Layout.Main>
+          <Component {...pageProps} />
+        </Layout.Main>
+        <Footer />
+      </Layout>
     </>
   );
 }

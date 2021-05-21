@@ -3,6 +3,7 @@ import styles from './articleCard.module.scss';
 import Link from 'next/link';
 import { diff } from '../../utils/time';
 import { Tag } from '@zzf/design';
+import Image from 'next/image';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -17,7 +18,15 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
             {dataSource.title}
           </a>
         </Link>
-        {dataSource.orderNum ? <Tag>置顶</Tag> : null}
+        {dataSource.orderNum ? (
+          <Image
+            className={styles.recommend}
+            height={30}
+            width={30}
+            layout={'intrinsic'}
+            src={'/static/img/recommend.png'}
+          />
+        ) : null}
       </div>
       <p style={{ padding: '0 10px' }}>
         {dataSource.content.match(/[\u4e00-\u9fa5\w]/g).slice(0, 100)}

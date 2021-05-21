@@ -1,59 +1,64 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { Layout } from '@zzf/design';
 import styles from './header.module.scss';
 import Image from 'next/image';
-import useLg from 'hooks/useLg';
+import menus from 'menus.json';
+import useIsPc from '../../hooks/useIsPc';
 
 function Header(): JSX.Element {
   const [isShow, setIsShow] = useState(false);
-  const isLg = useLg();
+  const isPc = useIsPc();
   return (
-    <header className={styles.header}>
-      <div className={`${styles.headerMain} box-responsive`}>
-        {!isLg && (
-          <Image
-            onClick={() => setIsShow(!isShow)}
-            height={24}
-            width={24}
-            layout={'intrinsic'}
-            src={'/static/img/menu.png'}
-          />
-        )}
-
-        <Link href={'/'}>
-          <a>
-            <Image height={32} width={32} layout={'intrinsic'} src={'/static/img/logo.png'} />
-          </a>
-        </Link>
-
-        {isLg ? (
-          <nav className={styles.menu}>
-            <Link href={'/'}>首页</Link>
-            <Link href={'/archive'}>归档</Link>
-            <Link href={'/tag'}>标签</Link>
-            <Link href={'/about'}>关于</Link>
-            <Link href={'/theme'}>主题</Link>
-            <Link href={'/search'}>搜索</Link>
-          </nav>
+    <>
+      <Layout.Header className={styles.header}>
+        {isPc ? (
+          <>
+            <Link href={'/'}>
+              <a>
+                <Image height={32} width={32} layout={'intrinsic'} src={'/static/img/logo.png'} />
+              </a>
+            </Link>
+            <nav className={styles.menu}>
+              {menus.map((menu) => (
+                <Link key={menu.name} href={menu.path}>
+                  {menu.name}
+                </Link>
+              ))}
+            </nav>
+          </>
         ) : (
-          <Link href={'/search'}>
-            <a>
-              <Image height={24} width={24} layout={'intrinsic'} src={'/static/img/search.png'} />
-            </a>
-          </Link>
+          <>
+            <Image
+              onClick={() => setIsShow(!isShow)}
+              height={24}
+              width={24}
+              layout={'intrinsic'}
+              src={'/static/img/menu.png'}
+            />
+            <Link href={'/'}>
+              <a>
+                <Image height={32} width={32} layout={'intrinsic'} src={'/static/img/logo.png'} />
+              </a>
+            </Link>
+            <Link href={'/search'}>
+              <a>
+                <Image height={24} width={24} layout={'intrinsic'} src={'/static/img/search.png'} />
+              </a>
+            </Link>
+          </>
         )}
-      </div>
-      {isShow && !isLg && (
+      </Layout.Header>
+      {isShow && !isPc && (
         <nav onClick={() => setIsShow(false)} className={`${styles.dropdown} box-responsive`}>
-          <Link href={'/'}>首页</Link>
-          <Link href={'/archive'}>归档</Link>
-          <Link href={'/tag'}>标签</Link>
-          <Link href={'/about'}>关于</Link>
-          <Link href={'/theme'}>主题</Link>
-          <Link href={'/search'}>搜索</Link>
+          {menus.map((menu) => (
+            <Link key={menu.name} href={menu.path}>
+              {menu.name}
+            </Link>
+          ))}
         </nav>
       )}
-    </header>
+    </>
   );
 }
 

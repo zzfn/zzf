@@ -13,12 +13,20 @@ const useMedia = (query: string, defaultState = false) => {
       setState(!!mql.matches);
     };
 
-    mql.addListener(onChange);
+    try {
+      mql.addEventListener('change', onChange);
+    } catch (e) {
+      mql.addListener(onChange);
+    }
     setState(mql.matches);
 
     return () => {
       mounted = false;
-      mql.removeListener(onChange);
+      try {
+        mql.removeEventListener('change', onChange);
+      } catch (e) {
+        mql.removeListener(onChange);
+      }
     };
   }, [query]);
   return state;

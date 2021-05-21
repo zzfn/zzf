@@ -41,11 +41,7 @@ function Theme(): JSX.Element {
       document.body.className = 'system';
     }
   }, []);
-  return (
-    <div>
-      <Tabs value={mode} onChange={(value) => handleClick(value)} options={options} />
-    </div>
-  );
+  return <Tabs value={mode} onChange={(value) => handleClick(value)} options={options} />;
 }
 
 export default Theme;

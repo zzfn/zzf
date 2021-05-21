@@ -1,0 +1,30 @@
+[
+  {
+    "name": "首页",
+    "path": "/"
+  },
+  {
+    "name": "归档",
+    "path": "/archive"
+  },
+  {
+    "name": "标签",
+    "path": "/tag"
+  },
+  {
+    "name": "关于",
+    "path": "/about"
+  },
+  {
+    "name": "主题",
+    "path": "/theme"
+  },
+  {
+    "name": "收藏夹",
+    "path": "/favorites"
+  },
+  {
+    "name": "搜索",
+    "path": "/search"
+  }
+]

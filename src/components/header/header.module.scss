@@ -1,59 +1,54 @@
 @import "src/styles/variable";
 
 .header {
+  height: 60px;
   background: $color-header-bg;
   color: $color-header-logo;
   font-weight: 600;
 
-  .headerMain {
-    height: 64px;
+  .menu {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: auto;
+    font-size: 16px;
 
-    .menu {
-      display: flex;
-      align-items: center;
-      font-size: 16px;
+    a {
+      padding: 5px;
+      color: inherit;
+      transition: .3s;
 
-      a {
-        padding: 5px;
-        color: inherit;
-        transition: .3s;
-
-        &:hover {
-          color: $color-header-text;
-        }
-        &:not(:last-child){
-          margin-right: 16px;
-        }
+      &:hover {
+        color: $color-header-text;
+      }
+      &:not(:last-child){
+        margin-right: 16px;
       }
     }
   }
 
-  .dropdown {
-    padding: 0 16px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 16px;
+}
+.dropdown {
+  background: $color-header-bg;
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: $color-header-logo;
 
-      a {
-        border-top: 1px solid #e1e4e8;
-        display: block;
-        height: 38px;
-        line-height: 38px;
-        box-sizing: border-box;
-        width: 100%;
-        color: inherit;
-        transition: .3s;
-        text-decoration: none;
-        font-weight: 600;
+  a {
+    border-top: 1px solid #e1e4e8;
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    box-sizing: border-box;
+    width: 100%;
+    color: inherit;
+    transition: .3s;
+    text-decoration: none;
+    font-weight: 600;
 
-        &:hover {
-          color: $color-header-text;
-        }
+    &:hover {
+      color: $color-header-text;
     }
   }
 }

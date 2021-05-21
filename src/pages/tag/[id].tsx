@@ -3,13 +3,14 @@ import { listArchives, listTags } from 'services/article';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
+import { getTitle } from '../../utils/getTitle';
 
 export default function ArticleDetail(props) {
   const { serverProps = [], name = '' } = props;
   return (
     <div className={styles.detail}>
       <Head>
-        <title>{name}~zzf</title>
+        <title>{getTitle('标签')}</title>
       </Head>
       <h2>{name}</h2>
       <ul>
