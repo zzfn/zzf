@@ -1,39 +1,46 @@
 @import "variable";
-.home{
+
+.home {
   width: 100%;
   display: flex;
   justify-content: space-between;
   min-height: $min-height;
   position: relative;
-  .aside{
+
+  .aside {
     width: 240px;
-    border:1px solid hsla(0,0%,59.2%,.1);
+    border: 1px solid hsla(0, 0%, 59.2%, .1);
     position: sticky;
     top: 5px;
   }
 }
-.header{
+
+.header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  .logo{
+
+  .logo {
     width: 20px;
     height: 20px;
     margin-right: 10px;
   }
 }
 
-.card{
-  margin-bottom: 20px;
-.wrap{
-  text-align: center;
-}
-  .avatar{
+.card {
+  margin-bottom:  20px;
+
+  .wrap {
+    text-align: center;
+  }
+
+  .avatar {
     border-radius: 50%;
     width: 100px;
     height: 100px;
     margin: auto;
-    &:hover{
+
+    &:hover {
       transition: .3s;
       transform: rotate(360deg)
     }

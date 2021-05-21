@@ -29,7 +29,7 @@ function Favorites({ serverProps }: { serverProps: any[] }) {
                     height={40}
                     width={40}
                     layout={'intrinsic'}
-                    src={node.img.endsWith('svg') ? node.img : formatImg(node.img, 40)}
+                    src={formatImg(node.img, 40)}
                   />
                   <section className={styles.title}>{node.title}</section>
                 </a>

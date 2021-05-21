@@ -42,62 +42,60 @@ const Home: React.FC<NextProps<any>> = (props) => {
           </Loading>
         </Layout.Content>
         <Layout.Sidebar>
-          <div>
-            <Card
-              title={
-                <div className={styles.header}>
-                  <img
-                    className={styles.logo}
-                    src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
-                    alt=''
-                  />
-                  关于我
-                </div>
-              }
-              className={styles.card}
-            >
-              <div className={styles.wrap}>
+          <Card
+            title={
+              <div className={styles.header}>
                 <img
-                  className={styles.avatar}
-                  src={formatImg('https://cdn.zzfzzf.com/1621500127578INeO4C.jpg', 100)}
-                  alt='头像'
+                  className={styles.logo}
+                  src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
+                  alt=''
                 />
+                关于我
               </div>
-            </Card>
-            <Card
-              title={
-                <div className={styles.header}>
-                  <img
-                    className={styles.logo}
-                    src={formatImg('https://cdn.zzfzzf.com/1621502693811rjP4r7.png', 20)}
-                    alt=''
-                  />
-                  关于本站
-                </div>
-              }
-              className={styles.card}
-            >
-              文章数目 :6 <br />
-              本站访客数 999: <br />
-              本站总访问量 :1000 <br />
-              最后更新时间 : 108 天前
-            </Card>
-            <Card
-              title={
-                <div className={styles.header}>
-                  <img
-                    className={styles.logo}
-                    src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
-                    alt=''
-                  />
-                  公告
-                </div>
-              }
-              className={styles.card}
-            >
-              新版博客上线啦
-            </Card>
-          </div>
+            }
+            className={styles.card}
+          >
+            <div className={styles.wrap}>
+              <img
+                className={styles.avatar}
+                src={formatImg('https://cdn.zzfzzf.com/1621500127578INeO4C.jpg', 100)}
+                alt='头像'
+              />
+            </div>
+          </Card>
+          <Card
+            title={
+              <div className={styles.header}>
+                <img
+                  className={styles.logo}
+                  src={formatImg('https://cdn.zzfzzf.com/1621502693811rjP4r7.png', 20)}
+                  alt=''
+                />
+                关于本站
+              </div>
+            }
+            className={styles.card}
+          >
+            文章数目 :6 <br />
+            本站访客数 999: <br />
+            本站总访问量 :1000 <br />
+            最后更新时间 : 108 天前
+          </Card>
+          <Card
+            title={
+              <div className={styles.header}>
+                <img
+                  className={styles.logo}
+                  src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
+                  alt=''
+                />
+                公告
+              </div>
+            }
+            className={styles.card}
+          >
+            新版博客上线啦
+          </Card>
         </Layout.Sidebar>
       </Layout>
     </>
