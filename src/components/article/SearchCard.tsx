@@ -30,6 +30,7 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
         </a>
       </Link>
       <div
+        style={{ width: '100%' }}
         dangerouslySetInnerHTML={{
           __html: dataSource.content,
         }}

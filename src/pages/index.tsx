@@ -95,7 +95,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
               }
               className={styles.card}
             >
-              暂无
+              新版博客上线啦
             </Card>
           </div>
         </Layout.Sidebar>
