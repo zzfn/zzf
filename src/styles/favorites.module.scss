@@ -3,16 +3,22 @@
 }
 .ul{
   display: flex;
+  flex-flow: row wrap;
   a{
+    padding: 20px;
+    width: 100px;
+    text-align: center;
     border-radius: 6px;
     cursor: pointer;
     border: 1px dashed #ddd;
     margin-right: 5px;
-    padding: 10px;
     font-size: 16px;
     &:hover{
       transform: translate3d(0,-6px,0);
       transition: .3s;
+    }
+    .title{
+
     }
   }
 }

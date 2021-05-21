@@ -1,7 +1,7 @@
 const path = require('path');
 module.exports = {
   images: {
-    domains: ['cdn.zzfzzf.com', 'p1-juejin.byteimg.com'],
+    domains: ['cdn.zzfzzf.com'],
   },
   future: {
     webpack5: true,

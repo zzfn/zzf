@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { favoriteList } from 'api/article';
 import styles from 'styles/favorites.module.scss';
+import { formatImg } from '../utils/formatImg';
 
 function Favorites({ serverProps }: { serverProps: any[] }) {
   const arr = serverProps.reduce((prev, curr) => {
@@ -19,12 +20,17 @@ function Favorites({ serverProps }: { serverProps: any[] }) {
     <>
       {Object.keys(arr).map((item) => (
         <React.Fragment key={item}>
-          <h3>{item}</h3>
+          <h2>{item}</h2>
           <nav className={styles.ul}>
             {arr[item].map((node) => (
               <Link key={node.title} href={node.link}>
                 <a target={'_blank'}>
-                  <Image height={40} width={40} layout={'intrinsic'} src={node.img} />
+                  <Image
+                    height={40}
+                    width={40}
+                    layout={'intrinsic'}
+                    src={node.img.endsWith('svg') ? node.img : formatImg(node.img, 40)}
+                  />
                   <section className={styles.title}>{node.title}</section>
                 </a>
               </Link>
