@@ -76,10 +76,10 @@ const Home: React.FC<NextProps<any>> = (props) => {
             }
             className={styles.card}
           >
-            文章数目 :6 <br />
-            本站访客数 999: <br />
-            本站总访问量 :1000 <br />
-            最后更新时间 : 108 天前
+            文章数目 : * <br />
+            本站访客数 : *<br />
+            本站总访问量 :* <br />
+            最后更新时间 : * 天前
           </Card>
           <Card
             title={
