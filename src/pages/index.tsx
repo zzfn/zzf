@@ -17,7 +17,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
   async function handleLoad() {
     console.log(Os.getBrowser());
     const { data } = await listArticles({
-      pageNumber: page.current + 1,
+      current: page.current + 1,
       pageSize: 10,
     });
     setRecords([...records, ...data.records]);
