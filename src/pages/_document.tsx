@@ -14,7 +14,17 @@ var _hmt = _hmt || [];
 })();`,
     };
   };
+  getGoogle = () => {
+    return {
+      __html: `
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-QHRFL84469');`,
+    };
+  };
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -33,6 +43,8 @@ var _hmt = _hmt || [];
           />
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
+          <script async src='https://www.googletagmanager.com/gtag/js?id=G-QHRFL84469' />
+          <script dangerouslySetInnerHTML={this.getGoogle()} />
           <script dangerouslySetInnerHTML={this.getAnalyticsTag()} />
         </Head>
         <body className={'light'}>
