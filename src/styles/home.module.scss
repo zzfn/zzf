@@ -41,8 +41,9 @@
     margin: auto;
 
     &:hover {
-      transition: .3s;
-      transform: rotate(360deg)
+      transform: rotate(666turn);
+      transition-duration: 59s;
+      transition-timing-function: cubic-bezier(.34, 0, .84, 1)
     }
   }
 }
