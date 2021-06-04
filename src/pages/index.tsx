@@ -9,6 +9,7 @@ import Image from 'next/image';
 import styles from 'styles/home.module.scss';
 import { formatImg } from '../utils/formatImg';
 import Link from 'next/link';
+import { diff } from '../utils/time';
 
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
@@ -116,6 +117,10 @@ const Home: React.FC<NextProps<any>> = (props) => {
                   <Link prefetch={false} href={`/article/${n.id}`}>
                     <a className={styles.title} target={'_blank'}>
                       {n.title}
+                      <br />
+                      <div style={{ width: '66px', marginLeft: 'auto', textDecoration: 'none' }}>
+                        --{diff(n.updateTime)}
+                      </div>
                     </a>
                   </Link>
                 </li>
