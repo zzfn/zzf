@@ -137,8 +137,7 @@ export const getStaticProps = async () => {
   const size = 10;
   const { data } = await listArticles({ pageNumber: num, pageSize: size });
   const { data: over } = await overview();
-  // const { data: list } = await lastUpdated();
-  const { data: list } = await axios.get('http://localhost:3001/api/home');
+  const { data: list } = await lastUpdated();
   console.log(process.env);
   return {
     props: {
