@@ -1,30 +1,59 @@
 import http from 'utils/http';
 
-export const listArticles = (params: any): Promise<Res<Page<any>>> => {
-  return http('get', '/article/non/page', { params });
+export const listArticles = (params: any) => {
+  return http({
+    method: 'get',
+    url: '/article/non/page',
+    params,
+  });
 };
 
-export const getArticle = (params: any): Promise<Res<any>> => {
-  return http('get', `/article/non/${params.id}`);
+export const getArticle = (params: any) => {
+  return http({
+    method: 'get',
+    url: `/article/non/${params.id}`,
+  });
 };
 
-export const listTags = (params: any): Promise<Res<any>> => {
-  return http('get', '/article/non/tags', { params });
+export const listTags = (params: any) => {
+  return http({
+    method: 'get',
+    url: '/article/non/tags',
+    params,
+  });
 };
 
-export const listArchives = (params: any): Promise<Res<any>> => {
-  return http('get', '/article/non/list', { params });
+export const listArchives = (params: any) => {
+  return http({
+    method: 'get',
+    url: '/article/non/list',
+    params,
+  });
 };
 
-export const esList = (params: any): Promise<Res<any>> => {
-  return http('get', '/article/non/search', { params });
+export const esList = (params: any) => {
+  return http({
+    method: 'get',
+    url: '/article/non/search',
+    params,
+  });
 };
-export const favoriteList = (params: any): Promise<Res<any>> => {
-  return http('get', '/favorite/non/list', { params });
+export const favoriteList = (params: any) => {
+  return http({
+    method: 'get',
+    url: '/favorite/non/list',
+    params,
+  });
 };
-export const overview = (): Promise<Res<any>> => {
-  return http('get', '/config/non/overview');
+export const overview = () => {
+  return http({
+    method: 'get',
+    url: '/config/non/overview',
+  });
 };
-export const lastUpdated = (): Promise<Res<any>> => {
-  return http('get', '/article/non/lastUpdated');
+export const lastUpdated = () => {
+  return http({
+    method: 'get',
+    url: '/article/non/lastUpdated',
+  });
 };

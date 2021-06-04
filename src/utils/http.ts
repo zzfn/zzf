@@ -1,7 +1,7 @@
-import axios, { AxiosRequestConfig, Method } from 'axios';
-import envConfig from '../../env';
+import axios, { AxiosRequestConfig } from 'axios';
+
 const instance = axios.create({
-  baseURL: envConfig.baseUrl,
+  baseURL: process.env.NEXT_PUBLIC_baseUrl,
   timeout: 10000,
   headers: { 'Content-Type': 'application/json;charset=UTF-8' },
   validateStatus: function () {
@@ -18,18 +18,17 @@ instance.interceptors.request.use(
 );
 instance.interceptors.response.use(
   (response) => {
-    return response;
+    return response.data;
   },
   (error) => {
     return Promise.reject(error);
   },
 );
 
-export default async function http(
-  method: Method,
-  url: string,
-  config?: AxiosRequestConfig,
-): Promise<Res<any>> {
-  const { data } = await instance(url, { ...config, method });
-  return data;
+export default function http(options: AxiosRequestConfig): any {
+  return instance.request({ ...options, baseURL: process.env.baseUrl });
 }
+
+// export function middleware(options: AxiosRequestConfig): any {
+//   return instance.request({ ...options, baseURL: process.env.middlewareUrl });
+// }

@@ -10,7 +10,7 @@ import styles from 'styles/home.module.scss';
 import { formatImg } from '../utils/formatImg';
 import Link from 'next/link';
 import { diff } from '../utils/time';
-
+import axios from 'axios';
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
@@ -137,13 +137,21 @@ export const getStaticProps = async () => {
   const size = 10;
   const { data } = await listArticles({ pageNumber: num, pageSize: size });
   const { data: over } = await overview();
-  const { data: list } = await lastUpdated();
-  console.log(list);
+  // const { data: list } = await lastUpdated();
+  const { data: list } = await axios.get('http://localhost:3001/api/home');
+  console.log(process.env);
   return {
     props: {
       serverProps: { ...data, ...over, list },
     },
     revalidate: 1,
   };
+};
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '1mb',
+    },
+  },
 };
 export default Home;
