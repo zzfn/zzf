@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
-import { listArticles } from 'api/article';
+import { lastUpdated, listArticles, overview } from 'api/article';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import { getTitle } from '../utils/getTitle';
 import Image from 'next/image';
 import styles from 'styles/home.module.scss';
 import { formatImg } from '../utils/formatImg';
+import Link from 'next/link';
+
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
@@ -15,6 +17,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
   const [records, setRecords] = useState(serverProps.records);
 
   async function handleLoad() {
+    console.log(serverProps);
     console.log(Os.getBrowser());
     const { data } = await listArticles({
       current: page.current + 1,
@@ -76,10 +79,8 @@ const Home: React.FC<NextProps<any>> = (props) => {
             }
             className={styles.card}
           >
-            文章数目 : * <br />
-            本站访客数 : *<br />
-            本站总访问量 :* <br />
-            最后更新时间 : * 天前
+            文章数目 : {serverProps.aLlArticleCount} <br />
+            最后更新时间 : {serverProps.lastUpdateTime}
           </Card>
           <Card
             title={
@@ -96,6 +97,31 @@ const Home: React.FC<NextProps<any>> = (props) => {
           >
             新版博客上线啦
           </Card>
+          <Card
+            title={
+              <div className={styles.header}>
+                <img
+                  className={styles.logo}
+                  src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
+                  alt=''
+                />
+                最近更新
+              </div>
+            }
+            className={styles.card}
+          >
+            <ul>
+              {serverProps.list.map((n) => (
+                <li className={styles.title} key={n.id}>
+                  <Link prefetch={false} href={`/article/${n.id}`}>
+                    <a className={styles.title} target={'_blank'}>
+                      {n.title}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Card>
         </Layout.Sidebar>
       </Layout>
     </>
@@ -105,9 +131,12 @@ export const getStaticProps = async () => {
   const num = 1;
   const size = 10;
   const { data } = await listArticles({ pageNumber: num, pageSize: size });
+  const { data: over } = await overview();
+  const { data: list } = await lastUpdated();
+  console.log(list);
   return {
     props: {
-      serverProps: data,
+      serverProps: { ...data, ...over, list },
     },
     revalidate: 1,
   };

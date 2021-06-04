@@ -22,3 +22,9 @@ export const esList = (params: any): Promise<Res<any>> => {
 export const favoriteList = (params: any): Promise<Res<any>> => {
   return http('get', '/favorite/non/list', { params });
 };
+export const overview = (): Promise<Res<any>> => {
+  return http('get', '/config/non/overview');
+};
+export const lastUpdated = (): Promise<Res<any>> => {
+  return http('get', '/article/non/lastUpdated');
+};
