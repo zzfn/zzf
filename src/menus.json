@@ -20,6 +20,10 @@
     "path": "/theme"
   },
   {
+    "name": "微博热搜",
+    "path": "/hot"
+  },
+  {
     "name": "收藏夹",
     "path": "/favorites"
   },
