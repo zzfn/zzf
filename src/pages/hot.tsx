@@ -8,7 +8,7 @@ export default function Hot(): JSX.Element {
   const [list, setList] = useState([]);
 
   async function handleGet() {
-    const r = await axios.get('https://server.zzfzzf.com/');
+    const r = await axios.get('https://server.zzfzzf.com/hot');
     setList(r.data);
   }
 
