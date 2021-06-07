@@ -26,7 +26,9 @@ function Favorites({ serverProps }: { serverProps: any[] }) {
               <Link key={node.title} href={node.link}>
                 <a target={'_blank'}>
                   <img height={40} width={40} src={formatImg(node.img, 40)} alt={node.title} />
-                  <section className={styles.title}>{node.title}</section>
+                  <section title={node.title} className={styles.title}>
+                    {node.title}
+                  </section>
                 </a>
               </Link>
             ))}
