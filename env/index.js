@@ -1,2 +1,2 @@
-const envConfig = require(`./${process.env.NODE_ENV}.env.js`);
+const envConfig = require(`./${process.env.APP}.env.js`);
 module.exports = envConfig;
