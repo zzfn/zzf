@@ -1,5 +1,7 @@
-const path = require('path');
+const config = require('./env/index');
+
 module.exports = {
+  env: { ...config },
   images: {
     domains: ['cdn.zzfzzf.com'],
   },

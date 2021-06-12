@@ -144,7 +144,6 @@ export const getStaticProps = async () => {
   const { data } = await listArticles({ pageNumber: num, pageSize: size });
   const { data: over } = await overview();
   const { data: list } = await lastUpdated();
-  console.log(process.env);
   return {
     props: {
       serverProps: { ...data, ...over, list },

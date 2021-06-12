@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "local": "cross-env NODE_ENV=development next dev -p 3001",
-    "test": "cross-env NODE_ENV=test next dev -p 3001",
-    "prod": "cross-env NODE_ENV=production next dev -p 3001",
+    "start:dev": "cross-env NODE_ENV=development next dev -p 3001",
+    "start:prod": "cross-env NODE_ENV=production next dev -p 3001",
     "build": "next build",
     "start": "next start -p 9800"
   },
