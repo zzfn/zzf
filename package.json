@@ -6,7 +6,7 @@
     "start:dev": "cross-env APP=development next dev -p 3001",
     "start:prod": "cross-env APP=production next dev -p 3001",
     "build": "cross-env APP=production next build",
-    "start": "next start -p 9800"
+    "start": "cross-env APP=production next start -p 9800"
   },
   "dependencies": {
     "@sentry/react": "^6.3.6",
