@@ -13,12 +13,13 @@
     border: 1px dashed #ddd;
     margin-right: 5px;
     font-size: 16px;
+    background-color: var(--color-secondary-bg);
     &:hover{
       transform: translate3d(0,-6px,0);
       transition: .3s;
     }
     .title{
-      color: var(--color-secondary);
+      color: var(--color-primary);
       width: 100%;
       margin-top: 5px;
     }
