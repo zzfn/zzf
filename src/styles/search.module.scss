@@ -1,7 +1,6 @@
-@import "src/styles/variable";
 
 .search {
-  color: $color-text-primary;
+  color: var(--color-secondary);
   //flex-direction: column;
   //align-items: center;
   padding: 10px 0;
@@ -11,30 +10,31 @@
   }
   .ipt {
     flex: 1;
-    color: $color-text-primary;
+    color: var(--color-secondary);
     height: 46px;
     border-radius: 6px;
     line-height: 46px;
     box-sizing: border-box;
-    background-color: var(--color-input-bg);
-    border: 1px solid var(--color-input-border);
+    background-color: var(--color-secondary-bg);
+    border: 1px solid var(--color-secondary);
     box-shadow:var(--color-shadow-inset) ;
     padding: 12px;
     font-size: 14px;
     outline: none;
     &:focus{
-      border-color: var(--color-state-focus-border);
-      box-shadow: var(--color-state-focus-shadow);
+      border-color: var(--color-primary);
+      box-shadow: var(--color-shadow);
     }
   }
 
 }
 .result{
+  background-color: var(--color-secondary-bg);
   padding: 10px;
   min-height: 200px;
   display: flex;
   flex-wrap: wrap;
 }
 .no,.searchResult{
-  color: $color-text-primary;
+  color: var(--color-secondary);
 }

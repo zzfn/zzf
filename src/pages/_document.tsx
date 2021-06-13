@@ -17,7 +17,6 @@ var _hmt = _hmt || [];
   getGoogle = () => {
     return {
       __html: `
-<!-- Global site tag (gtag.js) - Google Analytics -->
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -25,13 +24,12 @@ var _hmt = _hmt || [];
   gtag('config', 'G-QHRFL84469');`,
     };
   };
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   render() {
     return (
       <Html lang='zh'>
@@ -47,7 +45,7 @@ var _hmt = _hmt || [];
           <script dangerouslySetInnerHTML={this.getGoogle()} />
           <script dangerouslySetInnerHTML={this.getAnalyticsTag()} />
         </Head>
-        <body className={'light'}>
+        <body theme-mode={'light'}>
           <Main />
           <NextScript />
         </body>

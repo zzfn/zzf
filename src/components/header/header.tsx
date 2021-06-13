@@ -16,7 +16,14 @@ function Header(): JSX.Element {
           <>
             <Link href={'/'}>
               <a>
-                <Image height={32} width={32} layout={'intrinsic'} src={'/static/img/logo.png'} />
+                <Image
+                  className={styles.logo}
+                  priority
+                  height={32}
+                  width={32}
+                  layout={'intrinsic'}
+                  src={'/static/img/logo.png'}
+                />
               </a>
             </Link>
             <nav className={styles.menu}>
@@ -30,6 +37,7 @@ function Header(): JSX.Element {
         ) : (
           <>
             <Image
+              className={styles.logo}
               onClick={() => setIsShow(!isShow)}
               height={24}
               width={24}
@@ -38,19 +46,31 @@ function Header(): JSX.Element {
             />
             <Link href={'/'}>
               <a>
-                <Image height={32} width={32} layout={'intrinsic'} src={'/static/img/logo.png'} />
+                <Image
+                  className={styles.logo}
+                  height={32}
+                  width={32}
+                  layout={'intrinsic'}
+                  src={'/static/img/logo.png'}
+                />
               </a>
             </Link>
             <Link href={'/search'}>
               <a>
-                <Image height={24} width={24} layout={'intrinsic'} src={'/static/img/search.png'} />
+                <Image
+                  className={styles.logo}
+                  height={24}
+                  width={24}
+                  layout={'intrinsic'}
+                  src={'/static/img/search.png'}
+                />
               </a>
             </Link>
           </>
         )}
       </Layout.Header>
       {isShow && !isPc && (
-        <nav onClick={() => setIsShow(false)} className={`${styles.dropdown} box-responsive`}>
+        <nav onClick={() => setIsShow(false)} className={styles.dropdown}>
           {menus.map((menu) => (
             <Link key={menu.name} href={menu.path}>
               {menu.name}

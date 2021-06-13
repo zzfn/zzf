@@ -1,17 +1,16 @@
-@import "src/styles/variable";
 .wrap{
-  border: 1px solid var(--color-btn-border);
+  border: 1px solid var(--color-secondary);
   display: flex;
   border-radius: 6px;
-  color: $color-text-primary;
+  color: var(--color-primary);
   line-height: 20px;
   transition: all 0.2s ease-out;
   &:hover{
-    color: var(--color-text-link);
+    color: var(--color-hover);
   }
   .content{
     padding: 5px 15px;
-    border-right: 1px solid var(--color-btn-border);
+    border-right: 1px solid var(--color-secondary);
   }
   .arrow {
     height: 30px;

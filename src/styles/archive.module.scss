@@ -1,4 +1,3 @@
-@import "variable";
 .archiveWrap {
   width: 100%;
   margin: auto;
@@ -29,7 +28,7 @@
 }
 
 .title {
-  color: $color-text-primary;
+  color: var(--color-primary);
   margin: 20px;
   position: relative;
 
@@ -74,5 +73,5 @@
   }
 }
 .subTitle{
-  color:$color-text-primary
+  color:var(--color-secondary)
 }
