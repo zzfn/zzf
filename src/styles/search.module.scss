@@ -22,8 +22,8 @@
     font-size: 14px;
     outline: none;
     &:focus{
-      border-color: var(--color-state-focus-border);
-      box-shadow: var(--color-state-focus-shadow);
+      border-color: var(--color-primary);
+      box-shadow: var(--color-shadow);
     }
   }
 
