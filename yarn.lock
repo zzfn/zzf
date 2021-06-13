@@ -315,8 +315,8 @@
 
 "@zzf/design@^1.0.0":
   version "1.0.0"
-  resolved "http://113.31.126.209:8081/repository/npm-group/@zzf/design/-/design-1.0.0.tgz#007ec6e9e67010c8cf296e59b8c726159c89888e"
-  integrity sha512-o2YOlAVRVvDDan7Eyth/jz1fXs4zsrBxOD9pp9qYyPRCMraoPlDRqOJJXHuvHSZ039xJ742u1SxUUyDYZU+56Q==
+  resolved "http://113.31.126.209:8081/repository/npm-group/@zzf/design/-/design-1.0.0.tgz#e383a5b38e86417fb9d65964023f3860de4a8a84"
+  integrity sha512-2T+2V10zKvToblQpxprLtuDJQ8GfgahsZx/jEgdL3Eq8IDetnBajimIJ662sP++Agbp445StvXyAfp5TlxbaQw==
   dependencies:
     classnames "^2.3.1"
 
