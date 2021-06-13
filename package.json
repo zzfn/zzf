@@ -5,7 +5,7 @@
   "scripts": {
     "start:dev": "cross-env APP=development next dev -p 3001",
     "start:prod": "cross-env APP=production next dev -p 3001",
-    "build": "next build",
+    "build": "cross-env APP=production next build",
     "start": "next start -p 9800"
   },
   "dependencies": {
