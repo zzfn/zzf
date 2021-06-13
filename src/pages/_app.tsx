@@ -22,12 +22,12 @@ Sentry.init({
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    // const m = localStorage.getItem('mode');
-    // if (m) {
-    //   document.body.className = m;
-    // } else {
-    //   document.body.className = 'system';
-    // }
+    const m = localStorage.getItem('mode');
+    if (m) {
+      document.body.setAttribute('theme-mode', m);
+    } else {
+      document.body.removeAttribute('theme-mode');
+    }
   }, []);
   return (
     <>
