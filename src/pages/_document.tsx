@@ -45,7 +45,7 @@ var _hmt = _hmt || [];
           <script dangerouslySetInnerHTML={this.getGoogle()} />
           <script dangerouslySetInnerHTML={this.getAnalyticsTag()} />
         </Head>
-        <body theme-mode={'light'}>
+        <body>
           <Main />
           <NextScript />
         </body>

@@ -23,23 +23,22 @@ function Theme(): JSX.Element {
     console.log(mode);
     setMode(mode);
     if (mode === 'system') {
-      document.body.className = 'system';
+      document.body.removeAttribute('theme-mode');
     } else {
-      document.body.className = mode;
+      document.body.setAttribute('theme-mode', mode);
     }
     localStorage.setItem('mode', mode);
   }
 
   useEffect(() => {
-    // const m = localStorage.getItem('mode');
-    //
-    // if (m) {
-    //   setMode(m);
-    //   document.body.className = m;
-    // } else {
-    //   setMode('system');
-    //   document.body.className = 'system';
-    // }
+    const m = localStorage.getItem('mode');
+    if (m) {
+      setMode(m);
+      document.body.setAttribute('theme-mode', m);
+    } else {
+      setMode('system');
+      document.body.removeAttribute('theme-mode');
+    }
   }, []);
   return <Tabs value={mode} onChange={(value) => handleClick(value)} options={options} />;
 }

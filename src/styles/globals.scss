@@ -35,3 +35,9 @@ a{
 :root{
   scroll-behavior: smooth;
 }
+:root{
+  color: #40b8fa;
+  [theme-mode='light']{
+    color: #24292e;
+  }
+}
