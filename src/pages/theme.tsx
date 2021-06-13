@@ -31,15 +31,15 @@ function Theme(): JSX.Element {
   }
 
   useEffect(() => {
-    const m = localStorage.getItem('mode');
-
-    if (m) {
-      setMode(m);
-      document.body.className = m;
-    } else {
-      setMode('system');
-      document.body.className = 'system';
-    }
+    // const m = localStorage.getItem('mode');
+    //
+    // if (m) {
+    //   setMode(m);
+    //   document.body.className = m;
+    // } else {
+    //   setMode('system');
+    //   document.body.className = 'system';
+    // }
   }, []);
   return <Tabs value={mode} onChange={(value) => handleClick(value)} options={options} />;
 }

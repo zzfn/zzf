@@ -1,10 +1,15 @@
-@import "src/styles/variable";
-
 .header {
   height: 60px;
-  background: $color-header-bg;
-  color: $color-header-logo;
+  background: var(--color-secondary-bg);
+  color: var(--color-primary);
   font-weight: 600;
+
+  .logo {
+    filter: invert(100%);
+    @media (prefers-color-scheme: dark) {
+      filter: invert(0);
+    }
+  }
 
   .menu {
     display: flex;
@@ -17,23 +22,25 @@
       transition: .3s;
 
       &:hover {
-        color: $color-header-text;
+        color: var(--color-hover);
       }
-      &:not(:last-child){
+
+      &:not(:last-child) {
         margin-right: 16px;
       }
     }
   }
 
 }
+
 .dropdown {
-  background: $color-header-bg;
+  background: var(--color-secondary-bg);
   padding: 0 16px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 16px;
-  color: $color-header-logo;
+  color: var(--color-secondary);
 
   a {
     border-top: 1px solid #e1e4e8;
@@ -48,7 +55,7 @@
     font-weight: 600;
 
     &:hover {
-      color: $color-header-text;
+      color: var(--color-main-bg);
     }
   }
 }

@@ -1,10 +1,9 @@
-@import "variable";
 
 .home {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  min-height: $min-height;
+  min-height: 100vh;
   position: relative;
 
   .aside {
@@ -19,6 +18,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  color: var(--color-primary);
 
   .logo {
     width: 20px;
@@ -29,7 +29,7 @@
 
 .card {
   margin-bottom:  20px;
-
+  color:var(--color-secondary);
   .wrap {
     text-align: center;
   }

@@ -1,14 +1,13 @@
-@import "src/styles/variable";
 .footer{
   height: 90px;
   //background: $color-header-bg;
-  color: $color-header-text;
+  color: var(--color-main-bg);
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   padding: 20px 0;
   .friends{
-    color: $color-state-selected-primary-text;
+    color: var(--color-brand);
   }
 }

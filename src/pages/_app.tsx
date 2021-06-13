@@ -3,7 +3,6 @@ import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import Head from 'next/head';
 import '@zzf/design/lib/bundle.css';
-import 'styles/variable.scss';
 import 'styles/globals.scss';
 import 'styles/response.scss';
 import 'styles/markdown.scss';
@@ -23,12 +22,12 @@ Sentry.init({
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    const m = localStorage.getItem('mode');
-    if (m) {
-      document.body.className = m;
-    } else {
-      document.body.className = 'system';
-    }
+    // const m = localStorage.getItem('mode');
+    // if (m) {
+    //   document.body.className = m;
+    // } else {
+    //   document.body.className = 'system';
+    // }
   }, []);
   return (
     <>

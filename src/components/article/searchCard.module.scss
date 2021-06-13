@@ -1,7 +1,6 @@
-@import "src/styles/variable";
 .card{
-  color: $color-text-secondary;
-  background: $color-bg-primary;
+  color: var(--color-secondary);
+  background: var(--color-secondary-bg);
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px dashed #ccc;
@@ -9,7 +8,7 @@
   :global{
     em{
       font-style: normal;
-      color: $color-text-link;
+      color: var(--color-brand);
       font-weight: 700;
     }
   }
@@ -19,7 +18,7 @@
   }
   h3{
     font-size: 18px;
-    color: $color-text-primary;
+    color: var(--color-secondary);
     .title{
       cursor: pointer;
     }
