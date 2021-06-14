@@ -29,7 +29,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
         ) : null}
       </div>
       <p className={'truncate px-4'}>
-        {dataSource.content.match(/[\u4e00-\u9fa5\w]/g).slice(0, 100)}
+        {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
       <ul>
         <li title={'标签'}>
