@@ -5,7 +5,6 @@ import Head from 'next/head';
 import '@zzf/design/lib/bundle.css';
 import '@zzf/design/lib/style/response-theme.scss';
 import 'styles/globals.scss';
-import 'styles/response.scss';
 import 'styles/markdown.scss';
 import 'highlight.js/styles/rainbow.css';
 import Header from 'components/header/header';
