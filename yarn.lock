@@ -321,7 +321,7 @@
     "eslint-visitor-keys" "^2.0.0"
 
 "@zzf/design@^1.0.0":
-  "integrity" "sha512-p/K7KFvtLiDoxWNRcvLqF4BoplnWp2IvRV8Geg119vgC3jVI3hLBRXAXMVVo2cUxA7Eig/EzaE1e3o/c0/knBA=="
+  "integrity" "sha512-um4C/R8XgthyMG0tnh0tz+FG5vNQscHfL9ynacqvw4gHcDkeBOlInW3sYApRdvJV6WvZmDC2FZzgNsihGZYK4Q=="
   "resolved" "http://113.31.126.209:8081/repository/npm-group/@zzf/design/-/design-1.0.0.tgz"
   "version" "1.0.0"
   dependencies:
