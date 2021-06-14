@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import Head from 'next/head';
 import '@zzf/design/lib/bundle.css';
+import '@zzf/design/lib/style/response-theme.scss';
 import 'styles/globals.scss';
 import 'styles/response.scss';
 import 'styles/markdown.scss';
-import 'styles/color.scss';
 import 'highlight.js/styles/rainbow.css';
 import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
@@ -19,16 +19,7 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    const m = localStorage.getItem('mode');
-    if (m) {
-      document.body.setAttribute('theme-mode', m);
-    } else {
-      document.body.removeAttribute('theme-mode');
-    }
-  }, []);
+function MyApp({ Component, pageProps }: any): JSX.Element {
   return (
     <>
       <Head>

@@ -12,7 +12,7 @@ interface ArticleCardProps {
 export default function ArticleCard<ArticleCardProps>({ dataSource }) {
   return (
     <div className={styles.card}>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a className={styles.title} target={'_blank'}>
             {dataSource.title}

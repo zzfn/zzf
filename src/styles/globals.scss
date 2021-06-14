@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html {
   font-size: 12px;
   font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial;
@@ -34,10 +37,4 @@ a{
 }
 :root{
   scroll-behavior: smooth;
-}
-:root{
-  color: #40b8fa;
-  [theme-mode='light']{
-    color: #24292e;
-  }
 }

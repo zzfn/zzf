@@ -53,17 +53,11 @@
     }
   }
 }
-[theme-mode='dark'] {
-  .logo {
-    filter: invert(0);
-  }
+.logo {
+  filter: invert(100%);
 }
-
 @media (prefers-color-scheme: dark) {
   .logo {
     filter: invert(0);
-  }
-  [theme-mode="light"] .logo {
-    filter: invert(100%);
   }
 }
