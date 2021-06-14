@@ -9,7 +9,7 @@ interface ArticleCardProps {
   dataSource: Article;
 }
 
-export default function ArticleCard<ArticleCardProps>({ dataSource }) {
+export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
     <div className={styles.card}>
       <div className={'flex items-center'}>
@@ -28,7 +28,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
           />
         ) : null}
       </div>
-      <p style={{ padding: '0 10px' }}>
+      <p className={'truncate px-4'}>
         {dataSource.content.match(/[\u4e00-\u9fa5\w]/g).slice(0, 100)}
       </p>
       <ul>
