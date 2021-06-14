@@ -14,7 +14,7 @@ export default function ArticleCard<ArticleCardProps>({ dataSource }) {
     <div className={styles.card}>
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
-          <a className={styles.title} target={'_blank'}>
+          <a className={styles.cardTitle} target={'_blank'}>
             {dataSource.title}
           </a>
         </Link>
