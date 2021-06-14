@@ -24,7 +24,7 @@ function Favorites({ serverProps }: { serverProps: any[] }) {
           <nav className={styles.ul}>
             {arr[item].map((node) => (
               <Link key={node.title} href={node.link}>
-                <a target={'_blank'}>
+                <a target={'_blank'} className={'flex flex-col items-center'}>
                   <img height={40} width={40} src={formatImg(node.img, 40)} alt={node.title} />
                   <section title={node.title} className={styles.title}>
                     {node.title}
