@@ -24,8 +24,6 @@ const Nav: React.FC<NavProps> = ({ source }) => {
           if (entry.isIntersecting) {
             setCurrent(entry.target.getAttribute('data-id'));
           } else {
-            console.log(entry.target);
-            // console.log(entry.target.getAttribute('data-id'));
           }
         });
       });
