@@ -10,11 +10,6 @@ function Footer(): JSX.Element {
       <div>2020-{dayjs().format('YYYY')}</div>
       <div>Powered by zzfn</div>
       <div>苏ICP备18059856号</div>
-      <Link href={'/friends'}>
-        <a className={styles.friends} target={'_blank'}>
-          友情链接
-        </a>
-      </Link>
       <div>email: admin@annyyy.com</div>
     </Layout.Footer>
   );
