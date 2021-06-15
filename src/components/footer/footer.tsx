@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './footer.module.scss';
 import dayjs from 'dayjs';
-import Link from 'next/link';
 import { Layout } from '@zzf/design';
 
 function Footer(): JSX.Element {
