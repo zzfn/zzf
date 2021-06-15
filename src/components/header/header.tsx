@@ -22,7 +22,7 @@ function Header(): JSX.Element {
                   height={32}
                   width={32}
                   layout={'intrinsic'}
-                  src={'/static/img/logo.png'}
+                  src={'/static/img/logo_transparent.png'}
                 />
               </a>
             </Link>
@@ -51,7 +51,7 @@ function Header(): JSX.Element {
                   height={32}
                   width={32}
                   layout={'intrinsic'}
-                  src={'/static/img/logo.png'}
+                  src={'/static/img/logo_transparent.png'}
                 />
               </a>
             </Link>
