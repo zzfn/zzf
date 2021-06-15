@@ -95,13 +95,13 @@
     padding: 10px;
     margin: 20px 0;
     font-size: 13px;
-    color: #cfd2d1;
-    background: var(--color-header-bg);
+    color: var(--color-brand);
+    background: var(--color-main-bg);
     line-height: 1.6;
     overflow: auto;
 
     code {
-      color: #cfd2d1;
+      color: var(--color-brand);
       background: transparent;
     }
   }
