@@ -12,10 +12,6 @@
     "path": "/tag"
   },
   {
-    "name": "关于",
-    "path": "/about"
-  },
-  {
     "name": "微博热搜",
     "path": "/hot"
   },
