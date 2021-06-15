@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: any): JSX.Element {
           name='viewport'
         />
       </Head>
-      <Layout direction={'column'} className={'zzf-page'}>
+      <Layout direction={'column'} className={'min-h-screen'}>
         <Header />
         <Layout.Main className={'mt-8'}>
           <Component {...pageProps} />
