@@ -28,6 +28,7 @@
     "prettier"
   ],
   "rules": {
+    "@typescript-eslint/consistent-type-imports": 2,
     "prettier/prettier": 2,
     "react-hooks/rules-of-hooks": 2,
     "react-hooks/exhaustive-deps": 1,
