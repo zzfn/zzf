@@ -53,9 +53,9 @@ const Home: React.FC<NextProps<any>> = (props) => {
         <Layout.Sidebar>
           <Card
             title={
-              <div className={styles.header}>
+              <div className={'text-primary flex items-center mb-1'}>
                 <img
-                  className={styles.logo}
+                  className={'mr-3 w8 h8'}
                   src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
                   alt=''
                 />
@@ -74,9 +74,9 @@ const Home: React.FC<NextProps<any>> = (props) => {
           </Card>
           <Card
             title={
-              <div className={styles.header}>
+              <div className={'text-primary flex items-center mb-1'}>
                 <img
-                  className={styles.logo}
+                  className={'mr-3 w8 h8'}
                   src={formatImg('https://cdn.zzfzzf.com/1621502693811rjP4r7.png', 20)}
                   alt=''
                 />
@@ -91,9 +91,9 @@ const Home: React.FC<NextProps<any>> = (props) => {
           </Card>
           <Card
             title={
-              <div className={styles.header}>
+              <div className={'text-primary flex items-center mb-1'}>
                 <img
-                  className={styles.logo}
+                  className={'mr-3 w8 h8'}
                   src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
                   alt=''
                 />
