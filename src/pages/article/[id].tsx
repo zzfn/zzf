@@ -66,7 +66,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
                 </ul>
               </div>
               <article
-                className={['markdown-template', styles.content].join(' ')}
+                className={['markdown-template', 'font-mono', styles.content].join(' ')}
                 dangerouslySetInnerHTML={{
                   __html: translateMarkdown(serverProps.content),
                 }}

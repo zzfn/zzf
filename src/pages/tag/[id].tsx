@@ -13,7 +13,7 @@ export default function ArticleDetail(props) {
         <title>{getTitle('标签')}</title>
       </Head>
       <h2>{name}</h2>
-      <ul>
+      <ul className={'font-mono'}>
         {serverProps.map((item) => (
           <li key={item.id}>
             <span style={{ color: '#8a8a8a' }}>{item.createTime}</span>-
