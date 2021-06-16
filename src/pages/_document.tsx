@@ -34,6 +34,7 @@ var _hmt = _hmt || [];
     return (
       <Html lang='zh'>
         <Head>
+          <link rel='shortcut icon' href='/static/favicon.ico' />
           <link rel='icon' href='/static/favicon.ico' />
           <meta
             name='keywords'
