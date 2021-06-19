@@ -34,11 +34,8 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
       </p>
       <ul>
         <li title={'标签'}>
-          标签
           <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
-            <a>
-              <Tag>{dataSource.tagDesc}</Tag>
-            </a>
+            <a className='Label'>{dataSource.tagDesc}</a>
           </Link>
         </li>
         <li className={styles.time} title={dataSource.createTime}>

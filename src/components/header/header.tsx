@@ -18,14 +18,16 @@ function Header(): JSX.Element {
             <div className={classNames('flex')}>
               <Link href={'/'}>
                 <a>
-                  <Image
-                    className={styles.logo}
-                    priority
-                    height={32}
-                    width={32}
-                    layout={'intrinsic'}
-                    src={'/static/img/logo_transparent.png'}
-                  />
+                  <div className='CircleBadge CircleBadge--small'>
+                    <Image
+                      className={`${styles.logo} CircleBadge-icon`}
+                      priority
+                      height={32}
+                      width={32}
+                      layout={'intrinsic'}
+                      src={'/static/img/logo_transparent.png'}
+                    />
+                  </div>
                 </a>
               </Link>
               <nav className={styles.menu}>

@@ -29,7 +29,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
     return (
       <div key={time}>
         <h3 className={`${styles.title}`}>
-          {time} 共 <Tag>{list.length}</Tag> 篇文章
+          {time} 共 <span className='Counter'>{list.length}</span> 篇文章
         </h3>
         <ul>
           {list?.map((item) => (
@@ -66,7 +66,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
               <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
                 <a className={'menu-item'}>
                   <span>{item.tag}</span>
-                  <span className='Counter'>{item.count}</span>
+                  <span className='Counter Counter--primary'>{item.count}</span>
                 </a>
               </Link>
             </React.Fragment>

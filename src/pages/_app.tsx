@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }: any): JSX.Element {
       </Head>
       <Layout direction={'column'} className={'min-h-screen'}>
         <Header />
-        <Layout.Main className={'mt-8'}>
+        <Layout.Main className={'mt-2'}>
           <Component {...pageProps} />
         </Layout.Main>
         <Footer />
