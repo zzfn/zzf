@@ -9,6 +9,9 @@ module.exports = {
     webpack5: true,
     strictPostcssConfiguration: true,
   },
+  sassOptions: {
+    prependData: `@import "styles/function";`,
+  },
   webpack: (config) => {
     config.module.rules[2].oneOf.forEach((moduleLoader) => {
       if (Array.isArray(moduleLoader.use)) {
