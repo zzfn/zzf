@@ -29,6 +29,9 @@
 - eslint
 - prettier
 - babel
+- [svgo](https://github.com/svg/svgo#configuration)
+- npx sort-package-json
+
 
 ## 后端
 - SpringBoot

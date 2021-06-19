@@ -22,6 +22,30 @@ module.exports = {
         });
       }
     });
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: 'svg-sprite-loader',
+          options: {
+            symbolId: '[name]',
+          },
+        },
+        {
+          loader: 'svgo-loader',
+          options: {
+            plugins: [
+              {
+                name: 'removeAttrs',
+                params: {
+                  attrs: ['fill'],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    });
     return config;
   },
 };
