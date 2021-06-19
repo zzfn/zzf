@@ -8,10 +8,6 @@
     "path": "/archive"
   },
   {
-    "name": "标签",
-    "path": "/tag"
-  },
-  {
     "name": "微博热搜",
     "path": "/hot"
   },

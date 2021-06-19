@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { diff } from '../../utils/time';
 import { Tag } from '@zzf/design';
 import Image from 'next/image';
+import classNames from 'classnames';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -11,7 +12,7 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
-    <div className={styles.card}>
+    <div className={classNames(styles.card, 'Box-row')}>
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a className={styles.cardTitle} target={'_blank'}>
@@ -40,10 +41,10 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
             </a>
           </Link>
         </li>
-        <li className={styles.time} title={'发布时间'}>
+        <li className={styles.time} title={dataSource.createTime}>
           Created {diff(dataSource.createTime)}
         </li>
-        <li className={styles.time} title={'更新时间'}>
+        <li className={styles.time} title={dataSource.updateTime}>
           Updated {diff(dataSource.updateTime)}
         </li>
       </ul>

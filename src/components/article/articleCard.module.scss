@@ -1,17 +1,17 @@
+@import "~@primer/css/support/variables/layout";
 .card {
-  color: var(--color-primary);
-  background: var(--color-secondary-bg);
+  //color: var(--color-primary);
+  //background: var(--color-bg-tertiary);
   width: 100%;
-  padding: 20px 0;
-  border-bottom: 1px dashed #ccc;
+  //border:1px solid var(--color-border-primary);
   cursor: pointer;
-
+  padding: $spacer-3;
   .recommend {
     float: right;
   }
 
   &:hover {
-    background: var(--color-bg-secondary);
+    //background: var(--color-bg-secondary);
   }
 
   p {
@@ -23,14 +23,14 @@
 
   .time {
     font-size: 12px;
-    color: var(--color-thirdly);
+    color: var(--color-text-secondary);
     display: flex;
   }
 
   &-title {
     font-weight: 700;
     font-size: 18px;
-    color: var(--color-primary);
+    color: var(--color-text-link);
     cursor: pointer;
 
     &:hover {

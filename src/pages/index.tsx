@@ -10,6 +10,7 @@ import styles from 'styles/home.module.scss';
 import { formatImg } from '../utils/formatImg';
 import Link from 'next/link';
 import { diff } from '../utils/time';
+import classNames from 'classnames';
 
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
@@ -43,7 +44,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
         <Image height={40} width={40} layout={'intrinsic'} src={'/static/img/top.png'} />
       </BackTop>
       <Layout>
-        <Layout.Content>
+        <Layout.Content className={'Box'}>
           <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>
             {records.map((item: Article) => (
               <ArticleCard key={item.id} dataSource={item} />
@@ -52,8 +53,9 @@ const Home: React.FC<NextProps<any>> = (props) => {
         </Layout.Content>
         <Layout.Sidebar>
           <Card
+            className={styles.card}
             title={
-              <div className={'text-primary flex items-center mb-1'}>
+              <div className={'flex items-center mb-1'}>
                 <img
                   className={'mr-3 w8 h8'}
                   src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
@@ -62,11 +64,10 @@ const Home: React.FC<NextProps<any>> = (props) => {
                 关于我
               </div>
             }
-            className={styles.card}
           >
             <div className={styles.wrap}>
               <img
-                className={styles.avatar}
+                className={styles.wrapAvatar}
                 src={formatImg('https://cdn.zzfzzf.com/1621500127578INeO4C.jpg', 100)}
                 alt='头像'
               />
@@ -121,9 +122,12 @@ const Home: React.FC<NextProps<any>> = (props) => {
               {serverProps.list.map((n) => (
                 <li className={styles.title} key={n.id}>
                   <Link prefetch={false} href={`/article/${n.id}`}>
-                    <a className={styles.title} target={'_blank'}>
-                      {n.title}
-                      <br />
+                    <a
+                      title={n.title}
+                      className={classNames(styles.title, 'flex')}
+                      target={'_blank'}
+                    >
+                      <div className={'truncate w-36'}>{n.title}</div>
                       <div style={{ width: '66px', marginLeft: 'auto', textDecoration: 'none' }}>
                         --{diff(n.updateTime)}
                       </div>

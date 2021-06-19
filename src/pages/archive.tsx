@@ -6,7 +6,6 @@ import Link from 'next/link';
 import dayjs from 'dayjs';
 import { Layout, Tag } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
-import Arrow from '../components/arrow/arrow';
 
 interface ArchiveProps {
   serverProps: {
@@ -68,7 +67,6 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
                 <a className={'menu-item'}>
                   <span>{item.tag}</span>
                   <span className='Counter'>{item.count}</span>
-                  {/*<Arrow color={'#108ee9'} number={}></Arrow>*/}
                 </a>
               </Link>
             </React.Fragment>

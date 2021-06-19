@@ -9,6 +9,7 @@ import useLg from 'hooks/useLg';
 import Zooming from 'zooming';
 import { Layout, Progress } from '@zzf/design';
 import { getTitle } from '../../utils/getTitle';
+import classNames from 'classnames';
 
 interface ServerProps {
   serverProps: any;
@@ -42,31 +43,31 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
           <Progress />
           <Layout.Content>
             <main className={`${styles.article}`}>
-              <div className={styles.title}>
-                <h1>{serverProps.title}</h1>
-              </div>
-              <div className={styles.tip}>
-                <ul>
-                  <li>
-                    <span className={'col-1'}>标签</span>
-                    {serverProps.tagDesc}
-                  </li>
-                  <li>
-                    <span className={'col-2'}>阅读量</span>
-                    {serverProps.viewCount}
-                  </li>
-                  <li>
-                    <span className={'col-3'}>发布于</span>
-                    {serverProps.createTime}
-                  </li>
-                  <li>
-                    <span className={'col-4'}>更新于</span>
-                    {serverProps.updateTime}
-                  </li>
-                </ul>
+              <div className='Subhead'>
+                <div className='Subhead-heading'>{serverProps.title}</div>
+                <div className={classNames('Subhead-description', styles.tip)}>
+                  <ul>
+                    <li>
+                      <span className={'col-1'}>标签</span>
+                      {serverProps.tagDesc}
+                    </li>
+                    <li>
+                      <span className={'col-2'}>阅读量</span>
+                      {serverProps.viewCount}
+                    </li>
+                    <li>
+                      <span className={'col-3'}>发布于</span>
+                      {serverProps.createTime}
+                    </li>
+                    <li>
+                      <span className={'col-4'}>更新于</span>
+                      {serverProps.updateTime}
+                    </li>
+                  </ul>
+                </div>
               </div>
               <article
-                className={['markdown-template', 'font-mono', styles.content].join(' ')}
+                className={['markdown-body', 'font-mono', styles.content].join(' ')}
                 dangerouslySetInnerHTML={{
                   __html: translateMarkdown(serverProps.content),
                 }}
