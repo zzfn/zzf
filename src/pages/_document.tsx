@@ -43,10 +43,11 @@ var _hmt = _hmt || [];
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
           <script async src='https://www.googletagmanager.com/gtag/js?id=G-QHRFL84469' />
+          <script async src='https://at.alicdn.com/t/font_2620815_mv6ezh2dvis.js' />
           <script dangerouslySetInnerHTML={this.getGoogle()} />
           <script dangerouslySetInnerHTML={this.getAnalyticsTag()} />
         </Head>
-        <body>
+        <body onTouchStart={() => {}}>
           <Main />
           <NextScript />
         </body>

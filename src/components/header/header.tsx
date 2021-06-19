@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Layout } from '@zzf/design';
 import styles from './header.module.scss';
-import Image from 'next/image';
 import menus from 'menus.json';
 import useIsPc from '../../hooks/useIsPc';
 import classNames from 'classnames';
+import Icon from '../Icon';
 
 function Header(): JSX.Element {
   const [isShow, setIsShow] = useState(false);
@@ -17,17 +17,8 @@ function Header(): JSX.Element {
           <>
             <div className={classNames('flex')}>
               <Link href={'/'}>
-                <a>
-                  <div className='CircleBadge CircleBadge--small'>
-                    <Image
-                      className={`${styles.logo} CircleBadge-icon`}
-                      priority
-                      height={32}
-                      width={32}
-                      layout={'intrinsic'}
-                      src={'/static/img/logo_transparent.png'}
-                    />
-                  </div>
+                <a className={'flex items-center color-text-primary text-6xl'}>
+                  <Icon name={'logo'} />
                 </a>
               </Link>
               <nav className={styles.menu}>
@@ -77,36 +68,16 @@ function Header(): JSX.Element {
           </>
         ) : (
           <>
-            <Image
-              className={styles.logo}
-              onClick={() => setIsShow(!isShow)}
-              height={24}
-              width={24}
-              layout={'intrinsic'}
-              src={'/static/img/menu.png'}
-            />
             <Link href={'/'}>
-              <a>
-                <Image
-                  className={styles.logo}
-                  height={32}
-                  width={32}
-                  layout={'intrinsic'}
-                  src={'/static/img/logo_transparent.png'}
-                />
+              <a className={'flex items-center color-text-primary'}>
+                <Icon className={'color-text-primary text-6xl'} name={'logo'} />
               </a>
             </Link>
-            <Link href={'/search'}>
-              <a>
-                <Image
-                  className={styles.logo}
-                  height={24}
-                  width={24}
-                  layout={'intrinsic'}
-                  src={'/static/img/search.png'}
-                />
-              </a>
-            </Link>
+            <Icon
+              className={'color-text-primary text-4xl'}
+              onClick={() => setIsShow(!isShow)}
+              name={isShow ? 'close' : 'menu'}
+            />
           </>
         )}
       </Layout.Header>
