@@ -5,6 +5,7 @@ import SearchCard from 'components/article/SearchCard';
 import styles from 'styles/search.module.scss';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
+import classNames from 'classnames';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
@@ -29,13 +30,13 @@ function Search(): JSX.Element {
       <div className={styles.search}>
         <form onSubmit={handleSubmit} action={''}>
           <input
-            className={styles.ipt}
+            className={classNames(styles.ipt, 'form-control', 'input-lg')}
             onChange={(event) => setKeyword(event.target.value)}
             value={keyword}
             type='search'
             placeholder='elasticsearch强力驱动'
           />
-          <Button>回车搜索</Button>
+          <button className='btn'>回车搜索</button>
         </form>
       </div>
       <div style={{ padding: '0 10px' }}>
