@@ -33,15 +33,15 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
       <ul>
-        <li title={'标签'}>
+        <li className={'w-1/4 md:w-32'} title={'标签'}>
           <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
             <a className='Label'>{dataSource.tagDesc}</a>
           </Link>
         </li>
-        <li className={styles.time} title={dataSource.createTime}>
+        <li className={'w-1/3 md:w-32'} title={dataSource.createTime}>
           Created {diff(dataSource.createTime)}
         </li>
-        <li className={styles.time} title={dataSource.updateTime}>
+        <li className={'w-1/3 md:w-32'} title={dataSource.updateTime}>
           Updated {diff(dataSource.updateTime)}
         </li>
       </ul>

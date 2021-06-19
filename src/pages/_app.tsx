@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import Head from 'next/head';
@@ -19,6 +19,14 @@ Sentry.init({
 });
 
 function MyApp({ Component, pageProps }: any): JSX.Element {
+  useEffect(() => {
+    const mode = localStorage.getItem('data-color-mode');
+    const light = localStorage.getItem('data-light-theme');
+    const dark = localStorage.getItem('data-dark-theme');
+    mode && document.querySelector('html').setAttribute('data-color-mode', mode);
+    light && document.querySelector('html').setAttribute('data-light-theme', light);
+    dark && document.querySelector('html').setAttribute('data-dark-theme', dark);
+  }, []);
   return (
     <>
       <Head>
