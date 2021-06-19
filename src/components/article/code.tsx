@@ -6,15 +6,15 @@ export default function Code({ language, code }) {
   return (
     <div className={styles.code}>
       <pre>
-        <code className={`language-${language}`} lang={language}>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: language
-                ? hljs.highlight(code, { language }).value
-                : hljs.highlightAuto(code).value,
-            }}
-          />
-        </code>
+        <code
+          dangerouslySetInnerHTML={{
+            __html: language
+              ? hljs.highlight(code, { language }).value
+              : hljs.highlightAuto(code).value,
+          }}
+          className={`language-${language}`}
+          lang={language}
+        />
       </pre>
       <div className={styles.action}>
         <a

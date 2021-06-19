@@ -1,6 +1,8 @@
 .code {
   position: relative;
-
+pre{
+  padding-top: 30px;
+}
   .action {
     &::before {
       width: 100px;
