@@ -1,18 +1,22 @@
 import React from 'react';
 import styles from 'styles/archive.module.scss';
 import Head from 'next/head';
-import { listArchives } from 'services/article';
+import { listArchives, listTags } from 'services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
-import { Tag } from '@zzf/design';
+import { Layout, Tag } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
+import Arrow from '../components/arrow/arrow';
 
 interface ArchiveProps {
-  serverProps: any;
+  serverProps: {
+    list: any[];
+    tags: any[];
+  };
 }
 
 const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
-  const timeLine = serverProps.reduce((prev, curr) => {
+  const timeLine = serverProps.list.reduce((prev, curr) => {
     const time = dayjs(curr.createTime).format('YYYY-MM');
     if (Object.prototype.hasOwnProperty.call(prev, time)) {
       prev[time].push(curr);
@@ -25,7 +29,7 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
   function renderMonth(time, list = []) {
     return (
       <div key={time}>
-        <h3 className={styles.title}>
+        <h3 className={`${styles.title}`}>
           {time} 共 <Tag>{list.length}</Tag> 篇文章
         </h3>
         <ul>
@@ -49,20 +53,38 @@ const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
         <title>{getTitle('归档')}</title>
       </Head>
       <header>
-        很好! 目前共计 <strong>{serverProps.length}</strong> 篇文章。 继续努力。⛽️
+        很好! 目前共计 <strong>{serverProps.list.length}</strong> 篇文章。 继续努力。⛽️
       </header>
-      <div className={styles.timeLine}>
-        {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
-      </div>
+      <Layout>
+        <Layout.Content>
+          <div className={styles.timeLine}>
+            {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
+          </div>
+        </Layout.Content>
+        <Layout.Sidebar className={'menu'}>
+          {serverProps.tags.map((item) => (
+            <React.Fragment key={item.code}>
+              <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
+                <a className={'menu-item'}>
+                  <span>{item.tag}</span>
+                  <span className='Counter'>{item.count}</span>
+                  {/*<Arrow color={'#108ee9'} number={}></Arrow>*/}
+                </a>
+              </Link>
+            </React.Fragment>
+          ))}
+        </Layout.Sidebar>
+      </Layout>
     </div>
   );
 };
 
 export const getStaticProps = async () => {
-  const { data } = await listArchives({});
+  const { data: list } = await listArchives({});
+  const { data: tags } = await listTags({});
   return {
     props: {
-      serverProps: data,
+      serverProps: { list, tags },
     },
     revalidate: 1,
   };
