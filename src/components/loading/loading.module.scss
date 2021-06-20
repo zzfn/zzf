@@ -1,0 +1,10 @@
+.loading {
+  font-size: 20px;
+  margin: auto;
+  animation: svg-loading-base 1s ease infinite;
+  @keyframes svg-loading-base {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

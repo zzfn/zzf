@@ -4,15 +4,19 @@ import { useRouter } from 'next/router';
 import Icon from '../Icon';
 import { Os } from '@zzf/toolkit';
 import useIsPc from '../../hooks/useIsPc';
+import Loading from '../loading/Loading';
 
 function Discuss(): JSX.Element {
   const router = useRouter();
   const isPc = useIsPc();
   const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [value, setValue] = useState('');
   const [replyId, setReplyId] = useState('');
   async function handleInit() {
+    setLoading(true);
     const { data } = await listDiscuss({ ...router.query });
+    setLoading(false);
     setList(data);
   }
   async function handleSubmit() {
@@ -27,7 +31,9 @@ function Discuss(): JSX.Element {
   useEffect(() => {
     handleInit();
   }, []);
-  return isPc ? (
+  return loading ? (
+    <Loading />
+  ) : isPc ? (
     <div>
       {list.map((item, idx) => (
         <div key={item.id} className='ml-6 pl-3'>
