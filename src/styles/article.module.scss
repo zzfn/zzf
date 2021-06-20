@@ -50,9 +50,12 @@
     }
 
     .content {
-      color: var(--color-secondary);
-      background: var(--color-secondary-bg);
-      margin: auto;
+      ul{
+        list-style-type: disc;
+      }
+      ol{
+        list-style-type: decimal;
+      }
     }
   }
 }
