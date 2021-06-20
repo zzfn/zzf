@@ -43,7 +43,7 @@ var _hmt = _hmt || [];
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
           <script async src='https://www.googletagmanager.com/gtag/js?id=G-QHRFL84469' />
-          <script async src='https://at.alicdn.com/t/font_2620815_4di3uipr8iw.js' />
+          <script async src='https://at.alicdn.com/t/font_2620815_5pflkl9bk1.js' />
           <script dangerouslySetInnerHTML={this.getGoogle()} />
           <script dangerouslySetInnerHTML={this.getAnalyticsTag()} />
         </Head>
