@@ -1,23 +1,12 @@
 # next.js 个人博客
+## ✨ 特性
+- 前后端分离
+- 支持深色、浅色模式
+- github风格
 
-- 前后端分离模式。
 
-> 所涉及的技术点  
-> 前端依赖的第三方包  
-> 其余功能纯手工制作
-```json
-{
-  "axios": "^0.20.0",
-  "dayjs": "^1.9.7",
-  "highlight.js": "^10.5.0",
-  "marked": "^1.2.7",
-  "next": "^10.0.4",
-  "react": "^17.0.1",
-  "react-dom": "^17.0.1",
-  "zooming": "^2.1.1"
-}
-```
-## 前端
+## 技术点
+### 前端
 - next.js
   classnames
 - axios
@@ -29,11 +18,13 @@
 - eslint
 - prettier
 - babel
+- tailwindcss  
+- @primer/css
 - [svgo](https://github.com/svg/svgo#configuration)
 - npx sort-package-json
 
 
-## 后端
+### 后端
 - SpringBoot
 - SpringCloud
 - MyBatis-Plus
