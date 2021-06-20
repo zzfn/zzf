@@ -18,7 +18,7 @@ function Header(): JSX.Element {
             <div className={classNames('flex')}>
               <Link href={'/'}>
                 <a className={'flex items-center color-text-primary text-6xl'}>
-                  <Icon name={'logo'} />
+                  <Icon className={styles.logo} name={'logo'} />
                 </a>
               </Link>
               <nav className={styles.menu}>
@@ -30,11 +30,11 @@ function Header(): JSX.Element {
               </nav>
             </div>
             <details className='dropdown details-reset details-overlay d-inline-block'>
-              <summary className='btn' aria-haspopup='true'>
+              <summary className={'text-gray p-2 d-inline'} aria-haspopup='true'>
                 主题
                 <div className='dropdown-caret' />
               </summary>
-              <ul className='dropdown-menu dropdown-menu-se'>
+              <ul className={classNames('dropdown-menu dropdown-menu-sw', styles.theme)}>
                 <li
                   onClick={() => {
                     document.querySelector('html').setAttribute('data-color-mode', 'dark');
@@ -76,18 +76,18 @@ function Header(): JSX.Element {
         ) : (
           <>
             <Icon
-              className={'color-text-primary text-4xl'}
+              className={classNames('text-4xl', styles.logo)}
               onClick={() => setIsShow(!isShow)}
               name={isShow ? 'close' : 'menu'}
             />
             <Link href={'/'}>
               <a className={'flex items-center color-text-primary'}>
-                <Icon className={'color-text-primary text-6xl'} name={'logo'} />
+                <Icon className={classNames('text-4xl', styles.logo)} name={'logo'} />
               </a>
             </Link>
             <details className='dropdown details-reset details-overlay d-inline-block'>
               <summary aria-haspopup='true'>
-                <Icon className={'color-text-primary text-4xl'} name={'setting'} />
+                <Icon className={classNames('text-4xl', styles.logo)} name={'setting'} />
               </summary>
               <ul className='dropdown-menu dropdown-menu-sw'>
                 <li

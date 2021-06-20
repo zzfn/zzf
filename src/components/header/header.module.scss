@@ -1,10 +1,19 @@
 .header {
   height: 60px;
-  background: var(--color-secondary-bg);
-  color: var(--color-primary);
+  color:var(--color-header-text);
+  background-color: var(--color-header-bg);
   font-weight: 600;
-
-
+.logo{
+  color: var(--color-header-logo);
+}
+.theme{
+  //color:var(--color-header-text);
+  //background-color: var(--color-header-bg);
+  //ul,li{
+  //  color:var(--color-header-text);
+  //  background-color: var(--color-header-bg);
+  //}
+}
   .menu {
     display: flex;
     align-items: center;
