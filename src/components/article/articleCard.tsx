@@ -12,7 +12,7 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
-    <div className={classNames(styles.card, 'Box-row')}>
+    <div className={classNames(styles.card, 'Box-row', 'anim-fade-in')}>
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a className={styles.cardTitle} target={'_blank'}>

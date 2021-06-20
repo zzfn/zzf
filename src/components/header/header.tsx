@@ -131,7 +131,10 @@ function Header(): JSX.Element {
         )}
       </Layout.Header>
       {isShow && !isPc && (
-        <nav onClick={() => setIsShow(false)} className={styles.dropdown}>
+        <nav
+          onClick={() => setIsShow(false)}
+          className={classNames(styles.dropdown, 'anim-fade-in')}
+        >
           {menus.map((menu) => (
             <Link key={menu.name} href={menu.path}>
               {menu.name}
