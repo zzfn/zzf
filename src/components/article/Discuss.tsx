@@ -1,24 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { listDiscuss } from 'api/discuss';
+import { listDiscuss, saveDiscuss } from 'api/discuss';
 import { useRouter } from 'next/router';
 import Icon from '../Icon';
 import { Os } from '@zzf/toolkit';
 
-function Discuss(props) {
+function Discuss(): JSX.Element {
   const router = useRouter();
   const [list, setList] = useState([]);
+  const [value, setValue] = useState('');
+  const [replyId, setReplyId] = useState('');
   async function handleInit() {
     const { data } = await listDiscuss({ ...router.query });
     setList(data);
+  }
+  async function handleSubmit() {
+    await saveDiscuss({
+      content: value,
+      remark: Os.getPlatform(),
+      replyId,
+      articleId: router.query.id,
+    });
+    handleInit();
   }
   useEffect(() => {
     handleInit();
   }, []);
   return (
     <div>
-      {list.map((item) => (
+      {list.map((item, idx) => (
         <div key={item.id} className='ml-6 pl-3'>
-          <div id={item.id} className='TimelineItem TimelineItem--condensed'>
+          <div discuss-id={item.id} className='TimelineItem TimelineItem--condensed'>
             <div className='TimelineItem-avatar'>
               <img
                 className='avatar'
@@ -35,13 +46,42 @@ function Discuss(props) {
 
             <div className='TimelineItem-body'>
               <div className='Box Box--condensed Box--blue'>
-                <div className='Box-header Box-header--blue'>
-                  <h3 className='Box-title'>{item.createTime}</h3>
+                <div className='Box-header Box-header--blue d-flex flex-items-center'>
+                  <h3 className='Box-title flex-auto'>
+                    {list.length - idx}楼-{item.createTime}
+                  </h3>
+                  <a href={'#reply'}>
+                    <button
+                      onClick={() => {
+                        setReplyId(item.id);
+                        const e = document.querySelector(`[discuss-id = ${item.replyId}]`);
+                        e &&
+                          e.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start',
+                            inline: 'nearest',
+                          });
+                      }}
+                      className='btn btn-primary btn-sm'
+                    >
+                      回复
+                    </button>
+                  </a>
                 </div>
                 <div className='Box-body'>{item.content}</div>
                 <div className='Box-footer'>
                   <a href={`#${item.replyId}`} className='link-gray'>
                     {item.remark}
+                  </a>
+                  <a
+                    onClick={() => {
+                      const e = document.querySelector(`[discuss-id = ${item.replyId}]`);
+                      e &&
+                        e.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                    }}
+                  >
+                    {item.replyId &&
+                      `回复${list.length - list.findIndex((i) => i.id === item.replyId)}楼`}
                   </a>
                 </div>
               </div>
@@ -49,9 +89,8 @@ function Discuss(props) {
           </div>
         </div>
       ))}
-      {/*<div className='TimelineItem-break ml-0' />*/}
       <div className='ml-6 pl-3'>
-        <div className='TimelineItem TimelineItem--condensed'>
+        <div discuss-id={'reply'} className='TimelineItem TimelineItem--condensed'>
           <div className='TimelineItem-avatar'>
             <img
               className='avatar'
@@ -69,10 +108,14 @@ function Discuss(props) {
             <div className='Box Box--condensed Box--blue'>
               <div className='Box-header Box-header--blue d-flex flex-items-center'>
                 <h3 className='Box-title flex-auto'>{new Date().toDateString()}</h3>
-                <button className='btn btn-primary btn-sm'>提交</button>
+                <button onClick={handleSubmit} className='btn btn-primary btn-sm'>
+                  提交
+                </button>
               </div>
               <div className='Box-body'>
                 <input
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
                   className='form-control'
                   type='text'
                   placeholder='留言'

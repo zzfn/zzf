@@ -37,7 +37,7 @@ const Nav: React.FC<NavProps> = ({ source }) => {
       const hash = window.location.hash;
       if (hash) {
         const e = document.querySelector(`[data-id = ${hash.replace('#', '')}]`);
-        e.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        e && e.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
         setCurrent(hash.replace('#', ''));
       }
     }
