@@ -10,6 +10,7 @@ import Zooming from 'zooming';
 import { Layout, Progress } from '@zzf/design';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
+import Discuss from '../../components/article/Discuss';
 
 interface ServerProps {
   serverProps: any;
@@ -73,6 +74,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
                 }}
               />
             </main>
+            <Discuss />
           </Layout.Content>
           {isLg && (
             <Layout.Sidebar>
