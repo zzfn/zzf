@@ -30,6 +30,8 @@
     "prettier"
   ],
   "rules": {
+    "react/jsx-uses-react": 0,
+    "react/react-in-jsx-scope": 0,
     "@typescript-eslint/consistent-type-imports": 2,
     "prettier/prettier": 2,
     "react-hooks/rules-of-hooks": 2,
