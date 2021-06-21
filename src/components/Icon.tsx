@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const request = require.context('../assets', false, /\.svg$/);
-request.keys().forEach(request);
+// const request = require.context('../assets', false, /\.svg$/);
+// request.keys().forEach(request);
 type IconProps = {
   name: string;
   onClick?: () => void;
