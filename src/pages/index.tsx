@@ -63,7 +63,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
                   width={20}
                   height={20}
                 />
-                关于我
+                <span className={'ml-3'}>关于我</span>
               </div>
             }
           >
