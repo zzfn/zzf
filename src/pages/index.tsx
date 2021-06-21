@@ -70,6 +70,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
           >
             <div className={styles.wrap}>
               <Image
+                loader={({ src }) => src}
                 className={styles.wrapAvatar}
                 src={formatImg('https://cdn.zzfzzf.com/1621500127578INeO4C.jpg', 100)}
                 alt='Landscape picture'
