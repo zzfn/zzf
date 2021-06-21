@@ -58,6 +58,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
             title={
               <div className={'flex items-center mb-1'}>
                 <Image
+                  loader={({ src }) => src}
                   src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
                   alt='Landscape picture'
                   width={20}

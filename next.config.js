@@ -3,7 +3,6 @@ const config = require('./env/index');
 module.exports = {
   env: { ...config },
   images: {
-    loader: ({ src }) => src,
     domains: ['cdn.zzfzzf.com'],
   },
   sassOptions: {
