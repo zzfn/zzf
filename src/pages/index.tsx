@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import { lastUpdated, listArticles, overview } from 'api/article';
+import More from 'components/loading/Loading';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import { getTitle } from '../utils/getTitle';
@@ -45,7 +46,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
       </BackTop>
       <Layout>
         <Layout.Content className={'Box'}>
-          <Loading noMore={noMore} key={page.current} onLoad={handleLoad}>
+          <Loading noMore={noMore} key={page.current} onLoad={handleLoad} loading={<More />}>
             {records.map((item: Article) => (
               <ArticleCard key={item.id} dataSource={item} />
             ))}
