@@ -1,9 +1,12 @@
 .detail {
+  width: 100%;
   font-size: 1.1rem;
   position: relative;
   padding: 10px 0;
   margin-bottom: 2rem;
   display: flex;
+  justify-content: space-between;
+
   .article {
     .title {
       width: 100%;
@@ -50,10 +53,11 @@
     }
 
     .content {
-      ul{
+      ul {
         list-style-type: disc;
       }
-      ol{
+
+      ol {
         list-style-type: decimal;
       }
     }

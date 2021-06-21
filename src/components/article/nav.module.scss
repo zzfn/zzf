@@ -1,25 +1,22 @@
-@import "src/styles/function";
 .nav {
-  list-style: circle;
   padding: 0 5px;
   color: var(--color-secondary);
 
   .navItem {
     width: 150px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
     padding: 2px;
-    cursor: pointer;
 
-    &:hover {
-      color: var(--color-hover);
+    a {
+      color: var(--color-text-primary);
     }
   }
 
+  .active {
+    a {
+      font-weight: 700;
+      color: var(--color-text-success);
+    }
+  }
 }
 
-.active {
-  font-weight: 700;
-  color: var(--color-text-link);
-}
+
