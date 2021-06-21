@@ -6,8 +6,6 @@ import Link from 'next/link';
 import dayjs from 'dayjs';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
-import useIsPc from '../hooks/useIsPc';
-import classNames from 'classnames';
 
 interface ArchiveProps {
   list: any[];
@@ -36,7 +34,6 @@ function renderMonth(time, list = []) {
 }
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
-  const isPc = useIsPc();
   const [active, setActive] = useState(0);
   const timeLine = serverProps.list.reduce((prev, curr) => {
     const time = dayjs(curr.createTime).format('YYYY-MM');
