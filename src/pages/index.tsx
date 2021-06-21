@@ -57,20 +57,23 @@ const Home: React.FC<NextProps<any>> = (props) => {
             className={styles.card}
             title={
               <div className={'flex items-center mb-1'}>
-                <img
-                  className={'mr-3 w8 h8'}
+                <Image
                   src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
-                  alt=''
+                  alt='Landscape picture'
+                  width={20}
+                  height={20}
                 />
                 关于我
               </div>
             }
           >
             <div className={styles.wrap}>
-              <img
+              <Image
                 className={styles.wrapAvatar}
                 src={formatImg('https://cdn.zzfzzf.com/1621500127578INeO4C.jpg', 100)}
-                alt='头像'
+                alt='Landscape picture'
+                width={100}
+                height={100}
               />
             </div>
           </Card>
