@@ -4,15 +4,13 @@ import Head from 'next/head';
 import { listArchives, listTags } from 'services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
-import { Layout, Tag } from '@zzf/design';
+import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import useIsPc from '../hooks/useIsPc';
 
 interface ArchiveProps {
-  serverProps: {
-    list: any[];
-    tags: any[];
-  };
+  list: any[];
+  tags: any[];
 }
 function renderMonth(time, list = []) {
   return (
@@ -36,7 +34,7 @@ function renderMonth(time, list = []) {
   );
 }
 
-const Archive: React.FC<ArchiveProps> = ({ serverProps }) => {
+const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
   const isPc = useIsPc();
   const [active, setActive] = useState(0);
   const timeLine = serverProps.list.reduce((prev, curr) => {

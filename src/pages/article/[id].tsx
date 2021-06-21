@@ -11,6 +11,7 @@ import { Layout, Progress } from '@zzf/design';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import Discuss from '../../components/article/Discuss';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 
 interface ServerProps {
   serverProps: any;
@@ -89,16 +90,16 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
   );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await listArchives({});
   const paths = data.map((_) => ({ params: { id: _.id } }));
   return {
     paths,
     fallback: true,
   };
-}
+};
 
-export async function getStaticProps(context) {
+export const getStaticProps: GetStaticProps = async (context) => {
   const {
     params: { id },
   } = context;
@@ -110,6 +111,6 @@ export async function getStaticProps(context) {
     },
     revalidate: 1,
   };
-}
+};
 
 export default ArticleDetail;

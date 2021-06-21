@@ -23,7 +23,6 @@ const Nav: React.FC<NavProps> = ({ source }) => {
         entries.reverse().forEach(function (entry) {
           if (entry.isIntersecting) {
             setCurrent(entry.target.getAttribute('data-id'));
-          } else {
           }
         });
       });

@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './articleCard.module.scss';
 import Link from 'next/link';
 import { diff } from '../../utils/time';
-import { Tag } from '@zzf/design';
 import Image from 'next/image';
 import classNames from 'classnames';
 
