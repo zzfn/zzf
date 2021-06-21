@@ -2,7 +2,10 @@ import React from 'react';
 import hljs from 'highlight.js';
 import styles from './code.module.scss';
 
-export default function Code({ language, code }) {
+type CodeProps = {
+  ({ language, code }: { language: string; code: string }): JSX.Element;
+};
+const Code: CodeProps = ({ language, code }) => {
   return (
     <div className={styles.code}>
       <pre>
@@ -26,4 +29,5 @@ export default function Code({ language, code }) {
       </div>
     </div>
   );
-}
+};
+export default Code;
