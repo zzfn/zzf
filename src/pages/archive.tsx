@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import useIsPc from '../hooks/useIsPc';
+import classNames from 'classnames';
 
 interface ArchiveProps {
   list: any[];
@@ -55,14 +56,53 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <header>
         很好! 目前共计 <strong>{serverProps.list.length}</strong> 篇文章。 继续努力。⛽️
       </header>
-      {isPc ? (
-        <Layout>
-          <Layout.Content>
-            <div className={styles.timeLine}>
-              {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
-            </div>
-          </Layout.Content>
-          <Layout.Sidebar className={'menu'}>
+      <Layout className={'hidden md:flex'}>
+        <Layout.Content>
+          <div className={styles.timeLine}>
+            {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
+          </div>
+        </Layout.Content>
+        <Layout.Sidebar className={'menu'}>
+          {serverProps.tags.map((item) => (
+            <React.Fragment key={item.code}>
+              <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
+                <a className={'menu-item'}>
+                  <span>{item.tag}</span>
+                  <span className='Counter Counter--primary'>{item.count}</span>
+                </a>
+              </Link>
+            </React.Fragment>
+          ))}
+        </Layout.Sidebar>
+      </Layout>
+      <nav className='md:hidden UnderlineNav '>
+        <div className='UnderlineNav-body w-full' role='tablist'>
+          <div
+            onClick={() => setActive(0)}
+            className={`UnderlineNav-item flex-1 ${styles.timeLine}`}
+            role='tab'
+            aria-selected={active === 0}
+          >
+            按时间
+          </div>
+          <button
+            onClick={() => setActive(1)}
+            aria-selected={active === 1}
+            className='UnderlineNav-item flex-1'
+            role='tab'
+            type='button'
+          >
+            按标签
+          </button>
+        </div>
+      </nav>
+      <section className={'md:hidden'}>
+        {active === 0 ? (
+          <div className={styles.timeLine}>
+            {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
+          </div>
+        ) : (
+          <>
             {serverProps.tags.map((item) => (
               <React.Fragment key={item.code}>
                 <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
@@ -73,51 +113,9 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
                 </Link>
               </React.Fragment>
             ))}
-          </Layout.Sidebar>
-        </Layout>
-      ) : (
-        <>
-          <nav className='UnderlineNav'>
-            <div className='UnderlineNav-body w-full' role='tablist'>
-              <div
-                onClick={() => setActive(0)}
-                className={`UnderlineNav-item flex-1 ${styles.timeLine}`}
-                role='tab'
-                aria-selected={active === 0}
-              >
-                按时间
-              </div>
-              <button
-                onClick={() => setActive(1)}
-                aria-selected={active === 1}
-                className='UnderlineNav-item flex-1'
-                role='tab'
-                type='button'
-              >
-                按标签
-              </button>
-            </div>
-          </nav>
-          {active === 0 ? (
-            <div className={styles.timeLine}>
-              {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
-            </div>
-          ) : (
-            <>
-              {serverProps.tags.map((item) => (
-                <React.Fragment key={item.code}>
-                  <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
-                    <a className={'menu-item'}>
-                      <span>{item.tag}</span>
-                      <span className='Counter Counter--primary'>{item.count}</span>
-                    </a>
-                  </Link>
-                </React.Fragment>
-              ))}
-            </>
-          )}
-        </>
-      )}
+          </>
+        )}
+      </section>
     </div>
   );
 };
