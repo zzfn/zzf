@@ -5,7 +5,6 @@ import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Nav from 'components/article/nav';
-import useLg from 'hooks/useLg';
 import Zooming from 'zooming';
 import { Layout, Progress } from '@zzf/design';
 import { getTitle } from '../../utils/getTitle';
@@ -19,7 +18,6 @@ interface ServerProps {
 }
 
 const ArticleDetail: React.FC<ServerProps> = (props) => {
-  const isLg = useLg();
   const router = useRouter();
   const { serverProps = {}, code } = props;
   useEffect(() => {
@@ -77,11 +75,9 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
             </main>
             <Discuss />
           </Layout.Content>
-          {isLg && (
-            <Layout.Sidebar>
-              <Nav source={serverProps.content} />
-            </Layout.Sidebar>
-          )}
+          <Layout.Sidebar>
+            <Nav source={serverProps.content} />
+          </Layout.Sidebar>
         </>
       ) : (
         '未找到文章'
