@@ -5,15 +5,11 @@ module.exports = {
   images: {
     domains: ['cdn.zzfzzf.com'],
   },
-  future: {
-    webpack5: true,
-    strictPostcssConfiguration: true,
-  },
   sassOptions: {
     prependData: `@import "styles/function";`,
   },
   webpack: (config) => {
-    config.module.rules[2].oneOf.forEach((moduleLoader) => {
+    config.module.rules[3].oneOf.forEach((moduleLoader) => {
       if (Array.isArray(moduleLoader.use)) {
         moduleLoader.use.forEach((item) => {
           if (item.loader.includes('css-loader') && !item.loader.includes('postcss-loader')) {

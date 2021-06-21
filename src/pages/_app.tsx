@@ -10,14 +10,14 @@ import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
-
+import type { AppProps } from 'next/app';
 Sentry.init({
   dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
 });
 
-function MyApp({ Component, pageProps }: any): JSX.Element {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
     const mode = localStorage.getItem('data-color-mode');
     const light = localStorage.getItem('data-light-theme');
