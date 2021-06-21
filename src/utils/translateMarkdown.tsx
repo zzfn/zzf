@@ -12,6 +12,13 @@ export const translateMarkdown = (text = '') => {
   renderer.link = function (href, title, text) {
     return `<a target="_blank" href=${href}>${text}</a>`;
   };
+  renderer.heading = function (text, level, _, slugger) {
+    const id = slugger.slug('heading');
+    return `
+            <h${level} id=${id === 'heading' ? 'heading-0' : id}>
+              ${text}
+            </h${level}>`;
+  };
   return marked(text, {
     renderer: renderer,
     gfm: true,
