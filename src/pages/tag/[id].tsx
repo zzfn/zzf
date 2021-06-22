@@ -12,7 +12,6 @@ export default function ArticleDetail(props) {
       <Head>
         <title>{getTitle('标签')}</title>
       </Head>
-      <h2>{name}</h2>
       <ul className={'font-mono'}>
         {serverProps.map((item) => (
           <li key={item.id}>
