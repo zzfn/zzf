@@ -68,7 +68,7 @@ function Header(): JSX.Element {
             </li>
           </ul>
         </details>
-        <section className={'md:hidden flex justify-between flex-1'}>
+        <section className={'md:hidden flex justify-between items-center flex-1'}>
           <Icon
             className={classNames('text-4xl', styles.logo)}
             onClick={() => setIsShow(!isShow)}
