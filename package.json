@@ -41,8 +41,6 @@
     "postcss": "^8.3.3",
     "prettier": "^2.3.0",
     "sass": "~1.32.0",
-    "svg-sprite-loader": "^6.0.7",
-    "svgo-loader": "^3.0.0",
     "tailwindcss": "^2.1.4",
     "typescript": "^4.2.2",
     "webpack": "^5.39.1"
