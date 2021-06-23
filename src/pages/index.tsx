@@ -134,9 +134,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
                       target={'_blank'}
                     >
                       <div className={'truncate w-36'}>{n.title}</div>
-                      <div style={{ width: '66px', marginLeft: 'auto', textDecoration: 'none' }}>
-                        --{diff(n.updateTime)}
-                      </div>
+                      <div className={'whitespace-nowrap'}>--{diff(n.updateTime)}</div>
                     </a>
                   </Link>
                 </li>
