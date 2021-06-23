@@ -238,11 +238,11 @@ packages:
   /@primer/css/17.3.0:
     resolution: {integrity: sha512-fKxMh6CixHxRI/0zQmEkQ2eP0960TeIsHsc2oKFvGVDwaIi7Dm1BOC10lrC9aEMxsvRG3rfCW2HXgsaua+iGKA==}
     dependencies:
-      '@primer/primitives': 4.4.2
+      '@primer/primitives': 4.4.4
     dev: false
 
-  /@primer/primitives/4.4.2:
-    resolution: {integrity: sha512-71gD7579aWaG0Syd2EFLDWNzYmvxmGrxkwqFSXRtqx9UPL6T5KztGc+w9pNU/WP4bcxDmrHQptPQrSnMjHqJZw==}
+  /@primer/primitives/4.4.4:
+    resolution: {integrity: sha512-YQbGfcbF5FUrlGVg9jY+lUbz2+1YFLFwdvMoUksZx/J49fjX/KmVQslgsE8VpJ7wc0cCcjys7nko6vmu80nQFA==}
     dev: false
 
   /@rushstack/eslint-patch/1.0.6:
@@ -607,7 +607,7 @@ packages:
     dev: false
 
   /@zzf/toolkit/1.0.0:
-    resolution: {integrity: sha512-AuANeqizOoe7QCjZif0Mi+sqV33yWtE0h15yh7Hp6vyE+EcyoVTfUccFP3IM8+VkS7MzYI7caGx06p3ByZqc5Q==}
+    resolution: {integrity: sha512-SdkTFud6w3dk+yZa1mCM1v2Z6tIsWTCaHZXJenrFWn1DAbU9caX13SjaQKzExvXiClZt9lTlJTq4uhTt5qrayA==}
     dev: false
 
   /acorn-jsx/5.3.1_acorn@7.4.1:
