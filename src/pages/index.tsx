@@ -12,6 +12,7 @@ import { formatImg } from '../utils/formatImg';
 import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
+import type { GetStaticProps } from 'next';
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
@@ -146,7 +147,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
     </>
   );
 };
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const num = 1;
   const size = 10;
   const { data } = await listArticles({ pageNumber: num, pageSize: size });
