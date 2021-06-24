@@ -159,11 +159,5 @@ export const getStaticProps = async () => {
     revalidate: 1,
   };
 };
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
-  },
-};
+
 export default Home;
