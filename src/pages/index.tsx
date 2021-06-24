@@ -87,8 +87,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
             }
             className={styles.card}
           >
-            <div>本次白屏时间{props.metric.FCP}ms</div>
-            <div>本次加载时间{props.metric.LCP}ms</div>
+            <div>本次加载时间{props.metric.FCP}ms</div>
             {/*文章数目 : {serverProps.aLlArticleCount} <br />*/}
             {/*最后更新时间 : {serverProps.lastUpdateTime}*/}
           </Card>
