@@ -9,7 +9,8 @@ module.exports = {
     prependData: `@import "styles/function";`,
   },
   webpack: (config) => {
-    config.module.rules[3].oneOf.forEach((moduleLoader) => {
+    const idx = config.module.rules.findIndex((item) => Reflect.has(item, 'oneOf'));
+    config.module.rules[idx].oneOf.forEach((moduleLoader) => {
       if (Array.isArray(moduleLoader.use)) {
         moduleLoader.use.forEach((item) => {
           if (item.loader.includes('css-loader') && !item.loader.includes('postcss-loader')) {
