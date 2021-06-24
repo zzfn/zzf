@@ -37,10 +37,10 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
             <a className='Label Label--primary'>{dataSource.tagDesc}</a>
           </Link>
         </li>
-        <li className={'w-1/3 md:w-32'} title={dataSource.createTime}>
+        <li className={'w-1/3 md:w-36'} title={dataSource.createTime}>
           Created {diff(dataSource.createTime)}
         </li>
-        <li className={'w-1/3 md:w-32'} title={dataSource.updateTime}>
+        <li className={'w-1/3 md:w-36'} title={dataSource.updateTime}>
           Updated {diff(dataSource.updateTime)}
         </li>
       </ul>
