@@ -17,7 +17,6 @@ const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
   const [noMore, setNoMore] = useState(false);
-  const [request, setRequest] = useState<{ fpt: number; tti: number }>({ fpt: 0, tti: 0 });
   const [records, setRecords] = useState(serverProps.records);
 
   async function handleLoad() {
@@ -32,10 +31,6 @@ const Home: React.FC<NextProps<any>> = (props) => {
     page.current = data.current;
   }
 
-  useEffect(() => {
-    const performance = new Os();
-    setRequest({ fpt: performance.getFpt(), tti: performance.getTti() });
-  }, []);
   return (
     <>
       <Head>
@@ -92,8 +87,8 @@ const Home: React.FC<NextProps<any>> = (props) => {
             }
             className={styles.card}
           >
-            <div>本次白屏时间{request.fpt}ms</div>
-            <div>本次加载时间{request.tti}ms</div>
+            <div>本次白屏时间{props.metric.FCP}ms</div>
+            <div>本次加载时间{props.metric.LCP}ms</div>
             {/*文章数目 : {serverProps.aLlArticleCount} <br />*/}
             {/*最后更新时间 : {serverProps.lastUpdateTime}*/}
           </Card>

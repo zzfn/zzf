@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import Head from 'next/head';
@@ -10,15 +10,25 @@ import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
-import type { AppProps } from 'next/app';
+import type { AppProps, NextWebVitalsMetric } from 'next/app';
 Sentry.init({
   dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
 });
 
+export function reportWebVitals(metric: NextWebVitalsMetric): void {
+  console.log(metric);
+}
+
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  const [metric, setMetric] = useState<metricType>({ LCP: 0, FID: 0, FCP: 0, CLS: 0 });
   useEffect(() => {
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntriesByName('first-contentful-paint')) {
+        setMetric({ ...metric, FCP: Math.floor(entry.startTime) });
+      }
+    }).observe({ type: 'paint', buffered: true });
     const mode = localStorage.getItem('data-color-mode');
     const light = localStorage.getItem('data-light-theme');
     const dark = localStorage.getItem('data-dark-theme');
@@ -35,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <Layout direction={'column'} className={'min-h-screen'}>
         <Header />
         <Layout.Main className={'mt-2'}>
-          <Component {...pageProps} />
+          <Component metric={metric} {...pageProps} />
         </Layout.Main>
         <Footer />
       </Layout>
