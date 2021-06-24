@@ -77,10 +77,12 @@ const Home: React.FC<NextProps<any>> = (props) => {
           <Card
             title={
               <div className={'text-primary flex items-center mb-1'}>
-                <img
-                  className={'mr-3 w8 h8'}
-                  src={formatImg('https://cdn.zzfzzf.com/1621502693811rjP4r7.png', 20)}
-                  alt=''
+                <Image
+                  loader={({ src }) => src}
+                  src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
+                  alt='Landscape picture'
+                  width={20}
+                  height={20}
                 />
                 关于本站
               </div>
