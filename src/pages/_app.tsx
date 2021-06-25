@@ -10,16 +10,12 @@ import Header from 'components/header/header';
 import Footer from 'components/footer/footer';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
-import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import type { AppProps } from 'next/app';
 Sentry.init({
   dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
 });
-
-export function reportWebVitals(metric: NextWebVitalsMetric): void {
-  console.log(metric);
-}
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [metric, setMetric] = useState<metricType>({ LCP: 0, FID: 0, FCP: 0, CLS: 0 });
