@@ -22,8 +22,8 @@ class MyDocument extends Document {
     return (
       <Html lang='zh'>
         <Head>
-          <link rel='shortcut icon' href='/static/favicon.ico' />
-          <link rel='icon' href='/static/favicon.ico' />
+          <link rel='shortcut icon' href={'/static/favicon.ico'} />
+          <link rel='icon' href={'/static/favicon.ico'} />
           <meta
             name='keywords'
             content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
@@ -31,7 +31,7 @@ class MyDocument extends Document {
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
           <script async src='https://www.googletagmanager.com/gtag/js?id=G-QHRFL84469' />
-          <script async src='https://at.alicdn.com/t/font_2620815_5pflkl9bk1.js' />
+          <script async src={'https://at.alicdn.com/t/font_2620815_5pflkl9bk1.js'} />
           <script dangerouslySetInnerHTML={this.getGoogle()} />
         </Head>
         <body onTouchStart={() => {}}>
