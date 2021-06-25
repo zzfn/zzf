@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postbuild": "next-sitemap",
     "start:dev": "cross-env APP=development next dev -p 3001",
     "start:prod": "cross-env APP=production next dev -p 3001",
     "build": "cross-env APP=production next build",
@@ -38,6 +39,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "next-sitemap": "^1.6.124",
     "postcss": "^8.3.3",
     "prettier": "^2.3.0",
     "sass": "~1.32.0",
