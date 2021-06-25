@@ -33,3 +33,5 @@ yarn-error.log*
 # vercel
 .vercel
 /.idea/
+/public/robots.txt
+/public/sitemap.xml
