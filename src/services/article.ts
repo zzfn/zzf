@@ -51,6 +51,12 @@ export const overview = () => {
     url: '/config/non/overview',
   });
 };
+export const getHot = () => {
+  return http({
+    method: 'get',
+    url: '/article/non/hot',
+  });
+};
 export const lastUpdated = () => {
   return http({
     method: 'get',

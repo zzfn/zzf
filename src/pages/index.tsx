@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
-import { lastUpdated, listArticles, overview } from 'api/article';
+import { getHot, lastUpdated, listArticles, overview } from 'api/article';
 import More from 'components/loading/Loading';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
@@ -101,12 +101,27 @@ const Home: React.FC<NextProps<any>> = (props) => {
                   src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
                   alt=''
                 />
-                公告
+                排行榜
               </div>
             }
             className={styles.card}
           >
-            新版博客上线啦
+            <ul>
+              {serverProps.hot.slice(0, 5).map((n) => (
+                <li className={styles.title} key={n.id}>
+                  <Link prefetch={false} href={`/article/${n.id}`}>
+                    <a
+                      title={n.title}
+                      className={classNames(styles.title, 'flex')}
+                      target={'_blank'}
+                    >
+                      <div className={'truncate w-36'}>{n.title}</div>
+                      <div className={'whitespace-nowrap'}>--{n.viewCount}</div>
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </Card>
           <Card
             title={
@@ -149,9 +164,10 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data } = await listArticles({ pageNumber: num, pageSize: size });
   const { data: over } = await overview();
   const { data: list } = await lastUpdated();
+  const { data: hot } = await getHot();
   return {
     props: {
-      serverProps: { ...data, ...over, list },
+      serverProps: { ...data, ...over, list, hot },
     },
     revalidate: 1,
   };
