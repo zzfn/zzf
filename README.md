@@ -20,13 +20,13 @@
 - babel
 - tailwindcss  
 - @primer/css
-- [svgo](https://github.com/svg/svgo#configuration)
+- [svgo](https://github.com/svg/svgo#configuration) `(deprecated)`
 - npx sort-package-json
 
 
 ### 后端
 - SpringBoot
-- SpringCloud
+- SpringCloud`(deprecated)`
 - MyBatis-Plus
 - Swagger-UI
 - Elasticsearch
@@ -34,6 +34,8 @@
 - Redis
 - Lombok
 - Nginx
-- Hutool
-- nacos
-- sentinel
+- Hutool`(deprecated)`
+- nacos`(deprecated)`
+- sentinel`(deprecated)`
+- RabbitMQ
+- 钉钉机器人
