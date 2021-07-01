@@ -39,3 +39,12 @@
 - sentinel`(deprecated)`
 - RabbitMQ
 - 钉钉机器人
+
+### 代码提交关键词
+feat:        A new feature
+fix:         A bug fix
+improvement: An improvement to a current feature
+docs:        Documentation only changes
+style:       Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+refactor:    A code change that neither fixes a bug nor adds a feature
+perf:        A code change that improves performance
