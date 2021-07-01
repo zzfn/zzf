@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       serverProps: { ...data },
       code,
     },
-    revalidate: 1,
+    revalidate: 5,
   };
 };
 
