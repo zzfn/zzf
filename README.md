@@ -4,6 +4,10 @@
 - 支持深色、浅色模式
 - github风格
 
+## 仓库地址
+- [前台页面](https://github.com/zzfn/zzf)
+- [后台管理系统](https://github.com/zzfn/dashboard)
+- [服务端](https://github.com/zzfn/blog-back-end) (暂未开源)
 
 ## 技术点
 ### 前端
@@ -41,6 +45,7 @@
 - 钉钉机器人
 
 ### 代码提交关键词
+```
 feat:        A new feature
 fix:         A bug fix
 improvement: An improvement to a current feature
@@ -48,3 +53,4 @@ docs:        Documentation only changes
 style:       Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 refactor:    A code change that neither fixes a bug nor adds a feature
 perf:        A code change that improves performance
+```
