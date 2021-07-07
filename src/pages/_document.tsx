@@ -31,7 +31,7 @@ class MyDocument extends Document {
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
           <script async src='https://www.googletagmanager.com/gtag/js?id=G-QHRFL84469' />
-          <script async src={'https://at.alicdn.com/t/font_2620815_5pflkl9bk1.js'} />
+          <script async src={'https://at.alicdn.com/t/font_2620815_kyo2p9u6jk.js'} />
           <script dangerouslySetInnerHTML={this.getGoogle()} />
         </Head>
         <body onTouchStart={() => {}}>

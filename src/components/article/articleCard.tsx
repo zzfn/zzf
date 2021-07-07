@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { diff } from '../../utils/time';
 import Image from 'next/image';
 import classNames from 'classnames';
+import Icon from '../Icon';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -18,15 +19,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
             {dataSource.title}
           </a>
         </Link>
-        {dataSource.orderNum ? (
-          <Image
-            className={styles.recommend}
-            height={30}
-            width={30}
-            layout={'intrinsic'}
-            src={'/static/img/recommend.png'}
-          />
-        ) : null}
+        {dataSource.orderNum ? <Icon className={styles.recommend} name={'zhiding'} /> : null}
       </div>
       <p className={'truncate px-4'}>
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
