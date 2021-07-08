@@ -11,13 +11,29 @@ import Footer from 'components/footer/footer';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import type { AppProps } from 'next/app';
+import { Router } from 'next/router';
+import Monitor from '../utils/monitor';
 Sentry.init({
   dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
 });
-
+const monitor = new Monitor();
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  useEffect(() => {
+    monitor.loadUrl(location.pathname, true);
+    const handleRouteChange = (url) => {
+      monitor.loadUrl(url, false);
+    };
+
+    Router.events.on('routeChangeStart', handleRouteChange);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method:
+    return () => {
+      Router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [Router]);
   const [metric, setMetric] = useState<metricType>({ LCP: 0, FID: 0, FCP: 0, CLS: 0 });
   useEffect(() => {
     new PerformanceObserver((entryList) => {
