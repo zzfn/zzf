@@ -19,8 +19,8 @@ export default function Hot(): JSX.Element {
     <div>
       <Card>
         <ul>
-          {list.map((n) => (
-            <li className={styles.title} key={n.id}>
+          {list.map((n, idx) => (
+            <li className={styles.title} key={idx}>
               <Link prefetch={false} href={`https://s.weibo.com${n.href}`}>
                 <a className={styles.item} target={'_blank'}>
                   <span className={styles.hot}>{n.idx}</span>
