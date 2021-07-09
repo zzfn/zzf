@@ -18,7 +18,8 @@
   margin-bottom:  20px;
   color:var(--color-secondary);
   .wrap {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     &-avatar {
       border-radius: 50%;
       width: 100px;

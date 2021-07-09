@@ -5,6 +5,7 @@ import { getHot, lastUpdated, listArticles, overview } from 'api/article';
 import More from 'components/loading/Loading';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
+import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
 import Image from 'next/image';
 import styles from 'styles/home.module.scss';
@@ -64,13 +65,9 @@ const Home: React.FC<NextProps<any>> = (props) => {
             }
           >
             <div className={styles.wrap}>
-              <Image
-                loader={({ src }) => src}
-                className={styles.wrapAvatar}
-                src={formatImg('https://cdn.zzfzzf.com/1621500127578INeO4C.jpg', 100)}
-                alt='Landscape picture'
-                width={100}
-                height={100}
+              <LottiePlayer
+                size={100}
+                url={'https://assets8.lottiefiles.com/packages/lf20_osthueqs.json'}
               />
             </div>
           </Card>
