@@ -25,4 +25,4 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-export default instance;
+export default instance as (options: AxiosRequestConfig) => any;
