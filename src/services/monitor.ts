@@ -4,7 +4,7 @@ export const monitorLoad = (data: any) => {
   return http({
     baseURL: process.env.NEXT_PUBLIC_NODE_URL,
     method: 'post',
-    url: '/trace',
+    url: '/monitor/trace',
     data,
   });
 };
