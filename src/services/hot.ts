@@ -1,10 +1,9 @@
 import http from 'utils/http';
 
-export const monitorLoad = (data: any) => {
+export const getHot = () => {
   return http({
     baseURL: process.env.NEXT_PUBLIC_NODE_URL,
-    method: 'post',
-    url: '/trace',
-    data,
+    method: 'get',
+    url: '/hot',
   });
 };

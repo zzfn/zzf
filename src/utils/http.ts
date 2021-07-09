@@ -1,7 +1,8 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import type { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_baseUrl,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   timeout: 10000,
   headers: { 'Content-Type': 'application/json;charset=UTF-8' },
   validateStatus: function () {
@@ -24,11 +25,4 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-
-export default function http(options: AxiosRequestConfig): any {
-  return instance.request({ ...options, baseURL: process.env.baseUrl });
-}
-
-// export function middleware(options: AxiosRequestConfig): any {
-//   return instance.request({ ...options, baseURL: process.env.middlewareUrl });
-// }
+export default instance;

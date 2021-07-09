@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Card } from '@zzf/design';
 import styles from '../styles/hot.module.scss';
 import Link from 'next/link';
+import { getHot } from 'api/hot';
 
 export default function Hot(): JSX.Element {
   const [list, setList] = useState([]);
 
   async function handleGet() {
-    const r = await axios.get('https://server.zzfzzf.com/hot');
+    const r = await getHot();
     setList(r.data);
   }
 
