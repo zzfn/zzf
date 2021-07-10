@@ -8,8 +8,7 @@ export default function Hot(): JSX.Element {
   const [list, setList] = useState([]);
 
   async function handleGet() {
-    const r = await getHot();
-    setList(r.data);
+    setList(await getHot());
   }
 
   useEffect(() => {
