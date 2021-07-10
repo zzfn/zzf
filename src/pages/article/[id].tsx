@@ -11,6 +11,7 @@ import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import Discuss from '../../components/article/Discuss';
 import type { GetStaticPaths, GetStaticProps } from 'next';
+import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
 
 interface ServerProps {
   serverProps: any;
@@ -81,7 +82,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
           </Layout.Sidebar>
         </>
       ) : (
-        '未找到文章'
+        <LottiePlayer size={300} url={'https://cdn.annyyy.com/blog/64166-error-404.json'} />
       )}
     </div>
   );
