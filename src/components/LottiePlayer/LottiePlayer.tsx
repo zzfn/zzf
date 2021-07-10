@@ -11,7 +11,7 @@ const LottiePlayer = (props: XLottieProps) => {
   useEffect(() => {
     lottie.loadAnimation({
       container: lottieRef.current, // Required
-      path: '/logo.json', // Required
+      path: url, // Required
       renderer: 'svg', // Required
       loop: true, // Optional
       autoplay: true, // Optional
