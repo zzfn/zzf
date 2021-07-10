@@ -90,36 +90,36 @@ const Home: React.FC<NextProps<any>> = (props) => {
             {/*文章数目 : {serverProps.aLlArticleCount} <br />*/}
             {/*最后更新时间 : {serverProps.lastUpdateTime}*/}
           </Card>
-          <Card
-            title={
-              <div className={'text-primary flex items-center mb-1'}>
-                <img
-                  className={'mr-3 w8 h8'}
-                  src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
-                  alt=''
-                />
-                排行榜
-              </div>
-            }
-            className={styles.card}
-          >
-            <ul>
-              {serverProps.hot.slice(0, 5).map((n) => (
-                <li className={styles.title} key={n.id}>
-                  <Link prefetch={false} href={`/article/${n.id}`}>
-                    <a
-                      title={n.title}
-                      className={classNames(styles.title, 'flex')}
-                      target={'_blank'}
-                    >
-                      <div className={'truncate w-36'}>{n.title}</div>
-                      <div className={'whitespace-nowrap'}>--{n.viewCount}</div>
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Card>
+          {/*<Card*/}
+          {/*  title={*/}
+          {/*    <div className={'text-primary flex items-center mb-1'}>*/}
+          {/*      <img*/}
+          {/*        className={'mr-3 w8 h8'}*/}
+          {/*        src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'*/}
+          {/*        alt=''*/}
+          {/*      />*/}
+          {/*      排行榜*/}
+          {/*    </div>*/}
+          {/*  }*/}
+          {/*  className={styles.card}*/}
+          {/*>*/}
+          {/*  <ul>*/}
+          {/*    {serverProps.hot.slice(0, 5).map((n) => (*/}
+          {/*      <li className={styles.title} key={n.id}>*/}
+          {/*        <Link prefetch={false} href={`/article/${n.id}`}>*/}
+          {/*          <a*/}
+          {/*            title={n.title}*/}
+          {/*            className={classNames(styles.title, 'flex')}*/}
+          {/*            target={'_blank'}*/}
+          {/*          >*/}
+          {/*            <div className={'truncate w-36'}>{n.title}</div>*/}
+          {/*            <div className={'whitespace-nowrap'}>--{n.viewCount}</div>*/}
+          {/*          </a>*/}
+          {/*        </Link>*/}
+          {/*      </li>*/}
+          {/*    ))}*/}
+          {/*  </ul>*/}
+          {/*</Card>*/}
           <Card
             title={
               <div className={'text-primary flex items-center mb-1'}>
