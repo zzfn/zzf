@@ -63,3 +63,11 @@ export const lastUpdated = () => {
     url: '/article/non/lastUpdated',
   });
 };
+
+export const updateView = (params) => {
+  return http({
+    method: 'get',
+    url: '/article/non/updateViewed',
+    params,
+  });
+};

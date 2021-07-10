@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { getArticle, listArchives } from 'services/article';
+import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
@@ -21,6 +21,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
   const router = useRouter();
   const { serverProps = {}, code } = props;
   useEffect(() => {
+    updateView({ id: serverProps.id });
     const imgList = document.querySelectorAll('.zoom');
     const zooming = new Zooming({
       enableGrab: false,
