@@ -9,10 +9,9 @@ import Zooming from 'zooming';
 import { Layout, Progress } from '@zzf/design';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
-import Discuss from '../../components/article/Discuss';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
-import Icon from "../../components/Icon";
+import Icon from 'components/Icon';
 
 interface ServerProps {
   serverProps: any;
