@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { getArticle, listArchives, updateView } from 'services/article';
+import { getArticle, listArchives, updateStar, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
@@ -12,12 +12,16 @@ import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
 import Icon from 'components/Icon';
-
+import { message } from 'components/message';
 interface ServerProps {
   serverProps: any;
   code: number;
 }
-
+async function star(id) {
+  const { data } = await updateStar({ id });
+  console.log(data);
+  message.info('s');
+}
 const ArticleDetail: React.FC<ServerProps> = (props) => {
   const router = useRouter();
   const { serverProps = {}, code } = props;
@@ -58,6 +62,10 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
                       {serverProps.viewCount}
                     </li>
                     <li>
+                      <span className={'col-2'}>点赞量</span>
+                      {serverProps.starCount}
+                    </li>
+                    <li>
                       <span className={'col-3'}>发布于</span>
                       {serverProps.createTime}
                     </li>
@@ -75,7 +83,13 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
                 }}
               />
             </main>
-            <Icon className={styles.icon} color={'#3063fb'} size={60} name={'zan'} />
+            <Icon
+              onClick={() => star(serverProps.id)}
+              className={styles.icon}
+              color={'#3063fb'}
+              size={60}
+              name={'zan'}
+            />
             {/*<Discuss />*/}
           </Layout.Content>
           <Layout.Sidebar>

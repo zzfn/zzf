@@ -71,3 +71,10 @@ export const updateView = (params) => {
     params,
   });
 };
+export const updateStar = (params) => {
+  return http({
+    method: 'post',
+    url: '/article/non/star',
+    params,
+  });
+};
