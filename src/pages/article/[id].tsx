@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import Discuss from '../../components/article/Discuss';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
+import Icon from "../../components/Icon";
 
 interface ServerProps {
   serverProps: any;
@@ -75,7 +76,8 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
                 }}
               />
             </main>
-            <Discuss />
+            <Icon className={styles.icon} color={'#3063fb'} size={60} name={'zan'} />
+            {/*<Discuss />*/}
           </Layout.Content>
           <Layout.Sidebar>
             <Nav source={serverProps.content} />

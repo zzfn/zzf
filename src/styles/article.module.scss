@@ -62,5 +62,12 @@
       }
     }
   }
+  .icon{
+    margin: 50px auto 0;
+    cursor: pointer;
+    &:hover{
+      color: #f26d5f!important;
+    }
+  }
 }
 
