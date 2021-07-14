@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import { getHot, lastUpdated, listArticles, overview } from 'api/article';
@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
+
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);

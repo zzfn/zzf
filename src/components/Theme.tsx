@@ -7,7 +7,7 @@ import React from 'react';
 type ThemeProps = {
   className?: string;
 };
-const Theme: FC<ThemeProps> = ({ children, className }) => {
+const Theme: FC<ThemeProps> = ({ className }) => {
   return (
     <details className={classNames('dropdown details-reset details-overlay', className)}>
       <summary aria-haspopup='true'>

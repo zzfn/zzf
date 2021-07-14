@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { esList } from 'api/article';
-import { Button } from '@zzf/design';
 import SearchCard from 'components/article/SearchCard';
 import styles from 'styles/search.module.scss';
 import Head from 'next/head';

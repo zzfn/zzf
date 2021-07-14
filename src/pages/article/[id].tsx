@@ -36,7 +36,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
     imgList.forEach((node) => {
       zooming.listen(node);
     });
-  }, []);
+  }, [serverProps.id]);
   return (
     <div className={styles.detail}>
       <Head>

@@ -27,13 +27,10 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     };
 
     Router.events.on('routeChangeStart', handleRouteChange);
-
-    // If the component is unmounted, unsubscribe
-    // from the event with the `off` method:
     return () => {
       Router.events.off('routeChangeStart', handleRouteChange);
     };
-  }, [Router]);
+  }, []);
   const [metric, setMetric] = useState<metricType>({ LCP: 0, FID: 0, FCP: 0, CLS: 0 });
   useEffect(() => {
     new PerformanceObserver((entryList) => {
@@ -47,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     mode && document.querySelector('html').setAttribute('data-color-mode', mode);
     light && document.querySelector('html').setAttribute('data-light-theme', light);
     dark && document.querySelector('html').setAttribute('data-dark-theme', dark);
-  }, []);
+  }, [metric]);
   return (
     <>
       <Head>

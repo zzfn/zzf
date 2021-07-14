@@ -1,21 +1,14 @@
 import React from 'react';
 import styles from './searchCard.module.scss';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Tag } from '@zzf/design';
 
-interface SearchCardProps {
+type SearchCardProps = {
   dataSource: Article;
   show: boolean;
-}
+};
 
-export default function SearchCard<SearchCardProps>({ dataSource }) {
-  const router = useRouter();
-
-  function toDetail(id: string) {
-    router.push(`/article/${id}`);
-  }
-
+const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
     <div className={styles.card}>
       <Link href={`/article/${dataSource.id}`}>
@@ -51,4 +44,5 @@ export default function SearchCard<SearchCardProps>({ dataSource }) {
       </ul>
     </div>
   );
-}
+};
+export default SearchCard;

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import dayjs from 'dayjs';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
+import type { GetStaticProps } from 'next';
 
 interface ArchiveProps {
   list: any[];
@@ -117,7 +118,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { data: list } = await listArchives({});
   const { data: tags } = await listTags({});
   return {

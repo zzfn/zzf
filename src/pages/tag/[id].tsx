@@ -4,9 +4,10 @@ import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
 import { getTitle } from '../../utils/getTitle';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 
-export default function ArticleDetail(props) {
-  const { serverProps = [], name = '' } = props;
+export default function Tag(props: any): JSX.Element {
+  const { serverProps = [] } = props;
   return (
     <div className={styles.detail}>
       <Head>
@@ -26,16 +27,16 @@ export default function ArticleDetail(props) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await listTags({});
   const paths = data.map((_) => ({ params: { id: _.code } }));
   return {
     paths,
     fallback: true,
   };
-}
+};
 
-export async function getStaticProps(context) {
+export const getStaticProps: GetStaticProps = async (context) => {
   const {
     params: { id },
   } = context;
@@ -47,4 +48,4 @@ export async function getStaticProps(context) {
     },
     revalidate: 1,
   };
-}
+};

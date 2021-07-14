@@ -1,9 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { favoriteList } from 'api/article';
 import styles from 'styles/favorites.module.scss';
 import { formatImg } from '../utils/formatImg';
+import type { GetStaticProps } from 'next';
 
 function Favorites({ serverProps }: { serverProps: any[] }) {
   const arr = serverProps.reduce((prev, curr) => {
@@ -39,7 +39,7 @@ function Favorites({ serverProps }: { serverProps: any[] }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const { data } = await favoriteList({});
   return {
     props: {

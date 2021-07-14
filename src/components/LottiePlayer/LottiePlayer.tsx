@@ -1,26 +1,26 @@
 import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import styles from './index.module.scss';
-export type XLottieProps = {
+export type LottieProps = {
   url: string;
   size?: number;
 };
-const LottiePlayer = (props: XLottieProps) => {
+const LottiePlayer: React.FC<LottieProps> = (props) => {
   const { size, url } = props;
   const lottieRef = useRef();
   useEffect(() => {
     lottie.loadAnimation({
-      container: lottieRef.current, // Required
-      path: url, // Required
-      renderer: 'svg', // Required
-      loop: true, // Optional
-      autoplay: true, // Optional
-      name: 'Hello World', // Name for future reference. Optional.
+      container: lottieRef.current,
+      path: url,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      name: 'Hello World',
     });
     return () => {
       lottie.destroy();
     };
-  }, []);
+  }, [url]);
   return <div style={{ fontSize: `${size}px` }} className={styles.lottie} ref={lottieRef} />;
 };
 
