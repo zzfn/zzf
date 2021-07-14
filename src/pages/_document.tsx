@@ -2,17 +2,6 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
-  getGoogle = () => {
-    return {
-      __html: `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-QHRFL84469');`,
-    };
-  };
-
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
@@ -30,9 +19,7 @@ class MyDocument extends Document {
           />
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
-          <script async src='https://www.googletagmanager.com/gtag/js?id=G-QHRFL84469' />
           <script async src={'//at.alicdn.com/t/font_2620815_urrs70zp8t.js'} />
-          <script dangerouslySetInnerHTML={this.getGoogle()} />
         </Head>
         <body onTouchStart={() => {}}>
           <Main />

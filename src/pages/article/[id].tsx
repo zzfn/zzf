@@ -13,8 +13,19 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
 import Icon from 'components/Icon';
 import { message } from 'components/message';
+interface Data {
+  content: string;
+  createTime: string;
+  id: string;
+  starCount: number;
+  tag: string;
+  tagDesc: string;
+  title: string;
+  updateTime: string;
+  viewCount: number;
+}
 interface ServerProps {
-  serverProps: any;
+  serverProps: Data;
   code: number;
 }
 async function star(id) {
@@ -24,7 +35,7 @@ async function star(id) {
 }
 const ArticleDetail: React.FC<ServerProps> = (props) => {
   const router = useRouter();
-  const { serverProps = {}, code } = props;
+  const { serverProps, code } = props;
   useEffect(() => {
     updateView({ id: serverProps.id });
     const imgList = document.querySelectorAll('.zoom');
