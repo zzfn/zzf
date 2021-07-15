@@ -13,15 +13,15 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
 import Icon from 'components/Icon';
 interface Data {
-  content: string;
-  createTime: string;
-  id: string;
-  starCount: number;
-  tag: string;
-  tagDesc: string;
-  title: string;
-  updateTime: string;
-  viewCount: number;
+  content?: string;
+  createTime?: string;
+  id?: string;
+  starCount?: number;
+  tag?: string;
+  tagDesc?: string;
+  title?: string;
+  updateTime?: string;
+  viewCount?: number;
 }
 interface ServerProps {
   serverProps: Data;
@@ -31,7 +31,7 @@ interface ServerProps {
 const ArticleDetail: React.FC<ServerProps> = (props) => {
   const [isStar, setIsStar] = useState(false);
   const router = useRouter();
-  const { serverProps, code } = props;
+  const { serverProps = {}, code } = props;
   async function star(id) {
     await updateStar({ id });
     setIsStar(true);
