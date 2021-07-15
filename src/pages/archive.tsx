@@ -7,10 +7,19 @@ import dayjs from 'dayjs';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
-
+type ListProps = {
+  createTime: Date;
+  id: string;
+  title: string;
+};
+type TagsProps = {
+  count: number;
+  tag: string;
+  code: string;
+};
 interface ArchiveProps {
-  list: any[];
-  tags: any[];
+  list: ListProps[];
+  tags: TagsProps[];
 }
 function renderMonth(time, list = []) {
   return (
