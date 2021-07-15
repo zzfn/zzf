@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getArticle, listArchives, updateStar, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
@@ -12,7 +12,6 @@ import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
 import Icon from 'components/Icon';
-import { message } from 'components/message';
 interface Data {
   content: string;
   createTime: string;
@@ -28,14 +27,15 @@ interface ServerProps {
   serverProps: Data;
   code: number;
 }
-async function star(id) {
-  const { data } = await updateStar({ id });
-  console.log(data);
-  message.info('s');
-}
+
 const ArticleDetail: React.FC<ServerProps> = (props) => {
+  const [isStar, setIsStar] = useState(false);
   const router = useRouter();
   const { serverProps, code } = props;
+  async function star(id) {
+    await updateStar({ id });
+    setIsStar(true);
+  }
   useEffect(() => {
     updateView({ id: serverProps.id });
     const imgList = document.querySelectorAll('.zoom');
@@ -97,7 +97,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
             <Icon
               onClick={() => star(serverProps.id)}
               className={styles.icon}
-              color={'#3063fb'}
+              color={isStar ? '#fec02b' : '#3063fb'}
               size={60}
               name={'zan'}
             />
