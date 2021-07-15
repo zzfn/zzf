@@ -5,7 +5,6 @@ import { Tag } from '@zzf/design';
 
 type SearchCardProps = {
   dataSource: Article;
-  show: boolean;
 };
 
 const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
