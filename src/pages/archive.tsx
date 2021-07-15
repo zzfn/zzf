@@ -112,7 +112,12 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
           <>
             {serverProps.tags.map((item) => (
               <React.Fragment key={item.code}>
-                <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
+                <Link
+                  href={{
+                    pathname: `/tag/${item.code}}`,
+                    query: { desc: encodeURIComponent(item.tag) },
+                  }}
+                >
                   <a className={'menu-item'}>
                     <span>{item.tag}</span>
                     <span className='Counter Counter--primary'>{item.count}</span>
