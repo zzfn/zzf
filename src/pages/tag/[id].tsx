@@ -7,13 +7,14 @@ import { getTitle } from '../../utils/getTitle';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
-export default function Tag(props: any): JSX.Element {
+export default function Tag(props: NextProps<any>): JSX.Element {
   const { serverProps = [] } = props;
   const [title, setTitle] = useState('标签');
   const router = useRouter();
   useEffect(() => {
-    setTitle((router.query as any).desc);
-  }, []);
+    const desc = router.query.desc;
+    !Array.isArray(desc) && setTitle(desc);
+  }, [router.query]);
   return (
     <div className={styles.detail}>
       <Head>
