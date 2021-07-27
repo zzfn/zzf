@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     mode && document.querySelector('html').setAttribute('data-color-mode', mode);
     light && document.querySelector('html').setAttribute('data-light-theme', light);
     dark && document.querySelector('html').setAttribute('data-dark-theme', dark);
-  }, [metric]);
+  }, []);
   return (
     <>
       <Head>
