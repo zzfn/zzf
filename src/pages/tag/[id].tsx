@@ -7,7 +7,12 @@ import { getTitle } from '../../utils/getTitle';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
-export default function Tag(props: NextProps<any>): JSX.Element {
+type TagType = {
+  createTime: string;
+  id: string;
+  title: string;
+};
+export default function Tag(props: NextProps<TagType[]>): JSX.Element {
   const { serverProps = [] } = props;
   const [title, setTitle] = useState('标签');
   const router = useRouter();
@@ -48,8 +53,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     params: { id },
   } = context;
   const { data } = await listArchives({ code: id });
-  console.log(context);
-  console.log(data);
+  console.log(JSON.stringify(data));
   return {
     props: {
       serverProps: data,
