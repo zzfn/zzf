@@ -15,10 +15,10 @@ const LottiePlayer: React.FC<LottieProps> = (props) => {
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      name: 'Hello World',
+      name: url,
     });
     return () => {
-      lottie.destroy();
+      lottie.destroy(url);
     };
   }, [url]);
   return <div style={{ fontSize: `${size}px` }} className={styles.lottie} ref={lottieRef} />;

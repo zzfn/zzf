@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import { getHot, lastUpdated, listArticles, overview } from 'api/article';
-import More from 'components/loading/Loading';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
@@ -43,7 +42,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
       </BackTop>
       <Layout>
         <Layout.Content className={'Box'}>
-          <Loading noMore={noMore} key={page.current} onLoad={handleLoad} loading={<More />}>
+          <Loading noMore={noMore} key={page.current} onLoad={handleLoad} loading={<LottiePlayer size={200} url={'https://cdn.annyyy.com/blog/load-more.json'} />}>
             {records.map((item: Article) => (
               <ArticleCard key={item.id} dataSource={item} />
             ))}
