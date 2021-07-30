@@ -31,7 +31,7 @@ function Search(): JSX.Element {
       </Head>
       <div className={styles.search}>
         <form onSubmit={handleSubmit} action={''}>
-          <Input
+          <input
             className={classNames(styles.ipt)}
             onChange={(event) => setKeyword(event.target.value)}
             value={keyword}

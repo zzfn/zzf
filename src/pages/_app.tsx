@@ -14,12 +14,14 @@ import { getTitle } from '../utils/getTitle';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import Monitor from '../utils/monitor';
+
 Sentry.init({
   dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
 });
 const monitor = new Monitor();
+
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
     monitor.loadUrl(location.pathname, true);

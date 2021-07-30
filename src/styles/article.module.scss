@@ -9,11 +9,7 @@
 
   .article {
     .title {
-      width: 100%;
-      margin: auto;
-      padding: 30px;
-      background: var(--color-bg-tertiary);
-
+      color:var(--color-text-primary);
       h1 {
         font-size: 2.0736rem;
         line-height: 1.2;

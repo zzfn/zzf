@@ -12,6 +12,7 @@ import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
 import Icon from 'components/Icon';
+
 interface Data {
   content?: string;
   createTime?: string;
@@ -23,6 +24,7 @@ interface Data {
   updateTime?: string;
   viewCount?: number;
 }
+
 interface ServerProps {
   serverProps: Data;
   code: number;
@@ -32,12 +34,14 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
   const [isStar, setIsStar] = useState(false);
   const router = useRouter();
   const { serverProps = {}, code } = props;
+
   async function star(id) {
     await updateStar({ id });
     setIsStar(true);
   }
+
   useEffect(() => {
-    updateView({ id: serverProps.id });
+    updateView({ id: serverProps.id }).then();
     const imgList = document.querySelectorAll('.zoom');
     const zooming = new Zooming({
       enableGrab: false,
@@ -61,7 +65,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
           <Layout.Content>
             <main className={`${styles.article}`}>
               <div className='Subhead'>
-                <div className='Subhead-heading'>{serverProps.title}</div>
+                <h2 className={classNames(styles.title, 'text-3xl')}>{serverProps.title}</h2>
                 <div className={classNames('Subhead-description', styles.tip)}>
                   <ul>
                     <li>
@@ -101,7 +105,6 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
               size={60}
               name={'zan'}
             />
-            {/*<Discuss />*/}
           </Layout.Content>
           <Layout.Sidebar>
             <Nav source={serverProps.content} />
