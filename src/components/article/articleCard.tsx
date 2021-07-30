@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { diff } from '../../utils/time';
 import classNames from 'classnames';
 import Icon from '../Icon';
+import { Tag } from '@zzf/design';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -11,23 +12,30 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
-    <div className={classNames(styles.card, 'p-8')}>
+    <div className={classNames(styles.card, 'py-4 px-8')}>
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
-          <a className={styles.cardTitle} target={'_blank'}>
+          <a className={classNames('text-2xl', 'font-semibold')} target={'_blank'}>
             {dataSource.title}
           </a>
         </Link>
-        {dataSource.orderNum ? <Icon className={styles.recommend} name={'zhiding'} /> : null}
+        {dataSource.orderNum ? (
+          <Icon
+            className={classNames('float-right', 'transform', '-translate-y-4', 'text-2xl')}
+            name={'zhiding'}
+          />
+        ) : null}
       </div>
       <p className={'truncate px-4'}>
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
-      <ul>
+      <ul className={classNames('flex', 'items-center', 'mt-2')}>
         <li className={'w-1/4 md:w-32'} title={'标签'}>
-          <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
-            <a className={styles.tag}>{dataSource.tagDesc}</a>
-          </Link>
+          <Tag>
+            <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
+              <a className={styles.tag}>{dataSource.tagDesc}</a>
+            </Link>
+          </Tag>
         </li>
         <li className={'w-1/3 md:w-36'} title={dataSource.createTime}>
           Created {diff(dataSource.createTime)}

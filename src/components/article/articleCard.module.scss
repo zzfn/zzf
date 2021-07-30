@@ -1,49 +1,7 @@
 .card {
-  width: 100%;
-  border-top: 1px solid var(--color-border-secondary);
-  border-right: 1px solid var(--color-border-secondary);
-  border-left: 1px solid var(--color-border-secondary);
-  &:last-child {
-    border-bottom: 1px solid var(--color-border-secondary);
-  }
-
-  .recommend {
-    font-size: 20px;
-    transform: translate3d(0,-10px,0);
-    float: right;
-  }
+  border-bottom: 1px solid var(--color-border-secondary);
 
   &:hover {
     background: var(--color-bg-secondary);
-  }
-
-  p {
-    color: var(--color-secondary);
-  }
-
-
-  &-title {
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--color-text-primary);
-    cursor: pointer;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  ul {
-    margin-top: 5px;
-    list-style: none;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    margin-bottom: 5px;
-    li {
-      font-size: 12px;
-      color: var(--color-text-secondary);
-      display: flex;
-    }
   }
 }
