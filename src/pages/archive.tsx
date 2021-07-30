@@ -7,6 +7,8 @@ import dayjs from 'dayjs';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
+import classNames from 'classnames';
+
 type ListProps = {
   createTime: Date;
   id: string;
@@ -17,10 +19,12 @@ type TagsProps = {
   tag: string;
   code: string;
 };
+
 interface ArchiveProps {
   list: ListProps[];
   tags: TagsProps[];
 }
+
 function renderMonth(time, list = []) {
   return (
     <div key={time}>
@@ -69,13 +73,13 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
           </div>
         </Layout.Content>
-        <Layout.Sidebar className={'menu'}>
+        <Layout.Sidebar className={styles.menu}>
           {serverProps.tags.map((item) => (
             <React.Fragment key={item.code}>
               <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
-                <a className={'menu-item'}>
+                <a className={styles.menuItem}>
                   <span>{item.tag}</span>
-                  <span className='Counter Counter--primary'>{item.count}</span>
+                  <span className={styles.counter}>{item.count}</span>
                 </a>
               </Link>
             </React.Fragment>
@@ -83,24 +87,23 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
         </Layout.Sidebar>
       </Layout>
       <nav className='md:hidden UnderlineNav '>
-        <div className='UnderlineNav-body w-full' role='tablist'>
+        <div className={classNames('w-full', styles.tabList)} role='tablist'>
           <div
             onClick={() => setActive(0)}
-            className={`UnderlineNav-item flex-1 ${styles.timeLine}`}
+            className={`${styles.underlineNavItem} flex-1`}
             role='tab'
             aria-selected={active === 0}
           >
             按时间
           </div>
-          <button
+          <div
             onClick={() => setActive(1)}
             aria-selected={active === 1}
-            className='UnderlineNav-item flex-1'
+            className={`${styles.underlineNavItem} flex-1}`}
             role='tab'
-            type='button'
           >
             按标签
-          </button>
+          </div>
         </div>
       </nav>
       <section className={'md:hidden'}>
@@ -109,7 +112,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
           </div>
         ) : (
-          <>
+          <div className={styles.menu}>
             {serverProps.tags.map((item) => (
               <React.Fragment key={item.code}>
                 <Link
@@ -118,14 +121,14 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
                     query: { desc: encodeURIComponent(item.tag) },
                   }}
                 >
-                  <a className={'menu-item'}>
+                  <a className={styles.menuItem}>
                     <span>{item.tag}</span>
-                    <span className='Counter Counter--primary'>{item.count}</span>
+                    <span className={styles.counter}>{item.count}</span>
                   </a>
                 </Link>
               </React.Fragment>
             ))}
-          </>
+          </div>
         )}
       </section>
     </div>

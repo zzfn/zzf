@@ -13,7 +13,7 @@
   "dependencies": {
     "@sentry/react": "^6.3.6",
     "@sentry/tracing": "^6.3.6",
-    "@zzf/design": "^1.0.1",
+    "@zzf/design": "^1.0.3",
     "@zzf/toolkit": "^1.0.0",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
@@ -43,7 +43,7 @@
     "next-sitemap": "^1.6.124",
     "postcss": "^8.3.3",
     "prettier": "^2.3.0",
-    "sass": "~1.32.0",
+    "sass": "^1.36.0",
     "tailwindcss": "^2.1.4",
     "typescript": "^4.2.2"
   }

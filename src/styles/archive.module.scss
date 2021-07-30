@@ -26,7 +26,57 @@
     left: 0;
   }
 }
-
+.tab-list{
+  display:flex;
+  .underline-nav-item{
+    flex:1;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 30px;
+    color: var(--color-underlinenav-text);
+    text-align: center;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+  }
+  .underline-nav-item[role=tab][aria-selected=true]{
+    font-weight: 600;
+    color: var(--color-underlinenav-text-active);
+    border-bottom-color: var(--color-underlinenav-border-active);
+    outline: 1px dotted transparent;
+    outline-offset: -1px;
+  }
+}
+.menu{
+  margin-bottom: 16px;
+  list-style: none;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 6px;
+  &-item{
+    position: relative;
+    display: block;
+    padding: 8px 16px;
+    color: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-border-secondary);
+    .counter{
+      display: inline-block;
+      min-width: 20px;
+      padding: 0 6px;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+      color: var(--color-counter-text);
+      text-align: center;
+      background-color: var(--color-counter-bg);
+      border: 1px solid transparent;
+      border-radius: 2em;
+      float: right;
+      margin-left: 4px;
+    }
+  }
+}
 .title {
   color: var(--color-primary);
   margin: 20px;

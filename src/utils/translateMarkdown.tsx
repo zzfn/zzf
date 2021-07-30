@@ -1,7 +1,7 @@
 import marked from 'marked';
 import { renderToString } from 'react-dom/server';
 import Code from 'components/article/code';
-``;
+
 export const translateMarkdown = (text = '') => {
   const renderer = new marked.Renderer();
   renderer.code = function (code, language) {

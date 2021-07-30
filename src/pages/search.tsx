@@ -5,6 +5,7 @@ import styles from 'styles/search.module.scss';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
 import classNames from 'classnames';
+import { Input, Button } from '@zzf/design';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
@@ -17,10 +18,12 @@ function Search(): JSX.Element {
     setLoading(false);
     setResult(data);
   }
+
   async function handleSubmit(event) {
     event.preventDefault();
     await query();
   }
+
   return (
     <>
       <Head>
@@ -28,14 +31,14 @@ function Search(): JSX.Element {
       </Head>
       <div className={styles.search}>
         <form onSubmit={handleSubmit} action={''}>
-          <input
-            className={classNames(styles.ipt, 'form-control', 'input-lg')}
+          <Input
+            className={classNames(styles.ipt)}
             onChange={(event) => setKeyword(event.target.value)}
             value={keyword}
             type='search'
             placeholder='elasticsearch强力驱动'
           />
-          <button className='btn'>回车搜索</button>
+          <Button>回车搜索</Button>
         </form>
       </div>
       <div style={{ padding: '0 10px' }}>
