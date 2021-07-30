@@ -1,8 +1,8 @@
+import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import React from 'react';
-import Icon from '../Icon';
-import styles from './loading.module.scss';
+
 function Loading(): JSX.Element {
-  return <Icon className={styles.loading} name={'loading'} />;
+  return <LottiePlayer size={200} url={'https://cdn.annyyy.com/blog/load-more.json'} />
 }
 
 export default Loading;

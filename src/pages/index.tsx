@@ -66,10 +66,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
             }
           >
             <div className={styles.wrap}>
-              <LottiePlayer
-                size={100}
-                url={'https://assets8.lottiefiles.com/packages/lf20_osthueqs.json'}
-              />
+              <LottiePlayer size={100} url={'https://cdn.annyyy.com/blog/about.json'} />
             </div>
           </Card>
           <Card
