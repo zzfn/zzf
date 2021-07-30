@@ -42,7 +42,12 @@ const Home: React.FC<NextProps<any>> = (props) => {
       </BackTop>
       <Layout>
         <Layout.Content className={'Box'}>
-          <Loading noMore={noMore} key={page.current} onLoad={handleLoad} loading={<LottiePlayer size={200} url={'https://cdn.annyyy.com/blog/load-more.json'} />}>
+          <Loading
+            noMore={noMore}
+            key={page.current}
+            onLoad={handleLoad}
+            loading={<LottiePlayer size={200} url={'https://cdn.annyyy.com/blog/load-more.json'} />}
+          >
             {records.map((item: Article) => (
               <ArticleCard key={item.id} dataSource={item} />
             ))}
