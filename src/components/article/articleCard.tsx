@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './articleCard.module.scss';
 import Link from 'next/link';
 import { diff } from '../../utils/time';
 import classNames from 'classnames';
@@ -12,7 +11,9 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
-    <div className={classNames(styles.card, 'py-4 px-8')}>
+    <div
+      className={classNames('border-b', 'border-solid', 'py-4 px-8', 'border-colorBorderSecondary')}
+    >
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a className={classNames('text-2xl', 'font-semibold')} target={'_blank'}>
@@ -33,7 +34,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
         <li className={'w-1/4 md:w-32'} title={'标签'}>
           <Tag>
             <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
-              <a className={styles.tag}>{dataSource.tagDesc}</a>
+              <a>{dataSource.tagDesc}</a>
             </Link>
           </Tag>
         </li>
