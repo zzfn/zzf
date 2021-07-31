@@ -67,32 +67,37 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
               <div className='Subhead'>
                 <h2 className={classNames(styles.title, 'text-3xl')}>{serverProps.title}</h2>
                 <div className={classNames('Subhead-description', styles.tip)}>
-                  <ul>
+                  <ul className={'color-text-secondary flex flex-wrap'}>
                     <li>
-                      <span className={'col-1'}>标签</span>
+                      <span>标签</span>
                       {serverProps.tagDesc}
                     </li>
                     <li>
-                      <span className={'col-2'}>阅读量</span>
+                      <span>阅读量</span>
                       {serverProps.viewCount}
                     </li>
                     <li>
-                      <span className={'col-2'}>点赞量</span>
+                      <span>点赞量</span>
                       {serverProps.starCount}
                     </li>
                     <li>
-                      <span className={'col-3'}>发布于</span>
+                      <span>发布于</span>
                       {serverProps.createTime}
                     </li>
                     <li>
-                      <span className={'col-4'}>更新于</span>
+                      <span>更新于</span>
                       {serverProps.updateTime}
                     </li>
                   </ul>
                 </div>
               </div>
               <article
-                className={['markdown-body', 'font-mono', styles.content].join(' ')}
+                className={[
+                  'markdown-body',
+                  'font-mono',
+                  styles.content,
+                  'color-text-primary',
+                ].join(' ')}
                 dangerouslySetInnerHTML={{
                   __html: translateMarkdown(serverProps.content),
                 }}
@@ -111,7 +116,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
           </Layout.Sidebar>
         </>
       ) : (
-        <LottiePlayer size={300} url={'https://cdn.annyyy.com/blog/64166-error-404.json'} />
+        <LottiePlayer size={300} url={'https://cdn.annyyy.com/blog/404.json'} />
       )}
     </div>
   );

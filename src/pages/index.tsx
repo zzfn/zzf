@@ -54,55 +54,15 @@ const Home: React.FC<NextProps<any>> = (props) => {
           </Loading>
         </Layout.Content>
         <Layout.Sidebar>
-          <Card
-            className={styles.card}
-            title={
-              <div className={'flex items-center mb-1'}>
-                <Image
-                  loader={({ src }) => src}
-                  src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
-                  alt='Landscape picture'
-                  width={20}
-                  height={20}
-                />
-                <span className={'ml-3'}>关于我</span>
-              </div>
-            }
-          >
+          <Card icon={'xianxingshezhi'} title={'关于我'}>
             <div className={styles.wrap}>
               <LottiePlayer size={100} url={'https://cdn.annyyy.com/blog/about.json'} />
             </div>
           </Card>
-          <Card
-            title={
-              <div className={'text-primary flex items-center mb-1'}>
-                <Image
-                  loader={({ src }) => src}
-                  src={formatImg('https://cdn.zzfzzf.com/1621502933504Q5xgaS.png', 20)}
-                  alt='Landscape picture'
-                  width={20}
-                  height={20}
-                />
-                关于本站
-              </div>
-            }
-            className={styles.card}
-          >
-            <div>本次加载时间{props.metric.FCP}ms</div>
+          <Card icon={'xianxingyinle'} title={'关于本站'}>
+            <div className={'color-text-primary'}>本次加载时间{props.metric.FCP}ms</div>
           </Card>
-          <Card
-            title={
-              <div className={'text-primary flex items-center mb-1'}>
-                <img
-                  className={'mr-3 w8 h8'}
-                  src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
-                  alt=''
-                />
-                排行榜
-              </div>
-            }
-            className={styles.card}
-          >
+          <Card icon={'xianxingshijian'} title={'排行榜'}>
             <ul>
               {serverProps.hot.slice(0, 5).map((n) => (
                 <li className={styles.title} key={n.id}>
@@ -120,19 +80,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
               ))}
             </ul>
           </Card>
-          <Card
-            title={
-              <div className={'text-primary flex items-center mb-1'}>
-                <img
-                  className={'mr-3 w8 h8'}
-                  src='https://cdn.zzfzzf.com/1621502693811rjP4r7.png?imageView2/5/w/20/h/20/format/webp/interlace/1/q/75'
-                  alt=''
-                />
-                最近更新
-              </div>
-            }
-            className={styles.card}
-          >
+          <Card icon={'xianxingxiaoxi'} title={'最近更新'}>
             <ul>
               {serverProps.list.map((n) => (
                 <li className={styles.title} key={n.id}>

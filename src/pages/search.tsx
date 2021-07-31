@@ -5,7 +5,7 @@ import styles from 'styles/search.module.scss';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
 import classNames from 'classnames';
-import { Input, Button } from '@zzf/design';
+import { Button } from '@zzf/design';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
@@ -41,7 +41,7 @@ function Search(): JSX.Element {
           <Button>回车搜索</Button>
         </form>
       </div>
-      <div style={{ padding: '0 10px' }}>
+      <div style={{ padding: '0 10px' }} className={'color-text-secondary'}>
         {loading ? (
           <div className={styles.searchResult}>努力搜索中💪，请等待</div>
         ) : (
@@ -54,7 +54,7 @@ function Search(): JSX.Element {
         {result.length ? (
           result.map((item) => <SearchCard dataSource={item} key={item.id} />)
         ) : (
-          <div className={styles.no} style={{ margin: 'auto' }}>
+          <div className={'color-text-tertiary'} style={{ margin: 'auto' }}>
             暂无数据
           </div>
         )}

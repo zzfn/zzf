@@ -23,12 +23,10 @@
 
 }
 .result{
-  background-color: var(--color-secondary-bg);
+  color:var(--color-text-primary);
+  background-color: var(--color-bg-canvas);
   padding: 10px;
   min-height: 200px;
   display: flex;
   flex-wrap: wrap;
-}
-.no,.searchResult{
-  color: var(--color-secondary);
 }

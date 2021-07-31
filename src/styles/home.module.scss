@@ -14,27 +14,6 @@
   }
 }
 
-.card {
-  margin-bottom:  20px;
-  color:var(--color-secondary);
-  .wrap {
-    display: flex;
-    justify-content: center;
-    &-avatar {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      margin: auto;
-
-      &:hover {
-        transform: rotate(666turn);
-        transition-duration: 59s;
-        transition-timing-function: cubic-bezier(.34, 0, .84, 1)
-      }
-    }
-  }
-
-}
 .title{
   color: var(--color-text-primary);
   text-decoration: underline;
