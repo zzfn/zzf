@@ -16,7 +16,10 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
     >
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
-          <a className={classNames('text-2xl', 'font-semibold')} target={'_blank'}>
+          <a
+            className={classNames('text-2xl', 'font-semibold', 'color-text-primary')}
+            target={'_blank'}
+          >
             {dataSource.title}
           </a>
         </Link>
@@ -27,14 +30,14 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           />
         ) : null}
       </div>
-      <p className={'truncate px-4'}>
+      <p className={'truncate px-4 color-text-tertiary'}>
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
-      <ul className={classNames('flex', 'items-center', 'mt-2')}>
+      <ul className={classNames('flex', 'items-center', 'mt-2', 'color-text-tertiary')}>
         <li className={'w-1/4 md:w-32'} title={'标签'}>
           <Tag>
             <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
-              <a>{dataSource.tagDesc}</a>
+              <a className={'color-text-secondary'}>{dataSource.tagDesc}</a>
             </Link>
           </Tag>
         </li>

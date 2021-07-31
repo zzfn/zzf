@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Layout } from '@zzf/design';
+import { Layout, SvgIcon } from '@zzf/design';
 import styles from './header.module.scss';
 import menus from 'menus.json';
 import classNames from 'classnames';
-import Icon from '../Icon';
 import Theme from '../Theme';
 
 function Header(): JSX.Element {
@@ -15,7 +14,7 @@ function Header(): JSX.Element {
         <div className={classNames('hidden', 'md:flex')}>
           <Link href={'/'}>
             <a className={'flex items-center color-text-primary text-6xl mr-2'}>
-              <Icon className={styles.logo} name={'logo'} />
+              <SvgIcon className={classNames(styles.logo)} name={'logo'} />
             </a>
           </Link>
           <nav className={styles.menu}>
@@ -26,14 +25,14 @@ function Header(): JSX.Element {
             ))}
           </nav>
         </div>
-        <Icon
+        <SvgIcon
           className={classNames('text-4xl inline-block md:hidden', styles.logo)}
           onClick={() => setIsShow(!isShow)}
           name={isShow ? 'close' : 'menu'}
         />
         <Link href={'/'}>
           <a className={'flex items-center color-text-primary inline-block md:hidden'}>
-            <Icon className={classNames('text-5xl', styles.logo)} name={'logo'} />
+            <SvgIcon className={classNames('text-5xl', styles.logo)} name={'logo'} />
           </a>
         </Link>
         <Theme />

@@ -5,6 +5,7 @@ import Head from 'next/head';
 import '@zzf/design/dist/bundle.css';
 import 'styles/globals.scss';
 import '@primer/css/base/modes-v2.scss';
+import '@primer/css/utilities/colors.scss';
 import '@primer/css/markdown/index.scss';
 import 'highlight.js/styles/rainbow.css';
 import Header from 'components/header/header';

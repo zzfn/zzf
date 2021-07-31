@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import classNames from 'classnames';
 import Icon from './Icon';
-import styles from './header/header.module.scss';
+import styles from './theme.module.scss';
 import React from 'react';
 
 type ThemeProps = {
@@ -9,18 +9,12 @@ type ThemeProps = {
 };
 const Theme: FC<ThemeProps> = ({ className }) => {
   return (
-    <details className={classNames('dropdown details-reset details-overlay', className)}>
+    <details className={classNames(className, styles.theme)}>
       <summary aria-haspopup='true'>
-        <span className={'hidden md:inline-block'}>
-          主题
-          <div className='dropdown-caret' />
-        </span>
-        <Icon
-          className={classNames('text-4xl', 'inline-block md:hidden', styles.logo)}
-          name={'setting'}
-        />
+        <span className={'hidden md:inline-block'}>主题</span>
+        <Icon className={classNames('text-4xl', 'inline-block md:hidden')} name={'setting'} />
       </summary>
-      <ul className='dropdown-menu dropdown-menu-sw'>
+      <ul className={styles.dropdown}>
         <li
           onClick={() => {
             document.querySelector('html').setAttribute('data-color-mode', 'dark');
