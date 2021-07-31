@@ -40,7 +40,7 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
       {Object.keys(arr).map((item) => (
         <Fragment key={item}>
           <h2>{item}</h2>
-          <nav className={styles.ul}>
+          <nav className={`${styles.ul} color-text-primary`}>
             {arr[item].map((node) => (
               <Link key={node.title} href={node.link}>
                 <a target={'_blank'} className={'flex flex-col items-center'}>

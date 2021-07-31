@@ -69,7 +69,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       </header>
       <Layout className={'hidden md:flex'}>
         <Layout.Content>
-          <div className={styles.timeLine}>
+          <div className={`${styles.timeLine} color-text-primary`}>
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
           </div>
         </Layout.Content>
@@ -106,7 +106,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
           </div>
         </div>
       </nav>
-      <section className={'md:hidden'}>
+      <section className={'md:hidden color-text-primary'}>
         {active === 0 ? (
           <div className={styles.timeLine}>
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
