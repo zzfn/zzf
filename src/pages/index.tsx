@@ -8,7 +8,6 @@ import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
 import Image from 'next/image';
 import styles from 'styles/home.module.scss';
-import { formatImg } from '../utils/formatImg';
 import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
