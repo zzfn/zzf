@@ -1,15 +1,11 @@
 import type { FC } from 'react';
 import Link from 'next/link';
 import { favoriteList } from 'api/article';
-import styles from 'styles/favorites.module.scss';
-import { formatImg } from '../utils/formatImg';
 import type { GetStaticProps } from 'next';
 import { Fragment } from 'react';
 type Item = {
   category: string;
   categoryDesc: string;
-  createBy?: any;
-  createTime?: any;
   id: string;
   img: string;
   isDelete: number;
@@ -18,7 +14,6 @@ type Item = {
   orderNum: number;
   remark: string;
   title: string;
-  updateBy?: any;
   updateTime: string;
 };
 type Favorite = {
@@ -39,15 +34,17 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
     <>
       {Object.keys(arr).map((item) => (
         <Fragment key={item}>
-          <h2>{item}</h2>
-          <nav className={`${styles.ul} color-text-primary`}>
+          <h2 className={'text-2xl color-text-link'}>{item}</h2>
+          <nav className={`color-bg-secondary p-2`}>
             {arr[item].map((node) => (
               <Link key={node.title} href={node.link}>
-                <a target={'_blank'} className={'flex flex-col items-center'}>
-                  <img height={40} width={40} src={formatImg(node.img, 40)} alt={node.title} />
-                  <section title={node.title} className={styles.title}>
-                    {node.title}
-                  </section>
+                <a
+                  target={'_blank'}
+                  className={
+                    'text-xl color-text-secondary hover:text-purple-900 mr-5 whitespace-nowrap mt-2'
+                  }
+                >
+                  {node.title}
                 </a>
               </Link>
             ))}
