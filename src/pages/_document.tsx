@@ -14,10 +14,6 @@ class MyDocument extends Document {
           <link rel='shortcut icon' href={'/static/favicon.ico'} />
           <link rel='icon' href={'/static/favicon.ico'} />
           <meta
-            content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
-            name='viewport'
-          />
-          <meta
             name='keywords'
             content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
           />

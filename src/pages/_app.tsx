@@ -53,7 +53,10 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <Head>
         <title>{getTitle('zzf')}</title>
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=5.0' name='viewport' />
+        <meta
+          content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
+          name='viewport'
+        />
       </Head>
       <Layout direction={'column'} className={'min-h-screen'}>
         <Header />
