@@ -2,7 +2,7 @@
 ## ✨ 特性
 - 前后端分离
 - 支持深色、浅色模式
-- github风格
+- Github风格
 
 ## 博客全栈项目仓库地址
 - [博客前台](https://github.com/zzfn/zzf)
