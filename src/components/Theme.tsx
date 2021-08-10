@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Icon from './Icon';
 import styles from './theme.module.scss';
@@ -8,6 +8,11 @@ type ThemeProps = {
   className?: string;
 };
 const Theme: FC<ThemeProps> = ({ className }) => {
+  const [active, setActive] = useState('');
+  useEffect(() => {
+    const theme = localStorage.getItem('data-color-mode');
+    setActive(theme);
+  }, []);
   return (
     <details className={classNames(className, styles.theme)}>
       <summary aria-haspopup='true'>
@@ -21,8 +26,9 @@ const Theme: FC<ThemeProps> = ({ className }) => {
             document.querySelector('html').setAttribute('data-dark-theme', 'dark_dimmed');
             localStorage.setItem('data-color-mode', 'dark');
             localStorage.setItem('data-dark-theme', 'dark_dimmed');
+            setActive('dark');
           }}
-          className={'dropdown-item'}
+          className={classNames(active === 'dark' && styles.active)}
         >
           深色
         </li>
@@ -32,8 +38,9 @@ const Theme: FC<ThemeProps> = ({ className }) => {
             document.querySelector('html').setAttribute('data-dark-theme', 'light');
             localStorage.setItem('data-color-mode', 'light');
             localStorage.setItem('data-light-theme', 'light');
+            setActive('light');
           }}
-          className={'dropdown-item'}
+          className={classNames(active === 'light' && styles.active)}
         >
           浅色
         </li>
@@ -45,8 +52,9 @@ const Theme: FC<ThemeProps> = ({ className }) => {
             localStorage.setItem('data-color-mode', 'auto');
             localStorage.setItem('data-light-theme', 'light');
             localStorage.setItem('data-dark-theme', 'dark_dimmed');
+            setActive('auto');
           }}
-          className={'dropdown-item'}
+          className={classNames(active === 'auto' && styles.active)}
         >
           跟随系统
         </li>
