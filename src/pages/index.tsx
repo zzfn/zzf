@@ -58,10 +58,10 @@ const Home: React.FC<NextProps<any>> = (props) => {
               <LottiePlayer size={100} url={'https://cdn.annyyy.com/blog/about.json'} />
             </div>
           </Card>
-          <Card icon={'xianxingyinle'} title={'关于本站'}>
+          <Card className={'mt-4'} icon={'xianxingyinle'} title={'关于本站'}>
             <div className={'color-text-primary'}>本次加载时间{props.metric.FCP}ms</div>
           </Card>
-          <Card icon={'xianxingxiaoxi'} title={'最近更新'}>
+          <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
             <ul>
               {serverProps.list.map((n) => (
                 <li className={styles.title} key={n.id}>
