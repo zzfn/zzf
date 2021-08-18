@@ -12,7 +12,18 @@ import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
 import Icon from '../components/Icon';
 
-const Home: React.FC<NextProps<any>> = (props) => {
+type LastUpdatedListType = {
+  title: string;
+  id: string;
+  updateTime: string;
+};
+
+type HomeType = {
+  current: number;
+  lastUpdatedList: LastUpdatedListType[];
+  records: Article[];
+};
+const Home: React.FC<NextProps<HomeType>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
   const [noMore, setNoMore] = useState(false);
