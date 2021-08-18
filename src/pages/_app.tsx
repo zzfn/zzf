@@ -11,30 +11,11 @@ import Footer from 'components/footer/footer';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import type { AppProps } from 'next/app';
-import { Router } from 'next/router';
-import Monitor from '../utils/monitor';
-
-const monitor = new Monitor();
+import { initTheme } from '../utils/theme';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
-    monitor.loadUrl(location.pathname, true);
-    const handleRouteChange = (url) => {
-      monitor.loadUrl(url, false);
-    };
-
-    Router.events.on('routeChangeStart', handleRouteChange);
-    return () => {
-      Router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, []);
-  useEffect(() => {
-    const mode = localStorage.getItem('data-color-mode');
-    const light = localStorage.getItem('data-light-theme');
-    const dark = localStorage.getItem('data-dark-theme');
-    mode && document.querySelector('html').setAttribute('data-color-mode', mode);
-    light && document.querySelector('html').setAttribute('data-light-theme', light);
-    dark && document.querySelector('html').setAttribute('data-dark-theme', dark);
+    initTheme();
   }, []);
   return (
     <>

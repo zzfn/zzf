@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Icon from './Icon';
 import styles from './theme.module.scss';
 import React from 'react';
+import { setTheme } from '../utils/theme';
 
 type ThemeProps = {
   className?: string;
@@ -23,10 +24,7 @@ const Theme: FC<ThemeProps> = ({ className }) => {
       <ul className={styles.dropdown}>
         <li
           onClick={() => {
-            document.querySelector('html').setAttribute('data-color-mode', 'dark');
-            document.querySelector('html').setAttribute('data-dark-theme', 'dark_dimmed');
-            localStorage.setItem('data-color-mode', 'dark');
-            localStorage.setItem('data-dark-theme', 'dark_dimmed');
+            setTheme('dark');
             setActive('dark');
           }}
           className={classNames(active === 'dark' && styles.active)}
@@ -35,10 +33,7 @@ const Theme: FC<ThemeProps> = ({ className }) => {
         </li>
         <li
           onClick={() => {
-            document.querySelector('html').setAttribute('data-color-mode', 'light');
-            document.querySelector('html').setAttribute('data-dark-theme', 'light');
-            localStorage.setItem('data-color-mode', 'light');
-            localStorage.setItem('data-light-theme', 'light');
+            setTheme('light');
             setActive('light');
           }}
           className={classNames(active === 'light' && styles.active)}
@@ -47,12 +42,7 @@ const Theme: FC<ThemeProps> = ({ className }) => {
         </li>
         <li
           onClick={() => {
-            document.querySelector('html').setAttribute('data-color-mode', 'auto');
-            document.querySelector('html').setAttribute('data-light-theme', 'light');
-            document.querySelector('html').setAttribute('data-dark-theme', 'dark_dimmed');
-            localStorage.setItem('data-color-mode', 'auto');
-            localStorage.setItem('data-light-theme', 'light');
-            localStorage.setItem('data-dark-theme', 'dark_dimmed');
+            setTheme('auto')
             setActive('auto');
           }}
           className={classNames(active === 'auto' && styles.active)}
