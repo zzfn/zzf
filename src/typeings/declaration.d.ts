@@ -22,16 +22,11 @@ interface Page<T> {
   size: number;
   records: T[];
 }
-type metricType = {
-  FCP: number;
-  LCP: number;
-  FID: number;
-  CLS: number;
-};
+
 interface NextProps<T> {
   serverProps: T;
-  metric: metricType;
 }
+
 declare module '*.svg' {
   const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   export default content;

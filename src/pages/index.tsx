@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Head from 'next/head';
-import { getHot, lastUpdated, listArticles, overview } from 'api/article';
+import { lastUpdated, listArticles } from 'api/article';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
@@ -66,7 +66,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
           </Card>
           <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
             <ul>
-              {serverProps.list.map((n) => (
+              {serverProps.lastUpdatedList.map((n) => (
                 <li className={styles.title} key={n.id}>
                   <Link prefetch={false} href={`/article/${n.id}`}>
                     <a
@@ -88,15 +88,10 @@ const Home: React.FC<NextProps<any>> = (props) => {
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const num = 1;
-  const size = 10;
-  const { data } = await listArticles({ pageNumber: num, pageSize: size });
-  const { data: over } = await overview();
-  const { data: list } = await lastUpdated();
-  const { data: hot } = await getHot();
+  const [pages, lastUpdatedList] = await Promise.all([listArticles({}), lastUpdated()]);
   return {
     props: {
-      serverProps: { ...data, ...over, list, hot },
+      serverProps: { ...pages.data, lastUpdatedList: lastUpdatedList.data },
     },
     revalidate: 1,
   };
