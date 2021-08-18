@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { Os } from '@zzf/toolkit';
 import Head from 'next/head';
 import { getHot, lastUpdated, listArticles, overview } from 'api/article';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
@@ -17,11 +16,15 @@ const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
   const [noMore, setNoMore] = useState(false);
+  const [loadTime, setLoadTime] = useState(0);
   const [records, setRecords] = useState(serverProps.records);
 
   async function handleLoad() {
-    console.log(serverProps);
-    console.log(Os.getBrowser());
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntriesByName('first-contentful-paint')) {
+        setLoadTime(Math.floor(entry.startTime));
+      }
+    }).observe({ type: 'paint', buffered: true });
     const { data } = await listArticles({
       current: page.current + 1,
       pageSize: 10,
@@ -59,7 +62,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
             </div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingyinle'} title={'关于本站'}>
-            <div className={'color-text-primary'}>本次加载时间{props.metric.FCP}ms</div>
+            <div className={'color-text-primary'}>本次加载时间{loadTime}ms</div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
             <ul>
