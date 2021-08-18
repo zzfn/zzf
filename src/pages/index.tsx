@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
+import Icon from '../components/Icon';
 
 const Home: React.FC<NextProps<any>> = (props) => {
   const { serverProps } = props;
@@ -37,7 +38,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
         <title>{getTitle('小时光')}</title>
       </Head>
       <BackTop>
-        <Image height={40} width={40} layout={'intrinsic'} src={'/static/img/top.png'} />
+        <Icon size={40} name={'top'} />
       </BackTop>
       <Layout>
         <Layout.Content className={'Box'}>

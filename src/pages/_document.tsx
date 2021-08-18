@@ -19,7 +19,7 @@ class MyDocument extends Document {
           />
           <meta name='description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
-          <script async src={'//at.alicdn.com/t/font_2620815_ik65bcbhkpa.js'} />
+          <script async src={'//at.alicdn.com/t/font_2620815_cdup30hyyr6.js'} />
         </Head>
         <body onTouchStart={() => {}}>
           <Main />
