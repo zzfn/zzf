@@ -58,7 +58,7 @@ const Home: React.FC<NextProps<any>> = (props) => {
         <Layout.Sidebar>
           <Card icon={'xianxingshezhi'} title={'关于我'}>
             <div className={styles.wrap}>
-              <LottiePlayer size={100} url={'https://cdn.annyyy.com/blog/about.json'} />
+              <LottiePlayer size={100} url={'https://cdn.annyyy.com/blog/logo.json'} />
             </div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingyinle'} title={'关于本站'}>

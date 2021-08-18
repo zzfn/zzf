@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
 import classNames from 'classnames';
 import { Button } from '@zzf/design';
+import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
@@ -56,7 +57,7 @@ function Search(): JSX.Element {
           result.map((item) => <SearchCard dataSource={item} key={item.id} />)
         ) : (
           <div className={'color-text-tertiary'} style={{ margin: 'auto' }}>
-            暂无数据
+            <LottiePlayer size={100} url={'https://cdn.annyyy.com/blog/no.json'} />
           </div>
         )}
       </div>

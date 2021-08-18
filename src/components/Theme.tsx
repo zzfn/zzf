@@ -42,7 +42,7 @@ const Theme: FC<ThemeProps> = ({ className }) => {
         </li>
         <li
           onClick={() => {
-            setTheme('auto')
+            setTheme('auto');
             setActive('auto');
           }}
           className={classNames(active === 'auto' && styles.active)}
