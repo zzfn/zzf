@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { lastUpdated, listArticles } from 'api/article';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
@@ -11,7 +11,7 @@ import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
 import Icon from '../components/Icon';
-
+import Monitor from 'utils/monitor';
 type LastUpdatedListType = {
   title: string;
   id: string;
@@ -29,7 +29,6 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   const [noMore, setNoMore] = useState(false);
   const [loadTime, setLoadTime] = useState(0);
   const [records, setRecords] = useState(serverProps.records);
-
   async function handleLoad() {
     new PerformanceObserver((entryList) => {
       for (const entry of entryList.getEntriesByName('first-contentful-paint')) {

@@ -11,6 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fingerprintjs/fingerprintjs": "^3.3.0",
+    "@types/ua-parser-js": "^0.7.36",
     "@zzf/design": "^1.1.0-alpha.11",
     "@zzf/toolkit": "^1.0.0",
     "axios": "^0.21.1",
@@ -23,6 +25,7 @@
     "next": "^11.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "ua-parser-js": "^0.7.28",
     "zooming": "^2.1.1"
   },
   "devDependencies": {

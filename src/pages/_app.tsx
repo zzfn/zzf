@@ -11,12 +11,22 @@ import Footer from 'components/footer/footer';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import type { AppProps } from 'next/app';
-import { initTheme } from '../utils/theme';
+import Monitor from '../utils/monitor';
+import { Router } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
-    initTheme();
+    const monitor = new Monitor();
+    monitor.loadUrl(location.pathname);
+    const handleRouteChange = (url) => {
+      monitor.loadUrl(url);
+    };
+    Router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      Router.events.off('routeChangeStart', handleRouteChange);
+    };
   }, []);
+
   return (
     <>
       <Head>
