@@ -32,6 +32,7 @@ function Search(): JSX.Element {
       <div className={styles.search}>
         <form onSubmit={handleSubmit} action={''}>
           <input
+            autoFocus
             className={classNames(styles.ipt)}
             onChange={(event) => setKeyword(event.target.value)}
             value={keyword}
