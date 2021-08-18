@@ -6,7 +6,6 @@ import { BackTop, Card, Layout, Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
-import Image from 'next/image';
 import styles from 'styles/home.module.scss';
 import Link from 'next/link';
 import { diff } from '../utils/time';

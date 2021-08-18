@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import * as Sentry from '@sentry/react';
-import { Integrations } from '@sentry/tracing';
 import Head from 'next/head';
 import '@zzf/design/dist/bundle.css';
 import 'styles/globals.scss';
@@ -16,11 +14,6 @@ import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import Monitor from '../utils/monitor';
 
-Sentry.init({
-  dsn: 'https://c7a126d3178a433a878806d0b87e75cb@o656558.ingest.sentry.io/5762761',
-  integrations: [new Integrations.BrowserTracing()],
-  tracesSampleRate: 1.0,
-});
 const monitor = new Monitor();
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
