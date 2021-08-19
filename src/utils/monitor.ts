@@ -32,6 +32,7 @@ class Monitor {
       browserVersion: this.getBrowser().version,
       os: this.getOS().name,
       osVersion: this.getOS().version,
+      referrer: document.referrer,
     });
   }
 }
