@@ -44,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.map((_) => ({ params: { id: _.code } }));
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
@@ -57,6 +57,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       serverProps: data,
     },
-    revalidate: 1,
+    revalidate: 5,
   };
 };

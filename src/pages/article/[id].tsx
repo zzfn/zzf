@@ -33,7 +33,7 @@ interface ServerProps {
 const ArticleDetail: React.FC<ServerProps> = (props) => {
   const [isStar, setIsStar] = useState(false);
   const router = useRouter();
-  const { serverProps = {}, code } = props;
+  const { serverProps = {} } = props;
 
   async function star(id) {
     await updateStar({ id });
@@ -59,7 +59,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
       </Head>
       {router.isFallback ? (
         <div>加载中</div>
-      ) : code === 0 ? (
+      ) : (
         <>
           <Progress />
           <Layout.Content>
@@ -115,8 +115,6 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
             <Nav source={serverProps.content} />
           </Layout.Sidebar>
         </>
-      ) : (
-        <LottiePlayer size={300} url={'https://cdn.annyyy.com/blog/404.json'} />
       )}
     </div>
   );
@@ -127,7 +125,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.map((_) => ({ params: { id: _.id } }));
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
@@ -137,9 +135,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } = context;
   const { data, code } = await getArticle({ id });
   return {
+    notFound: code !== 0,
     props: {
       serverProps: { ...data },
-      code,
     },
     revalidate: 5,
   };
