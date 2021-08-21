@@ -27,12 +27,10 @@ interface Data {
 
 interface ServerProps {
   serverProps: Data;
-  code: number;
 }
 
 const ArticleDetail: React.FC<ServerProps> = (props) => {
   const [isStar, setIsStar] = useState(false);
-  const router = useRouter();
   const { serverProps = {} } = props;
 
   async function star(id) {
@@ -57,65 +55,58 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
       <Head>
         <title>{getTitle(serverProps.title)}</title>
       </Head>
-      {router.isFallback ? (
-        <div>加载中</div>
-      ) : (
-        <>
-          <Progress />
-          <Layout.Content>
-            <main className={`${styles.article}`}>
-              <div className='Subhead'>
-                <h2 className={classNames(styles.title, 'text-3xl')}>{serverProps.title}</h2>
-                <div className={classNames('Subhead-description', styles.tip)}>
-                  <ul className={'color-text-secondary flex flex-wrap'}>
-                    <li>
-                      <span>标签</span>
-                      {serverProps.tagDesc}
-                    </li>
-                    <li>
-                      <span>阅读量</span>
-                      {serverProps.viewCount}
-                    </li>
-                    <li>
-                      <span>点赞量</span>
-                      {serverProps.starCount}
-                    </li>
-                    <li>
-                      <span>发布于</span>
-                      {serverProps.createTime}
-                    </li>
-                    <li>
-                      <span>更新于</span>
-                      {serverProps.updateTime}
-                    </li>
-                  </ul>
-                </div>
+      <>
+        <Progress />
+        <Layout.Content>
+          <main className={`${styles.article}`}>
+            <div className='Subhead'>
+              <h2 className={classNames(styles.title, 'text-3xl')}>{serverProps.title}</h2>
+              <div className={classNames('Subhead-description', styles.tip)}>
+                <ul className={'color-text-secondary flex flex-wrap'}>
+                  <li>
+                    <span>标签</span>
+                    {serverProps.tagDesc}
+                  </li>
+                  <li>
+                    <span>阅读量</span>
+                    {serverProps.viewCount}
+                  </li>
+                  <li>
+                    <span>点赞量</span>
+                    {serverProps.starCount}
+                  </li>
+                  <li>
+                    <span>发布于</span>
+                    {serverProps.createTime}
+                  </li>
+                  <li>
+                    <span>更新于</span>
+                    {serverProps.updateTime}
+                  </li>
+                </ul>
               </div>
-              <article
-                className={[
-                  'markdown-body',
-                  'font-mono',
-                  styles.content,
-                  'color-text-primary',
-                ].join(' ')}
-                dangerouslySetInnerHTML={{
-                  __html: translateMarkdown(serverProps.content),
-                }}
-              />
-            </main>
-            <Icon
-              onClick={() => star(serverProps.id)}
-              className={styles.icon}
-              color={isStar ? '#fec02b' : '#3063fb'}
-              size={60}
-              name={'zan'}
+            </div>
+            <article
+              className={['markdown-body', 'font-mono', styles.content, 'color-text-primary'].join(
+                ' ',
+              )}
+              dangerouslySetInnerHTML={{
+                __html: translateMarkdown(serverProps.content),
+              }}
             />
-          </Layout.Content>
-          <Layout.Sidebar>
-            <Nav source={serverProps.content} />
-          </Layout.Sidebar>
-        </>
-      )}
+          </main>
+          <Icon
+            onClick={() => star(serverProps.id)}
+            className={styles.icon}
+            color={isStar ? '#fec02b' : '#3063fb'}
+            size={60}
+            name={'zan'}
+          />
+        </Layout.Content>
+        <Layout.Sidebar>
+          <Nav source={serverProps.content} />
+        </Layout.Sidebar>
+      </>
     </div>
   );
 };
