@@ -30,11 +30,6 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   const [loadTime, setLoadTime] = useState(0);
   const [records, setRecords] = useState(serverProps.records);
   async function handleLoad() {
-    new PerformanceObserver((entryList) => {
-      for (const entry of entryList.getEntriesByName('first-contentful-paint')) {
-        setLoadTime(Math.floor(entry.startTime));
-      }
-    }).observe({ type: 'paint', buffered: true });
     const { data } = await listArticles({
       current: page.current + 1,
       pageSize: 10,
@@ -43,7 +38,13 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
     setNoMore(data.records.length === 0);
     page.current = data.current;
   }
-
+  useEffect(() => {
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntriesByName('first-contentful-paint')) {
+        setLoadTime(Math.floor(entry.startTime));
+      }
+    }).observe({ type: 'paint', buffered: true });
+  }, []);
   return (
     <>
       <Head>
