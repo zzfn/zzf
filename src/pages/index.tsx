@@ -104,7 +104,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       serverProps: { ...pages.data, lastUpdatedList: lastUpdatedList.data },
     },
-    revalidate: 1,
+    revalidate: 5,
   };
 };
 
