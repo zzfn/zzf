@@ -6,7 +6,7 @@ module.exports = {
     domains: ['cdn.zzfzzf.com'],
   },
   sassOptions: {
-    prependData: `@import "styles/function";`,
+    prependData: `@import "styles/_variable";`,
   },
   webpack: (config) => {
     const idx = config.module.rules.findIndex((item) => Reflect.has(item, 'oneOf'));
@@ -18,30 +18,6 @@ module.exports = {
           }
         });
       }
-    });
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: [
-        {
-          loader: 'svg-sprite-loader',
-          options: {
-            symbolId: '[name]',
-          },
-        },
-        {
-          loader: 'svgo-loader',
-          options: {
-            plugins: [
-              {
-                name: 'removeAttrs',
-                params: {
-                  attrs: ['fill'],
-                },
-              },
-            ],
-          },
-        },
-      ],
     });
     return config;
   },
