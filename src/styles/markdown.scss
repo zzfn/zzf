@@ -16,7 +16,7 @@
     font-weight: bold;
     line-height: 1.4;
     cursor: text;
-    color: var(--color-scale-purple-4);
+    color: var(--color-scale-orange-4);
   }
 
   h1 {
@@ -40,8 +40,8 @@
     line-height:2;
   }
   a{
-    color: var(--color-scale-purple-5);
-    border-bottom: 1px solid var(--color-scale-purple-5);
+    color: var(--color-scale-orange-5);
+    border-bottom: 1px solid var(--color-scale-orange-5);
     font-weight: 400;
     text-decoration: none;
   }
@@ -50,7 +50,7 @@
     border-radius: 2px;
     overflow-x: auto;
     background-color: var(--color-scale-gray-1);
-    color: var(--color-scale-purple-6);
+    color: var(--color-scale-orange-6);
     font-size: .87em;
     padding: .065em .4em;
   }
@@ -68,12 +68,12 @@
     color: #666;
     padding: 5px 23px 1px;
     margin: 22px 0;
-    border-left: 4px solid var(--color-scale-purple-5);
+    border-left: 4px solid var(--color-scale-orange-5);
     background-color: hsla(0,0%,78.4%,.12);
     transition: all .2s ease-in-out;
   }
   strong{
-    color: var(--color-scale-purple-6)
+    color: var(--color-scale-orange-6)
   }
 
 }

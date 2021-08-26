@@ -17,7 +17,12 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a
-            className={classNames('color-text-link', 'text-2xl', 'font-semibold')}
+            className={classNames(
+              'text-primary4',
+              'hover:text-primary5',
+              'text-2xl',
+              'font-semibold',
+            )}
             target={'_blank'}
           >
             {dataSource.title}

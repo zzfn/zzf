@@ -23,7 +23,7 @@
         content:'';
         height:2px;
         width:100%;
-        background-color:var(--color-scale-purple-2);
+        background-color:var(--color-scale-orange-4);
         position: absolute;
         left:0;
         bottom:0;
@@ -36,7 +36,7 @@
           visibility: visible;
           transform:scaleX(1);
         }
-        color: var(--color-hover);
+        color: var(--color-scale-orange-4);
       }
 
       &:not(:last-child) {
