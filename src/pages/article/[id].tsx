@@ -87,9 +87,7 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
               </div>
             </div>
             <article
-              className={['markdown-body', 'font-mono', styles.content, 'color-text-primary'].join(
-                ' ',
-              )}
+              className={classNames('markdown-body')}
               dangerouslySetInnerHTML={{
                 __html: translateMarkdown(serverProps.content),
               }}
