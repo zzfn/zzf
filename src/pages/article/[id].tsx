@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { getArticle, listArchives, updateStar, updateView } from 'services/article';
+import React, { useEffect } from 'react';
+import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
@@ -10,8 +9,6 @@ import { Layout, Progress } from '@zzf/design';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import LottiePlayer from '../../components/LottiePlayer/LottiePlayer';
-import Icon from 'components/Icon';
 
 interface Data {
   content?: string;
@@ -30,13 +27,7 @@ interface ServerProps {
 }
 
 const ArticleDetail: React.FC<ServerProps> = (props) => {
-  const [isStar, setIsStar] = useState(false);
   const { serverProps = {} } = props;
-
-  async function star(id) {
-    await updateStar({ id });
-    setIsStar(true);
-  }
 
   useEffect(() => {
     updateView({ id: serverProps.id }).then();
@@ -93,13 +84,6 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
               }}
             />
           </main>
-          <Icon
-            onClick={() => star(serverProps.id)}
-            className={styles.icon}
-            color={isStar ? '#fec02b' : '#3063fb'}
-            size={60}
-            name={'zan'}
-          />
         </Layout.Content>
         <Layout.Sidebar>
           <Nav source={serverProps.content} />
