@@ -24,20 +24,10 @@
     text-align: center;
     margin-top: 0;
   }
-  h2 {
-    font-size: 1.4rem;
-  }
-  h3 {
-    font-size: 1.2rem;
-  }
-  h4 {
-    font-size: 1rem;
-  }
-  h5 {
-    font-size: .8rem;
-  }
-  h6 {
-    font-size: .5rem;
+  @for $i from 2 through 6{
+    h#{$i} {
+      font-size: 1.6-($i - 1)*0.2rem;
+    }
   }
   ol {
     list-style: decimal inside;
