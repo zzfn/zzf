@@ -34,14 +34,14 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
     <>
       {Object.keys(arr).map((item) => (
         <Fragment key={item}>
-          <h2 className={'text-2xl color-text-link'}>{item}</h2>
-          <nav className={`color-bg-secondary p-2`}>
+          <h2 className={'text-2xl text-primary5 m-1'}>{item}</h2>
+          <nav className={`color-bg-secondary p-2 flex flex-wrap`}>
             {arr[item].map((node) => (
               <Link key={node.title} href={node.link}>
                 <a
                   target={'_blank'}
                   className={
-                    'text-xl color-text-secondary hover:text-purple-900 mr-5 whitespace-nowrap mt-2'
+                    'text-xl color-text-secondary hover:text-purple-900 mr-5 whitespace-nowrap mb-2'
                   }
                 >
                   {node.title}
