@@ -13,9 +13,11 @@ import { getTitle } from '../utils/getTitle';
 import type { AppProps } from 'next/app';
 import Monitor from '../utils/monitor';
 import { Router } from 'next/router';
+import { initTheme } from '../utils/theme';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
+    initTheme();
     const monitor = new Monitor();
     monitor.loadUrl(location.pathname);
     const handleRouteChange = (url) => {

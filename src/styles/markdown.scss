@@ -1,6 +1,8 @@
 
 .markdown-body {
+  color: var(--color-text-primary);
   p{
+    color: var(--color-text-primary);
     line-height:2;
     display: inline-block;
   }
@@ -55,10 +57,10 @@
     padding: .065em .4em;
   }
   pre{
-    background-color: var(--color-scale-gray-0);
+    background-color: var(--color-scale-gray-6);
     >code{
-      background-color: var(--color-scale-gray-0);
-      color: var(--color-scale-gray-8);
+      background-color: var(--color-scale-gray-6);
+      color: var(--color-scale-gray-0);
       padding:15px 12px;
       overflow-x: auto;
       display:block;
