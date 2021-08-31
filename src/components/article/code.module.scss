@@ -1,19 +1,11 @@
 .code {
   position: relative;
-pre{
-  padding-top: 30px;
-}
-  .action {
-    &::before {
-      width: 100px;
-      content: attr(lang);
-      height: 15px;
-      background: url('/static/img/mac-close.png') no-repeat;
-      background-size: 40px;
-      display: block;
-      margin-bottom: 5px;
-    }
 
+  pre {
+    padding-top: 30px;
+  }
+
+  .action {
     font-size: 13px;
     position: absolute;
     top: 10px;
@@ -21,15 +13,24 @@ pre{
     right: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    color: var(--color-scale-gray-0);
 
-    a {
-      &::before {
-        cursor: default;
-        color: #8c8c8ccc;
-        display: inline-block;
-        content: attr(lang);
-        margin-right: 5px;
-      }
+    &::before {
+      width: 100px;
+      content: ' ';
+      height: 15px;
+      background: url('//cdn.annyyy.com/blog/mac-close.png') no-repeat left;
+      background-size: 40px;
+    }
+
+    &::after {
+      text-align: right;
+      width: 100px;
+      content: attr(lang);
+      height: 15px;
+      line-height: 15px;
+      background-size: 40px;
     }
   }
 }

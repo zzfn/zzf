@@ -19,14 +19,7 @@ const Code: CodeProps = ({ language, code }) => {
           lang={language}
         />
       </pre>
-      <div className={styles.action}>
-        <a
-          lang={language}
-          style={{ color: '#8c8c8ccc', border: 'none', cursor: 'pointer', userSelect: 'none' }}
-        >
-          {/*复制代码*/}
-        </a>
-      </div>
+      <div lang={language} className={styles.action} />
     </div>
   );
 };
