@@ -30,7 +30,13 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
         </Link>
         {dataSource.orderNum ? (
           <Icon
-            className={classNames('float-right', 'transform', '-translate-y-4', 'text-2xl')}
+            className={classNames(
+              'float-right',
+              'transform',
+              '-translate-y-4',
+              'text-2xl',
+              'text-primary4',
+            )}
             name={'zhiding'}
           />
         ) : null}

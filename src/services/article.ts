@@ -63,18 +63,13 @@ export const lastUpdated = () => {
     url: '/article/non/lastUpdated',
   });
 };
-
-export const updateView = (params) => {
+type ViewType = {
+  id: string;
+};
+export const updateView = (params: ViewType) => {
   return http({
     method: 'get',
     url: '/article/non/updateViewed',
-    params,
-  });
-};
-export const updateStar = (params) => {
-  return http({
-    method: 'post',
-    url: '/article/non/star',
     params,
   });
 };
