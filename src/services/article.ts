@@ -41,7 +41,7 @@ export const esList = (params: any) => {
 export const favoriteList = (params: any) => {
   return http({
     method: 'get',
-    url: '/favorite/non/list',
+    url: '/favorite/list',
     params,
   });
 };
