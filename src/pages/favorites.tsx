@@ -37,7 +37,7 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
           <h2 className={'text-2xl text-primary5 m-1'}>{item}</h2>
           <nav className={`color-bg-secondary p-2 flex flex-wrap`}>
             {arr[item].map((node) => (
-              <Link key={node.title} href={node.link}>
+              <Link key={node.id} href={node.link}>
                 <a
                   target={'_blank'}
                   className={
