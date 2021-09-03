@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Layout, SvgIcon } from '@zzf/design';
 import styles from './header.module.scss';
-import menus from 'menus.json';
+import menus from '../../menus.json';
 import classNames from 'classnames';
 import Theme from '../Theme';
 

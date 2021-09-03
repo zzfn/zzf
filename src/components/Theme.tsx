@@ -6,17 +6,14 @@ import styles from './theme.module.scss';
 import React from 'react';
 import { setTheme } from '../utils/theme';
 
-type ThemeProps = {
-  className?: string;
-};
-const Theme: FC<ThemeProps> = ({ className }) => {
+const Theme: FC = () => {
   const [active, setActive] = useState('');
   useEffect(() => {
     const theme = localStorage.getItem('data-color-mode');
     setActive(theme);
   }, []);
   return (
-    <details className={classNames(className, styles.theme)}>
+    <details className={styles.theme}>
       <summary aria-haspopup='true'>
         <span className={'hidden md:inline-block'}>主题</span>
         <Icon className={classNames('text-4xl', 'inline-block md:hidden')} name={'setting'} />

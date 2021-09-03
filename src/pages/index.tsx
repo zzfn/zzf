@@ -11,7 +11,7 @@ import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
 import Icon from '../components/Icon';
-import Monitor from 'utils/monitor';
+
 type LastUpdatedListType = {
   title: string;
   id: string;

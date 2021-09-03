@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import styles from './index.module.scss';
+
 export type LottieProps = {
   url: string;
   size?: number;
