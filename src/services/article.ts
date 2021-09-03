@@ -3,7 +3,7 @@ import http from 'utils/http';
 export const listArticles = (params: any) => {
   return http({
     method: 'get',
-    url: '/article/non/page',
+    url: '/article/page',
     params,
   });
 };
