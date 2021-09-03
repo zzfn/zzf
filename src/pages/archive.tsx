@@ -136,8 +136,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data: list } = await listArchives({});
-  const { data: tags } = await listTags({});
+  const [{ data: list }, { data: tags }] = await Promise.all([listArchives({}), listTags({})]);
   return {
     props: {
       serverProps: { list, tags },
