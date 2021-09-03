@@ -101,23 +101,13 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const [pages, lastUpdatedList] = await Promise.all([listArticles({}), lastUpdated()]);
-    return {
-      props: {
-        serverProps: { ...pages.data, lastUpdatedList: lastUpdatedList.data },
-      },
-      revalidate: 5,
-    };
-  } catch (e) {
-    console.log(e);
-    return {
-      props: {
-        serverProps: {},
-      },
-      revalidate: 5,
-    };
-  }
+  const [pages, lastUpdatedList] = await Promise.all([listArticles({}), lastUpdated()]);
+  return {
+    props: {
+      serverProps: { ...pages.data, lastUpdatedList: lastUpdatedList.data },
+    },
+    revalidate: 5,
+  };
 };
 
 export default Home;
