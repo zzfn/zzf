@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "postbuild": "next-sitemap",
-    "start:dev": "cross-env APP=development next dev -p 3001",
-    "start:prod": "cross-env APP=production next dev -p 3001",
+    "start:dev": "cross-env APP=development next dev",
+    "start:prod": "cross-env APP=production next dev",
     "build": "cross-env APP=production next build",
     "start": "next start -p 9800",
     "lint": "next lint"

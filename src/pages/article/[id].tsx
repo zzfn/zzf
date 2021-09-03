@@ -63,10 +63,6 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
                     {serverProps.viewCount}
                   </li>
                   <li>
-                    <span>点赞量</span>
-                    {serverProps.starCount}
-                  </li>
-                  <li>
                     <span>发布于</span>
                     {serverProps.createTime}
                   </li>

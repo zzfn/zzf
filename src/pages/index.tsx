@@ -29,6 +29,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   const [noMore, setNoMore] = useState(false);
   const [loadTime, setLoadTime] = useState(0);
   const [records, setRecords] = useState(serverProps.records);
+
   async function handleLoad() {
     const { data } = await listArticles({
       current: page.current + 1,
@@ -38,6 +39,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
     setNoMore(data.records.length === 0);
     page.current = data.current;
   }
+
   useEffect(() => {
     new PerformanceObserver((entryList) => {
       for (const entry of entryList.getEntriesByName('first-contentful-paint')) {
@@ -99,13 +101,23 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const [pages, lastUpdatedList] = await Promise.all([listArticles({}), lastUpdated()]);
-  return {
-    props: {
-      serverProps: { ...pages.data, lastUpdatedList: lastUpdatedList.data },
-    },
-    revalidate: 5,
-  };
+  try {
+    const [pages, lastUpdatedList] = await Promise.all([listArticles({}), lastUpdated()]);
+    return {
+      props: {
+        serverProps: { ...pages.data, lastUpdatedList: lastUpdatedList.data },
+      },
+      revalidate: 5,
+    };
+  } catch (e) {
+    console.log(e);
+    return {
+      props: {
+        serverProps: {},
+      },
+      revalidate: 5,
+    };
+  }
 };
 
 export default Home;
