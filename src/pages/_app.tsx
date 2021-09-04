@@ -16,18 +16,18 @@ import { Router } from 'next/router';
 import { initTheme } from '../utils/theme';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  useEffect(() => {
-    initTheme();
-    const monitor = new Monitor();
-    monitor.loadUrl(location.pathname);
-    const handleRouteChange = (url) => {
-      monitor.loadUrl(url);
-    };
-    Router.events.on('routeChangeStart', handleRouteChange);
-    return () => {
-      Router.events.off('routeChangeStart', handleRouteChange);
-    };
-  }, []);
+  // useEffect(() => {
+  //   initTheme();
+  //   const monitor = new Monitor();
+  //   monitor.loadUrl(location.pathname);
+  //   const handleRouteChange = (url) => {
+  //     monitor.loadUrl(url);
+  //   };
+  //   Router.events.on('routeChangeStart', handleRouteChange);
+  //   return () => {
+  //     Router.events.off('routeChangeStart', handleRouteChange);
+  //   };
+  // }, []);
 
   return (
     <>
