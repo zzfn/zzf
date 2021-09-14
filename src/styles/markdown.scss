@@ -77,6 +77,10 @@
   strong{
     color: var(--color-scale-orange-6)
   }
+  .markdown-table{
+    width:100%;
+    overflow-x: auto;
+  }
   table{
     th{
       white-space: nowrap;
