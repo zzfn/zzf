@@ -21,13 +21,12 @@ export const translateMarkdown = (text = '') => {
             </h${level}>`;
   };
   renderer.table = function (header, body) {
-    console.log(header, body);
     return `
     <div class='markdown-table'>
-    <table>
-    ${header}
-    ${body}
-</table>
+      <table>
+      ${header}
+      ${body}
+      </table>
     </div>
     `;
   };
