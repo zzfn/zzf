@@ -77,5 +77,16 @@
   strong{
     color: var(--color-scale-orange-6)
   }
-
+  table{
+    th{
+      white-space: nowrap;
+      padding:6px 13px;
+      border:1px solid #ddd;
+    }
+    td{
+      white-space: nowrap;
+      padding:6px 13px;
+      border:1px solid #ddd;
+    }
+  }
 }
