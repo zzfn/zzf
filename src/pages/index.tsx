@@ -61,7 +61,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             noMore={noMore}
             key={page.current}
             onLoad={handleLoad}
-            loading={<LottiePlayer size={200} url={'https://cdn.annyyy.com/blog/load-more.json'} />}
+            loading={<LottiePlayer size={200} url={'https://cdn.zzfzzf.com/1632384671572VMLK6m.json'} />}
           >
             {records.map((item: Article) => (
               <ArticleCard key={item.id} dataSource={item} />
@@ -71,7 +71,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         <Layout.Sidebar>
           <Card icon={'xianxingshezhi'} title={'关于我'}>
             <div className={styles.wrap}>
-              <LottiePlayer size={100} url={'https://cdn.annyyy.com/blog/logo.json'} />
+              <LottiePlayer size={100} url={'https://cdn.zzfzzf.com/1632384646840vb5kcx.json'} />
             </div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingyinle'} title={'关于本站'}>
