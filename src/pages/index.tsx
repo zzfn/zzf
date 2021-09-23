@@ -61,7 +61,9 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             noMore={noMore}
             key={page.current}
             onLoad={handleLoad}
-            loading={<LottiePlayer size={200} url={'https://cdn.zzfzzf.com/1632384671572VMLK6m.json'} />}
+            loading={
+              <LottiePlayer size={200} url={'https://cdn.zzfzzf.com/1632384671572VMLK6m.json'} />
+            }
           >
             {records.map((item: Article) => (
               <ArticleCard key={item.id} dataSource={item} />
