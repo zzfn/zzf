@@ -45,7 +45,7 @@ function Search(): JSX.Element {
       </div>
       <div style={{ padding: '0 10px' }} className={'color-text-secondary'}>
         {loading ? (
-          <div className={styles.searchResult}>努力搜索中💪，请等待</div>
+          <div className={styles.searchResult}>🔍 努力搜索中，请等待</div>
         ) : (
           <div className={styles.searchResult}>
             共找到<strong>{result.length}</strong>条结果

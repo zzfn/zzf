@@ -45,18 +45,8 @@ export const favoriteList = (params: any) => {
     params,
   });
 };
-export const overview = () => {
-  return http({
-    method: 'get',
-    url: '/config/non/overview',
-  });
-};
-export const getHot = () => {
-  return http({
-    method: 'get',
-    url: '/article/non/hot',
-  });
-};
+
+
 export const lastUpdated = () => {
   return http({
     method: 'get',
