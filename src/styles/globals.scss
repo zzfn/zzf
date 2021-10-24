@@ -3,19 +3,23 @@
 @tailwind utilities;
 html {
   font-size: 12px;
-  font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial;
 }
+
 .icon {
-  width: 1em; height: 1em;
+  width: 1em;
+  height: 1em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
 }
+
 html,
 body {
   padding: 0;
   margin: 0;
 }
+
 h3 {
   margin: 0;
 }
@@ -24,9 +28,57 @@ body {
   background: var(--color-bg-canvas);
 }
 
-.zzf-page{
+.zzf-page {
   min-height: 101vh;
 }
-:root{
+
+:root {
   scroll-behavior: smooth;
+}
+
+:root {
+  color: #fff;
+
+}
+
+[data-color-mode=dark] {
+  --color-text-primary: #c9d1d9;
+  --color-text-secondary: #8b949e;
+  --color-text-tertiary: #8b949e;
+  --color-bg-primary: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-bg-tertiary: #161b22;
+}
+
+[data-color-mode=light] {
+  --color-text-link: #58a6ff;
+  --color-text-primary: #24292f;
+  --color-text-secondary: #57606a;
+  --color-text-tertiary: #57606a;
+  --color-bg-primary: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-bg-tertiary: #161b22;
+}
+@media(prefers-color-scheme: light){
+  [data-color-mode=auto] {
+    --color-text-link: #0969da;
+    --color-text-primary: #24292f;
+    --color-text-secondary: #57606a;
+    --color-text-tertiary: #57606a;
+    --color-bg-primary: #0d1117;
+    --color-bg-secondary: #161b22;
+    --color-bg-tertiary: #161b22;
+
+  }
+}
+
+@media(prefers-color-scheme: dark){
+  [data-color-mode=auto] {
+    --color-text-primary: #c9d1d9;
+    --color-text-secondary: #8b949e;
+    --color-text-tertiary: #8b949e;
+    --color-bg-primary: #0d1117;
+    --color-bg-secondary: #161b22;
+    --color-bg-tertiary: #161b22;
+  }
 }
