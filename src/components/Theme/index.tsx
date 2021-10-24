@@ -4,11 +4,14 @@ import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
 import { SvgIcon } from '@zzf/design';
 import styles from './index.module.scss';
+import useOutsideClick from 'hooks/useOutsideClick';
 
 const ThemeDataSource = ['light', 'dark', 'system'];
 const Theme: FC = () => {
   const [active, setActive] = useState('light');
   const [visible, setVisible] = useState(false);
+
+  const ref = useOutsideClick<HTMLUListElement>(() => setVisible(false));
 
   useEffect(() => {
     const theme = localStorage.getItem('data-color-mode');
@@ -17,6 +20,7 @@ const Theme: FC = () => {
       initTheme();
     }
   }, []);
+
   return (
     <div className='relative'>
       <SvgIcon
@@ -26,7 +30,7 @@ const Theme: FC = () => {
         name={active}
       />
       {visible && (
-        <ul className={classNames('absolute', 'bg-primary', styles.dropdown)}>
+        <ul ref={ref} className={classNames('absolute', 'bg-primary', styles.dropdown)}>
           {ThemeDataSource.map((theme) => (
             <li
               onClick={() => {
