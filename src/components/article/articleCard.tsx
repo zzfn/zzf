@@ -16,8 +16,8 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a
             className={classNames(
-              'text-secondary',
-              'hover:text-primary',
+              'text-primary',
+              'hover:text-secondary',
               'text-2xl',
               'font-semibold',
             )}
