@@ -117,7 +117,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
               <React.Fragment key={item.code}>
                 <Link
                   href={{
-                    pathname: `/tag/${item.code}}`,
+                    pathname: `/tag/${item.code}`,
                     query: { desc: encodeURIComponent(item.tag) },
                   }}
                 >
