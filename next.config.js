@@ -6,7 +6,7 @@ module.exports = {
     domains: ['cdn.zzfzzf.com'],
   },
   sassOptions: {
-    prependData: `@import "styles/_variable";`,
+    prependData: `@import "styles/variable";`,
   },
   webpack: (config) => {
     const idx = config.module.rules.findIndex((item) => Reflect.has(item, 'oneOf'));

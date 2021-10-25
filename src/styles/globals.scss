@@ -1,7 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import "~@zzf/design/dist/_theme.scss";
+@import "~@zzf/design/dist/theme.scss";
 
 html {
   font-size: 12px;
@@ -27,7 +24,7 @@ h3 {
 }
 
 body {
-  background: var(--color-bg-canvas);
+  background: var(--color-bg-primary);
 }
 
 .zzf-page {
@@ -38,7 +35,7 @@ body {
 
 :root {
   scroll-behavior: smooth;
-  @include colors-light
+  @include colors-light;
 }
 [data-color-mode=dark] {
   @include colors-dark
@@ -58,4 +55,3 @@ body {
     @include colors-dark
   }
 }
-@import "./variable";
