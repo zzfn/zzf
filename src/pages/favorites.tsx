@@ -39,7 +39,7 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
             {arr[item].map((node) => (
               <Link key={node.id} href={node.link}>
                 <a
-                  rel={'noopener'}
+                  rel='noopener'
                   target={'_blank'}
                   className={
                     'text-xl color-text-secondary hover:text-purple-900 mr-5 whitespace-nowrap mb-2'

@@ -4,12 +4,21 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
-      primary: 'var(--color-primary)',
-      colorBorderSecondary: 'var(--color-border-secondary)',
-      primary4: 'var(--color-scale-orange-4)',
-      primary5: 'var(--color-scale-orange-5)',
-      secondary: '#ffed4a',
-      danger: '#e3342f',
+      inverse: 'var(--color-text-inverse)',
+      primary: 'var(--color-text-primary)',
+      secondary: 'var(--color-text-secondary)',
+      tertiary: 'var(--color-text-tertiary)',
+    },
+    backgroundColor: {
+      inverse: 'var(--color-bg-inverse)',
+      primary: 'var(--color-bg-primary)',
+      secondary: 'var(--color-bg-secondary)',
+      tertiary: 'var(--color-bg-tertiary)',
+    },
+    borderColor: {
+      primary: 'var(--color-bg-primary)',
+      secondary: 'var(--color-bg-secondary)',
+      tertiary: 'var(--color-bg-tertiary)',
     },
     // extend: {},
   },

@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import '@zzf/design/dist/bundle.css';
 import 'styles/globals.scss';
-import '@primer/css/base/modes.scss';
-import '@primer/css/utilities/colors.scss';
 import 'highlight.js/styles/rainbow.css';
 import Header from 'components/layout/header';
 import Footer from 'components/layout/footer';

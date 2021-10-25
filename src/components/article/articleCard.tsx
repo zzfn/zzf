@@ -12,14 +12,14 @@ interface ArticleCardProps {
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
     <div
-      className={classNames('border-b', 'border-solid', 'py-4 px-8', 'border-colorBorderSecondary')}
+      className={classNames('border-b', 'border-solid', 'py-4 px-8')}
     >
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a
             className={classNames(
-              'text-primary4',
-              'hover:text-primary5',
+              'text-secondary',
+              'hover:text-primary',
               'text-2xl',
               'font-semibold',
             )}
@@ -35,7 +35,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
               'transform',
               '-translate-y-4',
               'text-2xl',
-              'text-primary4',
+              'text-secondary',
             )}
             name={'zhiding'}
           />
