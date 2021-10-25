@@ -13,7 +13,7 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^3.3.0",
     "@types/ua-parser-js": "^0.7.36",
-    "@zzf/design": "^1.2.0-alpha.1",
+    "@zzf/design": "^1.2.0-alpha.4",
     "@zzf/toolkit": "^1.0.0",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
