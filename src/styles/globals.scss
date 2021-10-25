@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "~@zzf/design/dist/theme.scss";
+
 html {
   font-size: 12px;
   font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial;
@@ -25,7 +24,7 @@ h3 {
 }
 
 body {
-  background: var(--color-bg-canvas);
+  background: var(--color-bg-primary);
 }
 
 .zzf-page {
@@ -33,37 +32,10 @@ body {
 }
 
 
-@mixin colors-dark{
-  --color-text-link: #0969da;
-  --color-text-inverse: rgba(240,246,252,0.7);
-  --color-text-primary: #c9d1d9;
-  --color-text-secondary: #57606a;
-  --color-text-tertiary: #57606a;
-  --color-bg-primary: #0d1117;
-  --color-bg-inverse: #161b22;
-  --color-bg-secondary: #161b22;
-  --color-bg-tertiary: #161b22;
-  --color-border-primary: #30363d;
-  --color-border-secondary: #21262d;
-  --color-border-tertiary: rgba(240,246,252,0.1);
-}
-@mixin colors-light{
-  --color-text-link: #58a6ff;
-  --color-text-inverse: rgba(255,255,255,0.7);
-  --color-text-primary: #24292f;
-  --color-text-secondary: #57606a;
-  --color-text-tertiary: #6e7781;
-  --color-bg-inverse: #24292f;
-  --color-bg-primary: #fff;
-  --color-bg-secondary: #f6f8fa;
-  --color-bg-tertiary: #f6f8fa;
-  --color-border-primary: #d0d7de;
-  --color-border-secondary: hsla(210,18%,87%,1);
-  --color-border-tertiary: rgba(27,31,36,0.15);
-}
+
 :root {
   scroll-behavior: smooth;
-  @include colors-light
+  @include colors-light;
 }
 [data-color-mode=dark] {
   @include colors-dark

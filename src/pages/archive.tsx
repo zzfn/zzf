@@ -28,12 +28,13 @@ interface ArchiveProps {
 function renderMonth(time, list = []) {
   return (
     <div key={time}>
-      <h3 className={`${styles.title}`}>
+      <h3 className={classNames(styles.title, 'text-secondary')}>
         {time} 共 <span className='Counter'>{list.length}</span> 篇文章
       </h3>
       <ul>
         {list?.map((item) => (
-          <li className={styles.item} key={item.id} style={{ borderBottom: '1px dashed #ccc' }}>
+          <li className={classNames(styles.item, 'text-primary')} key={item.id}
+              style={{ borderBottom: '1px dashed #ccc' }}>
             <span style={{ color: '#8a8a8a', marginRight: '10px', fontFamily: 'Helvetica Neue' }}>
               {dayjs(item.createTime).format('YYYY-MM-DD')}
             </span>

@@ -77,7 +77,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             </div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingyinle'} title={'关于本站'}>
-            <div className={'color-text-primary'}>本次加载时间{loadTime}ms</div>
+            <div className={'text-primary'}>本次加载时间{loadTime}ms</div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
             <ul>
