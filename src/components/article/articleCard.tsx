@@ -11,9 +11,7 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
-    <div
-      className={classNames('border-b', 'border-solid', 'py-4 px-8')}
-    >
+    <div className={classNames('border-b', 'border-solid', 'py-4 px-8')}>
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a
