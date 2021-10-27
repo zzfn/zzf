@@ -14,7 +14,7 @@ import Monitor from '../utils/monitor';
 import { Router } from 'next/router';
 import { initTheme } from '../utils/theme';
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+function App({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
     initTheme();
     const monitor = new Monitor();
@@ -57,4 +57,4 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   );
 }
 
-export default MyApp;
+export default App;

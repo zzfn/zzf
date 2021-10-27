@@ -22,8 +22,11 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "api/*": ["services/*"]
-    }
+      "api/*": [
+        "services/*"
+      ]
+    },
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
