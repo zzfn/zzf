@@ -11,7 +11,6 @@ import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
-import { Router } from 'next/router';
 import { initTheme } from '../utils/theme';
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
