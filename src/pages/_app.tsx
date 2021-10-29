@@ -9,23 +9,19 @@ import Footer from 'components/layout/footer';
 import 'styles/markdown.scss';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
-import type { AppProps } from 'next/app';
+import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
 import { Router } from 'next/router';
 import { initTheme } from '../utils/theme';
 
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  const monitor = new Monitor();
+  monitor.loadUrl(location.pathname, metric);
+}
+
 function App({ Component, pageProps }: AppProps): JSX.Element {
   useEffect(() => {
     initTheme();
-    const monitor = new Monitor();
-    monitor.loadUrl(location.pathname);
-    const handleRouteChange = (url) => {
-      monitor.loadUrl(url);
-    };
-    Router.events.on('routeChangeStart', handleRouteChange);
-    return () => {
-      Router.events.off('routeChangeStart', handleRouteChange);
-    };
   }, []);
 
   return (
