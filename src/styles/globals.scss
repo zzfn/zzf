@@ -32,7 +32,9 @@ body {
 }
 
 
-
+::selection{
+  color: var(--color-text-brand);
+}
 :root {
   scroll-behavior: smooth;
   @include colors-light;

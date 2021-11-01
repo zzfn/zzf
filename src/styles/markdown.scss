@@ -18,7 +18,7 @@
     font-weight: bold;
     line-height: 1.4;
     cursor: text;
-    color: var(--color-scale-orange-4);
+    color: var(--color-text-primary);
   }
 
   h1 {
@@ -42,8 +42,8 @@
     line-height:2;
   }
   a{
-    color: var(--color-scale-orange-5);
-    border-bottom: 1px solid var(--color-scale-orange-5);
+    color: var(--color-text-brand);
+    border-bottom: 1px solid var(--color-text-brand);
     font-weight: 400;
     text-decoration: none;
   }
@@ -51,8 +51,8 @@
     word-break: break-word;
     border-radius: 2px;
     overflow-x: auto;
-    background-color: var(--color-scale-gray-1);
-    color: var(--color-scale-orange-6);
+    background-color: var(--color-bg-brand);
+    color: var(--color-text-brand);
     font-size: .87em;
     padding: .065em .4em;
   }
@@ -60,22 +60,22 @@
     background-color: var(--color-bg-secondary);
     >code{
       background-color: var(--color-bg-secondary);
-      color: var(--color-scale-gray-0);
+      color: var(--color-text-secondary);
       padding:15px 12px;
       overflow-x: auto;
       display:block;
     }
   }
   blockquote{
-    color: #666;
+    color: var(--color-bg-secondary);
     padding: 5px 23px 1px;
     margin: 22px 0;
-    border-left: 4px solid var(--color-scale-orange-5);
+    border-left: 4px solid var(--color-border-brand);
     background-color: hsla(0,0%,78.4%,.12);
     transition: all .2s ease-in-out;
   }
   strong{
-    color: var(--color-scale-orange-6)
+    color: var(--color-text-brand)
   }
   .markdown-table{
     width:100%;
@@ -85,12 +85,12 @@
     th{
       white-space: nowrap;
       padding:6px 13px;
-      border:1px solid #ddd;
+      border:1px solid var(--color-border-primary);
     }
     td{
       white-space: nowrap;
       padding:6px 13px;
-      border:1px solid #ddd;
+      border:1px solid var(--color-border-primary);
     }
   }
 }

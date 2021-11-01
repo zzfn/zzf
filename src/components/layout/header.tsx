@@ -26,13 +26,13 @@ function Header(): JSX.Element {
           </nav>
         </div>
         <SvgIcon
-          className={classNames('text-4xl inline-block md:hidden', styles.logo)}
+          className={classNames('text-4xl inline-block md:hidden')}
           onClick={() => setIsShow(!isShow)}
           name={isShow ? 'close' : 'menu'}
         />
         <Link href={'/'}>
           <a className={'flex items-center color-text-primary inline-block md:hidden'}>
-            <SvgIcon className={classNames('text-5xl', styles.logo)} name={'logo'} />
+            <SvgIcon className={classNames('text-5xl', 'text-brand')} name={'logo'} />
           </a>
         </Link>
         <Theme />

@@ -49,29 +49,27 @@ const ArticleDetail: React.FC<ServerProps> = (props) => {
       <>
         <Progress />
         <Layout.Content>
-          <main className={`${styles.article}`}>
-            <div className='Subhead'>
-              <h2 className={classNames(styles.title, 'text-3xl')}>{serverProps.title}</h2>
-              <div className={classNames('Subhead-description', styles.tip)}>
-                <ul className={'color-text-secondary flex flex-wrap'}>
-                  <li>
-                    <span>标签</span>
-                    {serverProps.tagDesc}
-                  </li>
-                  <li>
-                    <span>阅读量</span>
-                    {serverProps.viewCount}
-                  </li>
-                  <li>
-                    <span>发布于</span>
-                    {serverProps.createTime}
-                  </li>
-                  <li>
-                    <span>更新于</span>
-                    {serverProps.updateTime}
-                  </li>
-                </ul>
-              </div>
+          <main className={styles.article}>
+            <div>
+              <h2 className={classNames('text-3xl', 'text-brand')}>{serverProps.title}</h2>
+              <ul className={classNames(styles.tip, 'color-text-secondary', 'flex', 'flex-wrap')}>
+                <li>
+                  <span>标签</span>
+                  {serverProps.tagDesc}
+                </li>
+                <li>
+                  <span>阅读量</span>
+                  {serverProps.viewCount}
+                </li>
+                <li>
+                  <span>发布于</span>
+                  {serverProps.createTime}
+                </li>
+                <li>
+                  <span>更新于</span>
+                  {serverProps.updateTime}
+                </li>
+              </ul>
             </div>
             <article
               className={classNames('markdown-body')}

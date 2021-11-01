@@ -90,7 +90,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
           ))}
         </Layout.Sidebar>
       </Layout>
-      <nav className='md:hidden UnderlineNav '>
+      <nav className='md:hidden'>
         <div className={classNames('w-full', styles.tabList)} role='tablist'>
           <div
             onClick={() => setActive(0)}

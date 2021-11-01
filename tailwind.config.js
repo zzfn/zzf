@@ -18,9 +18,9 @@ module.exports = {
       tertiary: 'var(--color-bg-tertiary)',
     },
     borderColor: {
-      primary: 'var(--color-bg-primary)',
-      secondary: 'var(--color-bg-secondary)',
-      tertiary: 'var(--color-bg-tertiary)',
+      primary: 'var(--color-border-primary)',
+      secondary: 'var(--color-border-secondary)',
+      tertiary: 'var(--color-border-tertiary)',
     },
     // extend: {},
   },

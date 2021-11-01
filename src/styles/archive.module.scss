@@ -19,16 +19,16 @@
 
   &::before {
     content: '';
-    background: var(--color-bg-primary);
+    background: var(--color-bg-secondary);
     width: 8px;
     height: 100%;
     position: absolute;
     left: 0;
   }
 }
-.tab-list{
+.tabList{
   display:flex;
-  .underline-nav-item{
+  .underlineNavItem{
     flex:1;
     padding: 8px 16px;
     font-size: 14px;
@@ -40,10 +40,10 @@
     border: 0;
     border-bottom: 2px solid transparent;
   }
-  .underline-nav-item[role=tab][aria-selected=true]{
+  .underlineNavItem[role=tab][aria-selected=true]{
     font-weight: 600;
     color: var(--color-underlinenav-text-active);
-    border-bottom-color: var(--color-underlinenav-border-active);
+    border-bottom-color: var(--color-border-brand);
     outline: 1px dotted transparent;
     outline-offset: -1px;
   }
@@ -97,7 +97,6 @@
 
 .item {
   margin-left: 10px;
-  //padding-left: 10px;
   position: relative;
   height: 26px;
   line-height: 26px;
