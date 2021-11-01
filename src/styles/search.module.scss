@@ -1,8 +1,7 @@
-
 .search {
   color: var(--color-secondary);
   padding: 10px 0;
-  form{
+  form {
     display: flex;
   }
   .ipt {
@@ -20,10 +19,9 @@
     outline: none;
     box-shadow: var(--color-shadow-inset);
   }
-
 }
-.result{
-  color:var(--color-text-primary);
+.result {
+  color: var(--color-text-primary);
   background-color: var(--color-bg-canvas);
   padding: 10px;
   min-height: 200px;

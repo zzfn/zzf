@@ -46,7 +46,6 @@ export const favoriteList = (params: any) => {
   });
 };
 
-
 export const lastUpdated = () => {
   return http({
     method: 'get',

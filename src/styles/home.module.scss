@@ -1,4 +1,3 @@
-
 .home {
   width: 100%;
   display: flex;
@@ -8,13 +7,13 @@
 
   .aside {
     width: 240px;
-    border: 1px solid hsla(0, 0%, 59.2%, .1);
+    border: 1px solid hsla(0, 0%, 59.2%, 0.1);
     position: sticky;
     top: 5px;
   }
 }
 
-.title{
+.title {
   color: var(--color-text-primary);
   text-decoration: underline;
   margin-bottom: 5px;

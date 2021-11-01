@@ -13,8 +13,7 @@
     "plugin:prettier/recommended",
     "plugin:@next/next/recommended"
   ],
-  "globals": {
-  },
+  "globals": {},
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -23,12 +22,7 @@
     "sourceType": "module"
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "react-hooks",
-    "prettier"
-  ],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
   "rules": {
     "react/jsx-uses-react": 0,
     "react/react-in-jsx-scope": 0,

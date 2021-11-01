@@ -1,17 +1,22 @@
 # next.js 个人博客
+
 ## ✨ 特性
+
 - 前后端分离
 - 支持深色、浅色模式
-- Github风格
+- Github 风格
 
 ## 博客全栈项目仓库地址
+
 - [博客前台](https://github.com/zzfn/zzf)
 - [后台管理系统](https://github.com/zzfn/dashboard)
-- [java服务端](https://github.com/zzfn/blog-server)
-- [koa服务端](https://github.com/zzfn/koa-server)
+- [java 服务端](https://github.com/zzfn/blog-server)
+- [koa 服务端](https://github.com/zzfn/koa-server)
 
 ## 技术点
+
 ### 前端
+
 - next.js
   classnames
 - axios
@@ -23,13 +28,13 @@
 - eslint
 - prettier
 - babel
-- tailwindcss  
+- tailwindcss
 - @primer/css
 - [svgo](https://github.com/svg/svgo#configuration) `(deprecated)`
 - npx sort-package-json
 
-
 ### 后端
+
 - SpringBoot
 - SpringCloud`(deprecated)`
 - MyBatis-Plus
@@ -46,6 +51,7 @@
 - 钉钉机器人
 
 ### 代码提交关键词
+
 ```
 feat:        A new feature
 fix:         A bug fix

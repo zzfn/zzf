@@ -1,37 +1,37 @@
-.card{
+.card {
   color: var(--color-text-primary);
   background: var(--color-bg-primary);
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px dashed #ccc;
-  font-size:14px;
-  :global{
-    em{
+  font-size: 14px;
+  :global {
+    em {
       font-style: normal;
       color: var(--color-text-brand);
       background-color: var(--color-bg-brand);
       font-weight: 600;
     }
   }
-  .time{
+  .time {
     font-size: 12px;
     color: #ccc;
   }
-  h3{
+  h3 {
     font-size: 18px;
     color: var(--color-secondary);
-    .title{
+    .title {
       cursor: pointer;
     }
   }
-  ul{
+  ul {
     margin-top: 5px;
     list-style: none;
     display: flex;
     align-items: center;
-    li{
+    li {
       width: 100px;
-      .num{
+      .num {
         font-size: 12px;
       }
     }

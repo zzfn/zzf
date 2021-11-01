@@ -1,8 +1,10 @@
-@import "~@zzf/design/dist/theme.scss";
+@import '~@zzf/design/dist/theme.scss';
 
 html {
   font-size: 12px;
-  font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
+    BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    Arial;
 }
 
 .icon {
@@ -31,29 +33,28 @@ body {
   min-height: 101vh;
 }
 
-
-::selection{
+::selection {
   color: var(--color-text-brand);
 }
 :root {
   scroll-behavior: smooth;
   @include colors-light;
 }
-[data-color-mode=dark] {
-  @include colors-dark
+[data-color-mode='dark'] {
+  @include colors-dark;
 }
 
-[data-color-mode=light] {
-  @include colors-light
+[data-color-mode='light'] {
+  @include colors-light;
 }
-@media(prefers-color-scheme: light){
-  [data-color-mode=auto] {
-    @include colors-light
+@media (prefers-color-scheme: light) {
+  [data-color-mode='auto'] {
+    @include colors-light;
   }
 }
 
-@media(prefers-color-scheme: dark){
-  [data-color-mode=auto] {
-    @include colors-dark
+@media (prefers-color-scheme: dark) {
+  [data-color-mode='auto'] {
+    @include colors-dark;
   }
 }
