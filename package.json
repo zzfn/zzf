@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "postbuild": "next-sitemap",
     "start:dev": "cross-env APP=development next dev",
     "start:prod": "cross-env APP=production next dev",
@@ -31,6 +32,8 @@
     "zooming": "^2.1.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
     "@types/node": "^15.14.7",
     "@types/react": "^17.0.16",
     "@types/webpack-env": "^1.16.0",
@@ -43,10 +46,13 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
     "next-sitemap": "^1.6.192",
     "postcss": "^8.3.3",
     "prettier": "^2.4.1",
     "sass": "^1.37.5",
+    "stylelint": "^14.0.1",
     "tailwindcss": "^2.2.7",
     "typescript": "^4.2.2"
   }
