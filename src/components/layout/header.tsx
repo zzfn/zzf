@@ -13,8 +13,8 @@ function Header(): JSX.Element {
       <Layout.Header className={styles.header}>
         <div className={classNames('hidden', 'md:flex')}>
           <Link href={'/'}>
-            <a className={'flex items-center color-text-primary text-6xl mr-2'}>
-              <SvgIcon className={classNames(styles.logo)} name={'logo'} />
+            <a className={'flex items-center text-brand text-6xl mr-2'}>
+              <SvgIcon name={'logo'} />
             </a>
           </Link>
           <nav className={styles.menu}>

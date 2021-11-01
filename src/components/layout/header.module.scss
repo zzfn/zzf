@@ -17,7 +17,7 @@
         content:'';
         height:2px;
         width:100%;
-        background-color:var(--color-scale-orange-4);
+        background-color:var(--color-text-brand);
         position: absolute;
         left:0;
         bottom:0;
@@ -30,7 +30,7 @@
           visibility: visible;
           transform:scaleX(1);
         }
-        color: var(--color-scale-orange-4);
+        color: var(--color-text-brand);
       }
 
       &:not(:last-child) {
@@ -63,16 +63,7 @@
     font-weight: 600;
 
     &:hover {
-      color: var(--color-main-bg);
+      color: var(--color-text-brand);
     }
   }
 }
-
-//.logo {
-//  filter: invert(100%);
-//}
-//@media (prefers-color-scheme: dark) {
-//  .logo {
-//    filter: invert(0);
-//  }
-//}

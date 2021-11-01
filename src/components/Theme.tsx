@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import classNames from 'classnames';
 import Icon from './Icon';
 import styles from './theme.module.scss';
-import React from 'react';
 import { setTheme } from '../utils/theme';
 
 const Theme: FC = () => {

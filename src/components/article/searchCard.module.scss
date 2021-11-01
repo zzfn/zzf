@@ -1,6 +1,6 @@
 .card{
   color: var(--color-text-primary);
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-primary);
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px dashed #ccc;
@@ -8,7 +8,8 @@
   :global{
     em{
       font-style: normal;
-      color: var(--color-brand-7);
+      color: var(--color-text-brand);
+      background-color: var(--color-bg-brand);
       font-weight: 600;
     }
   }

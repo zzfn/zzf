@@ -17,7 +17,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           <a
             className={classNames(
               'text-primary',
-              'hover:text-secondary',
+              'hover:text-brand',
               'text-2xl',
               'font-semibold',
             )}
@@ -42,11 +42,11 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
       <p className={'truncate px-4 text-secondary'}>
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
-      <ul className={classNames('flex', 'items-center', 'mt-2', 'text-tertiary')}>
+      <ul className={classNames('flex', 'items-center', 'mt-2', 'text-secondary')}>
         <li className={'w-1/4 md:w-32'} title={'标签'}>
           <Tag>
             <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
-              <a className={'text-secondary'}>{dataSource.tagDesc}</a>
+              <a className={'text-brand'}>{dataSource.tagDesc}</a>
             </Link>
           </Tag>
         </li>
