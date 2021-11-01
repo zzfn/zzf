@@ -46,7 +46,7 @@ body {
 }
 @media(prefers-color-scheme: light){
   [data-color-mode=auto] {
-    @include colors-dark
+    @include colors-light
   }
 }
 

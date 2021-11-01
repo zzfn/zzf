@@ -42,13 +42,13 @@
 }
 
 .dropdown {
-  background: var(--color-header-bg);
+  background: var(--color-bg-primary);
   padding: 0 16px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 16px;
-  color:var(--color-header-text);
+  color:var(--color-text-primary);
 
   a {
     border-top: 1px solid #e1e4e8;
