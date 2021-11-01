@@ -33,9 +33,6 @@ body {
   min-height: 101vh;
 }
 
-::selection {
-  color: var(--color-text-brand);
-}
 :root {
   scroll-behavior: smooth;
   @include colors-light;
