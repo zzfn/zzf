@@ -1,7 +1,7 @@
 import type { AxiosPromise, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
-function http(config: AxiosRequestConfig): AxiosPromise {
+function http(config: AxiosRequestConfig): Promise<Res<any>> {
   const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     timeout: 10000,
@@ -26,7 +26,7 @@ function http(config: AxiosRequestConfig): AxiosPromise {
       return Promise.reject(error);
     },
   );
-  return instance(config);
+  return instance(config) as any;
 }
 
 export default http;

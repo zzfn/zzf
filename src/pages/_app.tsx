@@ -13,7 +13,7 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
 import { initTheme } from '../utils/theme';
 
-export function reportWebVitals(metric: NextWebVitalsMetric) {
+export function reportWebVitals(metric: NextWebVitalsMetric): void {
   const monitor = new Monitor();
   monitor.loadUrl(location.pathname, metric);
 }
