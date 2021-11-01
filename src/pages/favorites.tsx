@@ -41,9 +41,7 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
                 <a
                   rel='noopener'
                   target={'_blank'}
-                  className={
-                    'text-xl text-primary hover:text-primary mr-5 whitespace-nowrap mb-2'
-                  }
+                  className={'text-xl text-primary hover:text-primary mr-5 whitespace-nowrap mb-2'}
                 >
                   {node.title}
                 </a>
