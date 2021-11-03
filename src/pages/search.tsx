@@ -43,7 +43,7 @@ function Search(): JSX.Element {
           <Button>回车搜索</Button>
         </form>
       </div>
-      <div style={{ padding: '0 10px' }} className={'color-text-secondary'}>
+      <div style={{ padding: '0 10px' }} className={'text-secondary'}>
         {loading ? (
           <div>🔍 努力搜索中，请等待</div>
         ) : (
