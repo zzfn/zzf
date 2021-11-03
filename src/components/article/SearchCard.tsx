@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './searchCard.module.scss';
 import Link from 'next/link';
 import { Tag } from '@zzf/design';
+import classNames from 'classnames';
 
 type SearchCardProps = {
   dataSource: Article;
@@ -22,25 +23,18 @@ const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
         </a>
       </Link>
       <div
-        style={{ width: '100%' }}
+        className={classNames('break-all', 'px-3','mb-2')}
         dangerouslySetInnerHTML={{
           __html: dataSource.content,
         }}
       />
-      <ul>
-        <li title={'标签'}>
-          <Tag>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: dataSource.tagDesc,
-              }}
-            />
-          </Tag>
-        </li>
-        <li title={'浏览量'}>
-          <span className={styles.num}>{dataSource.viewCount}</span>
-        </li>
-      </ul>
+      <Tag>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: dataSource.tagDesc,
+          }}
+        />
+      </Tag>
     </div>
   );
 };

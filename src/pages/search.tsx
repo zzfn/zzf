@@ -52,15 +52,11 @@ function Search(): JSX.Element {
           </div>
         )}
       </div>
-      <div className={styles.result}>
-        {result.length ? (
-          result.map((item) => <SearchCard dataSource={item} key={item.id} />)
-        ) : (
-          <div className={'color-text-tertiary'} style={{ margin: 'auto' }}>
-            <LottiePlayer size={100} url={'https://cdn.zzfzzf.com/1632384732662vd6JJP.json'} />
-          </div>
-        )}
-      </div>
+      {result.length ? (
+        result.map((item) => <SearchCard dataSource={item} key={item.id} />)
+      ) : (
+        <LottiePlayer size={100} url={'https://cdn.zzfzzf.com/1632384732662vd6JJP.json'} />
+      )}
     </>
   );
 }
