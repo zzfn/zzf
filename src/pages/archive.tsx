@@ -29,14 +29,20 @@ function renderMonth(time, list = []) {
   return (
     <div key={time}>
       <h3 className={classNames(styles.title, 'text-secondary')}>
-        {time} 共 <span className='Counter'>{list.length}</span> 篇文章
+        {time} 共 <span>{list.length}</span> 篇文章
       </h3>
       <ul>
         {list?.map((item) => (
           <li
-            className={classNames(styles.item, 'text-primary')}
+            className={classNames(
+              styles.item,
+              'text-base',
+              'text-primary',
+              'border-solid',
+              'border-b',
+              'border-current',
+            )}
             key={item.id}
-            style={{ borderBottom: '1px dashed #ccc' }}
           >
             <span style={{ color: '#8a8a8a', marginRight: '10px', fontFamily: 'Helvetica Neue' }}>
               {dayjs(item.createTime).format('YYYY-MM-DD')}
@@ -68,7 +74,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <Head>
         <title>{getTitle('归档')}</title>
       </Head>
-      <header>
+      <header className={classNames('text-xl')}>
         很好! 目前共计 <strong>{serverProps.list.length}</strong> 篇文章。 继续努力。⛽️
       </header>
       <Layout className={'hidden md:flex'}>

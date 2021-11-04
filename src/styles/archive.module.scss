@@ -26,8 +26,10 @@
     left: 0;
   }
 }
+
 .tabList {
   display: flex;
+
   .underlineNavItem {
     flex: 1;
     padding: 8px 16px;
@@ -40,6 +42,7 @@
     border: 0;
     border-bottom: 2px solid transparent;
   }
+
   .underlineNavItem[role='tab'][aria-selected='true'] {
     font-weight: 600;
     color: var(--color-text-brand);
@@ -48,18 +51,21 @@
     outline-offset: -1px;
   }
 }
+
 .menu {
   margin-bottom: 16px;
   list-style: none;
   background-color: var(--color-bg-primary);
   border: 1px solid var(--color-border-primary);
   border-radius: 6px;
+
   &Item {
     position: relative;
     display: block;
     padding: 8px 16px;
     color: var(--color-text-primary);
     border-bottom: 1px solid var(--color-border-primary);
+
     .counter {
       display: inline-block;
       min-width: 20px;
@@ -77,6 +83,7 @@
     }
   }
 }
+
 .title {
   color: var(--color-text-brand);
   margin: 20px;
@@ -122,6 +129,7 @@
     }
   }
 }
+
 .subTitle {
   color: var(--color-text-brand);
 }

@@ -1,42 +1,10 @@
 @import '~@zzf/design/dist/theme.scss';
-/*手机端的标准字体大小为16px*/
+
 html {
   font-size: 16px;
-}
-
-@media only screen and (min-width: 320px) {
-}
-
-/*当屏幕宽度大于480像素时，将采用以下字体大小为标准大小，下同*/
-@media only screen and (min-width: 480px) {
-  html {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  html {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  html {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  html {
-    font-size: 22px;
-  }
-}
-
-html {
-  font-size: 12px;
-  font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif,
-  BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
-  Arial;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
 }
 
 .icon {
@@ -47,35 +15,13 @@ html {
   overflow: hidden;
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
-h3 {
-  margin: 0;
-}
-
-body {
-  background: var(--color-bg-primary);
-}
-
-.zzf-page {
-  min-height: 101vh;
-}
-
-:root {
-  scroll-behavior: smooth;
+:root,
+[data-color-mode='light'] {
   @include colors-light;
 }
 
 [data-color-mode='dark'] {
   @include colors-dark;
-}
-
-[data-color-mode='light'] {
-  @include colors-light;
 }
 
 @media (prefers-color-scheme: light) {

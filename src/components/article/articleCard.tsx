@@ -15,7 +15,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a
-            className={classNames('text-primary', 'hover:text-brand', 'text-2xl', 'font-semibold')}
+            className={classNames('text-primary', 'hover:text-brand', 'text-xl', 'font-semibold')}
             target={'_blank'}
           >
             {dataSource.title}
@@ -27,7 +27,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
               'float-right',
               'transform',
               '-translate-y-4',
-              'text-2xl',
+              'text-xl',
               'text-secondary',
             )}
             name={'zhiding'}

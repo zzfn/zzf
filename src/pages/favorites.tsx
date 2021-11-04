@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { favoriteList } from 'api/article';
 import type { GetStaticProps } from 'next';
 import { Fragment } from 'react';
+import classNames from 'classnames';
+
 type Item = {
   category: string;
   categoryDesc: string;
@@ -34,14 +36,21 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
     <>
       {Object.keys(arr).map((item) => (
         <Fragment key={item}>
-          <h2 className={'text-2xl text-brand m-1'}>{item}</h2>
+          <h2 className={classNames('text-brand', 'm-1', 'text-xl')}>{item}</h2>
           <nav className={`bg-primary p-2 flex flex-wrap`}>
             {arr[item].map((node) => (
               <Link key={node.id} href={node.link}>
                 <a
                   rel='noopener'
                   target={'_blank'}
-                  className={'text-xl text-primary hover:text-primary mr-5 whitespace-nowrap mb-2'}
+                  className={classNames(
+                    'text-bas',
+                    'text-primary',
+                    'hover:text-primary',
+                    'mr-5',
+                    'whitespace-nowrap',
+                    'mb-2',
+                  )}
                 >
                   {node.title}
                 </a>
