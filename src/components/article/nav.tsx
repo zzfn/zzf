@@ -45,6 +45,7 @@ const Nav: React.FC<NavProps> = ({ source }) => {
               [styles.active]: current === `heading-${nav.index}`,
             },
             'truncate',
+            'text-sm',
           )}
           style={{ marginLeft: `${(nav.level - 1) * 10}px` }}
           key={nav.index}

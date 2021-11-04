@@ -12,9 +12,11 @@
   }
 
   .active {
+    width: 100%;
     a {
       font-weight: 700;
-      color: var(--color-scale-orange-4);
+      color: var(--color-text-brand);
+      background-color: var(--color-bg-brand);
     }
   }
 }

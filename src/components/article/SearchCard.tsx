@@ -23,7 +23,7 @@ const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
         </a>
       </Link>
       <div
-        className={classNames('break-all', 'px-3','mb-2')}
+        className={classNames('break-all', 'px-3', 'mb-2')}
         dangerouslySetInnerHTML={{
           __html: dataSource.content,
         }}
