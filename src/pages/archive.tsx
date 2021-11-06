@@ -28,7 +28,7 @@ interface ArchiveProps {
 function renderMonth(time, list = []) {
   return (
     <div key={time}>
-      <h3 className={classNames(styles.title, 'text-secondary')}>
+      <h3 className={classNames(styles.title, 'text-secondary', 'text-xl')}>
         {time} 共 <span>{list.length}</span> 篇文章
       </h3>
       <ul>
@@ -74,7 +74,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <Head>
         <title>{getTitle('归档')}</title>
       </Head>
-      <header className={classNames('text-xl')}>
+      <header className={classNames('text-lg')}>
         很好! 目前共计 <strong>{serverProps.list.length}</strong> 篇文章。 继续努力。⛽️
       </header>
       <Layout className={'hidden md:flex'}>
@@ -87,7 +87,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
           {serverProps.tags.map((item) => (
             <React.Fragment key={item.code}>
               <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
-                <a className={styles.menuItem}>
+                <a className={classNames(styles.menuItem, 'text-sm', 'flex', 'items-center')}>
                   <span>{item.tag}</span>
                   <span className={styles.counter}>{item.count}</span>
                 </a>
@@ -131,7 +131,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
                     query: { desc: encodeURIComponent(item.tag) },
                   }}
                 >
-                  <a className={styles.menuItem}>
+                  <a className={classNames(styles.menuItem, 'text-base')}>
                     <span>{item.tag}</span>
                     <span className={styles.counter}>{item.count}</span>
                   </a>

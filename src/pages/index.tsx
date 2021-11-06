@@ -77,7 +77,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             </div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingyinle'} title={'关于本站'}>
-            <div className={'text-primary'}>本次加载时间{loadTime}ms</div>
+            <div className={classNames('text-primary', 'text-sm')}>本次加载时间{loadTime}ms</div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
             <ul>
@@ -86,7 +86,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
                   <Link prefetch={false} href={`/article/${n.id}`}>
                     <a
                       title={n.title}
-                      className={classNames(styles.title, 'flex')}
+                      className={classNames(styles.title, 'flex', 'text-sm')}
                       target={'_blank'}
                     >
                       <div className={'truncate w-36'}>{n.title}</div>

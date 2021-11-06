@@ -3,7 +3,6 @@
 
   summary {
     cursor: pointer;
-    font-size: 14px;
     list-style: none;
 
     &::-webkit-details-marker {
@@ -14,13 +13,12 @@
   .dropdown {
     z-index: 1;
     background: var(--color-bg-inverse);
-    color: var(--color-header-text);
+    color: var(--color-text-inverse);
     position: absolute;
     width: 80px;
     right: 0;
     border-radius: 8px;
     text-align: center;
-    border: 1px solid var(--color-header-bg);
 
     li {
       height: 25px;

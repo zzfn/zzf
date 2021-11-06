@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { esList } from 'api/article';
 import SearchCard from 'components/article/SearchCard';
-import styles from 'styles/search.module.scss';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
-import classNames from 'classnames';
-import { Button } from '@zzf/design';
+import { Button, Input } from '@zzf/design';
 import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
+import classNames from 'classnames';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
@@ -30,20 +29,17 @@ function Search(): JSX.Element {
       <Head>
         <title>{getTitle('搜索')}</title>
       </Head>
-      <div className={styles.search}>
-        <form onSubmit={handleSubmit} action={''}>
-          <input
-            autoFocus
-            className={classNames(styles.ipt)}
-            onChange={(event) => setKeyword(event.target.value)}
-            value={keyword}
-            type='search'
-            placeholder='elasticsearch强力驱动'
-          />
-          <Button>回车搜索</Button>
-        </form>
-      </div>
-      <div style={{ padding: '0 10px' }} className={'text-secondary'}>
+      <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action={''}>
+        <Input
+          autoFocus
+          onChange={(event) => setKeyword(event.target.value)}
+          value={keyword}
+          type='search'
+          placeholder='elasticsearch强力驱动'
+        />
+        <Button>回车搜索</Button>
+      </form>
+      <div className={'text-secondary'}>
         {loading ? (
           <div>🔍 努力搜索中，请等待</div>
         ) : (

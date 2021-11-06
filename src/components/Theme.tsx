@@ -17,7 +17,7 @@ const Theme: FC = () => {
         <span className={'hidden md:inline-block'}>主题</span>
         <Icon className={classNames('text-4xl', 'inline-block md:hidden')} name={'setting'} />
       </summary>
-      <ul className={styles.dropdown}>
+      <ul className={classNames(styles.dropdown, 'text-xs')}>
         <li
           onClick={() => {
             setTheme('dark');
