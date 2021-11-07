@@ -18,7 +18,7 @@ export const getArticle = (params: any) => {
 export const listTags = (params: any) => {
   return http({
     method: 'get',
-    url: '/article/non/tags',
+    url: '/article/tags',
     params,
   });
 };
@@ -49,7 +49,7 @@ export const favoriteList = (params: any) => {
 export const lastUpdated = () => {
   return http({
     method: 'get',
-    url: '/article/non/lastUpdated',
+    url: '/article/lastUpdated',
   });
 };
 type ViewType = {
