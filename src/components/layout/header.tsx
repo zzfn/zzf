@@ -13,7 +13,7 @@ function Header(): JSX.Element {
       <Layout.Header className={styles.header}>
         <div className={classNames('hidden', 'md:flex')}>
           <Link href={'/'}>
-            <a className={'flex items-center text-brand text-6xl mr-2'}>
+            <a className={'flex items-center text-brand text-5xl mr-2'}>
               <SvgIcon name={'logo'} />
             </a>
           </Link>
