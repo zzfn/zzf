@@ -15,7 +15,7 @@ const Theme: FC = () => {
     <details className={styles.theme}>
       <summary aria-haspopup='true'>
         <span className={'hidden md:inline-block'}>主题</span>
-        <Icon className={classNames('text-4xl', 'inline-block md:hidden')} name={'setting'} />
+        <Icon className={classNames('text-3xl', 'inline-block md:hidden')} name={'setting'} />
       </summary>
       <ul className={classNames(styles.dropdown, 'text-xs')}>
         <li
