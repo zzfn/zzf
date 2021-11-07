@@ -28,7 +28,7 @@ interface ArchiveProps {
 function renderMonth(time, list = []) {
   return (
     <div key={time}>
-      <h3 className={classNames(styles.title, 'text-secondary', 'text-xl')}>
+      <h3 className={classNames(styles.title, 'text-secondary', 'text-base')}>
         {time} 共 <span>{list.length}</span> 篇文章
       </h3>
       <ul>
@@ -36,7 +36,7 @@ function renderMonth(time, list = []) {
           <li
             className={classNames(
               styles.item,
-              'text-base',
+              'text-sm',
               'text-primary',
               'border-solid',
               'border-b',
@@ -74,7 +74,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <Head>
         <title>{getTitle('归档')}</title>
       </Head>
-      <header className={classNames('text-lg')}>
+      <header className={classNames('text-base')}>
         很好! 目前共计 <strong>{serverProps.list.length}</strong> 篇文章。 继续努力。⛽️
       </header>
       <Layout className={'hidden md:flex'}>
