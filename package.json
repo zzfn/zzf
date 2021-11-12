@@ -9,6 +9,7 @@
     "start:prod": "cross-env APP=production next dev",
     "build": "cross-env APP=production next build",
     "start": "next start -p 9800",
+    "start:cdn": "cross-env BUILD_TARGET=cdn next start -p 9800",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prettier": "prettier --write ."
