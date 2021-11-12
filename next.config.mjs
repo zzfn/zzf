@@ -1,8 +1,8 @@
 import config from './env/index.js';
-const isProd = process.env.NODE_ENV === 'production'
+const isCdn = process.env.BUILD_TARGET === 'cdn'
 
 export default {
-  assetPrefix: isProd ? ' https://oss-zzf.zzfzzf.com/zzf' : '',
+  assetPrefix: isCdn ? ' https://oss-zzf.zzfzzf.com/zzf' : '',
   reactStrictMode: true,
   env: { ...config },
   images: {
