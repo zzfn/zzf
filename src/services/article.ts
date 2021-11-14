@@ -1,7 +1,8 @@
 import http from 'utils/http';
+import type { Article, PageType } from '../typeings/Article';
 
 export const listArticles = (params: any) => {
-  return http({
+  return http<PageType<Article>>({
     method: 'get',
     url: '/article/page',
     params,

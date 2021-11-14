@@ -9,3 +9,12 @@ interface Article {
   updateTime: string;
   tag: string;
 }
+
+export interface PageType<T> {
+  current: number;
+  optimizeCountSql: boolean;
+  records: T[];
+  searchCount: boolean;
+  size: number;
+  total: number;
+}
