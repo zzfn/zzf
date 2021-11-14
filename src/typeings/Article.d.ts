@@ -10,7 +10,7 @@ interface Article {
   tag: string;
 }
 
-export interface PageType<T> {
+interface PageType<T> {
   current: number;
   optimizeCountSql: boolean;
   records: T[];
