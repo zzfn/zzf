@@ -27,9 +27,13 @@ export const getArticle = (params: any) => {
     url: `/article/${params.id}`,
   });
 };
-
+type TagType = {
+  code: string;
+  count: number;
+  tag: string;
+};
 export const listTags = (params: any) => {
-  return http({
+  return http<TagType[]>({
     method: 'get',
     url: '/article/tags',
     params,
