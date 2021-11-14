@@ -22,7 +22,12 @@
     "sourceType": "module"
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-hooks",
+    "prettier"
+  ],
   "rules": {
     "react/jsx-uses-react": 0,
     "react/react-in-jsx-scope": 0,
@@ -32,7 +37,8 @@
     "react-hooks/exhaustive-deps": 1,
     "react/display-name": 0,
     "react/prop-types": 0,
-    "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0
   },
   "settings": {
     "react": {

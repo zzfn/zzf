@@ -1,7 +1,7 @@
-import type { AxiosPromise, AxiosRequestConfig } from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
-function http(config: AxiosRequestConfig): Promise<Res<any>> {
+async function http<T>(config: AxiosRequestConfig): Promise<Res<T>> {
   const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     timeout: 10000,
@@ -20,13 +20,14 @@ function http(config: AxiosRequestConfig): Promise<Res<any>> {
   );
   instance.interceptors.response.use(
     (response) => {
-      return response.data;
+      return response;
     },
     (error) => {
       return Promise.reject(error);
     },
   );
-  return instance(config) as any;
+  const { data } = await instance.request<Res<T>>(config);
+  return data;
 }
 
 export default http;

@@ -1,7 +1,7 @@
 /**
  * api返回值
  */
-interface Res<T> {
+interface Res<T = never> {
   code: number;
   data: T;
   message: string;

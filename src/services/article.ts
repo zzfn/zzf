@@ -7,11 +7,24 @@ export const listArticles = (params: any) => {
     params,
   });
 };
-
+type ArticleDetail = {
+  content: string;
+  createTime: string;
+  id: string;
+  isDelete: number;
+  isRelease: boolean;
+  orderNum: number;
+  tag: string;
+  tagDesc: string;
+  title: string;
+  updateBy: string;
+  updateTime: string;
+  viewCount: number;
+};
 export const getArticle = (params: any) => {
-  return http({
+  return http<ArticleDetail>({
     method: 'get',
-    url: `/article/non/${params.id}`,
+    url: `/article/${params.id}`,
   });
 };
 
@@ -22,11 +35,15 @@ export const listTags = (params: any) => {
     params,
   });
 };
-
+type ArticleType = {
+  createTime: string;
+  id: string;
+  title: string;
+};
 export const listArchives = (params: any) => {
-  return http({
+  return http<ArticleType[]>({
     method: 'get',
-    url: '/article/non/list',
+    url: '/article/list',
     params,
   });
 };
@@ -34,7 +51,7 @@ export const listArchives = (params: any) => {
 export const esList = (params: any) => {
   return http({
     method: 'get',
-    url: '/article/non/search',
+    url: '/article/search',
     params,
   });
 };
@@ -45,9 +62,13 @@ export const favoriteList = (params: any) => {
     params,
   });
 };
-
+type LastUpdatedListType = {
+  id: string;
+  title: string;
+  updateTime: string;
+};
 export const lastUpdated = () => {
-  return http({
+  return http<LastUpdatedListType>({
     method: 'get',
     url: '/article/lastUpdated',
   });
@@ -55,8 +76,9 @@ export const lastUpdated = () => {
 type ViewType = {
   id: string;
 };
+
 export const updateView = (params: ViewType) => {
-  return http({
+  return http<number>({
     method: 'get',
     url: '/article/non/updateViewed',
     params,
