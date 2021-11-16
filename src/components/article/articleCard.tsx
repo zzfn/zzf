@@ -40,7 +40,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
       <ul className={classNames('flex', 'items-center', 'mt-2', 'text-secondary')}>
         <li className={'w-1/4 md:w-32'} title={'标签'}>
           <Tag>
-            <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
+            <Link prefetch={false} href={`/tag/${dataSource.tag}?title=${dataSource.tagDesc}`}>
               <a className={'text-brand'}>{dataSource.tagDesc}</a>
             </Link>
           </Tag>

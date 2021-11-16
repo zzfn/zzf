@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { getTitle } from '../../utils/getTitle';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
+import classNames from 'classnames';
 
 type TagType = {
   createTime: string;
@@ -17,20 +18,20 @@ export default function Tag(props: NextProps<TagType[]>): JSX.Element {
   const [title, setTitle] = useState('标签');
   const router = useRouter();
   useEffect(() => {
-    const desc = router.query.desc;
-    !Array.isArray(desc) && setTitle(desc);
+    const title = router.query.title;
+    !Array.isArray(title) && setTitle(title);
   }, [router.query]);
   return (
     <div className={styles.detail}>
       <Head>
         <title>{getTitle(title)}</title>
       </Head>
-      <ul className={'font-mono'}>
+      <ul className={classNames('font-mono', 'text-base')}>
         {serverProps.map((item) => (
           <li key={item.id}>
-            <span style={{ color: '#8a8a8a' }}>{item.createTime}</span>-
+            <span>{item.createTime}</span>-
             <Link href={`/article/${item.id}`}>
-              <a style={{ color: '#4183c4' }}>{item.title}</a>
+              <a className={'text-brand'}>{item.title}</a>
             </Link>
           </li>
         ))}
