@@ -8,11 +8,15 @@
 
 ## 博客全栈项目仓库地址
 
-- [博客前台](https://github.com/zzfn/zzf)
-- [后台管理系统](https://github.com/zzfn/dashboard)
-- [java 服务端](https://github.com/zzfn/blog-server)
-- [koa 服务端](https://github.com/zzfn/koa-server)
+- [用户前台](https://github.com/zzfn/zzf)
+- [管理后台](https://github.com/zzfn/dashboard)
+- [JAVA服务端](https://github.com/zzfn/blog-server)
 
+## 相关服务地址
+- [C端地址](https://zzfzzf.com)
+- [B端地址](https://admin.zzfzzf.com)//访客账号密码`test/test`
+- [JENKINS](https://jenkins.zzfzzf.com)
+- [NPM私有库](https://npm.zzfzzf.com)
 ## 技术点
 
 ### 前端
