@@ -1,9 +1,9 @@
-import marked from 'marked';
+import { marked } from 'marked';
 import { renderToString } from 'react-dom/server';
 import Code from 'components/article/code';
 
 export const translateMarkdown = (text = '') => {
-  const renderer = new marked.Renderer();
+  const renderer:any = {};
   renderer.code = function (code, language) {
     return renderToString(<Code language={language} code={code} />);
   };
@@ -30,8 +30,8 @@ export const translateMarkdown = (text = '') => {
     </div>
     `;
   };
-  return marked(text, {
-    renderer: renderer,
+  marked.use({
+    renderer,
     gfm: true,
     pedantic: false,
     breaks: false,
@@ -40,5 +40,6 @@ export const translateMarkdown = (text = '') => {
     smartypants: true,
     xhtml: true,
     headerIds: false,
-  });
+  })
+  return marked.parse(text);
 };
