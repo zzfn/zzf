@@ -1,6 +1,10 @@
 import http from 'utils/http';
 
-export const listArticles = (params: any) => {
+type Page = {
+  current: number;
+  pageSize: number;
+};
+export const listArticles = (params: Page) => {
   return http<PageType<Article>>({
     method: 'get',
     url: '/article/page',
@@ -21,7 +25,7 @@ type ArticleDetail = {
   updateTime: string;
   viewCount: number;
 };
-export const getArticle = (params: any) => {
+export const getArticle = (params: { id: string }) => {
   return http<ArticleDetail>({
     method: 'get',
     url: `/article/${params.id}`,
@@ -32,7 +36,7 @@ type TagType = {
   count: number;
   tag: string;
 };
-export const listTags = (params: any) => {
+export const listTags = (params: Record<string, never>) => {
   return http<TagType[]>({
     method: 'get',
     url: '/article/tags',
@@ -44,7 +48,7 @@ type ArticleType = {
   id: string;
   title: string;
 };
-export const listArchives = (params: any) => {
+export const listArchives = (params: Record<string, string>) => {
   return http<ArticleType[]>({
     method: 'get',
     url: '/article/list',
@@ -59,14 +63,14 @@ type EsType = {
   tagDesc: string;
   title: string;
 };
-export const esList = (params: any) => {
+export const esList = (params: { keyword: string }) => {
   return http<EsType[]>({
     method: 'get',
     url: '/article/search',
     params,
   });
 };
-export const favoriteList = (params: any) => {
+export const favoriteList = (params: Record<string, never>) => {
   return http({
     method: 'get',
     url: '/favorite/list',

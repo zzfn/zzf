@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const {
     params: { id },
   } = context;
-  const { data } = await listArchives({ code: id });
+  const { data } = await listArchives({ code: id as string });
   return {
     props: {
       serverProps: data,

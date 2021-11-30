@@ -102,6 +102,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const {
     params: { id },
   } = context;
+  if (Array.isArray(id)) return;
   const { data, code } = await getArticle({ id });
   return {
     notFound: code !== 0,
