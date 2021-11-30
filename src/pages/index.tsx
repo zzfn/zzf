@@ -56,7 +56,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         <Icon size={40} name={'top'} />
       </BackTop>
       <Layout>
-        <Layout.Content className={'Box'}>
+        <Layout.Content>
           <Loading
             noMore={noMore}
             key={page.current}
