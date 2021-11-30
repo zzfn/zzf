@@ -24,7 +24,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "react",
-    "@typescript-eslint/eslint-plugin",
+    "@typescript-eslint",
     "react-hooks",
     "prettier"
   ],
