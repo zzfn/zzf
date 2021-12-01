@@ -19,7 +19,7 @@ function Search(): JSX.Element {
     setResult(data);
   }
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     await query();
   }
