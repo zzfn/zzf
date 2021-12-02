@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^3.3.0",
+    "@react-spring/web": "^9.3.1",
     "@types/ua-parser-js": "^0.7.36",
     "@zzf/design": "^1.2.3",
     "@zzf/toolkit": "^1.0.0",

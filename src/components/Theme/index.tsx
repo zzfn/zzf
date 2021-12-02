@@ -11,6 +11,7 @@ const Theme: FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setActive(e.target.value);
   };
+
   useEffect(() => {
     const theme = localStorage.getItem('data-color-mode');
     setActive(theme);
@@ -31,7 +32,7 @@ const Theme: FC = () => {
             type='radio'
           />
           <label htmlFor={theme}>
-            <Icon size={30} name={theme} />
+            <Icon className={styles.icon} size={30} name={theme} />
           </label>
         </li>
       ))}

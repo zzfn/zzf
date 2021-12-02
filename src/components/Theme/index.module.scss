@@ -1,44 +1,25 @@
 .theme {
+  &:hover {
+    label {
+      display: block;
+    }
+  }
+
   input {
     display: none;
-    &:checked{
-      &+label{
-        color:var(--color-text-brand);
+
+    & + label {
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+      display: none;
+      margin-left: 10px;
+    }
+
+    &:checked {
+      & + label {
+        display: block;
+        color: var(--color-text-brand);
       }
     }
   }
 }
-
-//.theme {
-//  position: relative;
-//
-//  summary {
-//    cursor: pointer;
-//    list-style: none;
-//
-//    &::-webkit-details-marker {
-//      display: none;
-//    }
-//  }
-//
-//  .dropdown {
-//    z-index: 1;
-//    background: var(--color-bg-inverse);
-//    color: var(--color-text-inverse);
-//    position: absolute;
-//    width: 80px;
-//    right: 0;
-//    border-radius: 8px;
-//    text-align: center;
-//
-//    li {
-//      height: 25px;
-//      line-height: 25px;
-//      cursor: pointer;
-//    }
-//
-//    .active {
-//      color: var(--color-text-brand);
-//    }
-//  }
-//}

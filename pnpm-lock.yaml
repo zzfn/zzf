@@ -5,6 +5,7 @@ specifiers:
   '@commitlint/config-conventional': ^15.0.0
   '@fingerprintjs/fingerprintjs': ^3.3.0
   '@next/eslint-plugin-next': ^12.0.4
+  '@react-spring/web': ^9.3.1
   '@types/marked': ^4.0.1
   '@types/node': ^16.11.11
   '@types/react': ^17.0.37
@@ -47,6 +48,7 @@ specifiers:
 
 dependencies:
   '@fingerprintjs/fingerprintjs': 3.3.0
+  '@react-spring/web': 9.3.1_react-dom@17.0.2+react@17.0.2
   '@types/ua-parser-js': 0.7.36
   '@zzf/design': 1.2.3_react-dom@17.0.2+react@17.0.2
   '@zzf/toolkit': 1.0.0
@@ -552,6 +554,59 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
     dev: true
+
+  /@react-spring/animated/9.3.1_react@17.0.2:
+    resolution: {integrity: sha512-23YaERZ++BwZ8F8PxPFqrpOwp/JZun1Pj6aHZtPAU42j5LycBRasT9XMw7Eyr7zNFhT+rl3R3wFfd4WX6Ax+UA==}
+    peerDependencies:
+      react: ^16.8.0  || ^17.0.0
+    dependencies:
+      '@react-spring/shared': 9.3.1_react@17.0.2
+      '@react-spring/types': 9.3.1
+      react: 17.0.2
+    dev: false
+
+  /@react-spring/core/9.3.1_react@17.0.2:
+    resolution: {integrity: sha512-8rmfmEHLHGtF1CUiXRn64YJqsXNxv2cGX8oNnBnsuoE33c48Zc34t2VIMB4R9q5zwIUCvDBGfiEenA8ZAPxqOQ==}
+    peerDependencies:
+      react: ^16.8.0  || ^17.0.0
+    dependencies:
+      '@react-spring/animated': 9.3.1_react@17.0.2
+      '@react-spring/shared': 9.3.1_react@17.0.2
+      '@react-spring/types': 9.3.1
+      react: 17.0.2
+    dev: false
+
+  /@react-spring/rafz/9.3.1:
+    resolution: {integrity: sha512-fEBMCarGVl+/2kdO+g6Zig4F+3ymwmcGN8S71gb1c7Cbbxb87kviPz8EhshfIHoiLeJPGlqwcuGbxNmZbBamvA==}
+    dev: false
+
+  /@react-spring/shared/9.3.1_react@17.0.2:
+    resolution: {integrity: sha512-jhPpxzURGo6Nty90ex1lkxmZae7w/VAbnGmb/nXcYoZwSoNR+W2aAd00iXsh2ZGz6MgoJOsc495JeG3uC7Am8A==}
+    peerDependencies:
+      react: ^16.8.0  || ^17.0.0
+    dependencies:
+      '@react-spring/rafz': 9.3.1
+      '@react-spring/types': 9.3.1
+      react: 17.0.2
+    dev: false
+
+  /@react-spring/types/9.3.1:
+    resolution: {integrity: sha512-W/YMJMX35XgGGzX0gKORBTwnvQ+1loDOFN3XlZkW5fgpEY+7VkRUpPyqPWXQr3n6lHrsLmHIGdpznqZi54ACTQ==}
+    dev: false
+
+  /@react-spring/web/9.3.1_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-sisZIgFGva/Z+xKWPSfXpukF0AP3kR9ALTxlHL87fVotMUCJX5vtH/YlVcywToEFwTHKt3MpI5Wy2M+vgVEeaw==}
+    peerDependencies:
+      react: ^16.8.0  || ^17.0.0
+      react-dom: ^16.8.0  || ^17.0.0
+    dependencies:
+      '@react-spring/animated': 9.3.1_react@17.0.2
+      '@react-spring/core': 9.3.1_react@17.0.2
+      '@react-spring/shared': 9.3.1_react@17.0.2
+      '@react-spring/types': 9.3.1
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
 
   /@rushstack/eslint-patch/1.1.0:
     resolution: {integrity: sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==}

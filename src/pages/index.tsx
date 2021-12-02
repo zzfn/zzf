@@ -75,7 +75,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
               <LottiePlayer size={100} url={'https://cdn.zzfzzf.com/1632384646840vb5kcx.json'} />
             </div>
           </Card>
-          <Card className={'mt-4'} icon={'xianxingyinle'} title={'关于本站'}>
+          <Card className={'mt-4 test'} icon={'xianxingyinle'} title={'关于本站'}>
             <div className={classNames('text-primary', 'text-sm')}>本次加载时间{loadTime}ms</div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
