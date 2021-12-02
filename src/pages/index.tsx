@@ -10,7 +10,6 @@ import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
-import Icon from '../components/Icon';
 
 type LastUpdatedListType = {
   title: string;
@@ -53,7 +52,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         <title>{getTitle('小时光')}</title>
       </Head>
       <BackTop>
-        <Icon size={40} name={'top'} />
+        <LottiePlayer size={40} url={'https://cdn.zzfzzf.com/1638431830685XR0zJT.json'} />
       </BackTop>
       <Layout>
         <Layout.Content>
@@ -86,10 +85,10 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
                   <Link prefetch={false} href={`/article/${n.id}`}>
                     <a
                       title={n.title}
-                      className={classNames(styles.title, 'flex', 'text-sm')}
+                      className={classNames(styles.title, 'flex', 'text-sm', 'justify-between')}
                       target={'_blank'}
                     >
-                      <div className={'truncate w-36'}>{n.title}</div>
+                      <div className={'truncate w-48'}>{n.title}</div>
                       <div className={'whitespace-nowrap'}>--{diff(n.updateTime)}</div>
                     </a>
                   </Link>
