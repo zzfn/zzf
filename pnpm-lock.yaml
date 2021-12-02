@@ -5,8 +5,10 @@ specifiers:
   '@commitlint/config-conventional': ^15.0.0
   '@fingerprintjs/fingerprintjs': ^3.3.0
   '@next/eslint-plugin-next': ^12.0.4
+  '@types/marked': ^4.0.1
   '@types/node': ^16.11.11
   '@types/react': ^17.0.37
+  '@types/react-dom': ^17.0.11
   '@types/ua-parser-js': ^0.7.36
   '@types/webpack-env': ^1.16.3
   '@typescript-eslint/eslint-plugin': ^5.5.0
@@ -67,8 +69,10 @@ devDependencies:
   '@commitlint/cli': 15.0.0
   '@commitlint/config-conventional': 15.0.0
   '@next/eslint-plugin-next': 12.0.4
+  '@types/marked': 4.0.1
   '@types/node': 16.11.11
   '@types/react': 17.0.37
+  '@types/react-dom': 17.0.11
   '@types/webpack-env': 1.16.3
   '@typescript-eslint/eslint-plugin': 5.5.0_13b98a72b6a1123178dc5d668f23a8fe
   '@typescript-eslint/parser': 5.5.0_eslint@7.32.0+typescript@4.5.2
@@ -561,6 +565,10 @@ packages:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
     dev: true
 
+  /@types/marked/4.0.1:
+    resolution: {integrity: sha512-ZigEmCWdNUU7IjZEuQ/iaimYdDHWHfTe3kg8ORfKjyGYd9RWumPoOJRQXB0bO+XLkNwzCthW3wUIQtANaEZ1ag==}
+    dev: true
+
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
@@ -578,6 +586,12 @@ packages:
 
   /@types/prop-types/15.7.4:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
+    dev: true
+
+  /@types/react-dom/17.0.11:
+    resolution: {integrity: sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==}
+    dependencies:
+      '@types/react': 17.0.37
     dev: true
 
   /@types/react/17.0.37:

@@ -1,26 +1,27 @@
 import { marked } from 'marked';
 import { renderToString } from 'react-dom/server';
 import Code from 'components/article/code';
+import React from 'react';
 
 export const translateMarkdown = (text = '') => {
-  const renderer:any = {};
-  renderer.code = function (code, language) {
+  const renderer: Partial<marked.Renderer> = {};
+  renderer.code = function (code: string, language: string) {
     return renderToString(<Code language={language} code={code} />);
   };
-  renderer.image = function (href, title, text) {
+  renderer.image = function (href: string, title: string, text: string) {
     return `<img loading='lazy' src='${href}'  class='zoom' alt='${text}' />`;
   };
-  renderer.link = function (href, title, text) {
+  renderer.link = function (href: string, title: string, text: string) {
     return `<a target='_blank' href='${href}'>${text}</a>`;
   };
-  renderer.heading = function (text, level, _, slugger) {
+  renderer.heading = function (text: string, level: unknown, _: string, slugger: marked.Slugger) {
     const id = slugger.slug('heading');
     return `
-            <h${level} id=${id === 'heading' ? 'heading-0' : id}>
+            <h${level} id='${id === 'heading' ? 'heading-0' : id}'>
               ${text}
             </h${level}>`;
   };
-  renderer.table = function (header, body) {
+  renderer.table = function (header: React.ReactNode, body: React.ReactNode) {
     return `
     <div class='markdown-table'>
       <table>
@@ -40,6 +41,6 @@ export const translateMarkdown = (text = '') => {
     smartypants: true,
     xhtml: true,
     headerIds: false,
-  })
+  });
   return marked.parse(text);
 };

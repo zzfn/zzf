@@ -22,7 +22,7 @@ type Favorite = {
   serverProps: Item[];
 };
 const Favorites: FC<Favorite> = ({ serverProps }) => {
-  const arr = serverProps.reduce((prev, curr) => {
+  const arr = serverProps.reduce((prev: Record<string, Item[]>, curr) => {
     const tag = curr.categoryDesc;
     if (Object.prototype.hasOwnProperty.call(prev, tag)) {
       prev[tag].push(curr);
