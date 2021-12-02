@@ -5,16 +5,25 @@ import Icon from '../Icon';
 import styles from './index.module.scss';
 import { setTheme } from '../../utils/theme';
 
-const ThemeDataSource = ['light', 'dark', 'system'];
+const translate = new Map([
+  ['light', '浅色'],
+  ['dark', '深色'],
+  ['auto', '自动'],
+]);
+const ThemeDataSource = ['light', 'dark', 'auto'];
 const Theme: FC = () => {
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState('light');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setActive(e.target.value);
   };
 
   useEffect(() => {
     const theme = localStorage.getItem('data-color-mode');
-    setActive(theme);
+    if (translate.get(theme)) {
+      setActive(theme);
+    } else {
+      setActive('light');
+    }
   }, []);
   useEffect(() => {
     setTheme(active);
@@ -31,7 +40,7 @@ const Theme: FC = () => {
             name={'theme'}
             type='radio'
           />
-          <label htmlFor={theme}>
+          <label title={translate.get(theme)} htmlFor={theme}>
             <Icon className={styles.icon} size={30} name={theme} />
           </label>
         </li>
