@@ -25,7 +25,7 @@ interface ArchiveProps {
   tags: TagsProps[];
 }
 
-function renderMonth(time, list = []) {
+function renderMonth(time: string, list: ListProps[]) {
   return (
     <div key={time}>
       <h3 className={classNames(styles.title, 'text-secondary', 'text-base')}>
@@ -59,7 +59,7 @@ function renderMonth(time, list = []) {
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
   const [active, setActive] = useState(0);
-  const timeLine = serverProps.list.reduce((prev, curr) => {
+  const timeLine = serverProps.list.reduce((prev: Record<string, ListProps[]>, curr) => {
     const time = dayjs(curr.createTime).format('YYYY-MM');
     if (Object.prototype.hasOwnProperty.call(prev, time)) {
       prev[time].push(curr);
