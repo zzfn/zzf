@@ -18,7 +18,7 @@
     "@fingerprintjs/fingerprintjs": "^3.3.0",
     "@react-spring/web": "^9.3.1",
     "@types/ua-parser-js": "^0.7.36",
-    "@zzf/design": "^1.2.4-alpha.3",
+    "@zzf/design": "^1.2.4-alpha.4",
     "@zzf/toolkit": "^1.0.0",
     "axios": "^0.24.0",
     "classnames": "^2.3.1",
