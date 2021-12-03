@@ -14,7 +14,7 @@ specifiers:
   '@types/webpack-env': ^1.16.3
   '@typescript-eslint/eslint-plugin': ^5.5.0
   '@typescript-eslint/parser': ^5.5.0
-  '@zzf/design': ^1.2.3
+  '@zzf/design': ^1.2.4-alpha.2
   '@zzf/toolkit': ^1.0.0
   autoprefixer: ^10.4.0
   axios: ^0.24.0
@@ -50,7 +50,7 @@ dependencies:
   '@fingerprintjs/fingerprintjs': 3.3.0
   '@react-spring/web': 9.3.1_react-dom@17.0.2+react@17.0.2
   '@types/ua-parser-js': 0.7.36
-  '@zzf/design': 1.2.3_react-dom@17.0.2+react@17.0.2
+  '@zzf/design': 1.2.4-alpha.2_react-dom@17.0.2+react@17.0.2
   '@zzf/toolkit': 1.0.0
   axios: 0.24.0
   classnames: 2.3.1
@@ -837,8 +837,8 @@ packages:
       eslint-visitor-keys: 3.1.0
     dev: true
 
-  /@zzf/design/1.2.3_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-jV2wZ9ySf9h+y4brlUX7cY+mUGI5HJD9Jt7N3ti1LMBwdC/pufvRfXQN115tClbDREMDCyfie/Y9gnypQAuZzg==}
+  /@zzf/design/1.2.4-alpha.2_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-oJApry5dpGDHKBDgHWyJae4Da2QQR6oIoqGnP/AKdcEliar2/uUbBAYf6zD7Mpg15FNrT7+IjuyFxKNxZwrh7A==}
     peerDependencies:
       react: ^17.0.1
       react-dom: ^17.0.1
@@ -1202,7 +1202,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001283
       colorette: 1.4.0
-      electron-to-chromium: 1.4.8
+      electron-to-chromium: 1.4.9
       escalade: 3.1.1
       node-releases: 1.1.77
     dev: false
@@ -1213,7 +1213,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001283
-      electron-to-chromium: 1.4.8
+      electron-to-chromium: 1.4.9
       escalade: 3.1.1
       node-releases: 2.0.1
       picocolors: 1.0.0
@@ -1767,8 +1767,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /electron-to-chromium/1.4.8:
-    resolution: {integrity: sha512-Cu5+dbg55+1E3ohlsa8HT0s4b8D0gBewXEGG8s5wBl8ynWv60VuvYW25GpsOeTVXpulhyU/U8JYZH+yxASSJBQ==}
+  /electron-to-chromium/1.4.9:
+    resolution: {integrity: sha512-7AyB4SiLtGJbLACXezs8BDjDbZizuoiyHTQxbcvzfi5LYWRXVSFdmPvuDjtlWQmsVSONRicZfSBj3xgft0Wvrg==}
 
   /elliptic/6.5.4:
     resolution: {integrity: sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==}
