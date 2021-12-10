@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
   theme: {
     colors: {
       inverse: 'var(--color-text-inverse)',
