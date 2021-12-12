@@ -15,7 +15,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@fingerprintjs/fingerprintjs": "^3.3.0",
+    "@fingerprintjs/fingerprintjs": "^3.3.1",
     "@react-spring/web": "^9.3.1",
     "@types/ua-parser-js": "^0.7.36",
     "@zzf/design": "^1.2.4-alpha.6",
@@ -27,8 +27,8 @@
     "eslint": "^8.4.1",
     "highlight.js": "^11.3.1",
     "lottie-web": "^5.8.1",
-    "marked": "^4.0.6",
-    "next": "^12.0.4",
+    "marked": "^4.0.7",
+    "next": "^12.0.7",
     "postcss-scss": "^4.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -38,16 +38,16 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
-    "@next/eslint-plugin-next": "^12.0.4",
+    "@next/eslint-plugin-next": "^12.0.7",
     "@types/marked": "^4.0.1",
-    "@types/node": "^16.11.11",
+    "@types/node": "^16.11.12",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@types/webpack-env": "^1.16.3",
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "^5.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
     "autoprefixer": "^10.4.0",
-    "eslint-config-next": "^12.0.4",
+    "eslint-config-next": "^12.0.7",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
@@ -56,10 +56,10 @@
     "lint-staged": "^12.1.2",
     "next-sitemap": "^1.6.203",
     "postcss": "^8.4.4",
-    "prettier": "^2.5.0",
-    "sass": "^1.44.0",
+    "prettier": "^2.5.1",
+    "sass": "^1.45.0",
     "stylelint": "^14.1.0",
-    "tailwindcss": "^3.0.0",
-    "typescript": "^4.5.2"
+    "tailwindcss": "^3.0.1",
+    "typescript": "^4.5.3"
   }
 }
