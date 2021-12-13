@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import type { NextPage } from 'next';
 import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
@@ -26,7 +27,7 @@ interface ServerProps {
   serverProps: Data;
 }
 
-const ArticleDetail: React.FC<ServerProps> = (props) => {
+const ArticleDetail: NextPage<ServerProps> = (props) => {
   const { serverProps = {} } = props;
 
   useEffect(() => {
