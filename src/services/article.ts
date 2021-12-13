@@ -55,16 +55,9 @@ export const listArchives = (params: Record<string, string>) => {
     params,
   });
 };
-type EsType = {
-  content: string;
-  id: string;
-  isDelete: number;
-  isRelease: number;
-  tagDesc: string;
-  title: string;
-};
+
 export const esList = (params: { keyword: string }) => {
-  return http<EsType[]>({
+  return http<Article[]>({
     method: 'get',
     url: '/article/search',
     params,

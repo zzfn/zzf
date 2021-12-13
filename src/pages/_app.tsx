@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import Head from 'next/head';
 import '@zzf/design/dist/bundle.css';
 import 'styles/globals.scss';
@@ -19,12 +20,14 @@ export function reportWebVitals(metric: NextWebVitalsMetric): void {
 }
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
+  const [queryClient] = React.useState(() => new QueryClient());
+
   useEffect(() => {
     initTheme();
   }, []);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Head>
         <link rel='shortcut icon' href={'/static/favicon.ico'} />
         <link rel='icon' href={'/favicon.ico'} />
@@ -48,7 +51,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         </Layout.Main>
         <Footer />
       </Layout>
-    </>
+    </QueryClientProvider>
   );
 }
 

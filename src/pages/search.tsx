@@ -6,22 +6,22 @@ import { getTitle } from '../utils/getTitle';
 import { Button, Input } from '@zzf/design';
 import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
 import classNames from 'classnames';
+import { useQuery } from 'react-query';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
-  const [result, setResult] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  async function query() {
-    setLoading(true);
-    const { data } = await esList({ keyword });
-    setLoading(false);
-    setResult(data);
-  }
+  const {
+    data: result = [],
+    isFetching,
+    refetch,
+  } = useQuery(['search'], () => esList({ keyword }).then((data) => data.data), {
+    enabled: false,
+    refetchOnWindowFocus: false,
+  });
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    await query();
+    await refetch();
   }
 
   return (
@@ -40,7 +40,7 @@ function Search(): JSX.Element {
         <Button>回车搜索</Button>
       </form>
       <div className={'text-secondary'}>
-        {loading ? (
+        {isFetching ? (
           <div>🔍 努力搜索中，请等待</div>
         ) : (
           <div>
