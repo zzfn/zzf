@@ -27,7 +27,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <Head>
         <link rel='shortcut icon' href={'/static/favicon.ico'} />
-        <link rel='icon' href={'/static/favicon.ico'} />
+        <link rel='icon' href={'/favicon.ico'} />
         <title>{getTitle('zzf')}</title>
         <meta
           name='keywords'
