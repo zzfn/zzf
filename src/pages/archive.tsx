@@ -40,7 +40,7 @@ function renderMonth(time: string, list: ListProps[]) {
               'text-primary',
               'border-solid',
               'border-b',
-              'border-current',
+              'border-primary',
             )}
             key={item.id}
           >
@@ -122,7 +122,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
           </div>
         ) : (
-          <div className={styles.menu}>
+          <div className={classNames(styles.menu, 'divide-dashed')}>
             {serverProps.tags.map((item) => (
               <React.Fragment key={item.code}>
                 <Link
