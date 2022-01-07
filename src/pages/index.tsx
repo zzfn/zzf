@@ -35,6 +35,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         pageSize: 10,
       }).then((data) => data.data.records),
     {
+      refetchOnWindowFocus: false,
       initialData: {
         pages: [serverProps.records],
         pageParams: [1],

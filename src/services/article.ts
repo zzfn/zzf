@@ -5,7 +5,6 @@ type Page = {
   pageSize: number;
 };
 export const listArticles = (params: Page) => {
-  console.log(params);
   return http<PageType<Article>>({
     method: 'get',
     url: '/article/page',
