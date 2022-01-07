@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import { lastUpdated, listArticles } from 'api/article';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
@@ -10,6 +10,8 @@ import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
+import { useInfiniteQuery } from 'react-query';
+import useFcp from '../hooks/useFcp';
 
 type LastUpdatedListType = {
   title: string;
@@ -24,28 +26,25 @@ type HomeType = {
 };
 const Home: React.FC<NextProps<HomeType>> = (props) => {
   const { serverProps } = props;
-  const page = useRef(serverProps.current);
-  const [noMore, setNoMore] = useState(false);
-  const [loadTime, setLoadTime] = useState(0);
-  const [records, setRecords] = useState(serverProps.records);
+  const fcpTime = useFcp();
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
+    'projects',
+    (k) =>
+      listArticles({
+        current: k.pageParam,
+        pageSize: 10,
+      }).then((data) => data.data.records),
+    {
+      initialData: {
+        pages: [serverProps.records],
+        pageParams: [1],
+      },
+      getNextPageParam: (lastPage, pages) => {
+        return lastPage.length ? pages.length + 1 : undefined;
+      },
+    },
+  );
 
-  async function handleLoad() {
-    const { data } = await listArticles({
-      current: page.current + 1,
-      pageSize: 10,
-    });
-    setRecords((v) => [...v, ...data.records]);
-    setNoMore(data.records.length === 0);
-    page.current = data.current;
-  }
-
-  useEffect(() => {
-    new PerformanceObserver((entryList) => {
-      for (const entry of entryList.getEntriesByName('first-contentful-paint')) {
-        setLoadTime(Math.floor(entry.startTime));
-      }
-    }).observe({ type: 'paint', buffered: true });
-  }, []);
   return (
     <>
       <Head>
@@ -57,15 +56,18 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
       <Layout>
         <Layout.Content>
           <Loading
-            noMore={noMore}
-            key={page.current}
-            onLoad={handleLoad}
+            noMore={!hasNextPage}
+            onLoad={fetchNextPage}
             loading={
               <LottiePlayer size={200} url={'https://cdn.zzfzzf.com/1632384671572VMLK6m.json'} />
             }
           >
-            {records.map((item: Article) => (
-              <ArticleCard key={item.id} dataSource={item} />
+            {data.pages.map((item, i) => (
+              <React.Fragment key={i}>
+                {item.map((project) => (
+                  <ArticleCard key={project.id} dataSource={project} />
+                ))}
+              </React.Fragment>
             ))}
           </Loading>
         </Layout.Content>
@@ -76,7 +78,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             </div>
           </Card>
           <Card className={'mt-4 test'} icon={'xianxingyinle'} title={'关于本站'}>
-            <div className={classNames('text-primary', 'text-sm')}>本次加载时间{loadTime}ms</div>
+            <div className={classNames('text-primary', 'text-sm')}>本次加载时间{fcpTime}ms</div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
             <ul>
