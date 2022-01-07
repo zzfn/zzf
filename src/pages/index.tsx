@@ -34,7 +34,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
       current: page.current + 1,
       pageSize: 10,
     });
-    setRecords([...records, ...data.records]);
+    setRecords((v) => [...v, ...data.records]);
     setNoMore(data.records.length === 0);
     page.current = data.current;
   }
