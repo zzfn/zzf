@@ -52,7 +52,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         <title>{getTitle('小时光')}</title>
       </Head>
       <BackTop>
-        <LottiePlayer size={40} url={'https://oss-zzf.zzfzzf.com/1638431830685XR0zJT.json'} />
+        <LottiePlayer size={40} url={'https://oss-zzf.zzfzzf.com/cdn/1638431830685XR0zJT.json'} />
       </BackTop>
       <Layout>
         <Layout.Content>
@@ -62,7 +62,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             loading={
               <LottiePlayer
                 size={200}
-                url={'https://oss-zzf.zzfzzf.com/1632384671572VMLK6m.json'}
+                url={'https://oss-zzf.zzfzzf.com/cdn/1632384671572VMLK6m.json'}
               />
             }
           >
