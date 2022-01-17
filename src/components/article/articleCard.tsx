@@ -34,7 +34,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           />
         ) : null}
       </div>
-      <p className={'truncate px-4 py-8 text-secondary text-base'}>
+      <p className={'py-8 text-secondary text-base'}>
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
       <ul className={classNames('flex', 'items-center', 'mt-2', 'text-secondary')}>

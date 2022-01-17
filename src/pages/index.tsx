@@ -74,7 +74,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
           </Loading>
         </Layout.Content>
         <Layout.Sidebar>
-          <Card icon={'xianxingshezhi'} title={'关于我'}>
+          <Card title={'关于我'}>
             <div className={styles.wrap}>
               <LottiePlayer
                 size={100}
@@ -82,33 +82,45 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
               />
             </div>
           </Card>
-          <Card className={'mt-4 test'} icon={'xianxingyinle'} title={'关于本站'}>
+          <Card className={'mt-4 test'} title={'关于本站'}>
             <div className={classNames('text-primary', 'text-sm')}>本次加载时间{loadTime}ms</div>
           </Card>
-          <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
+          <Card className={'mt-4'} title={'最近更新'}>
             <ul>
               {serverProps.lastUpdatedList.map((n) => (
                 <li className={classNames('flex')} key={n.id}>
                   <Link prefetch={false} href={`/article/${n.id}`}>
                     <a
                       title={n.title}
-                      className={classNames('flex', 'justify-between', 'items-center', 'group')}
+                      className={classNames(
+                        'flex',
+                        'justify-between',
+                        'items-center',
+                        'group',
+                        'w-full',
+                      )}
                       target={'_blank'}
                     >
-                      <Icon
-                        className={classNames('group-hover:translate-x-2', 'mr-4', 'duration-300')}
-                        color={'hsl(245deg, 100%, 60%)'}
-                        name={'right'}
-                      />
-                      <div
-                        className={classNames(
-                          'truncate w-48',
-                          'font-medium',
-                          'text-lg',
-                          'text-secondary',
-                        )}
-                      >
-                        {n.title}
+                      <div className={classNames('flex', 'justify-between', 'items-center')}>
+                        <Icon
+                          className={classNames(
+                            'group-hover:translate-x-2',
+                            'mr-4',
+                            'duration-300',
+                          )}
+                          color={'hsl(245deg, 100%, 60%)'}
+                          name={'right'}
+                        />
+                        <div
+                          className={classNames(
+                            'truncate',
+                            'font-medium',
+                            'text-lg',
+                            'text-secondary',
+                          )}
+                        >
+                          {n.title}
+                        </div>
                       </div>
                       <div className={classNames('whitespace-nowrap', 'text-sm')}>
                         --{diff(n.updateTime)}
