@@ -62,7 +62,10 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             key={page.current}
             onLoad={handleLoad}
             loading={
-              <LottiePlayer size={200} url={'https://oss-zzf.zzfzzf.com/cdn/1632384671572VMLK6m.json'} />
+              <LottiePlayer
+                size={200}
+                url={'https://oss-zzf.zzfzzf.com/cdn/1632384671572VMLK6m.json'}
+              />
             }
           >
             {records.map((item: Article) => (
@@ -73,7 +76,10 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         <Layout.Sidebar>
           <Card icon={'xianxingshezhi'} title={'关于我'}>
             <div className={styles.wrap}>
-              <LottiePlayer size={100} url={'https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json'} />
+              <LottiePlayer
+                size={100}
+                url={'https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json'}
+              />
             </div>
           </Card>
           <Card className={'mt-4 test'} icon={'xianxingyinle'} title={'关于本站'}>
