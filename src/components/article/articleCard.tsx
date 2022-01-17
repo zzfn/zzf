@@ -11,11 +11,11 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
-    <div className={classNames('border-b', 'border-solid', 'py-4', 'px-2', 'border-primary')}>
+    <div className={classNames('py-4', 'px-2')}>
       <div className={'flex items-center'}>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a
-            className={classNames('text-primary', 'hover:text-brand', 'text-lg', 'font-semibold')}
+            className={classNames('text-primary', 'hover:text-brand', 'text-xl', 'font-semibold')}
             target={'_blank'}
           >
             {dataSource.title}
@@ -34,14 +34,14 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           />
         ) : null}
       </div>
-      <p className={'truncate px-4 text-secondary text-sm'}>
+      <p className={'truncate px-4 py-8 text-secondary text-base'}>
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
       <ul className={classNames('flex', 'items-center', 'mt-2', 'text-secondary')}>
         <li className={'w-1/4 md:w-32'} title={'标签'}>
           <Tag>
             <Link prefetch={false} href={`/tag/${dataSource.tag}?title=${dataSource.tagDesc}`}>
-              <a className={'text-brand'}>{dataSource.tagDesc}</a>
+              <a className={'text-primary'}>{dataSource.tagDesc}</a>
             </Link>
           </Tag>
         </li>

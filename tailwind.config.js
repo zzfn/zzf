@@ -2,14 +2,13 @@ module.exports = {
   content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
   theme: {
     colors: {
-      inverse: 'var(--color-text-inverse)',
       brand: 'var(--color-text-brand)',
+      info: 'var(--color-text-info)',
       primary: 'var(--color-text-primary)',
       secondary: 'var(--color-text-secondary)',
       tertiary: 'var(--color-text-tertiary)',
     },
     backgroundColor: {
-      inverse: 'var(--color-bg-inverse)',
       brand: 'var(--color-bg-brand)',
       primary: 'var(--color-bg-primary)',
       secondary: 'var(--color-bg-secondary)',

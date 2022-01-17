@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { lastUpdated, listArticles } from 'api/article';
 import { BackTop, Card, Layout, Loading } from '@zzf/design';
@@ -10,8 +10,7 @@ import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
-import { useInfiniteQuery } from 'react-query';
-import useFcp from '../hooks/useFcp';
+import Icon from '../components/Icon';
 
 type LastUpdatedListType = {
   title: string;
@@ -26,79 +25,81 @@ type HomeType = {
 };
 const Home: React.FC<NextProps<HomeType>> = (props) => {
   const { serverProps } = props;
-  const fcpTime = useFcp();
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
-    'projects',
-    (k) =>
-      listArticles({
-        current: k.pageParam,
-        pageSize: 10,
-      }).then((data) => data.data.records),
-    {
-      refetchOnWindowFocus: false,
-      initialData: {
-        pages: [serverProps.records],
-        pageParams: [1],
-      },
-      getNextPageParam: (lastPage, pages) => {
-        return lastPage.length ? pages.length + 1 : undefined;
-      },
-    },
-  );
+  const page = useRef(serverProps.current);
+  const [noMore, setNoMore] = useState(false);
+  const [loadTime, setLoadTime] = useState(0);
+  const [records, setRecords] = useState(serverProps.records);
 
+  async function handleLoad() {
+    const { data } = await listArticles({
+      current: page.current + 1,
+      pageSize: 10,
+    });
+    setRecords([...records, ...data.records]);
+    setNoMore(data.records.length === 0);
+    page.current = data.current;
+  }
+
+  useEffect(() => {
+    new PerformanceObserver((entryList) => {
+      for (const entry of entryList.getEntriesByName('first-contentful-paint')) {
+        setLoadTime(Math.floor(entry.startTime));
+      }
+    }).observe({ type: 'paint', buffered: true });
+  }, []);
   return (
     <>
       <Head>
         <title>{getTitle('小时光')}</title>
       </Head>
       <BackTop>
-        <LottiePlayer size={40} url={'https://oss-zzf.zzfzzf.com/cdn/1638431830685XR0zJT.json'} />
+        <LottiePlayer size={40} url={'https://cdn.zzfzzf.com/1638431830685XR0zJT.json'} />
       </BackTop>
       <Layout>
         <Layout.Content>
           <Loading
-            noMore={!hasNextPage}
-            onLoad={fetchNextPage}
+            noMore={noMore}
+            key={page.current}
+            onLoad={handleLoad}
             loading={
-              <LottiePlayer
-                size={200}
-                url={'https://oss-zzf.zzfzzf.com/cdn/1632384671572VMLK6m.json'}
-              />
+              <LottiePlayer size={200} url={'https://cdn.zzfzzf.com/1632384671572VMLK6m.json'} />
             }
           >
-            {data.pages.map((item, i) => (
-              <React.Fragment key={i}>
-                {item.map((project) => (
-                  <ArticleCard key={project.id} dataSource={project} />
-                ))}
-              </React.Fragment>
+            {records.map((item: Article) => (
+              <ArticleCard key={item.id} dataSource={item} />
             ))}
           </Loading>
         </Layout.Content>
         <Layout.Sidebar>
           <Card icon={'xianxingshezhi'} title={'关于我'}>
             <div className={styles.wrap}>
-              <LottiePlayer
-                size={100}
-                url={'https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json'}
-              />
+              <LottiePlayer size={100} url={'https://cdn.zzfzzf.com/1632384646840vb5kcx.json'} />
             </div>
           </Card>
           <Card className={'mt-4 test'} icon={'xianxingyinle'} title={'关于本站'}>
-            <div className={classNames('text-primary', 'text-sm')}>本次加载时间{fcpTime}ms</div>
+            <div className={classNames('text-primary', 'text-sm')}>本次加载时间{loadTime}ms</div>
           </Card>
           <Card className={'mt-4'} icon={'xianxingxiaoxi'} title={'最近更新'}>
             <ul>
               {serverProps.lastUpdatedList.map((n) => (
-                <li className={styles.title} key={n.id}>
+                <li className={classNames('flex')} key={n.id}>
                   <Link prefetch={false} href={`/article/${n.id}`}>
                     <a
                       title={n.title}
-                      className={classNames(styles.title, 'flex', 'text-sm', 'justify-between')}
+                      className={classNames('flex', 'justify-between', 'items-center', 'group')}
                       target={'_blank'}
                     >
-                      <div className={'truncate w-48'}>{n.title}</div>
-                      <div className={'whitespace-nowrap'}>--{diff(n.updateTime)}</div>
+                      <Icon
+                        className={classNames('group-hover:translate-x-2', 'mr-4', 'duration-300')}
+                        color={'hsl(245deg, 100%, 60%)'}
+                        name={'right'}
+                      />
+                      <div className={classNames('truncate w-48', 'font-medium', 'text-lg','text-secondary')}>
+                        {n.title}
+                      </div>
+                      <div className={classNames('whitespace-nowrap', 'text-sm')}>
+                        --{diff(n.updateTime)}
+                      </div>
                     </a>
                   </Link>
                 </li>
