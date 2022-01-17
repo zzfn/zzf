@@ -94,7 +94,14 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
                         color={'hsl(245deg, 100%, 60%)'}
                         name={'right'}
                       />
-                      <div className={classNames('truncate w-48', 'font-medium', 'text-lg','text-secondary')}>
+                      <div
+                        className={classNames(
+                          'truncate w-48',
+                          'font-medium',
+                          'text-lg',
+                          'text-secondary',
+                        )}
+                      >
                         {n.title}
                       </div>
                       <div className={classNames('whitespace-nowrap', 'text-sm')}>
