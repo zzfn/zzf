@@ -42,7 +42,7 @@ specifiers:
   react-query: ^3.34.8
   sass: ^1.48.0
   stylelint: ^14.2.0
-  tailwindcss: ^3.0.15
+  tailwindcss: 3.0.9
   typescript: ^4.5.4
   ua-parser-js: ^1.0.2
   zooming: ^2.1.1
@@ -93,7 +93,7 @@ devDependencies:
   prettier: 2.5.1
   sass: 1.48.0
   stylelint: 14.2.0
-  tailwindcss: 3.0.15_ef48b3b8837f8a23677bffe8f9cd866d
+  tailwindcss: 3.0.9_ef48b3b8837f8a23677bffe8f9cd866d
   typescript: 4.5.4
 
 packages:
@@ -2994,11 +2994,9 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  /postcss-js/4.0.0_postcss@8.4.5:
-    resolution: {integrity: sha512-77QESFBwgX4irogGVPgQ5s07vLvFqWr228qZY+w6lW599cRlK/HmnlivnnVUxkjHnCu4J16PDMHcH+e+2HbvTQ==}
-    engines: {node: ^12 || ^14 || >= 16}
-    peerDependencies:
-      postcss: ^8.3.3
+  /postcss-js/3.0.3:
+    resolution: {integrity: sha512-gWnoWQXKFw65Hk/mi2+WTQTHdPD5UJdDXZmX073EY/B3BWnYjO4F4t0VneTCnCGQ5E5GsCdMkzPaTXwl3r5dJw==}
+    engines: {node: '>=10.0'}
     dependencies:
       camelcase-css: 2.0.1
       postcss: 8.4.5
@@ -3692,8 +3690,8 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwindcss/3.0.15_ef48b3b8837f8a23677bffe8f9cd866d:
-    resolution: {integrity: sha512-bT2iy7FtjwgsXik4ZoJnHXR+SRCiGR1W95fVqpLZebr64m4ahwUwRbIAc5w5+2fzr1YF4Ct2eI7dojMRRl8sVQ==}
+  /tailwindcss/3.0.9_ef48b3b8837f8a23677bffe8f9cd866d:
+    resolution: {integrity: sha512-X8TVifxDWfiNXInOeBofTteXAtZ5f0HnLs/uV4jDQNShc33Jb7qjYbk4VwI365rWAzcqYTks+9kesf3xH7Y35A==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependencies:
@@ -3715,7 +3713,7 @@ packages:
       normalize-path: 3.0.0
       object-hash: 2.2.0
       postcss: 8.4.5
-      postcss-js: 4.0.0_postcss@8.4.5
+      postcss-js: 3.0.3
       postcss-load-config: 3.1.1
       postcss-nested: 5.0.6_postcss@8.4.5
       postcss-selector-parser: 6.0.8

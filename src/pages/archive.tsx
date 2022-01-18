@@ -40,7 +40,7 @@ function renderMonth(time: string, list: ListProps[]) {
               'text-info',
               'border-solid',
               'border-b',
-              'border-primary',
+              'border-b-current',
             )}
             key={item.id}
           >
