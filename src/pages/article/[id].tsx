@@ -53,9 +53,7 @@ const ArticleDetail: NextPage<ServerProps> = (props) => {
           <main className={styles.article}>
             <div>
               <h2 className={classNames('text-xl', 'text-brand')}>{serverProps.title}</h2>
-              <ul
-                className={classNames(styles.tip, 'text-info', 'flex', 'flex-wrap', 'text-sm')}
-              >
+              <ul className={classNames(styles.tip, 'text-info', 'flex', 'flex-wrap', 'text-sm')}>
                 <li>
                   <span>标签</span>
                   {serverProps.tagDesc}

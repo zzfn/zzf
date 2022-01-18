@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Layout, SvgIcon } from '@zzf/design';
+import { Layout } from '@zzf/design';
 import classNames from 'classnames';
 import Icon from 'components/Icon';
 import Link from 'next/link';
@@ -11,7 +11,7 @@ function Footer(): JSX.Element {
     <Layout.Footer
       className={classNames('flex', 'justify-between', 'items-center', 'py-6', 'leading-6')}
     >
-      <div className={classNames('flex', 'flex-col', 'justify-between', 'leading-6','h-full')}>
+      <div className={classNames('flex', 'flex-col', 'justify-between', 'leading-6', 'h-full')}>
         <div>
           <div
             className={classNames(
