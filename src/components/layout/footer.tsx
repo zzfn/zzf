@@ -9,9 +9,9 @@ import json from '../../menus.json';
 function Footer(): JSX.Element {
   return (
     <Layout.Footer
-      className={classNames('flex', 'justify-between', 'items-center', 'py-6', 'leading-6')}
+      className={classNames('md:flex', 'justify-between', 'items-center', 'py-6', 'leading-6')}
     >
-      <div className={classNames('flex', 'flex-col', 'justify-between', 'leading-6', 'h-full')}>
+      <div className={classNames('flex', 'flex-col', 'justify-between', 'leading-6', 'md:h-full')}>
         <div>
           <div
             className={classNames(
@@ -20,19 +20,29 @@ function Footer(): JSX.Element {
               'text-2xl',
               'flex',
               'items-center',
+              'justify-center',
+              'md:justify-start',
             )}
           >
             Zzf <Icon name={'logo-min'} size={16} /> Zzf
           </div>
-          <div className={classNames('text-gray-700', 'font-medium', 'text-sm')}>
+          <div
+            className={classNames(
+              'text-gray-700',
+              'font-medium',
+              'text-sm',
+              'text-center',
+              'md:text-left',
+            )}
+          >
             Powered by zzfn
           </div>
         </div>
-        <div className={classNames('text-gray-700', 'text-xs')}>
+        <div className={classNames('hidden', 'md:block', 'text-gray-700', 'text-xs')}>
           2020-{dayjs().format('YYYY')}&copy;苏ICP备18059856号
         </div>
       </div>
-      <div className={'flex'}>
+      <div className={classNames('flex', 'justify-center', 'md:justify-start')}>
         <div>
           <div className={classNames('text-gray-700', 'font-light', 'mb-3')}>导航</div>
           <ul>
@@ -70,6 +80,18 @@ function Footer(): JSX.Element {
             </li>
           </ul>
         </div>
+      </div>
+      <div
+        className={classNames(
+          'md:hidden',
+          'text-gray-700',
+          'text-xs',
+          'text-center',
+          'mt-6',
+          'md:text-left',
+        )}
+      >
+        2020-{dayjs().format('YYYY')}&copy;苏ICP备18059856号
       </div>
     </Layout.Footer>
   );

@@ -10,7 +10,7 @@ function Header(): JSX.Element {
   const [isShow, setIsShow] = useState(false);
   return (
     <>
-      <Layout.Header className={styles.header}>
+      <Layout.Header className={classNames(styles.header)}>
         <div className={classNames('hidden', 'md:flex')}>
           <Link href={'/'}>
             <a className={'flex items-center text-brand text-5xl mr-2'}>

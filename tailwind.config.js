@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     fontWeight: {
       light: 'var(--font-weight-light)',
-      medium: 'var(--color-weight-medium)',
-      bold: 'var(--color-weight-bold)',
+      medium: 'var(--font-weight-medium)',
+      bold: 'var(--font-weight-bold)',
     },
     colors: {
       info: 'var(--color-text-info)',

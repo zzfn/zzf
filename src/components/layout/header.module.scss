@@ -48,6 +48,9 @@
   align-items: center;
   font-size: 16px;
   color: var(--color-text-info);
+  position: sticky;
+  top: 60px;
+  z-index: 999;
 
   a {
     border-top: 1px solid #e1e4e8;

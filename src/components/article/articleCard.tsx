@@ -19,7 +19,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
               'text-gray-1000',
               'hover:text-brand',
               'text-xl',
-              'font-semibold',
+              'font-bold',
               'group-hover:text-primary',
               'duration-300',
             )}
