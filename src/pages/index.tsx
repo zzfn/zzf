@@ -83,7 +83,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             </div>
           </Card>
           <Card className={'mt-4 test'} title={'关于本站'}>
-            <div className={classNames('text-primary', 'text-sm')}>本次加载时间{loadTime}ms</div>
+            <div className={classNames('text-info', 'text-sm')}>本次加载时间{loadTime}ms</div>
           </Card>
           <Card className={'mt-4'} title={'最近更新'}>
             <ul>
@@ -105,19 +105,14 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
                         <Icon
                           className={classNames(
                             'group-hover:translate-x-2',
+                            'text-primary',
                             'mr-4',
                             'duration-300',
                           )}
-                          color={'hsl(245deg, 100%, 60%)'}
                           name={'right'}
                         />
                         <div
-                          className={classNames(
-                            'truncate',
-                            'font-medium',
-                            'text-lg',
-                            'text-secondary',
-                          )}
+                          className={classNames('truncate', 'font-medium', 'text-lg', 'text-info')}
                         >
                           {n.title}
                         </div>

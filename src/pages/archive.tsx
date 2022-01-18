@@ -28,7 +28,7 @@ interface ArchiveProps {
 function renderMonth(time: string, list: ListProps[]) {
   return (
     <div key={time}>
-      <h3 className={classNames(styles.title, 'text-secondary', 'text-base')}>
+      <h3 className={classNames(styles.title, 'text-info', 'text-base')}>
         {time} 共 <span>{list.length}</span> 篇文章
       </h3>
       <ul>
@@ -37,7 +37,7 @@ function renderMonth(time: string, list: ListProps[]) {
             className={classNames(
               styles.item,
               'text-sm',
-              'text-primary',
+              'text-info',
               'border-solid',
               'border-b',
               'border-primary',
@@ -79,7 +79,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       </header>
       <Layout className={'hidden md:flex'}>
         <Layout.Content>
-          <div className={`${styles.timeLine} color-text-primary`}>
+          <div className={`${styles.timeLine} color-text-info`}>
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
           </div>
         </Layout.Content>
@@ -116,7 +116,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
           </div>
         </div>
       </nav>
-      <section className={'md:hidden color-text-primary'}>
+      <section className={'md:hidden color-text-info'}>
         {active === 0 ? (
           <div className={styles.timeLine}>
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}

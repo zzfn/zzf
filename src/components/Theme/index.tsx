@@ -41,7 +41,7 @@ const Theme: FC = () => {
             type='radio'
           />
           <label title={translate.get(theme)} htmlFor={theme}>
-            <Icon className={'text-primary'} size={30} name={theme} />
+            <Icon className={'text-info'} size={30} name={theme} />
           </label>
         </li>
       ))}

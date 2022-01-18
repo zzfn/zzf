@@ -17,7 +17,7 @@
         content: '';
         height: 2px;
         width: 100%;
-        background-color: var(--color-text-primary);
+        background-color: var(--color-text-info);
         position: absolute;
         left: 0;
         bottom: 0;
@@ -47,7 +47,7 @@
   flex-direction: column;
   align-items: center;
   font-size: 16px;
-  color: var(--color-text-primary);
+  color: var(--color-text-info);
 
   a {
     border-top: 1px solid #e1e4e8;

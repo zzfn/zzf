@@ -39,7 +39,7 @@ function Search(): JSX.Element {
         />
         <Button>回车搜索</Button>
       </form>
-      <div className={'text-secondary'}>
+      <div className={'text-info'}>
         {isFetching ? (
           <div>🔍 努力搜索中，请等待</div>
         ) : (

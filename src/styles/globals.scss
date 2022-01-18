@@ -13,6 +13,10 @@ html {
   overflow: hidden;
 }
 
+:root {
+  @include font;
+}
+
 :root,
 [data-color-mode='light'] {
   @include colors-light;

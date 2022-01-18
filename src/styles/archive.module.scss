@@ -7,7 +7,7 @@
   header {
     border: 1px solid var(--color-border-primary);
     background: var(--color-bg-secondary);
-    color: var(--color-text-primary);
+    color: var(--color-text-info);
     padding: 16px;
     border-radius: 6px;
     margin-bottom: 16px;
@@ -35,7 +35,7 @@
     padding: 8px 16px;
     font-size: 14px;
     line-height: 30px;
-    color: var(--color-text-primary);
+    color: var(--color-text-info);
     text-align: center;
     white-space: nowrap;
     background-color: transparent;
@@ -63,7 +63,7 @@
     position: relative;
     display: block;
     padding: 8px 16px;
-    color: var(--color-text-primary);
+    color: var(--color-text-info);
     border-bottom: 1px solid var(--color-border-primary);
 
     .counter {

@@ -31,7 +31,7 @@ function Header(): JSX.Element {
           name={isShow ? 'close' : 'menu'}
         />
         <Link href={'/'}>
-          <a className={'flex items-center color-text-primary inline-block md:hidden'}>
+          <a className={'flex items-center color-text-info inline-block md:hidden'}>
             <SvgIcon className={classNames('text-4xl', 'text-brand')} name={'logo'} />
           </a>
         </Link>

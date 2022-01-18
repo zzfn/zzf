@@ -36,7 +36,7 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
     <>
       {Object.keys(arr).map((item) => (
         <Fragment key={item}>
-          <h2 className={classNames('text-brand', 'm-1', 'text-xl')}>{item}</h2>
+          <h2 className={classNames('text-info', 'm-1', 'text-xl')}>{item}</h2>
           <nav className={`bg-primary p-2 flex flex-wrap`}>
             {arr[item].map((node) => (
               <Link key={node.id} href={node.link}>
@@ -45,7 +45,7 @@ const Favorites: FC<Favorite> = ({ serverProps }) => {
                   target={'_blank'}
                   className={classNames(
                     'text-bas',
-                    'text-primary',
+                    'text-info',
                     'hover:text-primary',
                     'mr-5',
                     'whitespace-nowrap',

@@ -42,7 +42,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
           name='viewport'
         />
-        <script async src={'//at.alicdn.com/t/font_2620815_ar47xj0udar.js'} />
+        <script async src={'//at.alicdn.com/t/font_2620815_l30yg5g00kr.js'} />
       </Head>
       <Layout direction={'column'} className={'min-h-screen'}>
         <Header />
