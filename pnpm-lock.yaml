@@ -14,7 +14,7 @@ specifiers:
   '@types/webpack-env': ^1.16.3
   '@typescript-eslint/eslint-plugin': ^5.10.0
   '@typescript-eslint/parser': ^5.10.0
-  '@zzf/design': ^1.3.0-alpha.10
+  '@zzf/design': ^1.3.0-alpha.11
   '@zzf/toolkit': ^1.0.0
   autoprefixer: ^10.4.2
   axios: ^0.24.0
@@ -51,7 +51,7 @@ dependencies:
   '@fingerprintjs/fingerprintjs': 3.3.2
   '@react-spring/web': 9.4.2_react-dom@17.0.2+react@17.0.2
   '@types/ua-parser-js': 0.7.36
-  '@zzf/design': 1.3.0-alpha.10_react-dom@17.0.2+react@17.0.2
+  '@zzf/design': 1.3.0-alpha.11_react-dom@17.0.2+react@17.0.2
   '@zzf/toolkit': 1.0.0
   axios: 0.24.0
   classnames: 2.3.1
@@ -767,8 +767,8 @@ packages:
       eslint-visitor-keys: 3.2.0
     dev: true
 
-  /@zzf/design/1.3.0-alpha.10_react-dom@17.0.2+react@17.0.2:
-    resolution: {integrity: sha512-7fcvm7aAAew95tRn7kGyqWX5hgTB5jGEG8j7mNr4QdOA3GvvkccCnMp2AJJROh6DJ0g4E4+7C5S4kSYEWd/nuw==}
+  /@zzf/design/1.3.0-alpha.11_react-dom@17.0.2+react@17.0.2:
+    resolution: {integrity: sha512-aE80h0h+DtfmJcYupOqeno+y3a8WNc7zmkmLjigoUywmLp090MPDwpsA//JRZKm6I6u4r5xo4GJFzZwgnabOyg==}
     peerDependencies:
       react: ^17.0.1
       react-dom: ^17.0.1
