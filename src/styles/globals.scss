@@ -1,12 +1,16 @@
 @import '~@zzf/design/dist/theme.scss';
-
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('https://zzfzzf.oss-cn-shanghai.aliyuncs.com/cdn/Roboto-Regular.woff2')
+}
 @font-face {
   font-family: 'NotoSansSC-Regular';
   src: url('https://oss-zzf.zzfzzf.com/cdn/NotoSansSC-Regular.woff2')
 }
 :root{
   font-size: 16px;
-  font-family: 'NotoSansSC-Regular',sans-serif;
+  font-family: Roboto-Regular,NotoSansSC-Regular,Helvetica,Arial,sans-serif;
+
 }
 
 .icon {
