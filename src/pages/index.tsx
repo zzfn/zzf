@@ -53,7 +53,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         <title>{getTitle('小时光')}</title>
       </Head>
       <BackTop>
-        <LottiePlayer size={40} url={'https://oss-zzf.zzfzzf.com/cdn/1638431830685XR0zJT.json'} />
+        <LottiePlayer size={40} url='https://oss-zzf.zzfzzf.com/cdn/1638431830685XR0zJT.json' />
       </BackTop>
       <Layout>
         <Layout.Content>
@@ -64,7 +64,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             loading={
               <LottiePlayer
                 size={200}
-                url={'https://oss-zzf.zzfzzf.com/cdn/1632384671572VMLK6m.json'}
+                url='https://oss-zzf.zzfzzf.com/cdn/1632384671572VMLK6m.json'
               />
             }
           >
@@ -74,18 +74,18 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
           </Loading>
         </Layout.Content>
         <Layout.Sidebar>
-          <Card title={'关于我'}>
+          <Card title='关于我'>
             <div className={styles.wrap}>
               <LottiePlayer
                 size={100}
-                url={'https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json'}
+                url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json'
               />
             </div>
           </Card>
-          <Card className={'mt-4 test'} title={'关于本站'}>
+          <Card className='mt-4 test' title='关于本站'>
             <div className={classNames('text-info', 'text-sm')}>本次加载时间{loadTime}ms</div>
           </Card>
-          <Card className={'mt-4'} title={'最近更新'}>
+          <Card className='mt-4' title='最近更新'>
             <ul>
               {serverProps.lastUpdatedList.map((n) => (
                 <li className={classNames('flex')} key={n.id}>
@@ -99,7 +99,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
                         'group',
                         'w-full',
                       )}
-                      target={'_blank'}
+                      target='_blank'
                     >
                       <div className={classNames('flex', 'justify-between', 'items-center')}>
                         <Icon
@@ -109,7 +109,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
                             'mr-4',
                             'duration-300',
                           )}
-                          name={'right'}
+                          name='right'
                         />
                         <div
                           className={classNames('truncate', 'font-medium', 'text-lg', 'text-info')}

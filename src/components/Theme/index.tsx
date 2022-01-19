@@ -37,11 +37,11 @@ const Theme: FC = () => {
             onChange={handleChange}
             value={theme}
             id={theme}
-            name={'theme'}
+            name='theme'
             type='radio'
           />
           <label title={translate.get(theme)} htmlFor={theme}>
-            <Icon className={'text-info'} size={30} name={theme} />
+            <Icon className='text-info' size={30} name={theme} />
           </label>
         </li>
       ))}

@@ -24,7 +24,7 @@ function Footer(): JSX.Element {
               'md:justify-start',
             )}
           >
-            Zzf <Icon name={'logo-min'} size={16} /> Zzf
+            Zzf <Icon name='logo-min' size={16} /> Zzf
           </div>
           <div
             className={classNames(
@@ -55,27 +55,27 @@ function Footer(): JSX.Element {
             ))}
           </ul>
         </div>
-        <div className={'ml-36'}>
+        <div className='ml-36'>
           <div className={classNames('text-gray-700', 'font-light', 'mb-3')}>链接</div>
           <ul>
             <li>
-              <Link href={'https://jenkins.zzfzzf.com/'}>
-                <a target={'_blank'}>jenkins</a>
+              <Link href='https://jenkins.zzfzzf.com/'>
+                <a target='_blank'>jenkins</a>
               </Link>
             </li>
             <li>
-              <Link href={'https://npm.zzfzzf.com/'}>
-                <a target={'_blank'}>npm</a>
+              <Link href='https://npm.zzfzzf.com/'>
+                <a target='_blank'>npm</a>
               </Link>
             </li>
             <li>
-              <Link href={'https://admin.zzfzzf.com/'}>
-                <a target={'_blank'}>admin</a>
+              <Link href='https://admin.zzfzzf.com/'>
+                <a target='_blank'>admin</a>
               </Link>
             </li>
             <li>
-              <Link href={'https://github.com/zzfn'}>
-                <a target={'_blank'}>github</a>
+              <Link href='https://github.com/zzfn'>
+                <a target='_blank'>github</a>
               </Link>
             </li>
           </ul>

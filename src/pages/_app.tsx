@@ -29,8 +29,8 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>
       <Head>
-        <link rel='shortcut icon' href={'/static/favicon.ico'} />
-        <link rel='icon' href={'/favicon.ico'} />
+        <link rel='shortcut icon' href='/static/favicon.ico' />
+        <link rel='icon' href='/favicon.ico' />
         <title>{getTitle('zzf')}</title>
         <meta
           name='keywords'
@@ -42,11 +42,11 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
           name='viewport'
         />
-        <script async src={'//at.alicdn.com/t/font_2620815_l30yg5g00kr.js'} />
+        <script async src='//at.alicdn.com/t/font_2620815_l30yg5g00kr.js' />
       </Head>
-      <Layout direction={'column'} className={'min-h-screen'}>
+      <Layout direction='column' className='min-h-screen'>
         <Header />
-        <Layout.Main className={'mt-2'}>
+        <Layout.Main className='mt-2'>
           <Component {...pageProps} />
         </Layout.Main>
         <Footer />

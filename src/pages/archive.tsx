@@ -77,7 +77,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <header className={classNames('text-base')}>
         很好! 目前共计 <strong>{serverProps.list.length}</strong> 篇文章。 继续努力。⛽️
       </header>
-      <Layout className={'hidden md:flex'}>
+      <Layout className='hidden md:flex'>
         <Layout.Content>
           <div className={`${styles.timeLine} color-text-info`}>
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
@@ -116,7 +116,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
           </div>
         </div>
       </nav>
-      <section className={'md:hidden color-text-info'}>
+      <section className='md:hidden color-text-info'>
         {active === 0 ? (
           <div className={styles.timeLine}>
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}

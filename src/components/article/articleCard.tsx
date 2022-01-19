@@ -12,7 +12,7 @@ interface ArticleCardProps {
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
     <div className={classNames('py-4', 'px-2', 'group')}>
-      <div className={'flex items-center'}>
+      <div className='flex items-center'>
         <Link prefetch={false} href={`/article/${dataSource.id}`}>
           <a
             className={classNames(
@@ -23,7 +23,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
               'group-hover:text-primary',
               'duration-300',
             )}
-            target={'_blank'}
+            target='_blank'
           >
             {dataSource.title}
           </a>
@@ -37,25 +37,25 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
               'text-xl',
               'text-info',
             )}
-            name={'zhiding'}
+            name='zhiding'
           />
         ) : null}
       </div>
-      <p className={'py-8 text-info'}>
+      <p className='py-8 text-info'>
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
       <ul className={classNames('flex', 'items-center', 'mt-2', 'text-info')}>
-        <li className={'w-1/4 md:w-32'} title={'标签'}>
+        <li className='w-1/4 md:w-32' title='标签'>
           <Tag>
             <Link prefetch={false} href={`/tag/${dataSource.tag}?title=${dataSource.tagDesc}`}>
               <a>{dataSource.tagDesc}</a>
             </Link>
           </Tag>
         </li>
-        <li className={'w-1/3 md:w-36 text-sm'} title={dataSource.createTime}>
+        <li className='w-1/3 md:w-36 text-sm' title={dataSource.createTime}>
           Created {diff(dataSource.createTime)}
         </li>
-        <li className={'w-1/3 md:w-36 text-sm'} title={dataSource.updateTime}>
+        <li className='w-1/3 md:w-36 text-sm' title={dataSource.updateTime}>
           Updated {diff(dataSource.updateTime)}
         </li>
       </ul>

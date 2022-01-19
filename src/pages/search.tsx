@@ -29,7 +29,7 @@ function Search(): JSX.Element {
       <Head>
         <title>{getTitle('搜索')}</title>
       </Head>
-      <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action={''}>
+      <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action=''>
         <Input
           autoFocus
           onChange={(event) => setKeyword(event.target.value)}
@@ -39,7 +39,7 @@ function Search(): JSX.Element {
         />
         <Button>回车搜索</Button>
       </form>
-      <div className={'text-info'}>
+      <div className='text-info'>
         {isFetching ? (
           <div>🔍 努力搜索中，请等待</div>
         ) : (
@@ -51,7 +51,7 @@ function Search(): JSX.Element {
       {result.length ? (
         result.map((item) => <SearchCard dataSource={item} key={item.id} />)
       ) : (
-        <LottiePlayer size={100} url={'https://cdn.zzfzzf.com/1632384732662vd6JJP.json'} />
+        <LottiePlayer size={100} url='https://cdn.zzfzzf.com/1632384732662vd6JJP.json' />
       )}
     </>
   );

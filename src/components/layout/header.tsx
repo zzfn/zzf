@@ -12,9 +12,9 @@ function Header(): JSX.Element {
     <>
       <Layout.Header className={classNames(styles.header)}>
         <div className={classNames('hidden', 'md:flex')}>
-          <Link href={'/'}>
-            <a className={'flex items-center text-brand text-5xl mr-2'}>
-              <SvgIcon name={'logo'} />
+          <Link href='/'>
+            <a className='flex items-center text-brand text-5xl mr-2'>
+              <SvgIcon name='logo' />
             </a>
           </Link>
           <nav className={styles.menu}>
@@ -30,9 +30,9 @@ function Header(): JSX.Element {
           onClick={() => setIsShow(!isShow)}
           name={isShow ? 'close' : 'menu'}
         />
-        <Link href={'/'}>
-          <a className={'flex items-center color-text-info inline-block md:hidden'}>
-            <SvgIcon className={classNames('text-4xl', 'text-brand')} name={'logo'} />
+        <Link href='/'>
+          <a className='flex items-center color-text-info inline-block md:hidden'>
+            <SvgIcon className={classNames('text-4xl', 'text-brand')} name='logo' />
           </a>
         </Link>
         <Theme />
