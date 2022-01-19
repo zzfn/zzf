@@ -17,7 +17,7 @@
         content: '';
         height: 2px;
         width: 100%;
-        background-color: var(--color-text-info);
+        background-color: var(--color-text-primary);
         position: absolute;
         left: 0;
         bottom: 0;
@@ -30,7 +30,7 @@
           visibility: visible;
           transform: scaleX(1);
         }
-        color: var(--color-text-brand);
+        color: var(--color-text-primary);
       }
 
       &:not(:last-child) {

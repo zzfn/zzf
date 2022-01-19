@@ -12,14 +12,13 @@ const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
     <div className={styles.card}>
       <Link href={`/article/${dataSource.id}`}>
-        <a className={styles.title} target='_blank'>
-          <h3 className={styles.title} style={{ marginLeft: '10px' }}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: dataSource.title,
-              }}
-            />
-          </h3>
+        <a target='_blank'>
+          <h3
+            dangerouslySetInnerHTML={{
+              __html: dataSource.title,
+            }}
+            className={classNames(styles.title, 'font-bold', 'text-xl')}
+          />
         </a>
       </Link>
       <div
