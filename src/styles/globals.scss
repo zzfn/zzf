@@ -1,8 +1,12 @@
 @import '~@zzf/design/dist/theme.scss';
 
-html {
+@font-face {
+  font-family: 'NotoSansSC-Regular';
+  src: url('https://oss-zzf.zzfzzf.com/cdn/NotoSansSC-Regular.woff2')
+}
+:root{
   font-size: 16px;
-  font-family: Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
+  font-family: 'NotoSansSC-Regular',sans-serif;
 }
 
 .icon {

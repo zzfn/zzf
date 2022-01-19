@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('https://oss-zzf.zzfzzf.com/cdn/JetBrainsMono-Regular.woff2')
+}
+
 .markdown-body {
   color: var(--color-text-info);
 
@@ -42,7 +47,8 @@
     color: var(--color-text-primary);
     font-weight: var(--font-weight-medium);
     text-decoration: none;
-    transition:box-shadow 200ms ease 0s;
+    transition: box-shadow 200ms ease 0s;
+
     &:hover {
       color: var(--color-text-primary);
       box-shadow: 0 2px 0 var(--color-text-primary);
@@ -50,6 +56,7 @@
   }
 
   code {
+    font-family: 'JetBrainsMono', monospace;
     word-break: break-word;
     border-radius: 3px;
     overflow-x: auto;
