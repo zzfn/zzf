@@ -31,6 +31,10 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
       <Head>
         <link rel='shortcut icon' href='/static/favicon.ico' />
         <link rel='icon' href='/favicon.ico' />
+        <link
+          href='//fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap'
+          rel='stylesheet'
+        />
         <title>{getTitle('zzf')}</title>
         <meta
           name='keywords'
