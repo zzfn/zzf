@@ -18,11 +18,11 @@
   h4,
   h5,
   h6 {
-    position: relative;
+    margin-top: 20px;
     font-weight: bold;
     line-height: 1.4;
     cursor: text;
-    color: var(--color-text-info);
+    color: var(--color-text-tertiary);
   }
 
   @for $i from 1 through 6 {
@@ -67,10 +67,10 @@
   }
 
   pre {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg-syntax);
 
     > code {
-      background-color: var(--color-bg-secondary);
+      background-color: var(--color-bg-syntax);
       color: var(--color-text-info);
       padding: 15px 12px;
       overflow-x: auto;
@@ -83,7 +83,7 @@
     padding: 5px 23px 1px;
     margin: 22px 0;
     border-left: 4px solid var(--color-border-brand);
-    background-color: hsla(0, 0%, 78.4%, 0.12);
+    background-color: var(--color-bg-muted);
     transition: all 0.2s ease-in-out;
   }
 

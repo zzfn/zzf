@@ -1,18 +1,21 @@
 @import '~@zzf/design/dist/theme.scss';
 @font-face {
   font-family: 'Roboto-Regular';
-  src: url('https://oss-zzf.zzfzzf.com/cdn/Roboto-Regular.woff2')
+  src: url('//oss-zzf.zzfzzf.com/cdn/Roboto-Regular.woff2')
 }
 @font-face {
   font-family: 'NotoSansSC-Regular';
-  src: url('https://oss-zzf.zzfzzf.com/cdn/NotoSansSC-Regular.woff2')
+  src: url('//oss-zzf.zzfzzf.com/cdn/NotoSansSC-Regular.woff2')
 }
 :root{
   font-size: 16px;
-  font-family: Roboto-Regular,NotoSansSC-Regular,Helvetica,Arial,sans-serif;
+  font-family: 'Roboto-Regular','NotoSansSC-Regular',Helvetica,Arial,sans-serif;
 
 }
-
+html{
+  scroll-behavior: smooth;
+  locale: "zh-Hans";
+}
 .icon {
   width: 1em;
   height: 1em;

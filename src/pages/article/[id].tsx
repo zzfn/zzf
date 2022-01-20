@@ -52,7 +52,9 @@ const ArticleDetail: NextPage<ServerProps> = (props) => {
         <Layout.Content>
           <main className={styles.article}>
             <div>
-              <h2 className={classNames('text-xl', 'text-brand')}>{serverProps.title}</h2>
+              <h2 className={classNames('text-xl', 'text-gray-1000', 'font-medium', 'text-4xl')}>
+                {serverProps.title}
+              </h2>
               <ul className={classNames(styles.tip, 'text-info', 'flex', 'flex-wrap', 'text-sm')}>
                 <li>
                   <span>标签</span>
