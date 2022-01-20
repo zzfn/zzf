@@ -4,11 +4,21 @@
   font-family: 'Roboto-Regular';
   src: url('//oss-zzf.zzfzzf.com/cdn/Roboto-Regular.woff2')
 }
+
+/* noto-sans-sc-regular */
 @font-face {
   font-display: swap;
   font-family: 'NotoSansSC-Regular';
-  src: url('//oss-zzf.zzfzzf.com/cdn/NotoSansSC-Regular.woff2')
+  font-style: normal;
+  src: url('//lib.baomitu.com/fonts/noto-sans-sc/noto-sans-sc-regular.eot'); /* IE9 Compat Modes */
+  src: local('Noto Sans SC'), local('NotoSans SC-Normal'),
+  url('//lib.baomitu.com/fonts/noto-sans-sc/noto-sans-sc-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//lib.baomitu.com/fonts/noto-sans-sc/noto-sans-sc-regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('//lib.baomitu.com/fonts/noto-sans-sc/noto-sans-sc-regular.woff') format('woff'), /* Modern Browsers */
+  url('//lib.baomitu.com/fonts/noto-sans-sc/noto-sans-sc-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('//lib.baomitu.com/fonts/noto-sans-sc/noto-sans-sc-regular.svg#NotoSans SC') format('svg'); /* Legacy iOS */
 }
+
 :root{
   font-size: 16px;
   font-family: 'Roboto-Regular','NotoSansSC-Regular',Helvetica,Arial,sans-serif;
@@ -16,7 +26,6 @@
 }
 html{
   scroll-behavior: smooth;
-  locale: "zh-Hans";
 }
 .icon {
   width: 1em;
