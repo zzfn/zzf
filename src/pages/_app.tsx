@@ -4,7 +4,7 @@ import Head from 'next/head';
 import '@zzf/design/dist/bundle.css';
 import 'styles/globals.scss';
 import 'tailwindcss/tailwind.css';
-import 'highlight.js/styles/rainbow.css';
+import 'highlight.js/styles/base16/railscasts.css';
 import Header from 'components/layout/header';
 import Footer from 'components/layout/footer';
 import 'styles/markdown.scss';
