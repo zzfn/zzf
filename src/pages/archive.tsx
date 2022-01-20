@@ -122,7 +122,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
             {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
           </div>
         ) : (
-          <div className={classNames(styles.menu, 'divide-dashed')}>
+          <div className={classNames(styles.menu, 'divide-solid', 'divide-y')}>
             {serverProps.tags.map((item) => (
               <React.Fragment key={item.code}>
                 <Link
