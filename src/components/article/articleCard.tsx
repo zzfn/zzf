@@ -17,7 +17,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           <a
             className={classNames(
               'text-gray-1000',
-              'hover:text-brand',
+              'hover:text-primary',
               'text-xl',
               'font-bold',
               'group-hover:text-primary',
@@ -28,7 +28,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
             {dataSource.title}
           </a>
         </Link>
-        {dataSource.orderNum ? (
+        {dataSource.orderNum > 0 && (
           <Icon
             className={classNames(
               'float-right',
@@ -39,9 +39,9 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
             )}
             name='zhiding'
           />
-        ) : null}
+        )}
       </div>
-      <p className='py-8 text-info'>
+      <p className={classNames('py-4', 'text-info', 'text-base')}>
         {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
       </p>
       <ul className={classNames('flex', 'items-center', 'mt-2', 'text-info')}>
