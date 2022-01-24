@@ -7,7 +7,7 @@ export default {
   env: { ...config },
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['cdn.zzfzzf.com'],
+    domains: ['oss-zzf.zzfzzf.com'],
   },
   sassOptions: {
     prependData: `@import "styles/variable";`,

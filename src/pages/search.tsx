@@ -37,14 +37,13 @@ function Search(): JSX.Element {
           type='search'
           placeholder='elasticsearch强力驱动'
         />
-        <Button>回车搜索</Button>
       </form>
       <div className='text-info'>
         {isFetching ? (
           <div>🔍 努力搜索中，请等待</div>
         ) : (
           <div>
-            共找到<strong>{result.length}</strong>条结果
+            共找到<strong className='text-primary'>{result.length}</strong>条结果
           </div>
         )}
       </div>

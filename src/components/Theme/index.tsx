@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
 import classNames from 'classnames';
-import Icon from '../Icon';
 import styles from './index.module.scss';
 import { setTheme } from '../../utils/theme';
+import { SvgIcon } from '@zzf/design';
 
 const translate = new Map([
   ['light', '浅色'],
@@ -41,7 +41,11 @@ const Theme: FC = () => {
             type='radio'
           />
           <label title={translate.get(theme)} htmlFor={theme}>
-            <Icon className='text-info' size={30} name={theme} />
+            <SvgIcon
+              className={active === theme ? 'text-primary' : 'text-info'}
+              size={30}
+              name={theme}
+            />
           </label>
         </li>
       ))}

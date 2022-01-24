@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { lastUpdated, listArticles } from 'api/article';
-import { BackTop, Card, Layout, Loading } from '@zzf/design';
+import { BackTop, Card, Layout, Loading, SvgIcon } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
@@ -10,7 +10,6 @@ import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
-import Icon from '../components/Icon';
 
 type LastUpdatedListType = {
   title: string;
@@ -102,7 +101,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
                       target='_blank'
                     >
                       <div className={classNames('flex', 'justify-between', 'items-center')}>
-                        <Icon
+                        <SvgIcon
                           className={classNames(
                             'group-hover:translate-x-2',
                             'text-primary',
