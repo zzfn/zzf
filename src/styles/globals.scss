@@ -1,6 +1,7 @@
 @import '~@zzf/design/dist/theme.scss';
 
 :root {
+  margin-left: calc(100vw - 100%);
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
   font-weight: var(--font-weight-light);

@@ -63,7 +63,7 @@
     word-break: break-word;
     border-radius: 3px;
     overflow-x: auto;
-    background-color: hsl(225deg, 25%, 95%);
+    background-color: var(--color-bg-decorative);
     color: var(--color-text-info);
     padding: 0.065em 0.4em;
   }

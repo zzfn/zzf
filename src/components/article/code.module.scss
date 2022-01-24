@@ -1,23 +1,19 @@
 .code {
   position: relative;
-
-  pre {
-    border-radius: 6px;
-    overflow: hidden;
-    font-size: 15px;
-    line-height: 1.5;
-  }
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 1.5;
 
   .action {
     position: absolute;
-    top: -25px;
+    top: -30px;
     right: 25px;
     font-size: 18px;
     color: var(--color-gray-700);
     background-color: var(--color-bg-syntax);
-    height: 25px;
-    line-height: 25px;
-    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
     border-radius: 8px 8px 0 0;
   }
 }

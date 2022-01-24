@@ -7,20 +7,18 @@ type CodeProps = {
 };
 const Code: CodeProps = ({ language, code }) => {
   return (
-    <div className={styles.code}>
-      <pre>
-        <code
-          dangerouslySetInnerHTML={{
-            __html: language
-              ? hljs.highlight(code, { language }).value
-              : hljs.highlightAuto(code).value,
-          }}
-          className={`language-${language}`}
-          lang={language}
-        />
-      </pre>
-      <div className={styles.action}>{language}</div>
-    </div>
+    <pre className={styles.code}>
+      <code
+        dangerouslySetInnerHTML={{
+          __html: language
+            ? hljs.highlight(code, { language }).value
+            : hljs.highlightAuto(code).value,
+        }}
+        className={`language-${language}`}
+        lang={language}
+      />
+      {language && <div className={styles.action}>{language}</div>}
+    </pre>
   );
 };
 export default Code;

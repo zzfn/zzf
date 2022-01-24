@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import { lastUpdated, listArticles } from 'api/article';
-import { BackTop, Card, Layout, Loading, SvgIcon } from '@zzf/design';
+import { Card, Layout, Loading, SvgIcon } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
@@ -51,9 +51,6 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
       <Head>
         <title>{getTitle('小时光')}</title>
       </Head>
-      <BackTop>
-        <LottiePlayer size={40} url='https://oss-zzf.zzfzzf.com/cdn/1638431830685XR0zJT.json' />
-      </BackTop>
       <Layout>
         <Layout.Content>
           <Loading
