@@ -117,7 +117,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
                           {n.title}
                         </div>
                       </div>
-                      <div className={classNames('whitespace-nowrap', 'text-sm','text-gray-1000')}>
+                      <div className={classNames('whitespace-nowrap', 'text-sm', 'text-gray-1000')}>
                         --{diff(n.updateTime)}
                       </div>
                     </a>
