@@ -2,8 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { diff } from '../../utils/time';
 import classNames from 'classnames';
-import Icon from '../Icon';
-import { Tag } from '@zzf/design';
+import { SvgIcon, Tag } from '@zzf/design';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -29,7 +28,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           </a>
         </Link>
         {dataSource.orderNum > 0 && (
-          <Icon
+          <SvgIcon
             className={classNames(
               'float-right',
               'transform',

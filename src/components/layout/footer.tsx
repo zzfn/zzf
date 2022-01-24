@@ -1,8 +1,7 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Layout } from '@zzf/design';
+import { Layout, SvgIcon } from '@zzf/design';
 import classNames from 'classnames';
-import Icon from 'components/Icon';
 import Link from 'next/link';
 import json from '../../menus.json';
 
@@ -24,7 +23,7 @@ function Footer(): JSX.Element {
               'md:justify-start',
             )}
           >
-            Zzf <Icon name='logo-min' size={16} /> Zzf
+            Zzf <SvgIcon name='logo-min' size={16} /> Zzf
           </div>
           <div
             className={classNames(

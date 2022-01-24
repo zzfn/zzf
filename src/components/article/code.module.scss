@@ -2,35 +2,22 @@
   position: relative;
 
   pre {
-    padding-top: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 1.5;
   }
 
   .action {
-    font-size: 13px;
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--color-scale-gray-0);
-
-    &::before {
-      width: 100px;
-      content: ' ';
-      height: 15px;
-      background: url('//cdn.zzfzzf.com/163238704914219I4dn.png') no-repeat left;
-      background-size: 40px;
-    }
-
-    &::after {
-      text-align: right;
-      width: 100px;
-      content: attr(lang);
-      height: 15px;
-      line-height: 15px;
-      background-size: 40px;
-    }
+    top: -25px;
+    right: 25px;
+    font-size: 18px;
+    color: var(--color-gray-700);
+    background-color: var(--color-bg-syntax);
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+    border-radius: 8px 8px 0 0;
   }
 }

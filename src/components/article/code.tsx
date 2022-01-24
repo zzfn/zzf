@@ -19,7 +19,7 @@ const Code: CodeProps = ({ language, code }) => {
           lang={language}
         />
       </pre>
-      <div lang={language} className={styles.action} />
+      <div className={styles.action}>{language}</div>
     </div>
   );
 };

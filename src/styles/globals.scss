@@ -1,15 +1,8 @@
 @import '~@zzf/design/dist/theme.scss';
 
-@font-face {
-  font-display: swap;
-  font-family: 'Roboto-Regular';
-  src: url('//oss-zzf.zzfzzf.com/cdn/Roboto-Regular.woff2')
-}
-
-
 :root {
   font-size: 16px;
-  font-family: 'Roboto-Regular', 'Noto Sans SC', Helvetica, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
   font-weight: var(--font-weight-light);
 }
 
