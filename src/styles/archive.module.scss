@@ -83,7 +83,6 @@
 }
 
 .title {
-  color: var(--color-text-brand);
   margin: 20px;
   position: relative;
 
@@ -119,8 +118,8 @@
   }
 
   &:hover {
-    color: var(--color-text-brand);
-    background: var(--color-bg-brand);
+    color: var(--color-text-primary);
+    background: var(--color-bg-primary);
 
     &::before {
       background: var(--color-bg-brand);

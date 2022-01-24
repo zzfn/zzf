@@ -18,7 +18,7 @@
   h4,
   h5,
   h6 {
-    margin-top: 20px;
+    margin: 20px 0 10px;
     font-weight: bold;
     line-height: 1.4;
     cursor: text;
@@ -32,10 +32,12 @@
   }
 
   ol {
+    padding-left: 20px;
     list-style: decimal inside;
   }
 
   ul {
+    padding-left: 20px;
     list-style: disc inside;
   }
 
