@@ -50,7 +50,7 @@ function Search(): JSX.Element {
       {result.length ? (
         result.map((item) => <SearchCard dataSource={item} key={item.id} />)
       ) : (
-        <LottiePlayer size={100} url='https://cdn.zzfzzf.com/1632384732662vd6JJP.json' />
+        <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384732662vd6JJP.json' />
       )}
     </>
   );

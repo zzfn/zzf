@@ -5,9 +5,8 @@
   "scripts": {
     "prepare": "husky install",
     "postbuild": "next-sitemap",
-    "start:dev": "cross-env APP=development next dev",
-    "start:prod": "cross-env APP=production next dev",
-    "build": "cross-env APP=production next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start -p 9800",
     "start:cdn": "cross-env BUILD_TARGET=cdn next start -p 9800",
     "lint": "next lint",
