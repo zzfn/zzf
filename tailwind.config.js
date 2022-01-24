@@ -1,11 +1,6 @@
 module.exports = {
   content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
   theme: {
-    fontWeight: {
-      light: 'var(--font-weight-light)',
-      medium: 'var(--font-weight-medium)',
-      bold: 'var(--font-weight-bold)',
-    },
     colors: {
       info: 'var(--color-text-info)',
       primary: 'var(--color-text-primary)',

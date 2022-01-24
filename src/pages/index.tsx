@@ -79,7 +79,9 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             </div>
           </Card>
           <Card className='mt-4 test' title='关于本站'>
-            <div className={classNames('text-info', 'text-sm')}>本次加载时间{loadTime}ms</div>
+            <div className={classNames('text-info', 'text-sm')}>
+              本次加载时间 <span className='font-medium'>{loadTime}</span> ms
+            </div>
           </Card>
           <Card className='mt-4' title='最近更新'>
             <ul>
