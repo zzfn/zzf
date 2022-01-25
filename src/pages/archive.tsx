@@ -33,17 +33,7 @@ function renderMonth(time: string, list: ListProps[]) {
       </h3>
       <ul>
         {list?.map((item) => (
-          <li
-            className={classNames(
-              styles.item,
-              'text-sm',
-              'text-info',
-              'border-solid',
-              'border-b',
-              'border-b-current',
-            )}
-            key={item.id}
-          >
+          <li className={classNames(styles.item, 'text-sm', 'text-info')} key={item.id}>
             <span className={classNames('font-mono', 'text-info', 'mr-3')}>
               {dayjs(item.createTime).format('YYYY-MM-DD')}
             </span>
