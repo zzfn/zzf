@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
+import useFcp from '../hooks/useFcp';
 
 type LastUpdatedListType = {
   title: string;
@@ -26,7 +27,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   const { serverProps } = props;
   const page = useRef(serverProps.current);
   const [noMore, setNoMore] = useState(false);
-  const [loadTime, setLoadTime] = useState(0);
+  const loadTime = useFcp();
   const [records, setRecords] = useState(serverProps.records);
 
   async function handleLoad() {
@@ -39,13 +40,6 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
     page.current = data.current;
   }
 
-  useEffect(() => {
-    new PerformanceObserver((entryList) => {
-      for (const entry of entryList.getEntriesByName('first-contentful-paint')) {
-        setLoadTime(Math.floor(entry.startTime));
-      }
-    }).observe({ type: 'paint', buffered: true });
-  }, []);
   return (
     <>
       <Head>
