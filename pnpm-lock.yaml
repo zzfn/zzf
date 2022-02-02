@@ -34,7 +34,7 @@ specifiers:
   lottie-web: ^5.8.1
   marked: ^4.0.10
   next: ^12.0.8
-  next-sitemap: ^1.9.12
+  next-sitemap: ^2.1.6
   postcss: ^8.4.5
   postcss-scss: ^4.0.3
   prettier: ^2.5.1
@@ -90,7 +90,7 @@ devDependencies:
   eslint-plugin-react-hooks: 4.3.0_eslint@8.7.0
   husky: 7.0.4
   lint-staged: 12.2.2
-  next-sitemap: 1.9.12_next@12.0.8
+  next-sitemap: 2.1.6_next@12.0.8
   postcss: 8.4.5
   prettier: 2.5.1
   sass: 1.49.0
@@ -2875,8 +2875,8 @@ packages:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
     dev: false
 
-  /next-sitemap/1.9.12_next@12.0.8:
-    resolution: {integrity: sha512-kHXf4ZNAGLJyK16HbjzE5X9JlKwXtxW+9J4dh3oT7LSbU/+3bN+VqWjNw/776Otbanf7EJsvl51oQ78qQW5XBQ==}
+  /next-sitemap/2.1.6_next@12.0.8:
+    resolution: {integrity: sha512-62toKkimpFSV1BhsVk+IyZewtVboQ9JCAhtx9vR7620pPcEfTDvp4Jtb03A1oAX3PMjiqf5T45SvDBO4Kv4LTA==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
