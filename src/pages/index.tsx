@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Head from 'next/head';
 import { lastUpdated, listArticles } from 'api/article';
 import { Card, Layout, Loading, SvgIcon } from '@zzf/design';
