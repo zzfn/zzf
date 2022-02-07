@@ -54,7 +54,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
             loading={
               <LottiePlayer
                 size={200}
-                url={`${process.env.NEXT_PUBLIC_OSS_URL}/cdn/1632384671572VMLK6m.json`}
+                url={`${process.env.NEXT_PUBLIC_CDN_URL}/cdn/1632384671572VMLK6m.json`}
               />
             }
           >
