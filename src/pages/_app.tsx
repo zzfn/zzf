@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Script from 'next/script'
+import Script from 'next/script';
 import Head from 'next/head';
 import '@zzf/design/dist/bundle.css';
 import 'styles/globals.scss';

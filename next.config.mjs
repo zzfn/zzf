@@ -1,4 +1,4 @@
-const isCdn = process.env.BUILD_TARGET === 'cdn'
+const isCdn = process.env.BUILD_TARGET === 'cdn';
 
 export default {
   swcMinify: true,
