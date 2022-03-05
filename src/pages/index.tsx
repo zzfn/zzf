@@ -11,6 +11,7 @@ import { diff } from '../utils/time';
 import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
 import useFcp from '../hooks/useFcp';
+import { useInfiniteQuery } from 'react-query';
 
 type LastUpdatedListType = {
   title: string;
@@ -25,20 +26,26 @@ type HomeType = {
 };
 const Home: React.FC<NextProps<HomeType>> = (props) => {
   const { serverProps } = props;
-  const page = useRef(serverProps.current);
-  const [noMore, setNoMore] = useState(false);
   const loadTime = useFcp();
-  const [records, setRecords] = useState(serverProps.records);
 
-  async function handleLoad() {
-    const { data } = await listArticles({
-      current: page.current + 1,
-      pageSize: 10,
-    });
-    setRecords([...records, ...data.records]);
-    setNoMore(data.records.length === 0);
-    page.current = data.current;
-  }
+  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
+    'projects',
+    (k) =>
+      listArticles({
+        current: k.pageParam,
+        pageSize: 10,
+      }).then((data) => data.data.records),
+    {
+      refetchOnWindowFocus: false,
+      initialData: {
+        pages: [serverProps.records],
+        pageParams: [1],
+      },
+      getNextPageParam: (lastPage, pages) => {
+        return lastPage.length ? pages.length + 1 : undefined;
+      },
+    },
+  );
 
   return (
     <>
@@ -48,9 +55,8 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
       <Layout>
         <Layout.Content>
           <Loading
-            noMore={noMore}
-            key={page.current}
-            onLoad={handleLoad}
+            noMore={!hasNextPage}
+            onLoad={fetchNextPage}
             loading={
               <LottiePlayer
                 size={200}
@@ -58,8 +64,12 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
               />
             }
           >
-            {records.map((item: Article) => (
-              <ArticleCard key={item.id} dataSource={item} />
+            {data.pages.map((item, i) => (
+              <React.Fragment key={i}>
+                {item.map((project) => (
+                  <ArticleCard key={project.id} dataSource={project} />
+                ))}
+              </React.Fragment>
             ))}
           </Loading>
         </Layout.Content>
