@@ -106,13 +106,8 @@
   table {
     margin: 20px 0;
 
-    th {
-      padding: 6px 13px;
-      border: 1px solid var(--color-text-info);
-    }
-
+    th,
     td {
-      white-space: nowrap;
       padding: 6px 13px;
       border: 1px solid var(--color-text-info);
     }
