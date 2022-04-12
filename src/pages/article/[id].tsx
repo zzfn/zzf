@@ -10,6 +10,7 @@ import { Layout, Progress } from '@zzf/design';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
+import Evaluation from '../../components/Evaluation';
 
 interface Data {
   content?: string;
@@ -80,6 +81,7 @@ const ArticleDetail: NextPage<ServerProps> = (props) => {
                 __html: translateMarkdown(serverProps.content),
               }}
             />
+            {serverProps.id && <Evaluation id={serverProps.id} />}
           </main>
         </Layout.Content>
         <Layout.Sidebar>
