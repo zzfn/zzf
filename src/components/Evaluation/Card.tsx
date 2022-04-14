@@ -5,7 +5,7 @@ function Card(props: any) {
   return (
     <div className='border-solid border-b'>
       <header className='flex justify-between'>
-        <div className={'flex'}>
+        <div className='flex'>
           <img
             width={20}
             src='//oss-zzf.zzfzzf.com/001tzwrBly1gvqp2mv1lhj60zk0qoqin02.jpg'

@@ -20,7 +20,7 @@ function Evaluation(props: any) {
       createBy: result.visitorId,
     });
     // console.log(data);
-    initial()
+    initial();
   };
   useEffect(() => {
     initial();
