@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import { Button } from '@zzf/design';
+import classNames from 'classnames';
 
 function Evaluation(props: any) {
   const { id } = props;
@@ -12,6 +14,7 @@ function Evaluation(props: any) {
     setList(data);
   };
   const save = async (dataSource: any) => {
+    if (!msg) return;
     const instance = await FingerprintJS.load();
     const result = await instance.get();
     const { data } = await saveDiscuss({
@@ -27,19 +30,15 @@ function Evaluation(props: any) {
   }, [id]);
   return (
     <>
-      <hr />
-      <header>
-        <span>全部评论（{list?.length}）</span>
-        <span onClick={save}>评论</span>
-      </header>
-      <div>
+      <header className={classNames('border-y', 'my-4')}>全部评论（{list?.length}）</header>
+      <section className='flex'>
         <textarea value={msg} onChange={(e) => setMsg(e.target.value)} className='border' />
-        <button onClick={save} className='border'>
+        <Button onClick={save} className='border'>
           评论
-        </button>
-      </div>
+        </Button>
+      </section>
       {list?.map((item: any, index: number) => {
-        return <Card index={index} key={item.id} data={item} />;
+        return <Card index={list.length - index} key={item.id} data={item} />;
       })}
     </>
   );
