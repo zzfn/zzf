@@ -12,6 +12,13 @@ async function http<T>(config: AxiosRequestConfig): Promise<Res<T>> {
   });
   instance.interceptors.request.use(
     (config) => {
+      if (typeof window !== 'undefined') {
+        const Authorization = localStorage.getItem('uid')
+          ? `Bearer ${localStorage.getItem('uid')}`
+          : null;
+        Reflect.set(config.headers, 'Authorization', Authorization);
+        Reflect.set(config.headers, 'System', 'blog');
+      }
       return config;
     },
     (error) => {

@@ -1,44 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
-import { listDiscuss, saveDiscuss } from 'api/discuss';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
-import { Button } from '@zzf/design';
+import { listDiscuss } from 'api/discuss';
 import classNames from 'classnames';
+import Portal from './Portal';
+import Comment from './Comment';
 
 function Evaluation(props: any) {
   const { id } = props;
   const [list, setList] = useState([]);
-  const [msg, setMsg] = useState('');
+  const [len, setLen] = useState(0);
   const initial = async () => {
     const { data } = await listDiscuss({ id });
-    setList(data);
-  };
-  const save = async (dataSource: any) => {
-    if (!msg) return;
-    const instance = await FingerprintJS.load();
-    const result = await instance.get();
-    const { data } = await saveDiscuss({
-      articleId: id,
-      content: msg,
-      createBy: result.visitorId,
-    });
-    // console.log(data);
-    initial();
+    setLen(data.length);
+    const r = data.reduce((prev: any, curr: any) => {
+      if (curr.parentId) {
+        const obj = data.find((item: any) => item.id === curr.parentId);
+        if (obj) {
+          const reply = data.find((item: any) => item.id === curr.replyId);
+          curr.replyName = reply.nickName;
+          obj.children = obj.children || [];
+          obj.children.push(curr);
+        }
+      } else {
+        prev.push(curr);
+      }
+      return prev;
+    }, []);
+    console.log(r);
+    setList(r);
   };
   useEffect(() => {
     initial();
   }, [id]);
   return (
     <>
-      <header className={classNames('border-y', 'my-4')}>全部评论（{list?.length}）</header>
-      <section className='flex'>
-        <textarea value={msg} onChange={(e) => setMsg(e.target.value)} className='border' />
-        <Button onClick={save} className='border'>
-          评论
-        </Button>
-      </section>
-      {list?.map((item: any, index: number) => {
-        return <Card index={list.length - index} key={item.id} data={item} />;
+      <header
+        className={classNames('border-y', 'my-4', 'flex', 'justify-between', 'text-gray-400')}
+      >
+        全部评论（{len}）
+        <Portal toggled={<span className='text-gray-400'>点击回复</span>}>
+          <Comment articleId={id} updateList={initial} />
+        </Portal>
+      </header>
+      {list?.map((item: any) => {
+        return <Card updateList={initial} key={item.id} dataSource={item} />;
       })}
     </>
   );
