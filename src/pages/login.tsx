@@ -1,5 +1,5 @@
 import { Button, Input } from '@zzf/design';
-import { login } from 'api/user';
+import { login, register } from 'api/user';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -13,6 +13,14 @@ const Login = () => {
     const { data } = await login(loginInfo);
     localStorage.setItem('uid', data.token);
     router.back();
+  };
+  const handleRegister = async () => {
+    const { code, msg } = await register(loginInfo);
+    if (code === 0) {
+      alert('注册成功，请登录');
+    } else {
+      alert(msg);
+    }
   };
   return (
     <div>
@@ -34,6 +42,8 @@ const Login = () => {
         />
       </div>
       <Button onClick={handleLogin}>登录</Button>
+      <Button onClick={handleRegister}>注册</Button>
+      <a href='//admin.zzfzzf.com'>后台系统可使用注册的账号登录</a>
     </div>
   );
 };
