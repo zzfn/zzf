@@ -17,8 +17,8 @@ async function http<T>(config: AxiosRequestConfig): Promise<Res<T>> {
           ? `Bearer ${localStorage.getItem('uid')}`
           : null;
         Reflect.set(config.headers, 'Authorization', Authorization);
-        Reflect.set(config.headers, 'System', 'blog');
       }
+      Reflect.set(config.headers, 'System', 'blog');
       return config;
     },
     (error) => {
