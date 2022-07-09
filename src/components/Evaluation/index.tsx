@@ -3,7 +3,7 @@ import Card from './Card';
 import { listDiscuss } from 'api/discuss';
 import classNames from 'classnames';
 import Comment from './Comment';
-import { Modal } from "@zzf/design";
+import { Modal } from '@zzf/design';
 
 function Evaluation(props: any) {
   const { id } = props;

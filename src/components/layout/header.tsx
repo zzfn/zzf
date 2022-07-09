@@ -30,7 +30,7 @@ function Header(): JSX.Element {
           </a>
         </Link>
         <Modal
-          title={'login'}
+          title='login'
           toggled={
             <SvgIcon className={classNames('text-brand-primary', 'mr-2')} size={25} name='user' />
           }
