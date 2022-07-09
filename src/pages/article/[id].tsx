@@ -10,6 +10,8 @@ import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Evaluation from '../../components/Evaluation';
+import { useDispatch } from 'react-redux';
+import type { Dispatch } from 'store';
 
 interface Data {
   content?: string;
@@ -29,8 +31,10 @@ interface ServerProps {
 
 const ArticleDetail: NextPage<ServerProps> = (props) => {
   const { serverProps = {} } = props;
+  const dispatch = useDispatch<Dispatch>();
 
   useEffect(() => {
+    dispatch.count.incrementAsync(2);
     updateView({ id: serverProps.id }).then();
     const imgList = document.querySelectorAll('.zoom');
     const zooming = new Zooming({

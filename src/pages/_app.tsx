@@ -15,6 +15,8 @@ import { getTitle } from '../utils/getTitle';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
 import { initTheme } from '../utils/theme';
+import { Provider } from 'react-redux';
+import { store } from 'store';
 
 export function reportWebVitals(metric: NextWebVitalsMetric): void {
   const monitor = new Monitor();
@@ -30,39 +32,41 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Head>
-        <link rel='shortcut icon' href='/static/favicon.ico' />
-        <link rel='icon' href='/favicon.ico' />
-        <title>{getTitle('zzf')}</title>
-        <meta
-          name='keywords'
-          content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
-        />
-        <meta name='description' content='zzf的个人网站,记录个人学习' />
-        <meta name='theme-color' content='#ffffff' />
-        <meta
-          content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
-          name='viewport'
-        />
-      </Head>
-      <Script async src='//at.alicdn.com/t/font_2620815_l30yg5g00kr.js' />
-      <Layout className='min-h-screen'>
-        <Layout.Header>
-          <Header />
-        </Layout.Header>
-        <Layout.Content>
-          <Layout.Center>
-            <Component {...pageProps} />
-          </Layout.Center>
-          <Layout.Right>
-            <Right />
-            {/*<Nav source={serverProps.content} />*/}
-          </Layout.Right>
-        </Layout.Content>
-        <Layout.Footer>
-          <Footer />
-        </Layout.Footer>
-      </Layout>
+      <Provider store={store}>
+        <Head>
+          <link rel='shortcut icon' href='/static/favicon.ico' />
+          <link rel='icon' href='/favicon.ico' />
+          <title>{getTitle('zzf')}</title>
+          <meta
+            name='keywords'
+            content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
+          />
+          <meta name='description' content='zzf的个人网站,记录个人学习' />
+          <meta name='theme-color' content='#ffffff' />
+          <meta
+            content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
+            name='viewport'
+          />
+        </Head>
+        <Script async src='//at.alicdn.com/t/font_2620815_l30yg5g00kr.js' />
+        <Layout className='min-h-screen'>
+          <Layout.Header>
+            <Header />
+          </Layout.Header>
+          <Layout.Content>
+            <Layout.Center>
+              <Component {...pageProps} />
+            </Layout.Center>
+            <Layout.Right>
+              <Right />
+              {/*<Nav source={serverProps.content} />*/}
+            </Layout.Right>
+          </Layout.Content>
+          <Layout.Footer>
+            <Footer />
+          </Layout.Footer>
+        </Layout>
+      </Provider>
     </QueryClientProvider>
   );
 }
