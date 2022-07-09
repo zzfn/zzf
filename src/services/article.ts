@@ -76,7 +76,7 @@ type LastUpdatedListType = {
   updateTime: string;
 };
 export const lastUpdated = () => {
-  return http<LastUpdatedListType>({
+  return http<LastUpdatedListType[]>({
     method: 'get',
     url: '/article/lastUpdated',
   });

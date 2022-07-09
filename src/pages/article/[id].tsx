@@ -4,9 +4,8 @@ import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
-import Nav from 'components/article/nav';
 import Zooming from 'zooming';
-import { Layout, Progress } from '@zzf/design';
+import { Progress } from '@zzf/design';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
@@ -50,43 +49,38 @@ const ArticleDetail: NextPage<ServerProps> = (props) => {
       </Head>
       <>
         <Progress />
-        <Layout.Content>
-          <main className={styles.article}>
-            <div>
-              <h2 className={classNames('text-xl', 'text-gray-1000', 'font-medium', 'text-4xl')}>
-                {serverProps.title}
-              </h2>
-              <ul className={classNames(styles.tip, 'text-info', 'flex', 'flex-wrap', 'text-sm')}>
-                <li>
-                  <span>标签</span>
-                  {serverProps.tagDesc}
-                </li>
-                <li>
-                  <span>阅读量</span>
-                  {serverProps.viewCount}
-                </li>
-                <li>
-                  <span>发布于</span>
-                  {serverProps.createTime}
-                </li>
-                <li>
-                  <span>更新于</span>
-                  {serverProps.updateTime}
-                </li>
-              </ul>
-            </div>
-            <article
-              className={classNames('markdown-body', 'text-sm')}
-              dangerouslySetInnerHTML={{
-                __html: translateMarkdown(serverProps.content),
-              }}
-            />
-            {serverProps.id && <Evaluation id={serverProps.id} />}
-          </main>
-        </Layout.Content>
-        <Layout.Sidebar>
-          <Nav source={serverProps.content} />
-        </Layout.Sidebar>
+        <main className={classNames(styles.article, 'bg-primary')}>
+          <div>
+            <h2 className={classNames('text-xl', 'text-gray-1000', 'font-medium', 'text-4xl')}>
+              {serverProps.title}
+            </h2>
+            <ul className={classNames(styles.tip, 'text-info', 'flex', 'flex-wrap', 'text-sm')}>
+              <li>
+                <span>标签</span>
+                {serverProps.tagDesc}
+              </li>
+              <li>
+                <span>阅读量</span>
+                {serverProps.viewCount}
+              </li>
+              <li>
+                <span>发布于</span>
+                {serverProps.createTime}
+              </li>
+              <li>
+                <span>更新于</span>
+                {serverProps.updateTime}
+              </li>
+            </ul>
+          </div>
+          <article
+            className={classNames('markdown-body', 'text-sm')}
+            dangerouslySetInnerHTML={{
+              __html: translateMarkdown(serverProps.content),
+            }}
+          />
+          {serverProps.id && <Evaluation id={serverProps.id} />}
+        </main>
       </>
     </div>
   );

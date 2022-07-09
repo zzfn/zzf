@@ -1,8 +1,4 @@
-.header {
-  height: 60px;
-  font-weight: 600;
-
-  .menu {
+.menu {
     display: flex;
     align-items: center;
     font-size: 16px;
@@ -38,7 +34,6 @@
       }
     }
   }
-}
 
 .dropdown {
   background: var(--color-bg-primary);

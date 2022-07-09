@@ -1,63 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Layout, SvgIcon } from '@zzf/design';
+import { SvgIcon } from '@zzf/design';
 import styles from './header.module.scss';
 import menus from '../../menus.json';
 import classNames from 'classnames';
-import Theme from '../Theme';
 
 function Header(): JSX.Element {
-  const [isShow, setIsShow] = useState(false);
   return (
     <>
-      <Layout.Header className={classNames(styles.header)}>
-        <div className={classNames('hidden', 'md:flex')}>
-          <Link href='/'>
-            <a
-              className={classNames(
-                'flex',
-                'items-center',
-                'text-brand',
-                'text-5xl',
-                'mr-2',
-                'text-primary',
-              )}
-            >
-              <SvgIcon name='logo' />
-            </a>
-          </Link>
-          <nav className={styles.menu}>
-            {menus.map((menu) => (
-              <Link key={menu.name} href={menu.path}>
-                {menu.name}
-              </Link>
-            ))}
-          </nav>
-        </div>
-        <SvgIcon
-          className={classNames('text-3xl inline-block md:hidden')}
-          onClick={() => setIsShow(!isShow)}
-          name={isShow ? 'close' : 'menu'}
-        />
+      <div className={classNames('flex', 'items-center')}>
         <Link href='/'>
-          <a className='flex items-center color-text-info inline-block md:hidden'>
-            <SvgIcon className={classNames('text-4xl', 'text-brand')} name='logo' />
+          <a className={classNames('text-brand', 'text-xl', 'mr-2', 'text-primary')}>
+            cc&apos;s Blog
           </a>
         </Link>
-        <Theme />
-      </Layout.Header>
-      {isShow && (
-        <nav
-          onClick={() => setIsShow(false)}
-          className={classNames(styles.dropdown, 'anim-fade-in', 'md:hidden')}
-        >
+        <nav className={styles.menu}>
           {menus.map((menu) => (
             <Link key={menu.name} href={menu.path}>
               {menu.name}
             </Link>
           ))}
         </nav>
-      )}
+      </div>
+      <Link href='/search'>
+        <a className={classNames('text-brand', 'text-xl', 'mr-2', 'text-primary')}>
+          <SvgIcon name='search' />
+        </a>
+      </Link>
     </>
   );
 }

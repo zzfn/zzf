@@ -2,7 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { diff } from '../../utils/time';
 import classNames from 'classnames';
+import Image from 'next/image';
 import { SvgIcon, Tag } from '@zzf/design';
+import dayjs from 'dayjs';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -10,54 +12,38 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
-    <div className={classNames('py-4', 'px-2', 'group')}>
-      <div className='flex items-center'>
-        <Link prefetch={false} href={`/article/${dataSource.id}`}>
-          <a
-            className={classNames(
-              'text-gray-1000',
-              'hover:text-primary',
-              'text-xl',
-              'font-bold',
-              'group-hover:text-primary',
-              'duration-300',
-            )}
-            target='_blank'
-          >
-            {dataSource.title}
-          </a>
-        </Link>
-        {dataSource.orderNum > 0 && (
-          <SvgIcon
-            className={classNames(
-              'float-right',
-              'transform',
-              '-translate-y-4',
-              'text-xl',
-              'text-info',
-            )}
-            name='zhiding'
-          />
-        )}
-      </div>
-      <p className={classNames('py-4', 'text-info', 'text-base')}>
-        {dataSource.content.replace(/[^\u4e00-\u9fa5\w]/g, '').slice(0, 100)}
-      </p>
-      <ul className={classNames('flex', 'items-center', 'mt-2', 'text-info')}>
-        <li className='w-1/4 md:w-32' title='标签'>
-          <Tag>
-            <Link prefetch={false} href={`/tag/${dataSource.tag}?title=${dataSource.tagDesc}`}>
-              <a>{dataSource.tagDesc}</a>
+    <>
+      <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-3.5 bg-primary'>
+        <div className='md:flex'>
+          <div className='md:shrink-0'>
+            <img
+              className='h-48 w-full object-cover md:h-full md:w-48'
+              src={dataSource.logo}
+              alt='Man looking at item at a store'
+            />
+          </div>
+          <div className='p-8'>
+            <div className='uppercase tracking-wide text-sm text-indigo-500 font-semibold'>
+              {dataSource.tagDesc}·
+              {dayjs(
+                Math.max(
+                  new Date(dataSource.createTime).getTime(),
+                  new Date(dataSource.updateTime).getTime(),
+                ),
+              ).format('YYYY-MM-DD')}
+            </div>
+            <Link prefetch={false} href={`/article/${dataSource.id}`}>
+              <a
+                target='_blank'
+                className='block mt-1 text-lg leading-tight font-medium text-black hover:underline'
+              >
+                {dataSource.title}
+              </a>
             </Link>
-          </Tag>
-        </li>
-        <li className='w-1/3 md:w-36 text-sm' title={dataSource.createTime}>
-          Created {diff(dataSource.createTime)}
-        </li>
-        <li className='w-1/3 md:w-36 text-sm' title={dataSource.updateTime}>
-          Updated {diff(dataSource.updateTime)}
-        </li>
-      </ul>
-    </div>
+            <p className='mt-2 text-slate-500'>{dataSource.summary}</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

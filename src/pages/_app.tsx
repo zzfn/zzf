@@ -8,6 +8,7 @@ import 'tailwindcss/tailwind.css';
 import 'highlight.js/styles/base16/railscasts.css';
 import Header from 'components/layout/header';
 import Footer from 'components/layout/footer';
+import Right from 'components/layout/right';
 import 'styles/markdown.scss';
 import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
@@ -45,12 +46,22 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         />
       </Head>
       <Script async src='//at.alicdn.com/t/font_2620815_l30yg5g00kr.js' />
-      <Layout direction='column' className='min-h-screen'>
-        <Header />
-        <Layout.Main className='mt-2'>
-          <Component {...pageProps} />
-        </Layout.Main>
-        <Footer />
+      <Layout className='min-h-screen'>
+        <Layout.Header>
+          <Header />
+        </Layout.Header>
+        <Layout.Content>
+          <Layout.Center>
+            <Component {...pageProps} />
+          </Layout.Center>
+          <Layout.Right>
+            <Right />
+            {/*<Nav source={serverProps.content} />*/}
+          </Layout.Right>
+        </Layout.Content>
+        <Layout.Footer>
+          <Footer />
+        </Layout.Footer>
       </Layout>
     </QueryClientProvider>
   );

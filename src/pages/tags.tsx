@@ -47,6 +47,7 @@ function renderMonth(time: string, list: ListProps[]) {
 }
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
+  const [active, setActive] = useState(0);
   const timeLine = serverProps.list.reduce((prev: Record<string, ListProps[]>, curr) => {
     const time = dayjs(curr.createTime).format('YYYY-MM');
     if (Object.prototype.hasOwnProperty.call(prev, time)) {
@@ -58,16 +59,20 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
     return prev;
   }, {});
   return (
-    <div className={classNames(styles.archiveWrap, 'bg-primary')}>
+    <div className={styles.archiveWrap}>
       <Head>
-        <title>{getTitle('归档')}</title>
+        <title>{getTitle('标签')}</title>
       </Head>
-      <header className={classNames('text-base')}>
-        很好! 目前共计 <strong>{serverProps.list.length}</strong> 篇文章。 继续努力。⛽️
-      </header>
-      <div className={`${styles.timeLine} color-text-info`}>
-        {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
-      </div>
+      {serverProps.tags.map((item) => (
+        <React.Fragment key={item.code}>
+          <Link href={`/tag/${item.code}?desc=${encodeURIComponent(item.tag)}`}>
+            <a className={classNames(styles.menuItem, 'text-sm', 'flex', 'items-center')}>
+              <span>{item.tag}</span>
+              <span className={styles.counter}>{item.count}</span>
+            </a>
+          </Link>
+        </React.Fragment>
+      ))}
     </div>
   );
 };

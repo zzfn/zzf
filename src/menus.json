@@ -8,11 +8,15 @@
     "path": "/archive"
   },
   {
+    "name": "标签",
+    "path": "/tags"
+  },
+  {
     "name": "收藏夹",
     "path": "/favorites"
   },
   {
-    "name": "搜索",
-    "path": "/search"
+    "name": "友链",
+    "path": "/friends"
   }
 ]

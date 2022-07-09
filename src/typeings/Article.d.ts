@@ -1,6 +1,8 @@
 interface Article {
   id: string;
   title: string;
+  logo: string;
+  summary: string;
   tagDesc: string;
   viewCount: number;
   createTime: string;
