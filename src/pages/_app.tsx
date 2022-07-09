@@ -43,7 +43,10 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
             name='viewport'
           />
         </Head>
-        <Script async src='//at.alicdn.com/t/font_2620815_l30yg5g00kr.js' />
+        <Script
+          async
+          src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_6.954248bc84262f65d7e06d70e0979c0a.js'
+        />
         <Layout className='min-h-screen'>
           <Layout.Header className='container'>
             <Header />
@@ -53,7 +56,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
               <Right />
               {/*<Nav source={serverProps.content} />*/}
             </Layout.Right>
-            <Layout.Center>
+            <Layout.Center className='w-full'>
               <Component {...pageProps} />
             </Layout.Center>
           </Layout.Content>

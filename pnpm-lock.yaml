@@ -17,7 +17,7 @@ specifiers:
   '@types/webpack-env': ^1.17.0
   '@typescript-eslint/eslint-plugin': ^5.30.5
   '@typescript-eslint/parser': ^5.30.5
-  '@zzf/design': 0.0.1-alpha.11
+  '@zzf/design': 0.0.1-alpha.12
   '@zzf/toolkit': ^1.0.0
   autoprefixer: ^10.4.7
   axios: ^0.27.2
@@ -58,7 +58,7 @@ dependencies:
   '@react-spring/web': 9.4.5_biqbaboplfbrettd7655fr4n2y
   '@rematch/core': 2.2.0_redux@4.2.0
   '@types/ua-parser-js': 0.7.36
-  '@zzf/design': 0.0.1-alpha.11_biqbaboplfbrettd7655fr4n2y
+  '@zzf/design': 0.0.1-alpha.12_biqbaboplfbrettd7655fr4n2y
   '@zzf/toolkit': 1.0.0
   axios: 0.27.2
   classnames: 2.3.1
@@ -965,8 +965,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@zzf/design/0.0.1-alpha.11_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-BWxs0ns4PT1TIGae6vQ0rckDUbUghY97wwhLmTT/oedaQ7NWlTVxlNjH7Q6F4JOrz3FATvbS9LgiLr2VdwRp+g==}
+  /@zzf/design/0.0.1-alpha.12_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-g7fYU7XA/wf9KuupDMmdbzaDCo8/UUZXbFJV4plFHWfkSrY+bYoCkw+kOcOva9zMMRUKgR1rHYRiz+rWTn1rNw==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0

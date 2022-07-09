@@ -11,7 +11,7 @@
     &:checked {
       & + label {
         display: block;
-        color: var(--color-text-brand);
+        color: var(--color-text-brand-primary);
       }
     }
   }

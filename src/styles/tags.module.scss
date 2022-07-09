@@ -45,7 +45,7 @@
 
   .underlineNavItem[role='tab'][aria-selected='true'] {
     font-weight: 600;
-    color: var(--color-text-brand);
+    color: var(--color-text-brand-primary);
     border-bottom-color: var(--color-border-brand);
     outline: 1px dotted transparent;
     outline-offset: -1px;
@@ -128,5 +128,5 @@
 }
 
 .subTitle {
-  color: var(--color-text-brand);
+  color: var(--color-text-brand-primary);
 }

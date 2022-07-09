@@ -31,7 +31,7 @@ export default function Tag(props: NextProps<TagType[]>): JSX.Element {
           <li key={item.id}>
             <span>{item.createTime}</span>-
             <Link href={`/article/${item.id}`}>
-              <a className='text-brand'>{item.title}</a>
+              <a className='text-brand-primary'>{item.title}</a>
             </Link>
           </li>
         ))}

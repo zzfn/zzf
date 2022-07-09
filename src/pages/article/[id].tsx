@@ -16,6 +16,7 @@ import type { Dispatch } from 'store';
 interface Data {
   content?: string;
   createTime?: string;
+  logo?: string;
   id?: string;
   starCount?: number;
   tag?: string;
@@ -53,7 +54,12 @@ const ArticleDetail: NextPage<ServerProps> = (props) => {
       </Head>
       <>
         <Progress />
-        <main className={classNames(styles.article, 'bg-primary')}>
+        <img
+          className={classNames('h-48', 'w-full', 'object-cover')}
+          src={serverProps.logo}
+          alt={serverProps.title}
+        />
+        <main className={classNames(styles.article, 'bg-primary', 'w-full', 'px-6')}>
           <div>
             <h2 className={classNames('text-xl', 'text-gray-1000', 'font-medium', 'text-4xl')}>
               {serverProps.title}

@@ -64,7 +64,7 @@ const Right = () => {
                       )}
                       name='right'
                     />
-                    <div className={classNames('truncate', 'font-medium', 'text-lg', 'text-info')}>
+                    <div className={classNames('truncate', 'font-medium', 'text-base', 'text-info')}>
                       {n.title}
                     </div>
                   </div>

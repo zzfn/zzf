@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Card from './Card';
 import { listDiscuss } from 'api/discuss';
 import classNames from 'classnames';
-import Portal from './Portal';
 import Comment from './Comment';
+import { Modal } from "@zzf/design";
 
 function Evaluation(props: any) {
   const { id } = props;
@@ -26,7 +26,6 @@ function Evaluation(props: any) {
       }
       return prev;
     }, []);
-    console.log(r);
     setList(r);
   };
   useEffect(() => {
@@ -38,9 +37,9 @@ function Evaluation(props: any) {
         className={classNames('border-y', 'my-4', 'flex', 'justify-between', 'text-gray-400')}
       >
         全部评论（{len}）
-        <Portal toggled={<span className='text-gray-400'>点击回复</span>}>
+        <Modal toggled={<span className='text-gray-400'>点击回复</span>}>
           <Comment articleId={id} updateList={initial} />
-        </Portal>
+        </Modal>
       </header>
       {list?.map((item: any) => {
         return <Card updateList={initial} key={item.id} dataSource={item} />;
