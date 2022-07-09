@@ -34,7 +34,7 @@ const ArticleDetail: NextPage<ServerProps> = (props) => {
   const dispatch = useDispatch<Dispatch>();
 
   useEffect(() => {
-    dispatch.count.incrementAsync(2);
+    dispatch.count.incrementEffect(2);
     updateView({ id: serverProps.id }).then();
     const imgList = document.querySelectorAll('.zoom');
     const zooming = new Zooming({
