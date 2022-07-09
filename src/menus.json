@@ -12,10 +12,6 @@
     "path": "/tags"
   },
   {
-    "name": "收藏夹",
-    "path": "/favorites"
-  },
-  {
     "name": "友链",
     "path": "/friends"
   }

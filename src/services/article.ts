@@ -63,13 +63,7 @@ export const esList = (params: { keyword: string }) => {
     params,
   });
 };
-export const favoriteList = (params: Record<string, never>) => {
-  return http({
-    method: 'get',
-    url: '/favorite/list',
-    params,
-  });
-};
+
 type LastUpdatedListType = {
   id: string;
   title: string;
