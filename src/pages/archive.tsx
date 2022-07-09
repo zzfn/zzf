@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from 'styles/archive.module.scss';
 import Head from 'next/head';
-import { listArchives, listTags } from 'services/article';
+import { listArchives } from 'services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
 import { getTitle } from '../utils/getTitle';
@@ -73,10 +73,10 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [{ data: list }, { data: tags }] = await Promise.all([listArchives({}), listTags({})]);
+  const { data: list } = await listArchives({});
   return {
     props: {
-      serverProps: { list, tags },
+      serverProps: { list },
     },
     revalidate: 1,
   };

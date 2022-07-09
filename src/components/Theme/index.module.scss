@@ -1,9 +1,4 @@
 .theme {
-  &:hover {
-    label {
-      display: block;
-    }
-  }
 
   input {
     display: none;
@@ -11,8 +6,6 @@
     & + label {
       cursor: pointer;
       transition: 0.5s ease-in-out;
-      display: none;
-      margin-left: 10px;
     }
 
     &:checked {

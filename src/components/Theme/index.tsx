@@ -1,55 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
 import classNames from 'classnames';
-import styles from './index.module.scss';
-import { setTheme } from '../../utils/theme';
+import { initTheme, setTheme } from 'utils/theme';
 import { SvgIcon } from '@zzf/design';
 
-const translate = new Map([
-  ['light', '浅色'],
-  ['dark', '深色'],
-  ['auto', '自动'],
-]);
 const ThemeDataSource = ['light', 'dark', 'auto'];
 const Theme: FC = () => {
   const [active, setActive] = useState('light');
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setActive(e.target.value);
-  };
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const theme = localStorage.getItem('data-color-mode');
-    if (translate.get(theme)) {
+    if (theme) {
       setActive(theme);
-    } else {
-      setActive('light');
+      initTheme();
     }
   }, []);
-  useEffect(() => {
-    setTheme(active);
-  }, [active]);
   return (
-    <ul className={classNames('flex', styles.theme)}>
-      {ThemeDataSource.map((theme) => (
-        <li key={theme}>
-          <input
-            checked={active === theme}
-            onChange={handleChange}
-            value={theme}
-            id={theme}
-            name='theme'
-            type='radio'
-          />
-          <label title={translate.get(theme)} htmlFor={theme}>
-            <SvgIcon
-              className={active === theme ? 'text-primary' : 'text-info'}
-              size={30}
-              name={theme}
-            />
-          </label>
-        </li>
-      ))}
-    </ul>
+    <div className='relative'>
+      <SvgIcon onClick={() => setVisible(!visible)} size={30} name='light' />
+      {visible && (
+        <ul className={classNames('absolute', 'bg-primary')}>
+          {ThemeDataSource.map((theme) => (
+            <li
+              onClick={() => {
+                setActive(theme);
+                setTheme(theme);
+              }}
+              className={classNames(
+                active === theme ? 'text-primary' : 'text-info',
+                'w-32',
+                'flex',
+              )}
+              key={theme}
+            >
+              <SvgIcon size={30} name={theme} />
+              {theme}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 

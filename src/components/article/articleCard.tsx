@@ -1,9 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { diff } from '../../utils/time';
-import classNames from 'classnames';
-import Image from 'next/image';
-import { SvgIcon, Tag } from '@zzf/design';
 import dayjs from 'dayjs';
 
 interface ArticleCardProps {
@@ -13,17 +9,10 @@ interface ArticleCardProps {
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
     <>
-      <div className='max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mb-3.5 bg-primary'>
-        <div className='md:flex'>
-          <div className='md:shrink-0'>
-            <img
-              className='h-48 w-full object-cover md:h-full md:w-48'
-              src={dataSource.logo}
-              alt='Man looking at item at a store'
-            />
-          </div>
+      <div className='mx-auto bg-white rounded-xl shadow-md overflow-hidden mb-3.5 bg-primary'>
+        <div className='flex justify-between'>
           <div className='p-8'>
-            <div className='uppercase tracking-wide text-sm text-indigo-500 font-semibold'>
+            <div className='uppercase tracking-wide text-sm text-primary font-semibold'>
               {dataSource.tagDesc}·
               {dayjs(
                 Math.max(
@@ -35,13 +24,22 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
             <Link prefetch={false} href={`/article/${dataSource.id}`}>
               <a
                 target='_blank'
-                className='block mt-1 text-lg leading-tight font-medium text-black hover:underline'
+                className='block mt-1 text-lg leading-tight font-medium text-primary hover:underline'
               >
                 {dataSource.title}
               </a>
             </Link>
-            <p className='mt-2 text-slate-500'>{dataSource.summary}</p>
+            <p className='mt-2 text-slate-500 text-secondary'>{dataSource.summary}</p>
           </div>
+          {dataSource.logo && (
+            <div className='shrink-0'>
+              <img
+                className='h-36 w-48 object-cover'
+                src={dataSource.logo}
+                alt='Man looking at item at a store'
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

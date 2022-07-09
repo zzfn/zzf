@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Script from 'next/script';
 import Head from 'next/head';
@@ -14,7 +14,6 @@ import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
-import { initTheme } from '../utils/theme';
 import { Provider } from 'react-redux';
 import { store } from 'store';
 
@@ -25,10 +24,6 @@ export function reportWebVitals(metric: NextWebVitalsMetric): void {
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   const [queryClient] = React.useState(() => new QueryClient());
-
-  useEffect(() => {
-    initTheme();
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -50,19 +45,19 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         </Head>
         <Script async src='//at.alicdn.com/t/font_2620815_l30yg5g00kr.js' />
         <Layout className='min-h-screen'>
-          <Layout.Header>
+          <Layout.Header className='container'>
             <Header />
           </Layout.Header>
-          <Layout.Content>
-            <Layout.Center>
-              <Component {...pageProps} />
-            </Layout.Center>
+          <Layout.Content className='container'>
             <Layout.Right>
               <Right />
               {/*<Nav source={serverProps.content} />*/}
             </Layout.Right>
+            <Layout.Center>
+              <Component {...pageProps} />
+            </Layout.Center>
           </Layout.Content>
-          <Layout.Footer>
+          <Layout.Footer className='container'>
             <Footer />
           </Layout.Footer>
         </Layout>
