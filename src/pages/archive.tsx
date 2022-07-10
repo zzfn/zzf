@@ -61,7 +61,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
         {serverProps.title}
         很好! 目前共计 <strong>{serverProps.articleList.length}</strong> 篇文章。 继续努力。⛽️
       </header>
-      <div className={`${styles.timeLine} color-text-info`}>
+      <div className={`${styles.timeLine}`}>
         {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
       </div>
     </div>
