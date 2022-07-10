@@ -19,7 +19,7 @@ export default function Tag(props: NextProps<TagType>): JSX.Element {
       <Head>
         <title>{getTitle(serverProps.title)}</title>
       </Head>
-      <Alert type='success'>{serverProps.title}</Alert>
+      <Alert type='info'>{serverProps.title}</Alert>
       <ul className={classNames('font-mono', 'text-base')}>
         {serverProps.articleList.map((item) => (
           <li key={item.id}>
