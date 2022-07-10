@@ -98,7 +98,7 @@ const ArticleDetail: NextPage<ServerProps> = (props) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await listArchives({});
-  const paths = data.map((_) => ({ params: { id: _.id } }));
+  const paths = data.articleList.map((_) => ({ params: { id: _.id } }));
   return {
     paths,
     fallback: 'blocking',
@@ -114,7 +114,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     notFound: code !== 0,
     props: {
-      serverProps: { ...data },
+      serverProps: data,
     },
     revalidate: 5,
   };

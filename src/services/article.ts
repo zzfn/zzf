@@ -44,12 +44,11 @@ export const listTags = (params: Record<string, never>) => {
   });
 };
 type ArticleType = {
-  createTime: string;
-  id: string;
   title: string;
+  articleList: any[];
 };
 export const listArchives = (params: Record<string, string>) => {
-  return http<ArticleType[]>({
+  return http<ArticleType>({
     method: 'get',
     url: '/article/list',
     params,
