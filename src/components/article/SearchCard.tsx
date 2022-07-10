@@ -11,29 +11,32 @@ type SearchCardProps = {
 const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
     <div className={styles.card}>
-      <Link href={`/article/${dataSource.id}`}>
-        <a target='_blank'>
-          <h3
+      <div className='flex'>
+        <Tag>
+          <div
             dangerouslySetInnerHTML={{
-              __html: dataSource.title,
+              __html: dataSource.tagDesc,
             }}
-            className={classNames(styles.title, 'font-bold', 'text-xl')}
           />
-        </a>
-      </Link>
+        </Tag>
+        ·
+        <Link href={`/article/${dataSource.id}`}>
+          <a target='_blank'>
+            <h3
+              dangerouslySetInnerHTML={{
+                __html: dataSource.title,
+              }}
+              className={classNames(styles.title, 'font-bold', 'text-xl')}
+            />
+          </a>
+        </Link>
+      </div>
       <div
         className={classNames('break-all', 'px-1', 'mb-2')}
         dangerouslySetInnerHTML={{
           __html: dataSource.content,
         }}
       />
-      <Tag>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: dataSource.tagDesc,
-          }}
-        />
-      </Tag>
     </div>
   );
 };
