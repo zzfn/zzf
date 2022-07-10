@@ -13,15 +13,10 @@ type ListProps = {
   id: string;
   title: string;
 };
-type TagsProps = {
-  count: number;
-  tag: string;
-  code: string;
-};
 
 interface ArchiveProps {
-  list: ListProps[];
-  tags: TagsProps[];
+  title: string;
+  articleList: any[];
 }
 
 function renderMonth(time: string, list: ListProps[]) {
@@ -47,7 +42,7 @@ function renderMonth(time: string, list: ListProps[]) {
 }
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
-  const timeLine = serverProps.list.reduce((prev: Record<string, ListProps[]>, curr) => {
+  const timeLine = serverProps.articleList.reduce((prev: Record<string, ListProps[]>, curr) => {
     const time = dayjs(curr.createTime).format('YYYY-MM');
     if (Object.prototype.hasOwnProperty.call(prev, time)) {
       prev[time].push(curr);
@@ -63,7 +58,8 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
         <title>{getTitle('归档')}</title>
       </Head>
       <header className={classNames('text-base')}>
-        很好! 目前共计 <strong>{serverProps.list.length}</strong> 篇文章。 继续努力。⛽️
+        {serverProps.title}
+        很好! 目前共计 <strong>{serverProps.articleList.length}</strong> 篇文章。 继续努力。⛽️
       </header>
       <div className={`${styles.timeLine} color-text-info`}>
         {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
@@ -73,10 +69,10 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data: list } = await listArchives({});
+  const { data } = await listArchives({});
   return {
     props: {
-      serverProps: { list },
+      serverProps: data,
     },
     revalidate: 1,
   };

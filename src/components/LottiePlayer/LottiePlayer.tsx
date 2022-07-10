@@ -8,7 +8,7 @@ export type LottieProps = {
 };
 const LottiePlayer: React.FC<LottieProps> = (props) => {
   const { size, url } = props;
-  const lottieRef = useRef();
+  const lottieRef = useRef<HTMLDivElement>();
   useEffect(() => {
     lottie.loadAnimation({
       container: lottieRef.current,

@@ -13,7 +13,10 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
         <div className='flex justify-between'>
           <div className='p-8'>
             <div className='uppercase tracking-wide text-sm text-primary font-semibold'>
-              {dataSource.tagDesc}·
+              <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
+                {dataSource.tagDesc}
+              </Link>
+              ·
               {dayjs(
                 Math.max(
                   new Date(dataSource.createTime).getTime(),

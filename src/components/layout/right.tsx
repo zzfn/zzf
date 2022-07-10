@@ -24,6 +24,7 @@ const Right = () => {
   }
 
   useEffect(() => {
+    console.log(1111);
     getLastUpdatedList();
   }, []);
   return (

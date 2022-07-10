@@ -1,27 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
-import { lastUpdated, listArticles } from 'api/article';
-import { Card, Layout, Loading, SvgIcon } from '@zzf/design';
+import { listArticles } from 'api/article';
+import { Loading } from '@zzf/design';
 import ArticleCard from '../components/article/articleCard';
 import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
-import styles from 'styles/home.module.scss';
-import Link from 'next/link';
-import { diff } from '../utils/time';
-import classNames from 'classnames';
 import type { GetStaticProps } from 'next';
-import useFcp from '../hooks/useFcp';
 import { useInfiniteQuery } from 'react-query';
-
-type LastUpdatedListType = {
-  title: string;
-  id: string;
-  updateTime: string;
-};
 
 type HomeType = {
   current: number;
-  lastUpdatedList: LastUpdatedListType[];
   records: Article[];
 };
 const Home: React.FC<NextProps<HomeType>> = (props) => {
@@ -73,13 +61,10 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const [pages, lastUpdatedList] = await Promise.all([
-    listArticles({ pageSize: 10, current: 1 }),
-    lastUpdated(),
-  ]);
+  const [pages] = await Promise.all([listArticles({ pageSize: 10, current: 1 })]);
   return {
     props: {
-      serverProps: { ...pages.data, lastUpdatedList: lastUpdatedList.data },
+      serverProps: { ...pages.data },
     },
     revalidate: 5,
   };

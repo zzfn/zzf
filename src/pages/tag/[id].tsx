@@ -1,33 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { listArchives, listTags } from 'services/article';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
 import { getTitle } from '../../utils/getTitle';
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
 import classNames from 'classnames';
+import { Alert } from '@zzf/design';
 
 type TagType = {
-  createTime: string;
-  id: string;
   title: string;
+  articleList: any[];
 };
-export default function Tag(props: NextProps<TagType[]>): JSX.Element {
-  const { serverProps = [] } = props;
-  const [title, setTitle] = useState('标签');
-  const router = useRouter();
-  useEffect(() => {
-    const title = router.query.title;
-    !Array.isArray(title) && setTitle(title);
-  }, [router.query]);
+export default function Tag(props: NextProps<TagType>): JSX.Element {
+  const { serverProps } = props;
   return (
     <div className={styles.detail}>
       <Head>
-        <title>{getTitle(title)}</title>
+        <title>{getTitle(serverProps.title)}</title>
       </Head>
+      <Alert type='success'>{serverProps.title}</Alert>
       <ul className={classNames('font-mono', 'text-base')}>
-        {serverProps.map((item) => (
+        {serverProps.articleList.map((item) => (
           <li key={item.id}>
             <span>{item.createTime}</span>-
             <Link href={`/article/${item.id}`}>
