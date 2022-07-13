@@ -26,6 +26,7 @@
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.3",
     "eslint": "^8.19.0",
+    "feed": "^4.2.2",
     "highlight.js": "^11.5.1",
     "lottie-web": "^5.9.6",
     "marked": "^4.0.17",

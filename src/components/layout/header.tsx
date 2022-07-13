@@ -24,6 +24,11 @@ function Header(): JSX.Element {
         </nav>
       </div>
       <div className={classNames('flex', 'items-center')}>
+        <Link href='/rss/feed.xml'>
+          <a target='_blank' className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
+            <SvgIcon size={25} name='rss' />
+          </a>
+        </Link>
         <Link href='/search'>
           <a className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
             <SvgIcon size={25} name='search' />

@@ -4,9 +4,10 @@ import Head from 'next/head';
 import { listArchives } from 'services/article';
 import Link from 'next/link';
 import dayjs from 'dayjs';
-import { getTitle } from '../utils/getTitle';
+import { getTitle } from 'utils/getTitle';
 import type { GetStaticProps } from 'next';
 import classNames from 'classnames';
+import generateRssFeed from 'utils/generateRssFeed';
 
 type ListProps = {
   createTime: Date;
@@ -70,6 +71,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await listArchives({});
+  await generateRssFeed(data.articleList);
   return {
     props: {
       serverProps: data,

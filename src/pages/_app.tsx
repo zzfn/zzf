@@ -45,7 +45,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         </Head>
         <Script
           async
-          src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_6.954248bc84262f65d7e06d70e0979c0a.js'
+          src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_7.cacd88ad47f8dfc12019cda79a188b9d.js'
         />
         <Layout className='min-h-screen'>
           <Layout.Header className='container'>
