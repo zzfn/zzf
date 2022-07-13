@@ -1,39 +1,39 @@
 .menu {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
 
-    a {
-      padding: 5px;
-      color: inherit;
-      transition: 0.3s;
-      position: relative;
-      text-align: center;
+  a {
+    padding: 5px;
+    color: inherit;
+    transition: 0.3s;
+    position: relative;
+    text-align: center;
+    &:before {
+      content: '';
+      height: 2px;
+      width: 100%;
+      background-color: var(--color-text-primary);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease-in-out 0s;
+    }
+    &:hover {
       &:before {
-        content: '';
-        height: 2px;
-        width: 100%;
-        background-color: var(--color-text-primary);
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        visibility: hidden;
-        transform: scaleX(0);
-        transition: all 0.3s ease-in-out 0s;
+        visibility: visible;
+        transform: scaleX(1);
       }
-      &:hover {
-        &:before {
-          visibility: visible;
-          transform: scaleX(1);
-        }
-        color: var(--color-text-primary);
-      }
+      color: var(--color-text-primary);
+    }
 
-      &:not(:last-child) {
-        margin-right: 16px;
-      }
+    &:not(:last-child) {
+      margin-right: 16px;
     }
   }
+}
 
 .dropdown {
   background: var(--color-bg-primary);

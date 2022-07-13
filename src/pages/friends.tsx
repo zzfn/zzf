@@ -39,7 +39,12 @@ type CardProps = {
 const Card = ({ dataSource }: CardProps) => {
   const { logo, title, description, url } = dataSource;
   return (
-    <a rel='noreferrer' target='_blank' href={url} className={classNames('flex', 'bg-primary','rounded-md','overflow-hidden')}>
+    <a
+      rel='noreferrer'
+      target='_blank'
+      href={url}
+      className={classNames('flex', 'bg-primary', 'rounded-md', 'overflow-hidden')}
+    >
       <img className={classNames('w-16', 'h-16', 'mr-2')} src={logo} alt='' />
       <div className={classNames('flex', 'flex-col', 'justify-between', 'p-2')}>
         <strong className='text-primary'>{title}</strong>
