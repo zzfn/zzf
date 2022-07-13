@@ -35,7 +35,7 @@ export default async function generateRssFeed(posts: any[]) {
       id: url,
       link: url,
       description: post.summary,
-      content: post.summary,
+      content: post.content,
       author: [author],
       contributor: [author],
       date: new Date(post.updateTime),
