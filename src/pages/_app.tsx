@@ -2,7 +2,7 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Script from 'next/script';
 import Head from 'next/head';
-import '@zzf/design/dist/bundle.css';
+import '@zzf/design/dist/bundle.min.css';
 import 'styles/globals.scss';
 import 'tailwindcss/tailwind.css';
 import 'highlight.js/styles/base16/railscasts.css';

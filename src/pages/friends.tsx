@@ -11,7 +11,6 @@ const Friends = () => {
   return (
     <div>
       <Alert type='info'>友情链接</Alert>
-      <Button>申请友链</Button>
       <div className='grid grid-cols-2 gap-x-16'>
         <Card
           dataSource={{
@@ -30,6 +29,7 @@ const Friends = () => {
           }}
         />
       </div>
+        <Button>申请友链</Button>
     </div>
   );
 };

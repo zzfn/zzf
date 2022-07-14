@@ -17,7 +17,7 @@ specifiers:
   '@types/webpack-env': ^1.17.0
   '@typescript-eslint/eslint-plugin': ^5.30.5
   '@typescript-eslint/parser': ^5.30.5
-  '@zzf/design': 0.0.1-alpha.12
+  '@zzf/design': 0.0.1-alpha.18
   '@zzf/toolkit': ^1.0.0
   autoprefixer: ^10.4.7
   axios: ^0.27.2
@@ -48,7 +48,7 @@ specifiers:
   redux: ^4.2.0
   sass: ^1.53.0
   stylelint: ^14.9.1
-  tailwindcss: 3.1.5
+  tailwindcss: 3.1.6
   typescript: ^4.7.4
   ua-parser-js: ^1.0.2
   zooming: ^2.1.1
@@ -59,7 +59,7 @@ dependencies:
   '@react-spring/web': 9.4.5_biqbaboplfbrettd7655fr4n2y
   '@rematch/core': 2.2.0_redux@4.2.0
   '@types/ua-parser-js': 0.7.36
-  '@zzf/design': 0.0.1-alpha.12_biqbaboplfbrettd7655fr4n2y
+  '@zzf/design': 0.0.1-alpha.18_biqbaboplfbrettd7655fr4n2y
   '@zzf/toolkit': 1.0.0
   axios: 0.27.2
   classnames: 2.3.1
@@ -105,7 +105,7 @@ devDependencies:
   prettier: 2.7.1
   sass: 1.53.0
   stylelint: 14.9.1
-  tailwindcss: 3.1.5
+  tailwindcss: 3.1.6
   typescript: 4.7.4
 
 packages:
@@ -971,8 +971,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@zzf/design/0.0.1-alpha.12_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-g7fYU7XA/wf9KuupDMmdbzaDCo8/UUZXbFJV4plFHWfkSrY+bYoCkw+kOcOva9zMMRUKgR1rHYRiz+rWTn1rNw==}
+  /@zzf/design/0.0.1-alpha.18_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-oK3JzFUcnaJnKJugpnGsopZY/outaFxfSMCJo3A7n/ArWqCuYF0opq1sgZq+6DdeuY+gdUWutytMVqAEMLeORA==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -2729,6 +2729,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /lilconfig/2.0.6:
+    resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
+    engines: {node: '>=10'}
+    dev: true
+
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
@@ -3340,9 +3345,9 @@ packages:
       postcss: 8.4.14
     dev: true
 
-  /postcss-load-config/4.0.1_postcss@8.4.14:
-    resolution: {integrity: sha512-vEJIc8RdiBRu3oRAI0ymerOn+7rPuMvRXslTvZUKZonDHFIczxztIyJ1urxM1x9JXEikvpWWTUUqal5j/8QgvA==}
-    engines: {node: '>= 14'}
+  /postcss-load-config/3.1.4_postcss@8.4.14:
+    resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
+    engines: {node: '>= 10'}
     peerDependencies:
       postcss: '>=8.0.9'
       ts-node: '>=9.0.0'
@@ -3352,9 +3357,9 @@ packages:
       ts-node:
         optional: true
     dependencies:
-      lilconfig: 2.0.5
+      lilconfig: 2.0.6
       postcss: 8.4.14
-      yaml: 2.1.1
+      yaml: 1.10.2
     dev: true
 
   /postcss-media-query-parser/0.2.3:
@@ -4030,8 +4035,8 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwindcss/3.1.5:
-    resolution: {integrity: sha512-bC/2dy3dGPqxMWAqFSRgQxVCfmO/31ZbeEp8s9DMDh4zgPZ5WW1gxRJkbBkXcTUIzaSUdhWrcsrSOe32ccgB4w==}
+  /tailwindcss/3.1.6:
+    resolution: {integrity: sha512-7skAOY56erZAFQssT1xkpk+kWt2NrO45kORlxFPXUt3CiGsVPhH1smuH5XoDH6sGPXLyBv+zgCKA2HWBsgCytg==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
@@ -4044,14 +4049,14 @@ packages:
       fast-glob: 3.2.11
       glob-parent: 6.0.2
       is-glob: 4.0.3
-      lilconfig: 2.0.5
+      lilconfig: 2.0.6
       normalize-path: 3.0.0
       object-hash: 3.0.0
       picocolors: 1.0.0
       postcss: 8.4.14
       postcss-import: 14.1.0_postcss@8.4.14
       postcss-js: 4.0.0_postcss@8.4.14
-      postcss-load-config: 4.0.1_postcss@8.4.14
+      postcss-load-config: 3.1.4_postcss@8.4.14
       postcss-nested: 5.0.6_postcss@8.4.14
       postcss-selector-parser: 6.0.10
       postcss-value-parser: 4.2.0

@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
 import { SvgIcon } from '@zzf/design';
+import styles from './index.module.scss';
 
 const ThemeDataSource = ['light', 'dark', 'system'];
 const Theme: FC = () => {
@@ -25,7 +26,7 @@ const Theme: FC = () => {
         name={active}
       />
       {visible && (
-        <ul className={classNames('absolute', 'bg-primary')}>
+        <ul className={classNames('absolute', 'bg-primary', styles.dropdown)}>
           {ThemeDataSource.map((theme) => (
             <li
               onClick={() => {
@@ -37,11 +38,13 @@ const Theme: FC = () => {
                 'w-32',
                 'flex',
                 'items-center',
+                'px-2',
+                'py-1',
               )}
               key={theme}
             >
-              <SvgIcon size={20} name={theme} />
-              {theme}
+              <SvgIcon className={'mr-2'} size={20} name={theme} />
+              <div>{theme}</div>
             </li>
           ))}
         </ul>
