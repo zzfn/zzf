@@ -43,7 +43,7 @@ const Theme: FC = () => {
               )}
               key={theme}
             >
-              <SvgIcon className={'mr-2'} size={20} name={theme} />
+              <SvgIcon className='mr-2' size={20} name={theme} />
               <div>{theme}</div>
             </li>
           ))}

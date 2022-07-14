@@ -29,7 +29,7 @@ const Friends = () => {
           }}
         />
       </div>
-        <Button>申请友链</Button>
+      <Button>申请友链</Button>
     </div>
   );
 };
