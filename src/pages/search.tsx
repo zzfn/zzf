@@ -32,7 +32,7 @@ function Search(): JSX.Element {
       <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action=''>
         <Input
           autoFocus
-          onChange={(event) => setKeyword(event.target.value)}
+          onChange={(event) => setKeyword(event.target.value.trim())}
           value={keyword}
           type='search'
           placeholder='elasticsearch强力驱动'
