@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import classNames from 'classnames';
+import { Tag } from '@zzf/design';
 
 type TagsProps = {
   count: number;
@@ -18,16 +19,18 @@ interface ArchiveProps {
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
   return (
-    <div className='bg-primary'>
+    <div className='bg-primary flex flex-wrap'>
       <Head>
         <title>{getTitle('标签')}</title>
       </Head>
       {serverProps.tags.map((item) => (
         <React.Fragment key={item.code}>
           <Link href={`/tag/${item.code}`}>
-            <a className={classNames('flex', 'items-center', 'justify-between', 'w-1/2', 'ml-3')}>
-              <span># {item.tag}</span>
-              <span className='text-brand-primary'>{item.count}</span>
+            <a className={classNames('flex', 'items-center', 'justify-between', 'ml-3', 'mb-2')}>
+              <Tag type='light'>
+                # {item.tag}
+                <span className='text-brand-primary ml-2'>{item.count}</span>
+              </Tag>
             </a>
           </Link>
         </React.Fragment>

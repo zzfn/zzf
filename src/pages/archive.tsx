@@ -8,6 +8,7 @@ import { getTitle } from 'utils/getTitle';
 import type { GetStaticProps } from 'next';
 import classNames from 'classnames';
 import generateRssFeed from 'utils/generateRssFeed';
+import { Alert } from '@zzf/design';
 
 type ListProps = {
   createTime: Date;
@@ -17,7 +18,7 @@ type ListProps = {
 
 interface ArchiveProps {
   title: string;
-  articleList: any[];
+  articleList: Article[];
 }
 
 function renderMonth(time: string, list: ListProps[]) {
@@ -46,10 +47,10 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
   const timeLine = serverProps.articleList.reduce((prev: Record<string, ListProps[]>, curr) => {
     const time = dayjs(curr.createTime).format('YYYY-MM');
     if (Object.prototype.hasOwnProperty.call(prev, time)) {
-      prev[time].push(curr);
+      prev[time].push(curr as any);
     } else {
       prev[time] = [];
-      prev[time].push(curr);
+      prev[time].push(curr as any);
     }
     return prev;
   }, {});
@@ -58,10 +59,9 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <Head>
         <title>{getTitle('归档')}</title>
       </Head>
-      <header className={classNames('text-base')}>
-        {serverProps.title}
+      <Alert className={classNames('text-base')}>
         很好! 目前共计 <strong>{serverProps.articleList.length}</strong> 篇文章。 继续努力。⛽️
-      </header>
+      </Alert>
       <div className={`${styles.timeLine}`}>
         {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
       </div>
