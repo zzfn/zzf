@@ -6,10 +6,10 @@
 
 .markdown-body {
   font-size: 16px;
-  color: var(--color-text-info);
+  color: var(--color-text-0);
 
   p {
-    color: var(--color-text-info);
+    color: var(--color-text-0);
     line-height: 2;
     display: inline-block;
   }
@@ -24,7 +24,7 @@
     font-weight: bold;
     line-height: 1.4;
     cursor: text;
-    color: var(--color-text-tertiary);
+    color: var(--color-text-1);
     padding-top: 80px;
   }
 
@@ -49,14 +49,13 @@
   }
 
   a {
-    color: var(--color-text-primary);
+    color: var(--color-link);
     font-weight: var(--font-weight-medium);
     text-decoration: none;
     transition: box-shadow 200ms ease 0s;
 
     &:hover {
-      color: var(--color-text-primary);
-      box-shadow: 0 2px 0 var(--color-text-primary);
+      color: var(--color-link-hover);
     }
   }
 
@@ -65,17 +64,16 @@
     word-break: break-word;
     border-radius: 3px;
     overflow-x: auto;
-    background-color: var(--color-bg-decorative);
-    color: var(--color-text-info);
+    background-color: var(--color-bg-1);
+    color: var(--color-text-2);
     padding: 0.065em 0.4em;
   }
 
   pre {
-    background-color: var(--color-bg-code);
     margin: 40px 0;
     > code {
-      background-color: var(--color-bg-syntax);
-      color: var(--color-text-code);
+      background-color: var(--color-fill-0);
+      color: var(--color-text1);
       padding: 15px 12px;
       overflow-x: auto;
       display: block;
@@ -83,7 +81,7 @@
   }
 
   blockquote {
-    color: var(--color-text-code);
+    color: var(--color-fill-1);
     padding: 5px 23px 1px;
     margin: 22px 0;
     border-left: 4px solid var(--color-border-brand);
@@ -106,7 +104,7 @@
     th,
     td {
       padding: 6px 13px;
-      border: 1px solid var(--color-text-info);
+      border: 1px solid var(--color-text-1);
     }
   }
 }
