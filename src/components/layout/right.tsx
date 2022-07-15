@@ -31,6 +31,16 @@ const Right = () => {
       <Card title='关于我'>
         <div className={styles.wrap}>
           <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
+          <div className='flex justify-around'>
+            <div>
+              <div>95</div>
+              <div>文章</div>
+            </div>
+            <div>
+              <div>95</div>
+              <div>标签</div>
+            </div>
+          </div>
         </div>
       </Card>
       <Card className='mt-4 test' title='关于本站'>

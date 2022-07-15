@@ -1,3 +1,4 @@
+import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Script from 'next/script';
@@ -6,24 +7,30 @@ import '@zzf/design/dist/bundle.min.css';
 import 'styles/globals.scss';
 import 'tailwindcss/tailwind.css';
 import 'highlight.js/styles/base16/railscasts.css';
-import Header from 'components/layout/header';
-import Footer from 'components/layout/footer';
-import Right from 'components/layout/right';
 import 'styles/markdown.scss';
-import { Layout } from '@zzf/design';
 import { getTitle } from '../utils/getTitle';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
 import { Provider } from 'react-redux';
 import { store } from 'store';
+import DefaultLayout from 'components/layout/DefaultLayout';
+import type { NextPage } from 'next';
 
 export function reportWebVitals(metric: NextWebVitalsMetric): void {
   const monitor = new Monitor();
   monitor.loadUrl(location.pathname, metric);
 }
+export type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
-function App({ Component, pageProps }: AppProps): JSX.Element {
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const [queryClient] = React.useState(() => new QueryClient());
+  const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -47,23 +54,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           async
           src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_7.cacd88ad47f8dfc12019cda79a188b9d.js'
         />
-        <Layout className='min-h-screen'>
-          <Layout.Header className='container'>
-            <Header />
-          </Layout.Header>
-          <Layout.Content className='container'>
-            <Layout.Right>
-              <Right />
-              {/*<Nav source={serverProps.content} />*/}
-            </Layout.Right>
-            <Layout.Center className='w-full'>
-              <Component {...pageProps} />
-            </Layout.Center>
-          </Layout.Content>
-          <Layout.Footer className='container'>
-            <Footer />
-          </Layout.Footer>
-        </Layout>
+        {getLayout(<Component {...pageProps} />)}
       </Provider>
     </QueryClientProvider>
   );
