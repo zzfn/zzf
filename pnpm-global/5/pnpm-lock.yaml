@@ -1,7 +1,0 @@
-lockfileVersion: 5.3
-
-specifiers:
-  '@zzf/design': ^0.0.1-alpha.10
-
-dependencies:
-  '@zzf/design': link:../../../../pnpm-global/5/node_modules/@zzf/design

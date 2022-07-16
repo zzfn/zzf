@@ -35,3 +35,4 @@ yarn-error.log*
 /.idea/
 /public/sitemap.xml
 /public/rss/
+/pnpm-global/
