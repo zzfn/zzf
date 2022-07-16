@@ -1,5 +1,5 @@
 import type { ReactElement, ReactNode } from 'react';
-import React from 'react';
+import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Script from 'next/script';
 import Head from 'next/head';
@@ -29,7 +29,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
-  const [queryClient] = React.useState(() => new QueryClient());
+  const [queryClient] = useState(() => new QueryClient());
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
