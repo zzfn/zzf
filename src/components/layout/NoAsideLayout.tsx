@@ -9,9 +9,7 @@ function NoAsideLayout({ children }: { children: ReactNode }) {
       <Layout.Header className='container'>
         <Header />
       </Layout.Header>
-      <Layout.Content className='container'>
-        <Layout.Center className='w-full'>{children}</Layout.Center>
-      </Layout.Content>
+      <Layout.Center className='container w-full'>{children}</Layout.Center>
       <Layout.Footer className='container'>
         <Footer />
       </Layout.Footer>

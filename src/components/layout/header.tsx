@@ -9,9 +9,6 @@ import { useRouter } from 'next/router';
 
 function Header(): JSX.Element {
   const router = useRouter();
-  useEffect(() => {
-    console.log(router.pathname);
-  });
   return (
     <>
       <div className={classNames('flex', 'items-center')}>
