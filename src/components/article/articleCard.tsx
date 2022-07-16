@@ -37,7 +37,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           {dataSource.logo && (
             <div className='shrink-0'>
               <img
-                className='h-36 w-48 object-cover'
+                className='h-36 w-48 object-scale-down'
                 src={dataSource.logo}
                 alt='Man looking at item at a store'
               />
