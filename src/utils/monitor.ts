@@ -28,9 +28,7 @@ class Monitor {
   }
 
   async loadUrl(url: string, metric: NextWebVitalsMetric): Promise<void> {
-    new Image().src = 'https://api.zzfzzf.com/sa.gif?id=2';
-    if (process.env.NODE_ENV === 'development') return;
-    await monitorLoad({
+    const json = {
       url,
       visitorId: await this.getVisitorId(),
       browser: this.getBrowser().name,
@@ -40,7 +38,12 @@ class Monitor {
       referrer: document.referrer,
       name: metric.name,
       value: metric.value,
-    });
+    };
+    new Image().src = `https://log.zzfzzf.com/log.gif?body=${window.btoa(
+      JSON.stringify(json),
+    )}&index=log-performance`;
+    if (process.env.NODE_ENV === 'development') return;
+    await monitorLoad(json);
   }
 }
 
