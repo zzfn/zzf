@@ -39,7 +39,7 @@ class Monitor {
       name: metric.name,
       value: metric.value,
     };
-    new Image().src = `https://log.zzfzzf.com/log.gif?body=${window.btoa(
+    new Image().src = `https://log.zzfzzf.com/zzf.gif?body=${window.btoa(
       JSON.stringify(json),
     )}&index=log-performance`;
     if (process.env.NODE_ENV === 'development') return;
