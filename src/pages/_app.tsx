@@ -26,7 +26,7 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
