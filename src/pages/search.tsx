@@ -6,7 +6,7 @@ import { getTitle } from '../utils/getTitle';
 import { Input } from '@zzf/design';
 import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
 import classNames from 'classnames';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');

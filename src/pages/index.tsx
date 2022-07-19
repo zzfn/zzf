@@ -6,7 +6,7 @@ import ArticleCard from '../components/article/articleCard';
 import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 type HomeType = {
   current: number;
@@ -16,7 +16,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   const { serverProps } = props;
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
-    'projects',
+    ['projects'],
     (k) =>
       listArticles({
         current: k.pageParam,

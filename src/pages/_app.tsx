@@ -1,6 +1,5 @@
 import type { ReactElement, ReactNode } from 'react';
-import { useState } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Script from 'next/script';
 import Head from 'next/head';
 import '@zzf/design/dist/bundle.min.css';
@@ -27,9 +26,8 @@ export type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
-
+const queryClient = new QueryClient()
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
-  const [queryClient] = useState(() => new QueryClient());
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
 
   return (
