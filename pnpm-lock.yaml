@@ -9,7 +9,7 @@ specifiers:
   '@next/eslint-plugin-next': ^12.2.2
   '@react-spring/web': ^9.5.0
   '@rematch/core': ^2.2.0
-  '@tanstack/react-query': ^4.0.3
+  '@tanstack/react-query': ^4.0.5
   '@types/marked': ^4.0.3
   '@types/node': ^18.0.4
   '@types/react': ^18.0.15
@@ -58,7 +58,7 @@ dependencies:
   '@fingerprintjs/fingerprintjs': 3.3.3
   '@react-spring/web': 9.5.0_biqbaboplfbrettd7655fr4n2y
   '@rematch/core': 2.2.0_redux@4.2.0
-  '@tanstack/react-query': 4.0.3_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-query': 4.0.5_biqbaboplfbrettd7655fr4n2y
   '@types/ua-parser-js': 0.7.36
   '@zzf/design': 0.0.1-alpha.21_biqbaboplfbrettd7655fr4n2y
   '@zzf/toolkit': 1.0.0
@@ -764,8 +764,8 @@ packages:
     resolution: {integrity: sha512-Z0harJHTf051ICqyqy1BE/3B1BGKAyKD6di4x/BW2HfAkNS3c3RoLV3eZMLwcw1A+sRay634ZfBqlWJafizZog==}
     dev: false
 
-  /@tanstack/react-query/4.0.3_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-8Fg0KaZEki2VvksWD8RhEmUVrBWE10Vi9MiWrDtVc/Wy6u8Wzf+Qy7SzuUZNvMSZ7gbWZR9BdSDqlAFz4jg7mw==}
+  /@tanstack/react-query/4.0.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-tIggVlhoFevVpY/LkZroPmrERFHN8tw4aZLtgwSArzHmMJ03WQcaNvbbHy6GERidXtaMdUz+IeQryrE7cO7WPQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
