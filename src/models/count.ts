@@ -20,7 +20,7 @@ export const count = createModel<RootModel>()({
     },
   },
   effects: (dispatch) => ({
-    incrementEffect(payload: number, rootState) {
+    incrementEffect(payload: number) {
       dispatch.count.increment(payload);
     },
   }),

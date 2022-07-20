@@ -14,6 +14,7 @@ import { Provider } from 'react-redux';
 import { store } from 'store';
 import DefaultLayout from 'components/layout/DefaultLayout';
 import type { NextPage } from 'next';
+import { useEffect } from 'react';
 
 export function reportWebVitals(metric: NextWebVitalsMetric): void {
   const monitor = new Monitor();
@@ -29,7 +30,9 @@ type AppPropsWithLayout = AppProps & {
 const queryClient = new QueryClient();
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
-
+  useEffect(() => {
+    store.dispatch.user.updateUserInfo();
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>

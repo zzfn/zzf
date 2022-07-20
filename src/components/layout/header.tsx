@@ -7,14 +7,19 @@ import classNames from 'classnames';
 import Theme from '../Theme';
 import { useRouter } from 'next/router';
 import { login } from 'api/user';
+import { useDispatch, useSelector } from 'react-redux';
+import type { Dispatch, RootState } from '../../store';
 
 function Header(): JSX.Element {
   const router = useRouter();
+  const user = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch<Dispatch>();
   const [loginInfo, setLoginInfo] = useState({ username: '', password: '' });
 
   async function handleLogin() {
     const { data } = await login(loginInfo);
-    console.log(data);
+    localStorage.setItem('uid', data.token);
+    dispatch.user.updateUserInfo();
   }
 
   return (
@@ -52,25 +57,30 @@ function Header(): JSX.Element {
             <SvgIcon size={25} name='rss' />
           </a>
         </Link>
-        <Modal
-          title='login'
-          onConfirm={handleLogin}
-          toggled={
-            <SvgIcon className={classNames('text-brand-primary', 'mr-2')} size={25} name='user' />
-          }
-        >
-          <Input
-            value={loginInfo.username}
-            onChange={(e) => setLoginInfo({ ...loginInfo, username: e.target.value })}
-            className='mb-2'
-            placeholder='账号'
-          ></Input>
-          <Input
-            value={loginInfo.password}
-            onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
-            placeholder='密码'
-          ></Input>
-        </Modal>
+        {user.isLogin ? (
+          user.info.nickName
+        ) : (
+          <Modal
+            title='login'
+            onConfirm={handleLogin}
+            toggled={
+              <SvgIcon className={classNames('text-brand-primary', 'mr-2')} size={25} name='user' />
+            }
+          >
+            <Input
+              value={loginInfo.username}
+              onChange={(e) => setLoginInfo({ ...loginInfo, username: e.target.value })}
+              className='mb-2'
+              placeholder='账号'
+            ></Input>
+            <Input
+              value={loginInfo.password}
+              onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
+              placeholder='密码'
+            ></Input>
+          </Modal>
+        )}
+
         <Theme />
       </div>
     </>

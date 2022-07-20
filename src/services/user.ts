@@ -14,10 +14,9 @@ export const register = (data: any): any => {
     data,
   });
 };
-export const getUserInfo = (data: any): any => {
+export const getUserInfo = (): any => {
   return http<PageType<Article>>({
     method: 'get',
     url: '/user/getUserInfo',
-    data,
   });
 };
