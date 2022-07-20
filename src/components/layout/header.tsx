@@ -1,14 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { SvgIcon, Modal } from '@zzf/design';
+import { SvgIcon, Modal, Input } from '@zzf/design';
 import styles from './header.module.scss';
 import menus from '../../menus.json';
 import classNames from 'classnames';
 import Theme from '../Theme';
 import { useRouter } from 'next/router';
+import { login } from 'api/user';
 
 function Header(): JSX.Element {
   const router = useRouter();
+  const [loginInfo, setLoginInfo] = useState({ username: '', password: '' });
+
+  async function handleLogin() {
+    const { data } = await login(loginInfo);
+    console.log(data);
+  }
+
   return (
     <>
       <div className={classNames('flex', 'items-center')}>
@@ -46,11 +54,22 @@ function Header(): JSX.Element {
         </Link>
         <Modal
           title='login'
+          onConfirm={handleLogin}
           toggled={
             <SvgIcon className={classNames('text-brand-primary', 'mr-2')} size={25} name='user' />
           }
         >
-          login
+          <Input
+            value={loginInfo.username}
+            onChange={(e) => setLoginInfo({ ...loginInfo, username: e.target.value })}
+            className='mb-2'
+            placeholder='账号'
+          ></Input>
+          <Input
+            value={loginInfo.password}
+            onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
+            placeholder='密码'
+          ></Input>
         </Modal>
         <Theme />
       </div>
