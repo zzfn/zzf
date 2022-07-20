@@ -22,7 +22,7 @@ const Comment = (props: any) => {
     }
   };
   const handleGetUser = async () => {
-    const { data } = await getUserInfo({});
+    const { data } = await getUserInfo();
     if (data) {
       setUserInfo(data);
     }
