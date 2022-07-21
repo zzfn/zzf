@@ -63,7 +63,7 @@ function Header(): JSX.Element {
         </Link>
         <Theme />
         {user.isLogin ? (
-          <div>{user.info.nickName}</div>
+          <span>{user.info.nickName}</span>
         ) : (
           <SvgIcon
             onClick={() => setVisible(true)}
