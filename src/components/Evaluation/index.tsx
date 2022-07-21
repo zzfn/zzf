@@ -9,6 +9,8 @@ function Evaluation(props: any) {
   const { id } = props;
   const [list, setList] = useState([]);
   const [len, setLen] = useState(0);
+  const [visible, setVisible] = useState(false);
+
   const initial = async () => {
     const { data } = await listDiscuss({ id });
     setLen(data.length);
@@ -36,14 +38,18 @@ function Evaluation(props: any) {
       <header
         className={classNames('border-y', 'my-4', 'flex', 'justify-between', 'text-gray-400')}
       >
-        全部评论（{len}）
-        <Modal toggled={<span className='text-gray-400'>点击回复</span>}>
-          <Comment articleId={id} updateList={initial} />
-        </Modal>
+        全部评论（{len}）<span className='text-gray-400'>点击回复</span>
       </header>
       {list?.map((item: any) => {
         return <Card updateList={initial} key={item.id} dataSource={item} />;
       })}
+      <Modal
+        visible={visible}
+        onCancel={() => setVisible(false)}
+        onConfirm={() => setVisible(false)}
+      >
+        <Comment articleId={id} updateList={initial} />
+      </Modal>
     </>
   );
 }

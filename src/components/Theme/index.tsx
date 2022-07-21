@@ -22,7 +22,7 @@ const Theme: FC = () => {
   }, []);
 
   return (
-    <div className='relative'>
+    <div className='relative mr-2'>
       <SvgIcon
         className='text-brand-primary'
         onClick={() => setVisible(!visible)}

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Comment from './Comment';
 import { Modal } from '@zzf/design';
 
 function Card(props: any) {
   const { dataSource, updateList } = props;
+  const [visible, setVisible] = useState(false);
   return (
     <div className='border-solid border-b mt-5'>
       <header className='flex justify-between text-gray-400'>
@@ -21,7 +22,18 @@ function Card(props: any) {
         </div>
       </header>
       <div>{dataSource.content}</div>
-      <Modal toggled={<span className='text-gray-400'>点击回复</span>}>
+      <span className='text-gray-400'>点击回复</span>
+
+      <div className='pl-4'>
+        {dataSource.children?.map((item: any) => {
+          return <Card key={item.id} dataSource={item} updateList={updateList} />;
+        })}
+      </div>
+      <Modal
+        visible={visible}
+        onCancel={() => setVisible(false)}
+        onConfirm={() => setVisible(false)}
+      >
         <Comment
           parentId={dataSource.parentId || dataSource.id}
           replyId={dataSource.id}
@@ -29,11 +41,6 @@ function Card(props: any) {
           updateList={updateList}
         />
       </Modal>
-      <div className='pl-4'>
-        {dataSource.children?.map((item: any) => {
-          return <Card key={item.id} dataSource={item} updateList={updateList} />;
-        })}
-      </div>
     </div>
   );
 }

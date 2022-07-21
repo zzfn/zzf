@@ -15,11 +15,15 @@ function Header(): JSX.Element {
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch<Dispatch>();
   const [loginInfo, setLoginInfo] = useState({ username: '', password: '' });
+  const [visible, setVisible] = useState(false);
 
   async function handleLogin() {
-    const { data } = await login(loginInfo);
-    localStorage.setItem('uid', data.token);
-    dispatch.user.updateUserInfo();
+    if (loginInfo.password && loginInfo.username) {
+      const { data } = await login(loginInfo);
+      localStorage.setItem('uid', data.token);
+      dispatch.user.updateUserInfo();
+      setVisible(false);
+    }
   }
 
   return (
@@ -57,32 +61,37 @@ function Header(): JSX.Element {
             <SvgIcon size={25} name='rss' />
           </a>
         </Link>
-        {user.isLogin ? (
-          user.info.nickName
-        ) : (
-          <Modal
-            title='login'
-            onConfirm={handleLogin}
-            toggled={
-              <SvgIcon className={classNames('text-brand-primary', 'mr-2')} size={25} name='user' />
-            }
-          >
-            <Input
-              value={loginInfo.username}
-              onChange={(e) => setLoginInfo({ ...loginInfo, username: e.target.value })}
-              className='mb-2'
-              placeholder='账号'
-            ></Input>
-            <Input
-              value={loginInfo.password}
-              onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
-              placeholder='密码'
-            ></Input>
-          </Modal>
-        )}
-
         <Theme />
+        {user.isLogin ? (
+          <div>{user.info.nickName}</div>
+        ) : (
+          <SvgIcon
+            onClick={() => setVisible(true)}
+            className={classNames('text-brand-primary')}
+            size={25}
+            name='user'
+          />
+        )}
       </div>
+      <Modal
+        onCancel={() => setVisible(false)}
+        visible={visible}
+        title='login'
+        onConfirm={handleLogin}
+      >
+        {user.info.nickName}
+        <Input
+          value={loginInfo.username}
+          onChange={(e) => setLoginInfo({ ...loginInfo, username: e.target.value })}
+          className='mb-2'
+          placeholder='账号'
+        ></Input>
+        <Input
+          value={loginInfo.password}
+          onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
+          placeholder='密码'
+        ></Input>
+      </Modal>
     </>
   );
 }
