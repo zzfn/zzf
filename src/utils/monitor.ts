@@ -29,13 +29,16 @@ class Monitor {
 
   async loadUrl(url: string, metric: NextWebVitalsMetric): Promise<void> {
     const json = {
-      url,
+      url: `${window.origin}${url}`,
       visitorId: await this.getVisitorId(),
+      title: document.title,
       browser: this.getBrowser().name,
       browserVersion: this.getBrowser().version,
       os: this.getOS().name,
       osVersion: this.getOS().version,
       referrer: document.referrer,
+      screen: `${window.screen.width}*${window.screen.height}`,
+      ua: window.navigator.userAgent.toLowerCase(),
       name: metric.name,
       value: metric.value,
     };
