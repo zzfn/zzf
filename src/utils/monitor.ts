@@ -32,7 +32,6 @@ class Monitor {
     const json = {
       url: `${window.origin}${url}`,
       visitorId: await this.getVisitorId(),
-      title: document.title,
       browser: this.getBrowser().name,
       browserVersion: this.getBrowser().version,
       os: this.getOS().name,
