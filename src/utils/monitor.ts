@@ -28,6 +28,7 @@ class Monitor {
   }
 
   async loadUrl(url: string, metric: NextWebVitalsMetric): Promise<void> {
+    if (process.env.NODE_ENV === 'development') return;
     const json = {
       url: `${window.origin}${url}`,
       visitorId: await this.getVisitorId(),
@@ -45,7 +46,6 @@ class Monitor {
     new Image().src = `https://log.zzfzzf.com/zzf.gif?body=${window.btoa(
       JSON.stringify(json),
     )}&index=log-performance`;
-    if (process.env.NODE_ENV === 'development') return;
     await monitorLoad(json);
   }
 }
