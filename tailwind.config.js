@@ -2,7 +2,7 @@ module.exports = {
   content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
   theme: {
     colors: {
-      'brand-primary': 'var(--color-primary)',
+      'brand-primary': 'var(--color-primary-4)',
       'brand-secondary': 'var(--color-secondary)',
       info: 'var(--color-text-info)',
       primary: 'var(--color-text-primary)',
