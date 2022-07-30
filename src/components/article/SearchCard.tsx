@@ -12,7 +12,7 @@ const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
     <div className={styles.card}>
       <div className='flex'>
-        <Tag type='light'>
+        <Tag>
           <div
             dangerouslySetInnerHTML={{
               __html: dataSource.tagDesc,

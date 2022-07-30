@@ -27,7 +27,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
         <React.Fragment key={item.code}>
           <Link href={`/tag/${item.code}`}>
             <a className={classNames('flex', 'items-center', 'justify-between', 'ml-3', 'mb-2')}>
-              <Tag type='light'>
+              <Tag>
                 # {item.tag}
                 <span className='text-brand-primary ml-2'>{item.count}</span>
               </Tag>
