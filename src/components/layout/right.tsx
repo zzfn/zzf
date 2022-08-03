@@ -6,7 +6,7 @@ import { diff } from 'utils/time';
 import React, { useEffect, useState } from 'react';
 import { Card, SvgIcon } from '@zzf/design';
 import useFcp from 'hooks/useFcp';
-import { lastUpdated } from 'api/article';
+import { articleCount, lastUpdated } from 'api/article';
 
 type LastUpdatedListType = {
   title: string;
@@ -17,14 +17,19 @@ type LastUpdatedListType = {
 const Right = () => {
   const [lastUpdatedList, setLastUpdatedList] = useState<LastUpdatedListType[]>([]);
   const loadTime = useFcp();
+  const [count, setCount] = useState<any>({ tag: 0, article: 0 });
 
   async function getLastUpdatedList() {
     const { data } = await lastUpdated();
     setLastUpdatedList(data);
   }
-
+  async function getCount() {
+    const { data } = await articleCount();
+    setCount(data);
+  }
   useEffect(() => {
     getLastUpdatedList();
+    getCount();
   }, []);
   return (
     <>
@@ -33,11 +38,15 @@ const Right = () => {
           <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
           <div className='flex justify-around'>
             <div>
-              <div>95</div>
+              <div className='text-center'>
+                <Link href='/archive'>{count.article}</Link>
+              </div>
               <div>文章</div>
             </div>
             <div>
-              <div>95</div>
+              <div className='text-center'>
+                <Link href='/tags'>{count.tag}</Link>
+              </div>
               <div>标签</div>
             </div>
           </div>

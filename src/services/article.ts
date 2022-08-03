@@ -85,3 +85,9 @@ export const updateView = (params: ViewType) => {
     params,
   });
 };
+export const articleCount = () => {
+  return http<number>({
+    method: 'get',
+    url: '/article/count',
+  });
+};
