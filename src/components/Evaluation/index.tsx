@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { listDiscuss } from 'api/discuss';
 import classNames from 'classnames';
 import { Modal, Comment } from '@zzf/design';
-import Comments from './Comment'
+import Comments from './Comment';
 function Evaluation(props: any) {
   const { id } = props;
   const [list, setList] = useState([]);
@@ -36,7 +36,10 @@ function Evaluation(props: any) {
       <header
         className={classNames('border-y', 'my-4', 'flex', 'justify-between', 'text-gray-400')}
       >
-        全部评论（{len}）<span onClick={()=>setVisible(true)} className='text-gray-400'>点击回复</span>
+        全部评论（{len}）
+        <span onClick={() => setVisible(true)} className='text-gray-400'>
+          点击回复
+        </span>
       </header>
       {list?.map((item: any) => {
         return (
@@ -47,15 +50,23 @@ function Evaluation(props: any) {
             author={item.nickName}
             key={item.id}
           >
-            {item.children.map((_) => (
-              <Comment
-                avatar={`https://www.dmoe.cc/random.php?id=${_.id}`}
-                content={_.content}
-                datetime={`${_.address}-${_.createTime}`}
-                author={_.nickName}
-                key={_.id}
-              ></Comment>
-            ))}
+            {item.children.map(
+              (_: {
+                id: React.Key;
+                content: string;
+                address: any;
+                createTime: any;
+                nickName: string;
+              }) => (
+                <Comment
+                  avatar={`https://www.dmoe.cc/random.php?id=${_.id}`}
+                  content={_.content}
+                  datetime={`${_.address}-${_.createTime}`}
+                  author={_.nickName}
+                  key={_.id}
+                ></Comment>
+              ),
+            )}
           </Comment>
         );
       })}
