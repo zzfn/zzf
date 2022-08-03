@@ -50,7 +50,7 @@ function Evaluation(props: any) {
             author={item.nickName}
             key={item.id}
           >
-            {item.children.map(
+            {item.children?.map(
               (_: {
                 id: React.Key;
                 content: string;
