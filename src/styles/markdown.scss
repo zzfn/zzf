@@ -6,10 +6,10 @@
 
 .markdown-body {
   font-size: 16px;
-  color: var(--color-text-0);
+  color: var(--color-text-1);
 
   p {
-    color: var(--color-text-0);
+    color: var(--color-text-1);
     line-height: 2;
     display: inline-block;
   }
@@ -49,13 +49,13 @@
   }
 
   a {
-    color: var(--color-link);
+    color: var(--color-link-4);
     font-weight: var(--font-weight-medium);
     text-decoration: none;
     transition: box-shadow 200ms ease 0s;
 
     &:hover {
-      color: var(--color-link-hover);
+      color: var(--color-link-3);
     }
   }
 
