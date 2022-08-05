@@ -50,7 +50,7 @@ const Nav: React.FC<NavProps> = ({ source }) => {
           style={{ marginLeft: `${(nav.level - 1) * 10}px` }}
           key={nav.index}
         >
-          <a href={`#heading-${nav.index}`}>{nav.text}</a>
+          <a href={`#heading-${nav.index}`}># {nav.text}</a>
         </li>
       ))}
     </ul>

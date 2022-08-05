@@ -1,6 +1,8 @@
 .nav {
+  position: fixed;
+  top: 80px;
   padding: 0 5px;
-  color: var(--color-secondary);
+  color: var(--color-text-1);
 
   .navItem {
     width: 150px;

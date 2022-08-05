@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import type { NextPage } from 'next';
 import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
@@ -12,6 +12,10 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Evaluation from '../../components/Evaluation';
 import { useDispatch } from 'react-redux';
 import type { Dispatch } from 'store';
+import NoAsideLayout from '../../components/layout/NoAsideLayout';
+import Message from '../message';
+import ArticleLayout from '../../components/layout/ArticleLayout';
+import { NextPageWithLayout } from '../_app';
 
 interface Data {
   content?: string;
@@ -30,7 +34,7 @@ interface ServerProps {
   serverProps: Data;
 }
 
-const ArticleDetail: NextPage<ServerProps> = (props) => {
+const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
   const { serverProps = {} } = props;
   const dispatch = useDispatch<Dispatch>();
 
@@ -96,6 +100,9 @@ const ArticleDetail: NextPage<ServerProps> = (props) => {
   );
 };
 
+ArticleDetail.getLayout = function (page: ReactElement) {
+  return <ArticleLayout source={page.props.serverProps.content}>{page}</ArticleLayout>;
+};
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await listArchives({});
   const paths = data.articleList.map((_) => ({ params: { id: _.id } }));
