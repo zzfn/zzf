@@ -1,5 +1,6 @@
-import React, { ReactElement, useEffect } from 'react';
-import type { NextPage } from 'next';
+import type { ReactElement } from 'react';
+import type { NextPageWithLayout } from '../_app';
+import React, { useEffect } from 'react';
 import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
@@ -12,10 +13,7 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Evaluation from '../../components/Evaluation';
 import { useDispatch } from 'react-redux';
 import type { Dispatch } from 'store';
-import NoAsideLayout from '../../components/layout/NoAsideLayout';
-import Message from '../message';
 import ArticleLayout from '../../components/layout/ArticleLayout';
-import { NextPageWithLayout } from '../_app';
 
 interface Data {
   content?: string;
