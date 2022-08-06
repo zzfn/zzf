@@ -32,3 +32,4 @@ declare module '*.svg' {
   export default content;
 }
 declare module 'zooming';
+declare module '@multiavatar/multiavatar/esm';

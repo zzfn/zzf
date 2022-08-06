@@ -3,9 +3,13 @@ import { listDiscuss } from 'api/discuss';
 import classNames from 'classnames';
 import { Modal, Comment } from '@zzf/design';
 import Comments from './Comment';
+import multiavatar from '@multiavatar/multiavatar/esm';
+function getImageDataURL(svgXml: string) {
+  return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
+}
 function Evaluation(props: any) {
   const { id } = props;
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<any>([]);
   const [len, setLen] = useState(0);
   const [visible, setVisible] = useState(false);
 
@@ -44,7 +48,7 @@ function Evaluation(props: any) {
       {list?.map((item: any) => {
         return (
           <Comment
-            avatar={`https://www.dmoe.cc/random.php?id=${item.id}`}
+            avatar={item.avatar ?? getImageDataURL(multiavatar(item.id))}
             content={item.content}
             datetime={`${item.address}-${item.createTime}`}
             author={item.nickName}
@@ -57,9 +61,10 @@ function Evaluation(props: any) {
                 address: any;
                 createTime: any;
                 nickName: string;
+                avatar: any;
               }) => (
                 <Comment
-                  avatar={`https://www.dmoe.cc/random.php?id=${_.id}`}
+                  avatar={_.avatar ?? getImageDataURL(multiavatar(_.id))}
                   content={_.content}
                   datetime={`${_.address}-${_.createTime}`}
                   author={_.nickName}

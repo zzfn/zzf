@@ -5,6 +5,7 @@ specifiers:
   '@commitlint/cli': ^17.0.3
   '@commitlint/config-conventional': ^17.0.3
   '@fingerprintjs/fingerprintjs': ^3.3.4
+  '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^12.2.4
   '@next/eslint-plugin-next': ^12.2.4
   '@react-spring/web': ^9.5.2
@@ -56,6 +57,7 @@ specifiers:
 dependencies:
   '@babel/core': 7.18.10
   '@fingerprintjs/fingerprintjs': 3.3.4
+  '@multiavatar/multiavatar': 1.0.7
   '@react-spring/web': 9.5.2_biqbaboplfbrettd7655fr4n2y
   '@rematch/core': 2.2.0_redux@4.2.0
   '@tanstack/react-query': 4.0.10_biqbaboplfbrettd7655fr4n2y
@@ -561,6 +563,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@multiavatar/multiavatar/1.0.7:
+    resolution: {integrity: sha512-Yg9Uw57bmlErsWL0CSv4d6D4ZqVBE00OZmYr9MRgygoXZdboNtsEI6FbBRw1AY8l88Sm1ARcyojtlm2uwUn0Zg==}
+    dev: false
 
   /@next/env/12.2.4:
     resolution: {integrity: sha512-/gApFXWk5CCLFQJL5IYJXxPQuG5tz5nPX4l27A9Zm/+wJxiwFrRSP54AopDxIv4JRp/rGwcgk/lZS/0Clw8jYA==}
