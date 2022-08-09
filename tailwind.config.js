@@ -5,7 +5,7 @@ module.exports = {
       'brand-primary': 'var(--color-primary-4)',
       'brand-secondary': 'var(--color-secondary)',
       info: 'var(--color-text-info)',
-      primary: 'var(--color-text-primary)',
+      primary: 'var(--color-primary-4)',
       secondary: 'var(--color-text-secondary)',
       tertiary: 'var(--color-text-tertiary)',
     },
