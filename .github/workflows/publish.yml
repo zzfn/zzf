@@ -2,7 +2,7 @@ name: publish doc
 
 on:
   push:
-    branches: [main]
+    branches: [serverless]
 
 jobs:
   serverless-devs-cd:
