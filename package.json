@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.10",
-    "@dekopon/design": "^0.1.10",
+    "@dekopon/design": "^0.1.11",
     "@fingerprintjs/fingerprintjs": "^3.3.4",
     "@multiavatar/multiavatar": "^1.0.7",
     "@react-spring/web": "^9.5.2",
