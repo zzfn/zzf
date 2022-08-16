@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { SvgIcon, Modal, Input } from '@zzf/design';
+import { SvgIcon, Modal, Input } from '@dekopon/design';
 import styles from './header.module.scss';
 import menus from '../../menus.json';
 import classNames from 'classnames';

@@ -6,7 +6,7 @@ import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Zooming from 'zooming';
-import { Progress } from '@zzf/design';
+import { Progress } from '@dekopon/design';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';

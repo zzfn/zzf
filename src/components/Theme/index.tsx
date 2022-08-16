@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
 import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
-import { SvgIcon } from '@zzf/design';
+import { SvgIcon } from '@dekopon/design';
 import styles from './index.module.scss';
 import useOutsideClick from 'hooks/useOutsideClick';
 

@@ -1,4 +1,4 @@
-import { Layout } from '@zzf/design';
+import { Layout } from '@dekopon/design';
 import Header from './header';
 import Right from './right';
 import Footer from './footer';
@@ -11,9 +11,9 @@ function DefaultLayout({ children }: { children: ReactNode }) {
         <Header />
       </Layout.Header>
       <Layout.Content className='container'>
-        <Layout.Right>
+        <Layout.Aside>
           <Right />
-        </Layout.Right>
+        </Layout.Aside>
         <Layout.Center className='w-full'>{children}</Layout.Center>
       </Layout.Content>
       <Layout.Footer className='container'>

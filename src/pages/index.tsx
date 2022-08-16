@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { listArticles } from 'api/article';
-import { Loading } from '@zzf/design';
+import { Loading } from '@dekopon/design';
 import ArticleCard from '../components/article/articleCard';
 import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';

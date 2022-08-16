@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './searchCard.module.scss';
 import Link from 'next/link';
-import { Tag } from '@zzf/design';
+import { Tag } from '@dekopon/design';
 import classNames from 'classnames';
 
 type SearchCardProps = {

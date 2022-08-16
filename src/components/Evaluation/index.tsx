@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { listDiscuss } from 'api/discuss';
 import classNames from 'classnames';
-import { Modal, Comment } from '@zzf/design';
+import { Modal, Comment } from '@dekopon/design';
 import Comments from './Comment';
 import multiavatar from '@multiavatar/multiavatar/esm';
 function getImageDataURL(svgXml: string) {

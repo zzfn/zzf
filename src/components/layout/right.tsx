@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { diff } from 'utils/time';
 import React, { useEffect, useState } from 'react';
-import { Card, SvgIcon } from '@zzf/design';
+import { Card, SvgIcon } from '@dekopon/design';
 import useFcp from 'hooks/useFcp';
 import { articleCount, lastUpdated } from 'api/article';
 

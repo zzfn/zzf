@@ -1,4 +1,4 @@
-import { Layout } from '@zzf/design';
+import { Layout } from '@dekopon/design';
 import Header from './header';
 import Footer from './footer';
 import type { ReactNode } from 'react';

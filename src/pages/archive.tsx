@@ -8,7 +8,7 @@ import { getTitle } from 'utils/getTitle';
 import type { GetStaticProps } from 'next';
 import classNames from 'classnames';
 import generateRssFeed from 'utils/generateRssFeed';
-import { Alert } from '@zzf/design';
+import { Alert } from '@dekopon/design';
 
 type ListProps = {
   createTime: Date;

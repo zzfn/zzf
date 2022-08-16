@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Comment from './Comment';
-import { Modal } from '@zzf/design';
+import { Modal } from '@dekopon/design';
 
 function Card(props: any) {
   const { dataSource, updateList } = props;

@@ -1,4 +1,4 @@
-import { Button } from '@zzf/design';
+import { Button } from '@dekopon/design';
 import React, { useEffect, useState } from 'react';
 import { saveDiscuss } from 'api/discuss';
 import Link from 'next/link';

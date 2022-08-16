@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Button, Alert } from '@zzf/design';
+import { Button, Alert } from '@dekopon/design';
 
 type FriendCard = {
   logo: string;
