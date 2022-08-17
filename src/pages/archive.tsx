@@ -71,7 +71,6 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await listArchives({});
-  await generateRssFeed(data.articleList);
   return {
     props: {
       serverProps: data,

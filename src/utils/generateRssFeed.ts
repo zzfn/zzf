@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { Feed } from 'feed';
+import { translateMarkdown } from './translateMarkdown';
 
 export default async function generateRssFeed(posts: any[]) {
   const siteURL = 'https://zzfzzf.com';
@@ -35,7 +36,7 @@ export default async function generateRssFeed(posts: any[]) {
       id: url,
       link: url,
       description: post.summary,
-      content: post.content,
+      content: translateMarkdown(post.content),
       author: [author],
       contributor: [author],
       date: new Date(post.updateTime),

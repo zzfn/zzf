@@ -7,6 +7,7 @@ import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import generateRssFeed from '../utils/generateRssFeed';
 
 type HomeType = {
   current: number;
@@ -62,6 +63,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
 };
 export const getStaticProps: GetStaticProps = async () => {
   const pages = await listArticles({ pageSize: 10, current: 1 });
+  await generateRssFeed(pages.data.records);
   return {
     props: {
       serverProps: { ...pages.data },
