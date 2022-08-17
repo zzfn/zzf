@@ -89,16 +89,17 @@ function Evaluation(props: any) {
                 createTime: any;
                 nickName: string;
                 avatar: any;
+                createBy: string;
               }) => (
                 <Comment
                   onReply={() => {
                     setReplyInfo({ replyId: '', parentId: item.id });
                     setVisible(true);
                   }}
-                  avatar={_.avatar ?? getImageDataURL(multiavatar(_.id))}
+                  avatar={_.avatar ?? getImageDataURL(multiavatar(_.createBy || _.id))}
                   content={_.content}
                   datetime={`${_.address}-${_.createTime}`}
-                  author={_.nickName}
+                  author={_.nickName || _.createBy}
                   key={_.id}
                 ></Comment>
               ),
