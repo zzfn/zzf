@@ -93,7 +93,7 @@ function Evaluation(props: any) {
               }) => (
                 <Comment
                   onReply={() => {
-                    setReplyInfo({ replyId: '', parentId: item.id });
+                    setReplyInfo({ replyId: _.id as string, parentId: item.id });
                     setVisible(true);
                   }}
                   avatar={_.avatar ?? getImageDataURL(multiavatar(_.createBy || _.id))}
