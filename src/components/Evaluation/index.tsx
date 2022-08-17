@@ -25,7 +25,7 @@ function Evaluation(props: any) {
         const obj = data.find((item: any) => item.id === curr.parentId);
         if (obj) {
           const reply = data.find((item: any) => item.id === curr.replyId);
-          curr.replyName = reply?.nickName || reply.createBy;
+          curr.replyName = reply?.nickName || reply?.createBy;
           obj.children = obj.children || [];
           obj.children.push(curr);
         }
