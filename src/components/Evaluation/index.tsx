@@ -22,11 +22,12 @@ function Evaluation(props: any) {
     setLen(data.length);
     const r = data.reduce((prev: any, curr: any) => {
       if (curr.parentId) {
-        const reply = data.find((item: any) => item.id === curr.parentId);
-        if (reply) {
-          curr.replyName = reply.nickName;
-          reply.children = reply.children || [];
-          reply.children.push(curr);
+        const obj = data.find((item: any) => item.id === curr.parentId);
+        if (obj) {
+          const reply = data.find((item: any) => item.id === curr.replyId);
+          curr.replyName = reply?.nickName || reply.createBy;
+          obj.children = obj.children || [];
+          obj.children.push(curr);
         }
       } else {
         prev.push(curr);
@@ -72,7 +73,7 @@ function Evaluation(props: any) {
         return (
           <Comment
             onReply={() => {
-              setReplyInfo({ replyId: '', parentId: item.id });
+              setReplyInfo({ replyId: item.id, parentId: item.id });
               setVisible(true);
             }}
             avatar={item.avatar ?? getImageDataURL(multiavatar(item.createBy || item.id))}
@@ -90,6 +91,7 @@ function Evaluation(props: any) {
                 nickName: string;
                 avatar: any;
                 createBy: string;
+                replyName: string;
               }) => (
                 <Comment
                   onReply={() => {
@@ -99,7 +101,7 @@ function Evaluation(props: any) {
                   avatar={_.avatar ?? getImageDataURL(multiavatar(_.createBy || _.id))}
                   content={_.content}
                   datetime={`${_.address}-${_.createTime}`}
-                  author={_.nickName || _.createBy}
+                  author={`${_.nickName || _.createBy} 回复 ${_.replyName}`}
                   key={_.id}
                 ></Comment>
               ),
