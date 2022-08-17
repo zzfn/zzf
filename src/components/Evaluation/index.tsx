@@ -16,18 +16,17 @@ function Evaluation(props: any) {
   const [visible, setVisible] = useState(false);
   const [content, setContent] = useState('');
   const user = useSelector((state: RootState) => state.user);
-
+  const [replyInfo, setReplyInfo] = useState({ replyId: '', parentId: '' });
   const initial = async () => {
     const { data } = await listDiscuss({ id });
     setLen(data.length);
     const r = data.reduce((prev: any, curr: any) => {
       if (curr.parentId) {
-        const obj = data.find((item: any) => item.id === curr.parentId);
-        if (obj) {
-          const reply = data.find((item: any) => item.id === curr.replyId);
+        const reply = data.find((item: any) => item.id === curr.parentId);
+        if (reply) {
           curr.replyName = reply.nickName;
-          obj.children = obj.children || [];
-          obj.children.push(curr);
+          reply.children = reply.children || [];
+          reply.children.push(curr);
         }
       } else {
         prev.push(curr);
@@ -41,11 +40,11 @@ function Evaluation(props: any) {
     const { data } = await saveDiscuss({
       articleId: id,
       content,
-      replyId: '',
-      parentId: '',
+      ...replyInfo,
       username: user.info.username,
     });
     if (data) {
+      Message.success('评论成功');
       setVisible(false);
       initial();
     }
@@ -59,13 +58,23 @@ function Evaluation(props: any) {
         className={classNames('border-y', 'my-4', 'flex', 'justify-between', 'text-gray-400')}
       >
         全部评论（{len}）
-        <span onClick={() => setVisible(true)} className='text-gray-400'>
+        <span
+          onClick={() => {
+            setReplyInfo({ replyId: '', parentId: '' });
+            setVisible(true);
+          }}
+          className='text-gray-400'
+        >
           评论
         </span>
       </header>
       {list?.map((item: any) => {
         return (
           <Comment
+            onReply={() => {
+              setReplyInfo({ replyId: '', parentId: item.id });
+              setVisible(true);
+            }}
             avatar={item.avatar ?? getImageDataURL(multiavatar(item.createBy || item.id))}
             content={item.content}
             datetime={`${item.address}-${item.createTime}`}
@@ -82,6 +91,10 @@ function Evaluation(props: any) {
                 avatar: any;
               }) => (
                 <Comment
+                  onReply={() => {
+                    setReplyInfo({ replyId: '', parentId: item.id });
+                    setVisible(true);
+                  }}
                   avatar={_.avatar ?? getImageDataURL(multiavatar(_.id))}
                   content={_.content}
                   datetime={`${_.address}-${_.createTime}`}

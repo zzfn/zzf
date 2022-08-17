@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { SvgIcon, Modal, Input } from '@dekopon/design';
+import {SvgIcon, Modal, Input, Alert} from '@dekopon/design';
 import styles from './header.module.scss';
 import menus from '../../menus.json';
 import classNames from 'classnames';
@@ -79,7 +79,7 @@ function Header(): JSX.Element {
         title='login'
         onConfirm={handleLogin}
       >
-        {user.info.nickName}
+        <Alert className='mb-2'>暂未开放注册服务</Alert>
         <Input
           value={loginInfo.username}
           onChange={(e) => setLoginInfo({ ...loginInfo, username: e.target.value })}
