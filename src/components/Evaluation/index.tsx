@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { listDiscuss } from 'api/discuss';
+import { listDiscuss, saveDiscuss } from 'api/discuss';
 import classNames from 'classnames';
-import { Modal, Comment } from '@dekopon/design';
-import Comments from './Comment';
+import { Modal, Comment, Input, Alert } from '@dekopon/design';
 import multiavatar from '@multiavatar/multiavatar/esm';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store';
+import { Message } from '@dekopon/design';
 function getImageDataURL(svgXml: string) {
   return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
 }
@@ -12,6 +14,8 @@ function Evaluation(props: any) {
   const [list, setList] = useState<any>([]);
   const [len, setLen] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [content, setContent] = useState('');
+  const user = useSelector((state: RootState) => state.user);
 
   const initial = async () => {
     const { data } = await listDiscuss({ id });
@@ -32,6 +36,20 @@ function Evaluation(props: any) {
     }, []);
     setList(r);
   };
+  const handleComment = async () => {
+    if (!content) return;
+    const { data } = await saveDiscuss({
+      articleId: id,
+      content,
+      replyId: '',
+      parentId: '',
+      username: user.info.username,
+    });
+    if (data) {
+      setVisible(false);
+      initial();
+    }
+  };
   useEffect(() => {
     initial();
   }, [id]);
@@ -42,16 +60,16 @@ function Evaluation(props: any) {
       >
         全部评论（{len}）
         <span onClick={() => setVisible(true)} className='text-gray-400'>
-          点击回复
+          评论
         </span>
       </header>
       {list?.map((item: any) => {
         return (
           <Comment
-            avatar={item.avatar ?? getImageDataURL(multiavatar(item.id))}
+            avatar={item.avatar ?? getImageDataURL(multiavatar(item.createBy || item.id))}
             content={item.content}
             datetime={`${item.address}-${item.createTime}`}
-            author={item.nickName}
+            author={item.nickName || item.createBy}
             key={item.id}
           >
             {item.children?.map(
@@ -76,11 +94,17 @@ function Evaluation(props: any) {
         );
       })}
       <Modal
+        title='评论'
         visible={visible}
         onCancel={() => setVisible(false)}
-        onConfirm={() => setVisible(false)}
+        onConfirm={handleComment}
       >
-        <Comments articleId={id} updateList={initial} />
+        {!user.isLogin && <Alert className='mb-2'>当前未登陆，可匿名评论</Alert>}
+        <Input
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
+          placeholder='请输入您的意见'
+        ></Input>
       </Modal>
     </>
   );
