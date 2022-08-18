@@ -37,11 +37,32 @@ function Header(): JSX.Element {
         </Link>
       </div>
       <div className={classNames('flex', 'items-center', 'md:hidden', 'pr-6')}>
+        <Link href='/search'>
+          <a className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
+            <SvgIcon size={25} name='search' />
+          </a>
+        </Link>
+        <Link href='/rss/feed.xml'>
+          <a target='_blank' className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
+            <SvgIcon size={25} name='rss' />
+          </a>
+        </Link>
+        <Theme />
+        {user.isLogin ? (
+          <span>{user.info.nickName}</span>
+        ) : (
+          <SvgIcon
+            onClick={() => setVisible(true)}
+            className={classNames('text-brand-primary')}
+            size={25}
+            name='user'
+          />
+        )}
         <Popover
+          placement='bottomRight'
           onPopupVisibleChange={(v) => setVisibleMenu(v)}
-          align='bottomRight'
           content={
-            <div className='w-full'>
+            <div className='w-screen'>
               <nav className={styles.menu}>
                 {menus.map((menu) => (
                   <Link key={menu.name} href={menu.path}>
@@ -57,33 +78,14 @@ function Header(): JSX.Element {
                   </Link>
                 ))}
               </nav>
-              <Link href='/search'>
-                <a className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
-                  <SvgIcon size={25} name='search' />
-                </a>
-              </Link>
-              <Link href='/rss/feed.xml'>
-                <a target='_blank' className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
-                  <SvgIcon size={25} name='rss' />
-                </a>
-              </Link>
-              <Theme />
-              {user.isLogin ? (
-                <span>{user.info.nickName}</span>
-              ) : (
-                <SvgIcon
-                  onClick={() => setVisible(true)}
-                  className={classNames('text-brand-primary')}
-                  size={25}
-                  name='user'
-                />
-              )}
             </div>
           }
         >
-          <span>
-            <SvgIcon size={25} name={visibleMenu ? 'close' : 'menu'} />
-          </span>
+          <SvgIcon
+            className={classNames('text-brand-primary ml-2')}
+            size={25}
+            name={visibleMenu ? 'close' : 'menu'}
+          />
         </Popover>
       </div>
       <Modal
