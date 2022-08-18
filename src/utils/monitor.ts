@@ -1,4 +1,3 @@
-import { monitorLoad } from 'api/monitor';
 import type { Agent } from '@fingerprintjs/fingerprintjs';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import UAParser from 'ua-parser-js';
@@ -45,7 +44,6 @@ class Monitor {
     new Image().src = `https://log.zzfzzf.com/zzf.gif?body=${window.btoa(
       JSON.stringify(json),
     )}&index=log-performance`;
-    await monitorLoad(json);
   }
 }
 
