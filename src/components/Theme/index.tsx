@@ -20,6 +20,7 @@ const Theme: FC = () => {
   return (
     <div className='relative mr-2'>
       <Popover
+        onPopupVisibleChange={console.log}
         align='bottomRight'
         content={
           <ul className={classNames('bg-primary', styles.dropdown)}>
