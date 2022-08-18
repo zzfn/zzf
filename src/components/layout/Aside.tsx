@@ -14,7 +14,7 @@ type LastUpdatedListType = {
   updateTime: string;
 };
 
-const Right = () => {
+const Aside = () => {
   const [lastUpdatedList, setLastUpdatedList] = useState<LastUpdatedListType[]>([]);
   const loadTime = useFcp();
   const [count, setCount] = useState<any>({ tag: 0, article: 0 });
@@ -101,4 +101,4 @@ const Right = () => {
     </>
   );
 };
-export default Right;
+export default Aside;

@@ -53,7 +53,7 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
         </Head>
         <Script
           async
-          src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_7.cacd88ad47f8dfc12019cda79a188b9d.js'
+          src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_9.d18a72d2265c43124cfd146c29831a69.js'
         />
         {getLayout(<Component {...pageProps} />)}
       </Provider>

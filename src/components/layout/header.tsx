@@ -28,7 +28,7 @@ function Header(): JSX.Element {
 
   return (
     <>
-      <div className={classNames('flex', 'items-center')}>
+      <div className={classNames('flex', 'items-center hidden md:flex')}>
         <Link href='/'>
           <a className={classNames('text-brand-primary', 'text-xl', 'mr-2', 'text-primary')}>
             cc&apos;s Blog
@@ -50,7 +50,7 @@ function Header(): JSX.Element {
           ))}
         </nav>
       </div>
-      <div className={classNames('flex', 'items-center')}>
+      <div className={classNames('flex', 'items-center hidden md:flex')}>
         <Link href='/search'>
           <a className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
             <SvgIcon size={25} name='search' />
