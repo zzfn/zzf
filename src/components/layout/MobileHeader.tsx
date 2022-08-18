@@ -40,7 +40,7 @@ function Header(): JSX.Element {
         <Popover
           align='bottomRight'
           content={
-            <div className={'w-full'}>
+            <div className='w-full'>
               <nav className={styles.menu}>
                 {menus.map((menu) => (
                   <Link key={menu.name} href={menu.path}>
