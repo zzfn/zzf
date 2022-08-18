@@ -38,6 +38,7 @@ function Header(): JSX.Element {
       </div>
       <div className={classNames('flex', 'items-center', 'md:hidden', 'pr-6')}>
         <Popover
+          onPopupVisibleChange={(v) => setVisibleMenu(v)}
           align='bottomRight'
           content={
             <div className='w-full'>

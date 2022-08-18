@@ -1,5 +1,5 @@
 edition: 1.0.0
-access: "default"
+access: 'default'
 
 services:
   framework: # 业务名称/模块名称
@@ -15,10 +15,10 @@ services:
       region: cn-shanghai
       service:
         name: node-service
-        description: "Serverless Devs Website Service"
+        description: 'Serverless Devs Website Service'
       function:
         name: blog
-        description: "Serverless Devs Website Docusaurus Function"
+        description: 'Serverless Devs Website Docusaurus Function'
         runtime: custom
         layers:
           - d43502fd5a5e92d21cb5125ec1533ad7#nodejs16_fc_auto_created#1
