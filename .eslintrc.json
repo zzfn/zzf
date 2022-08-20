@@ -1,44 +1,14 @@
 {
-  "env": {
-    "browser": true,
-    "es2020": true,
-    "node": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
-    "plugin:@next/next/recommended"
-  ],
-  "globals": {},
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "prettier"],
+  "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
     "react/jsx-curly-brace-presence": 2,
     "react/jsx-uses-react": 0,
     "react/react-in-jsx-scope": 0,
-    "@typescript-eslint/consistent-type-imports": 2,
-    "prettier/prettier": 2,
     "react-hooks/rules-of-hooks": 2,
     "react-hooks/exhaustive-deps": 1,
     "react/display-name": 0,
     "react/prop-types": 0,
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
   }
 }
