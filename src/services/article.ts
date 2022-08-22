@@ -57,6 +57,7 @@ export const listArchives = (params: Record<string, string>) => {
 
 export const esList = (params: { keyword: string }) => {
   return http<Article[]>({
+    baseURL: process.env.NEXT_PUBLIC_GATEWAY_URL,
     method: 'get',
     url: '/article/search',
     params,
