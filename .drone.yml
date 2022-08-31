@@ -1,0 +1,98 @@
+kind: pipeline
+volumes:
+  - name: node_modules
+    host:
+      path: /root/$DRONE_REPO_NAME/node_modules
+  - name: ssh_keys
+    host:
+      path: /root/.ssh
+clone:
+  disable: true
+
+steps:
+  - name: FeiShu
+    image: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
+    settings:
+      webhook:
+        from_secret: webhook
+      secret:
+        from_secret: secret
+
+  - name: clone
+    image: alpine/git
+    volumes:
+      - name: ssh_keys
+        path: /root/.ssh
+    commands:
+      - git init
+      - git remote add origin $DRONE_GIT_SSH_URL
+      - git fetch
+      - git checkout origin/$DRONE_COMMIT_BRANCH -ft
+
+  - name: build
+    image: node
+    depends_on: [clone]
+    volumes:
+      - name: node_modules
+        path: /drone/src/node_modules
+    commands:
+      - pwd
+      - ls -a
+      - npm install
+      - npm run build
+      - ls -a
+
+  - name: oss
+    image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
+    depends_on: [build]
+    settings:
+      endpoint:
+        from_secret: endpoint
+      ACCESS_KEY_ID:
+        from_secret: accessKeyID
+      ACCESS_KEY_SECRET:
+        from_secret: accessKeySecret
+      BUCKET_NAME:
+        from_secret: bucketName
+      target: /zzf/_next/static
+      source: .next/static
+
+  - name: deploy
+    image: appleboy/drone-scp
+    depends_on: [build]
+    settings:
+      host:
+        from_secret: server_host
+      port: 22
+      username:
+        from_secret: username
+      password:
+        from_secret: server_password
+      overwrite: true
+      target: /root/node-service
+      source:
+        - .next
+        - .npmrc
+        - public
+        - package.json
+        - pnpm-lock.yaml
+        - next.config.mjs
+
+  - name: ssh
+    image: appleboy/drone-ssh
+    depends_on: [ deploy ]
+    settings:
+      host:
+        from_secret: server_host
+      username:
+        from_secret: username
+      password:
+        from_secret: server_password
+      port: 22
+      command_timeout: 2m
+      script:
+        - echo "Hello World"
+        - cd /root/zzf
+        - pnpm i
+        - pm2 del blog
+        - pm2 start npm --name blog -i max -- run "start:cdn"
