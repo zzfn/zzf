@@ -1,5 +1,4 @@
 import type { Agent } from '@fingerprintjs/fingerprintjs';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import UAParser from 'ua-parser-js';
 import type { NextWebVitalsMetric } from 'next/app';
 
@@ -8,7 +7,9 @@ class Monitor {
   private parser: UAParser.UAParserInstance;
 
   constructor() {
-    this.fpPromise = FingerprintJS.load();
+    this.fpPromise = import('@fingerprintjs/fingerprintjs').then((FingerprintJS) =>
+      FingerprintJS.load(),
+    );
     this.parser = new UAParser();
   }
 
