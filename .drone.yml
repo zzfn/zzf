@@ -1,14 +1,15 @@
 kind: pipeline
+type: docker
+name: ci/cd
 volumes:
   - name: node_modules
     host:
-      path: /root/$DRONE_REPO_NAME/node_modules
+      path: /root/node-zzf/node_modules
   - name: ssh_keys
     host:
       path: /root/.ssh
 clone:
   disable: true
-
 steps:
   - name: FeiShu
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
@@ -17,7 +18,6 @@ steps:
         from_secret: webhook
       secret:
         from_secret: secret
-
   - name: clone
     image: alpine/git
     volumes:
@@ -28,23 +28,20 @@ steps:
       - git remote add origin $DRONE_GIT_SSH_URL
       - git fetch
       - git checkout origin/$DRONE_COMMIT_BRANCH -ft
-
   - name: build
-    image: node
-    depends_on: [clone]
+    image: node:lts-alpine
+    depends_on:
+      - clone
     volumes:
       - name: node_modules
         path: /drone/src/node_modules
     commands:
-      - pwd
-      - ls -a
       - npm install
       - npm run build
-      - ls -a
-
   - name: oss
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
-    depends_on: [build]
+    depends_on:
+      - build
     settings:
       endpoint:
         from_secret: endpoint
@@ -56,10 +53,10 @@ steps:
         from_secret: bucketName
       target: /zzf/_next/static
       source: .next/static
-
   - name: deploy
     image: appleboy/drone-scp
-    depends_on: [build]
+    depends_on:
+      - build
     settings:
       host:
         from_secret: server_host
@@ -77,10 +74,10 @@ steps:
         - package.json
         - pnpm-lock.yaml
         - next.config.mjs
-
   - name: ssh
     image: appleboy/drone-ssh
-    depends_on: [ deploy ]
+    depends_on:
+      - deploy
     settings:
       host:
         from_secret: server_host

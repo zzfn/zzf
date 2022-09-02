@@ -18,5 +18,9 @@
   {
     "name": "友链",
     "path": "/friends"
+  },
+  {
+    "name": "更新日志",
+    "path": "/changelog"
   }
 ]
