@@ -52,7 +52,7 @@ steps:
       BUCKET_NAME:
         from_secret: bucketName
       target: /zzf/_next/static
-      source: \.next/static
+      source: ./\.next/static
   - name: deploy
     image: appleboy/drone-scp
     depends_on:
