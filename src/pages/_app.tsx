@@ -16,8 +16,8 @@ import DefaultLayout from 'components/layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 
+const monitor = new Monitor();
 export function reportWebVitals(metric: NextWebVitalsMetric): void {
-  const monitor = new Monitor();
   monitor.loadUrl(location.pathname, metric);
 }
 export type NextPageWithLayout = NextPage & {

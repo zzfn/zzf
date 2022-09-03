@@ -1,22 +1,32 @@
-import type { Agent } from '@fingerprintjs/fingerprintjs';
+import type { Agent, GetResult } from '@fingerprintjs/fingerprintjs-pro';
 import UAParser from 'ua-parser-js';
 import type { NextWebVitalsMetric } from 'next/app';
 
 class Monitor {
-  private readonly fpPromise: Promise<Agent>;
   private parser: UAParser.UAParserInstance;
+  private fpPromise: Promise<GetResult>;
 
   constructor() {
-    this.fpPromise = import('@fingerprintjs/fingerprintjs').then((FingerprintJS) =>
-      FingerprintJS.load(),
-    );
     this.parser = new UAParser();
+    this.fpPromise = null;
   }
 
-  async getVisitorId(): Promise<string> {
-    const fp = await this.fpPromise;
-    const result = await fp.get();
-    return result.visitorId;
+  async getVisitor(): Promise<GetResult> {
+    let visitor = JSON.parse(localStorage.getItem('visitor'));
+    if (!visitor || !visitor.visitorId) {
+      if(!this.fpPromise){
+        this.fpPromise = import('@fingerprintjs/fingerprintjs-pro').then((FingerprintJS) =>
+            FingerprintJS.load({
+              apiKey: process.env.NEXT_PUBLIC_FINGER_KEY,
+              region: 'ap',
+              endpoint: 'https://fp.zzfzzf.com',
+            }),
+        ).then(agent=>agent.get());
+      }
+      visitor = await this.fpPromise;
+      localStorage.setItem('visitor', JSON.stringify(visitor));
+    }
+    return visitor;
   }
 
   getOS(): UAParser.IOS {
@@ -29,9 +39,11 @@ class Monitor {
 
   async loadUrl(url: string, metric: NextWebVitalsMetric): Promise<void> {
     if (process.env.NODE_ENV === 'development') return;
+    const visitor = await this.getVisitor();
     const json = {
       url: `${window.origin}${url}`,
-      visitorId: await this.getVisitorId(),
+      visitorId: visitor.visitorId,
+      visitorFound: visitor.visitorFound,
       browser: this.getBrowser().name,
       browserVersion: this.getBrowser().version,
       os: this.getOS().name,
