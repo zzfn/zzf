@@ -1,8 +1,6 @@
-const isCdn = process.env.BUILD_TARGET === 'cdn';
-
 export default {
   swcMinify: true,
-  assetPrefix: isCdn ? ' https://oss-zzf.zzfzzf.com/zzf' : '/',
+  assetPrefix: 'https://oss-zzf.zzfzzf.com/zzf',
   reactStrictMode: true,
   images: {
     formats: ['image/avif', 'image/webp'],

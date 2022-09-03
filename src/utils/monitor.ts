@@ -17,7 +17,7 @@ class Monitor {
       if(!this.fpPromise){
         this.fpPromise = import('@fingerprintjs/fingerprintjs-pro').then((FingerprintJS) =>
             FingerprintJS.load({
-              apiKey: process.env.NEXT_PUBLIC_FINGER_KEY,
+              apiKey: 'jt14U0jzVYNn41hfNVbb',
               region: 'ap',
               endpoint: 'https://fp.zzfzzf.com',
             }),
