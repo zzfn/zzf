@@ -91,4 +91,4 @@ steps:
         - cd /root/zzf
         - pnpm i
         - pm2 del blog
-        - pm2 start npm --name blog -i max -- run "start:cdn"
+        - pm2 start npm --name blog -i max -- run start
