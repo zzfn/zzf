@@ -6,6 +6,7 @@ type Page = {
 };
 export const listArticles = (params: Page) => {
   return http<PageType<Article>>({
+    baseURL: process.env.NEXT_PUBLIC_GATEWAY_URL,
     method: 'get',
     url: '/article/page',
     params,
