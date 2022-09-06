@@ -107,7 +107,6 @@ ArticleDetail.getLayout = function (page: ReactElement) {
 };
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await listArchives({});
-  console.log(data)
   const paths = data.articleList.map((_) => ({ params: { id: _.id } }));
   return {
     paths,
