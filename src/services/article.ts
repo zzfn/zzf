@@ -6,7 +6,6 @@ type Page = {
 };
 export const listArticles = (params: Page) => {
   return http<PageType<Article>>({
-    baseURL: process.env.NEXT_PUBLIC_GATEWAY_URL,
     method: 'get',
     url: '/article/page',
     params,
@@ -29,7 +28,8 @@ type ArticleDetail = {
 export const getArticle = (params: { id: string }) => {
   return http<ArticleDetail>({
     method: 'get',
-    url: `/article/${params.id}`,
+    url: `/article/getOne`,
+    params
   });
 };
 type TagType = {
@@ -58,7 +58,6 @@ export const listArchives = (params: Record<string, string>) => {
 
 export const esList = (params: { keyword: string }) => {
   return http<Article[]>({
-    baseURL: process.env.NEXT_PUBLIC_GATEWAY_URL,
     method: 'get',
     url: '/search/article',
     params,

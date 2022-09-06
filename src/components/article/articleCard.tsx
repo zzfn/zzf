@@ -14,7 +14,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           <div className='p-8'>
             <div className='uppercase tracking-wide text-sm text-primary font-semibold'>
               <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
-                {dataSource.tagDesc}
+                {dataSource.tag.name}
               </Link>
               ·
               {dayjs(

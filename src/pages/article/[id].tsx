@@ -21,7 +21,9 @@ interface Data {
   logo?: string;
   id?: string;
   starCount?: number;
-  tag?: string;
+  tag: {
+    name: string;
+  };
   tagDesc?: string;
   title?: string;
   updateTime?: string;
@@ -33,7 +35,7 @@ interface ServerProps {
 }
 
 const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
-  const { serverProps = {} } = props;
+  const { serverProps } = props;
   const dispatch = useDispatch<Dispatch>();
 
   useEffect(() => {
@@ -71,7 +73,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
             <ul className={classNames(styles.tip, 'text-info', 'flex', 'flex-wrap', 'text-sm')}>
               <li>
                 <span>标签</span>
-                {serverProps.tagDesc}
+                {serverProps.tag.name}
               </li>
               <li>
                 <span>阅读量</span>
@@ -105,6 +107,7 @@ ArticleDetail.getLayout = function (page: ReactElement) {
 };
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await listArchives({});
+  console.log(data)
   const paths = data.articleList.map((_) => ({ params: { id: _.id } }));
   return {
     paths,
