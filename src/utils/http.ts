@@ -3,7 +3,7 @@ import axios from 'axios';
 
 async function http<T>(config: AxiosRequestConfig): Promise<Res<T>> {
   const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+    baseURL: process.env.NEXT_PUBLIC_GATEWAY_URL,
     timeout: 10000,
     headers: { 'Content-Type': 'application/json;charset=UTF-8' },
     validateStatus: function () {
