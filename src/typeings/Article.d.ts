@@ -10,6 +10,7 @@ interface Article {
   orderNum: number;
   updateTime: string;
   tag: {
+    id: string;
     name: string;
   };
 }

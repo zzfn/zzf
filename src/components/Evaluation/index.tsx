@@ -6,9 +6,11 @@ import multiavatar from '@multiavatar/multiavatar/esm';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store';
 import { Message } from '@dekopon/design';
+
 function getImageDataURL(svgXml: string) {
   return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
 }
+
 function Evaluation(props: any) {
   const { id } = props;
   const [list, setList] = useState<any>([]);
@@ -20,29 +22,13 @@ function Evaluation(props: any) {
   const initial = async () => {
     const { data } = await listDiscuss({ id });
     setLen(data.length);
-    const r = data.reduce((prev: any, curr: any) => {
-      if (curr.parentId) {
-        const obj = data.find((item: any) => item.id === curr.parentId);
-        if (obj) {
-          const reply = data.find((item: any) => item.id === curr.replyId);
-          curr.replyName = reply?.nickName || reply?.createBy;
-          obj.children = obj.children || [];
-          obj.children.push(curr);
-        }
-      } else {
-        prev.push(curr);
-      }
-      return prev;
-    }, []);
-    setList(r);
+    setList(data);
   };
   const handleComment = async () => {
     if (!content) return;
     const { data } = await saveDiscuss({
-      articleId: id,
+      interfaceId: id,
       content,
-      ...replyInfo,
-      username: user.info.username,
     });
     if (data) {
       Message.success('评论成功');
@@ -79,10 +65,10 @@ function Evaluation(props: any) {
             avatar={item.avatar ?? getImageDataURL(multiavatar(item.createBy || item.id))}
             content={item.content}
             datetime={`${item.address}-${item.createTime}`}
-            author={item.nickName || item.createBy}
+            author={item.userInfo.username}
             key={item.id}
           >
-            {item.children?.map(
+            {item.replyInfos?.map(
               (_: {
                 id: React.Key;
                 content: string;
@@ -92,6 +78,9 @@ function Evaluation(props: any) {
                 avatar: any;
                 createBy: string;
                 replyName: string;
+                userInfo: {
+                  username: string;
+                };
               }) => (
                 <Comment
                   onReply={() => {
@@ -101,7 +90,7 @@ function Evaluation(props: any) {
                   avatar={_.avatar ?? getImageDataURL(multiavatar(_.createBy || _.id))}
                   content={_.content}
                   datetime={`${_.address}-${_.createTime}`}
-                  author={`${_.nickName || _.createBy} 回复 ${_.replyName}`}
+                  author={`${_.userInfo.username}`}
                   key={_.id}
                 ></Comment>
               ),

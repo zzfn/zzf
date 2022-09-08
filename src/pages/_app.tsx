@@ -31,7 +31,7 @@ const queryClient = new QueryClient();
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
   useEffect(() => {
-    store.dispatch.user.updateUserInfo();
+    localStorage.getItem("uid")&&store.dispatch.user.updateUserInfo();
   }, []);
   return (
     <QueryClientProvider client={queryClient}>
