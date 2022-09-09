@@ -18,6 +18,7 @@ steps:
         from_secret: webhook
       secret:
         from_secret: secret
+      text: "{url:${DRONE_GIT_SSH_URL},repo:${DRONE_REPO_LINK}}"
   - name: clone
     image: alpine/git
     volumes:
@@ -92,3 +93,14 @@ steps:
         - pnpm i
         - pm2 del blog
         - pm2 start npm --name blog -i max -- run start
+  - name: failure
+    when:
+      status:
+        - failure
+    image: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
+    settings:
+      webhook:
+        from_secret: webhook
+      secret:
+        from_secret: secret
+      text: "{url:${DRONE_GIT_SSH_URL},repo:${DRONE_REPO_LINK},content:\"failure\"}"
