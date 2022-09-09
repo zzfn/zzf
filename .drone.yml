@@ -96,7 +96,7 @@ steps:
   - name: failure
     when:
       status:
-        - failure
+      - failure
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/foo-webhook
     settings:
       webhook:
