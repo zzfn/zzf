@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Button, Alert } from '@dekopon/design';
 import { GetStaticProps } from 'next';
-import { listTags } from 'api/article';
+import Image from 'next/future/image';
 import { friendList } from 'api/friend';
 
 type FriendCard = {
@@ -14,7 +14,7 @@ const Friends = ({ serverProps }: any) => {
   return (
     <div>
       <Alert type='info'>友情链接</Alert>
-      <div className='grid grid-cols-2 gap-x-16'>
+      <div className='grid grid-cols-2 gap-x-16 m-2'>
         {serverProps.map((item: any) => (
           <Card
             key={item.id}
@@ -53,7 +53,7 @@ const Card = ({ dataSource }: CardProps) => {
       href={url}
       className={classNames('flex', 'bg-primary', 'rounded-md', 'overflow-hidden')}
     >
-      <img className={classNames('w-16', 'h-16', 'mr-2')} src={logo} alt='' />
+      <Image width={100} height={100} className={classNames('w-16', 'h-16', 'mr-2')} src={logo} alt='' />
       <div className={classNames('flex', 'flex-col', 'justify-between', 'p-2')}>
         <strong className='text-primary'>{title}</strong>
         <p className='text-secondary'>{description}</p>

@@ -4,7 +4,7 @@ export default {
     reactStrictMode: true,
     images: {
         formats: ['image/avif', 'image/webp'],
-        domains: ['oss-zzf.zzfzzf.com'],
+        domains: ['oss-zzf.zzfzzf.com','www.dmoe.cc'],
     },
     sassOptions: {
         prependData: `@import "styles/variable";`,

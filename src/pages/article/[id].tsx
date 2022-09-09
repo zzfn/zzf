@@ -14,6 +14,7 @@ import Evaluation from '../../components/Evaluation';
 import { useDispatch } from 'react-redux';
 import type { Dispatch } from 'store';
 import ArticleLayout from '../../components/layout/ArticleLayout';
+import Image from 'next/future/image';
 
 interface Data {
   content?: string;
@@ -39,7 +40,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
   const dispatch = useDispatch<Dispatch>();
 
   useEffect(() => {
-    dispatch.count.incrementEffect(2);
+    dispatch({ type: 'count/incrementEffect', payload: 2 });
     updateView({ id: serverProps.id }).then();
     const imgList = document.querySelectorAll('.zoom');
     const zooming = new Zooming({
@@ -50,7 +51,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
     imgList.forEach((node) => {
       zooming.listen(node);
     });
-  }, [serverProps.id]);
+  }, [serverProps.id,dispatch]);
   return (
     <div className={styles.detail}>
       <Head>
@@ -59,10 +60,12 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
       <>
         <Progress />
         {serverProps.logo && (
-          <img
-            className={classNames('h-48', 'w-full', 'object-cover')}
-            src={serverProps.logo}
+          <Image
+            width={300}
+            height={300}
+            className={classNames('h-52', 'w-full', 'object-scale-down')}
             alt={serverProps.title}
+            src={serverProps.logo}
           />
         )}
         <main className={classNames(styles.article, 'bg-primary', 'w-full', 'px-6')}>

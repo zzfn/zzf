@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import dayjs from 'dayjs';
+import Image from 'next/future/image';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -36,7 +37,9 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
           </div>
           {dataSource.logo && (
             <div className='shrink-0'>
-              <img
+              <Image
+                width={100}
+                height={100}
                 className='h-36 w-48 object-scale-down'
                 src={dataSource.logo}
                 alt={dataSource.title}

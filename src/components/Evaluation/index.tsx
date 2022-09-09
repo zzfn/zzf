@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
 import classNames from 'classnames';
 import { Modal, Comment, Input, Alert } from '@dekopon/design';
@@ -6,6 +6,7 @@ import multiavatar from '@multiavatar/multiavatar/esm';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store';
 import { Message } from '@dekopon/design';
+import {useQuery} from "@tanstack/react-query";
 
 function getImageDataURL(svgXml: string) {
   return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
@@ -13,14 +14,10 @@ function getImageDataURL(svgXml: string) {
 
 function Evaluation(props: any) {
   const { id } = props;
-  const [list, setList] = useState<any>([]);
   const [visible, setVisible] = useState(false);
   const [content, setContent] = useState('');
   const user = useSelector((state: RootState) => state.user);
-  const initial = async () => {
-    const { data } = await listDiscuss({ id });
-    setList(data);
-  };
+  const {data=[]} = useQuery([id], () => listDiscuss({ id }).then(({ data }) => data));
   const handleComment = async () => {
     if (!content) return;
     const { data } = await saveDiscuss({
@@ -30,28 +27,19 @@ function Evaluation(props: any) {
     if (data) {
       Message.success('评论成功');
       setVisible(false);
-      initial();
     }
   };
-  useEffect(() => {
-    initial();
-  }, [id]);
   return (
     <>
       <header
         className={classNames('border-y', 'my-4', 'flex', 'justify-between', 'text-gray-400')}
       >
         全部评论
-        <span
-          onClick={() => {;
-            setVisible(true);
-          }}
-          className='text-gray-400'
-        >
+        <span onClick={() => setVisible(true)} className='text-gray-400'>
           评论
         </span>
       </header>
-      {list?.map((item: any) => {
+      {data?.map((item: any) => {
         return (
           <Comment
             onReply={() => {
