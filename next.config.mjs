@@ -3,6 +3,7 @@ export default {
     assetPrefix: process.env.NODE_ENV === 'production' ? 'https://oss-zzf.zzfzzf.com/zzf' : '/',
     reactStrictMode: true,
     images: {
+        unoptimized: true,
         formats: ['image/avif', 'image/webp'],
         domains: ['oss-zzf.zzfzzf.com','www.dmoe.cc'],
     },

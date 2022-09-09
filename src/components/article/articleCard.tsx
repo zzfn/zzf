@@ -10,9 +10,9 @@ interface ArticleCardProps {
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
     <>
-      <div className='mx-auto rounded-xl shadow-md overflow-hidden mb-3.5 bg-primary'>
+      <div className='mx-auto rounded-xl border overflow-hidden mb-3.5 bg-primary'>
         <div className='flex justify-between'>
-          <div className='p-8'>
+          <div className='px-6 py-2 flex flex-col align-center justify-center'>
             <div className='uppercase tracking-wide text-sm text-primary font-semibold'>
               <Link prefetch={false} href={`/tag/${dataSource.tag.id}`}>
                 {dataSource.tag.name}
@@ -40,7 +40,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
               <Image
                 width={100}
                 height={100}
-                className='h-36 w-48 object-scale-down'
+                className='h-36 w-48 object-cover'
                 src={dataSource.logo}
                 alt={dataSource.title}
               />

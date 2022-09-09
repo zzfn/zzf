@@ -61,9 +61,9 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
         <Progress />
         {serverProps.logo && (
           <Image
-            width={300}
-            height={300}
-            className={classNames('h-52', 'w-full', 'object-scale-down')}
+            width={100}
+            height={100}
+            className={classNames('h-52', 'w-full', 'object-cover')}
             alt={serverProps.title}
             src={serverProps.logo}
           />
