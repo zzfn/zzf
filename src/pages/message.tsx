@@ -11,7 +11,7 @@ const Message: NextPageWithLayout = () => {
       <Head>
         <title>{getTitle('留言')}</title>
       </Head>
-      <Evaluation id='' />
+      <Evaluation id='message' />
     </>
   );
 };

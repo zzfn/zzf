@@ -14,14 +14,11 @@ function getImageDataURL(svgXml: string) {
 function Evaluation(props: any) {
   const { id } = props;
   const [list, setList] = useState<any>([]);
-  const [len, setLen] = useState(0);
   const [visible, setVisible] = useState(false);
   const [content, setContent] = useState('');
   const user = useSelector((state: RootState) => state.user);
-  const [replyInfo, setReplyInfo] = useState({ replyId: '', parentId: '' });
   const initial = async () => {
     const { data } = await listDiscuss({ id });
-    setLen(data.length);
     setList(data);
   };
   const handleComment = async () => {
@@ -44,10 +41,9 @@ function Evaluation(props: any) {
       <header
         className={classNames('border-y', 'my-4', 'flex', 'justify-between', 'text-gray-400')}
       >
-        全部评论（{len}）
+        全部评论
         <span
-          onClick={() => {
-            setReplyInfo({ replyId: '', parentId: '' });
+          onClick={() => {;
             setVisible(true);
           }}
           className='text-gray-400'
@@ -59,7 +55,6 @@ function Evaluation(props: any) {
         return (
           <Comment
             onReply={() => {
-              setReplyInfo({ replyId: item.id, parentId: item.id });
               setVisible(true);
             }}
             avatar={item.avatar ?? getImageDataURL(multiavatar(item.createBy || item.id))}
@@ -84,7 +79,6 @@ function Evaluation(props: any) {
               }) => (
                 <Comment
                   onReply={() => {
-                    setReplyInfo({ replyId: _.id as string, parentId: item.id });
                     setVisible(true);
                   }}
                   avatar={_.avatar ?? getImageDataURL(multiavatar(_.createBy || _.id))}

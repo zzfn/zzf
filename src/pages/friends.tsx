@@ -1,5 +1,8 @@
 import classNames from 'classnames';
 import { Button, Alert } from '@dekopon/design';
+import { GetStaticProps } from 'next';
+import { listTags } from 'api/article';
+import { friendList } from 'api/friend';
 
 type FriendCard = {
   logo: string;
@@ -7,32 +10,37 @@ type FriendCard = {
   description: string;
   url: string;
 };
-const Friends = () => {
+const Friends = ({ serverProps }: any) => {
   return (
     <div>
       <Alert type='info'>友情链接</Alert>
       <div className='grid grid-cols-2 gap-x-16'>
-        <Card
-          dataSource={{
-            logo: 'https://www.dmoe.cc/random.php?s=2',
-            title: '顾天恩 - 技术博客',
-            description: '欢迎来到GTE的技术博客',
-            url: '//blog.gute.fun/',
-          }}
-        />
-        <Card
-          dataSource={{
-            logo: 'https://www.dmoe.cc/random.php?s=r',
-            title: '淡然-博客',
-            description: '记录个人学习笔记，发表个人学习感悟',
-            url: '//101.132.68.0:3333/',
-          }}
-        />
+        {serverProps.map((item: any) => (
+          <Card
+            key={item.id}
+            dataSource={{
+              logo: item.logo,
+              title: item.title,
+              description: item.description,
+              url: item.url,
+            }}
+          />
+        ))}
       </div>
       <Button>申请友链</Button>
     </div>
   );
 };
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await friendList();
+  return {
+    props: {
+      serverProps: data,
+    },
+    revalidate: 1,
+  };
+};
+
 type CardProps = {
   dataSource: FriendCard;
 };
