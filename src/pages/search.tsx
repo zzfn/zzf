@@ -57,9 +57,9 @@ function Search(): JSX.Element {
         <>
           <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384732662vd6JJP.json' />
           <h3>热搜词</h3>
-          <ul className={'flex gap-x-1'}>
+          <ul className="flex gap-x-1">
             {data.map((item: string) => (
-              <Tag>{item}</Tag>
+              <Tag key={item}>{item}</Tag>
             ))}
           </ul>
         </>

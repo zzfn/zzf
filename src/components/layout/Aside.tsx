@@ -32,7 +32,7 @@ const Aside = () => {
     getCount();
   }, []);
   return (
-    <aside className={'sticky top-16'}>
+    <aside className="sticky top-16">
       <Card title='关于我'>
         <div className={styles.wrap}>
           <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
