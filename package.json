@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.19.0",
-    "@dekopon/design": "^0.1.23",
+    "@dekopon/design": "^0.1.32",
     "@dekopon/icon": "^1.0.12",
     "@fingerprintjs/fingerprintjs-pro": "^3.7.1",
     "@multiavatar/multiavatar": "^1.0.7",
@@ -44,8 +44,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
-    "@next/env": "^12.2.5",
-    "@next/eslint-plugin-next": "^12.2.5",
+    "@next/env": "^12.3.0",
+    "@next/eslint-plugin-next": "^12.3.0",
     "@types/marked": "^4.0.7",
     "@types/node": "^18.7.16",
     "@types/react": "^18.0.18",
@@ -54,10 +54,10 @@
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "autoprefixer": "^10.4.8",
-    "eslint-config-next": "^12.2.5",
+    "eslint-config-next": "^12.3.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.31.7",
+    "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
@@ -67,7 +67,7 @@
     "sass": "^1.54.9",
     "stylelint": "^14.11.0",
     "tailwindcss": "3.1.8",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.3"
   },
   "engines": {
     "node": ">=14"

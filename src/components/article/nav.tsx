@@ -33,7 +33,7 @@ const Nav: React.FC<NavProps> = ({ source }) => {
     });
   }, [source]);
   return (
-    <ul className={styles.nav}>
+    <ul className={classNames(styles.nav, 'sticky', 'top-16')}>
       {list.map((nav) => (
         <li
           onClick={() => {

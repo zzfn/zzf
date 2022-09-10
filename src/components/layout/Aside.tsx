@@ -32,7 +32,7 @@ const Aside = () => {
     getCount();
   }, []);
   return (
-    <>
+    <aside className={'sticky top-16'}>
       <Card title='关于我'>
         <div className={styles.wrap}>
           <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
@@ -52,7 +52,7 @@ const Aside = () => {
           </div>
         </div>
       </Card>
-      <Card className='mt-4 test' title='关于本站'>
+      <Card className='mt-4' title='关于本站'>
         <div className={classNames('text-info', 'text-sm')}>
           本次加载时间 <span className='font-medium'>{loadTime}</span> ms
         </div>
@@ -98,7 +98,7 @@ const Aside = () => {
           ))}
         </ul>
       </Card>
-    </>
+    </aside>
   );
 };
 export default Aside;

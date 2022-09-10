@@ -24,4 +24,5 @@ function DefaultLayout({ children }: { children: ReactNode }) {
     </Layout>
   );
 }
+
 export default DefaultLayout;
