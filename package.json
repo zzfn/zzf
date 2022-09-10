@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.19.0",
-    "@dekopon/design": "^0.1.32",
+    "@dekopon/design": "^0.1.33",
     "@dekopon/icon": "^1.0.12",
     "@fingerprintjs/fingerprintjs-pro": "^3.7.1",
     "@multiavatar/multiavatar": "^1.0.7",

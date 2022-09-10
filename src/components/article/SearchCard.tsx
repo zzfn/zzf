@@ -5,21 +5,14 @@ import { Tag } from '@dekopon/design';
 import classNames from 'classnames';
 
 type SearchCardProps = {
-  dataSource: Article;
+  dataSource: any;
 };
 
 const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
     <div className={styles.card}>
       <div className='flex'>
-        <Tag>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: dataSource.tagDesc,
-            }}
-          />
-        </Tag>
-        ·
+        <Tag>{dataSource.tag}</Tag>·
         <Link href={`/article/${dataSource.id}`}>
           <a target='_blank'>
             <h3

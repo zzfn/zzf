@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { esList } from 'api/article';
+import { esList, topSearch } from 'api/article';
 import SearchCard from 'components/article/SearchCard';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
-import { Input } from '@dekopon/design';
+import { Input, Tag } from '@dekopon/design';
 import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
 import classNames from 'classnames';
 import { useQuery } from '@tanstack/react-query';
@@ -19,9 +19,13 @@ function Search(): JSX.Element {
     refetchOnWindowFocus: false,
   });
 
+  const { data = [] } = useQuery(['topSearch'], () => topSearch().then(({ data }) => data));
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    await refetch();
+    if (keyword.length) {
+      await refetch();
+    }
   }
 
   return (
@@ -51,8 +55,13 @@ function Search(): JSX.Element {
         result.map((item) => <SearchCard dataSource={item} key={item.id} />)
       ) : (
         <>
-            热搜词
           <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384732662vd6JJP.json' />
+          <h3>热搜词</h3>
+          <ul className={'flex gap-x-1'}>
+            {data.map((item: string) => (
+              <Tag>{item}</Tag>
+            ))}
+          </ul>
         </>
       )}
     </>

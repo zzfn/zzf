@@ -29,7 +29,7 @@ export const getArticle = (params: { id: string }) => {
   return http<ArticleDetail>({
     method: 'get',
     url: `/article/getOne`,
-    params
+    params,
   });
 };
 type TagType = {
@@ -86,6 +86,13 @@ export const updateView = (params: ViewType) => {
     params,
   });
 };
+export const topSearch = () => {
+  return http<string[]>({
+    method: 'get',
+    url: '/article/topSearch',
+  });
+};
+
 export const articleCount = () => {
   return http<number>({
     method: 'get',
