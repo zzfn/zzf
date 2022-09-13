@@ -3,7 +3,7 @@ import { esList, topSearch } from 'api/article';
 import SearchCard from 'components/article/SearchCard';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
-import { Input, Tag } from '@dekopon/design';
+import { Input, Space, Tag } from '@dekopon/design';
 import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
 import classNames from 'classnames';
 import { useQuery } from '@tanstack/react-query';
@@ -23,9 +23,7 @@ function Search(): JSX.Element {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (keyword.length) {
-      await refetch();
-    }
+    await refetch();
   }
 
   return (
@@ -56,12 +54,20 @@ function Search(): JSX.Element {
       ) : (
         <>
           <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384732662vd6JJP.json' />
-          <h3>热搜词</h3>
-          <ul className="flex gap-x-1">
+          <h3 className={'my-3'}>热搜</h3>
+          <Space>
             {data.map((item: string) => (
-              <Tag key={item}>{item}</Tag>
+              <Tag
+                onClick={() => {
+                  setKeyword(item);
+                  setTimeout(refetch);
+                }}
+                key={item}
+              >
+                {item}
+              </Tag>
             ))}
-          </ul>
+          </Space>
         </>
       )}
     </>

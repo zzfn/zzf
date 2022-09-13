@@ -38,7 +38,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
   return (
     <>
       <Head>
-        <title>{getTitle('小时光')}</title>
+        <title>{getTitle('首页')}</title>
       </Head>
       <Loading
         noMore={!hasNextPage}

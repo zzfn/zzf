@@ -3,6 +3,8 @@ import { Button, Alert } from '@dekopon/design';
 import { GetStaticProps } from 'next';
 import Image from 'next/future/image';
 import { friendList } from 'api/friend';
+import Head from "next/head";
+import {getTitle} from "../utils/getTitle";
 
 type FriendCard = {
   logo: string;
@@ -12,7 +14,10 @@ type FriendCard = {
 };
 const Friends = ({ serverProps }: any) => {
   return (
-    <div>
+    <>
+      <Head>
+        <title>{getTitle('友链')}</title>
+      </Head>
       <Alert type='info'>友情链接</Alert>
       <div className='grid grid-cols-2 gap-x-16 m-2'>
         {serverProps.map((item: any) => (
@@ -28,7 +33,7 @@ const Friends = ({ serverProps }: any) => {
         ))}
       </div>
       <Button>申请友链</Button>
-    </div>
+    </>
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
