@@ -31,7 +31,7 @@ function Header(): JSX.Element {
       <div className={classNames('flex', 'items-center hidden md:flex')}>
         <Link href='/'>
           <a className={classNames('text-brand-primary', 'text-xl', 'mr-2', 'text-primary')}>
-            cc&apos;s Blog
+            Luna&apos;s Blog
           </a>
         </Link>
         <nav className={styles.menu}>

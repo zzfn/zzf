@@ -12,7 +12,7 @@ const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
     <div className={styles.card}>
       <div className='flex'>
-        <Tag>{dataSource.tag}</Tag>·
+        {dataSource.tag}·
         <Link href={`/article/${dataSource.id}`}>
           <a target='_blank'>
             <h3

@@ -1,9 +1,10 @@
 import { Layout } from '@dekopon/design';
 import Header from './header';
 import MobileHeader from './MobileHeader';
-import Aside from './Aside';
 import Footer from './footer';
 import type { ReactNode } from 'react';
+import DefaultRight from './default/DefaultRight';
+import DefaultLeft from './default/DefaultLeft';
 
 function DefaultLayout({ children }: { children: ReactNode }) {
   return (
@@ -13,12 +14,15 @@ function DefaultLayout({ children }: { children: ReactNode }) {
         <MobileHeader />
       </Layout.Header>
       <Layout.Content className='container'>
-        <Layout.Aside>
-          <Aside />
+        <Layout.Aside className={'hidden md:block'}>
+          <DefaultLeft />
         </Layout.Aside>
         <Layout.Center className='w-full'>{children}</Layout.Center>
+        <Layout.Aside className={'hidden xl:block'}>
+          <DefaultRight />
+        </Layout.Aside>
       </Layout.Content>
-      <Layout.Footer className='container'>
+      <Layout.Footer className='container '>
         <Footer />
       </Layout.Footer>
     </Layout>

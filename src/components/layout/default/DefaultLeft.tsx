@@ -1,5 +1,5 @@
 import styles from 'styles/home.module.scss';
-import LottiePlayer from '../LottiePlayer/LottiePlayer';
+import LottiePlayer from '../..//LottiePlayer/LottiePlayer';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { diff } from 'utils/time';
@@ -14,7 +14,7 @@ type LastUpdatedListType = {
   updateTime: string;
 };
 
-const Aside = () => {
+const DefaultLeft = () => {
   const [lastUpdatedList, setLastUpdatedList] = useState<LastUpdatedListType[]>([]);
   const loadTime = useFcp();
   const [count, setCount] = useState<any>({ tag: 0, article: 0 });
@@ -23,41 +23,41 @@ const Aside = () => {
     const { data } = await lastUpdated();
     setLastUpdatedList(data);
   }
+
   async function getCount() {
     const { data } = await articleCount();
     setCount(data);
   }
+
   useEffect(() => {
     getLastUpdatedList();
     getCount();
   }, []);
   return (
-    <aside className="sticky top-16">
-      <Card title='关于我'>
-        <div className={styles.wrap}>
-          <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
-          <div className='flex justify-around'>
-            <div>
-              <div className='text-center'>
-                <Link href='/archive'>{count.article}</Link>
-              </div>
-              <div>文章</div>
+    <>
+      <Card className={'mb-4'}>
+        <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
+        <div className='flex justify-around'>
+          <div>
+            <div className='text-center'>
+              <Link href='/archive'>{count.article}</Link>
             </div>
-            <div>
-              <div className='text-center'>
-                <Link href='/tags'>{count.tag}</Link>
-              </div>
-              <div>标签</div>
+            <div>文章</div>
+          </div>
+          <div>
+            <div className='text-center'>
+              <Link href='/tags'>{count.tag}</Link>
             </div>
+            <div>标签</div>
           </div>
         </div>
       </Card>
-      <Card className='mt-4' title='关于本站'>
+      <Card className='mb-4' title='关于本站'>
         <div className={classNames('text-info', 'text-sm')}>
           本次加载时间 <span className='font-medium'>{loadTime}</span> ms
         </div>
       </Card>
-      <Card className='mt-4' title='最近更新'>
+      <Card className='mb-4' title='最近更新'>
         <ul>
           {lastUpdatedList.map((n) => (
             <li className={classNames('flex')} key={n.id}>
@@ -98,7 +98,7 @@ const Aside = () => {
           ))}
         </ul>
       </Card>
-    </aside>
+    </>
   );
 };
-export default Aside;
+export default DefaultLeft;
