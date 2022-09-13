@@ -1,4 +1,3 @@
-import styles from 'styles/home.module.scss';
 import LottiePlayer from '../..//LottiePlayer/LottiePlayer';
 import classNames from 'classnames';
 import Link from 'next/link';

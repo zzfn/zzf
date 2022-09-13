@@ -1,4 +1,4 @@
-import { Card } from '../../../../../dekopon-design';
+import { Card } from '@dekopon/design';
 import React from 'react';
 
 const DefaultRight = () => {
