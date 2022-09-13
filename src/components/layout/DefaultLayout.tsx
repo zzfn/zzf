@@ -14,11 +14,11 @@ function DefaultLayout({ children }: { children: ReactNode }) {
         <MobileHeader />
       </Layout.Header>
       <Layout.Content className='container'>
-        <Layout.Aside className={'hidden md:block'}>
+        <Layout.Aside className="hidden md:block">
           <DefaultLeft />
         </Layout.Aside>
         <Layout.Center className='w-full'>{children}</Layout.Center>
-        <Layout.Aside className={'hidden xl:block'}>
+        <Layout.Aside className="hidden xl:block">
           <DefaultRight />
         </Layout.Aside>
       </Layout.Content>

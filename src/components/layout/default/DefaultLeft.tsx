@@ -35,7 +35,7 @@ const DefaultLeft = () => {
   }, []);
   return (
     <>
-      <Card className={'mb-4'}>
+      <Card className="mb-4">
         <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
         <div className='flex justify-around'>
           <div>
