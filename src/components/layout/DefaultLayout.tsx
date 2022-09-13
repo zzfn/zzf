@@ -14,12 +14,19 @@ function DefaultLayout({ children }: { children: ReactNode }) {
         <MobileHeader />
       </Layout.Header>
       <Layout.Content className='container'>
-        <Layout.Aside className="hidden md:block">
-          <DefaultLeft />
+        <Layout.Aside className='hidden md:block sticky top-16'>
+          <section className='sticky top-16'>
+              <DefaultRight />
+          </section>
+          <section className='sticky top-16 block xl:hidden'>
+            <DefaultLeft />
+          </section>
         </Layout.Aside>
         <Layout.Center className='w-full'>{children}</Layout.Center>
-        <Layout.Aside className="hidden xl:block">
-          <DefaultRight />
+        <Layout.Aside className='hidden xl:block'>
+          <section className='sticky top-16'>
+              <DefaultLeft />
+          </section>
         </Layout.Aside>
       </Layout.Content>
       <Layout.Footer className='container '>
