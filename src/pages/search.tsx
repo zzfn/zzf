@@ -54,7 +54,7 @@ function Search(): JSX.Element {
       ) : (
         <>
           <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384732662vd6JJP.json' />
-          <h3 className={'my-3'}>热搜</h3>
+          <h3 className="my-3">热搜</h3>
           <Space>
             {data.map((item: string) => (
               <Tag
