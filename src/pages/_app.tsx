@@ -31,25 +31,28 @@ const queryClient = new QueryClient();
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
   useEffect(() => {
-    localStorage.getItem("uid")&&store.dispatch.user.updateUserInfo();
+    localStorage.getItem('uid') && store.dispatch.user.updateUserInfo();
   }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <Head>
-          <link rel='shortcut icon' href='/static/favicon.ico' />
           <link rel='icon' href='/favicon.ico' />
           <title>{getTitle('zzf')}</title>
           <meta
-            name='keywords'
+            name='Keywords'
             content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
           />
-          <meta name='description' content='zzf的个人网站,记录个人学习' />
+          <meta name='Description' content='zzf的个人网站,记录个人学习' />
           <meta name='theme-color' content='#ffffff' />
           <meta
-            content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
             name='viewport'
+            content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
           />
+          <meta name='applicable-device' content='pc,mobile' />
+          <meta name='Copyright' content='OrLuna' />
+          <meta name='Author' content='OrLuna' />
+          <meta name='Designer' content='OrLuna' />
         </Head>
         <Script
           async

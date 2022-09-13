@@ -8,11 +8,11 @@ const Changelog = (props: any) => {
   return (
     <ul>
       {serverProps.map((item: any) => (
-        <li key={item.id}>
-          <div className={classNames('flex', 'justify-between')}>
-            <p>{item.title}</p>
-            <p>{dayjs(item.updateTime).format('YYYY-MM-DD HH:mm')}</p>
-          </div>
+        <li key={item.id} className='mb-2'>
+          <h3 className={classNames('flex', 'justify-between')}>
+            <span>{item.title}</span>
+            <span>{dayjs(item.updateTime).format('YYYY-MM-DD HH:mm')}</span>
+          </h3>
           <p className='text-gray-500'>{item.content}</p>
         </li>
       ))}

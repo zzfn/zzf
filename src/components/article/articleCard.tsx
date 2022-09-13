@@ -40,7 +40,7 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
               <Image
                 width={100}
                 height={100}
-                className='h-36 w-48 object-cover'
+                className='w-32 md:w-48 h-36 object-cover'
                 src={dataSource.logo}
                 alt={dataSource.title}
               />
