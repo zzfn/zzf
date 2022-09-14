@@ -80,8 +80,8 @@ type ViewType = {
 };
 
 export const updateView = (params: ViewType) => {
-  return http<number>({
-    method: 'get',
+  return http<boolean>({
+    method: 'post',
     url: '/article/updateViewed',
     params,
   });

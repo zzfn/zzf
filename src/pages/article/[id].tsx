@@ -40,18 +40,19 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
   const dispatch = useDispatch<Dispatch>();
 
   useEffect(() => {
-    dispatch({ type: 'count/incrementEffect', payload: 2 });
-    updateView({ id: serverProps.id }).then();
-    const imgList = document.querySelectorAll('.zoom');
-    const zooming = new Zooming({
-      enableGrab: false,
-      bgColor: 'rgb(0, 0, 0)',
-      bgOpacity: '0.5',
-    });
-    imgList.forEach((node) => {
-      zooming.listen(node);
-    });
-  }, [serverProps.id,dispatch]);
+    console.log(111)
+    // dispatch({ type: 'count/incrementEffect', payload: 2 });
+    // updateView({ id: serverProps.id }).then();
+    // const imgList = document.querySelectorAll('.zoom');
+    // const zooming = new Zooming({
+    //   enableGrab: false,
+    //   bgColor: 'rgb(0, 0, 0)',
+    //   bgOpacity: '0.5',
+    // });
+    // imgList.forEach((node) => {
+    //   zooming.listen(node);
+    // });
+  }, []);
   return (
     <div className={styles.detail}>
       <Head>
