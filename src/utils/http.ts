@@ -18,8 +18,10 @@ async function http<T>(config: AxiosRequestConfig): Promise<Res<T>> {
           : null;
         Reflect.set(config.headers, 'Authorization', Authorization);
         const localVisitor = localStorage.getItem('visitor');
-        const visitor = JSON.parse(localVisitor);
-        Reflect.set(config.headers, 'visitorId', visitor.visitorId);
+        if (localVisitor) {
+          const visitor = JSON.parse(localVisitor);
+          Reflect.set(config.headers, 'visitorId', visitor.visitorId);
+        }
       }
       Reflect.set(config.headers, 'System', 'blog');
       return config;
