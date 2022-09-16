@@ -1,6 +1,4 @@
 import type { NextPageWithLayout } from './_app';
-import type { ReactElement } from 'react';
-import NoAsideLayout from 'components/layout/NoAsideLayout';
 import Evaluation from '../components/Evaluation';
 import Head from 'next/head';
 import { getTitle } from 'utils/getTitle';

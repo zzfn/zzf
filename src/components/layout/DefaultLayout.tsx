@@ -1,17 +1,17 @@
 import { Layout } from '@dekopon/design';
 import Header from './header';
-import MobileHeader from './MobileHeader';
 import Footer from './footer';
 import type { ReactNode } from 'react';
 import DefaultRight from './default/DefaultRight';
 import DefaultLeft from './default/DefaultLeft';
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 function DefaultLayout({ children }: { children: ReactNode }) {
   return (
     <Layout className='min-h-screen'>
       <Layout.Header className='container'>
         <Header />
-        <MobileHeader />
       </Layout.Header>
       <Layout.Content className='container'>
         <Layout.Aside className='hidden md:block sticky top-16'>

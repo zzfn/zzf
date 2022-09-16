@@ -48,7 +48,7 @@ function Evaluation(props: any) {
             avatar={item.avatar ?? getImageDataURL(multiavatar(item.createBy || item.id))}
             content={item.content}
             datetime={`${item.address}-${item.createTime}`}
-            author={item.userInfo.username}
+            author={item.createBy}
             key={item.id}
           >
             {item.replyInfos?.map(
@@ -72,7 +72,7 @@ function Evaluation(props: any) {
                   avatar={_.avatar ?? getImageDataURL(multiavatar(_.createBy || _.id))}
                   content={_.content}
                   datetime={`${_.address}-${_.createTime}`}
-                  author={`${_.userInfo.username}`}
+                  author={`${_.createBy}`}
                   key={_.id}
                 ></Comment>
               ),

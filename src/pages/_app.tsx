@@ -14,12 +14,14 @@ import { Provider } from 'react-redux';
 import { store } from 'store';
 import DefaultLayout from 'components/layout/DefaultLayout';
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 const monitor = new Monitor();
+
 export function reportWebVitals(metric: NextWebVitalsMetric): void {
   monitor.loadUrl(location.pathname, metric);
 }
+
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -28,14 +30,29 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 const queryClient = new QueryClient();
+
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
+  const handleWindowResize = () => {
+    const width = window.innerWidth;
+    const isMobile = width < 768;
+    store.dispatch({
+      type: 'screen/updateScreen',
+      payload: {
+        isMobile,
+        isDesktop: !isMobile,
+      },
+    });
+  };
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
   useEffect(() => {
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
     const localVisitor = localStorage.getItem('visitor');
     if (localVisitor) {
       const visitor = JSON.parse(localVisitor);
       store.dispatch({ type: 'user/updateUserId', payload: visitor.visitorId });
     }
+    return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
   return (
     <QueryClientProvider client={queryClient}>
