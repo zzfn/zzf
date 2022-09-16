@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { login } from 'api/user';
 import { useDispatch, useSelector } from 'react-redux';
 import type { Dispatch, RootState } from '../../store';
+import Image from "next/future/image";
 
 function Header(): JSX.Element {
   const router = useRouter();
@@ -32,7 +33,7 @@ function Header(): JSX.Element {
       <div className={classNames('flex', 'items-center', 'md:hidden', 'pl-6')}>
         <Link href='/'>
           <a className={classNames('text-brand-primary', 'text-xl', 'mr-2', 'text-primary')}>
-            cc&apos;s Blog
+            <Image className='w-10 h-10 mr-2' width={100} height={100} src='https://oss-zzf.zzfzzf.com/midway/logo.png'  alt='logo'/>
           </a>
         </Link>
       </div>

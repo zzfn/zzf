@@ -83,7 +83,7 @@ const DefaultLeft = () => {
                       name='right'
                     />
                     <div
-                      className={classNames('truncate', 'font-medium', 'text-base', 'text-info')}
+                      className={classNames('w-28','truncate', 'font-medium', 'text-base', 'text-info')}
                     >
                       {n.title}
                     </div>

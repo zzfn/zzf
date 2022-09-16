@@ -29,10 +29,9 @@ function Header(): JSX.Element {
   return (
     <>
       <div className={classNames('flex', 'items-center hidden md:flex')}>
-        <Image className='w-10 h-10 mr-2' width={100} height={100} src='https://oss-zzf.zzfzzf.com/midway/logo.png'  alt='logo'/>
         <Link href='/'>
           <a className={classNames('text-brand-primary', 'text-xl', 'mr-2', 'text-primary')}>
-            Luna&apos;s Blog
+            <Image className='w-10 h-10 mr-2' width={100} height={100} src='https://oss-zzf.zzfzzf.com/midway/logo.png'  alt='logo'/>
           </a>
         </Link>
         <nav className={styles.menu}>
