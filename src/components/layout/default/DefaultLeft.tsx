@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { diff } from 'utils/time';
 import React, { useEffect, useState } from 'react';
-import { Card, SvgIcon } from '@dekopon/design';
+import { Card, SvgIcon, Tooltip } from '@dekopon/design';
 import useFcp from 'hooks/useFcp';
 import { articleCount, lastUpdated } from 'api/article';
 
@@ -34,7 +34,7 @@ const DefaultLeft = () => {
   }, []);
   return (
     <>
-      <Card className="mb-4">
+      <Card className='mb-4'>
         <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
         <div className='flex justify-around'>
           <div>
@@ -82,11 +82,19 @@ const DefaultLeft = () => {
                       )}
                       name='right'
                     />
-                    <div
-                      className={classNames('w-28','truncate', 'font-medium', 'text-base', 'text-info')}
-                    >
-                      {n.title}
-                    </div>
+                    <Tooltip content={n.title}>
+                      <div
+                        className={classNames(
+                          'w-28',
+                          'truncate',
+                          'font-medium',
+                          'text-base',
+                          'text-info',
+                        )}
+                      >
+                        {n.title}
+                      </div>
+                    </Tooltip>
                   </div>
                   <div className={classNames('whitespace-nowrap', 'text-sm', 'text-gray-1000')}>
                     --{diff(n.updateTime)}
