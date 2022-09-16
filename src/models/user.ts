@@ -5,13 +5,18 @@ import { getUserInfo } from 'api/user';
 type ComplexCountState = {
   info: Record<string, string>;
   isLogin: boolean;
+  id: string;
 };
 export const user = createModel<RootModel>()({
   state: {
+    id: '',
     info: {},
     isLogin: false,
   } as ComplexCountState,
   reducers: {
+    updateUserId(state, payload) {
+      return { ...state, id: payload };
+    },
     updateUser(state, payload) {
       return { ...state, ...payload };
     },

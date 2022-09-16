@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { SvgIcon, Modal, Input, Alert } from '@dekopon/design';
+import { SvgIcon, Modal, Input, Alert, Tag } from '@dekopon/design';
 import styles from './header.module.scss';
 import menus from '../../menus.json';
 import classNames from 'classnames';
@@ -9,14 +9,14 @@ import { useRouter } from 'next/router';
 import { login } from 'api/user';
 import { useDispatch, useSelector } from 'react-redux';
 import type { Dispatch, RootState } from '../../store';
-import Image from 'next/future/image'
+import Image from 'next/future/image';
 function Header(): JSX.Element {
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch<Dispatch>();
   const [loginInfo, setLoginInfo] = useState({ username: '', password: '' });
   const [visible, setVisible] = useState(false);
-
+  const [visitorId, setVisitorId] = useState('');
   async function handleLogin() {
     if (loginInfo.password && loginInfo.username) {
       const { data } = await login(loginInfo);
@@ -25,13 +25,22 @@ function Header(): JSX.Element {
       setVisible(false);
     }
   }
-
+  useEffect(() => {
+    const visitor = localStorage.getItem('visitor');
+    setVisitorId(JSON.parse(visitor).visitorId);
+  }, []);
   return (
     <>
       <div className={classNames('flex', 'items-center hidden md:flex')}>
         <Link href='/'>
           <a className={classNames('text-brand-primary', 'text-xl', 'mr-2', 'text-primary')}>
-            <Image className='w-10 h-10 mr-2' width={100} height={100} src='https://oss-zzf.zzfzzf.com/midway/logo.png'  alt='logo'/>
+            <Image
+              className='w-10 h-10 mr-2'
+              width={100}
+              height={100}
+              src='https://oss-zzf.zzfzzf.com/midway/logo.png'
+              alt='logo'
+            />
           </a>
         </Link>
         <nav className={styles.menu}>
@@ -62,36 +71,7 @@ function Header(): JSX.Element {
           </a>
         </Link>
         <Theme />
-        {user.isLogin ? (
-          <span>{user.info.nickName}</span>
-        ) : (
-          <SvgIcon
-            onClick={() => setVisible(true)}
-            className={classNames('text-brand-primary')}
-            size={25}
-            name='user'
-          />
-        )}
       </div>
-      <Modal
-        onCancel={() => setVisible(false)}
-        visible={visible}
-        title='login'
-        onConfirm={handleLogin}
-      >
-        <Alert className='mb-2'>暂未开放注册服务</Alert>
-        <Input
-          value={loginInfo.username}
-          onChange={(e) => setLoginInfo({ ...loginInfo, username: e.target.value })}
-          className='mb-2'
-          placeholder='账号'
-        ></Input>
-        <Input
-          value={loginInfo.password}
-          onChange={(e) => setLoginInfo({ ...loginInfo, password: e.target.value })}
-          placeholder='密码'
-        ></Input>
-      </Modal>
     </>
   );
 }

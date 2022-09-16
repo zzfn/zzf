@@ -16,7 +16,3 @@ const Message: NextPageWithLayout = () => {
   );
 };
 export default Message;
-
-Message.getLayout = function (page: ReactElement) {
-  return <NoAsideLayout>{page}</NoAsideLayout>;
-};

@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
 import classNames from 'classnames';
-import { Modal, Comment, Input, Alert } from '@dekopon/design';
+import { Modal, Comment, Input, Alert, Tag } from '@dekopon/design';
 import multiavatar from '@multiavatar/multiavatar/esm';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store';
 import { Message } from '@dekopon/design';
-import {useQuery} from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
 
 function getImageDataURL(svgXml: string) {
   return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
@@ -17,7 +17,7 @@ function Evaluation(props: any) {
   const [visible, setVisible] = useState(false);
   const [content, setContent] = useState('');
   const user = useSelector((state: RootState) => state.user);
-  const {data=[]} = useQuery([id], () => listDiscuss({ id }).then(({ data }) => data));
+  const { data = [] } = useQuery([id], () => listDiscuss({ id }).then(({ data }) => data));
   const handleComment = async () => {
     if (!content) return;
     const { data } = await saveDiscuss({
@@ -86,7 +86,8 @@ function Evaluation(props: any) {
         onCancel={() => setVisible(false)}
         onConfirm={handleComment}
       >
-        {!user.isLogin && <Alert className='mb-2'>当前未登陆，可匿名评论</Alert>}
+        <Alert>根据您的设备特征计算出设备指纹，并作为用户标识</Alert>
+        设备指纹为<Tag className='mb-2'>{user.id}</Tag>
         <Input
           onChange={(e) => setContent(e.target.value)}
           value={content}
