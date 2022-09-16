@@ -1,5 +1,5 @@
 # next.js 个人博客
-
+[![Build Status](https://drone.zzfzzf.com/api/badges/zzfn/zzf/status.svg)](https://drone.zzfzzf.com/zzfn/zzf)
 ## ✨ 特性
 
 - 前后端分离
