@@ -90,7 +90,7 @@ steps:
       command_timeout: 2m
       script:
         - cd /root/zzf
-        - pnpm i
+        - pnpm i --frozen-lockfile
         - pm2 del blog
         - pm2 start npm --name blog -i max -- run start
   - name: failure

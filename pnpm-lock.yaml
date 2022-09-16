@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': ^7.19.1
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
-  '@dekopon/design': ^0.1.35
+  '@dekopon/design': ^0.1.36
   '@dekopon/icon': ^1.0.12
   '@fingerprintjs/fingerprintjs-pro': ^3.7.1
   '@multiavatar/multiavatar': ^1.0.7
@@ -57,7 +57,7 @@ specifiers:
 
 dependencies:
   '@babel/core': 7.19.1
-  '@dekopon/design': 0.1.35_biqbaboplfbrettd7655fr4n2y
+  '@dekopon/design': 0.1.36_biqbaboplfbrettd7655fr4n2y
   '@dekopon/icon': 1.0.12
   '@fingerprintjs/fingerprintjs-pro': 3.7.1
   '@multiavatar/multiavatar': 1.0.7
@@ -491,8 +491,8 @@ packages:
       postcss-selector-parser: 6.0.10
     dev: true
 
-  /@dekopon/design/0.1.35_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-zc/YCkFHUNLBNy5ruF1fpGvU+0/CtTD7+F1zszZUVbUnHQLPtzoEbS7LV/VIJjDLtiFHP0e0O5x/9U+O60qa/Q==}
+  /@dekopon/design/0.1.36_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-y1N81UtHti4iNuFlw4vBtEi+vrasC8xiyYT20LS0qP1alOWb9zwPEN3MkToFWpySpi0L0xIjCvVYJIvF88uZ1g==}
     dependencies:
       '@dekopon/icon': 1.0.12
       rc-checkbox: 2.3.2_biqbaboplfbrettd7655fr4n2y
