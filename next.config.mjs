@@ -1,5 +1,5 @@
 export default {
-    swcMinify: true,
+    swcMinify: false,
     assetPrefix: process.env.NODE_ENV === 'production' ? 'https://oss-zzf.zzfzzf.com/zzf' : '/',
     reactStrictMode: true,
     images: {
