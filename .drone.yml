@@ -107,3 +107,7 @@ steps:
       secret:
         from_secret: secret
       text: "url:${DRONE_GIT_SSH_URL}---repo:${DRONE_REPO_LINK}---failure}"
+trigger:
+  event:
+    exclude:
+      - promote
