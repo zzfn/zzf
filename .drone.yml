@@ -5,6 +5,9 @@ volumes:
   - name: node_modules
     host:
       path: /root/node-zzf/node_modules
+  - name: next_cache
+    host:
+      path: /root/node-zzf/next_cache
   - name: ssh_keys
     host:
       path: /root/.ssh
@@ -28,6 +31,8 @@ steps:
     volumes:
       - name: node_modules
         path: /drone/src/node_modules
+      - name: next_cache
+        path: /drone/src/.next/cache
     commands:
       - pnpm install
       - pnpm run build
