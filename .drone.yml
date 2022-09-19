@@ -22,15 +22,15 @@ steps:
       - git fetch --no-tags --prune --progress --no-recurse-submodules --depth=1
       - git checkout origin/$DRONE_COMMIT_BRANCH -ft
   - name: build
-    image: node:lts-alpine
+    image: registry.cn-shanghai.aliyuncs.com/zzf2001/pnpm
     depends_on:
       - clone
     volumes:
       - name: node_modules
         path: /drone/src/node_modules
     commands:
-      - npm install
-      - npm run build
+      - pnpm install
+      - pnpm run build
   - name: oss
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
     depends_on:
