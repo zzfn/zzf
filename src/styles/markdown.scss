@@ -7,8 +7,11 @@
 .markdown-body {
   font-size: 16px;
   color: var(--color-text-1);
-
+  img {
+    width: 100%;
+  }
   p {
+    width: 100%;
     color: var(--color-text-1);
     line-height: 2;
     display: inline-block;
