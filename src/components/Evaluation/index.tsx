@@ -78,7 +78,7 @@ function Evaluation(props: any) {
         <Alert>根据您的设备特征计算出设备指纹，并作为用户标识</Alert>
         设备指纹为<Tag className='mb-2'>{user.id}</Tag>
         <Input
-          type={'textarea'}
+          type="textarea"
           onChange={(e) => setContent(e.target.value)}
           value={content}
           placeholder='请输入您的意见'
