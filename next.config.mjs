@@ -2,7 +2,7 @@ export default {
   swcMinify: false,
   assetPrefix:
     process.env.NODE_ENV === 'production' && !process.env.VERCEL
-      ? 'https://oss-zzf.zzfzzf.com/zzf'
+      ? 'https://cdn.orluma.ltd/zzf'
       : '/',
   reactStrictMode: true,
   images: {
