@@ -21,6 +21,8 @@ async function http<T>(config: AxiosRequestConfig): Promise<Res<T>> {
         if (localVisitor) {
           const visitor = JSON.parse(localVisitor);
           Reflect.set(config.headers, 'visitorId', visitor.visitorId);
+          Reflect.set(config.headers, 'nonce', visitor.visitorId + Date.now());
+          Reflect.set(config.headers, 'timestamp', Date.now());
         }
       }
       Reflect.set(config.headers, 'System', 'blog');
