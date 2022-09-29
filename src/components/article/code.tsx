@@ -6,8 +6,11 @@ type CodeProps = {
   ({ language, code }: { language: string; code: string }): JSX.Element;
 };
 const Code: CodeProps = ({ language, code }) => {
+  const handleClick = () => {
+    console.log('Code');
+  };
   return (
-    <pre className={styles.code}>
+    <pre onClick={handleClick} className={styles.code}>
       <code
         dangerouslySetInnerHTML={{
           __html: language

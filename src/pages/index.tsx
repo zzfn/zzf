@@ -30,7 +30,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         pageParams: [1],
       },
       getNextPageParam: (lastPage, pages) => {
-        return lastPage.length ? pages.length + 1 : undefined;
+        return lastPage.length === 10 ? pages.length + 1 : undefined;
       },
     },
   );
