@@ -9,10 +9,7 @@ interface Article {
   content: string;
   orderNum: number;
   updateTime: string;
-  tag: {
-    id: string;
-    name: string;
-  };
+  tag: string;
 }
 
 interface PageType<T> {

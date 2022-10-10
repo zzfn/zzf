@@ -14,8 +14,8 @@ export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Eleme
         <div className='flex justify-between'>
           <div className='px-6 py-2 flex flex-col align-center justify-center'>
             <div className='uppercase tracking-wide text-sm text-primary font-semibold'>
-              <Link prefetch={false} href={`/tag/${dataSource.tag.id}`}>
-                {dataSource.tag.name}
+              <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
+                {dataSource.tag}
               </Link>
               ·
               {dayjs(
