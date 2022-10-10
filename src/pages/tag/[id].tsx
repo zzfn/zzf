@@ -36,7 +36,7 @@ export default function Tag(props: NextProps<TagType>): JSX.Element {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await listTags({});
-  const paths = data.map((_) => ({ params: { id: _.code } }));
+  const paths = data.map((_) => ({ params: { id: _.tag } }));
   return {
     paths,
     fallback: 'blocking',
