@@ -22,9 +22,7 @@ interface Data {
   logo?: string;
   id?: string;
   starCount?: number;
-  tag: {
-    name: string;
-  };
+  tag: string;
   tagDesc?: string;
   title?: string;
   updateTime?: string;
@@ -76,7 +74,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
             <ul className={classNames(styles.tip, 'text-info', 'flex', 'flex-wrap', 'text-sm')}>
               <li>
                 <span>标签</span>
-                {serverProps.tag.name}
+                {serverProps.tag}
               </li>
               <li>
                 <span>阅读量</span>

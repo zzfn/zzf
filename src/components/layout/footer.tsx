@@ -4,9 +4,9 @@ import classNames from 'classnames';
 
 function Footer(): JSX.Element {
   return (
-    <div className={classNames('text-gray-700', 'text-xs', 'text-center', 'mt-6','mx-auto')}>
-      Powered by OrLuna 2020-{dayjs().format('YYYY')}&copy;
-      <a className='text-primary' href='https://beian.miit.gov.cn'>
+    <div className={classNames('text-gray-700', 'text-xs', 'text-center', 'mt-6', 'mx-auto')}>
+      Powered by oocc 2020-{dayjs().format('YYYY')}&copy;
+      <a rel="noreferrer" target='_blank' className='text-primary' href='https://beian.miit.gov.cn'>
         苏ICP备18059856号
       </a>
     </div>
