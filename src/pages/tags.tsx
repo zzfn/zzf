@@ -23,7 +23,6 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <Head>
         <title>{getTitle('标签')}</title>
       </Head>
-      {JSON.stringify(serverProps.tags)}
       {serverProps.tags.map((item) => (
         <React.Fragment key={item.tag}>
           <Link href={`/tag/${item.tag}`}>
