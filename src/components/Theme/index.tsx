@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
 import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
-import { Popover, SvgIcon } from '@dekopon/design';
+import { Popover, SvgIcon } from '@ootd/design';
 
 const ThemeDataSource = ['light', 'dark', 'system'];
 const Theme: FC = () => {

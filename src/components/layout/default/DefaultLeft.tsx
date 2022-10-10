@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { diff } from 'utils/time';
 import React, { useEffect, useState } from 'react';
-import { Card, SvgIcon, Tooltip } from '@dekopon/design';
+import { Card, SvgIcon, Tooltip } from '@ootd/design';
 import useFcp from 'hooks/useFcp';
 import { articleCount, lastUpdated } from 'api/article';
 import { getCdn } from "../../../utils/getCdn";

@@ -10,6 +10,7 @@ specifiers:
   '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^12.3.1
   '@next/eslint-plugin-next': ^12.3.1
+  '@ootd/design': ^0.0.2
   '@react-spring/web': ^9.5.5
   '@rematch/core': ^2.2.0
   '@tanstack/react-query': ^4.10.3
@@ -61,6 +62,7 @@ dependencies:
   '@dekopon/icon': 1.0.12
   '@fingerprintjs/fingerprintjs-pro': 3.7.1
   '@multiavatar/multiavatar': 1.0.7
+  '@ootd/design': 0.0.2_biqbaboplfbrettd7655fr4n2y
   '@react-spring/web': 9.5.5_biqbaboplfbrettd7655fr4n2y
   '@rematch/core': 2.2.0_redux@4.2.0
   '@tanstack/react-query': 4.10.3_biqbaboplfbrettd7655fr4n2y
@@ -720,6 +722,18 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+
+  /@ootd/design/0.0.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-gUHN5YN50zD2D2pvpmB7XUJ/IqxH1hCwZQh5uw6AxeFRUlKU0qwOI2TyY2N9UdT4v0Trg6UpsACRKoSNkAD85A==}
+    dependencies:
+      rc-checkbox: 2.3.2_biqbaboplfbrettd7655fr4n2y
+      rc-notification: 4.6.0_biqbaboplfbrettd7655fr4n2y
+      rc-select: 14.1.13_biqbaboplfbrettd7655fr4n2y
+      rc-tooltip: 5.2.2_biqbaboplfbrettd7655fr4n2y
+    transitivePeerDependencies:
+      - react
+      - react-dom
+    dev: false
 
   /@react-spring/animated/9.5.5_react@18.2.0:
     resolution: {integrity: sha512-glzViz7syQ3CE6BQOwAyr75cgh0qsihm5lkaf24I0DfU63cMm/3+br299UEYkuaHNmfDfM414uktiPlZCNJbQA==}

@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import { getTitle } from 'utils/getTitle';
 import type { GetStaticProps } from 'next';
 import classNames from 'classnames';
-import { Alert } from '@dekopon/design';
+import { Alert } from '@ootd/design';
 
 type ListProps = {
   createTime: Date;

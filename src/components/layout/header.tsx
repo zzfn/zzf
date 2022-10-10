@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from 'next/link';
-import { Popover, SvgIcon } from "@dekopon/design";
+import { Popover, SvgIcon } from "@ootd/design";
 import styles from './header.module.scss';
 import menus from '../../menus.json';
 import classNames from 'classnames';
