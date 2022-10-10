@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, SvgIcon, Tooltip } from '@dekopon/design';
 import useFcp from 'hooks/useFcp';
 import { articleCount, lastUpdated } from 'api/article';
+import { getCdn } from "../../../utils/getCdn";
 
 type LastUpdatedListType = {
   title: string;
@@ -35,7 +36,7 @@ const DefaultLeft = () => {
   return (
     <>
       <Card className='mb-4'>
-        <LottiePlayer size={100} url='https://oss-zzf.zzfzzf.com/cdn/1632384646840vb5kcx.json' />
+        <LottiePlayer size={100} url={getCdn('/assets/me.json')} />
         <div className='flex justify-around'>
           <div>
             <div className='text-center'>

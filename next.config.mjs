@@ -8,7 +8,7 @@ export default {
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
-    domains: ['oss-zzf.zzfzzf.com', 'www.dmoe.cc'],
+    domains: ['cdn.orluma.ltd', 'www.dmoe.cc'],
   },
   sassOptions: {
     prependData: `@import "styles/variable";`,

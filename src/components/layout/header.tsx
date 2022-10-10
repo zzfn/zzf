@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/future/image';
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { getCdn } from "utils/getCdn";
 
 function Header(): JSX.Element {
   const router = useRouter();
@@ -24,7 +25,7 @@ function Header(): JSX.Element {
               className='w-10 h-10 mr-2'
               width={100}
               height={100}
-              src='https://oss-zzf.zzfzzf.com/midway/logo.png'
+              src={getCdn('/assets/logo.png')}
               alt='logo'
             />
           </a>

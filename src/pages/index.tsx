@@ -8,6 +8,7 @@ import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import generateRssFeed from '../utils/generateRssFeed';
+import { getCdn } from "../utils/getCdn";
 
 type HomeType = {
   current: number;
@@ -46,7 +47,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
         loading={
           <LottiePlayer
             size={200}
-            url={`${process.env.NEXT_PUBLIC_CDN_URL}/cdn/1632384671572VMLK6m.json`}
+            url={getCdn('/assets/loading.json')}
           />
         }
       >
