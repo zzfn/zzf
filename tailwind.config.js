@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
+  content: ['./src/**/*.tsx'],
   theme: {
     extend: {
       colors: {
@@ -15,19 +15,13 @@ module.exports = {
         'link-2': 'var(--color-link-2)',
         'link-3': 'var(--color-link-3)',
         'link-4': 'var(--color-link-4)',
-        'border-1': 'var(--color-border-2)',
-        'border-2': 'var(--color-border-3)',
-        'border-3': 'var(--color-border-4)',
-        'border-4': 'var(--color-border-6)',
       },
-      backgroundColor: {
-        primary: 'var(--color-bg-primary)',
-        default: 'var(--color-bg-default)',
-      },
+      borderColor:{
+        'neutral-1': 'var(--color-border-1)',
+        'neutral-2': 'var(--color-border-2)',
+        'neutral-3': 'var(--color-border-3)',
+        'neutral-4': 'var(--color-border-4)',
+      }
     },
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  }
 };
