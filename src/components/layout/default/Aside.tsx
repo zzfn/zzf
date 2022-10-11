@@ -14,7 +14,7 @@ type LastUpdatedListType = {
   updateTime: string;
 };
 
-const DefaultLeft = () => {
+const Aside = () => {
   const [lastUpdatedList, setLastUpdatedList] = useState<LastUpdatedListType[]>([]);
   const loadTime = useFcp();
   const [count, setCount] = useState<any>({ tag: 0, article: 0 });
@@ -109,4 +109,4 @@ const DefaultLeft = () => {
     </>
   );
 };
-export default DefaultLeft;
+export default Aside;

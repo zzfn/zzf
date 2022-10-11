@@ -3,8 +3,7 @@ import Header from './header';
 import Footer from './footer';
 import type { ReactNode } from 'react';
 import Nav from '../article/nav';
-import DefaultLeft from "./default/DefaultLeft";
-import DefaultRight from "./default/DefaultRight";
+import Aside from "./default/Aside";
 
 function DefaultLayout({ children, source }: { children: ReactNode; source: string }) {
   return (
@@ -17,10 +16,6 @@ function DefaultLayout({ children, source }: { children: ReactNode; source: stri
               <Nav source={source} />
           </Layout.Aside>
           <Layout.Center className='w-full'>{children}</Layout.Center>
-          <Layout.Aside className="hidden xl:block">
-              <DefaultLeft />
-              <DefaultRight />
-          </Layout.Aside>
       </Layout.Content>
       <Layout.Footer className='container'>
         <Footer />
