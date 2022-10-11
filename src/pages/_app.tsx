@@ -15,6 +15,7 @@ import { store } from 'store';
 import DefaultLayout from 'components/layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { createContext, useEffect, useState } from 'react';
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const monitor = new Monitor();
 
@@ -45,6 +46,22 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   };
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
   useEffect(() => {
+    window.addEventListener('unhandledrejection', (e) => {
+      console.log(e)
+    });
+    window.onerror=function(message, source, lineno, colno, error) {
+      console.log(222,message, source, lineno, colno, error)
+    }
+    window.addEventListener('error',function(e){
+      const target = e.target
+      if(target instanceof HTMLLinkElement){
+        console.log(`资源加载失败${target.href}`);
+      }else if(target instanceof HTMLImageElement){
+        console.log(`图片资源加载失败${target.src}`);
+      }else if(target instanceof HTMLScriptElement){
+        console.log(`资源加载失败${target.src}`);
+      }
+    },true)
     handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
     const localVisitor = localStorage.getItem('visitor');
@@ -53,35 +70,38 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
       store.dispatch({ type: 'user/updateUserId', payload: visitor.visitorId });
     }
     return () => window.removeEventListener('resize', handleWindowResize);
+
   }, []);
   return (
-    <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <Head>
-          <link rel='icon' href='/favicon.ico' />
-          <title>{getTitle('zzf')}</title>
-          <meta
-            name='Keywords'
-            content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <Head>
+            <link rel='icon' href='/favicon.ico' />
+            <title>{getTitle('zzf')}</title>
+            <meta
+              name='Keywords'
+              content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
+            />
+            <meta name='Description' content='zzf的个人网站,记录个人学习' />
+            <meta name='theme-color' content='#ffffff' />
+            <meta
+              name='viewport'
+              content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+            />
+            <meta name='applicable-device' content='pc,mobile' />
+            <meta name='Copyright' content='OrLuna' />
+            <meta name='Author' content='OrLuna' />
+            <meta name='Designer' content='OrLuna' />
+          </Head>
+          <Script
+            async
+            src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_9.d18a72d2265c43124cfd146c29831a69.js'
           />
-          <meta name='Description' content='zzf的个人网站,记录个人学习' />
-          <meta name='theme-color' content='#ffffff' />
-          <meta
-            name='viewport'
-            content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
-          />
-          <meta name='applicable-device' content='pc,mobile' />
-          <meta name='Copyright' content='OrLuna' />
-          <meta name='Author' content='OrLuna' />
-          <meta name='Designer' content='OrLuna' />
-        </Head>
-        <Script
-          async
-          src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_9.d18a72d2265c43124cfd146c29831a69.js'
-        />
-        {getLayout(<Component {...pageProps} />)}
-      </Provider>
-    </QueryClientProvider>
+          {getLayout(<Component {...pageProps} />)}
+        </Provider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 
