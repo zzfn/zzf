@@ -21,6 +21,12 @@ module.exports = {
         'neutral-2': 'var(--color-border-2)',
         'neutral-3': 'var(--color-border-3)',
         'neutral-4': 'var(--color-border-4)',
+      },
+      backgroundColor:{
+        'neutral-1': 'var(--color-fill-1)',
+        'neutral-2': 'var(--color-fill-2)',
+        'neutral-3': 'var(--color-fill-3)',
+        'neutral-4': 'var(--color-fill-4)',
       }
     },
   }
