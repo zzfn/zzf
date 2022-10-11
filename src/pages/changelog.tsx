@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { changelogList } from 'api/changelog';
 import dayjs from 'dayjs';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 const Changelog = (props: any) => {
   const { serverProps } = props;

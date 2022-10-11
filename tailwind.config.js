@@ -16,18 +16,18 @@ module.exports = {
         'link-3': 'var(--color-link-3)',
         'link-4': 'var(--color-link-4)',
       },
-      borderColor:{
+      borderColor: {
         'neutral-1': 'var(--color-border-1)',
         'neutral-2': 'var(--color-border-2)',
         'neutral-3': 'var(--color-border-3)',
         'neutral-4': 'var(--color-border-4)',
       },
-      backgroundColor:{
+      backgroundColor: {
         'neutral-1': 'var(--color-fill-1)',
         'neutral-2': 'var(--color-fill-2)',
         'neutral-3': 'var(--color-fill-3)',
         'neutral-4': 'var(--color-fill-4)',
-      }
+      },
     },
-  }
+  },
 };

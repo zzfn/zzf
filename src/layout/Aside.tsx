@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, SvgIcon, Tooltip } from '@ootd/design';
 import useFcp from 'hooks/useFcp';
 import { articleCount, lastUpdated } from 'api/article';
-import { getCdn } from "utils/getCdn";
+import { getCdn } from 'utils/getCdn';
 
 type LastUpdatedListType = {
   title: string;

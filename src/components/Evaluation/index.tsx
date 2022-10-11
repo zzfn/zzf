@@ -7,16 +7,20 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../store';
 import { Message } from '@ootd/design';
 import { useQuery } from '@tanstack/react-query';
-import { spans } from "next/dist/build/webpack/plugins/profiling-plugin";
+import { spans } from 'next/dist/build/webpack/plugins/profiling-plugin';
 
 function getImageDataURL(svgXml: string) {
   return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
 }
-function getAuthor(item:any) {
-  if(item.reply){
-    return <span>{item.createBy?.slice(-6)} @<a className="text-primary">{item.reply.slice(-6)}</a></span>
-  }else {
-    return item.createBy.slice(-6)
+function getAuthor(item: any) {
+  if (item.reply) {
+    return (
+      <span>
+        {item.createBy?.slice(-6)} @<a className='text-primary'>{item.reply.slice(-6)}</a>
+      </span>
+    );
+  } else {
+    return item.createBy.slice(-6);
   }
 }
 function Evaluation(props: any) {
@@ -78,7 +82,7 @@ function Evaluation(props: any) {
         <Alert>根据您的设备特征计算出设备指纹，并作为用户标识</Alert>
         设备指纹为<Tag className='mb-2'>{user.id}</Tag>
         <Input
-          type="textarea"
+          type='textarea'
           onChange={(e) => setContent(e.target.value)}
           value={content}
           placeholder='请输入您的意见'

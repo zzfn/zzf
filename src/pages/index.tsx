@@ -8,7 +8,7 @@ import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import generateRssFeed from '../utils/generateRssFeed';
-import { getCdn } from "../utils/getCdn";
+import { getCdn } from '../utils/getCdn';
 
 type HomeType = {
   current: number;
@@ -44,12 +44,7 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
       <Loading
         noMore={!hasNextPage}
         onLoad={fetchNextPage}
-        loading={
-          <LottiePlayer
-            size={200}
-            url={getCdn('/assets/loading.json')}
-          />
-        }
+        loading={<LottiePlayer size={200} url={getCdn('/assets/loading.json')} />}
       >
         {data.pages.map((item, i) => (
           <React.Fragment key={i}>

@@ -30,7 +30,7 @@ html {
 
 [data-color-mode='dark'] {
   @include colors-dark;
-  img{
+  img {
     filter: brightness(68%);
   }
 }
@@ -44,7 +44,7 @@ html {
 @media (prefers-color-scheme: dark) {
   [data-color-mode='auto'] {
     @include colors-dark;
-    img{
+    img {
       filter: brightness(68%);
     }
   }

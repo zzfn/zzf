@@ -3,7 +3,7 @@ import Header from './header';
 import Footer from './footer';
 import type { ReactNode } from 'react';
 import Nav from '../components/article/nav';
-import Aside from "./Aside";
+import Aside from './Aside';
 
 function DefaultLayout({ children, source }: { children: ReactNode; source: string }) {
   return (
@@ -12,10 +12,10 @@ function DefaultLayout({ children, source }: { children: ReactNode; source: stri
         <Header />
       </Layout.Header>
       <Layout.Content className='container'>
-          <Layout.Aside className="hidden md:block">
-              <Nav source={source} />
-          </Layout.Aside>
-          <Layout.Center className='w-full'>{children}</Layout.Center>
+        <Layout.Aside className='hidden md:block'>
+          <Nav source={source} />
+        </Layout.Aside>
+        <Layout.Center className='w-full'>{children}</Layout.Center>
       </Layout.Content>
       <Layout.Footer className='container'>
         <Footer />

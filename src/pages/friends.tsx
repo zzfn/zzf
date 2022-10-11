@@ -3,8 +3,8 @@ import { Button, Alert } from '@ootd/design';
 import { GetStaticProps } from 'next';
 import Image from 'next/future/image';
 import { friendList } from 'api/friend';
-import Head from "next/head";
-import {getTitle} from "../utils/getTitle";
+import Head from 'next/head';
+import { getTitle } from '../utils/getTitle';
 
 type FriendCard = {
   logo: string;
@@ -46,7 +46,9 @@ const Friends = ({ serverProps }: any) => {
           />
         ))}
       </div>
-      <Alert>please email <strong>me@orluna.ink</strong> if u want to be my friend</Alert>
+      <Alert>
+        please email <strong>me@orluna.ink</strong> if u want to be my friend
+      </Alert>
       <p>你需要提供</p>
       <ul>
         <li>title: ootd-blog</li>
@@ -77,9 +79,15 @@ const Card = ({ dataSource }: CardProps) => {
       rel='noreferrer'
       target='_blank'
       href={url}
-      className={classNames('flex', 'bg-primary', 'rounded-md', 'overflow-hidden','mb-2')}
+      className={classNames('flex', 'bg-primary', 'rounded-md', 'overflow-hidden', 'mb-2')}
     >
-      <Image width={100} height={100} className={classNames('w-16', 'h-16', 'mr-2')} src={logo} alt='' />
+      <Image
+        width={100}
+        height={100}
+        className={classNames('w-16', 'h-16', 'mr-2')}
+        src={logo}
+        alt=''
+      />
       <div className={classNames('flex', 'flex-col', 'justify-between', 'p-2')}>
         <strong className='text-neutral-4'>{title}</strong>
         <p className='text-neutral-2'>{description}</p>

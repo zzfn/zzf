@@ -7,7 +7,7 @@ import { Input, Space, Tag } from '@ootd/design';
 import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
 import classNames from 'classnames';
 import { useQuery } from '@tanstack/react-query';
-import { getCdn } from "../utils/getCdn";
+import { getCdn } from '../utils/getCdn';
 
 function Search(): JSX.Element {
   const [keyword, setKeyword] = useState('');
@@ -55,7 +55,7 @@ function Search(): JSX.Element {
       ) : (
         <>
           <LottiePlayer size={100} url={getCdn('/assets/loading.json')} />
-          <h3 className="my-3">热搜</h3>
+          <h3 className='my-3'>热搜</h3>
           <Space>
             {data.map((item: string) => (
               <Tag

@@ -14,14 +14,16 @@ class Monitor {
   async getVisitor(): Promise<GetResult> {
     let visitor = JSON.parse(localStorage.getItem('visitor'));
     if (!visitor || !visitor.visitorId) {
-      if(!this.fpPromise){
-        this.fpPromise = import('@fingerprintjs/fingerprintjs-pro').then((FingerprintJS) =>
+      if (!this.fpPromise) {
+        this.fpPromise = import('@fingerprintjs/fingerprintjs-pro')
+          .then((FingerprintJS) =>
             FingerprintJS.load({
               apiKey: 'jt14U0jzVYNn41hfNVbb',
               region: 'ap',
               endpoint: 'https://fp.zzfzzf.com',
             }),
-        ).then(agent=>agent.get());
+          )
+          .then((agent) => agent.get());
       }
       visitor = await this.fpPromise;
       localStorage.setItem('visitor', JSON.stringify(visitor));

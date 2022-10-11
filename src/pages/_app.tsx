@@ -15,7 +15,7 @@ import { store } from 'store';
 import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { createContext, useEffect, useState } from 'react';
-import ErrorBoundary from "../components/ErrorBoundary";
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const monitor = new Monitor();
 
@@ -47,21 +47,25 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
   useEffect(() => {
     window.addEventListener('unhandledrejection', (e) => {
-      console.log(e)
+      console.log(e);
     });
-    window.onerror=function(message, source, lineno, colno, error) {
-      console.log(222,message, source, lineno, colno, error)
-    }
-    window.addEventListener('error',function(e){
-      const target = e.target
-      if(target instanceof HTMLLinkElement){
-        console.log(`资源加载失败${target.href}`);
-      }else if(target instanceof HTMLImageElement){
-        console.log(`图片资源加载失败${target.src}`);
-      }else if(target instanceof HTMLScriptElement){
-        console.log(`资源加载失败${target.src}`);
-      }
-    },true)
+    window.onerror = function (message, source, lineno, colno, error) {
+      console.log(222, message, source, lineno, colno, error);
+    };
+    window.addEventListener(
+      'error',
+      function (e) {
+        const target = e.target;
+        if (target instanceof HTMLLinkElement) {
+          console.log(`资源加载失败${target.href}`);
+        } else if (target instanceof HTMLImageElement) {
+          console.log(`图片资源加载失败${target.src}`);
+        } else if (target instanceof HTMLScriptElement) {
+          console.log(`资源加载失败${target.src}`);
+        }
+      },
+      true,
+    );
     handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
     const localVisitor = localStorage.getItem('visitor');
@@ -70,7 +74,6 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
       store.dispatch({ type: 'user/updateUserId', payload: visitor.visitorId });
     }
     return () => window.removeEventListener('resize', handleWindowResize);
-
   }, []);
   return (
     <ErrorBoundary>

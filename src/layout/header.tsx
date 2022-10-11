@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Popover, SvgIcon } from "@ootd/design";
+import { Popover, SvgIcon } from '@ootd/design';
 import styles from './header.module.scss';
 import menus from '../menus.json';
 import classNames from 'classnames';
 import Theme from '../components/Theme';
 import { useRouter } from 'next/router';
 import Image from 'next/future/image';
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
-import { getCdn } from "utils/getCdn";
+import { useSelector } from 'react-redux';
+import { RootState } from '../store';
+import { getCdn } from 'utils/getCdn';
 
 function Header(): JSX.Element {
   const router = useRouter();
@@ -30,7 +30,7 @@ function Header(): JSX.Element {
             />
           </a>
         </Link>
-        <nav className={classNames(styles.menu,'hidden','md:flex')}>
+        <nav className={classNames(styles.menu, 'hidden', 'md:flex')}>
           {menus.map((menu) => (
             <Link key={menu.name} href={menu.path}>
               <a
