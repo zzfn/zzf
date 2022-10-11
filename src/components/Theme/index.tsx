@@ -28,7 +28,7 @@ const Theme: FC = () => {
                 setTheme(theme);
               }}
               className={classNames(
-                active === theme ? 'text-brand-primary' : 'text-secondary',
+                active === theme ? 'text-primary-4' : 'text-neutral-4',
                 'w-32',
                 'flex',
                 'items-center',
@@ -45,7 +45,7 @@ const Theme: FC = () => {
         </ul>
       }
     >
-      <SvgIcon className='text-brand-primary mr-2' size={25} name={active} />
+      <SvgIcon className='text-primary-4 mr-2' size={25} name={active} />
     </Popover>
   );
 };

@@ -29,7 +29,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
             <a className={classNames('flex', 'items-center', 'justify-between', 'ml-3', 'mb-2')}>
               <Tag>
                 # {item.tag}
-                <span className='text-brand-primary ml-2'>{item.count}</span>
+                <span className='text-primary-4 ml-2'>{item.count}</span>
               </Tag>
             </a>
           </Link>

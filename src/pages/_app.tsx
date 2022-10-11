@@ -12,7 +12,7 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
 import { Provider } from 'react-redux';
 import { store } from 'store';
-import DefaultLayout from 'components/layout/DefaultLayout';
+import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { createContext, useEffect, useState } from 'react';
 import ErrorBoundary from "../components/ErrorBoundary";

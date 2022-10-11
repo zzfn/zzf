@@ -61,7 +61,7 @@ const Card = ({ dataSource }: CardProps) => {
       <Image width={100} height={100} className={classNames('w-16', 'h-16', 'mr-2')} src={logo} alt='' />
       <div className={classNames('flex', 'flex-col', 'justify-between', 'p-2')}>
         <strong className='text-primary'>{title}</strong>
-        <p className='text-secondary'>{description}</p>
+        <p className='text-fill-1'>{description}</p>
       </div>
     </a>
   );

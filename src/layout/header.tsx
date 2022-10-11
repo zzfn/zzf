@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Link from 'next/link';
 import { Popover, SvgIcon } from "@ootd/design";
 import styles from './header.module.scss';
-import menus from '../../menus.json';
+import menus from '../menus.json';
 import classNames from 'classnames';
-import Theme from '../Theme';
+import Theme from '../components/Theme';
 import { useRouter } from 'next/router';
 import Image from 'next/future/image';
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { RootState } from "../store";
 import { getCdn } from "utils/getCdn";
 
 function Header(): JSX.Element {
@@ -19,8 +19,8 @@ function Header(): JSX.Element {
   return (
     <>
       <div className={classNames('flex', 'items-center')}>
-        <Link href='/'>
-          <a className={classNames('text-brand-primary', 'text-xl', 'mr-2', 'text-primary')}>
+        <Link href='/src/pages'>
+          <a className={classNames('text-primary-4', 'text-xl', 'mr-2')}>
             <Image
               className='w-10 h-10 mr-2'
               width={100}
@@ -47,13 +47,13 @@ function Header(): JSX.Element {
         </nav>
       </div>
       <div className={classNames('flex', 'items-center')}>
-        <Link href='/search'>
-          <a className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
+        <Link href='/src/pages/search'>
+          <a className={classNames('text-primary-4', 'text-xl', 'mr-2')}>
             <SvgIcon size={25} name='search' />
           </a>
         </Link>
         <Link href='/rss/feed.xml'>
-          <a target='_blank' className={classNames('text-brand-primary', 'text-xl', 'mr-2')}>
+          <a target='_blank' className={classNames('text-primary-4', 'text-xl', 'mr-2')}>
             <SvgIcon size={25} name='rss' />
           </a>
         </Link>
@@ -82,7 +82,7 @@ function Header(): JSX.Element {
           }
         >
           <SvgIcon
-            className={classNames('text-brand-primary md:hidden')}
+            className={classNames('text-primary-4 md:hidden')}
             size={25}
             name={visible ? 'close' : 'menu'}
           />

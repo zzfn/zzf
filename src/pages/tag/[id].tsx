@@ -25,7 +25,7 @@ export default function Tag(props: NextProps<TagType>): JSX.Element {
           <li key={item.id}>
             <span>{item.createTime}</span>-
             <Link href={`/article/${item.id}`}>
-              <a className='text-brand-primary'>{item.title}</a>
+              <a className='text-primary-4'>{item.title}</a>
             </Link>
           </li>
         ))}

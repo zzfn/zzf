@@ -13,7 +13,7 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Evaluation from '../../components/Evaluation';
 import { useDispatch } from 'react-redux';
 import type { Dispatch } from 'store';
-import ArticleLayout from '../../components/layout/ArticleLayout';
+import ArticleLayout from '../../layout/ArticleLayout';
 import Image from 'next/future/image';
 
 interface Data {
