@@ -6,13 +6,13 @@ const About = () => {
       <h3 className='text-xl my-3'>connect</h3>
       <ul className='pl-3'>
         <li>
-          Blog 🏠 <span className='text-primary'>zzfzzf.com</span>
+          Blog 🏠 <span className='text-link-4'>zzfzzf.com</span>
         </li>
         <li>
-          Email 📧 <span className='text-primary'>me@orluna.ink</span>
+          Email 📧 <span className='text-link-4'>me@orluna.ink</span>
         </li>
         <li>
-          GitHub 🕸 <span className='text-primary'>zzfn</span>
+          GitHub 🕸 <span className='text-link-4'>zzfn</span>
         </li>
       </ul>
     </div>
