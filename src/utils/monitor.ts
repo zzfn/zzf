@@ -1,4 +1,4 @@
-import type { Agent, GetResult } from '@fingerprintjs/fingerprintjs-pro';
+import type { GetResult } from '@fingerprintjs/fingerprintjs-pro';
 import UAParser from 'ua-parser-js';
 import type { NextWebVitalsMetric } from 'next/app';
 
