@@ -31,11 +31,12 @@
       margin-right: 16px;
     }
   }
-  .active {
-    color: var(--color-primary-4);
-    &:before {
-      visibility: visible;
-      transform: scaleX(1);
-    }
+
+}
+.active {
+  color: var(--color-primary-4);
+  &:before {
+    visibility: visible;
+    transform: scaleX(1);
   }
 }

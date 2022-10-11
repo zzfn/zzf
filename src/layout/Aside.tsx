@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, SvgIcon, Tooltip } from '@ootd/design';
 import useFcp from 'hooks/useFcp';
 import { articleCount, lastUpdated } from 'api/article';
-import { getCdn } from "../utils/getCdn";
+import { getCdn } from "utils/getCdn";
 
 type LastUpdatedListType = {
   title: string;
@@ -40,13 +40,13 @@ const Aside = () => {
         <div className='flex justify-around'>
           <div>
             <div className='text-center'>
-              <Link href='/src/pages/archive'>{count.article}</Link>
+              <Link href='/archive'>{count.article}</Link>
             </div>
             <div>文章</div>
           </div>
           <div>
             <div className='text-center'>
-              <Link href='/src/pages/tags'>{count.tag}</Link>
+              <Link href='/tags'>{count.tag}</Link>
             </div>
             <div>标签</div>
           </div>

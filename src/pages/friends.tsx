@@ -18,7 +18,21 @@ const Friends = ({ serverProps }: any) => {
       <Head>
         <title>{getTitle('友链')}</title>
       </Head>
-      <Alert type='info'>友情链接</Alert>
+      <h3 className='text-neutral-4 font-bold text-xl my-3'>bio</h3>
+      <p className='pl-3'>码农，软硬件爱好者，爱折腾</p>
+      <h3 className='text-neutral-4 font-bold text-xl my-3'>connect</h3>
+      <ul className='pl-3'>
+        <li>
+          Blog 🏠 <span className='text-link-4'>zzfzzf.com</span>
+        </li>
+        <li>
+          Email 📧 <span className='text-link-4'>me@orluna.ink</span>
+        </li>
+        <li>
+          GitHub 🕸 <span className='text-link-4'>zzfn</span>
+        </li>
+      </ul>
+      <h3 className='text-neutral-4 font-bold text-xl my-3'>friends</h3>
       <div className='grid grid-cols-2 gap-x-16 m-2'>
         {serverProps.map((item: any) => (
           <Card
@@ -32,7 +46,14 @@ const Friends = ({ serverProps }: any) => {
           />
         ))}
       </div>
-      <Button>申请友链</Button>
+      <Alert>please email <strong>me@orluna.ink</strong> if u want to be my friend</Alert>
+      <p>你需要提供</p>
+      <ul>
+        <li>title: ootd-blog</li>
+        <li>url: https://zzfzzf.com</li>
+        <li>bio: 一个前端开发者的博客</li>
+        <li>avatar: https://cdn.orluma.ltd/assets/logo.png</li>
+      </ul>
     </>
   );
 };
@@ -56,12 +77,12 @@ const Card = ({ dataSource }: CardProps) => {
       rel='noreferrer'
       target='_blank'
       href={url}
-      className={classNames('flex', 'bg-primary', 'rounded-md', 'overflow-hidden')}
+      className={classNames('flex', 'bg-primary', 'rounded-md', 'overflow-hidden','mb-2')}
     >
       <Image width={100} height={100} className={classNames('w-16', 'h-16', 'mr-2')} src={logo} alt='' />
       <div className={classNames('flex', 'flex-col', 'justify-between', 'p-2')}>
-        <strong className='text-primary'>{title}</strong>
-        <p className='text-fill-1'>{description}</p>
+        <strong className='text-neutral-4'>{title}</strong>
+        <p className='text-neutral-2'>{description}</p>
       </div>
     </a>
   );

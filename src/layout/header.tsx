@@ -19,7 +19,7 @@ function Header(): JSX.Element {
   return (
     <>
       <div className={classNames('flex', 'items-center')}>
-        <Link href='/src/pages'>
+        <Link href='/'>
           <a className={classNames('text-primary-4', 'text-xl', 'mr-2')}>
             <Image
               className='w-10 h-10 mr-2'
@@ -47,7 +47,7 @@ function Header(): JSX.Element {
         </nav>
       </div>
       <div className={classNames('flex', 'items-center')}>
-        <Link href='/src/pages/search'>
+        <Link href='/search'>
           <a className={classNames('text-primary-4', 'text-xl', 'mr-2')}>
             <SvgIcon size={25} name='search' />
           </a>
@@ -63,11 +63,15 @@ function Header(): JSX.Element {
           onPopupVisibleChange={(v) => setVisible(v)}
           content={
             <div className='w-screen'>
-              <nav className={styles.menu}>
+              <nav>
                 {menus.map((menu) => (
                   <Link key={menu.name} href={menu.path}>
                     <a
                       className={classNames(
+                        'block',
+                        'text-left',
+                        'text-xl',
+                        'my-2',
                         menu.path === '/'
                           ? router.pathname === '/' && styles.active
                           : router.pathname.includes(menu.path) && styles.active,
