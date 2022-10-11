@@ -20,7 +20,11 @@
     "path": "/friends"
   },
   {
-    "name": "更新日志",
+    "name": "关于我",
+    "path": "/about"
+  },
+  {
+    "name": "大事记",
     "path": "/changelog"
   }
 ]
