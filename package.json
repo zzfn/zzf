@@ -17,6 +17,7 @@
     "@dekopon/icon": "^1.0.12",
     "@fingerprintjs/fingerprintjs-pro": "^3.7.1",
     "@multiavatar/multiavatar": "^1.0.7",
+    "@oc/design": "^0.0.2",
     "@ootd/design": "^0.0.4",
     "@react-spring/web": "^9.5.5",
     "@rematch/core": "^2.2.0",

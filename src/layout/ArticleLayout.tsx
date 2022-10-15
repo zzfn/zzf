@@ -1,9 +1,8 @@
-import { Layout } from '@ootd/design';
+import { Layout } from '@oc/design';
 import Header from './header';
 import Footer from './footer';
 import type { ReactNode } from 'react';
 import Nav from '../components/article/nav';
-import Aside from './Aside';
 
 function DefaultLayout({ children, source }: { children: ReactNode; source: string }) {
   return (

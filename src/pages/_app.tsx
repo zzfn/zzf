@@ -14,7 +14,7 @@ import { Provider } from 'react-redux';
 import { store } from 'store';
 import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
-import { createContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 const monitor = new Monitor();

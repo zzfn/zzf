@@ -1,4 +1,4 @@
-import { Layout } from '@ootd/design';
+import { Layout } from '@oc/design';
 import Header from './header';
 import Footer from './footer';
 import type { ReactNode } from 'react';
