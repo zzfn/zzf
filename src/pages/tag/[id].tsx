@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { getTitle } from '../../utils/getTitle';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import classNames from 'classnames';
-import { Alert } from '@ootd/design';
+import { Alert } from '@oc/design';
 
 type TagType = {
   title: string;

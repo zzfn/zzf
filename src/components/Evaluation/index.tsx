@@ -1,13 +1,12 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
 import classNames from 'classnames';
-import { Modal, Comment, Input, Alert, Tag } from '@ootd/design';
+import { Modal, Comment, Input, Alert, Tag } from '@oc/design';
 import multiavatar from '@multiavatar/multiavatar/esm';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store';
-import { Message } from '@ootd/design';
+import { Message } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
-import { spans } from 'next/dist/build/webpack/plugins/profiling-plugin';
 
 function getImageDataURL(svgXml: string) {
   return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));

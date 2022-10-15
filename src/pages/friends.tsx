@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Button, Alert } from '@ootd/design';
+import { Button, Alert } from '@oc/design';
 import { GetStaticProps } from 'next';
 import Image from 'next/future/image';
 import { friendList } from 'api/friend';

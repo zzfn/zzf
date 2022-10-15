@@ -3,7 +3,7 @@ import { esList, topSearch } from 'api/article';
 import SearchCard from 'components/article/SearchCard';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
-import { Input, Space, Tag } from '@ootd/design';
+import { Input, Space, Tag } from '@oc/design';
 import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
 import classNames from 'classnames';
 import { useQuery } from '@tanstack/react-query';

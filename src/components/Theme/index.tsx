@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
 import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
-import { Popover, SvgIcon } from '@ootd/design';
+import { Popover, SvgIcon } from '@oc/design';
 
 const ThemeDataSource = ['light', 'dark', 'system'];
 const Theme: FC = () => {
@@ -18,7 +18,6 @@ const Theme: FC = () => {
 
   return (
     <Popover
-      placement='bottomRight'
       content={
         <ul>
           {ThemeDataSource.map((theme) => (
@@ -38,14 +37,14 @@ const Theme: FC = () => {
               )}
               key={theme}
             >
-              <SvgIcon className='mr-2' size={20} name={theme} />
+              <SvgIcon size={20} name={theme} />
               <div>{theme}</div>
             </li>
           ))}
         </ul>
       }
     >
-      <SvgIcon className='text-primary-4 mr-2' size={25} name={active} />
+      <SvgIcon className='text-primary-4' size={25} name={active} />
     </Popover>
   );
 };

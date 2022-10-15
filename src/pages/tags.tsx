@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import classNames from 'classnames';
-import { Tag } from '@ootd/design';
+import { Tag } from '@oc/design';
 
 type TagsProps = {
   count: number;

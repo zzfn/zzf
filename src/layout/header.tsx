@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Popover, SvgIcon } from '@ootd/design';
+import { Popover, SvgIcon } from '@oc/design';
 import styles from './header.module.scss';
 import menus from '../menus.json';
 import classNames from 'classnames';
@@ -59,8 +59,6 @@ function Header(): JSX.Element {
         </Link>
         <Theme />
         <Popover
-          placement='bottomRight'
-          onPopupVisibleChange={(v) => setVisible(v)}
           content={
             <div className='w-screen'>
               <nav>
@@ -86,7 +84,7 @@ function Header(): JSX.Element {
           }
         >
           <SvgIcon
-            className={classNames('text-primary-4 md:hidden')}
+            className={classNames('text-primary-4 md:hidden ml-2')}
             size={25}
             name={visible ? 'close' : 'menu'}
           />
