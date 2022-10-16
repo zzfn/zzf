@@ -17,7 +17,8 @@ const Theme: FC = () => {
   }, []);
 
   return (
-    <Popover placement='bottomRight'
+    <Popover
+      placement='bottomRight'
       content={
         <ul className={styles.wrap}>
           {ThemeDataSource.map((theme) => (

@@ -709,7 +709,7 @@ packages:
       fastq: 1.13.0
 
   /@oc/design/0.0.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-q4nzh13JwU6HtDn7rhGZmMgQQ60cVw2D3RbsnV7l6IKcV0zZZHjhWEfd8DtLRZCmsTqhuJK3HfNq4ei1gfUVYw==}
+    resolution: {integrity: sha512-pX6Hoz88KFdNtdyd+BHmm3grVgmbNwYrh6Qi9ZVfh6uoczXQCOsLKnRZRSc4W82tLb1vrgZ2zm25pK2y0B0ojA==}
     dependencies:
       '@oc/doc-loader': 0.0.3
       react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y

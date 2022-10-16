@@ -59,8 +59,9 @@ function Header(): JSX.Element {
         </Link>
         <Theme />
         <Popover
+          placement='bottomRight'
           content={
-            <div className='w-screen'>
+            <div>
               <nav>
                 {menus.map((menu) => (
                   <Link key={menu.name} href={menu.path}>
