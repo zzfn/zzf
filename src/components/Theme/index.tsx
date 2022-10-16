@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
 import { Popover, SvgIcon } from '@oc/design';
-
+import styles from './index.module.scss';
 const ThemeDataSource = ['light', 'dark', 'system'];
 const Theme: FC = () => {
   const [active, setActive] = useState('light');
@@ -17,9 +17,9 @@ const Theme: FC = () => {
   }, []);
 
   return (
-    <Popover
+    <Popover placement='bottomRight'
       content={
-        <ul>
+        <ul className={styles.wrap}>
           {ThemeDataSource.map((theme) => (
             <li
               onClick={() => {
