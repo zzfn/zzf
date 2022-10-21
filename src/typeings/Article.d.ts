@@ -3,8 +3,7 @@ interface Article {
   title: string;
   logo: string;
   summary: string;
-  tagDesc: string;
-  viewCount: number;
+  viewCount?: number;
   createTime: string;
   content: string;
   orderNum: number;
