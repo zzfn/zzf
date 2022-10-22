@@ -10,7 +10,7 @@ interface ArticleCardProps {
 export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
     <>
-      <div className='mx-auto rounded-xl border border-neutral-2 overflow-hidden mb-3.5 bg-surface'>
+      <div className='mx-auto rounded-xl border border-surface overflow-hidden mb-3.5 bg-surface'>
         <div className='flex justify-between'>
           <div className='px-6 py-2 flex flex-col align-center justify-center'>
             <div className='uppercase tracking-wide text-sm text-primary-3 font-semibold'>

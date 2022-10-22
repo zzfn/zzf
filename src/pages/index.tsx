@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Head from 'next/head';
 import { listArticles } from 'api/article';
 import { Loading } from '@oc/design';
@@ -9,12 +9,15 @@ import type { GetStaticProps } from 'next';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import generateRssFeed from '../utils/generateRssFeed';
 import { getCdn } from '../utils/getCdn';
+import ArticleLayout from '../layout/ArticleLayout';
+import { NextPageWithLayout } from './_app';
+import DefaultNoBg from '../layout/DefaultNoBg';
 
 type HomeType = {
   current: number;
   records: Article[];
 };
-const Home: React.FC<NextProps<HomeType>> = (props) => {
+const Home: NextPageWithLayout = (props: NextProps<HomeType>) => {
   const { serverProps } = props;
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
@@ -56,6 +59,9 @@ const Home: React.FC<NextProps<HomeType>> = (props) => {
       </Loading>
     </>
   );
+};
+Home.getLayout = function (page: ReactElement) {
+  return <DefaultNoBg>{page}</DefaultNoBg>;
 };
 export const getStaticProps: GetStaticProps = async () => {
   const pages = await listArticles({ pageSize: 10, current: 1 });
