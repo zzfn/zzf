@@ -19,7 +19,7 @@ interface ArchiveProps {
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
   return (
-    <div className='bg-primary flex flex-wrap'>
+    <div className='flex flex-wrap'>
       <Head>
         <title>{getTitle('标签')}</title>
       </Head>

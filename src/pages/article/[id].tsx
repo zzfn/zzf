@@ -66,7 +66,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
             src={serverProps.logo}
           />
         )}
-        <main className={classNames(styles.article, 'bg-primary', 'w-full', 'px-6', 'bg-card')}>
+        <main className={classNames(styles.article, 'bg-surface', 'w-full', 'px-6', 'bg-card')}>
           <div>
             <h2 className={classNames('text-xl', 'text-gray-1000', 'font-medium', 'text-4xl')}>
               {serverProps.title}

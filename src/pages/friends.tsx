@@ -18,9 +18,9 @@ const Friends = ({ serverProps }: any) => {
       <Head>
         <title>{getTitle('友链')}</title>
       </Head>
-      <h3 className='text-neutral-4 font-bold text-xl my-3'>bio</h3>
+      <h3 className='text-primary font-bold text-xl my-3'>bio</h3>
       <p className='pl-3'>码农，软硬件爱好者，爱折腾</p>
-      <h3 className='text-neutral-4 font-bold text-xl my-3'>connect</h3>
+      <h3 className='text-primary font-bold text-xl my-3'>connect</h3>
       <ul className='pl-3'>
         <li>
           Blog 🏠 <span className='text-link-4'>zzfzzf.com</span>
@@ -32,7 +32,7 @@ const Friends = ({ serverProps }: any) => {
           GitHub 🕸 <span className='text-link-4'>zzfn</span>
         </li>
       </ul>
-      <h3 className='text-neutral-4 font-bold text-xl my-3'>friends</h3>
+      <h3 className='text-primary font-bold text-xl my-3'>friends</h3>
       <div className='grid grid-cols-2 gap-x-16 m-2'>
         {serverProps.map((item: any) => (
           <Card
@@ -79,7 +79,7 @@ const Card = ({ dataSource }: CardProps) => {
       rel='noreferrer'
       target='_blank'
       href={url}
-      className={classNames('flex', 'bg-primary', 'rounded-md', 'overflow-hidden', 'mb-2')}
+      className={classNames('flex', 'bg-comment', 'rounded-md', 'overflow-hidden', 'mb-2')}
     >
       <Image
         width={100}
@@ -89,7 +89,7 @@ const Card = ({ dataSource }: CardProps) => {
         alt=''
       />
       <div className={classNames('flex', 'flex-col', 'justify-between', 'p-2')}>
-        <strong className='text-neutral-4'>{title}</strong>
+        <strong className='text-primary'>{title}</strong>
         <p className='text-neutral-2'>{description}</p>
       </div>
     </a>

@@ -54,7 +54,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
     return prev;
   }, {});
   return (
-    <div className={classNames(styles.archiveWrap, 'bg-primary')}>
+    <div className={classNames(styles.archiveWrap)}>
       <Head>
         <title>{getTitle('归档')}</title>
       </Head>

@@ -28,7 +28,7 @@ const Theme: FC = () => {
                 setTheme(theme);
               }}
               className={classNames(
-                active === theme ? 'text-primary-4' : 'text-neutral-4',
+                active === theme ? 'text-primary-4' : 'text-primary',
                 'w-32',
                 'flex',
                 'items-center',
@@ -38,8 +38,8 @@ const Theme: FC = () => {
               )}
               key={theme}
             >
-              <SvgIcon size={20} name={theme} />
-              <div>{theme}</div>
+              <SvgIcon className='mr-2' name={theme} />
+              {theme}
             </li>
           ))}
         </ul>

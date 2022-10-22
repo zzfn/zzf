@@ -15,6 +15,8 @@ module.exports = {
         'link-2': 'var(--color-link-2)',
         'link-3': 'var(--color-link-3)',
         'link-4': 'var(--color-link-4)',
+        primary: 'var(--primary-text)',
+        link: 'var(--blue-link)',
       },
       borderColor: {
         'neutral-1': 'var(--color-border-1)',
@@ -29,6 +31,7 @@ module.exports = {
         'neutral-3': 'var(--color-fill-3)',
         'neutral-4': 'var(--color-fill-4)',
         surface: 'var(--surface-background)',
+        comment: 'var(--comment-background)',
       },
     },
   },
