@@ -18,7 +18,7 @@ class Monitor {
         this.fpPromise = import('@fingerprintjs/fingerprintjs-pro')
           .then((FingerprintJS) =>
             FingerprintJS.load({
-              apiKey: 'jt14U0jzVYNn41hfNVbb',
+              apiKey: 'Q4a7pdQhmrXFanKzBTCu',
               region: 'ap',
               endpoint: 'https://fp.zzfzzf.com',
             }),
@@ -40,8 +40,8 @@ class Monitor {
   }
 
   async loadUrl(url: string, metric: NextWebVitalsMetric): Promise<void> {
-    if (process.env.NODE_ENV === 'development') return;
     const visitor = await this.getVisitor();
+    if (process.env.NODE_ENV === 'development') return;
     const json = {
       url: `${window.origin}${url}`,
       visitorId: visitor.visitorId,

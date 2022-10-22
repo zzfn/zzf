@@ -3,8 +3,8 @@
 :root {
   margin-left: calc(100vw - 100%);
   font-size: 16px;
-  font-family: "LXGW WenKai Lite",-apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei,
-    Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+  font-family: 'LXGW WenKai Lite', -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
+    Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
   font-weight: var(--font-weight-light);
   color: var(--color-text-1);
   background-color: var(--color-bg-1);
@@ -47,4 +47,10 @@ html {
       filter: brightness(68%);
     }
   }
+}
+.bg-card {
+  box-shadow: 0 1px 2px var(--shadow-2);
+  background-color: var(--surface-background);
+  padding: 12px 16px;
+  border-radius: 8px;
 }

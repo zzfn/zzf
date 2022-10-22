@@ -61,12 +61,12 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
           <Image
             width={100}
             height={100}
-            className={classNames('h-52', 'w-full', 'object-cover')}
+            className={classNames('h-52', 'w-full', 'object-cover', 'mb-3')}
             alt={serverProps.title}
             src={serverProps.logo}
           />
         )}
-        <main className={classNames(styles.article, 'bg-primary', 'w-full', 'px-6')}>
+        <main className={classNames(styles.article, 'bg-primary', 'w-full', 'px-6', 'bg-card')}>
           <div>
             <h2 className={classNames('text-xl', 'text-gray-1000', 'font-medium', 'text-4xl')}>
               {serverProps.title}

@@ -27,6 +27,7 @@ module.exports = {
         'neutral-2': 'var(--color-fill-2)',
         'neutral-3': 'var(--color-fill-3)',
         'neutral-4': 'var(--color-fill-4)',
+        surface: 'var(--surface-background)',
       },
     },
   },

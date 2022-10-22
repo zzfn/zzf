@@ -16,6 +16,7 @@ import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
+import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react';
 
 const monitor = new Monitor();
 
@@ -77,33 +78,41 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   }, []);
   return (
     <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-          <Head>
-            <link rel='icon' href='/favicon.ico' />
-            <title>{getTitle('zzf')}</title>
-            <meta
-              name='Keywords'
-              content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
+      <FpjsProvider
+        loadOptions={{
+          apiKey: 'Q4a7pdQhmrXFanKzBTCu',
+          region: 'ap',
+          endpoint: 'https://fp.zzfzzf.com',
+        }}
+      >
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <Head>
+              <link rel='icon' href='/favicon.ico' />
+              <title>{getTitle('zzf')}</title>
+              <meta
+                name='Keywords'
+                content='前端博客,个人博客,javascript,vue,react,正则表达式,webpack,docker,zzfzzf,zzf,面试'
+              />
+              <meta name='Description' content='zzf的个人网站,记录个人学习' />
+              <meta name='theme-color' content='#ffffff' />
+              <meta
+                name='viewport'
+                content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+              />
+              <meta name='applicable-device' content='pc,mobile' />
+              <meta name='Copyright' content='OrLuna' />
+              <meta name='Author' content='OrLuna' />
+              <meta name='Designer' content='OrLuna' />
+            </Head>
+            <Script
+              async
+              src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_9.d18a72d2265c43124cfd146c29831a69.js'
             />
-            <meta name='Description' content='zzf的个人网站,记录个人学习' />
-            <meta name='theme-color' content='#ffffff' />
-            <meta
-              name='viewport'
-              content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
-            />
-            <meta name='applicable-device' content='pc,mobile' />
-            <meta name='Copyright' content='OrLuna' />
-            <meta name='Author' content='OrLuna' />
-            <meta name='Designer' content='OrLuna' />
-          </Head>
-          <Script
-            async
-            src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_9.d18a72d2265c43124cfd146c29831a69.js'
-          />
-          {getLayout(<Component {...pageProps} />)}
-        </Provider>
-      </QueryClientProvider>
+            {getLayout(<Component {...pageProps} />)}
+          </Provider>
+        </QueryClientProvider>
+      </FpjsProvider>
     </ErrorBoundary>
   );
 }

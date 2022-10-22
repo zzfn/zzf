@@ -16,7 +16,7 @@ function DefaultLayout({ children }: { children: ReactNode }) {
             <Aside />
           </section>
         </Layout.Aside>
-        <Layout.Center className='w-full'>{children}</Layout.Center>
+        <Layout.Center className='w-full bg-card'>{children}</Layout.Center>
       </Layout.Content>
       <Layout.Footer className='container '>
         <Footer />

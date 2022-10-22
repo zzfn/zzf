@@ -6,6 +6,7 @@ specifiers:
   '@commitlint/config-conventional': ^17.1.0
   '@dekopon/icon': ^1.0.12
   '@fingerprintjs/fingerprintjs-pro': ^3.7.1
+  '@fingerprintjs/fingerprintjs-pro-react': ^1.4.0
   '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^12.3.1
   '@next/eslint-plugin-next': ^12.3.1
@@ -66,6 +67,7 @@ dependencies:
   '@babel/core': 7.19.6
   '@dekopon/icon': 1.0.12
   '@fingerprintjs/fingerprintjs-pro': 3.7.1
+  '@fingerprintjs/fingerprintjs-pro-react': 1.4.0
   '@multiavatar/multiavatar': 1.0.7
   '@oc/design': 0.0.2_biqbaboplfbrettd7655fr4n2y
   '@react-spring/web': 9.5.5_biqbaboplfbrettd7655fr4n2y
@@ -707,6 +709,20 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@fingerprintjs/fingerprintjs-pro-react/1.4.0:
+    resolution: {integrity: sha512-O6X22YHYc3mz/AW0CiFbMuHTl68/YbhTuokQ/d1Ts+pDuvsO3XHPbQN36u5ykaAiJpLgdFbAXwgoZmBMHmE0SQ==}
+    requiresBuild: true
+    dependencies:
+      '@fingerprintjs/fingerprintjs-pro-spa': 0.5.0
+    dev: false
+
+  /@fingerprintjs/fingerprintjs-pro-spa/0.5.0:
+    resolution: {integrity: sha512-AUy8pJoDMivmwqv6VdBxw7p9md3MmBwSlA3GccUybu3jQWGMDa4UB/XaPfRePIO7riD1bNp9bhZXNqo+b6O7ag==}
+    dependencies:
+      '@fingerprintjs/fingerprintjs-pro': 3.7.1
+      tslib: 2.4.0
+    dev: false
+
   /@fingerprintjs/fingerprintjs-pro/3.7.1:
     resolution: {integrity: sha512-06t3lqFwq0fpt5MFfppoNfZgd/jhnfv15lklVtaGhqkKyNpB81kwCM9iIqku7dhaEUFXlGZg5VcoA8zjkC483A==}
     dependencies:
@@ -1134,7 +1150,7 @@ packages:
       fastq: 1.13.0
 
   /@oc/design/0.0.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-5SpkKnVswk5ZOpLieg+RPe1WO8siHUShQIk9fRIlOTWVcm1tiD5oBkUFtVGKUCHXIeSeWQVJE1CFnUG4rFvmew==}
+    resolution: {integrity: sha512-bFwkbNGQpaxA5974b0qZ3lyJr/DxPAiZOzAOeyc0qykUn4nUZHXHcJUaQW6AnbEz5P8JZTXXsRKprtls1HhhXg==}
     dependencies:
       '@oc/doc-loader': 0.0.3
       react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
