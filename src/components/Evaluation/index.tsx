@@ -12,15 +12,18 @@ function getImageDataURL(svgXml: string) {
   return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
 }
 function getAuthor(item: any) {
-  if (item.reply) {
-    return (
-      <span>
-        {item.createBy?.slice(-6)} @<a className='text-primary'>{item.reply.slice(-6)}</a>
-      </span>
-    );
-  } else {
-    return item.createBy.slice(-6);
-  }
+  let { createBy = '', reply = '' } = item;
+  createBy = createBy ? `用户${createBy.slice(-6)}` : '匿名用户';
+  reply = reply ? `用户${reply.slice(-6)}` : '匿名用户';
+  return item.reply ? (
+    <>
+      <span className='text-primary-4'>{createBy}</span>
+      <b>@</b>
+      <a className='text-primary-4'>{reply}</a>
+    </>
+  ) : (
+    createBy
+  );
 }
 function Evaluation(props: any) {
   const { id } = props;
