@@ -1134,7 +1134,7 @@ packages:
       fastq: 1.13.0
 
   /@oc/design/0.0.2_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-FJHQ98bNmmKTVTHrgBmaJ61Mheq+hVqsbm5DLRsHY0vwa14gyTFfkEMHmpG1vdXyXjlpQiXAfo7xLxMNvD3h6A==}
+    resolution: {integrity: sha512-5SpkKnVswk5ZOpLieg+RPe1WO8siHUShQIk9fRIlOTWVcm1tiD5oBkUFtVGKUCHXIeSeWQVJE1CFnUG4rFvmew==}
     dependencies:
       '@oc/doc-loader': 0.0.3
       react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
