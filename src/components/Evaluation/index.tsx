@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
 import classNames from 'classnames';
 import { Modal, Comment, Input, Alert, Tag } from '@oc/design';
 import multiavatar from '@multiavatar/multiavatar/esm';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../../store';
 import { Message } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
-import { useVisitorData } from '@fingerprintjs/fingerprintjs-pro-react';
 
 function getImageDataURL(svgXml: string) {
   return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
@@ -33,7 +30,6 @@ function Evaluation(props: any) {
   const [visible, setVisible] = useState(false);
   const [content, setContent] = useState('');
   const [reply, setReply] = useState('');
-  const { data: user } = useVisitorData();
   const { data = [] } = useQuery([id], () => listDiscuss({ id }).then(({ data }) => data));
   const handleComment = async () => {
     if (!content) return;
@@ -47,6 +43,10 @@ function Evaluation(props: any) {
       setVisible(false);
     }
   };
+  const [visitorId, setVisitorId] = useState('');
+  useEffect(() => {
+    visible && setVisitorId(JSON.parse(localStorage.getItem('visitor') || '{}').visitorId);
+  }, [visible]);
   return (
     <>
       <header
@@ -85,7 +85,7 @@ function Evaluation(props: any) {
         onConfirm={handleComment}
       >
         <Alert>根据您的设备特征计算出设备指纹，并作为用户标识</Alert>
-        设备指纹为<Tag className='mb-2'>{user?.visitorId}</Tag>
+        设备指纹为<Tag className='mb-2'>{visitorId}</Tag>
         <Input
           type='textarea'
           onChange={(e) => setContent(e.target.value)}
