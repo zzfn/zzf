@@ -15,14 +15,16 @@ function getAuthor(item: any) {
   let { createBy = '', reply = '' } = item;
   createBy = createBy ? `用户${createBy.slice(-6)}` : '匿名用户';
   reply = reply ? `用户${reply.slice(-6)}` : '匿名用户';
-  return item.reply ? (
+  return (
     <>
       <span className='text-primary-4'>{createBy}</span>
-      <b>@</b>
-      <a className='text-primary-4'>{reply}</a>
+      {item.reply && (
+        <>
+          <b>@</b>
+          <a className='text-primary-4'>{reply}</a>
+        </>
+      )}
     </>
-  ) : (
-    createBy
   );
 }
 function Evaluation(props: any) {
