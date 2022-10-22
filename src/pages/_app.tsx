@@ -16,7 +16,7 @@ import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
-import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react';
+import { FpjsProvider, CacheLocation } from '@fingerprintjs/fingerprintjs-pro-react';
 
 const monitor = new Monitor();
 
@@ -78,14 +78,16 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   }, []);
   return (
     <ErrorBoundary>
-      <FpjsProvider
-        loadOptions={{
-          apiKey: 'Q4a7pdQhmrXFanKzBTCu',
-          region: 'ap',
-          endpoint: 'https://fp.zzfzzf.com',
-        }}
-      >
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <FpjsProvider
+          cacheTimeInSeconds={86400}
+          cacheLocation={CacheLocation.LocalStorage}
+          loadOptions={{
+            apiKey: 'Q4a7pdQhmrXFanKzBTCu',
+            region: 'ap',
+            endpoint: 'https://fp.zzfzzf.com',
+          }}
+        >
           <Provider store={store}>
             <Head>
               <link rel='icon' href='/favicon.ico' />
@@ -109,10 +111,11 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
               async
               src='//lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_15898_9.d18a72d2265c43124cfd146c29831a69.js'
             />
+
             {getLayout(<Component {...pageProps} />)}
           </Provider>
-        </QueryClientProvider>
-      </FpjsProvider>
+        </FpjsProvider>
+      </QueryClientProvider>
     </ErrorBoundary>
   );
 }

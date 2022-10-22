@@ -6,7 +6,7 @@ specifiers:
   '@commitlint/config-conventional': ^17.1.0
   '@dekopon/icon': ^1.0.12
   '@fingerprintjs/fingerprintjs-pro': ^3.7.1
-  '@fingerprintjs/fingerprintjs-pro-react': ^1.4.0
+  '@fingerprintjs/fingerprintjs-pro-react': 1.3.1
   '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^12.3.1
   '@next/eslint-plugin-next': ^12.3.1
@@ -67,7 +67,7 @@ dependencies:
   '@babel/core': 7.19.6
   '@dekopon/icon': 1.0.12
   '@fingerprintjs/fingerprintjs-pro': 3.7.1
-  '@fingerprintjs/fingerprintjs-pro-react': 1.4.0
+  '@fingerprintjs/fingerprintjs-pro-react': 1.3.1
   '@multiavatar/multiavatar': 1.0.7
   '@oc/design': 0.0.2_biqbaboplfbrettd7655fr4n2y
   '@react-spring/web': 9.5.5_biqbaboplfbrettd7655fr4n2y
@@ -709,15 +709,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@fingerprintjs/fingerprintjs-pro-react/1.4.0:
-    resolution: {integrity: sha512-O6X22YHYc3mz/AW0CiFbMuHTl68/YbhTuokQ/d1Ts+pDuvsO3XHPbQN36u5ykaAiJpLgdFbAXwgoZmBMHmE0SQ==}
+  /@fingerprintjs/fingerprintjs-pro-react/1.3.1:
+    resolution: {integrity: sha512-XGErFmtvpJxc4tkkYjhKj9Wuks6fxPBqMlWmd5Sw15Hw+bl4s291lKRZlnaYwrOfDtTkQARlZPT0UfLcZcCQiw==}
     requiresBuild: true
     dependencies:
-      '@fingerprintjs/fingerprintjs-pro-spa': 0.5.0
+      '@fingerprintjs/fingerprintjs-pro-spa': 0.4.1
     dev: false
 
-  /@fingerprintjs/fingerprintjs-pro-spa/0.5.0:
-    resolution: {integrity: sha512-AUy8pJoDMivmwqv6VdBxw7p9md3MmBwSlA3GccUybu3jQWGMDa4UB/XaPfRePIO7riD1bNp9bhZXNqo+b6O7ag==}
+  /@fingerprintjs/fingerprintjs-pro-spa/0.4.1:
+    resolution: {integrity: sha512-xAW2eDRbqjdnsZ4AxhH+p4pa9QYQ7gUiGWGJJE0jBd+Q6dEdCFtfjE3tAx8KsYIN/I3+zuHHnV7XBOub/0MAPA==}
     dependencies:
       '@fingerprintjs/fingerprintjs-pro': 3.7.1
       tslib: 2.4.0
@@ -908,7 +908,7 @@ packages:
     resolution: {integrity: sha512-3Ab5HgYIIAnS0HjqJHQYZS+zXc4tUmTmBH3z83ajI6afXp8X3ZtdLX+nXx+I7LNkJD7uN9LAVhgnjDgZa2z0kA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
-      '@sinclair/typebox': 0.24.47
+      '@sinclair/typebox': 0.24.48
     dev: true
 
   /@jest/source-map/29.2.0:
@@ -1253,8 +1253,8 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: true
 
-  /@sinclair/typebox/0.24.47:
-    resolution: {integrity: sha512-J4Xw0xYK4h7eC34MNOPQi6IkNxGRck6n4VJpWDzXIFVTW8I/D43Gf+NfWz/v/7NHlzWOPd3+T4PJ4OqklQ2u7A==}
+  /@sinclair/typebox/0.24.48:
+    resolution: {integrity: sha512-WPGpRNHbkOsfBDmh8QHU7a5NWzEuYNThST8x1cISvX0RpP+1+V8zjuJqNwGJkHGIlhdIIhv6qVYqXz2q5/gjAA==}
     dev: true
 
   /@sinonjs/commons/1.8.3:
