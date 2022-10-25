@@ -16,6 +16,7 @@ module.exports = {
         'link-3': 'var(--color-link-3)',
         'link-4': 'var(--color-link-4)',
         primary: 'var(--primary-text)',
+        secondary: 'var(--secondary-text)',
         link: 'var(--blue-link)',
       },
       borderColor: {

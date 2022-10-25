@@ -7,7 +7,7 @@ interface ArticleCardProps {
   dataSource: Article;
 }
 
-export default function ArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
+export default function HomeArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
     <>
       <div className='mx-auto rounded-xl border border-surface overflow-hidden mb-3.5 bg-surface'>

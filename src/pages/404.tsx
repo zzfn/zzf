@@ -1,4 +1,4 @@
-import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
+import LottiePlayer from 'components/LottiePlayer';
 import { getCdn } from '../utils/getCdn';
 
 export default function Custom404(): JSX.Element {

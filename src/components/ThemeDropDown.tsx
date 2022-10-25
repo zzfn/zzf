@@ -3,9 +3,8 @@ import type { FC } from 'react';
 import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
 import { Popover, SvgIcon } from '@oc/design';
-import styles from './index.module.scss';
 const ThemeDataSource = ['light', 'dark', 'system'];
-const Theme: FC = () => {
+const ThemeDropDown: FC = () => {
   const [active, setActive] = useState('light');
 
   useEffect(() => {
@@ -20,7 +19,7 @@ const Theme: FC = () => {
     <Popover
       placement='bottomRight'
       content={
-        <ul className={styles.wrap}>
+        <ul className={'p-2 text-primary-2 bg-surface rounded'}>
           {ThemeDataSource.map((theme) => (
             <li
               onClick={() => {
@@ -50,4 +49,4 @@ const Theme: FC = () => {
   );
 };
 
-export default Theme;
+export default ThemeDropDown;

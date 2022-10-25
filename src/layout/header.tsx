@@ -4,7 +4,7 @@ import { Popover, SvgIcon } from '@oc/design';
 import styles from './header.module.scss';
 import menus from '../menus.json';
 import classNames from 'classnames';
-import Theme from '../components/Theme';
+import ThemeDropDown from 'components/ThemeDropDown';
 import { useRouter } from 'next/router';
 import Image from 'next/future/image';
 import { useSelector } from 'react-redux';
@@ -57,7 +57,7 @@ function Header(): JSX.Element {
             <SvgIcon size={25} name='rss' />
           </a>
         </Link>
-        <Theme />
+        <ThemeDropDown />
         <Popover
           placement='bottomRight'
           content={

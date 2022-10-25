@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { esList, topSearch } from 'api/article';
-import SearchCard from 'components/article/SearchCard';
+import SearchArticleCard from 'components/SearchArticleCard';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
 import { Input, Space, Tag } from '@oc/design';
-import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
+import LottiePlayer from '../components/LottiePlayer';
 import classNames from 'classnames';
 import { useQuery } from '@tanstack/react-query';
 import { getCdn } from '../utils/getCdn';
@@ -51,7 +51,7 @@ function Search(): JSX.Element {
         )}
       </div>
       {result.length ? (
-        result.map((item) => <SearchCard dataSource={item} key={item.id} />)
+        result.map((item) => <SearchArticleCard dataSource={item} key={item.id} />)
       ) : (
         <>
           <LottiePlayer size={100} url={getCdn('/assets/loading.json')} />

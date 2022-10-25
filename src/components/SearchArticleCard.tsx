@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './searchCard.module.scss';
 import Link from 'next/link';
 import classNames from 'classnames';
 
@@ -7,9 +6,9 @@ type SearchCardProps = {
   dataSource: any;
 };
 
-const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
+const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
-    <div className={styles.card}>
+    <>
       <div className='flex'>
         <Link href={`/article/${dataSource.id}`}>
           <a target='_blank'>
@@ -17,18 +16,18 @@ const SearchCard: React.FC<SearchCardProps> = ({ dataSource }) => {
               dangerouslySetInnerHTML={{
                 __html: dataSource.title,
               }}
-              className={classNames(styles.title, 'font-bold', 'text-xl')}
+              className={classNames( 'font-bold', 'text-xl','text-primary')}
             />
           </a>
         </Link>
       </div>
       <div
-        className={classNames('break-all', 'px-1', 'mb-2')}
+        className={classNames('break-all', 'px-1', 'mb-6','text-secondary')}
         dangerouslySetInnerHTML={{
           __html: dataSource.content,
         }}
       />
-    </div>
+    </>
   );
 };
-export default SearchCard;
+export default SearchArticleCard;

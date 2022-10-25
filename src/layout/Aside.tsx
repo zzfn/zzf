@@ -1,4 +1,4 @@
-import LottiePlayer from '../components/LottiePlayer/LottiePlayer';
+import LottiePlayer from '../components/LottiePlayer';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { diff } from 'utils/time';

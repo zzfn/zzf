@@ -1,5 +1,5 @@
 import type { NextPageWithLayout } from './_app';
-import Evaluation from '../components/Evaluation';
+import Evaluation from 'features/Evaluation';
 import Head from 'next/head';
 import { getTitle } from 'utils/getTitle';
 

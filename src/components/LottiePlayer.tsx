@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
-import styles from './index.module.scss';
 
 export type LottieProps = {
   url: string;
@@ -22,7 +21,7 @@ const LottiePlayer: React.FC<LottieProps> = (props) => {
       lottie.destroy(url);
     };
   }, [url]);
-  return <div style={{ fontSize: `${size}px` }} className={styles.lottie} ref={lottieRef} />;
+  return <div style={{ fontSize: `${size}px` }} className={'w-[1em] h-[1em] m-auto'} ref={lottieRef} />;
 };
 
 export default LottiePlayer;

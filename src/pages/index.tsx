@@ -2,14 +2,13 @@ import React, { ReactElement } from 'react';
 import Head from 'next/head';
 import { listArticles } from 'api/article';
 import { Loading } from '@oc/design';
-import ArticleCard from '../components/article/articleCard';
-import LottiePlayer from 'components/LottiePlayer/LottiePlayer';
+import ArticleCard from 'components/HomeArticleCard';
+import LottiePlayer from 'components/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import generateRssFeed from '../utils/generateRssFeed';
 import { getCdn } from '../utils/getCdn';
-import ArticleLayout from '../layout/ArticleLayout';
 import { NextPageWithLayout } from './_app';
 import DefaultNoBg from '../layout/DefaultNoBg';
 
