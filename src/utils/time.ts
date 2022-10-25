@@ -1,11 +1,7 @@
 import dayjs from 'dayjs';
-
-export function diff(time: string): string {
-  if (dayjs().diff(time, 'minute') < 60) {
-    return `${dayjs().diff(time, 'minute')}分钟前`;
-  } else if (dayjs().diff(time, 'hour') < 24) {
-    return `${dayjs().diff(time, 'hour')}小时前`;
-  } else {
-    return `${dayjs().diff(time, 'day')}天前`;
-  }
+import relativeTime from 'dayjs/plugin/relativeTime';
+import locale_cn from 'dayjs/locale/zh-cn';
+dayjs.extend(relativeTime);
+export function diff(time: string) {
+  return dayjs(time).locale(locale_cn).fromNow();
 }

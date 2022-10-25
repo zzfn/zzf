@@ -3,7 +3,7 @@
 exports[`Home renders homepage unchanged 1`] = `
 <div>
   <div
-    class="mx-auto rounded-xl border border-neutral-2 overflow-hidden mb-3.5 bg-primary"
+    class="mx-auto rounded-xl border border-surface overflow-hidden mb-3.5 bg-surface"
   >
     <div
       class="flex justify-between"
@@ -23,7 +23,7 @@ exports[`Home renders homepage unchanged 1`] = `
           2022-10-11
         </div>
         <a
-          class="block mt-1 text-lg leading-tight font-medium text-primary-4 hover:underline"
+          class="block mt-1 text-lg leading-tight font-medium text-primary hover:underline"
           href="/article/6972548384855035914"
           target="_blank"
         >

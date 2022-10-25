@@ -10,7 +10,7 @@ import { Progress } from '@oc/design';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import Evaluation from '../../components/Evaluation';
+import Evaluation from 'features/Evaluation';
 import { useDispatch } from 'react-redux';
 import type { Dispatch } from 'store';
 import ArticleLayout from '../../layout/ArticleLayout';
