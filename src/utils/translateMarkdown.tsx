@@ -1,12 +1,12 @@
 import { marked } from 'marked';
 import { renderToString } from 'react-dom/server';
-import Code from 'components/article/code';
+import ArticleCode from 'components/ArticleCode';
 import React from 'react';
 
 export const translateMarkdown = (text = '') => {
   const renderer: Partial<marked.Renderer> = {};
   renderer.code = function (code: string, language: string) {
-    return renderToString(<Code language={language} code={code} />);
+    return renderToString(<ArticleCode language={language} code={code} />);
   };
   renderer.image = function (href: string, title: string, text: string) {
     return `<img loading='lazy' src='${href}'  class='zoom' alt='${text}' />`;
