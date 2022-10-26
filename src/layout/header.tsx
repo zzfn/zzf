@@ -6,7 +6,7 @@ import menus from '../menus.json';
 import classNames from 'classnames';
 import ThemeDropDown from 'components/ThemeDropDown';
 import { useRouter } from 'next/router';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { getCdn } from 'utils/getCdn';
@@ -19,43 +19,41 @@ function Header(): JSX.Element {
   return (
     <>
       <div className={classNames('flex', 'items-center')}>
-        <Link href='/'>
-          <a className={classNames('text-primary-4', 'text-xl', 'mr-2')}>
-            <Image
-              className='w-10 h-10 mr-2'
-              width={100}
-              height={100}
-              src={getCdn('/assets/logo.png')}
-              alt='logo'
-            />
-          </a>
+        <Link className={classNames('text-primary-4', 'text-xl', 'mr-2')} href='/'>
+          <Image
+            className='w-10 h-10 mr-2'
+            width={100}
+            height={100}
+            src={getCdn('/assets/logo.png')}
+            alt='logo'
+          />
         </Link>
         <nav className={classNames(styles.menu, 'hidden', 'md:flex')}>
           {menus.map((menu) => (
-            <Link key={menu.name} href={menu.path}>
-              <a
-                className={classNames(
-                  menu.path === '/'
-                    ? router.pathname === '/' && styles.active
-                    : router.pathname.includes(menu.path) && styles.active,
-                )}
-              >
-                {menu.name}
-              </a>
+            <Link
+              className={classNames(
+                menu.path === '/'
+                  ? router.pathname === '/' && styles.active
+                  : router.pathname.includes(menu.path) && styles.active,
+              )}
+              key={menu.name}
+              href={menu.path}
+            >
+              {menu.name}
             </Link>
           ))}
         </nav>
       </div>
       <div className={classNames('flex', 'items-center')}>
-        <Link href='/search'>
-          <a className={classNames('text-primary-4', 'text-xl', 'mr-2')}>
-            <SvgIcon size={25} name='search' />
-          </a>
+        <Link className={classNames('text-primary-4', 'text-xl', 'mr-2')} href='/search'>
+          <SvgIcon size={25} name='search' />
         </Link>
-        <Link href='/rss/feed.xml'>
-          <a target='_blank' className={classNames('text-primary-4', 'text-xl', 'mr-2')}>
-            <SvgIcon size={25} name='rss' />
-          </a>
+        <Link
+          className={classNames('text-primary-4', 'text-xl', 'mr-2')}
+          target='_blank'
+          href='/rss/feed.xml'
+        >
+          <SvgIcon size={25} name='rss' />
         </Link>
         <ThemeDropDown />
         <Popover
@@ -64,20 +62,20 @@ function Header(): JSX.Element {
             <div>
               <nav>
                 {menus.map((menu) => (
-                  <Link key={menu.name} href={menu.path}>
-                    <a
-                      className={classNames(
-                        'block',
-                        'text-left',
-                        'text-xl',
-                        'my-2',
-                        menu.path === '/'
-                          ? router.pathname === '/' && styles.active
-                          : router.pathname.includes(menu.path) && styles.active,
-                      )}
-                    >
-                      {menu.name}
-                    </a>
+                  <Link
+                    className={classNames(
+                      'block',
+                      'text-left',
+                      'text-xl',
+                      'my-2',
+                      menu.path === '/'
+                        ? router.pathname === '/' && styles.active
+                        : router.pathname.includes(menu.path) && styles.active,
+                    )}
+                    key={menu.name}
+                    href={menu.path}
+                  >
+                    {menu.name}
                   </Link>
                 ))}
               </nav>

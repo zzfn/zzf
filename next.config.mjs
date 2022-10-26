@@ -1,5 +1,4 @@
 export default {
-  swcMinify: false,
   assetPrefix:
     process.env.NODE_ENV === 'production' && !process.env.VERCEL
       ? 'https://cdn.orluma.ltd/zzf'

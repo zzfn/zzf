@@ -24,8 +24,8 @@ export default function Tag(props: NextProps<TagType>): JSX.Element {
         {serverProps.articleList.map((item) => (
           <li key={item.id}>
             <span>{item.createTime}</span>-
-            <Link href={`/article/${item.id}`}>
-              <a className='text-primary-4'>{item.title}</a>
+            <Link className='text-primary-4' href={`/article/${item.id}`}>
+             {item.title}
             </Link>
           </li>
         ))}

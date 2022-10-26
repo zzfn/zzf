@@ -61,46 +61,40 @@ const Aside = () => {
         <ul>
           {lastUpdatedList.map((n) => (
             <li className={classNames('flex')} key={n.id}>
-              <Link prefetch={false} href={`/article/${n.id}`}>
-                <a
-                  title={n.title}
-                  className={classNames(
-                    'flex',
-                    'justify-between',
-                    'items-center',
-                    'group',
-                    'w-full',
-                  )}
-                  target='_blank'
-                >
-                  <div className={classNames('flex', 'justify-between', 'items-center')}>
-                    <SvgIcon
+              <Link
+                title={n.title}
+                className={classNames('flex', 'justify-between', 'items-center', 'group', 'w-full')}
+                target='_blank'
+                prefetch={false}
+                href={`/article/${n.id}`}
+              >
+                <div className={classNames('flex', 'justify-between', 'items-center')}>
+                  <SvgIcon
+                    className={classNames(
+                      'group-hover:translate-x-2',
+                      'text-primary',
+                      'mr-4',
+                      'duration-300',
+                    )}
+                    name='right'
+                  />
+                  <Tooltip content={n.title}>
+                    <div
                       className={classNames(
-                        'group-hover:translate-x-2',
-                        'text-primary',
-                        'mr-4',
-                        'duration-300',
+                        'w-28',
+                        'truncate',
+                        'font-medium',
+                        'text-base',
+                        'text-info',
                       )}
-                      name='right'
-                    />
-                    <Tooltip content={n.title}>
-                      <div
-                        className={classNames(
-                          'w-28',
-                          'truncate',
-                          'font-medium',
-                          'text-base',
-                          'text-info',
-                        )}
-                      >
-                        {n.title}
-                      </div>
-                    </Tooltip>
-                  </div>
-                  <div className={classNames('whitespace-nowrap', 'text-sm', 'text-gray-1000')}>
-                    --{diff(n.updateTime)}
-                  </div>
-                </a>
+                    >
+                      {n.title}
+                    </div>
+                  </Tooltip>
+                </div>
+                <div className={classNames('whitespace-nowrap', 'text-sm', 'text-gray-1000')}>
+                  --{diff(n.updateTime)}
+                </div>
               </Link>
             </li>
           ))}

@@ -25,13 +25,11 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       </Head>
       {serverProps.tags.map((item) => (
         <React.Fragment key={item.tag}>
-          <Link href={`/tag/${item.tag}`}>
-            <a className={classNames('flex', 'items-center', 'justify-between', 'ml-3', 'mb-2')}>
+          <Link className={classNames('flex', 'items-center', 'justify-between', 'ml-3', 'mb-2')} href={`/tag/${item.tag}`}>
               <Tag>
                 # {item.tag}
                 <span className='text-primary-4 ml-2'>{item.count}</span>
               </Tag>
-            </a>
           </Link>
         </React.Fragment>
       ))}

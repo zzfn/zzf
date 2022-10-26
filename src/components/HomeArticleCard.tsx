@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import dayjs from 'dayjs';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -25,13 +25,13 @@ export default function HomeArticleCard({ dataSource }: ArticleCardProps): JSX.E
                 ),
               ).format('YYYY-MM-DD')}
             </div>
-            <Link prefetch={false} href={`/article/${dataSource.id}`}>
-              <a
-                target='_blank'
-                className='block mt-1 text-lg leading-tight font-medium text-primary hover:underline'
-              >
-                {dataSource.title}
-              </a>
+            <Link
+              target='_blank'
+              className='block mt-1 text-lg leading-tight font-medium text-primary hover:underline'
+              prefetch={false}
+              href={`/article/${dataSource.id}`}
+            >
+              {dataSource.title}
             </Link>
             <p className='mt-2 text-slate-500 text-neutral-2'>{dataSource.summary}</p>
           </div>

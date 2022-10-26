@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Button, Alert } from '@oc/design';
 import { GetStaticProps } from 'next';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import { friendList } from 'api/friend';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';

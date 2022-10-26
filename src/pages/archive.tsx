@@ -32,8 +32,8 @@ function renderMonth(time: string, list: ListProps[]) {
             <span className={classNames('font-mono', 'text-info', 'mr-3')}>
               {dayjs(item.createTime).format('YYYY-MM-DD')}
             </span>
-            <Link href={`/article/${item.id}`}>
-              <a className={styles.subTitle}>{item.title}</a>
+            <Link className={styles.subTitle} href={`/article/${item.id}`}>
+              {item.title}
             </Link>
           </li>
         ))}

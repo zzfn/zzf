@@ -14,7 +14,7 @@ import Evaluation from 'features/Evaluation';
 import { useDispatch } from 'react-redux';
 import type { Dispatch } from 'store';
 import ArticleLayout from '../../layout/ArticleLayout';
-import Image from 'next/future/image';
+import Image from 'next/image';
 
 interface Data {
   content?: string;
