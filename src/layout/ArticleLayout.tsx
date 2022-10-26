@@ -2,7 +2,7 @@ import { Layout } from '@oc/design';
 import Header from './header';
 import Footer from './footer';
 import type { ReactNode } from 'react';
-import Nav from '../components/article/nav';
+import ArticleNav from 'components/ArticleNav';
 
 function DefaultLayout({ children, source }: { children: ReactNode; source: string }) {
   return (
@@ -12,7 +12,7 @@ function DefaultLayout({ children, source }: { children: ReactNode; source: stri
       </Layout.Header>
       <Layout.Content className='container'>
         <Layout.Aside className='hidden md:block'>
-          <Nav source={source} />
+          <ArticleNav source={source} />
         </Layout.Aside>
         <Layout.Center className='w-full'>{children}</Layout.Center>
       </Layout.Content>

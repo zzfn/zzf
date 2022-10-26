@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Markdown } from '@zzf/toolkit';
-import styles from './nav.module.scss';
 import classNames from 'classnames';
 
 interface NavProps {
   source: string;
 }
 
-const Nav: React.FC<NavProps> = ({ source }) => {
+const ArticleNav: React.FC<NavProps> = ({ source }) => {
   const [list, setList] = useState([]);
   const [current, setCurrent] = useState('');
   useEffect(() => {
@@ -33,17 +32,14 @@ const Nav: React.FC<NavProps> = ({ source }) => {
     });
   }, [source]);
   return (
-    <ul className={classNames(styles.nav, 'sticky', 'top-16')}>
+    <ul className={classNames( 'sticky', 'top-16')}>
       {list.map((nav) => (
         <li
           onClick={() => {
             setCurrent(`heading-${nav.index}`);
           }}
           className={classNames(
-            styles.navItem,
-            {
-              [styles.active]: current === `heading-${nav.index}`,
-            },
+              current === `heading-${nav.index}`&&'asdsa',
             'truncate',
             'text-sm',
           )}
@@ -57,4 +53,4 @@ const Nav: React.FC<NavProps> = ({ source }) => {
   );
 };
 
-export default Nav;
+export default ArticleNav;

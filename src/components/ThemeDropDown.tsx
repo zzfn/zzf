@@ -19,7 +19,7 @@ const ThemeDropDown: FC = () => {
     <Popover
       placement='bottomRight'
       content={
-        <ul className={'p-2 text-primary-2 bg-surface rounded'}>
+        <ul className="p-2 text-primary-2 bg-surface rounded">
           {ThemeDataSource.map((theme) => (
             <li
               onClick={() => {

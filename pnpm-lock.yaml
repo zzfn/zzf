@@ -4,12 +4,12 @@ specifiers:
   '@babel/core': ^7.19.6
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
-  '@dekopon/icon': ^1.0.12
   '@fingerprintjs/fingerprintjs-pro': ^3.7.1
   '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^12.3.1
   '@next/eslint-plugin-next': ^12.3.1
-  '@oc/design': ^0.0.3
+  '@oc/design': ^0.0.4
+  '@oc/icon': ^1.0.13
   '@react-spring/web': ^9.5.5
   '@rematch/core': ^2.2.0
   '@tanstack/react-query': ^4.13.0
@@ -64,10 +64,10 @@ specifiers:
 
 dependencies:
   '@babel/core': 7.19.6
-  '@dekopon/icon': 1.0.12
   '@fingerprintjs/fingerprintjs-pro': 3.7.1
   '@multiavatar/multiavatar': 1.0.7
-  '@oc/design': 0.0.3_biqbaboplfbrettd7655fr4n2y
+  '@oc/design': 0.0.4_biqbaboplfbrettd7655fr4n2y
+  '@oc/icon': 1.0.13
   '@react-spring/web': 9.5.5_biqbaboplfbrettd7655fr4n2y
   '@rematch/core': 2.2.0_redux@4.2.0
   '@tanstack/react-query': 4.13.0_biqbaboplfbrettd7655fr4n2y
@@ -687,10 +687,6 @@ packages:
       - supports-color
     dev: true
 
-  /@dekopon/icon/1.0.12:
-    resolution: {integrity: sha512-KkJADNUyT7xGRsBxRVK8ch2TonBuYdSElePsMmqOO81u1JgKwQK6X3YoU+KjFXNEkhjLu0BJh27Fo/pxluvnKw==}
-    dev: false
-
   /@eslint/eslintrc/1.3.3:
     resolution: {integrity: sha512-uj3pT6Mg+3t39fvLrj8iuCIJ38zKO9FpGtJ4BBJebJhEwjoT+KLVNCcHT5QC9NGRIEi7fZ0ZR8YRb884auB4Lg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1133,10 +1129,11 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@oc/design/0.0.3_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-Z7kVNKvs8/AaQHudgbNKipfXxrh5UTgcUchMgllRmbtlL7sQanRKQP5VmchOFQ60PuwWnWgqXXP5ZFSTqV67lA==}
+  /@oc/design/0.0.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-G5WXh8vsvMxP4I+kGOs58ZOXu+KlQarFeviyIJN/NtYIIdq42+dCgkdILtDwa8IcoYBvowcJStY/bvUZcD7IwA==}
     dependencies:
       '@oc/doc-loader': 0.0.3
+      '@oc/icon': 1.0.13
       react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
     transitivePeerDependencies:
       - react
@@ -1168,6 +1165,10 @@ packages:
       xss: 1.0.14
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@oc/icon/1.0.13:
+    resolution: {integrity: sha512-ALhlWJaD03xG4pN8EaR83EAXOY2+AaLyOjtmcXqJBflOWSjj87/Afc3RNUYaFngypchQ7e3XWsVFSCq5QAn6aQ==}
     dev: false
 
   /@react-spring/animated/9.5.5_react@18.2.0:

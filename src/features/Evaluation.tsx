@@ -1,42 +1,62 @@
 import React, { useEffect, useState } from 'react';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
 import classNames from 'classnames';
-import { Modal, Comment, Input, Alert, Tag } from '@oc/design';
-import multiavatar from '@multiavatar/multiavatar/esm';
+import { Modal, Comment, Input, Alert, Tag, Tooltip } from '@oc/design';
+import multiAvatar from '@multiavatar/multiavatar/esm';
 import { Message } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
+import { list2tree } from 'utils/list2tree';
+import { diff } from 'utils/time';
+import { IconHistory, IconHome, IconShareInternal } from '@oc/icon';
 
-function getImageDataURL(svgXml: string) {
-  return 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(svgXml)));
-}
-function getAuthor(item: any) {
-  let { createBy = '', reply = '' } = item;
-  createBy = createBy ? `用户${createBy.slice(-6)}` : '匿名用户';
-  reply = reply ? `用户${reply.slice(-6)}` : '匿名用户';
+function getImageDataURL(avatar: string) {
   return (
-    <>
-      <span className='text-primary-4'>{createBy}</span>
-      {item.reply && (
-        <>
-          <b>@</b>
-          <a className='text-primary-4'>{reply}</a>
-        </>
-      )}
-    </>
+    'data:image/svg+xml;base64,' +
+    window.btoa(decodeURIComponent(encodeURIComponent(multiAvatar(avatar))))
   );
 }
+const EvaluationCard = ({ record, children, onReply }: any) => {
+  return (
+    <Comment
+      avatar={getImageDataURL(record.createBy)}
+      author={record.createBy.slice(-6)}
+      content={`${record.content}`}
+      actions={[
+        <li onClick={onReply} className='mr-2 cursor-pointer' key='reply'>
+          <IconShareInternal className='mr-1' />
+          回复
+        </li>,
+        <li className='mr-2' key='address'>
+          <IconHome className='mr-1' />
+          {record.address}
+        </li>,
+        <li key='time'>
+          <IconHistory className='mr-1' />
+          <Tooltip placement='bottom' content={record.createTime}>
+            <span>{diff(record.createTime)}</span>
+          </Tooltip>
+        </li>,
+      ]}
+    >
+      {children}
+    </Comment>
+  );
+};
+
 function Evaluation(props: any) {
   const { id } = props;
   const [visible, setVisible] = useState(false);
   const [content, setContent] = useState('');
   const [reply, setReply] = useState('');
-  const { data = [] } = useQuery([id], () => listDiscuss({ id }).then(({ data }) => data));
+  const [replyId, setReplyId] = useState('');
+  const { data = [] } = useQuery([id], () => listDiscuss({ id }).then(({ data }) => list2tree(data)));
   const handleComment = async () => {
     if (!content) return;
     const { data } = await saveDiscuss({
       interfaceId: id,
       content,
       reply,
+      replyId,
     });
     if (data) {
       Message.success('评论成功');
@@ -63,19 +83,29 @@ function Evaluation(props: any) {
           评论
         </span>
       </header>
-      {data?.map((item: any) => {
+      {data.map((item: any) => {
         return (
-          <Comment
+          <EvaluationCard
             onReply={() => {
               setVisible(true);
               setReply(item.createBy);
+              setReplyId(item.id)
             }}
-            avatar={item.avatar ?? getImageDataURL(multiavatar(item.createBy || item.id))}
-            content={`${item.content}`}
-            datetime={`${item.address}-${item.createTime}`}
-            author={getAuthor(item)}
             key={item.id}
-          />
+            record={item}
+          >
+            {item.children?.map((child: any) => (
+              <EvaluationCard
+                onReply={() => {
+                  setVisible(true);
+                  setReply(child.createBy);
+                  setReplyId(item.id)
+                }}
+                key={child.id}
+                record={child}
+              />
+            ))}
+          </EvaluationCard>
         );
       })}
       <Modal

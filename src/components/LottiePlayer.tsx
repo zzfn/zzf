@@ -21,7 +21,7 @@ const LottiePlayer: React.FC<LottieProps> = (props) => {
       lottie.destroy(url);
     };
   }, [url]);
-  return <div style={{ fontSize: `${size}px` }} className={'w-[1em] h-[1em] m-auto'} ref={lottieRef} />;
+  return <div style={{ fontSize: `${size}px` }} className="w-[1em] h-[1em] m-auto" ref={lottieRef} />;
 };
 
 export default LottiePlayer;

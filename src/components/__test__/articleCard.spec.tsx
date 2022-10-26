@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ArticleCard from '../articleCard';
+import HomeArticleCard from '../HomeArticleCard';
 import '@testing-library/jest-dom';
 
 const dataSource: Article = {
@@ -15,12 +15,12 @@ const dataSource: Article = {
 };
 describe('Home', () => {
   it('renders a heading', async () => {
-    render(<ArticleCard dataSource={dataSource} />);
+    render(<HomeArticleCard dataSource={dataSource} />);
     expect(await screen.findByText('博客设计方案与实施')).toBeVisible();
   });
 
   it('renders homepage unchanged', () => {
-    const { container } = render(<ArticleCard dataSource={dataSource} />);
+    const { container } = render(<HomeArticleCard dataSource={dataSource} />);
     expect(container).toMatchSnapshot();
   });
 });
