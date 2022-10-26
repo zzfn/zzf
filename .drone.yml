@@ -34,7 +34,7 @@ steps:
       - name: next_cache
         path: /drone/src/.next/cache
     commands:
-      - pnpm install --prod
+      - pnpm install
       - pnpm run build
   - name: oss
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
@@ -87,7 +87,7 @@ steps:
       command_timeout: 2m
       script:
         - cd /root/zzf
-        - pnpm i --frozen-lockfile
+        - pnpm i --frozen-lockfile --prod
         - pm2 del blog
         - pm2 start npm --name blog -i max -- run start
 trigger:
