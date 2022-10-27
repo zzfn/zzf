@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Markdown } from '@zzf/toolkit';
+import { getTitle } from 'utils/translateMarkdown';
 import classNames from 'classnames';
 
 interface NavProps {
@@ -11,7 +11,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
   const [current, setCurrent] = useState('');
   useEffect(() => {
     setCurrent(window.location.hash.replace('#', ''));
-    const matchResult = Markdown.getTitle(source);
+    const matchResult = getTitle(source);
     if (matchResult) {
       const navData = matchResult.map((r, i) => ({
         index: i,
