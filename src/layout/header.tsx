@@ -59,8 +59,7 @@ function Header(): JSX.Element {
         <Popover
           placement='bottomRight'
           content={
-            <div>
-              <nav>
+              <nav className="p-3 w-26 bg-card">
                 {menus.map((menu) => (
                   <Link
                     className={classNames(
@@ -79,7 +78,6 @@ function Header(): JSX.Element {
                   </Link>
                 ))}
               </nav>
-            </div>
           }
         >
           <SvgIcon
