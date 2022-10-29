@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import dayjs from 'dayjs';
 import Image from 'next/image';
+import { Card } from '@oc/design';
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -10,9 +11,9 @@ interface ArticleCardProps {
 export default function HomeArticleCard({ dataSource }: ArticleCardProps): JSX.Element {
   return (
     <>
-      <div className='mx-auto rounded-xl border border-surface overflow-hidden mb-3.5 bg-surface'>
+      <Card className='mb-3.5'>
         <div className='flex justify-between'>
-          <div className='px-6 py-2 flex flex-col align-center justify-center'>
+          <div className='flex flex-col align-center justify-center'>
             <div className='uppercase tracking-wide text-sm text-primary-3 font-semibold'>
               <Link prefetch={false} href={`/tag/${dataSource.tag}`}>
                 {dataSource.tag}
@@ -47,7 +48,7 @@ export default function HomeArticleCard({ dataSource }: ArticleCardProps): JSX.E
             </div>
           )}
         </div>
-      </div>
+      </Card>
     </>
   );
 }
