@@ -4,21 +4,18 @@ name: ci/cd
 volumes:
   - name: node_modules
     host:
-      path: /root/node-zzf/node_modules
+      path: /root/drone/node-zzf/node_modules
   - name: next_cache
     host:
-      path: /root/node-zzf/next_cache
-  - name: ssh_keys
-    host:
-      path: /root/.ssh
+      path: /root/drone/node-zzf/next_cache
 clone:
   disable: true
 steps:
   - name: clone
     image: alpine/git
-    volumes:
-      - name: ssh_keys
-        path: /root/.ssh
+    environment:
+      SSH_KEY:
+        from_secret: ssh_key
     commands:
       - mkdir $HOME/.ssh
       - echo -n "$SSH_KEY" > $HOME/.ssh/id_rsa
