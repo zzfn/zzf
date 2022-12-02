@@ -1,13 +1,13 @@
 @import '~@oc/design/dist/theme.scss';
 @import '~@oc/icon/dist/dist.min.scss';
 :root {
-  margin-left: calc(100vw - 100%);
   font-size: 16px;
   font-family: 'LXGW WenKai Lite', -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
     Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
   font-weight: var(--font-weight-light);
   background-color: var(--web-wash);
   color: var(--color-text-1);
+  scrollbar-gutter: stable both-edges;
 }
 html {
   word-break: break-all;
@@ -54,6 +54,6 @@ html {
   padding: 12px 16px;
   border-radius: 8px;
 }
-em{
+em {
   color: var(--color-primary-4);
 }
