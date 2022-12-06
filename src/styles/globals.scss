@@ -7,7 +7,7 @@
   font-weight: var(--font-weight-light);
   background-color: var(--web-wash);
   color: var(--color-text-1);
-  scrollbar-gutter: stable both-edges;
+  overflow-y: scroll;
 }
 html {
   word-break: break-all;
