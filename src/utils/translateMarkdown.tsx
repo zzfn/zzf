@@ -46,11 +46,12 @@ export const translateMarkdown = (text = '') => {
 };
 
 export function getTitle(source: string) {
-  return source.replace(/^[^#]+\n/g, '')
-    .replace(/(?:[^\n#]+)#+\s([^#\n]+)\n*/g, '')
-    .replace(/`{3}}[^`\n]*\n+[^`{3}]+```\n+/g, '')
-    .replace(/`([^`\n]+)`/g, '$1')
-    .replace(/\*\*?([^*\n]+)\*\*?/g, '$1')
-    .replace(/__?([^_\n]+)__?/g, '$1')
-    .trim().match(/#{1,6}\s+\S+/g)
+  let nav:string[] = []
+  const renderer = new marked.Renderer()
+  renderer.heading = function (text, level) {
+    nav.push(`${'#'.repeat(level)} ${text}`)
+    return ''
+  }
+  marked(source, { renderer: renderer })
+  return nav
 }
