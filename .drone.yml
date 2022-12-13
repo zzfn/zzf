@@ -30,7 +30,7 @@ steps:
       - git fetch --no-tags --prune --progress --no-recurse-submodules --depth=1
       - git checkout origin/$DRONE_COMMIT_BRANCH -ft
   - name: build
-    image: registry.cn-shanghai.aliyuncs.com/zzf2001/pnpm
+    image: hub.oocc.es/home/pnpm@16
     depends_on:
       - clone
     volumes:
