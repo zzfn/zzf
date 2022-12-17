@@ -6,8 +6,8 @@ ENV NODE_ENV=production
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY /app/public ./public
-COPY /app/.next/standalone ./
+COPY public ./public
+COPY .next/standalone ./
 
 USER nextjs
 
