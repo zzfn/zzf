@@ -44,7 +44,7 @@ steps:
   - name: build_docker
     image: plugins/docker
     depends_on:
-      - clone
+      - build
     pull: if-not-exists
     settings:
       registry: hub.oocc.es
