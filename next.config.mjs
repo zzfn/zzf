@@ -13,7 +13,4 @@ export default {
   sassOptions: {
     prependData: `@import "styles/variable";`,
   },
-  generateBuildId: async () => {
-    return process.env.DRONE_COMMIT
-  },
 };
