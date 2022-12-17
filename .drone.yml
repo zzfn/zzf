@@ -71,6 +71,8 @@ steps:
       source: .next/static
   - name: ssh
     image: appleboy/drone-ssh
+    depends_on:
+      - build_docker
     settings:
       host:
         from_secret: k8s_host
