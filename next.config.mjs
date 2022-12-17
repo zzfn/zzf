@@ -1,9 +1,9 @@
 export default {
   output: 'standalone',
   assetPrefix:
-    // process.env.NODE_ENV === 'production' && !process.env.VERCEL
-    //   ? 'https://cdn.orluma.ltd/zzf'
-      '/',
+    process.env.NODE_ENV === 'production' && !process.env.VERCEL
+      ? 'https://cdn.orluma.ltd/zzf'
+      : '/',
   reactStrictMode: true,
   images: {
     unoptimized: true,
@@ -12,5 +12,8 @@ export default {
   },
   sassOptions: {
     prependData: `@import "styles/variable";`,
+  },
+  generateBuildId: async () => {
+    return process.env.DRONE_COMMIT
   },
 };
