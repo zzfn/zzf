@@ -43,6 +43,8 @@ steps:
       - pnpm run build
   - name: build_docker
     image: plugins/docker
+    depends_on:
+      - clone
     pull: if-not-exists
     settings:
       registry: hub.oocc.es
