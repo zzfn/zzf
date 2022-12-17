@@ -41,6 +41,17 @@ steps:
     commands:
       - pnpm install
       - pnpm run build
+  - name: build_docker
+    image: plugins/docker
+    pull: if-not-exists
+    settings:
+      registry: hub.oocc.es
+      username:
+        from_secret: nexus_docker_username
+      password:
+        from_secret: nexus_docker_password
+      repo: hub.oocc.es/home/blog
+      tags: latest
   - name: oss
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
     depends_on:
@@ -56,45 +67,45 @@ steps:
         from_secret: bucketName
       target: zzf/_next/static
       source: .next/static
-  - name: deploy
-    image: appleboy/drone-scp
-    depends_on:
-      - build
-    settings:
-      host:
-        from_secret: server_host
-      port: 22
-      username:
-        from_secret: username
-      password:
-        from_secret: server_password
-      overwrite: true
-      target: /root/zzf
-      source:
-        - .next
-        - .npmrc
-        - public
-        - package.json
-        - pnpm-lock.yaml
-        - next.config.mjs
-  - name: ssh
-    image: appleboy/drone-ssh
-    depends_on:
-      - deploy
-    settings:
-      host:
-        from_secret: server_host
-      username:
-        from_secret: username
-      password:
-        from_secret: server_password
-      port: 22
-      command_timeout: 2m
-      script:
-        - cd /root/zzf
-        - pnpm i --frozen-lockfile --prod
-        - pm2 del blog
-        - pm2 start npm --name blog -i max -- run start
+#  - name: deploy
+#    image: appleboy/drone-scp
+#    depends_on:
+#      - build
+#    settings:
+#      host:
+#        from_secret: server_host
+#      port: 22
+#      username:
+#        from_secret: username
+#      password:
+#        from_secret: server_password
+#      overwrite: true
+#      target: /root/zzf
+#      source:
+#        - .next
+#        - .npmrc
+#        - public
+#        - package.json
+#        - pnpm-lock.yaml
+#        - next.config.mjs
+#  - name: ssh
+#    image: appleboy/drone-ssh
+#    depends_on:
+#      - deploy
+#    settings:
+#      host:
+#        from_secret: server_host
+#      username:
+#        from_secret: username
+#      password:
+#        from_secret: server_password
+#      port: 22
+#      command_timeout: 2m
+#      script:
+#        - cd /root/zzf
+#        - pnpm i --frozen-lockfile --prod
+#        - pm2 del blog
+#        - pm2 start npm --name blog -i max -- run start
 trigger:
   event:
     exclude:
