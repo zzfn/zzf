@@ -1,6 +1,6 @@
 FROM node:16-alpine
 WORKDIR /app
-ls
+
 ENV NODE_ENV=production
 
 RUN addgroup -g 1001 -S nodejs
