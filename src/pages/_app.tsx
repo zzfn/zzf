@@ -16,10 +16,12 @@ import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
+import * as process from "process";
 
 const monitor = new Monitor();
 
 export function reportWebVitals(metric: NextWebVitalsMetric): void {
+  console.log('NODE_ENV',process.env.NODE_ENV)
   monitor.loadUrl(location.pathname, metric);
 }
 
