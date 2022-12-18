@@ -3,8 +3,11 @@ import axios from 'axios';
 import Monitor from "./monitor";
 
 async function http<T>(config: AxiosRequestConfig): Promise<Res<T>> {
-  const monitor = new Monitor()
-  const visitorId = await monitor.getVisitor()
+  let visitorId = ''
+  if(typeof window !== 'undefined'){
+    const monitor = new Monitor()
+    visitorId = await monitor.getVisitor()
+  }
   const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     timeout: 10000,
