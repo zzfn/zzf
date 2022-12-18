@@ -1,6 +1,6 @@
 import UAParser from 'ua-parser-js';
 import type { NextWebVitalsMetric } from 'next/app';
-import FingerprintJS from '@fingerprintjs/fingerprintjs'
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 class Monitor {
   private parser: UAParser.UAParserInstance;
@@ -10,9 +10,11 @@ class Monitor {
   }
 
   async getVisitor(): Promise<string> {
-    const fpPromise = FingerprintJS.load()
-    const fp = await fpPromise
-    const result = await fp.get()
+    const fpPromise = FingerprintJS.load({
+      monitoring: false,
+    });
+    const fp = await fpPromise;
+    const result = await fp.get();
     return result.visitorId;
   }
 
