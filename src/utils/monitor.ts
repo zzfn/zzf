@@ -56,6 +56,7 @@ class Monitor {
       name: metric.name,
       value: metric.value,
     };
+    console.error('json', JSON.stringify(json))
     new Image().src = `https://log.zzfzzf.com/zzf.gif?body=${window.btoa(
       JSON.stringify(json),
     )}&index=log-performance`;
