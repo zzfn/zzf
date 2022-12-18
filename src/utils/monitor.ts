@@ -42,6 +42,7 @@ class Monitor {
   async loadUrl(url: string, metric: NextWebVitalsMetric): Promise<void> {
     console.log('loading url: ' + url);
     const visitor = await this.getVisitor();
+    console.log('NODE_ENV',process.env.NODE_ENV)
     if (process.env.NODE_ENV === 'development') return;
     const json = {
       url: `${window.origin}${url}`,
