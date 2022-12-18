@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.19.6",
-    "@fingerprintjs/fingerprintjs-pro": "^3.7.1",
+    "@fingerprintjs/fingerprintjs": "^3.3.6",
     "@multiavatar/multiavatar": "^1.0.7",
     "@oc/design": "^0.0.3",
     "@oc/icon": "^0.0.1",

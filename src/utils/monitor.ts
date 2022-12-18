@@ -1,6 +1,7 @@
 import type { GetResult } from '@fingerprintjs/fingerprintjs-pro';
 import UAParser from 'ua-parser-js';
 import type { NextWebVitalsMetric } from 'next/app';
+import FingerprintJS from '@fingerprintjs/fingerprintjs'
 
 class Monitor {
   private parser: UAParser.UAParserInstance;
@@ -11,24 +12,11 @@ class Monitor {
     this.fpPromise = null;
   }
 
-  async getVisitor(): Promise<GetResult> {
-    let visitor = JSON.parse(localStorage.getItem('visitor'));
-    if (!visitor || !visitor.visitorId) {
-      if (!this.fpPromise) {
-        this.fpPromise = import('@fingerprintjs/fingerprintjs-pro')
-          .then((FingerprintJS) =>
-            FingerprintJS.load({
-              apiKey: 'Q4a7pdQhmrXFanKzBTCu',
-              region: 'ap',
-              endpoint: 'https://fp.zzfzzf.com',
-            }),
-          )
-          .then((agent) => agent.get());
-      }
-      visitor = await this.fpPromise;
-      localStorage.setItem('visitor', JSON.stringify(visitor));
-    }
-    return visitor;
+  async getVisitor(): Promise<string> {
+    const fpPromise = FingerprintJS.load()
+    const fp = await fpPromise
+    const result = await fp.get()
+    return result.visitorId;
   }
 
   getOS(): UAParser.IOS {
@@ -40,14 +28,11 @@ class Monitor {
   }
 
   async loadUrl(url: string, metric: NextWebVitalsMetric): Promise<void> {
-    console.log('loading url: ' + url);
-    const visitor = await this.getVisitor();
-    console.log('NODE_ENV',process.env.NODE_ENV)
+    const visitorId = await this.getVisitor();
     if (process.env.NODE_ENV === 'development') return;
     const json = {
       url: `${window.origin}${url}`,
-      visitorId: visitor.visitorId,
-      visitorFound: visitor.visitorFound,
+      visitorId: visitorId,
       browser: this.getBrowser().name,
       browserVersion: this.getBrowser().version,
       os: this.getOS().name,
@@ -58,7 +43,6 @@ class Monitor {
       name: metric.name,
       value: metric.value,
     };
-    console.error('json', JSON.stringify(json))
     new Image().src = `https://log.zzfzzf.com/zzf.gif?body=${window.btoa(
       JSON.stringify(json),
     )}&index=log-performance`;

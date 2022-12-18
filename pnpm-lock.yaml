@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': ^7.19.6
   '@commitlint/cli': ^17.1.2
   '@commitlint/config-conventional': ^17.1.0
-  '@fingerprintjs/fingerprintjs-pro': ^3.7.1
+  '@fingerprintjs/fingerprintjs': ^3.3.6
   '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^13.0.0
   '@next/eslint-plugin-next': ^13.0.0
@@ -63,7 +63,7 @@ specifiers:
 
 dependencies:
   '@babel/core': 7.19.6
-  '@fingerprintjs/fingerprintjs-pro': 3.7.1
+  '@fingerprintjs/fingerprintjs': 3.3.6
   '@multiavatar/multiavatar': 1.0.7
   '@oc/design': 0.0.3_biqbaboplfbrettd7655fr4n2y
   '@oc/icon': 0.0.1
@@ -701,10 +701,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@fingerprintjs/fingerprintjs-pro/3.7.1:
-    resolution: {integrity: sha512-06t3lqFwq0fpt5MFfppoNfZgd/jhnfv15lklVtaGhqkKyNpB81kwCM9iIqku7dhaEUFXlGZg5VcoA8zjkC483A==}
+  /@fingerprintjs/fingerprintjs/3.3.6:
+    resolution: {integrity: sha512-Inh0OoFVzO2PLvrUF8RZhY9NVDdg9DJHQ5YlvXhrGtQxSPzy2smS3TWzLAi+zlHSJNHSvi+1zYayLen2lGxjdA==}
     dependencies:
-      tslib: 2.4.0
+      tslib: 2.4.1
     dev: false
 
   /@humanwhocodes/config-array/0.11.7:
@@ -5735,7 +5735,7 @@ packages:
   /rxjs/7.5.7:
     resolution: {integrity: sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==}
     dependencies:
-      tslib: 2.4.0
+      tslib: 2.4.1
     dev: true
 
   /safe-buffer/5.2.1:
@@ -6316,9 +6316,6 @@ packages:
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
-
-  /tslib/2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}

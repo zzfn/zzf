@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { list2tree } from 'utils/list2tree';
 import { diff } from 'utils/time';
 import { IconHistory, IconHome, IconShareInternal } from '@oc/icon';
+import Monitor from "../utils/monitor";
 
 function getImageDataURL(avatar: string) {
   return (
@@ -63,9 +64,14 @@ function Evaluation(props: any) {
       setVisible(false);
     }
   };
+  const getVisitorId = async () => {
+    const monitor = new Monitor()
+    const id = await monitor.getVisitor()
+    setVisitorId(id)
+  }
   const [visitorId, setVisitorId] = useState('');
   useEffect(() => {
-    visible && setVisitorId(JSON.parse(localStorage.getItem('visitor') || '{}').visitorId);
+    visible&& getVisitorId()
   }, [visible]);
   return (
     <>
