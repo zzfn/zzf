@@ -26,7 +26,7 @@ const Friends = ({ serverProps }: any) => {
           Blog 🏠 <span className='text-link-4'>zzfzzf.com</span>
         </li>
         <li>
-          Email 📧 <span className='text-link-4'>me@orluna.ink</span>
+          Email 📧 <span className='text-link-4'>me@ooxo.cc</span>
         </li>
         <li>
           GitHub 🕸 <span className='text-link-4'>zzfn</span>
@@ -47,7 +47,7 @@ const Friends = ({ serverProps }: any) => {
         ))}
       </div>
       <Alert>
-        please email <strong>me@orluna.ink</strong> if u want to be my friend
+        please email <strong>me@ooxo.cc</strong> if u want to be my friend
       </Alert>
       <p>你需要提供</p>
       <ul>

@@ -16,6 +16,7 @@ import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
+import * as process from "process";
 
 const monitor = new Monitor();
 

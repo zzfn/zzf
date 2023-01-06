@@ -1,4 +1,5 @@
 export default {
+  output: 'standalone',
   assetPrefix:
     process.env.NODE_ENV === 'production' && !process.env.VERCEL
       ? 'https://cdn.orluma.ltd/zzf'
