@@ -47,7 +47,7 @@ const Friends = ({ serverProps }: any) => {
         ))}
       </div>
       <Alert>
-        please email <strong>me@orluna.ink</strong> if u want to be my friend
+        please email <strong>me@ooxo.cc</strong> if u want to be my friend
       </Alert>
       <p>你需要提供</p>
       <ul>
