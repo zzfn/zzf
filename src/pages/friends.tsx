@@ -54,7 +54,7 @@ const Friends = ({ serverProps }: any) => {
         <li>title: ootd-blog</li>
         <li>url: https://zzfzzf.com</li>
         <li>bio: 一个前端开发者的博客</li>
-        <li>avatar: https://cdn.orluma.ltd/assets/logo.png</li>
+        <li>avatar: https://cdn.zzfzzf.com/assets/logo.png</li>
       </ul>
     </>
   );
