@@ -7,7 +7,7 @@ export default async function generateRssFeed(posts: any[]) {
   const date = new Date();
   const author = {
     name: 'zzfn',
-    email: 'feedback@zzfzzf.com',
+    email: 'feedback@ooxo.cc',
   };
 
   // Creating feed
