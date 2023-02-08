@@ -16,6 +16,7 @@ import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
 import { useEffect, useState } from "react";
 import ErrorBoundary from '../components/ErrorBoundary';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const monitor = new Monitor();
 
@@ -78,6 +79,7 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
         <Hydrate state={pageProps.dehydratedState}>
           <Provider store={store}>
             <Head>

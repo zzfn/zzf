@@ -21,7 +21,7 @@ const Home: NextPageWithLayout = (props: NextProps<HomeType>) => {
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
     ['projects'],
-    ({pageParam}) =>
+    ({pageParam = 1}) =>
       listArticles({
         current: pageParam,
         pageSize: 10,
