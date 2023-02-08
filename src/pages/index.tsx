@@ -21,9 +21,9 @@ const Home: NextPageWithLayout = (props: NextProps<HomeType>) => {
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
     ['projects'],
-    (k) =>
+    ({pageParam}) =>
       listArticles({
-        current: k.pageParam,
+        current: pageParam,
         pageSize: 10,
       }).then((data) => data.data.records),
     {
@@ -48,7 +48,9 @@ const Home: NextPageWithLayout = (props: NextProps<HomeType>) => {
         onLoad={fetchNextPage}
         loading={<LottiePlayer size={200} url={getCdn('/assets/loading.json')} />}
       >
-        {data.pages.flat().map((record) => <ArticleCard key={record.id} dataSource={record} />)}
+        {data.pages.flat().map((record) => (
+          <ArticleCard key={record.id} dataSource={record} />
+        ))}
       </Loading>
     </>
   );
@@ -61,7 +63,9 @@ export const getStaticProps: GetStaticProps = async () => {
   await generateRssFeed(pages.data.records);
   return {
     props: {
-      serverProps: { ...pages.data },
+      serverProps: {
+        records: pages.data.records,
+      },
     },
     revalidate: 5,
   };
