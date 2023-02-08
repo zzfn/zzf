@@ -53,7 +53,7 @@ steps:
       password:
         from_secret: nexus_docker_password
       repo: hub.oocc.es/home/blog
-      tags: latest
+      tags: ${DRONE_COMMIT=latest}
   - name: oss
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
     depends_on:
@@ -83,8 +83,10 @@ steps:
       port: 22
       command_timeout: 2m
       script:
-        - kubectl scale --replicas=0 -f https://git.oocc.es/oocc/k3s/raw/branch/master/blog.yaml
+        - echo ${DRONE_COMMIT}
+#        - kubectl scale --replicas=0 -f https://git.oocc.es/oocc/k3s/raw/branch/master/blog.yaml
         - kubectl apply -f https://git.oocc.es/oocc/k3s/raw/branch/master/blog.yaml
+        - kubectl set image deployment/blog blog=hub.oocc.es/home/blog:${DRONE_COMMIT}
 #  - name: deploy
 #    image: appleboy/drone-scp
 #    depends_on:
