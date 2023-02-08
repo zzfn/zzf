@@ -40,7 +40,7 @@ steps:
         path: /drone/src/.next/cache
     commands:
       - pnpm install
-      - pnpm run build
+      - npm run build
   - name: build_docker
     image: plugins/docker
     depends_on:
