@@ -48,13 +48,7 @@ const Home: NextPageWithLayout = (props: NextProps<HomeType>) => {
         onLoad={fetchNextPage}
         loading={<LottiePlayer size={200} url={getCdn('/assets/loading.json')} />}
       >
-        {data.pages.map((item, i) => (
-          <React.Fragment key={i}>
-            {item.map((project) => (
-              <ArticleCard key={project.id} dataSource={project} />
-            ))}
-          </React.Fragment>
-        ))}
+        {data.pages.flat().map((record) => <ArticleCard key={record.id} dataSource={record} />)}
       </Loading>
     </>
   );
