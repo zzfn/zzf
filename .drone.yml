@@ -53,7 +53,7 @@ steps:
       password:
         from_secret: nexus_docker_password
       repo: hub.oocc.es/home/blog
-      tags: ${DRONE_COMMIT=latest}
+      tags: ${DRONE_COMMIT=latest}${DRONE_BUILD_NUMBER}
   - name: oss
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
     depends_on:
@@ -85,7 +85,7 @@ steps:
       script:
         - echo ${DRONE_COMMIT}
         - kubectl apply -f https://git.oocc.es/oocc/k3s/raw/branch/master/blog.yaml
-        - kubectl set image deployment/blog blog=hub.oocc.es/home/blog:${DRONE_COMMIT}
+        - kubectl set image deployment/blog blog=hub.oocc.es/home/blog:${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
 trigger:
   event:
     exclude:
