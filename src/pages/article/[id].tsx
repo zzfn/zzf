@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import type { NextPageWithLayout } from '../_app';
 import React, { useEffect } from 'react';
-import { getArticle, listArchives } from 'services/article';
+import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import styles from 'styles/article.module.scss';
 import Head from 'next/head';
@@ -39,7 +39,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
 
   useEffect(() => {
     // dispatch({ type: 'count/incrementEffect', payload: 2 });
-    // updateView({ id: serverProps.id }).then();
+    updateView({ id: serverProps.id }).then();
     const imgList = document.querySelectorAll('.zoom');
     const zooming = new Zooming({
       enableGrab: false,
