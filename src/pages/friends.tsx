@@ -33,7 +33,7 @@ const Friends = ({ serverProps }: any) => {
         </li>
       </ul>
       <h3 className='text-primary font-bold text-xl my-3'>friends</h3>
-      <div className='grid grid-cols-2 gap-x-16 m-2'>
+      <div className='grid md:grid-cols-2 gap-x-16 m-2'>
         {serverProps.map((item: any) => (
           <Card
             key={item.id}
@@ -51,7 +51,7 @@ const Friends = ({ serverProps }: any) => {
       </Alert>
       <p>你需要提供</p>
       <ul>
-        <li>title: ootd-blog</li>
+        <li>title: oocc-blog</li>
         <li>url: https://zzfzzf.com</li>
         <li>bio: 一个前端开发者的博客</li>
         <li>avatar: https://cdn.zzfzzf.com/assets/logo.png</li>

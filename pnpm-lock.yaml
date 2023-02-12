@@ -8,7 +8,7 @@ specifiers:
   '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^13.1.6
   '@next/eslint-plugin-next': ^13.1.6
-  '@oc/design': ^0.0.3
+  '@oc/design': ^0.0.4
   '@oc/icon': ^0.0.1
   '@react-spring/web': ^9.6.1
   '@rematch/core': ^2.2.0
@@ -66,7 +66,7 @@ dependencies:
   '@babel/core': 7.20.12
   '@fingerprintjs/fingerprintjs': 3.4.0
   '@multiavatar/multiavatar': 1.0.7
-  '@oc/design': 0.0.3_biqbaboplfbrettd7655fr4n2y
+  '@oc/design': 0.0.4_biqbaboplfbrettd7655fr4n2y
   '@oc/icon': 0.0.1
   '@react-spring/web': 9.6.1_biqbaboplfbrettd7655fr4n2y
   '@rematch/core': 2.2.0_redux@4.2.1
@@ -1128,8 +1128,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@oc/design/0.0.3_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-lHVBzCekunmnQeFmrioU5+r6zIrT3sHIFainZEwFcqW6LlGCmYCPWDLFoTowIvt78vdv1xMzZWRUnhdIt2OfKA==}
+  /@oc/design/0.0.4_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-AZCfgzAdrF4L8pJAbY54sCHYEXjHCSQ/gC1wdNBqT/yLYs58kiSqND7/kJ9Bxmb4ul2hu4OCiFTq2gpyTXgQ5w==}
     dependencies:
       '@oc/icon': 0.0.1
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y

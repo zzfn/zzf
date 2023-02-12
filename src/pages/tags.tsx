@@ -26,9 +26,9 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       {serverProps.tags.map((item) => (
         <React.Fragment key={item.tag}>
           <Link className={classNames('flex', 'items-center', 'justify-between', 'ml-3', 'mb-2')} href={`/tag/${item.tag}`}>
-              <Tag>
+              <Tag size='large'>
                 # {item.tag}
-                <span className='text-primary-4 ml-2'>{item.count}</span>
+                <span className='text-neutral-1 ml-2'>{item.count}</span>
               </Tag>
           </Link>
         </React.Fragment>
