@@ -1,57 +1,60 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import Head from 'next/head';
-import { listArticles } from 'api/article';
-import { Loading } from '@oc/design';
-import ArticleCard from 'components/HomeArticleCard';
+import { articleCount, lastUpdated } from 'api/article';
+import { Alert, Button, Card, Tag } from '@oc/design';
 import LottiePlayer from 'components/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
-import { useInfiniteQuery } from '@tanstack/react-query';
 import generateRssFeed from '../utils/generateRssFeed';
 import { getCdn } from '../utils/getCdn';
 import { NextPageWithLayout } from './_app';
 import DefaultNoBg from '../layout/DefaultNoBg';
+import Link from 'next/link';
+import { diff } from '../utils/time';
+import useFcp from '../hooks/useFcp';
+import HomeArticleCard from '../components/HomeArticleCard';
+import { changelogList } from 'api/changelog';
+import dayjs from "dayjs";
 
 type HomeType = {
-  current: number;
-  records: Article[];
+  articleLatest: Article[];
+  articleCount: any;
+  changeLog: any;
 };
-const Home: NextPageWithLayout = (props: NextProps<HomeType>) => {
-  const { serverProps } = props;
-
-  const { data, fetchNextPage, hasNextPage } = useInfiniteQuery(
-    ['projects'],
-    ({pageParam = 1}) =>
-      listArticles({
-        current: pageParam,
-        pageSize: 10,
-      }).then((data) => data.data.records),
-    {
-      refetchOnWindowFocus: false,
-      initialData: {
-        pages: [serverProps.records],
-        pageParams: [1],
-      },
-      getNextPageParam: (lastPage, pages) => {
-        return lastPage.length === 10 ? pages.length + 1 : undefined;
-      },
-    },
-  );
+const Home: NextPageWithLayout = (props: HomeType) => {
+  const { articleLatest, articleCount,changeLog } = props;
+  const loadTime = useFcp();
 
   return (
     <>
       <Head>
         <title>{getTitle('首页')}</title>
       </Head>
-      <Loading
-        noMore={!hasNextPage}
-        onLoad={fetchNextPage}
-        loading={<LottiePlayer size={200} url={getCdn('/assets/loading.json')} />}
-      >
-        {data.pages.flat().map((record) => (
-          <ArticleCard key={record.id} dataSource={record} />
-        ))}
-      </Loading>
+      <Alert className='mb-2'>
+        <span className='flex justify-between w-full'>
+          <span>{changeLog.title}</span>
+          <time className='text-[var(--secondary-text)]'>{dayjs(changeLog.updateTime).format('YYYY-MM-DD')}</time>
+        </span>
+      </Alert>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-2'>
+        <Card classNameWrap='col-span-2' title='最近更新'>
+          <div className='flex items-center mb-2'>
+            <Tag>文章数 {articleCount.article}</Tag>
+            <Tag>标签数 {articleCount.tag}</Tag>
+            <Tag>本次加载时间 {loadTime} ms</Tag>
+          </div>
+          <div className='grid grid-cols-1 gap-x-3 gap-y-2'>
+            {articleLatest.map((article: Article) => (
+              <HomeArticleCard key={article.id} dataSource={article}></HomeArticleCard>
+            ))}
+          </div>
+        </Card>
+        <Link className='col-span-2' href='/archive'>
+          <Button className='w-full' type='primary'>
+            查看更多
+          </Button>
+        </Link>
+      </div>
     </>
   );
 };
@@ -59,13 +62,15 @@ Home.getLayout = function (page: ReactElement) {
   return <DefaultNoBg>{page}</DefaultNoBg>;
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const pages = await listArticles({ pageSize: 10, current: 1 });
-  await generateRssFeed(pages.data.records);
+  const { data } = await lastUpdated();
+  const res = await articleCount();
+  const r = await changelogList();
+  await generateRssFeed(data);
   return {
     props: {
-      serverProps: {
-        records: pages.data.records,
-      },
+      articleLatest: data,
+      articleCount: res.data,
+      changeLog: r.data[0],
     },
     revalidate: 5,
   };

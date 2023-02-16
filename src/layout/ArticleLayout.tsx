@@ -7,16 +7,13 @@ import ArticleNav from 'components/ArticleNav';
 function DefaultLayout({ children, source }: { children: ReactNode; source: string }) {
   return (
     <Layout className='min-h-screen'>
-      <Layout.Header className='container'>
+      <Layout.Header>
         <Header />
       </Layout.Header>
-      <Layout.Content className='container'>
-        <Layout.Aside className='hidden md:block'>
-          <ArticleNav source={source} />
-        </Layout.Aside>
+      <Layout.Content>
         <Layout.Center className='w-full'>{children}</Layout.Center>
       </Layout.Content>
-      <Layout.Footer className='container'>
+      <Layout.Footer>
         <Footer />
       </Layout.Footer>
     </Layout>

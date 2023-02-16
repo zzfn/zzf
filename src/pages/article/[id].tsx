@@ -3,7 +3,6 @@ import type { NextPageWithLayout } from '../_app';
 import React, { useEffect } from 'react';
 import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
-import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Zooming from 'zooming';
 import { Progress } from '@oc/design';
@@ -51,7 +50,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
     });
   }, []);
   return (
-    <div className={styles.detail}>
+    <div>
       <Head>
         <title>{getTitle(serverProps.title)}</title>
       </Head>
@@ -66,12 +65,21 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
             src={serverProps.logo}
           />
         )}
-        <main className={classNames(styles.article, 'bg-surface', 'w-full', 'px-6', 'bg-card')}>
+        <main className={classNames('bg-surface', 'w-full', 'px-6', 'bg-card')}>
           <div>
-            <h2 className={classNames('text-xl', 'text-gray-1000', 'font-medium', 'text-4xl')}>
+            <h2
+              className={classNames(
+                'text-xl',
+                'text-[var(--primary-text)]',
+                'font-medium',
+                'text-4xl',
+              )}
+            >
               {serverProps.title}
             </h2>
-            <ul className={classNames(styles.tip, 'text-info', 'flex', 'flex-wrap', 'text-sm')}>
+            <ul
+              className={classNames('text-[var(--secondary-text)]', 'flex', 'flex-wrap', 'text-sm','mt-6','gap-x-3')}
+            >
               <li>
                 <span>标签</span>
                 {serverProps.tag}

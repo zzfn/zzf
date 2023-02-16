@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
-import classNames from 'classnames';
-import { Modal, Comment, Input, Alert, Tag, Tooltip } from '@oc/design';
+import { Modal, Comment, Input, Alert, Tag, Tooltip, Button } from '@oc/design';
 import multiAvatar from '@multiavatar/multiavatar/esm';
 import { Message } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
 import { list2tree } from 'utils/list2tree';
 import { diff } from 'utils/time';
 import { IconHistory, IconHome, IconShareInternal } from '@oc/icon';
-import Monitor from "../utils/monitor";
+import Monitor from '../utils/monitor';
 
 function getImageDataURL(avatar: string) {
   return (
@@ -23,15 +22,19 @@ const EvaluationCard = ({ record, children, onReply }: any) => {
       author={record.createBy.slice(-6)}
       content={`${record.content}`}
       actions={[
-        <li onClick={onReply} className='mr-2 cursor-pointer' key='reply'>
+        <li
+          onClick={onReply}
+          className='mr-2 cursor-pointer text-[var(--secondary-text)]'
+          key='reply'
+        >
           <IconShareInternal className='mr-1' />
           回复
         </li>,
-        <li className='mr-2' key='address'>
+        <li className='mr-2 text-[var(--secondary-text)]' key='address'>
           <IconHome className='mr-1' />
           {record.address}
         </li>,
-        <li key='time'>
+        <li className='text-[var(--secondary-text)]' key='time'>
           <IconHistory className='mr-1' />
           <Tooltip placement='bottom' content={record.createTime}>
             <span>{diff(record.createTime)}</span>
@@ -50,7 +53,10 @@ function Evaluation(props: any) {
   const [content, setContent] = useState('');
   const [reply, setReply] = useState('');
   const [replyId, setReplyId] = useState('');
-  const { data = [] } = useQuery([id], () => listDiscuss({ id }).then(({ data }) => list2tree(data)));
+  const [ownerImg, setOwnerImg] = useState('');
+  const { data = [] } = useQuery([id], () =>
+    listDiscuss({ id }).then(({ data }) => list2tree(data)),
+  );
   const handleComment = async () => {
     if (!content) return;
     const { data } = await saveDiscuss({
@@ -65,37 +71,36 @@ function Evaluation(props: any) {
     }
   };
   const getVisitorId = async () => {
-    const monitor = new Monitor()
-    const id = await monitor.getVisitor()
-    setVisitorId(id)
-  }
+    const monitor = new Monitor();
+    const id = await monitor.getVisitor();
+    setVisitorId(id);
+    setOwnerImg(getImageDataURL(id));
+  };
   const [visitorId, setVisitorId] = useState('');
   useEffect(() => {
-    visible&& getVisitorId()
+    getVisitorId();
   }, [visible]);
   return (
     <>
-      <header
-        className={classNames('border-y', 'my-4', 'flex', 'justify-between', 'text-gray-400')}
-      >
-        全部评论
-        <span
-          onClick={() => {
-            setVisible(true);
-            setReply(null);
-          }}
-          className='text-gray-400'
-        >
-          评论
-        </span>
-      </header>
+      <div className='flex'>
+        <div className='flex flex-col items-center mr-3 justify-center'>
+          <img className='w-10 h-10' src={ownerImg} alt='' />
+          <Button onClick={handleComment} className='mt-2' type='primary'>评论</Button>
+        </div>
+        <Input
+          type='textarea'
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
+          placeholder='说点什么'
+        ></Input>
+      </div>
       {data.map((item: any) => {
         return (
           <EvaluationCard
             onReply={() => {
               setVisible(true);
               setReply(item.createBy);
-              setReplyId(item.id)
+              setReplyId(item.id);
             }}
             key={item.id}
             record={item}
@@ -105,7 +110,7 @@ function Evaluation(props: any) {
                 onReply={() => {
                   setVisible(true);
                   setReply(child.createBy);
-                  setReplyId(item.id)
+                  setReplyId(item.id);
                 }}
                 key={child.id}
                 record={child}

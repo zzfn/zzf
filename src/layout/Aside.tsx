@@ -34,7 +34,7 @@ const Aside = () => {
     getCount();
   }, []);
   return (
-    <>
+    <div>
       <Card className='mb-4'>
         <LottiePlayer size={100} url={getCdn('/assets/me.json')} />
         <div className='flex justify-around'>
@@ -84,7 +84,7 @@ const Aside = () => {
                         'w-28',
                         'truncate',
                         'font-medium',
-                        'text-base',
+                        'text-sm',
                         'text-info',
                       )}
                     >
@@ -100,7 +100,7 @@ const Aside = () => {
           ))}
         </ul>
       </Card>
-    </>
+    </div>
   );
 };
 export default Aside;

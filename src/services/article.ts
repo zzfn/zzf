@@ -1,16 +1,5 @@
 import http from 'utils/http';
 
-type Page = {
-  current: number;
-  pageSize: number;
-};
-export const listArticles = (params: Page) => {
-  return http<PageType<Article>>({
-    method: 'get',
-    url: '/article/page',
-    params,
-  });
-};
 type ArticleDetail = {
   content: string;
   createTime: string;

@@ -12,15 +12,15 @@
     "path": "/tags"
   },
   {
-    "name": "友链",
-    "path": "/friends"
-  },
-  {
     "name": "留言",
     "path": "/message"
   },
   {
-    "name": "大事记",
+    "name": "我的",
+    "path": "/about"
+  },
+  {
+    "name": "公告",
     "path": "/changelog"
   }
 ]

@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': ^7.20.12
   '@commitlint/cli': ^17.4.2
   '@commitlint/config-conventional': ^17.4.2
-  '@fingerprintjs/fingerprintjs': ^3.4.0
+  '@fingerprintjs/fingerprintjs-pro': ^3.8.2
   '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^13.1.6
   '@next/eslint-plugin-next': ^13.1.6
@@ -64,7 +64,7 @@ specifiers:
 
 dependencies:
   '@babel/core': 7.20.12
-  '@fingerprintjs/fingerprintjs': 3.4.0
+  '@fingerprintjs/fingerprintjs-pro': 3.8.2
   '@multiavatar/multiavatar': 1.0.7
   '@oc/design': 0.0.4_biqbaboplfbrettd7655fr4n2y
   '@oc/icon': 0.0.1
@@ -702,8 +702,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@fingerprintjs/fingerprintjs/3.4.0:
-    resolution: {integrity: sha512-B+Eaoo5onQnFI0eYrAZ9WNHr/AjfTKqAF/h9wkWC9W0+ZCr6s/jTJRE8RdJGFyzapBniDsi0NvgualYq+1Ui5w==}
+  /@fingerprintjs/fingerprintjs-pro/3.8.2:
+    resolution: {integrity: sha512-cccPaHhzt2AnXbUEdpMW4/19eous5/WJhNlawq5BJKmmGSHJzjjb0kkNXgC0QlFll1YsoqLAxmGLOYRVVfmTBA==}
     dependencies:
       tslib: 2.5.0
     dev: false

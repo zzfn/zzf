@@ -2,6 +2,7 @@ import type { NextPageWithLayout } from './_app';
 import Evaluation from 'features/Evaluation';
 import Head from 'next/head';
 import { getTitle } from 'utils/getTitle';
+import { Card } from "@oc/design";
 
 const Message: NextPageWithLayout = () => {
   return (
@@ -9,7 +10,9 @@ const Message: NextPageWithLayout = () => {
       <Head>
         <title>{getTitle('留言')}</title>
       </Head>
-      <Evaluation id='message' />
+      <Card title='留言'>
+        <Evaluation id='message' />
+      </Card>
     </>
   );
 };

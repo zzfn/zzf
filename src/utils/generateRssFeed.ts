@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { Feed } from 'feed';
 import { translateMarkdown } from './translateMarkdown';
+import * as console from "console";
 
 export default async function generateRssFeed(posts: any[]) {
   const siteURL = 'https://zzfzzf.com';
@@ -42,7 +43,7 @@ export default async function generateRssFeed(posts: any[]) {
       date: new Date(post.updateTime),
     });
   });
-
+  console.assert(feed)
   // generating the xml and json for rss
   fs.mkdirSync('./public/rss', { recursive: true });
   fs.writeFileSync('./public/rss/feed.xml', feed.rss2());

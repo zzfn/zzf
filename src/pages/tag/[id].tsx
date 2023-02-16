@@ -1,6 +1,5 @@
 import React from 'react';
 import { listArchives, listTags } from 'services/article';
-import styles from 'styles/article.module.scss';
 import Head from 'next/head';
 import Link from 'next/link';
 import { getTitle } from '../../utils/getTitle';
@@ -15,22 +14,22 @@ type TagType = {
 export default function Tag(props: NextProps<TagType>): JSX.Element {
   const { serverProps } = props;
   return (
-    <div className={styles.detail}>
+    <>
       <Head>
         <title>{getTitle(serverProps.title)}</title>
       </Head>
       <Alert type='info'>{serverProps.title}</Alert>
-      <ul className={classNames('font-mono', 'text-base')}>
+      <ul className={classNames('font-mono', 'text-base','text-[var(--primary-text)]')}>
         {serverProps.articleList.map((item) => (
           <li key={item.id}>
             <span>{item.createTime}</span>-
-            <Link className='text-primary-4' href={`/article/${item.id}`}>
+            <Link href={`/article/${item.id}`}>
              {item.title}
             </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 

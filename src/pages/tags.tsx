@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import classNames from 'classnames';
-import { Tag } from '@oc/design';
+import { Card, Tag } from "@oc/design";
 
 type TagsProps = {
   count: number;
@@ -19,7 +19,7 @@ interface ArchiveProps {
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
   return (
-    <div className='flex flex-wrap'>
+    <Card title="标签" className='flex flex-wrap bg-card'>
       <Head>
         <title>{getTitle('标签')}</title>
       </Head>
@@ -33,7 +33,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
           </Link>
         </React.Fragment>
       ))}
-    </div>
+    </Card>
   );
 };
 

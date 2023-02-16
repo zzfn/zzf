@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
 import { Popover, SvgIcon } from '@oc/design';
+
 const ThemeDataSource = ['light', 'dark', 'system'];
 const ThemeDropDown: FC = () => {
   const [active, setActive] = useState('light');
@@ -19,7 +20,7 @@ const ThemeDropDown: FC = () => {
     <Popover
       placement='bottomRight'
       content={
-        <ul className="p-2 text-primary-2 bg-card">
+        <ul className='p-2 text-primary-2 bg-card'>
           {ThemeDataSource.map((theme) => (
             <li
               onClick={() => {
@@ -27,7 +28,7 @@ const ThemeDropDown: FC = () => {
                 setTheme(theme);
               }}
               className={classNames(
-                active === theme ? 'text-primary-4' : 'text-primary',
+                active === theme ? 'text-[var(--accent)]' : 'text-primary',
                 'w-32',
                 'flex',
                 'items-center',
@@ -44,7 +45,9 @@ const ThemeDropDown: FC = () => {
         </ul>
       }
     >
-      <SvgIcon className='text-primary-4' size={25} name={active} />
+      <span className='round-icon'>
+        <SvgIcon className='text-[var(--secondary-icon)]' size={25} name={active} />
+      </span>
     </Popover>
   );
 };

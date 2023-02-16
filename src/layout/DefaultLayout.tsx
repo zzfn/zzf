@@ -7,18 +7,13 @@ import Aside from './Aside';
 function DefaultLayout({ children }: { children: ReactNode }) {
   return (
     <Layout className='min-h-screen'>
-      <Layout.Header className='container'>
+      <Layout.Header>
         <Header />
       </Layout.Header>
-      <Layout.Content className='container'>
-        <Layout.Aside className='hidden md:block sticky top-16'>
-          <section className='sticky top-16 block'>
-            <Aside />
-          </section>
-        </Layout.Aside>
-        <Layout.Center className='w-full bg-card'>{children}</Layout.Center>
+      <Layout.Content>
+        <Layout.Center>{children}</Layout.Center>
       </Layout.Content>
-      <Layout.Footer className='container '>
+      <Layout.Footer>
         <Footer />
       </Layout.Footer>
     </Layout>

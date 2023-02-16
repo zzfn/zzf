@@ -2,23 +2,17 @@ import { Layout } from '@oc/design';
 import Header from './header';
 import Footer from './footer';
 import type { ReactNode } from 'react';
-import Aside from './Aside';
 
 function DefaultNoBg({ children }: { children: ReactNode }) {
   return (
     <Layout className='min-h-screen'>
-      <Layout.Header className='container'>
+      <Layout.Header>
         <Header />
       </Layout.Header>
-      <Layout.Content className='container'>
-        <Layout.Aside className='hidden md:block sticky top-16'>
-          <section className='sticky top-16 block'>
-            <Aside />
-          </section>
-        </Layout.Aside>
+      <Layout.Content>
         <Layout.Center className='w-full'>{children}</Layout.Center>
       </Layout.Content>
-      <Layout.Footer className='container '>
+      <Layout.Footer>
         <Footer />
       </Layout.Footer>
     </Layout>

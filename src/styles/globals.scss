@@ -2,9 +2,7 @@
 @import '~@oc/icon/dist/dist.min.scss';
 :root {
   font-size: 16px;
-  font-family: 'LXGW WenKai Lite', -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
-    Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
-  font-weight: var(--font-weight-light);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular", sans-serif;
   background-color: var(--web-wash);
   color: var(--color-text-1);
   overflow-y: scroll;
@@ -13,7 +11,9 @@ html {
   word-break: break-all;
   scroll-behavior: smooth;
 }
-
+body{
+  font-size: 13px;
+}
 .icon {
   width: 1em;
   height: 1em;
@@ -56,4 +56,20 @@ html {
 }
 em {
   color: var(--color-primary-4);
+}
+.round-icon{
+  background-color: var(--secondary-button-background);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--fds-duration-extra-extra-short-out);
+  transition-timing-function: var(--fds-animation-fade-out);
+  transition-property: opacity;
+  opacity: 1;
+  &:hover{
+    opacity: 0.6;
+  }
 }

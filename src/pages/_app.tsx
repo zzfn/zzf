@@ -1,5 +1,5 @@
 import type { ReactElement, ReactNode } from 'react';
-import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Script from 'next/script';
 import Head from 'next/head';
 import '@oc/design/dist/bundle.min.css';
@@ -14,9 +14,10 @@ import { Provider } from 'react-redux';
 import { store } from 'store';
 import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import FingerprintJS from '@fingerprintjs/fingerprintjs-pro';
 
 const monitor = new Monitor();
 
@@ -33,7 +34,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
-  const [queryClient] = useState(() => new QueryClient())
+  const [queryClient] = useState(() => new QueryClient());
   const handleWindowResize = () => {
     const width = window.innerWidth;
     const isMobile = width < 768;
@@ -69,10 +70,9 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     );
     handleWindowResize();
     window.addEventListener('resize', handleWindowResize);
-    const localVisitor = localStorage.getItem('visitor');
-    if (localVisitor) {
-      const visitor = JSON.parse(localVisitor);
-      store.dispatch({ type: 'user/updateUserId', payload: visitor.visitorId });
+    const visitorId = localStorage.getItem('visitorId');
+    if (visitorId) {
+      store.dispatch({ type: 'user/updateUserId', payload: visitorId });
     }
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);

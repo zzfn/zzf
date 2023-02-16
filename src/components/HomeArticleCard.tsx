@@ -28,7 +28,7 @@ export default function HomeArticleCard({ dataSource }: ArticleCardProps): JSX.E
             </div>
             <Link
               target='_blank'
-              className='block mt-1 text-lg leading-tight font-medium text-primary hover:underline'
+              className='block mt-1 text-lg leading-tight font-medium text-primary hover:text-link-4'
               prefetch={false}
               href={`/article/${dataSource.id}`}
             >

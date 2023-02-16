@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { getCdn } from 'utils/getCdn';
+import LottiePlayer from "../components/LottiePlayer";
 
 function Header(): JSX.Element {
   const router = useRouter();
@@ -20,18 +21,13 @@ function Header(): JSX.Element {
     <>
       <div className={classNames('flex', 'items-center')}>
         <Link className={classNames('text-primary-4', 'text-xl', 'mr-2')} href='/'>
-          <Image
-            className='w-10 h-10 mr-2'
-            width={100}
-            height={100}
-            src={getCdn('/assets/logo.png')}
-            alt='logo'
-          />
+          <LottiePlayer size={50} url={getCdn('/assets/logo.json')} />
         </Link>
         <nav className={classNames(styles.menu, 'hidden', 'md:flex')}>
           {menus.map((menu) => (
             <Link
               className={classNames(
+                'text-base',
                 menu.path === '/'
                   ? router.pathname === '/' && styles.active
                   : router.pathname.includes(menu.path) && styles.active,
@@ -45,11 +41,14 @@ function Header(): JSX.Element {
         </nav>
       </div>
       <div className={classNames('flex', 'items-center')}>
-        <Link className={classNames('text-primary-4', 'text-xl', 'mr-2')} href='/search'>
+        <Link
+          className={classNames('round-icon', 'text-[var(--secondary-icon)]', 'text-xl', 'mr-2')}
+          href='/search'
+        >
           <SvgIcon size={25} name='search' />
         </Link>
         <Link
-          className={classNames('text-primary-4', 'text-xl', 'mr-2')}
+          className={classNames('round-icon', 'text-[var(--secondary-icon)]', 'text-xl', 'mr-2')}
           target='_blank'
           href='/rss/feed.xml'
         >
@@ -59,32 +58,34 @@ function Header(): JSX.Element {
         <Popover
           placement='bottomRight'
           content={
-              <nav className="p-3 w-26 bg-card">
-                {menus.map((menu) => (
-                  <Link
-                    className={classNames(
-                      'block',
-                      'text-left',
-                      'text-xl',
-                      'my-2',
-                      menu.path === '/'
-                        ? router.pathname === '/' && styles.active
-                        : router.pathname.includes(menu.path) && styles.active,
-                    )}
-                    key={menu.name}
-                    href={menu.path}
-                  >
-                    {menu.name}
-                  </Link>
-                ))}
-              </nav>
+            <nav className='p-3 w-26 bg-card'>
+              {menus.map((menu) => (
+                <Link
+                  className={classNames(
+                    'block',
+                    'text-left',
+                    'text-xl',
+                    'my-2',
+                    menu.path === '/'
+                      ? router.pathname === '/' && styles.active
+                      : router.pathname.includes(menu.path) && styles.active,
+                  )}
+                  key={menu.name}
+                  href={menu.path}
+                >
+                  {menu.name}
+                </Link>
+              ))}
+            </nav>
           }
         >
-          <SvgIcon
-            className={classNames('text-primary-4 md:hidden ml-2')}
-            size={25}
-            name={visible ? 'close' : 'menu'}
-          />
+          <span className='round-icon  md:hidden ml-2'>
+            <SvgIcon
+              className={classNames( 'text-[var(--secondary-icon)]')}
+              size={25}
+              name={visible ? 'close' : 'menu'}
+            />
+          </span>
         </Popover>
       </div>
     </>

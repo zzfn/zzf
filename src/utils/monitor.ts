@@ -1,6 +1,6 @@
 import UAParser from 'ua-parser-js';
 import type { NextWebVitalsMetric } from 'next/app';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import FingerprintJS from '@fingerprintjs/fingerprintjs-pro';
 
 class Monitor {
   private parser: UAParser.UAParserInstance;
@@ -10,12 +10,18 @@ class Monitor {
   }
 
   async getVisitor(): Promise<string> {
-    const fpPromise = FingerprintJS.load({
-      monitoring: false,
+    const vid = localStorage.getItem('visitorId');
+    if (localStorage.getItem('visitorId')) {
+      return vid;
+    }
+    const { get } = await FingerprintJS.load({
+      apiKey: process.env.NEXT_PUBLIC_API_KEY,
+      region: 'ap',
+      endpoint: 'https://fp.zzfzzf.com',
     });
-    const fp = await fpPromise;
-    const result = await fp.get();
-    return result.visitorId;
+    const { visitorId } = await get();
+    localStorage.setItem('visitorId', visitorId);
+    return visitorId;
   }
 
   getOS(): UAParser.IOS {

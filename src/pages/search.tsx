@@ -3,7 +3,7 @@ import { esList, topSearch } from 'api/article';
 import SearchArticleCard from 'components/SearchArticleCard';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
-import { Input, Space, Tag } from '@oc/design';
+import { Card, Input, Space, Tag } from "@oc/design";
 import LottiePlayer from '../components/LottiePlayer';
 import classNames from 'classnames';
 import { useQuery } from '@tanstack/react-query';
@@ -28,7 +28,7 @@ function Search(): JSX.Element {
   }
 
   return (
-    <>
+    <Card title='搜索'>
       <Head>
         <title>{getTitle('搜索')}</title>
       </Head>
@@ -71,7 +71,7 @@ function Search(): JSX.Element {
           </Space>
         </>
       )}
-    </>
+    </Card>
   );
 }
 
