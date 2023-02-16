@@ -43,6 +43,9 @@ steps:
       - npm run build
   - name: build_docker
     image: plugins/docker
+    environment:
+      API_KEY:
+        from_secret: api_key
     depends_on:
       - build
     pull: if-not-exists
