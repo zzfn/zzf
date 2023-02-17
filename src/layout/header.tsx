@@ -6,16 +6,12 @@ import menus from '../menus.json';
 import classNames from 'classnames';
 import ThemeDropDown from 'components/ThemeDropDown';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
 import { getCdn } from 'utils/getCdn';
-import LottiePlayer from "../components/LottiePlayer";
+import LottiePlayer from '../components/LottiePlayer';
 
 function Header(): JSX.Element {
   const router = useRouter();
   const [visible, setVisible] = useState(false);
-  const screen = useSelector((state: RootState) => state.screen);
 
   return (
     <>
@@ -67,8 +63,8 @@ function Header(): JSX.Element {
                     'text-xl',
                     'my-2',
                     menu.path === '/'
-                      ? router.pathname === '/' && styles.active
-                      : router.pathname.includes(menu.path) && styles.active,
+                      ? router.pathname === '/' && 'text-[var(--accent)]'
+                      : router.pathname.includes(menu.path) && 'text-[var(--accent)]',
                   )}
                   key={menu.name}
                   href={menu.path}
@@ -81,7 +77,7 @@ function Header(): JSX.Element {
         >
           <span className='round-icon  md:hidden ml-2'>
             <SvgIcon
-              className={classNames( 'text-[var(--secondary-icon)]')}
+              className={classNames('text-[var(--secondary-icon)]')}
               size={25}
               name={visible ? 'close' : 'menu'}
             />
