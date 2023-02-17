@@ -3,6 +3,7 @@ import Link from 'next/link';
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import { Card } from '@oc/design';
+import { diff } from "../utils/time";
 
 interface ArticleCardProps {
   dataSource: Article;
@@ -19,12 +20,7 @@ export default function HomeArticleCard({ dataSource }: ArticleCardProps): JSX.E
                 {dataSource.tag}
               </Link>
               ·
-              {dayjs(
-                Math.max(
-                  new Date(dataSource.createTime).getTime(),
-                  new Date(dataSource.updateTime).getTime(),
-                ),
-              ).format('YYYY-MM-DD')}
+              {diff(dataSource.updateTime)}
             </div>
             <Link
               target='_blank'
