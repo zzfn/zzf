@@ -13,4 +13,13 @@ export default {
   sassOptions: {
     prependData: `@import "styles/variable";`,
   },
+  async redirects() {
+    return [
+      {
+        source: '/rss/feed.xml',
+        destination: '/api/feed.xml',
+        permanent: false,
+      },
+    ]
+  },
 };

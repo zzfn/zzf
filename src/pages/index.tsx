@@ -1,20 +1,16 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 import Head from 'next/head';
 import { articleCount, lastUpdated } from 'api/article';
 import { Alert, Button, Card, Tag } from '@oc/design';
-import LottiePlayer from 'components/LottiePlayer';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
-import generateRssFeed from '../utils/generateRssFeed';
-import { getCdn } from '../utils/getCdn';
 import { NextPageWithLayout } from './_app';
 import DefaultNoBg from '../layout/DefaultNoBg';
 import Link from 'next/link';
-import { diff } from '../utils/time';
 import useFcp from '../hooks/useFcp';
 import HomeArticleCard from '../components/HomeArticleCard';
 import { changelogList } from 'api/changelog';
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 type HomeType = {
   articleLatest: Article[];
@@ -65,7 +61,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data } = await lastUpdated();
   const res = await articleCount();
   const r = await changelogList();
-  await generateRssFeed(data);
   return {
     props: {
       articleLatest: data,
