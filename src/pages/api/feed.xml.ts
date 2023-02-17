@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Feed } from "feed";
 import { translateMarkdown } from "../../utils/translateMarkdown";
-import { listArchives } from "api/article";
+import { lastCreated } from "api/article";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { data } = await listArchives({});
+  const { data } = await lastCreated();
   const siteURL = 'https://zzfzzf.com';
   const date = new Date();
   const author = {
@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
 
   // Adding blogs to the rss feed
-  data.articleList.forEach((post) => {
+  data.forEach((post) => {
     const url = `${siteURL}/article/${post.id}`;
     feed.addItem({
       title: post.title,

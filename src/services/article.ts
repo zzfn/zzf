@@ -8,6 +8,8 @@ type ArticleDetail = {
   isRelease: boolean;
   orderNum: number;
   tag: string;
+  logo: string;
+  summary: string;
   tagDesc: string;
   title: string;
   updateBy: string;
@@ -57,6 +59,12 @@ type LastUpdatedListType = {
   id: string;
   title: string;
   updateTime: string;
+};
+export const lastCreated = () => {
+  return http<ArticleDetail[]>({
+    method: 'get',
+    url: '/article/lastCreated',
+  });
 };
 export const lastUpdated = () => {
   return http<LastUpdatedListType[]>({
