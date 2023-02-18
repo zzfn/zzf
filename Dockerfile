@@ -1,6 +1,7 @@
 FROM node:16-alpine
 WORKDIR /app
 
+ENV TZ="Asia/Shanghai"
 ENV NODE_ENV=production
 
 RUN addgroup -g 1001 -S nodejs
