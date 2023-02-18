@@ -11,6 +11,7 @@ function DefaultLayout({ children, source }: { children: ReactNode; source: stri
         <Header />
       </Layout.Header>
       <Layout.Content>
+        <ArticleNav source={source} />
         <Layout.Center className='w-full'>{children}</Layout.Center>
       </Layout.Content>
       <Layout.Footer>
