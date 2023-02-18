@@ -41,12 +41,12 @@ function Search(): JSX.Element {
           placeholder='elasticsearch强力驱动'
         />
       </form>
-      <div className='text-info'>
+      <div className='text-[var(--blue-link)]'>
         {isFetching ? (
           <div>🔍 努力搜索中，请等待</div>
         ) : (
           <div>
-            共找到<strong className='text-primary'>{result.length}</strong>条结果
+            共找到<strong className='text-[var(--blue-link)]'>{result.length}</strong>条结果
           </div>
         )}
       </div>

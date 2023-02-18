@@ -16,7 +16,7 @@ function Header(): JSX.Element {
   return (
     <>
       <div className={classNames('flex', 'items-center')}>
-        <Link className={classNames('text-primary-4', 'text-xl', 'mr-2')} href='/'>
+        <Link className={classNames('text-xl', 'mr-2')} href='/'>
           <LottiePlayer size={50} url={getCdn('/assets/logo.json')} />
         </Link>
         <nav className={classNames(styles.menu, 'hidden', 'md:flex')}>
@@ -46,7 +46,7 @@ function Header(): JSX.Element {
         <Link
           className={classNames('round-icon', 'text-[var(--secondary-icon)]', 'text-xl', 'mr-2')}
           target='_blank'
-          href='/rss/feed.xml'
+          href='/api/feed.xml'
         >
           <SvgIcon size={25} name='rss' />
         </Link>
@@ -54,7 +54,7 @@ function Header(): JSX.Element {
         <Popover
           placement='bottomRight'
           content={
-            <nav className='p-3 w-26 bg-card'>
+            <nav className='p-3 w-26 bg-card text-[var(--primary-text)]'>
               {menus.map((menu) => (
                 <Link
                   className={classNames(
