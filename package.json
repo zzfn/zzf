@@ -24,7 +24,7 @@
     "@fingerprintjs/fingerprintjs-pro": "^3.8.2",
     "@multiavatar/multiavatar": "^1.0.7",
     "@oc/design": "^0.0.6",
-    "@oc/icon": "^0.0.1",
+    "@oc/icon": "^0.0.2",
     "@react-spring/web": "^9.6.1",
     "@rematch/core": "^2.2.0",
     "@tanstack/react-query": "^4.24.6",

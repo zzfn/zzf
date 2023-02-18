@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Popover, SvgIcon } from '@oc/design';
+import { Popover } from '@oc/design';
 import styles from './header.module.scss';
 import menus from '../menus.json';
 import classNames from 'classnames';
@@ -8,6 +8,7 @@ import ThemeDropDown from 'components/ThemeDropDown';
 import { useRouter } from 'next/router';
 import { getCdn } from 'utils/getCdn';
 import LottiePlayer from '../components/LottiePlayer';
+import { IconSearch, IconRss, IconMenu } from '@oc/icon';
 
 function Header(): JSX.Element {
   const router = useRouter();
@@ -41,14 +42,14 @@ function Header(): JSX.Element {
           className={classNames('round-icon', 'text-[var(--secondary-icon)]', 'text-xl', 'mr-2')}
           href='/search'
         >
-          <SvgIcon size={25} name='search' />
+          <IconSearch />
         </Link>
         <Link
           className={classNames('round-icon', 'text-[var(--secondary-icon)]', 'text-xl', 'mr-2')}
           target='_blank'
           href='/api/feed.xml'
         >
-          <SvgIcon size={25} name='rss' />
+          <IconRss></IconRss>
         </Link>
         <ThemeDropDown />
         <Popover
@@ -76,11 +77,7 @@ function Header(): JSX.Element {
           }
         >
           <span className='round-icon  md:hidden ml-2'>
-            <SvgIcon
-              className={classNames('text-[var(--secondary-icon)]')}
-              size={25}
-              name={visible ? 'close' : 'menu'}
-            />
+            <IconMenu className={classNames('text-[var(--secondary-icon)]')}/>
           </span>
         </Popover>
       </div>

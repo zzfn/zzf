@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
 import classNames from 'classnames';
 import { initTheme, setTheme } from 'utils/theme';
-import { Popover, SvgIcon } from '@oc/design';
+import { Popover } from '@oc/design';
+import { IconSun, IconMoon, IconPc } from '@oc/icon';
 
 const ThemeDataSource = ['light', 'dark', 'system'];
+const iconMap = {
+  light: IconSun,
+  dark: IconMoon,
+  system: IconPc,
+};
 const ThemeDropDown: FC = () => {
   const [active, setActive] = useState('light');
 
   useEffect(() => {
-    const theme = localStorage.getItem('data-color-mode');
+    const theme:any= localStorage.getItem('data-color-mode');
     if (theme) {
       setActive(theme);
       initTheme();
@@ -38,7 +44,9 @@ const ThemeDropDown: FC = () => {
               )}
               key={theme}
             >
-              <SvgIcon className='mr-2' name={theme} />
+              {React.createElement((iconMap as any)[theme], {
+                className: 'mr-2',
+              })}
               {theme}
             </li>
           ))}
@@ -46,7 +54,9 @@ const ThemeDropDown: FC = () => {
       }
     >
       <span className='round-icon'>
-        <SvgIcon className='text-[var(--secondary-icon)]' size={25} name={active} />
+        {React.createElement((iconMap as any)[active], {
+          className: 'text-[var(--secondary-icon)] text-2xl',
+        })}
       </span>
     </Popover>
   );
