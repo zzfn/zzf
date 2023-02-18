@@ -94,7 +94,7 @@ const Home: NextPageWithLayout = (props: HomeType) => {
             />
           </div>
           <div>
-            <div className='text-[var(--primary-text)] font-semibold'>{article.title}</div>
+            <Link href={`/article/${article.id}`} className='text-[var(--primary-text)] font-semibold'>{article.title}</Link>
             <div className='text-[var(--secondary-text)] text-sm'>
               {article.tag} · {article.viewCount} 个阅读 · 更新于：{diff(article.updateTime)}
             </div>
