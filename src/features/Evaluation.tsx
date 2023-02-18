@@ -8,7 +8,7 @@ import { list2tree } from 'utils/list2tree';
 import { diff } from 'utils/time';
 import { IconHistory, IconHome, IconShareInternal } from '@oc/icon';
 import Monitor from '../utils/monitor';
-
+import Image from 'next/image';
 function getImageDataURL(avatar: string) {
   return (
     'data:image/svg+xml;base64,' +
@@ -84,7 +84,7 @@ function Evaluation(props: any) {
     <>
       <div className='flex'>
         <div className='flex flex-col items-center mr-3 justify-center'>
-          <img className='w-10 h-10' src={ownerImg} alt='' />
+          <Image width={40} height={40} src={ownerImg} alt='' />
           <Button onClick={handleComment} className='mt-2' type='primary'>评论</Button>
         </div>
         <Input

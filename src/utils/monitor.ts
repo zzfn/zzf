@@ -10,18 +10,25 @@ class Monitor {
   }
 
   async getVisitor(): Promise<string> {
-    const vid = localStorage.getItem('visitorId');
-    if (localStorage.getItem('visitorId')) {
+    const vid = sessionStorage.getItem('visitorId') || localStorage.getItem('visitorId');
+    if (vid) {
       return vid;
     }
-    const { get } = await FingerprintJS.load({
-      apiKey: process.env.NEXT_PUBLIC_API_KEY,
-      region: 'ap',
-      endpoint: 'https://fp.zzfzzf.com',
-    });
-    const { visitorId } = await get();
-    localStorage.setItem('visitorId', visitorId);
-    return visitorId;
+    try {
+      console.log(111)
+      const { get } = await FingerprintJS.load({
+        apiKey: process.env.NEXT_PUBLIC_API_KEY,
+        region: 'ap',
+        endpoint: 'https://fp.zzfzzf.com',
+      });
+      const { visitorId } = await get();
+      localStorage.setItem('visitorId', visitorId);
+      return visitorId;
+    } catch (e) {
+      const vid = Math.random().toString(36).slice(2);
+      sessionStorage.setItem('visitorId', vid);
+      return vid;
+    }
   }
 
   getOS(): UAParser.IOS {
