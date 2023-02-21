@@ -52,7 +52,7 @@ const Home: NextPageWithLayout = (props: HomeType) => {
         className='mb-3'
         title={
           <span className='flex justify-between w-full'>
-            <span>首页</span>
+            <span className='flex-shrink-0'>首页</span>
             <span className='flex items-center gap-x-2'>
               <Tag>文章数 {articleCount.article}</Tag>
               <Tag>标签数 {articleCount.tag}</Tag>
@@ -84,9 +84,9 @@ const Home: NextPageWithLayout = (props: HomeType) => {
       </Card>
       {list.map((article: Article) => (
         <Card className='flex py-2 mb-3' key={article.id}>
-          <div>
+          <div className='flex-shrink-0'>
             <Image
-              className='mr-3 object-cover rounded-lg h-16 w016'
+              className='mr-3 object-cover rounded-lg h-16 w-16'
               width={64}
               height={64}
               src={article.logo || getCdn('/midway/default-article.webp')}
