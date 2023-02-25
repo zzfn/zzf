@@ -9,6 +9,7 @@ import { diff } from 'utils/time';
 import { IconHistory, IconHome, IconShareInternal } from '@oc/icon';
 import Monitor from '../utils/monitor';
 import Image from 'next/image';
+import { getCdn } from "../utils/getCdn";
 function getImageDataURL(avatar: string) {
   return (
     'data:image/svg+xml;base64,' +
@@ -53,7 +54,7 @@ function Evaluation(props: any) {
   const [content, setContent] = useState('');
   const [reply, setReply] = useState('');
   const [replyId, setReplyId] = useState('');
-  const [ownerImg, setOwnerImg] = useState('');
+  const [ownerImg, setOwnerImg] = useState(()=>getCdn('user.svg'));
   const { data = [] } = useQuery([id], () =>
     listDiscuss({ id }).then(({ data }) => list2tree(data)),
   );

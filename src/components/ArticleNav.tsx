@@ -13,7 +13,6 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
   useEffect(() => {
     setCurrent(window.location.hash.replace('#', ''));
     const matchResult = getTitle(source);
-    console.log(matchResult);
     if (matchResult) {
       const navData = matchResult.map((r, i) => ({
         index: i,

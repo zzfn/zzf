@@ -16,7 +16,7 @@ const ArticleCode: CodeProps = ({ language, code }) => {
         className={`language-${language}`}
         lang={language}
       />
-      {language && <div className="absolute -top-8 right-6 bg-comment h-8 leading-8 px-6 rounded-t">{language}</div>}
+      {language && <div className="absolute -top-5 right-6 bg-comment h-5 leading-5 px-3 rounded-t">{language}</div>}
     </pre>
   );
 };

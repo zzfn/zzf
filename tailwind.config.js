@@ -34,6 +34,42 @@ module.exports = {
         surface: 'var(--surface-background)',
         comment: 'var(--comment-background)',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': 'var(--primary-text)',
+            '--tw-prose-headings': 'var(--primary-text)',
+            '--tw-prose-lead': 'var(--accent)',
+            '--tw-prose-links': 'var(--accent)',
+            '--tw-prose-bold':  'var(--primary-text)',
+            '--tw-prose-counters': 'var(--secondary-text)',
+            '--tw-prose-bullets': 'var(--secondary-text)',
+            '--tw-prose-hr': 'var(--divider)',
+            '--tw-prose-quotes': 'var(--primary-text)',
+            '--tw-prose-quote-borders': 'var(--accent)',
+            '--tw-prose-captions': 'var(--primary-text)',
+            '--tw-prose-code': 'var(--primary-text)',
+            '--tw-prose-pre-code': 'var(--primary-text)',
+            '--tw-prose-pre-bg': 'var(--comment-background)',
+            '--tw-prose-th-borders': 'var(--primary-text)',
+            '--tw-prose-td-borders': 'var(--divider)',
+            code:{
+              fontFamily: 'JetBrainsMono'
+            },
+            pre:{
+              overflow: 'initial',
+              paddingBottom: 0,
+              code:{
+                display: 'block',
+                overflowX: 'auto',
+                fontFamily: 'JetBrainsMono',
+                paddingBottom: '0.8571429em',
+              }
+            }
+          },
+        },
+      }
     },
   },
+  plugins: [require('@tailwindcss/typography')],
 };

@@ -99,7 +99,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
             </ul>
           </div>
           <article
-            className={classNames('markdown-body', 'text-sm')}
+            className={classNames( 'prose','my-5')}
             dangerouslySetInnerHTML={{
               __html: translateMarkdown(serverProps.content),
             }}

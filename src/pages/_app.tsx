@@ -6,7 +6,6 @@ import '@oc/design/dist/bundle.min.css';
 import 'styles/globals.scss';
 import 'tailwindcss/tailwind.css';
 import 'highlight.js/styles/base16/railscasts.css';
-import 'styles/markdown.scss';
 import { getTitle } from '../utils/getTitle';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
