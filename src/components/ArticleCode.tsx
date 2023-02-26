@@ -9,7 +9,7 @@ import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-json5';
 import 'prismjs/components/prism-sass';
 import 'prismjs/components/prism-css';
-import 'prismjs/plugins/toolbar/prism-toolbar'
+import 'prismjs/components/prism-ini';
 
 Prism.manual = true
 
