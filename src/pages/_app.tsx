@@ -1,11 +1,9 @@
 import type { ReactElement, ReactNode } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Script from 'next/script';
 import Head from 'next/head';
 import '@oc/design/dist/bundle.min.css';
 import 'styles/globals.scss';
 import 'tailwindcss/tailwind.css';
-import 'highlight.js/styles/base16/railscasts.css';
 import { getTitle } from '../utils/getTitle';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Monitor from '../utils/monitor';
@@ -16,7 +14,6 @@ import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import FingerprintJS from '@fingerprintjs/fingerprintjs-pro';
 
 const monitor = new Monitor();
 

@@ -4,11 +4,16 @@ import dayjs from 'dayjs';
 import classNames from 'classnames';
 import { Card } from '@oc/design';
 import { translateMarkdown } from '../utils/translateMarkdown';
+import Head from "next/head";
+import { getTitle } from "../utils/getTitle";
 
 const Changelog = (props: any) => {
   const { serverProps } = props;
   return (
     <ul>
+      <Head>
+        <title>{getTitle('公告')}</title>
+      </Head>
       {serverProps.map((item: any) => (
         <li key={item.id} className='mb-2'>
           <Card>

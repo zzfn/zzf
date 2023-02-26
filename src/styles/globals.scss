@@ -1,5 +1,6 @@
 @import '~@oc/design/dist/theme.scss';
 @import '~@oc/icon/dist/dist.min.scss';
+@import "prism.css";
 @font-face {
   font-family: 'JetBrainsMono';
   font-display: swap;
@@ -7,10 +8,10 @@
 }
 :root {
   font-size: 16px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular", sans-serif;
   background-color: var(--web-wash);
-  color: var(--color-text-1);
+  color: var(--primary-text);
   overflow-y: scroll;
+  @apply font-sans
 }
 html {
   word-break: break-all;
@@ -77,4 +78,8 @@ em {
   &:hover{
     opacity: 0.6;
   }
+}
+pre.line-numbers, pre.no-line-numbers
+{
+  white-space: pre-wrap;
 }

@@ -1,17 +1,29 @@
 import React from 'react';
-import hljs from 'highlight.js';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-yaml';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-json5';
+import 'prismjs/components/prism-sass';
+import 'prismjs/components/prism-css';
+import 'prismjs/plugins/toolbar/prism-toolbar'
+
+Prism.manual = true
 
 type CodeProps = {
   ({ language, code }: { language: string; code: string }): JSX.Element;
 };
+
 const ArticleCode: CodeProps = ({ language, code }) => {
+  const lang = language.toLowerCase() || 'markup'
   return (
-    <pre className='relative'>
+    <pre data-label="Hello World!" className='relative'>
       <code
         dangerouslySetInnerHTML={{
-          __html: language
-            ? hljs.highlight(code, { language }).value
-            : hljs.highlightAuto(code).value,
+          __html: Prism.highlight(code, Prism.languages[lang],lang)
         }}
         className={`language-${language}`}
         lang={language}

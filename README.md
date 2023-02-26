@@ -32,13 +32,11 @@
 - dayjs
 - typescript
 - react.js
-- highlight.js
+- prismjs.js
 - eslint
 - prettier
 - babel
 - tailwindcss
-- @primer/css
-- [svgo](https://github.com/svg/svgo#configuration) `(deprecated)`
 - npx sort-package-json
 
 ### 后端

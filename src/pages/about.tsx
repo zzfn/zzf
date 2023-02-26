@@ -16,7 +16,7 @@ const About = ({ serverProps }: any) => {
   return (
     <Card title='我的' className='text-[var(--secondary-text)]'>
       <Head>
-        <title>{getTitle('友链')}</title>
+        <title>{getTitle('我的')}</title>
       </Head>
       <h3 className='text-primary font-bold text-xl my-3'>bio</h3>
       <p className='pl-3'>码农，软硬件爱好者，爱折腾</p>

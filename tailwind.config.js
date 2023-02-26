@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ['./src/**/*.tsx'],
   theme: {
@@ -53,22 +55,21 @@ module.exports = {
             '--tw-prose-pre-bg': 'var(--comment-background)',
             '--tw-prose-th-borders': 'var(--primary-text)',
             '--tw-prose-td-borders': 'var(--divider)',
-            code:{
-              fontFamily: 'JetBrainsMono'
-            },
             pre:{
               overflow: 'initial',
               paddingBottom: 0,
               code:{
                 display: 'block',
                 overflowX: 'auto',
-                fontFamily: 'JetBrainsMono',
                 paddingBottom: '0.8571429em',
               }
             }
           },
         },
-      }
+      },
+      fontFamily: {
+        'mono': ['JetBrainsMono', ...defaultTheme.fontFamily.mono],
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
