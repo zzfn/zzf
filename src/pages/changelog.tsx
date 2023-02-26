@@ -25,7 +25,7 @@ const Changelog = (props: any) => {
               dangerouslySetInnerHTML={{
                 __html: translateMarkdown(item.content),
               }}
-              className='markdown-body text-xs font-normal'
+              className='prose text-xs'
             />
           </Card>
         </li>
