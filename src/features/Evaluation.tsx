@@ -54,7 +54,7 @@ function Evaluation(props: any) {
   const [content, setContent] = useState('');
   const [reply, setReply] = useState('');
   const [replyId, setReplyId] = useState('');
-  const [ownerImg, setOwnerImg] = useState(()=>getCdn('user.svg'));
+  const [ownerImg, setOwnerImg] = useState(()=>getCdn('/midway/user.svg'));
   const { data = [] } = useQuery([id], () =>
     listDiscuss({ id }).then(({ data }) => list2tree(data)),
   );
