@@ -41,4 +41,6 @@ yarn-error.log*
 /public/sitemap-0.xml
 /public/rss/
 /pnpm-global/
-
+/test-results/
+/playwright-report/
+/playwright/.cache/
