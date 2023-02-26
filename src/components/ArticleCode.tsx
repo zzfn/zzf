@@ -10,6 +10,8 @@ import 'prismjs/components/prism-json5';
 import 'prismjs/components/prism-sass';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-ini';
+import 'prismjs/components/prism-docker';
+import 'prismjs/components/prism-python';
 
 Prism.manual = true
 
@@ -17,7 +19,7 @@ type CodeProps = {
   ({ language, code }: { language: string; code: string }): JSX.Element;
 };
 
-const ArticleCode: CodeProps = ({ language, code }) => {
+const ArticleCode: CodeProps = ({ language='', code }) => {
   const lang = language.toLowerCase() || 'markup'
   return (
     <pre data-label="Hello World!" className='relative'>
