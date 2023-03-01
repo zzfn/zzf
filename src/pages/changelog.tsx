@@ -19,7 +19,7 @@ const Changelog = (props: any) => {
           <Card>
             <h3 className={classNames('flex', 'justify-between','text-base','font-semibold')}>
               <span>{item.title}</span>
-              <span>{dayjs(item.updateTime).format('YYYY-MM-DD')}</span>
+              <span>{dayjs(item.createTime).format('YYYY-MM-DD')}</span>
             </h3>
             <article
               dangerouslySetInnerHTML={{
