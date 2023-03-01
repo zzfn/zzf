@@ -55,9 +55,9 @@ class Monitor {
       name: metric.name,
       value: metric.value,
     };
-    new Image().src = `https://log.zzfzzf.com/zzf.gif?body=${window.btoa(
+    new Image().src = `https://api.zzfzzf.com/track/log.gif?q=${window.btoa(
       JSON.stringify(json),
-    )}&index=log-performance`;
+    )}`;
   }
 }
 
