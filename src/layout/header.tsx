@@ -12,7 +12,6 @@ import { IconSearch, IconRss, IconMenu } from '@oc/icon';
 
 function Header(): JSX.Element {
   const router = useRouter();
-  const [visible, setVisible] = useState(false);
 
   return (
     <>

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getTitle } from 'utils/translateMarkdown';
 import classNames from 'classnames';
-import { Card } from '@oc/design';
-
+import { Tooltip } from '@oc/design';
 interface NavProps {
   source: string;
 }
@@ -33,24 +32,27 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
     });
   }, [source]);
   return (
-    <ul className={classNames('fixed', 'top-16', '-translate-x-full transform-gpu pr-3 pt-3 hidden md:block')}>
-      {list.map((nav) => (
-        <li
-          onClick={() => {
-            setCurrent(`heading-${nav.index}`);
-          }}
-          className={classNames(
-            current === `heading-${nav.index}` && 'text-[var(--accent)]',
-            'truncate',
-            'text-sm',
-          )}
-          style={{ marginLeft: `${(nav.level - 1) * 10}px` }}
-          key={nav.index}
-        >
-          <a href={`#heading-${nav.index}`}># {nav.text}</a>
-        </li>
-      ))}
-    </ul>
+    <div className={classNames('transform-gpu hidden md:block  h-full col-span-1')}>
+      <ul className={classNames('sticky top-16')}>
+        {list.map((nav) => (
+          <li
+            title={nav.text}
+            onClick={() => {
+              setCurrent(`heading-${nav.index}`);
+            }}
+            className={classNames(
+              current === `heading-${nav.index}` && 'text-[var(--accent)]',
+              'truncate',
+              'text-sm',
+            )}
+            style={{ marginLeft: `${(nav.level - 1) * 10}px` }}
+            key={nav.index}
+          >
+            <a href={`#heading-${nav.index}`}># {nav.text}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

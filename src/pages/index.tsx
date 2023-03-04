@@ -5,7 +5,6 @@ import { Alert, Button, Card, Tag } from '@oc/design';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import { NextPageWithLayout } from './_app';
-import DefaultNoBg from '../layout/DefaultNoBg';
 import Link from 'next/link';
 import useFcp from '../hooks/useFcp';
 import Image from 'next/image';
@@ -110,9 +109,7 @@ const Home: NextPageWithLayout = (props: HomeType) => {
     </>
   );
 };
-Home.getLayout = function (page: ReactElement) {
-  return <DefaultNoBg>{page}</DefaultNoBg>;
-};
+
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await lastUpdated();
   const res = await articleCount();

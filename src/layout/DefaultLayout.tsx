@@ -6,13 +6,13 @@ import type { ReactNode } from 'react';
 function DefaultLayout({ children }: { children: ReactNode }) {
   return (
     <Layout className='min-h-screen'>
-      <Layout.Header>
+      <Layout.Header className='container px-3 max-w-4xl'>
         <Header />
       </Layout.Header>
-      <Layout.Content>
-        <Layout.Center>{children}</Layout.Center>
-      </Layout.Content>
-      <Layout.Footer>
+      <Layout.Main className='container py-3 px-3 max-w-4xl'>
+        {children}
+      </Layout.Main>
+      <Layout.Footer className='container'>
         <Footer />
       </Layout.Footer>
     </Layout>
