@@ -60,7 +60,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
           height={100}
           className={classNames('h-52', 'w-full', 'object-cover', 'mb-3', 'rounded')}
           alt={serverProps.title}
-          src={serverProps.logo || getCdn('/midway/default-article.webp')}
+          src={serverProps.logo || getCdn('/midway/denis.webp')}
         />
         <main className={classNames('bg-surface', 'w-full', 'px-6', 'bg-card')}>
           <div>
