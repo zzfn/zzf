@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getTitle } from 'utils/translateMarkdown';
 import classNames from 'classnames';
-import { Tooltip } from '@oc/design';
+
 interface NavProps {
   source: string;
 }
@@ -21,11 +21,14 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
       setList(navData);
     }
     const navObserver = new IntersectionObserver(function (entries) {
-      entries.reverse().forEach(function (entry) {
+      entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           setCurrent(entry.target.getAttribute('id'));
         }
       });
+    },  {
+      rootMargin: '-30px 0px -30px 0px',
+      threshold: 0.5
     });
     document.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(function (ele) {
       navObserver.observe(ele);
