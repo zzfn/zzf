@@ -50,7 +50,7 @@ module.exports = {
             '--tw-prose-quotes': 'var(--primary-text)',
             '--tw-prose-quote-borders': 'var(--accent)',
             '--tw-prose-captions': 'var(--primary-text)',
-            '--tw-prose-code': 'var(--primary-text)',
+            '--tw-prose-code': 'var(--accent)',
             '--tw-prose-pre-code': 'var(--primary-text)',
             '--tw-prose-pre-bg': 'var(--comment-background)',
             '--tw-prose-th-borders': 'var(--primary-text)',
