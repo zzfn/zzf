@@ -55,6 +55,11 @@ module.exports = {
             '--tw-prose-pre-bg': 'var(--comment-background)',
             '--tw-prose-th-borders': 'var(--primary-text)',
             '--tw-prose-td-borders': 'var(--divider)',
+            blockquote:{
+              code:{
+                color: 'var(--accent)',
+              }
+            },
             pre:{
               overflow: 'initial',
               paddingBottom: 0,
