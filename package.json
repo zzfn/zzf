@@ -22,7 +22,7 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs-pro": "^3.8.2",
     "@multiavatar/multiavatar": "^1.0.7",
-    "@oc/design": "^0.0.11",
+    "@oc/design": "^0.0.12",
     "@oc/icon": "^0.0.4",
     "@react-spring/web": "^9.7.1",
     "@rematch/core": "^2.2.0",
