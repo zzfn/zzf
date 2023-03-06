@@ -54,7 +54,7 @@ function Header(): JSX.Element {
         <Popover
           placement='bottomRight'
           content={
-            <nav className='p-3 w-26 bg-card text-[var(--primary-text)]'>
+            <nav className='p-3 w-26 text-[var(--primary-text-reverse)]'>
               {menus.map((menu) => (
                 <Link
                   className={classNames(

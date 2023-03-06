@@ -26,7 +26,7 @@ const ThemeDropDown: FC = () => {
     <Popover
       placement='bottomRight'
       content={
-        <ul className='p-2 text-primary-2 bg-card'>
+        <ul className='p-2 text-primary-2'>
           {ThemeDataSource.map((theme) => (
             <li
               onClick={() => {
@@ -34,8 +34,9 @@ const ThemeDropDown: FC = () => {
                 setTheme(theme);
               }}
               className={classNames(
-                active === theme ? 'text-[var(--accent)]' : 'text-primary',
+                active === theme ? 'text-[var(--accent)]' : 'text-[var(--primary-text-reverse)]',
                 'w-32',
+                'text-base',
                 'flex',
                 'items-center',
                 'px-2',
