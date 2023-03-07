@@ -12,6 +12,8 @@ import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-ini';
 import 'prismjs/components/prism-docker';
 import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-ignore';
+import 'prismjs/components/prism-git';
 
 Prism.manual = true
 
@@ -22,7 +24,7 @@ type CodeProps = {
 const ArticleCode: CodeProps = ({ language='', code }) => {
   const lang = language.toLowerCase() || 'markup'
   return (
-    <pre data-label="Hello World!" className='relative'>
+    <pre className='relative'>
       <code
         dangerouslySetInnerHTML={{
           __html: Prism.highlight(code, Prism.languages[lang],lang)
