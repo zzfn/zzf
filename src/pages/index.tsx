@@ -111,7 +111,7 @@ const Home: NextPageWithLayout = (props: HomeType) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await lastUpdated();
+  const { data } = await sortByField({field: 'updateTime'});
   const res = await articleCount();
   const r = await changelogList();
   return {
