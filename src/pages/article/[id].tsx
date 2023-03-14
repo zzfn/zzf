@@ -13,7 +13,7 @@ import type { Dispatch } from 'store';
 import Image from 'next/image';
 import ArticleNav from '../../components/ArticleNav';
 import { getCdn } from '../../utils/getCdn';
-import { Layout, Progress } from "../../../../oc-design";
+import { Progress } from "@oc/design";
 
 interface Data {
   content?: string;
