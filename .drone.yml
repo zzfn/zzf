@@ -90,6 +90,8 @@ steps:
         - kubectl apply -f https://git.oocc.es/oocc/k3s/raw/branch/master/blog.yaml
         - kubectl set image deployment/blog blog=hub.oocc.es/home/blog:${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
 trigger:
+  branch:
+    - main
   event:
     exclude:
       - promote

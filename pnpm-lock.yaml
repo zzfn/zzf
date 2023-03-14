@@ -10,7 +10,7 @@ specifiers:
   '@multiavatar/multiavatar': ^1.0.7
   '@next/env': ^13.2.3
   '@next/eslint-plugin-next': ^13.2.3
-  '@oc/design': ^0.0.13
+  '@oc/design': ^0.0.14
   '@oc/icon': ^0.0.15
   '@react-spring/web': ^9.7.1
   '@rematch/core': ^2.2.0
@@ -72,7 +72,7 @@ dependencies:
   '@emotion/server': 11.10.0_@emotion+css@11.10.6
   '@fingerprintjs/fingerprintjs-pro': 3.8.2
   '@multiavatar/multiavatar': 1.0.7
-  '@oc/design': 0.0.13_zula6vjvt3wdocc4mwcxqa6nzi
+  '@oc/design': 0.0.14_zula6vjvt3wdocc4mwcxqa6nzi
   '@oc/icon': 0.0.15
   '@react-spring/web': 9.7.1_biqbaboplfbrettd7655fr4n2y
   '@rematch/core': 2.2.0_redux@4.2.1
@@ -1282,8 +1282,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@oc/design/0.0.13_zula6vjvt3wdocc4mwcxqa6nzi:
-    resolution: {integrity: sha512-uCQLGBNNHJAdFqwvqdWAw7EdPiuS/ES6Azb4tutQEbKH9AnFmOHHvflLFf5csBxOPvwAB2ZEGAitiXU33HrJ0w==}
+  /@oc/design/0.0.14_zula6vjvt3wdocc4mwcxqa6nzi:
+    resolution: {integrity: sha512-3VLQQsdLQ5pglBfgBpgLQ8f5yswt4BQd1WB8CA+8XqgGNq9Bmw85tZw7NnSXWhW3jKVr0dw5OXmziv4xzbcF8w==}
     dependencies:
       '@emotion/css': 11.10.6
       '@emotion/react': 11.10.6_pmekkgnqduwlme35zpnqhenc34
