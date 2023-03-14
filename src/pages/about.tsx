@@ -14,7 +14,7 @@ type FriendCard = {
 };
 const About = ({ serverProps }: any) => {
   return (
-    <Card title='我的' className='text-[var(--secondary-text)]'>
+    <Card className='text-[var(--secondary-text)]'>
       <Head>
         <title>{getTitle('我的')}</title>
       </Head>

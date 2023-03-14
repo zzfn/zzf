@@ -28,13 +28,12 @@ function Search(): JSX.Element {
   }
 
   return (
-    <Card title='搜索'>
+    <Card>
       <Head>
         <title>{getTitle('搜索')}</title>
       </Head>
       <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action=''>
         <Input
-          autoFocus
           onChange={(event) => setKeyword(event.target.value.trim())}
           value={keyword}
           type='search'

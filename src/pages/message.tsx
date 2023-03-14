@@ -10,7 +10,7 @@ const Message: NextPageWithLayout = () => {
       <Head>
         <title>{getTitle('留言')}</title>
       </Head>
-      <Card title='留言'>
+      <Card>
         <Evaluation id='message' />
       </Card>
     </>
