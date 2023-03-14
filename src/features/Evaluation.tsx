@@ -6,10 +6,10 @@ import { Message } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
 import { list2tree } from 'utils/list2tree';
 import { diff } from 'utils/time';
-import { IconHistory, IconHome, IconShareInternal } from '@oc/icon';
 import Monitor from '../utils/monitor';
 import Image from 'next/image';
 import { getCdn } from "../utils/getCdn";
+import { IconHome, IconReply, IconUpdate } from "@oc/icon";
 function getImageDataURL(avatar: string) {
   return (
     'data:image/svg+xml;base64,' +
@@ -25,18 +25,18 @@ const EvaluationCard = ({ record, children, onReply }: any) => {
       actions={[
         <li
           onClick={onReply}
-          className='mr-2 cursor-pointer text-[var(--secondary-text)]'
+          className='mr-2 cursor-pointer text-[var(--secondary-text)] flex items-center'
           key='reply'
         >
-          <IconShareInternal className='mr-1' />
+          <IconReply className='mr-1' />
           回复
         </li>,
-        <li className='mr-2 text-[var(--secondary-text)]' key='address'>
+        <li className='mr-2 text-[var(--secondary-text)] flex items-center' key='address'>
           <IconHome className='mr-1' />
           {record.address}
         </li>,
-        <li className='text-[var(--secondary-text)]' key='time'>
-          <IconHistory className='mr-1' />
+        <li className='text-[var(--secondary-text)] flex items-center' key='time'>
+          <IconUpdate className='mr-1' />
           <Tooltip placement='bottom' content={record.createTime}>
             <span>{diff(record.createTime)}</span>
           </Tooltip>
@@ -86,7 +86,7 @@ function Evaluation(props: any) {
       <div className='flex'>
         <div className='flex flex-col items-center mr-3 justify-center'>
           <Image width={40} height={40} src={ownerImg} alt='' />
-          <Button onClick={handleComment} className='mt-2' type='primary'>评论</Button>
+          <Button onClick={handleComment} className='mt-2'>评论</Button>
         </div>
         <Input
           type='textarea'

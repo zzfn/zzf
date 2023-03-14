@@ -1,7 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Head from 'next/head';
-import '@oc/design/dist/bundle.min.css';
 import 'styles/globals.scss';
 import 'tailwindcss/tailwind.css';
 import { getTitle } from '../utils/getTitle';
@@ -92,9 +91,9 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                 content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
               />
               <meta name='applicable-device' content='pc,mobile' />
-              <meta name='Copyright' content='OrLuna' />
-              <meta name='Author' content='OrLuna' />
-              <meta name='Designer' content='OrLuna' />
+              <meta name='Copyright' content='oc' />
+              <meta name='Author' content='oc' />
+              <meta name='Designer' content='oc' />
             </Head>
             {getLayout(<Component {...pageProps} />)}
           </Provider>

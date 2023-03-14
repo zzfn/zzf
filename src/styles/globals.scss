@@ -1,6 +1,5 @@
-@import '~@oc/design/dist/theme.scss';
-@import '~@oc/icon/dist/dist.min.scss';
 @import "prism.css";
+@import "~@oc/design/dist/theme.css";
 @font-face {
   font-family: 'JetBrainsMono';
   font-display: swap;
@@ -8,10 +7,10 @@
 }
 :root {
   font-size: 16px;
-  background-color: var(--web-wash);
-  color: var(--primary-text);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
   overflow-y: scroll;
-  @apply font-sans
+  @apply font-sans;
 }
 html {
   word-break: break-all;
@@ -20,7 +19,7 @@ html {
 body{
   font-size: 13px;
 }
-.icon {
+.oc-icon {
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
@@ -28,27 +27,15 @@ body{
   overflow: hidden;
 }
 
-:root,
-[data-color-mode='light'] {
-  @include colors-light;
-}
-
 [data-color-mode='dark'] {
-  @include colors-dark;
   img {
     filter: brightness(68%);
   }
 }
 
-@media (prefers-color-scheme: light) {
-  [data-color-mode='auto'] {
-    @include colors-light;
-  }
-}
 
 @media (prefers-color-scheme: dark) {
   [data-color-mode='auto'] {
-    @include colors-dark;
     img {
       filter: brightness(68%);
     }

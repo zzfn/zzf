@@ -11,7 +11,10 @@ export default {
     domains: ['cdn.zzfzzf.com', 'www.dmoe.cc'],
   },
   sassOptions: {
-    prependData: `@import "styles/variable";`,
+    // prependData: `@import "styles/variable";`,
+  },
+  compiler: {
+    emotion: true
   },
   async redirects() {
     return [

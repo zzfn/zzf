@@ -4,8 +4,7 @@ import { listTags } from 'services/article';
 import Link from 'next/link';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
-import classNames from 'classnames';
-import { Card, Tag } from "@oc/design";
+import { Card,Tag } from "@oc/design";
 
 type TagsProps = {
   count: number;
@@ -19,20 +18,21 @@ interface ArchiveProps {
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
   return (
-    <Card title="标签" className='flex flex-wrap bg-card'>
+    <Card>
       <Head>
         <title>{getTitle('标签')}</title>
       </Head>
-      {serverProps.tags.map((item) => (
-        <React.Fragment key={item.tag}>
-          <Link className={classNames('flex', 'items-center', 'justify-between', 'ml-3', 'mb-2')} href={`/tag/${item.tag}`}>
-              <Tag size='large'>
-                # {item.tag}
-                <span className='text-neutral-1 ml-2'>{item.count}</span>
-              </Tag>
+      <h2 className='text-lg mb-2'>标签</h2>
+      <div className='flex gap-2'>
+        {serverProps.tags.map((item) => (
+          <Link key={item.tag} href={`/tag/${item.tag}`}>
+            <Tag>
+              # {item.tag}
+              <span className='text-neutral-1 ml-2'>{item.count}</span>
+            </Tag>
           </Link>
-        </React.Fragment>
-      ))}
+        ))}
+      </div>
     </Card>
   );
 };

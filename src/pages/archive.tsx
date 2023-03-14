@@ -21,7 +21,8 @@ interface ArchiveProps {
 
 function renderMonth(time: string, list: ListProps[]) {
   return (
-    <Card className='mb-4' key={time} title={`${time} 共 ${list.length} 篇文章`}>
+    <Card className='mb-4' key={time}>
+      <h3>{`${time} 共 ${list.length} 篇文章`}</h3>
       <ul>
         {list?.map((item) => (
           <li className={classNames('text-sm', 'text-[var(--secondary-text)]')} key={item.id}>
