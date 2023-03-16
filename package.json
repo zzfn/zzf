@@ -20,12 +20,14 @@
     "updateSnapshot": "jest --updateSnapshot"
   },
   "dependencies": {
+    "@dicebear/collection": "^5.3.4",
+    "@dicebear/core": "^5.3.4",
     "@emotion/css": "^11.10.6",
     "@emotion/server": "^11.10.0",
     "@fingerprintjs/fingerprintjs-pro": "^3.8.2",
     "@multiavatar/multiavatar": "^1.0.7",
     "@oc/design": "^0.0.14",
-    "@oc/icon": "^0.0.15",
+    "@oc/icon": "^0.0.16",
     "@react-spring/web": "^9.7.1",
     "@rematch/core": "^2.2.0",
     "@swc/plugin-emotion": "^2.5.46",

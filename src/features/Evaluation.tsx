@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
 import { Modal, Comment, Input, Alert, Tag, Tooltip, Button } from '@oc/design';
-import multiAvatar from '@multiavatar/multiavatar/esm';
+import { createAvatar } from '@dicebear/core';
+import { adventurer } from '@dicebear/collection';
 import { Message } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
 import { list2tree } from 'utils/list2tree';
 import { diff } from 'utils/time';
 import Monitor from '../utils/monitor';
 import Image from 'next/image';
-import { getCdn } from "../utils/getCdn";
-import { IconHome, IconReply, IconUpdate } from "@oc/icon";
-function getImageDataURL(avatar: string) {
-  return (
-    'data:image/svg+xml;base64,' +
-    window.btoa(decodeURIComponent(encodeURIComponent(multiAvatar(avatar))))
-  );
-}
+import { IconHome, IconReply, IconUpdate } from '@oc/icon';
 const EvaluationCard = ({ record, children, onReply }: any) => {
+  const avatar = useMemo(() => {
+    return createAvatar(adventurer, {
+      size: 128,
+      flip: true,
+      hairColor: ["5E74FD","CB54E3","FBC35D",'546DE3','0e0e0e','85c2c6','dba3be','E7AB9A'],
+      seed: record.createBy,
+    }).toDataUriSync();
+  }, [record.createBy]);
   return (
     <Comment
-      avatar={getImageDataURL(record.createBy)}
+      avatar={avatar}
       author={record.createBy.slice(-6)}
       content={`${record.content}`}
       actions={[
@@ -54,10 +56,18 @@ function Evaluation(props: any) {
   const [content, setContent] = useState('');
   const [reply, setReply] = useState('');
   const [replyId, setReplyId] = useState('');
-  const [ownerImg, setOwnerImg] = useState(()=>getCdn('/midway/user.svg'));
+  const [visitorId, setVisitorId] = useState('');
   const { data = [] } = useQuery([id], () =>
     listDiscuss({ id }).then(({ data }) => list2tree(data)),
   );
+  const avatar = useMemo(() => {
+    return createAvatar(adventurer, {
+      size: 128,
+      flip: true,
+      hairColor: ["5E74FD","CB54E3","FBC35D",'546DE3','0e0e0e','85c2c6','dba3be','E7AB9A'],
+      seed: visitorId,
+    }).toDataUriSync();
+  }, [visitorId]);
   const handleComment = async () => {
     if (!content) return;
     const { data } = await saveDiscuss({
@@ -75,9 +85,7 @@ function Evaluation(props: any) {
     const monitor = new Monitor();
     const id = await monitor.getVisitor();
     setVisitorId(id);
-    setOwnerImg(getImageDataURL(id));
   };
-  const [visitorId, setVisitorId] = useState('');
   useEffect(() => {
     getVisitorId();
   }, [visible]);
@@ -85,8 +93,10 @@ function Evaluation(props: any) {
     <>
       <div className='flex'>
         <div className='flex flex-col items-center mr-3 justify-center'>
-          <Image width={40} height={40} src={ownerImg} alt='' />
-          <Button onClick={handleComment} className='mt-2'>评论</Button>
+          <Image width={40} height={40} src={avatar} alt='' />
+          <Button onClick={handleComment} className='mt-2'>
+            评论
+          </Button>
         </div>
         <Input
           type='textarea'

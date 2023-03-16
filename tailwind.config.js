@@ -4,6 +4,11 @@ module.exports = {
   content: ['./src/**/*.tsx'],
   theme: {
     extend: {
+      screens: {
+        'tablet': '640px',
+        'laptop': '1024px',
+        'desktop': '961px',
+      },
       colors: {
         "primary":"var(--md-sys-color-primary)",
         "on-primary":"var(--md-sys-color-on-primary)"
