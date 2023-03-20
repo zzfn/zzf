@@ -95,3 +95,4 @@ trigger:
   event:
     exclude:
       - promote
+      - pull_request
