@@ -1,11 +1,8 @@
-import { IconButton, List, ListItem, NavigationRail, Tooltip } from '../../../oc-design';
+import { IconButton, Tooltip } from '@oc/design';
 import Link from 'next/link';
 import classNames from 'classnames';
-import LottiePlayer from '../components/LottiePlayer';
-import { getCdn } from '../utils/getCdn';
 import { NAV_DATASOURCE } from './NAV_DATASOURCE';
 import React, { useState } from 'react';
-import { IconRss } from '@oc/icon';
 import { setTheme } from '../utils/theme';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/css';

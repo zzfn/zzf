@@ -1,4 +1,4 @@
-import { IconButton, List, ListItem, NavigationDraw, Tooltip } from '../../../oc-design';
+import { IconButton, List, ListItem, NavigationDraw, Tooltip } from '@oc/design';
 import classNames from 'classnames';
 import { NAV_DATASOURCE } from './NAV_DATASOURCE';
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/css';
 import IconSymbols from '../components/IconSymbols';
+
 const nav = css`
   transition: 0.3s;
   position: relative;
