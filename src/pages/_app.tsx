@@ -1,4 +1,5 @@
 import type { ReactElement, ReactNode } from 'react';
+import { useEffect, useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Head from 'next/head';
 import 'styles/globals.scss';
@@ -10,7 +11,6 @@ import { Provider } from 'react-redux';
 import { store } from 'store';
 import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -30,17 +30,6 @@ type AppPropsWithLayout = AppProps & {
 
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const [queryClient] = useState(() => new QueryClient());
-  const handleWindowResize = () => {
-    const width = window.innerWidth;
-    const isMobile = width < 768;
-    store.dispatch({
-      type: 'screen/updateScreen',
-      payload: {
-        isMobile,
-        isDesktop: !isMobile,
-      },
-    });
-  };
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
   useEffect(() => {
     window.addEventListener('unhandledrejection', (e) => {
@@ -63,18 +52,15 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
       },
       true,
     );
-    handleWindowResize();
-    window.addEventListener('resize', handleWindowResize);
     const visitorId = localStorage.getItem('visitorId');
     if (visitorId) {
       store.dispatch({ type: 'user/updateUserId', payload: visitorId });
     }
-    return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/*<ReactQueryDevtools initialIsOpen={false} />*/}
         <Hydrate state={pageProps.dehydratedState}>
           <Provider store={store}>
             <Head>

@@ -1,10 +1,25 @@
-@import "prism.css";
-@import "~@oc/design/dist/theme.css";
+@import 'prism.css';
+@import '~@oc/design/dist/theme.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .icon-fill-1 {
+    font-variation-settings: 'FILL' 1, 'wght' 600 !important;
+  }
+}
 @font-face {
   font-family: 'JetBrainsMono';
   font-display: swap;
-  src: url('https://cdn.zzfzzf.com/assets/JetBrainsMono-Regular.woff2');
+  src: url(https://cdn.zzfzzf.com/assets/JetBrainsMono-Regular.woff2) format('woff2');
 }
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://cdn.zzfzzf.com/assets/Material%2BSymbols%2BOutlined.woff2) format('woff2');
+}
+
 :root {
   font-size: 16px;
   background-color: var(--md-sys-color-background);
@@ -16,7 +31,7 @@ html {
   word-break: break-all;
   scroll-behavior: smooth;
 }
-body{
+body {
   font-size: 13px;
 }
 .oc-icon {
@@ -33,7 +48,6 @@ body{
   }
 }
 
-
 @media (prefers-color-scheme: dark) {
   [data-color-mode='auto'] {
     img {
@@ -41,32 +55,12 @@ body{
     }
   }
 }
-.bg-card {
-  box-shadow: 0 1px 2px var(--shadow-2);
-  background-color: var(--surface-background);
-  padding: 12px 16px;
-  border-radius: 8px;
-}
+
 em {
   color: var(--accent);
 }
-.round-icon{
-  background-color: var(--secondary-button-background);
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: var(--fds-duration-extra-extra-short-out);
-  transition-timing-function: var(--fds-animation-fade-out);
-  transition-property: opacity;
-  opacity: 1;
-  &:hover{
-    opacity: 0.6;
-  }
-}
-pre.line-numbers, pre.no-line-numbers
-{
+
+pre.line-numbers,
+pre.no-line-numbers {
   white-space: pre-wrap;
 }

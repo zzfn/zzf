@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Feed } from "feed";
-import { translateMarkdown } from "../../utils/translateMarkdown";
-import { lastCreated } from "api/article";
+import { Feed } from 'feed';
+import { translateMarkdown } from '../../utils/translateMarkdown';
+import { lastCreated } from 'api/article';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { data } = await lastCreated();
@@ -43,5 +43,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       date: new Date(post.updateTime),
     });
   });
-  res.status(200).send(feed.rss2())
+  res.status(200).send(feed.rss2());
 }

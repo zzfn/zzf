@@ -15,7 +15,7 @@ class Monitor {
       return vid;
     }
     try {
-      console.log(111)
+      console.log(111);
       const { get } = await FingerprintJS.load({
         apiKey: process.env.NEXT_PUBLIC_API_KEY,
         region: 'ap',
@@ -55,9 +55,7 @@ class Monitor {
       name: metric.name,
       value: metric.value,
     };
-    new Image().src = `https://api.zzfzzf.com/track/log.gif?q=${window.btoa(
-      JSON.stringify(json),
-    )}`;
+    new Image().src = `https://api.zzfzzf.com/track/log.gif?q=${window.btoa(JSON.stringify(json))}`;
   }
 }
 

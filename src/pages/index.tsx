@@ -15,6 +15,7 @@ import { IconClose, IconCode, IconSearch } from '@oc/icon';
 import { getCdn } from '../utils/getCdn';
 import classNames from 'classnames';
 import { css } from '@emotion/css';
+import IconSymbols from '../components/IconSymbols';
 
 type HomeType = {
   articleLatest: Article[];
@@ -40,48 +41,75 @@ const Home: NextPageWithLayout = (props: HomeType) => {
       <Head>
         <title>{getTitle('首页')}</title>
       </Head>
+      <h1 className='mt-18 mb-8 text-2.5xl text-center'>首页</h1>
       <Tabs className='my-4' onChange={handleClick}>
-        <Tab className='cursor-pointer' key='updateTime' icon={IconClose}>
+        <Tab
+          className='cursor-pointer'
+          key='updateTime'
+          icon={<IconSymbols className='text-2xl' icon='schedule' />}
+        >
           最近更新
         </Tab>
-        <Tab className='cursor-pointer' key='createTime' icon={IconSearch}>
+        <Tab
+          className='cursor-pointer'
+          key='createTime'
+          icon={<IconSymbols className='text-2xl' icon='add_circle' />}
+        >
           最近创建
         </Tab>
-        <Tab className='cursor-pointer' key='viewCount' icon={IconCode}>
+        <Tab
+          className='cursor-pointer'
+          key='viewCount'
+          icon={<IconSymbols className='text-2xl' icon='visibility' />}
+        >
           浏览量
         </Tab>
       </Tabs>
-      <List>
+      <div className='grid desktop:grid-cols-3 gap-2'>
         {list.map((article: Article) => (
-          <ListItem key={article.id}>
-              <Image
-                className={classNames(
-                  'flex-shrink-0 object-cover rounded-lg h-16 w-16 mr-4',
-                  css`
-                    width: 114px;
-                    height: 64px;
-                  `,
-                )}
-                width={114}
-                height={64}
-                src={article.logo || getCdn('/midway/default-article.webp')}
-                alt={article.title}
+          <Link key={article.id} target='_blank' href={`/article/${article.id}`}>
+            <div
+              className={classNames(
+                'bg-surface-1 rounded-3xl hover:bg-secondary-container cursor-pointer flow-root',
+                css`
+                  transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+                `,
+              )}
+            >
+              <div
+                className={css`
+                  background-repeat: no-repeat;
+                  background-position: 50%;
+                  background-size: cover;
+                  height: 200px;
+                  width: 100%;
+                  border-radius: 24px;
+                  overflow: hidden;
+                  background-image: url(${article.logo || getCdn('/midway/default-article.webp')});
+                `}
               />
-            <div>
-              <Link
-                href={`/article/${article.id}`}
-                className='text-[var(--primary-text)] font-semibold'
-              >
-                {article.title}
-              </Link>
-              <div className='text-[var(--secondary-text)] text-sm'>
-                {article.tag} · {article.viewCount} 个阅读 · 更新于：{diff(article.updateTime)}
+              <div className={classNames('m-6')}>
+                <span className='text-sm flex items-center gap-x-2'>
+                  <span className='flex items-center gap-x-1 text-xm'>
+                    <IconSymbols icon='label' /> {article.tag}
+                  </span>
+                  <span className='flex items-center gap-x-1 text-sm'>
+                    <IconSymbols icon='schedule' />
+                    {dayjs(article.updateTime).format('YYYY-MM-DD')}
+                  </span>
+                  <span className='flex items-center gap-x-1 text-sm'>
+                    <IconSymbols icon='visibility' /> {article.viewCount}
+                  </span>
+                </span>
+                <div className='text-2xl text-[var(--primary-text)] font-semibold my-4'>
+                  {article.title}
+                </div>
+                <div className='text-xs line-clamp-2'>{article.summary}</div>
               </div>
-              <div className='text-[var(--secondary-text)] text-xs'>{article.summary}</div>
             </div>
-          </ListItem>
+          </Link>
         ))}
-      </List>
+      </div>
       <Link className='col-span-2' href='/archive'>
         <Button className='w-full my-4' variant='outlined'>
           查看更多
@@ -94,12 +122,10 @@ const Home: NextPageWithLayout = (props: HomeType) => {
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await sortByField({ field: 'updateTime' });
   const res = await articleCount();
-  const r = await changelogList();
   return {
     props: {
       articleLatest: data,
       articleCount: res.data,
-      changeLog: r.data[0],
     },
     revalidate: 5,
   };

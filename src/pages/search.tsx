@@ -3,7 +3,7 @@ import { esList, topSearch } from 'api/article';
 import SearchArticleCard from 'components/SearchArticleCard';
 import Head from 'next/head';
 import { getTitle } from '../utils/getTitle';
-import { Card, Input, Space, Tag } from "@oc/design";
+import { Card, Input, Space, Tag } from '@oc/design';
 import LottiePlayer from '../components/LottiePlayer';
 import classNames from 'classnames';
 import { useQuery } from '@tanstack/react-query';
@@ -28,49 +28,52 @@ function Search(): JSX.Element {
   }
 
   return (
-    <Card>
-      <Head>
-        <title>{getTitle('搜索')}</title>
-      </Head>
-      <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action=''>
-        <Input
-          onChange={(event) => setKeyword(event.target.value.trim())}
-          value={keyword}
-          type='search'
-          placeholder='elasticsearch强力驱动'
-        />
-      </form>
-      <div className='text-[var(--blue-link)]'>
-        {isFetching ? (
-          <div>🔍 努力搜索中，请等待</div>
+    <>
+      <h1 className='mt-18 mb-8 text-2.5xl text-center'>搜索</h1>
+      <Card>
+        <Head>
+          <title>{getTitle('搜索')}</title>
+        </Head>
+        <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action=''>
+          <Input
+            onChange={(event) => setKeyword(event.target.value.trim())}
+            value={keyword}
+            type='search'
+            placeholder='elasticsearch强力驱动'
+          />
+        </form>
+        <div className='text-[var(--blue-link)]'>
+          {isFetching ? (
+            <div>🔍 努力搜索中，请等待</div>
+          ) : (
+            <div>
+              共找到<strong className='text-[var(--blue-link)]'>{result.length}</strong>条结果
+            </div>
+          )}
+        </div>
+        {result.length ? (
+          result.map((item) => <SearchArticleCard dataSource={item} key={item.id} />)
         ) : (
-          <div>
-            共找到<strong className='text-[var(--blue-link)]'>{result.length}</strong>条结果
-          </div>
+          <>
+            <LottiePlayer size={100} url={getCdn('/assets/loading.json')} />
+            <h3 className='my-3'>热搜</h3>
+            <Space>
+              {data.map((item: string) => (
+                <Tag
+                  onClick={() => {
+                    setKeyword(item);
+                    setTimeout(refetch);
+                  }}
+                  key={item}
+                >
+                  {item}
+                </Tag>
+              ))}
+            </Space>
+          </>
         )}
-      </div>
-      {result.length ? (
-        result.map((item) => <SearchArticleCard dataSource={item} key={item.id} />)
-      ) : (
-        <>
-          <LottiePlayer size={100} url={getCdn('/assets/loading.json')} />
-          <h3 className='my-3'>热搜</h3>
-          <Space>
-            {data.map((item: string) => (
-              <Tag
-                onClick={() => {
-                  setKeyword(item);
-                  setTimeout(refetch);
-                }}
-                key={item}
-              >
-                {item}
-              </Tag>
-            ))}
-          </Space>
-        </>
-      )}
-    </Card>
+      </Card>
+    </>
   );
 }
 

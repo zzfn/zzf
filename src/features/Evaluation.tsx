@@ -15,7 +15,7 @@ const EvaluationCard = ({ record, children, onReply }: any) => {
     return createAvatar(adventurer, {
       size: 128,
       flip: true,
-      hairColor: ["5E74FD","CB54E3","FBC35D",'546DE3','0e0e0e','85c2c6','dba3be','E7AB9A'],
+      hairColor: ['5E74FD', 'CB54E3', 'FBC35D', '546DE3', '0e0e0e', '85c2c6', 'dba3be', 'E7AB9A'],
       seed: record.createBy,
     }).toDataUriSync();
   }, [record.createBy]);
@@ -64,7 +64,7 @@ function Evaluation(props: any) {
     return createAvatar(adventurer, {
       size: 128,
       flip: true,
-      hairColor: ["5E74FD","CB54E3","FBC35D",'546DE3','0e0e0e','85c2c6','dba3be','E7AB9A'],
+      hairColor: ['5E74FD', 'CB54E3', 'FBC35D', '546DE3', '0e0e0e', '85c2c6', 'dba3be', 'E7AB9A'],
       seed: visitorId,
     }).toDataUriSync();
   }, [visitorId]);
@@ -92,7 +92,7 @@ function Evaluation(props: any) {
   return (
     <>
       <div className='flex'>
-        <div className='flex flex-col items-center mr-3 justify-center'>
+        <div className='flex flex-col items-center mr-3 justify-center shrink-0'>
           <Image width={40} height={40} src={avatar} alt='' />
           <Button onClick={handleComment} className='mt-2'>
             评论

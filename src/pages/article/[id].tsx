@@ -13,7 +13,8 @@ import type { Dispatch } from 'store';
 import Image from 'next/image';
 import ArticleNav from '../../components/ArticleNav';
 import { getCdn } from '../../utils/getCdn';
-import { Progress } from "@oc/design";
+import { Progress } from '@oc/design';
+import { css } from '@emotion/css';
 
 interface Data {
   content?: string;
@@ -26,6 +27,7 @@ interface Data {
   title?: string;
   updateTime?: string;
   viewCount?: number;
+  summary?: string;
 }
 
 interface ServerProps {
@@ -55,64 +57,72 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
       <Head>
         <title>{getTitle(serverProps.title)}</title>
       </Head>
-      <div className='container py-3 px-3 max-w-4xl md:grid md:grid-cols-5 gap-x-4'>
-        <div className='w-full md:col-span-4'>
-          <Image
-            width={100}
-            height={100}
-            className={classNames('h-52', 'w-full', 'object-cover', 'mb-3', 'rounded')}
-            alt={serverProps.title}
-            src={serverProps.logo || getCdn('/midway/denis.webp')}
-          />
-          <main className={classNames('bg-surface', 'w-full', 'px-6', 'bg-card')}>
-            <div>
-              <h2
-                className={classNames(
-                  'text-xl',
-                  'text-[var(--primary-text)]',
-                  'font-medium',
-                  'text-4xl',
-                )}
-              >
-                {serverProps.title}
-              </h2>
-              <ul
-                className={classNames(
-                  'text-[var(--secondary-text)]',
-                  'flex',
-                  'flex-wrap',
-                  'text-sm',
-                  'mt-6',
-                  'gap-x-3',
-                )}
-              >
-                <li>
-                  <span>标签</span>
-                  {serverProps.tag}
-                </li>
-                <li>
-                  <span>阅读量</span>
-                  {serverProps.viewCount}
-                </li>
-                <li>
-                  <span>发布于</span>
-                  {serverProps.createTime}
-                </li>
-                <li>
-                  <span>更新于</span>
-                  {serverProps.updateTime}
-                </li>
-              </ul>
-            </div>
-            <article
-              className={classNames('prose', 'my-5', 'prose-headings:scroll-mt-16')}
-              dangerouslySetInnerHTML={{
-                __html: translateMarkdown(serverProps.content),
-              }}
-            />
-            {serverProps.id && <Evaluation id={serverProps.id} />}
-          </main>
-        </div>
+      <div
+        className={classNames([
+          css({
+            backgroundImage: `url(${serverProps.logo || getCdn('/midway/denis.webp')})`,
+            borderRadius: '24px',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: '0 50%',
+            backgroundSize: 'cover',
+          }),
+          'h-[544px]',
+          'my-6',
+          'p-14',
+          'w-full',
+          'object-cover',
+          'rounded',
+          'flex',
+          'items-center',
+          'justify-center',
+          'relative',
+          'rounded',
+          'overflow-hidden',
+        ])}
+      >
+      </div>
+      <h1 className={classNames(  'text-2xl', 'font-medium', 'text-4xl')}>{serverProps.title}</h1>
+      <p className='text-base'>{serverProps.summary}</p>
+      <ul
+        className={classNames(
+          'text-[var(--secondary-text)]',
+          'flex',
+          'flex-wrap',
+          'text-sm',
+          'my-6',
+          'gap-x-3',
+        )}
+      >
+        <li>
+          <span>标签</span>
+          {serverProps.tag}
+        </li>
+        <li>
+          <span>阅读量</span>
+          {serverProps.viewCount}
+        </li>
+        <li>
+          <span>发布于</span>
+          {serverProps.createTime}
+        </li>
+        <li>
+          <span>更新于</span>
+          {serverProps.updateTime}
+        </li>
+      </ul>
+      <div className='md:grid md:grid-cols-5 gap-x-4 rounded'>
+        <article
+          className={classNames(
+            'w-full md:col-span-4',
+            'p-8',
+            'prose',
+            'prose-headings:scroll-mt-16',
+            'bg-surface-1',
+          )}
+          dangerouslySetInnerHTML={{
+            __html: translateMarkdown(serverProps.content),
+          }}
+        />
         <ArticleNav source={serverProps.content} />
       </div>
     </>

@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import { getTitle } from 'utils/getTitle';
 import type { GetStaticProps } from 'next';
 import classNames from 'classnames';
-import { Alert, Card } from "@oc/design";
+import { Alert, Card } from '@oc/design';
 
 type ListProps = {
   createTime: Date;
@@ -29,9 +29,7 @@ function renderMonth(time: string, list: ListProps[]) {
             <span className={classNames('font-mono', 'text-info', 'mr-3')}>
               {dayjs(item.createTime).format('YYYY-MM-DD')}
             </span>
-            <Link href={`/article/${item.id}`}>
-              {item.title}
-            </Link>
+            <Link href={`/article/${item.id}`}>{item.title}</Link>
           </li>
         ))}
       </ul>
@@ -55,12 +53,14 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <Head>
         <title>{getTitle('归档')}</title>
       </Head>
-      <Alert className={classNames('text-base text-[var(--secondary-text)] mb-4')}>
+      <h1 className='mt-18 text-2.5xl text-center'>
+        归档
+        {/*<Image width={200} height={200}  src={getCdn('/assets/nabi.webp')} alt="" />*/}
+      </h1>
+      <h2 className='mb-8 text-lg text-center'>
         很好! 目前共计 <strong>{serverProps.articleList.length}</strong> 篇文章。 继续努力。⛽️
-      </Alert>
-      <div>
-        {Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}
-      </div>
+      </h2>
+      <div>{Object.keys(timeLine).map((item) => renderMonth(item, timeLine[item]))}</div>
     </div>
   );
 };
