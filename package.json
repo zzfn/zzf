@@ -26,7 +26,7 @@
     "@emotion/server": "^11.10.0",
     "@fingerprintjs/fingerprintjs-pro": "^3.8.2",
     "@multiavatar/multiavatar": "^1.0.7",
-    "@oc/design": "^0.0.15",
+    "@oc/design": "^0.0.16",
     "@oc/icon": "^0.0.18",
     "@react-spring/web": "^9.7.1",
     "@rematch/core": "^2.2.0",

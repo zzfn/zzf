@@ -2,10 +2,12 @@ import { IconButton, List, ListItem, NavigationDraw, Tooltip } from '@oc/design'
 import classNames from 'classnames';
 import { NAV_DATASOURCE } from './NAV_DATASOURCE';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/css';
 import IconSymbols from '../components/IconSymbols';
+import { setTheme } from '../utils/theme';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 const nav = css`
   transition: 0.3s;
@@ -39,12 +41,9 @@ const NavDraw = ({
   setVisible: (v: boolean) => void;
 }) => {
   const router = useRouter();
+  const [active, setActive] = useState('light');
   return (
-    <NavigationDraw
-      onCancel={() => setVisible(false)}
-      className='hidden desktop:block'
-      visible={visible}
-    >
+    <NavigationDraw onCancel={() => setVisible(false)} visible={visible}>
       <header className='h-12 pl-6 flex items-center my-2'>
         <IconButton
           className={classNames('text-2xl')}
@@ -94,19 +93,19 @@ const NavDraw = ({
           </Link>
         </ListItem>
         <ListItem className='justify-center'>
-          {/*<Tooltip content={active}>*/}
-          {/*  <IconButton*/}
-          {/*    onClick={() => {*/}
-          {/*      const idx = ThemeDataSource.findIndex((_) => _ === active);*/}
-          {/*      setActive(ThemeDataSource[idx + 1]);*/}
-          {/*      setTheme(ThemeDataSource[idx + 1]);*/}
-          {/*    }}*/}
-          {/*  >*/}
-          {/*    {React.createElement((iconMap as any)[active], {*/}
-          {/*      className: 'text-[var(--secondary-icon)] text-2xl',*/}
-          {/*    })}*/}
-          {/*  </IconButton>*/}
-          {/*</Tooltip>*/}
+          <Tooltip placement='right' content={active}>
+            <IconButton
+              className='text-2xl'
+              onClick={() => {
+                const ThemeDataSource = ['light', 'dark', 'auto', 'light'];
+                const idx = ThemeDataSource.findIndex((_) => _ === active);
+                setActive(ThemeDataSource[idx + 1]);
+                setTheme(ThemeDataSource[idx + 1]);
+              }}
+            >
+              <IconSymbols icon={`${active}_mode`} />
+            </IconButton>
+          </Tooltip>
         </ListItem>
       </List>
     </NavigationDraw>

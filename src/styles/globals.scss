@@ -31,36 +31,11 @@ html {
   word-break: break-all;
   scroll-behavior: smooth;
 }
-body {
-  font-size: 13px;
-}
-.oc-icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
+//body {
+//  font-size: 13px;
+//}
 
-[data-color-mode='dark'] {
-  img {
-    filter: brightness(68%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  [data-color-mode='auto'] {
-    img {
-      filter: brightness(68%);
-    }
-  }
-}
 
 em {
-  color: var(--accent);
-}
-
-pre.line-numbers,
-pre.no-line-numbers {
-  white-space: pre-wrap;
+  color: var(--md-sys-color-primary);
 }

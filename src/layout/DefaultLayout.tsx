@@ -9,9 +9,11 @@ import { IconButton } from '@oc/design';
 import NavDraw from './NavDraw';
 import NavRail from './NavRail';
 import { css } from '@emotion/css';
+import useMediaQuery from "../hooks/useMediaQuery";
 
 function DefaultLayout({ children }: { children: React.ReactElement }) {
   const [visible, setVisible] = useState(false);
+  const isWidthGreaterThan600 = useMediaQuery('(max-width:961px)')
   return (
     <div
       className={css`
@@ -21,6 +23,7 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
         flex-direction: column;
       `}
     >
+      {isWidthGreaterThan600&&<NavDraw visible={visible} setVisible={setVisible} />}
       <header
         className={classNames(
           'flex w-full items-center h-16 shrink-0  desktop:hidden',
@@ -29,14 +32,13 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
           }),
         )}
       >
-        <IconButton className={classNames('text-2xl')}>
-          <IconSymbols onClick={() => setVisible(true)} icon='menu' />
+        <IconButton onClick={() => setVisible(true)} className={classNames('text-2xl')}>
+          <IconSymbols icon='menu' />
         </IconButton>
         <Link className={classNames('text-2xl')} href='/'>
           <LottiePlayer size={50} url={getCdn('/assets/logo.json')} />
         </Link>
       </header>
-      <NavDraw visible={visible} setVisible={setVisible} />
       <div
         className={classNames(
           'desktop:pl-32',

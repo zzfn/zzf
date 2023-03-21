@@ -10,6 +10,8 @@ import { diff } from 'utils/time';
 import Monitor from '../utils/monitor';
 import Image from 'next/image';
 import { IconHome, IconReply, IconUpdate } from '@oc/icon';
+import IconSymbols from '../components/IconSymbols';
+
 const EvaluationCard = ({ record, children, onReply }: any) => {
   const avatar = useMemo(() => {
     return createAvatar(adventurer, {
@@ -24,26 +26,28 @@ const EvaluationCard = ({ record, children, onReply }: any) => {
       avatar={avatar}
       author={record.createBy.slice(-6)}
       content={`${record.content}`}
-      actions={[
-        <li
-          onClick={onReply}
-          className='mr-2 cursor-pointer text-[var(--secondary-text)] flex items-center'
-          key='reply'
-        >
-          <IconReply className='mr-1' />
-          回复
-        </li>,
-        <li className='mr-2 text-[var(--secondary-text)] flex items-center' key='address'>
-          <IconHome className='mr-1' />
-          {record.address}
-        </li>,
-        <li className='text-[var(--secondary-text)] flex items-center' key='time'>
-          <IconUpdate className='mr-1' />
-          <Tooltip placement='bottom' content={record.createTime}>
-            <span>{diff(record.createTime)}</span>
-          </Tooltip>
-        </li>,
-      ]}
+      actions={
+        <ul className='flex gap-x-2'>
+          <li className='flex items-center gap-x-1' key='address'>
+            <IconSymbols icon='home' />
+            {record.address}
+          </li>
+          <li className='flex items-center gap-x-1' key='time'>
+            <IconSymbols icon='schedule' />
+            <Tooltip placement='bottom' content={record.createTime}>
+              <span>{diff(record.createTime)}</span>
+            </Tooltip>
+          </li>
+          <li
+            onClick={onReply}
+            className='flex items-center gap-x-1 cursor-pointer'
+            key='reply'
+          >
+            <IconSymbols icon='reply' />
+            <span className='block'>回复</span>
+          </li>
+        </ul>
+      }
     >
       {children}
     </Comment>
@@ -93,7 +97,7 @@ function Evaluation(props: any) {
     <>
       <div className='flex'>
         <div className='flex flex-col items-center mr-3 justify-center shrink-0'>
-          <Image width={40} height={40} src={avatar} alt='' />
+          <Image width={40} height={40} src={avatar} alt={visitorId} />
           <Button onClick={handleComment} className='mt-2'>
             评论
           </Button>
