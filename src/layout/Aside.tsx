@@ -61,7 +61,7 @@ const Aside = () => {
         'top-0',
         'hidden',
         'desktop:flex',
-        'py-6',
+        'pb-6',
         'flex-col',
         'justify-between',
         'h-full',

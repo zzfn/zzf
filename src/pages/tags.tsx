@@ -7,11 +7,11 @@ import { Tag } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames';
 import Link from 'next/link';
+import dayjs from 'dayjs';
 
 type TagsProps = {
   count: number;
   tag: string;
-  code: string;
 };
 
 interface ArchiveProps {
@@ -26,6 +26,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       const { data } = await listArchives({ code: currentTag });
       return data;
     },
+
   });
   return (
     <>
@@ -33,7 +34,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <Head>
         <title>{getTitle('标签')}</title>
       </Head>
-      <div className='flex gap-2'>
+      <div className='flex gap-2 mb-2'>
         {serverProps.tags.map((item) => (
           <Tag key={item.tag} onClick={() => setCurrentTag(item.tag)}>
             # {item.tag}
@@ -44,7 +45,9 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <ul className={classNames('text-base', 'text-on-surface','bg-surface-1','rounded','p-6')}>
         {data?.articleList.map((item) => (
           <li key={item.id}>
-            <span className='font-mono'>{item.createTime}</span>-
+            <span className='font-mono mr-3'>
+            {dayjs(item.createTime).format('YYYY-MM-DD')}
+            </span>
             <Link href={`/article/${item.id}`}>{item.title}</Link>
           </li>
         ))}
