@@ -7,13 +7,13 @@ import { getCdn } from '../utils/getCdn';
 import IconSymbols from '../components/IconSymbols';
 import { IconButton } from '@oc/design';
 import NavDraw from './NavDraw';
-import NavRail from './NavRail';
+import Aside from './Aside';
 import { css } from '@emotion/css';
-import useMediaQuery from "../hooks/useMediaQuery";
+import useMediaQuery from '../hooks/useMediaQuery';
 
 function DefaultLayout({ children }: { children: React.ReactElement }) {
   const [visible, setVisible] = useState(false);
-  const isWidthGreaterThan600 = useMediaQuery('(max-width:961px)')
+  const isWidthGreaterThan600 = useMediaQuery('(max-width:961px)');
   return (
     <div
       className={css`
@@ -23,7 +23,7 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
         flex-direction: column;
       `}
     >
-      {isWidthGreaterThan600&&<NavDraw visible={visible} setVisible={setVisible} />}
+      {isWidthGreaterThan600 && <NavDraw visible={visible} setVisible={setVisible} />}
       <header
         className={classNames(
           'flex w-full items-center h-16 shrink-0  desktop:hidden',
@@ -41,18 +41,18 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
       </header>
       <div
         className={classNames(
-          'desktop:pl-32',
+          'desktop:pl-20',
           'flex-col',
           'flex',
+          'relative',
+          'overflow-y-hidden',
           css`
             flex: 1 1 auto;
-            position: relative;
-            overflow-y: hidden;
           `,
         )}
       >
         <div className='overflow-auto'>
-          <NavRail />
+          <Aside />
           <div className={classNames('container mx-auto px-2 pb-16')}>
             <main className='overflow-auto'>{children}</main>
             <Footer />

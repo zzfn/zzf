@@ -37,7 +37,18 @@ const nav = css`
 
   &[data-active='active'] {
     color: var(--md-sys-color-primary);
-
+    span{
+      width: 56px;
+      height: 32px;
+      transition-duration: 200ms;
+      transition-property: transform, opacity;
+      transition-timing-function: linear;
+      border-radius: 100px;
+      background: var(--md-sys-color-secondary-container);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     &:before {
       visibility: visible;
       transform: scaleY(1);
@@ -47,7 +58,7 @@ const nav = css`
     }
   }
 `;
-const NavRail = () => {
+const Aside = () => {
   const router = useRouter();
   const [active, setActive] = useState('auto');
   return (
@@ -76,21 +87,24 @@ const NavRail = () => {
               }
               className={classNames(
                 'flex',
+                'flex-col',
                 'items-center',
-                'pl-6',
-                'w-32',
+                'justify-center',
+                'w-20',
                 'gap-x-4',
-                'h-12',
+                'h-20',
                 'text-base',
                 nav,
               )}
               key={_.name}
               href={_.path}
             >
-              <IconSymbols
-                className={classNames('text-2xl group-hover:icon-fill-1')}
-                icon={_.icon}
-              />
+              <span className='text-2xl'>
+                <IconSymbols
+                  className={classNames('group-hover:icon-fill-1')}
+                  icon={_.icon}
+                />
+              </span>
               {_.name}
             </Link>
           </div>
@@ -125,4 +139,4 @@ const NavRail = () => {
     </nav>
   );
 };
-export default NavRail;
+export default Aside;
