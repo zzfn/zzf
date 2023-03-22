@@ -36,23 +36,15 @@ const nav = css`
   }
 
   &[data-active='active'] {
-    color: var(--md-sys-color-primary);
-    span{
-      width: 56px;
-      height: 32px;
-      transition-duration: 200ms;
-      transition-property: transform, opacity;
-      transition-timing-function: linear;
-      border-radius: 100px;
+    span {
       background: var(--md-sys-color-secondary-container);
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
+
     &:before {
       visibility: visible;
       transform: scaleY(1);
     }
+
     [data-icon] {
       font-variation-settings: 'FILL' 1, 'wght' 400;
     }
@@ -64,7 +56,7 @@ const Aside = () => {
   return (
     <nav
       className={classNames(
-        'absolute',
+        'fixed',
         'left-0',
         'top-0',
         'hidden',
@@ -99,11 +91,23 @@ const Aside = () => {
               key={_.name}
               href={_.path}
             >
-              <span className='text-2xl'>
-                <IconSymbols
-                  className={classNames('group-hover:icon-fill-1')}
-                  icon={_.icon}
-                />
+              <span
+                className={classNames(
+                  'text-2xl',
+                  css({
+                    width: '56px',
+                    height: '32px',
+                    transitionDuration: '200ms',
+                    transitionProperty: 'transform, opacity',
+                    transitionTimingFunction: 'linear',
+                    borderRadius: '100px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }),
+                )}
+              >
+                <IconSymbols className={classNames('group-hover:icon-fill-1')} icon={_.icon} />
               </span>
               {_.name}
             </Link>

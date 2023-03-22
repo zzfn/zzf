@@ -117,7 +117,6 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
             'p-8',
             'prose',
             'prose-headings:scroll-mt-16',
-            'bg-surface-1',
           )}
           dangerouslySetInnerHTML={{
             __html: translateMarkdown(serverProps.content),

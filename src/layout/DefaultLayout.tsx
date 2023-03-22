@@ -26,7 +26,7 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
       {isWidthGreaterThan600 && <NavDraw visible={visible} setVisible={setVisible} />}
       <header
         className={classNames(
-          'flex w-full items-center h-16 shrink-0  desktop:hidden',
+          'flex w-full items-center h-16 shrink-0  desktop:hidden px-6 justify-between',
           css({
             borderBottom: '1px solid rgb(218,220,224)',
           }),
@@ -44,20 +44,16 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
           'desktop:pl-20',
           'flex-col',
           'flex',
-          'relative',
-          'overflow-y-hidden',
           css`
             flex: 1 1 auto;
           `,
         )}
       >
-        <div className='overflow-auto'>
           <Aside />
           <div className={classNames('container mx-auto px-2 pb-16')}>
-            <main className='overflow-auto'>{children}</main>
+            <main>{children}</main>
             <Footer />
           </div>
-        </div>
       </div>
     </div>
   );

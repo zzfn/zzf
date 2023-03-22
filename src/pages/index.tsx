@@ -7,11 +7,7 @@ import type { GetStaticProps } from 'next';
 import { NextPageWithLayout } from './_app';
 import Link from 'next/link';
 import useFcp from '../hooks/useFcp';
-import Image from 'next/image';
-import { changelogList } from 'api/changelog';
 import dayjs from 'dayjs';
-import { diff } from '../utils/time';
-import { IconClose, IconCode, IconSearch } from '@oc/icon';
 import { getCdn } from '../utils/getCdn';
 import classNames from 'classnames';
 import { css } from '@emotion/css';
@@ -70,25 +66,28 @@ const Home: NextPageWithLayout = (props: HomeType) => {
           <Link key={article.id} target='_blank' href={`/article/${article.id}`}>
             <div
               className={classNames(
-                'bg-surface-1 rounded-3xl hover:bg-secondary-container cursor-pointer flow-root',
+                'group bg-surface-1 rounded-3xl group-hover:bg-secondary-container cursor-pointer flow-root',
                 css`
                   transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
                 `,
               )}
             >
               <div
-                className={css`
-                  background-repeat: no-repeat;
-                  background-position: 50%;
-                  background-size: cover;
-                  height: 200px;
-                  width: 100%;
-                  border-radius: 24px;
-                  overflow: hidden;
-                  background-image: url(${article.logo || getCdn('/midway/default-article.webp')});
-                `}
+                className={classNames(
+                  'w-full',
+                  'rounded-3xl',
+                  'overflow-hidden',
+                  'bg-cover',
+                  'bg-no-repeat',
+                  'h-48',
+                  'bg-center',
+                  css`
+                    background-image: url(${article.logo ||
+                    getCdn('/midway/default-article.webp')});
+                  `,
+                )}
               />
-              <div className={classNames('m-6')}>
+              <div className={classNames('m-6 h-32')}>
                 <span className='text-sm flex items-center gap-x-2'>
                   <span className='flex items-center gap-x-1 text-xm'>
                     <IconSymbols icon='label' /> {article.tag}

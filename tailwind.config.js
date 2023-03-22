@@ -19,6 +19,7 @@ module.exports = {
         primary: 'var(--md-sys-color-primary)',
         'on-primary': 'var(--md-sys-color-on-primary)',
         'on-secondary': 'var(--md-sys-color-on-secondary)',
+        'on-surface': 'var(--md-sys-color-on-surface)',
       },
       borderColor: {},
       backgroundColor: {
@@ -43,7 +44,7 @@ module.exports = {
             '--tw-prose-captions': 'var(--md-sys-color-on-surface)',
             '--tw-prose-code': 'var(--md-sys-color-primary)',
             '--tw-prose-pre-code': 'var(--md-sys-color-on-surface)',
-            '--tw-prose-pre-bg': 'var(--md-sys-color-surface-5)',
+            '--tw-prose-pre-bg': 'var(--md-sys-color-surface-1)',
             '--tw-prose-th-borders': 'var(--md-sys-color-on-surface)',
             '--tw-prose-td-borders': 'var(--divider)',
             maxWidth: 'auto',

@@ -51,9 +51,7 @@ const About = ({ serverProps }: any) => {
             />
           ))}
         </div>
-        <Alert>
-          please email <strong>me@ooxo.cc</strong> if u want to be my friend
-        </Alert>
+        please email <strong>me@ooxo.cc</strong> if u want to be my friend
         <p>你需要提供</p>
         <ul>
           <li>title: dawn-blog</li>
