@@ -13,7 +13,7 @@ function Footer(): JSX.Element {
         'mx-auto',
       )}
     >
-      <ul className='flex flex-wrap gap-x-6 gap-y-4'>
+      <ul className='flex flex-col medium:flex-row flex-wrap gap-x-6 gap-y-4'>
         <li>Copyright&copy;2020-{dayjs().format('YYYY')} </li>
         <li>OOXO.CC Inc. All rights reserved.</li>
         <li>

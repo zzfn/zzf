@@ -10,11 +10,6 @@ export const NAV_DATASOURCE = [
     icon: 'archive',
   },
   {
-    name: '标签',
-    path: '/tags',
-    icon: 'label',
-  },
-  {
     name: '留言',
     path: '/message',
     icon: 'chat',

@@ -11,9 +11,9 @@ module.exports = {
         18: '4.5rem',
       },
       screens: {
-        tablet: '640px',
-        laptop: '1024px',
-        desktop: '961px',
+        compact: {min:'599px'},
+        medium: {'min': '600px'},
+        expanded: {'min': '840px'},
       },
       colors: {
         primary: 'var(--md-sys-color-primary)',

@@ -23,7 +23,6 @@ const About = ({ serverProps }: any) => {
           <title>{getTitle('我的')}</title>
         </Head>
         <h3 className='text-primary font-bold text-xl my-3'>bio</h3>
-        <Image width={200} height={200} src={getCdn('/assets/nabi.webp')} alt='' />
         <p className='pl-3'>码农，软硬件爱好者，爱折腾</p>
         <h3 className='text-primary font-bold text-xl my-3'>connect</h3>
         <ul className='pl-3'>
@@ -83,7 +82,7 @@ const CardBio = ({ dataSource }: CardProps) => {
       rel='noreferrer'
       target='_blank'
       href={url}
-      className={classNames('flex', 'bg-comment', 'rounded-md', 'overflow-hidden', 'mb-2')}
+      className={classNames('flex', 'bg-comment', 'rounded-md', 'overflow-hidden', 'mb-2','bg-surface-5')}
     >
       <Image
         width={100}

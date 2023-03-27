@@ -66,14 +66,14 @@ const NavDraw = ({
                 'flex',
                 'px-6',
                 'items-center',
-                'text-base',
                 'w-full',
                 'group-hover:font-[700]',
+                'text-base'
               )}
               key={_.name}
               href={_.path}
             >
-              <IconSymbols className='group-hover:hov' icon={_.icon} />
+              <span className='text-2xl'><IconSymbols className='group-hover:hov' icon={_.icon} /></span>
               <span className='ml-4'>{_.name}</span>
               <IconSymbols className='ml-auto group-hover:hov' icon='arrow_forward' />
             </Link>

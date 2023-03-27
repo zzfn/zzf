@@ -13,7 +13,7 @@ import useMediaQuery from '../hooks/useMediaQuery';
 
 function DefaultLayout({ children }: { children: React.ReactElement }) {
   const [visible, setVisible] = useState(false);
-  const isWidthGreaterThan600 = useMediaQuery('(max-width:961px)');
+  const isWidthGreaterThan600 = useMediaQuery('(max-width:840px)');
   return (
     <div
       className={css`
@@ -26,7 +26,7 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
       {isWidthGreaterThan600 && <NavDraw visible={visible} setVisible={setVisible} />}
       <header
         className={classNames(
-          'flex w-full items-center h-16 shrink-0  desktop:hidden px-6 justify-between',
+          'flex w-full items-center h-16 shrink-0 expanded:hidden px-6 justify-between',
           css({
             borderBottom: '1px solid rgb(218,220,224)',
           }),
@@ -41,7 +41,7 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
       </header>
       <div
         className={classNames(
-          'desktop:pl-20',
+          'expanded:pl-20',
           'flex-col',
           'flex',
           css`
@@ -50,7 +50,7 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
         )}
       >
           <Aside />
-          <div className={classNames('container mx-auto px-2 pb-16')}>
+          <div className={classNames('container mx-auto px-4 medium:px-6')}>
             <main>{children}</main>
             <Footer />
           </div>

@@ -55,8 +55,7 @@ function Search(): JSX.Element {
           result.map((item) => <SearchArticleCard dataSource={item} key={item.id} />)
         ) : (
           <>
-            <LottiePlayer size={100} url={getCdn('/assets/loading.json')} />
-            <h3 className='my-3'>热搜</h3>
+            <h3 className='my-3'>你可能需要</h3>
             <Space>
               {data.map((item: string) => (
                 <Tag

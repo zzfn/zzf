@@ -60,7 +60,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
       <div
         className={classNames([
           css({
-            backgroundImage: `url(${serverProps.logo || getCdn('/midway/denis.webp')})`,
+            backgroundImage: `url(${serverProps.logo || getCdn('/assets/default.webp')})`,
             borderRadius: '24px',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: '0 50%',

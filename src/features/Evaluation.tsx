@@ -1,18 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { listDiscuss, saveDiscuss } from 'api/discuss';
-import { Modal, Comment, Input, Alert, Tag, Tooltip, Button } from '@oc/design';
+import { Button, Comment, Input, Message, Tooltip } from '@oc/design';
 import { createAvatar } from '@dicebear/core';
 import { adventurer } from '@dicebear/collection';
-import { Message } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
 import { list2tree } from 'utils/list2tree';
 import { diff } from 'utils/time';
 import Monitor from '../utils/monitor';
 import Image from 'next/image';
-import { IconHome, IconReply, IconUpdate } from '@oc/icon';
 import IconSymbols from '../components/IconSymbols';
 
-const EvaluationCard = ({ record, children, onReply }: any) => {
+const EvaluationCard = ({ record, children, onReply, visible }: any) => {
   const avatar = useMemo(() => {
     return createAvatar(adventurer, {
       size: 128,
@@ -23,7 +21,7 @@ const EvaluationCard = ({ record, children, onReply }: any) => {
   }, [record.createBy]);
   return (
     <Comment
-      avatar={avatar}
+      avatar={<img className={'w-10 h-10'} src={avatar} alt='' />}
       author={record.createBy.slice(-6)}
       content={`${record.content}`}
       actions={
@@ -38,13 +36,11 @@ const EvaluationCard = ({ record, children, onReply }: any) => {
               <span>{diff(record.createTime)}</span>
             </Tooltip>
           </li>
-          <li
-            onClick={onReply}
-            className='flex items-center gap-x-1 cursor-pointer'
-            key='reply'
-          >
+          <li onClick={onReply} className='flex items-center gap-x-1 cursor-pointer' key='reply'>
             <IconSymbols icon='reply' />
-            <span className='block'>回复</span>
+            <Tooltip placement='bottom' content='功能调整中，暂不可用'>
+              <span className='block'>回复</span>
+            </Tooltip>
           </li>
         </ul>
       }
@@ -122,6 +118,7 @@ function Evaluation(props: any) {
           >
             {item.children?.map((child: any) => (
               <EvaluationCard
+                visible={visible}
                 onReply={() => {
                   setVisible(true);
                   setReply(child.createBy);
@@ -134,21 +131,6 @@ function Evaluation(props: any) {
           </EvaluationCard>
         );
       })}
-      <Modal
-        title='评论'
-        visible={visible}
-        onCancel={() => setVisible(false)}
-        onConfirm={handleComment}
-      >
-        <Alert>根据您的设备特征计算出设备指纹，并作为用户标识</Alert>
-        设备指纹为<Tag className='mb-2'>{visitorId}</Tag>
-        <Input
-          type='textarea'
-          onChange={(e) => setContent(e.target.value)}
-          value={content}
-          placeholder='请输入您的意见'
-        ></Input>
-      </Modal>
     </>
   );
 }

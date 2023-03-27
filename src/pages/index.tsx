@@ -83,7 +83,7 @@ const Home: NextPageWithLayout = (props: HomeType) => {
                   'bg-center',
                   css`
                     background-image: url(${article.logo ||
-                    getCdn('/midway/default-article.webp')});
+                    getCdn('/assets/default.webp')});
                   `,
                 )}
               />

@@ -46,6 +46,7 @@ const nav = css`
     }
 
     [data-icon] {
+      color: var(--md-sys-color-primary);
       font-variation-settings: 'FILL' 1, 'wght' 400;
     }
   }
@@ -60,7 +61,7 @@ const Aside = () => {
         'left-0',
         'top-0',
         'hidden',
-        'desktop:flex',
+        'expanded:flex',
         'pb-6',
         'flex-col',
         'justify-between',
@@ -107,7 +108,7 @@ const Aside = () => {
                   }),
                 )}
               >
-                <IconSymbols className={classNames('group-hover:icon-fill-1')} icon={_.icon} />
+                <IconSymbols className={classNames('group-hover:icon-fill-1 group-hover:text-primary')} icon={_.icon} />
               </span>
               {_.name}
             </Link>
