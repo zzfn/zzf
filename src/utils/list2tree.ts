@@ -1,6 +1,6 @@
 export function list2tree(list: any[]) {
   return list.reduce((prev: any, curr: any) => {
-    const obj = list.find((item: any) => item.id === curr['replyId']);
+    const obj = list.find((item: any) => item.id === curr['parentCommentId']);
     if (obj) {
       // 存在父节点
       !Object.prototype.hasOwnProperty.call(obj, 'children') && (obj['children'] = []);

@@ -24,9 +24,11 @@ const nav = css`
     }
   }
 
-  &[data-active='active'] {
+  &[data-active='true'] {
     color: var(--md-sys-color-primary);
-
+    [data-icon]{
+      font-variation-settings: 'FILL' 1, 'wght' 400;
+    }
     &:before {
       visibility: visible;
       transform: scaleY(1);
@@ -59,8 +61,8 @@ const NavDraw = ({
             <Link
               data-active={
                 _.path === '/'
-                  ? router.pathname === '/' && 'active'
-                  : router.pathname.includes(_.path) && 'active'
+                  ? router.pathname === '/' && 'true'
+                  : router.pathname.includes(_.path) && 'true'
               }
               className={classNames(
                 'flex',
@@ -68,13 +70,13 @@ const NavDraw = ({
                 'items-center',
                 'w-full',
                 'group-hover:font-[700]',
-                'text-base'
+                nav
               )}
               key={_.name}
               href={_.path}
             >
-              <span className='text-2xl'><IconSymbols className='group-hover:hov' icon={_.icon} /></span>
-              <span className='ml-4'>{_.name}</span>
+              <IconSymbols size={24} className='group-hover:hov' icon={_.icon} />
+              <span className='ml-4 text-base'>{_.name}</span>
               <IconSymbols className='ml-auto group-hover:hov' icon='arrow_forward' />
             </Link>
           </ListItem>
