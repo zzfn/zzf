@@ -96,10 +96,10 @@ export const articleCount = () => {
     url: '/article/count',
   });
 };
-export const sortByField = (params:{field:string}) => {
+export const sortByField = (params: { field: string }) => {
   return http<any>({
     method: 'get',
     url: '/article/sortByField',
-    params
+    params,
   });
 };

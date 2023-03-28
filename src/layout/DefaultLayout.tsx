@@ -1,21 +1,61 @@
-import { Layout } from '@oc/design';
-import Header from './header';
 import Footer from './footer';
-import type { ReactNode } from 'react';
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import Link from 'next/link';
+import LottiePlayer from '../components/LottiePlayer';
+import { getCdn } from '../utils/getCdn';
+import IconSymbols from '../components/IconSymbols';
+import { IconButton } from '@oc/design';
+import NavDraw from './NavDraw';
+import Aside from './Aside';
+import { css } from '@emotion/css';
+import useMediaQuery from '../hooks/useMediaQuery';
 
-function DefaultLayout({ children }: { children: ReactNode }) {
+function DefaultLayout({ children }: { children: React.ReactElement }) {
+  const [visible, setVisible] = useState(false);
+  const isWidthGreaterThan600 = useMediaQuery('(max-width:840px)');
   return (
-    <Layout className='min-h-screen'>
-      <Layout.Header className='container px-3 max-w-4xl'>
-        <Header />
-      </Layout.Header>
-      <Layout.Main className='container py-3 px-3 max-w-4xl'>
-        {children}
-      </Layout.Main>
-      <Layout.Footer className='container'>
-        <Footer />
-      </Layout.Footer>
-    </Layout>
+    <div
+      className={css`
+        --nav-width: 80px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      `}
+    >
+      {isWidthGreaterThan600 && <NavDraw visible={visible} setVisible={setVisible} />}
+      <header
+        className={classNames(
+          'flex w-full items-center h-16 shrink-0 expanded:hidden px-6 justify-between',
+          css({
+            borderBottom: '1px solid rgb(218,220,224)',
+          }),
+        )}
+      >
+        <IconButton onClick={() => setVisible(true)} className={classNames('text-2xl')}>
+          <IconSymbols icon='menu' />
+        </IconButton>
+        <Link className={classNames('text-2xl')} href='/'>
+          <LottiePlayer size={50} url={getCdn('/assets/logo.json')} />
+        </Link>
+      </header>
+      <div
+        className={classNames(
+          'expanded:pl-20',
+          'flex-col',
+          'flex',
+          css`
+            flex: 1 1 auto;
+          `,
+        )}
+      >
+          <Aside />
+          <div className={classNames('container mx-auto px-4 medium:px-6')}>
+            <main>{children}</main>
+            <Footer />
+          </div>
+      </div>
+    </div>
   );
 }
 

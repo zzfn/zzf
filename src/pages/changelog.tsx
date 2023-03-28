@@ -4,8 +4,11 @@ import dayjs from 'dayjs';
 import classNames from 'classnames';
 import { Card } from '@oc/design';
 import { translateMarkdown } from '../utils/translateMarkdown';
-import Head from "next/head";
-import { getTitle } from "../utils/getTitle";
+import Head from 'next/head';
+import { getTitle } from '../utils/getTitle';
+import Image from 'next/image';
+import { getCdn } from '../utils/getCdn';
+import React from 'react';
 
 const Changelog = (props: any) => {
   const { serverProps } = props;
@@ -14,10 +17,11 @@ const Changelog = (props: any) => {
       <Head>
         <title>{getTitle('公告')}</title>
       </Head>
+      <h1 className='mt-18 mb-8 text-2.5xl text-center'>公告</h1>
       {serverProps.map((item: any) => (
         <li key={item.id} className='mb-2'>
-          <Card>
-            <h3 className={classNames('flex', 'justify-between','text-base','font-semibold')}>
+          <Card variant='filled'>
+            <h3 className={classNames('flex', 'justify-between', 'text-base', 'font-semibold')}>
               <span>{item.title}</span>
               <span>{dayjs(item.createTime).format('YYYY-MM-DD')}</span>
             </h3>

@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode } from 'react';
+import { useEffect, useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Head from 'next/head';
-import '@oc/design/dist/bundle.min.css';
 import 'styles/globals.scss';
 import 'tailwindcss/tailwind.css';
 import { getTitle } from '../utils/getTitle';
@@ -11,7 +11,6 @@ import { Provider } from 'react-redux';
 import { store } from 'store';
 import DefaultLayout from 'layout/DefaultLayout';
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -31,17 +30,6 @@ type AppPropsWithLayout = AppProps & {
 
 function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
   const [queryClient] = useState(() => new QueryClient());
-  const handleWindowResize = () => {
-    const width = window.innerWidth;
-    const isMobile = width < 768;
-    store.dispatch({
-      type: 'screen/updateScreen',
-      payload: {
-        isMobile,
-        isDesktop: !isMobile,
-      },
-    });
-  };
   const getLayout = Component.getLayout || ((page) => <DefaultLayout>{page}</DefaultLayout>);
   useEffect(() => {
     window.addEventListener('unhandledrejection', (e) => {
@@ -64,18 +52,15 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
       },
       true,
     );
-    handleWindowResize();
-    window.addEventListener('resize', handleWindowResize);
     const visitorId = localStorage.getItem('visitorId');
     if (visitorId) {
       store.dispatch({ type: 'user/updateUserId', payload: visitorId });
     }
-    return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/*<ReactQueryDevtools initialIsOpen={false} />*/}
         <Hydrate state={pageProps.dehydratedState}>
           <Provider store={store}>
             <Head>
@@ -92,9 +77,9 @@ function App({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                 content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
               />
               <meta name='applicable-device' content='pc,mobile' />
-              <meta name='Copyright' content='OrLuna' />
-              <meta name='Author' content='OrLuna' />
-              <meta name='Designer' content='OrLuna' />
+              <meta name='Copyright' content='oc' />
+              <meta name='Author' content='oc' />
+              <meta name='Designer' content='oc' />
             </Head>
             {getLayout(<Component {...pageProps} />)}
           </Provider>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { getTitle } from '../../utils/getTitle';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import classNames from 'classnames';
-import { Alert } from '@oc/design';
+import { Alert, Card } from '@oc/design';
 
 type TagType = {
   title: string;
@@ -19,13 +19,11 @@ export default function Tag(props: NextProps<TagType>): JSX.Element {
         <title>{getTitle(serverProps.title)}</title>
       </Head>
       <Alert type='info'>{serverProps.title}</Alert>
-      <ul className={classNames('font-mono', 'text-base','text-[var(--primary-text)]')}>
+      <ul className={classNames('text-base', 'text-[var(--primary-text)]')}>
         {serverProps.articleList.map((item) => (
-          <li key={item.id}>
-            <span>{item.createTime}</span>-
-            <Link href={`/article/${item.id}`}>
-             {item.title}
-            </Link>
+          <li className={classNames('bg-surface')} key={item.id}>
+            <span className='font-mono'>{item.createTime}</span>-
+            <Link href={`/article/${item.id}`}>{item.title}</Link>
           </li>
         ))}
       </ul>

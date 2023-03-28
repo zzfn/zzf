@@ -11,16 +11,16 @@ const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
     <>
       <div className='flex'>
         <Link target='_blank' href={`/article/${dataSource.id}`}>
-            <h3
-              dangerouslySetInnerHTML={{
-                __html: dataSource.title,
-              }}
-              className={classNames( 'font-bold', 'text-xl','text-primary')}
-            />
+          <h3
+            dangerouslySetInnerHTML={{
+              __html: dataSource.title,
+            }}
+            className={classNames('font-bold', 'text-xl', 'text-primary')}
+          />
         </Link>
       </div>
       <div
-        className={classNames('break-all', 'px-1', 'mb-6','text-secondary')}
+        className={classNames('break-all', 'px-1', 'mb-6', 'text-secondary')}
         dangerouslySetInnerHTML={{
           __html: dataSource.content,
         }}

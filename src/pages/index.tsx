@@ -1,19 +1,17 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import { articleCount, lastCreated, lastUpdated, sortByField } from 'api/article';
-import { Alert, Button, Card, Tag } from '@oc/design';
+import { articleCount, sortByField } from 'api/article';
+import { Alert, Button, Card, List, ListItem, Tab, Tabs, Tag } from '@oc/design';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
 import { NextPageWithLayout } from './_app';
 import Link from 'next/link';
 import useFcp from '../hooks/useFcp';
-import Image from 'next/image';
-import { changelogList } from 'api/changelog';
 import dayjs from 'dayjs';
-import { diff } from '../utils/time';
-import { IconSafe, IconSchedule, IconTag } from '@oc/icon';
 import { getCdn } from '../utils/getCdn';
 import classNames from 'classnames';
+import { css } from '@emotion/css';
+import IconSymbols from '../components/IconSymbols';
 
 type HomeType = {
   articleLatest: Article[];
@@ -25,13 +23,13 @@ const Home: NextPageWithLayout = (props: HomeType) => {
   const loadTime = useFcp();
   const [filter, setFilter] = useState('updateTime');
   const [list, setList] = useState(articleLatest);
-  const [loading,setLoading] = useState(false);
-  const handleClick = (field: string) => async () => {
-    if(loading)return
+  const [loading, setLoading] = useState(false);
+  const handleClick = async (field: string) => {
+    if (loading) return;
     setFilter(field);
-    setLoading(true)
+    setLoading(true);
     const { data } = await sortByField({ field });
-    setLoading(false)
+    setLoading(false);
     setList(data);
   };
   return (
@@ -39,70 +37,80 @@ const Home: NextPageWithLayout = (props: HomeType) => {
       <Head>
         <title>{getTitle('首页')}</title>
       </Head>
-      <Alert className='mb-2'>
-        <span className='flex justify-between w-full'>
-          <span>{changeLog.title}</span>
-          <time className='text-[var(--secondary-text)]'>
-            {dayjs(changeLog.updateTime).format('YYYY-MM-DD')}
-          </time>
-        </span>
-      </Alert>
-      <Card
-        className='mb-3'
-        title={
-          <span className='flex justify-between w-full'>
-            <span className='flex-shrink-0'>首页</span>
-            <span className='flex items-center gap-x-2'>
-              <Tag>文章数 {articleCount.article}</Tag>
-              <Tag>标签数 {articleCount.tag}</Tag>
-              <Tag>本次加载时间 {loadTime} ms</Tag>
-            </span>
-          </span>
-        }
-      >
-        <ul className='h-10 leading-10 flex justify-around text-[var(--secondary-text)]'>
-          {[
-            { label: '最近更新', value: 'updateTime', icon: IconSafe },
-            { label: '最近创建', value: 'createTime', icon: IconSchedule },
-            { label: '浏览量', value: 'viewCount', icon: IconTag },
-          ].map((_) => (
-            <li
-              onClick={handleClick(_.value)}
-              key={_.value}
+      <h1 className='mt-18 mb-8 text-2.5xl text-center'>首页</h1>
+      <Tabs className='my-4' onChange={handleClick}>
+        <Tab
+          className='cursor-pointer'
+          key='updateTime'
+          icon={<IconSymbols className='text-2xl' icon='schedule' />}
+        >
+          最近更新
+        </Tab>
+        <Tab
+          className='cursor-pointer'
+          key='createTime'
+          icon={<IconSymbols className='text-2xl' icon='add_circle' />}
+        >
+          最近创建
+        </Tab>
+        <Tab
+          className='cursor-pointer'
+          key='viewCount'
+          icon={<IconSymbols className='text-2xl' icon='visibility' />}
+        >
+          浏览量
+        </Tab>
+      </Tabs>
+      <div className='grid desktop:grid-cols-3 gap-2'>
+        {list.map((article: Article) => (
+          <Link key={article.id} target='_blank' href={`/article/${article.id}`}>
+            <div
               className={classNames(
-                filter === _.value &&
-                  'text-[var(--accent)] font-semibold border-b-2 border-current',
-                'flex-1 text-center cursor-pointer',
+                'group bg-surface-1 rounded-3xl group-hover:bg-secondary-container cursor-pointer flow-root',
+                css`
+                  transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+                `,
               )}
             >
-              {React.createElement(_.icon, { className: 'mr-1' })}
-              {_.label}
-            </li>
-          ))}
-        </ul>
-      </Card>
-      {list.map((article: Article) => (
-        <Card className='flex py-2 mb-3' key={article.id}>
-          <div className='flex-shrink-0'>
-            <Image
-              className='mr-3 object-cover rounded-lg h-16 w-16'
-              width={64}
-              height={64}
-              src={article.logo || getCdn('/midway/default-article.webp')}
-              alt={article.title}
-            />
-          </div>
-          <div>
-            <Link href={`/article/${article.id}`} className='text-[var(--primary-text)] font-semibold'>{article.title}</Link>
-            <div className='text-[var(--secondary-text)] text-sm'>
-              {article.tag} · {article.viewCount} 个阅读 · 更新于：{diff(article.updateTime)}
+              <div
+                className={classNames(
+                  'w-full',
+                  'rounded-3xl',
+                  'overflow-hidden',
+                  'bg-cover',
+                  'bg-no-repeat',
+                  'h-48',
+                  'bg-center',
+                  css`
+                    background-image: url(${article.logo ||
+                    getCdn('/assets/default.webp')});
+                  `,
+                )}
+              />
+              <div className={classNames('m-6 h-32')}>
+                <span className='text-sm flex items-center gap-x-2'>
+                  <span className='flex items-center gap-x-1 text-xm'>
+                    <IconSymbols icon='label' /> {article.tag}
+                  </span>
+                  <span className='flex items-center gap-x-1 text-sm'>
+                    <IconSymbols icon='schedule' />
+                    {dayjs(article.updateTime).format('YYYY-MM-DD')}
+                  </span>
+                  <span className='flex items-center gap-x-1 text-sm'>
+                    <IconSymbols icon='visibility' /> {article.viewCount}
+                  </span>
+                </span>
+                <div className='text-2xl text-[var(--primary-text)] font-semibold my-4'>
+                  {article.title}
+                </div>
+                <div className='text-xs line-clamp-2'>{article.summary}</div>
+              </div>
             </div>
-            <div className='text-[var(--secondary-text)] text-xs'>{article.summary}</div>
-          </div>
-        </Card>
-      ))}
+          </Link>
+        ))}
+      </div>
       <Link className='col-span-2' href='/archive'>
-        <Button className='w-full' type='primary'>
+        <Button className='w-full my-4' variant='outlined'>
           查看更多
         </Button>
       </Link>
@@ -111,14 +119,12 @@ const Home: NextPageWithLayout = (props: HomeType) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await sortByField({field: 'updateTime'});
+  const { data } = await sortByField({ field: 'updateTime' });
   const res = await articleCount();
-  const r = await changelogList();
   return {
     props: {
       articleLatest: data,
       articleCount: res.data,
-      changeLog: r.data[0],
     },
     revalidate: 5,
   };

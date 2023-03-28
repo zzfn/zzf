@@ -1,81 +1,74 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: ['./src/**/*.tsx'],
   theme: {
     extend: {
+      fontSize: {
+        '2.5xl': ['1.75rem', '2rem'],
+      },
+      spacing: {
+        18: '4.5rem',
+      },
+      screens: {
+        compact: {min:'599px'},
+        medium: {'min': '600px'},
+        expanded: {'min': '840px'},
+      },
       colors: {
-        'primary-1': 'var(--color-primary-1)',
-        'primary-2': 'var(--color-primary-2)',
-        'primary-3': 'var(--color-primary-3)',
-        'primary-4': 'var(--color-primary-4)',
-        'neutral-1': 'var(--color-neutral-4)',
-        'neutral-2': 'var(--color-neutral-6)',
-        'neutral-3': 'var(--color-neutral-8)',
-        'neutral-4': 'var(--color-neutral-10)',
-        'link-1': 'var(--color-link-1)',
-        'link-2': 'var(--color-link-2)',
-        'link-3': 'var(--color-link-3)',
-        'link-4': 'var(--color-link-4)',
-        primary: 'var(--primary-text)',
-        secondary: 'var(--secondary-text)',
-        link: 'var(--blue-link)',
+        primary: 'var(--md-sys-color-primary)',
+        'on-primary': 'var(--md-sys-color-on-primary)',
+        'on-secondary': 'var(--md-sys-color-on-secondary)',
+        'on-surface': 'var(--md-sys-color-on-surface)',
       },
-      borderColor: {
-        'neutral-1': 'var(--color-border-1)',
-        'neutral-2': 'var(--color-border-2)',
-        'neutral-3': 'var(--color-border-3)',
-        'neutral-4': 'var(--color-border-4)',
-        surface: 'var(--surface-background)',
-      },
+      borderColor: {},
       backgroundColor: {
-        'neutral-1': 'var(--color-fill-1)',
-        'neutral-2': 'var(--color-fill-2)',
-        'neutral-3': 'var(--color-fill-3)',
-        'neutral-4': 'var(--color-fill-4)',
-        surface: 'var(--surface-background)',
-        comment: 'var(--comment-background)',
+        surface: 'var(--md-sys-color-surface)',
+        'surface-1': 'var(--md-sys-color-surface-1)',
+        'surface-5': 'var(--md-sys-color-surface-5)',
+        'secondary-container': 'var(--md-sys-color-secondary-container)',
       },
       typography: {
         DEFAULT: {
           css: {
-            '--tw-prose-body': 'var(--primary-text)',
-            '--tw-prose-headings': 'var(--primary-text)',
-            '--tw-prose-lead': 'var(--accent)',
-            '--tw-prose-links': 'var(--accent)',
-            '--tw-prose-bold':  'var(--primary-text)',
+            '--tw-prose-body': 'var(--md-sys-color-on-surface)',
+            '--tw-prose-headings': 'var(--md-sys-color-on-surface)',
+            '--tw-prose-lead': 'var(--md-sys-color-primary)',
+            '--tw-prose-links': 'var(--md-sys-color-primary)',
+            '--tw-prose-bold': 'var(--md-sys-color-on-surface)',
             '--tw-prose-counters': 'var(--secondary-text)',
             '--tw-prose-bullets': 'var(--secondary-text)',
             '--tw-prose-hr': 'var(--divider)',
-            '--tw-prose-quotes': 'var(--primary-text)',
-            '--tw-prose-quote-borders': 'var(--accent)',
-            '--tw-prose-captions': 'var(--primary-text)',
-            '--tw-prose-code': 'var(--accent)',
-            '--tw-prose-pre-code': 'var(--primary-text)',
-            '--tw-prose-pre-bg': 'var(--comment-background)',
-            '--tw-prose-th-borders': 'var(--primary-text)',
+            '--tw-prose-quotes': 'var(--md-sys-color-on-surface)',
+            '--tw-prose-quote-borders': 'var(--md-sys-color-primary)',
+            '--tw-prose-captions': 'var(--md-sys-color-on-surface)',
+            '--tw-prose-code': 'var(--md-sys-color-primary)',
+            '--tw-prose-pre-code': 'var(--md-sys-color-on-surface)',
+            '--tw-prose-pre-bg': 'var(--md-sys-color-surface-1)',
+            '--tw-prose-th-borders': 'var(--md-sys-color-on-surface)',
             '--tw-prose-td-borders': 'var(--divider)',
-            blockquote:{
-              code:{
-                color: 'var(--accent)',
-              }
+            maxWidth: 'auto',
+            blockquote: {
+              code: {
+                color: 'var(--md-sys-color-primary)',
+              },
             },
-            pre:{
+            pre: {
               overflow: 'initial',
               paddingBottom: 0,
-              code:{
+              code: {
                 display: 'block',
                 overflowX: 'auto',
                 paddingBottom: '0.8571429em',
-              }
-            }
+              },
+            },
           },
         },
       },
       fontFamily: {
-        'mono': ['JetBrainsMono', ...defaultTheme.fontFamily.mono],
+        mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono],
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/line-clamp')],
 };

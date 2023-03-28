@@ -1,10 +1,10 @@
-import { Head, Html, Main, NextScript } from "next/document";
+import { Head, Html, Main, NextScript } from 'next/document';
+import Link from 'next/link';
 
 function Document() {
   return (
     <Html>
-      <Head>
-      </Head>
+      <Head></Head>
       <body>
         <Main />
         <NextScript />

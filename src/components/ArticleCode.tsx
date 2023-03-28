@@ -15,24 +15,28 @@ import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-ignore';
 import 'prismjs/components/prism-git';
 
-Prism.manual = true
+Prism.manual = true;
 
 type CodeProps = {
   ({ language, code }: { language: string; code: string }): JSX.Element;
 };
 
-const ArticleCode: CodeProps = ({ language='', code }) => {
-  const lang = language.toLowerCase() || 'markup'
+const ArticleCode: CodeProps = ({ language = '', code }) => {
+  const lang = language.toLowerCase() || 'markup';
   return (
     <pre className='relative'>
       <code
         dangerouslySetInnerHTML={{
-          __html: Prism.highlight(code, Prism.languages[lang],lang)
+          __html: Prism.highlight(code, Prism.languages[lang], lang),
         }}
         className={`language-${language}`}
         lang={language}
       />
-      {language && <div className="absolute -top-5 right-6 bg-comment h-5 leading-5 px-3 rounded-t">{language}</div>}
+      {language && (
+        <div className='absolute -top-5 right-6 h-5 leading-5 px-3 rounded-t bg-surface-1'>
+          {language}
+        </div>
+      )}
     </pre>
   );
 };
