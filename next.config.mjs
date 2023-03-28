@@ -1,9 +1,9 @@
 export default {
   output: 'standalone',
-  // assetPrefix:
-  //   process.env.NODE_ENV === 'production' && !process.env.VERCEL
-  //     ? 'https://cdn.zzfzzf.com/zzf'
-  //     : '/',
+  assetPrefix:
+    process.env.NODE_ENV === 'production' && !process.env.VERCEL
+      ? 'https://cdn.zzfzzf.com/zzf'
+      : '/',
   reactStrictMode: true,
   images: {
     unoptimized: true,
