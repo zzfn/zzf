@@ -3,11 +3,11 @@ import Head from 'next/head';
 import { listArchives, listTags } from 'services/article';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
-import { List, ListItem, Tag } from '@oc/design';
+import { List, ListItem, Tabs, Tag, Tab } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
-import classNames from 'classnames';
 import Link from 'next/link';
 import dayjs from 'dayjs';
+import { css } from '@emotion/css';
 
 type TagsProps = {
   count: number;
@@ -33,9 +33,18 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       <Head>
         <title>{getTitle('标签')}</title>
       </Head>
-      <div className='flex gap-2 mb-2'>
+      <div className='flex flex-wrap gap-2 mb-2'>
         {serverProps.tags.map((item) => (
-          <Tag key={item.tag} onClick={() => setCurrentTag(item.tag)}>
+          <Tag className={currentTag === item.tag && css({
+            "&[role]":{
+              backgroundColor: 'var(--md-sys-color-inverse-surface)',
+              color: 'var(--md-sys-color-inverse-on-surface)',
+              '&:hover': {
+                backgroundColor: 'var(--md-sys-color-inverse-surface)',
+                color: 'var(--md-sys-color-inverse-on-surface)',
+              }
+            }
+          })} key={item.tag} onClick={() => setCurrentTag(item.tag)}>
             # {item.tag}
             <span className='text-neutral-1 ml-2'>{item.count}</span>
           </Tag>

@@ -24,16 +24,13 @@ body {
   font-size: 16px;
   background-color: var(--md-sys-color-background);
   color: var(--md-sys-color-on-background);
-  //overflow-y: scroll;
+  overflow-y: overlay;
   @apply font-sans;
 }
 html {
   word-break: break-all;
   scroll-behavior: smooth;
 }
-//body {
-//  font-size: 13px;
-//}
 
 
 em {

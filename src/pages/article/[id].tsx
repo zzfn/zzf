@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import type { NextPageWithLayout } from '../_app';
 import { getArticle, listArchives, updateView } from 'services/article';
 import { translateMarkdown } from 'utils/translateMarkdown';
@@ -7,15 +7,13 @@ import Zooming from 'zooming';
 import { getTitle } from '../../utils/getTitle';
 import classNames from 'classnames';
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import Evaluation from 'features/Evaluation';
 import { useDispatch } from 'react-redux';
 import type { Dispatch } from 'store';
-import Image from 'next/image';
 import ArticleNav from '../../components/ArticleNav';
 import { getCdn } from '../../utils/getCdn';
 import { Progress } from '@oc/design';
 import { css } from '@emotion/css';
-
+import Comments from 'features/comments/Comments';
 interface Data {
   content?: string;
   createTime?: string;
@@ -81,7 +79,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
         ])}
       >
       </div>
-      <h1 className={classNames(  'text-2xl', 'font-medium', 'text-4xl')}>{serverProps.title}</h1>
+      <h1 className={classNames('text-2xl', 'font-medium', 'text-4xl')}>{serverProps.title}</h1>
       <p className='text-base'>{serverProps.summary}</p>
       <ul
         className={classNames(
@@ -124,6 +122,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
         />
         <ArticleNav source={serverProps.content} />
       </div>
+      <Comments id={serverProps.id} />
     </>
   );
 };
