@@ -108,9 +108,25 @@ const CommentPopover = function ({ children, dataSource = {}, onSuccess }: any) 
     {children}
   </Popover>
 }
+
+function Footer({ dataSource, refetch }: { dataSource: any, refetch: any }) {
+  return <footer className='flex items-center text-sm my-2 text-[var(--md-ref-palette-neutral-60)]'>
+    <IconSymbols icon="location_on" className='ml-2 mr-1' />
+    {dataSource.address}
+    <IconSymbols icon="update" className='ml-2 mr-1' />
+    <Tooltip content={dataSource.createTime}>
+      <time>{diff(dataSource.createTime)}</time>
+    </Tooltip>
+    <IconSymbols icon="quickreply" className='mr-1 ml-2' />
+    <CommentPopover dataSource={dataSource} onSuccess={refetch}>
+      <span className='cursor-pointer hover:text-primary'>
+        回复
+      </span>
+    </CommentPopover>
+  </footer>
+}
 function Comments(props: any) {
   const { id } = props;
-  const [content, setContent] = useState('');
   const { data = [], refetch } = useQuery([id], () =>
     listDiscuss({ id }).then(({ data }) => buildTree(data).map((item: any) => ({ ...item, children: tree2list(item.children) }))),
   );
@@ -136,30 +152,7 @@ function Comments(props: any) {
                 </div>
                 <p className='my-2'>{item.content}</p>
               </div>
-              <footer className='flex items-center text-sm my-2 text-[var(--md-ref-palette-neutral-60)]'>
-                <IconSymbols icon="location_on" className='mr-1' />
-                {item.address}
-                <IconSymbols icon="update" className='mr-1 ml-2' />
-                <Tooltip content={item.createTime}>
-                  <time>{diff(item.createTime)}</time>
-                </Tooltip>
-                <IconSymbols icon="quickreply" className='mr-1 ml-2' />
-                <CommentPopover dataSource={item} onSuccess={refetch}>
-                  <span className='cursor-pointer'>
-                    回复
-                  </span>
-                </CommentPopover>
-                <div>
-                  {
-                    item.showReply && <Input
-                      type='textarea'
-                      onChange={(e) => setContent(e.target.value)}
-                      value={content}
-                      placeholder='说点什么'
-                    />
-                  }
-                </div>
-              </footer>
+              <Footer dataSource={item} refetch={refetch}/>
               <div>
                 {
                   item.children?.map((_: any) => <div key={_.id} className='flex items-start gap-x-4'>
@@ -171,18 +164,7 @@ function Comments(props: any) {
                         </div>
                         <p className='flex'><span className='text-primary flex mr-2'>@{_.replyUserId?.slice(0, 6)}</span>{_.content}</p>
                       </div>
-                      <footer className='flex items-center text-sm my-2 text-[var(--md-ref-palette-neutral-60)]'>
-                        <IconSymbols icon="location_on" className='ml-2 cursor-pointer' />
-                        {_.address}
-                        <IconSymbols icon="update" className='ml-2 cursor-pointer' />
-                        <time>{diff(_.createTime)}</time>
-                        <IconSymbols icon="quickreply" className='mr-1 ml-2' />
-                        <CommentPopover dataSource={_} onSuccess={refetch}>
-                          <span className='cursor-pointer'>
-                            回复
-                          </span>
-                        </CommentPopover>
-                      </footer>
+                      <Footer dataSource={_} refetch={refetch}/>
                     </div>
                   </div>
                   )
