@@ -122,7 +122,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
         />
         <ArticleNav source={serverProps.content} />
       </div>
-      <Comments id={serverProps.id} />
+      <Comments postId={serverProps.id} />
     </>
   );
 };

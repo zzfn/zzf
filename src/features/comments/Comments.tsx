@@ -126,9 +126,9 @@ function Footer({ dataSource, refetch }: { dataSource: any, refetch: any }) {
   </footer>
 }
 function Comments(props: any) {
-  const { id } = props;
-  const { data = [], refetch } = useQuery([id], () =>
-    listDiscuss({ id }).then(({ data }) => buildTree(data).map((item: any) => ({ ...item, children: tree2list(item.children) }))),
+  const { postId } = props;
+  const { data = [], refetch } = useQuery([postId], () =>
+    listDiscuss({ id:postId }).then(({ data }) => buildTree(data).map((item: any) => ({ ...item, children: tree2list(item.children) }))),
   );
 
   return (

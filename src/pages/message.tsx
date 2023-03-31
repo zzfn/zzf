@@ -11,7 +11,7 @@ const Message: NextPageWithLayout = () => {
         <title>{getTitle('留言')}</title>
       </Head>
       <h1 className='mt-18 mb-8 text-2.5xl text-center'>留言</h1>
-      <Comments id='message' />
+      <Comments postId='message' />
     </>
   );
 };
