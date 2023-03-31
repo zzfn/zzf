@@ -35,12 +35,9 @@ export const listTags = (params: Record<string, never>) => {
     params,
   });
 };
-type ArticleType = {
-  title: string;
-  articleList: any[];
-};
+
 export const listArchives = (params: Record<string, string>) => {
-  return http<ArticleType>({
+  return http<any[]>({
     method: 'get',
     url: '/article/list',
     params,

@@ -51,7 +51,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
         ))}
       </div>
       <List>
-        {data?.articleList.map((item) => (
+        {data?.map((item) => (
           <ListItem key={item.id}>
             <span className='font-mono mr-3'>{dayjs(item.createTime).format('YYYY-MM-DD')}</span>
             <Link className='hover:underline underline-offset-2' href={`/article/${item.id}`}>
