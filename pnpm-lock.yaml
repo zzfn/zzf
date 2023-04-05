@@ -20,8 +20,8 @@ dependencies:
     specifier: ^1.0.7
     version: 1.0.7
   '@oc/design':
-    specifier: ^0.0.20
-    version: 0.0.20(@types/react@18.0.33)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.0.21
+    version: 0.0.21(@types/react@18.0.33)(react-dom@18.2.0)(react@18.2.0)
   '@oc/icon':
     specifier: ^0.0.19
     version: 0.0.19
@@ -1124,6 +1124,16 @@ packages:
       stylis: 4.1.3
     dev: false
 
+  /@emotion/cache@11.10.7:
+    resolution: {integrity: sha512-VLl1/2D6LOjH57Y8Vem1RoZ9haWF4jesHDGiHtKozDQuBIkJm2gimVo0I02sWCuzZtVACeixTVB4jeE8qvCBoQ==}
+    dependencies:
+      '@emotion/memoize': 0.8.0
+      '@emotion/sheet': 1.2.1
+      '@emotion/utils': 1.2.0
+      '@emotion/weak-memoize': 0.3.0
+      stylis: 4.1.3
+    dev: false
+
   /@emotion/css@11.10.6:
     resolution: {integrity: sha512-88Sr+3heKAKpj9PCqq5A1hAmAkoSIvwEq1O2TwDij7fUtsJpdkV4jMTISSTouFeRvsGvXIpuSuDQ4C1YdfNGXw==}
     dependencies:
@@ -1153,7 +1163,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.0
       '@emotion/babel-plugin': 11.10.6
-      '@emotion/cache': 11.10.5
+      '@emotion/cache': 11.10.7
       '@emotion/serialize': 1.1.1
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.0(react@18.2.0)
       '@emotion/utils': 1.2.0
@@ -1670,8 +1680,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@oc/design@0.0.20(@types/react@18.0.33)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-I//RG3WMwXEvMHIqu6ebq6SWkgNyG14CCaJ8H6NNjjazDYzeYyd6qe/7cGgXMYZkg2VIm1S21DkMM+OTovHLAA==}
+  /@oc/design@0.0.21(@types/react@18.0.33)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-pPFZyQ+zSJ15SNe/4woC+/q0+z2Ve7B/fIkctpscJD3Ue2uW5S2JkGfREjdSLgrHMXq4YKGsYk3U/qqO4fN0EA==}
     dependencies:
       '@emotion/css': 11.10.6
       '@emotion/react': 11.10.6(@types/react@18.0.33)(react@18.2.0)
