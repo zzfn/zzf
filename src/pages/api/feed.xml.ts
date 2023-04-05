@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   // Adding blogs to the rss feed
   data.forEach((post) => {
-    const url = `${siteURL}/article/${post.id}`;
+    const url = `${siteURL}/post/${post.id}`;
     feed.addItem({
       title: post.title,
       id: url,

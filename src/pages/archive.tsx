@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { listArchives, listTags } from 'services/article';
 import { getTitle } from '../utils/getTitle';
 import type { GetStaticProps } from 'next';
-import { List, ListItem, Tabs, Tag, Tab } from '@oc/design';
+import { List, ListItem, Tag } from '@oc/design';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import dayjs from 'dayjs';
@@ -19,7 +19,7 @@ interface ArchiveProps {
 }
 
 const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
-  const [currentTag, setCurrentTag] = useState<string>();
+  const [currentTag, setCurrentTag] = useState<string>('');
   const { data } = useQuery({
     queryKey: ['listArchives', currentTag],
     queryFn: async () => {
@@ -35,16 +35,24 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
       </Head>
       <div className='flex flex-wrap gap-2 mb-2'>
         {serverProps.tags.map((item) => (
-          <Tag className={currentTag === item.tag && css({
-            "&[role]":{
-              backgroundColor: 'var(--md-sys-color-inverse-surface)',
-              color: 'var(--md-sys-color-inverse-on-surface)',
-              '&:hover': {
-                backgroundColor: 'var(--md-sys-color-inverse-surface)',
-                color: 'var(--md-sys-color-inverse-on-surface)',
-              }
+          <Tag
+            className={
+              currentTag === item.tag
+                ? css({
+                    '&[role]': {
+                      backgroundColor: 'var(--md-sys-color-inverse-surface)',
+                      color: 'var(--md-sys-color-inverse-on-surface)',
+                      '&:hover': {
+                        backgroundColor: 'var(--md-sys-color-inverse-surface)',
+                        color: 'var(--md-sys-color-inverse-on-surface)',
+                      },
+                    },
+                  })
+                : undefined
             }
-          })} key={item.tag} onClick={() => setCurrentTag(item.tag)}>
+            key={item.tag}
+            onClick={() => setCurrentTag(item.tag)}
+          >
             # {item.tag}
             <span className='text-neutral-1 ml-2'>{item.count}</span>
           </Tag>
@@ -54,7 +62,7 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
         {data?.map((item) => (
           <ListItem key={item.id}>
             <span className='font-mono mr-3'>{dayjs(item.createTime).format('YYYY-MM-DD')}</span>
-            <Link className='hover:underline underline-offset-2' href={`/article/${item.id}`}>
+            <Link className='hover:underline underline-offset-2' href={`/post/${item.id}`}>
               {item.title}
             </Link>
           </ListItem>

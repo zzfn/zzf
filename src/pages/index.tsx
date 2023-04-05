@@ -63,7 +63,7 @@ const Home: NextPageWithLayout = (props: HomeType) => {
       </Tabs>
       <div className='grid desktop:grid-cols-3 gap-2'>
         {list.map((article: Article) => (
-          <Link key={article.id} target='_blank' href={`/article/${article.id}`}>
+          <Link key={article.id} target='_blank' href={`/post/${article.id}`}>
             <div
               className={classNames(
                 'group bg-surface-1 rounded-3xl group-hover:bg-secondary-container cursor-pointer flow-root',

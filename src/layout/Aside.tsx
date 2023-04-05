@@ -26,7 +26,7 @@ const nav = css`
   }
 
   &:hover {
-    background-color: var(--md-sys-color-secondary-container);
+    background-color: var(--md-sys-color-surface-5);
     border-radius: 8px;
 
     &:before {

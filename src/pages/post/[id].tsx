@@ -14,15 +14,16 @@ import { getCdn } from '../../utils/getCdn';
 import { Progress } from '@oc/design';
 import { css } from '@emotion/css';
 import Comments from 'features/comments/Comments';
+
 interface Data {
-  content?: string;
+  content: string;
   createTime?: string;
   logo?: string;
-  id?: string;
+  id: string;
   starCount?: number;
   tag: string;
   tagDesc?: string;
-  title?: string;
+  title: string;
   updateTime?: string;
   viewCount?: number;
   summary?: string;
@@ -77,8 +78,7 @@ const ArticleDetail: NextPageWithLayout = (props: ServerProps) => {
           'rounded',
           'overflow-hidden',
         ])}
-      >
-      </div>
+      ></div>
       <h1 className={classNames('text-2xl', 'font-medium', 'text-4xl')}>{serverProps.title}</h1>
       <p className='text-base'>{serverProps.summary}</p>
       <ul
@@ -138,8 +138,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const {
     params: { id },
-  } = context;
-  if (Array.isArray(id)) return;
+  } = context as any;
   const { data, code } = await getArticle({ id });
   return {
     notFound: code !== 0,

@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { getTitle } from 'utils/getTitle';
 import React from 'react';
 
-const Message: NextPageWithLayout = () => {
+const Comment: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -15,4 +15,4 @@ const Message: NextPageWithLayout = () => {
     </>
   );
 };
-export default Message;
+export default Comment;
