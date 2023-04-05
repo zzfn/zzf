@@ -8,7 +8,7 @@ interface NavProps {
 }
 
 const ArticleNav: React.FC<NavProps> = ({ source }) => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<any[]>([]);
   const [current, setCurrent] = useState('');
   useEffect(() => {
     setCurrent(window.location.hash.replace('#', ''));
@@ -16,7 +16,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
     if (matchResult) {
       const navData = matchResult.map((r, i) => ({
         index: i,
-        level: r.match(/^#+/g)[0].length,
+        level: r.match(/^#+/g)?.[0].length,
         text: r.replace(/#+\s(\S+)\n*/g, '$1'),
       }));
       setList(navData);
@@ -24,8 +24,11 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
     const navObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            setCurrent(entry.target.getAttribute('id'));
+          if (entry.isIntersecting&&entry.target.getAttribute('id')) {
+            const curr = entry.target.getAttribute('id')
+            if(curr){
+              setCurrent(curr);
+            }
           }
         });
       },
