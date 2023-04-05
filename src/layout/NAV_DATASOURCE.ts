@@ -11,7 +11,7 @@ export const NAV_DATASOURCE = [
   },
   {
     name: '留言',
-    path: '/message',
+    path: '/comment',
     icon: 'chat',
   },
   {
