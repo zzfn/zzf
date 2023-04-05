@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { listArchives, listTags } from 'services/article';
 import { getTitle } from '../utils/getTitle';
@@ -59,14 +59,35 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
         ))}
       </div>
       <List>
-        {data?.map((item) => (
-          <ListItem key={item.id}>
-            <span className='font-mono mr-3'>{dayjs(item.createTime).format('YYYY-MM-DD')}</span>
-            <Link className='hover:underline underline-offset-2' href={`/post/${item.id}`}>
-              {item.title}
-            </Link>
-          </ListItem>
-        ))}
+        {data?.length &&
+          [
+            ...data
+              .reduce((acc, curr) => {
+                const group = dayjs(curr.createTime).format('YYYY-MM');
+                const item = acc.get(group) || [];
+                acc.set(group, [...item, curr]);
+                return acc;
+              }, new Map())
+              .entries(),
+          ].map(([group, list]: any) => {
+            return (
+              <div key={group}>
+                <ListItem>
+                  <h2 className='text-primary text-xl'>{group}</h2>
+                </ListItem>
+                {list?.map((item: any) => (
+                  <ListItem key={item.id}>
+                    <span className='font-mono mr-3'>
+                      {dayjs(item.createTime).format('YYYY-MM-DD')}
+                    </span>
+                    <Link className='hover:underline underline-offset-2' href={`/post/${item.id}`}>
+                      {item.title}
+                    </Link>
+                  </ListItem>
+                ))}
+              </div>
+            );
+          })}
       </List>
     </>
   );
