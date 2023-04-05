@@ -7,10 +7,10 @@ export type LottieProps = {
 };
 const LottiePlayer: React.FC<LottieProps> = (props) => {
   const { size, url } = props;
-  const lottieRef = useRef<HTMLDivElement>();
+  const lottieRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     lottie.loadAnimation({
-      container: lottieRef.current,
+      container: lottieRef.current!,
       path: url,
       renderer: 'svg',
       loop: true,

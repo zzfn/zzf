@@ -17,7 +17,7 @@ class Monitor {
     try {
       console.log(111);
       const { get } = await FingerprintJS.load({
-        apiKey: process.env.NEXT_PUBLIC_API_KEY,
+        apiKey: process.env.NEXT_PUBLIC_API_KEY!,
         region: 'ap',
         endpoint: 'https://fp.zzfzzf.com',
       });
