@@ -51,7 +51,12 @@ const Archive: React.FC<NextProps<ArchiveProps>> = ({ serverProps }) => {
                 : undefined
             }
             key={item.tag}
-            onClick={() => setCurrentTag(item.tag)}
+            onClick={() => {
+              if(currentTag === item.tag) {
+                setCurrentTag('')
+              }else {
+                setCurrentTag(item.tag)
+            }}}
           >
             # {item.tag}
             <span className='text-neutral-1 ml-2'>{item.count}</span>

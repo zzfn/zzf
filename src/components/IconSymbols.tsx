@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ForwardRefRenderFunction } from 'react';
 import classNames from 'classnames';
 import { css } from '@emotion/css';
 
@@ -23,9 +23,13 @@ type IconSymbolsProps = {
   size?: number;
   onClick?: () => void;
 };
-const IconSymbols = ({ className, icon, onClick, size }: IconSymbolsProps) => {
+const IconSymbols: ForwardRefRenderFunction<HTMLElement, IconSymbolsProps> = (
+  { className, icon, onClick, size }: IconSymbolsProps,
+  ref,
+) => {
   return (
     <i
+      ref={ref}
       data-icon={icon}
       onClick={onClick}
       className={classNames(iconCss, css({ fontSize: size ? `${size}px` : 'inherit' }), className)}
@@ -34,4 +38,4 @@ const IconSymbols = ({ className, icon, onClick, size }: IconSymbolsProps) => {
     </i>
   );
 };
-export default IconSymbols;
+export default React.forwardRef(IconSymbols);

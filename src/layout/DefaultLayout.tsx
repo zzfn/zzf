@@ -1,4 +1,4 @@
-import Footer from './footer';
+import Footer from './Footer';
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -7,41 +7,49 @@ import { getCdn } from '../utils/getCdn';
 import IconSymbols from '../components/IconSymbols';
 import { IconButton } from '@oc/design';
 import NavDraw from './NavDraw';
-import Aside from './Aside';
 import { css } from '@emotion/css';
 import useMediaQuery from '../hooks/useMediaQuery';
+import Header from './Header';
 
 function DefaultLayout({ children }: { children: React.ReactElement }) {
   const [visible, setVisible] = useState(false);
   const isWidthGreaterThan600 = useMediaQuery('(max-width:840px)');
   return (
     <div
-      className={css`
-        --nav-width: 80px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-      `}
+      className={classNames(
+        css`
+          --nav-width: 80px;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+        `,
+        'expanded:pt-16',
+      )}
     >
-      {isWidthGreaterThan600 && <NavDraw visible={visible} setVisible={setVisible} />}
-      <header
-        className={classNames(
-          'flex w-full items-center h-16 shrink-0 expanded:hidden px-6 justify-between',
-          css({
-            borderBottom: '1px solid rgb(218,220,224)',
-          }),
-        )}
-      >
-        <IconButton onClick={() => setVisible(true)} className={classNames('text-2xl')}>
-          <IconSymbols icon='menu' />
-        </IconButton>
-        <Link className={classNames('text-2xl')} href='/'>
-          <LottiePlayer size={50} url={getCdn('/assets/logo.json')} />
-        </Link>
-      </header>
+      {isWidthGreaterThan600 ? (
+        <>
+          <header
+            className={classNames(
+              'flex w-full items-center h-16 shrink-0 expanded:hidden px-6 justify-between',
+              css({
+                borderBottom: '1px solid rgb(218,220,224)',
+              }),
+            )}
+          >
+            <IconButton onClick={() => setVisible(true)} className={classNames('text-2xl')}>
+              <IconSymbols icon='menu' />
+            </IconButton>
+            <Link className={classNames('text-2xl')} href='/'>
+              <LottiePlayer size={50} url={getCdn('/assets/logo.json')} />
+            </Link>
+          </header>
+          <NavDraw visible={visible} setVisible={setVisible} />
+        </>
+      ) : (
+        <Header />
+      )}
       <div
         className={classNames(
-          'expanded:pl-20',
           'flex-col',
           'flex',
           css`
@@ -49,11 +57,10 @@ function DefaultLayout({ children }: { children: React.ReactElement }) {
           `,
         )}
       >
-          <Aside />
-          <div className={classNames('container mx-auto px-4 medium:px-6')}>
-            <main>{children}</main>
-            <Footer />
-          </div>
+        <div className={classNames('container mx-auto px-4 medium:px-6')}>
+          <main>{children}</main>
+          <Footer />
+        </div>
       </div>
     </div>
   );

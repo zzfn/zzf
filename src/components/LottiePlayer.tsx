@@ -22,7 +22,7 @@ const LottiePlayer: React.FC<LottieProps> = (props) => {
     };
   }, [url]);
   return (
-    <div style={{ fontSize: `${size}px` }} className='w-[1em] h-[1em] m-auto' ref={lottieRef} />
+    <div style={{ fontSize: `${size}px` }} className='w-[1em] h-[1em]' ref={lottieRef} />
   );
 };
 

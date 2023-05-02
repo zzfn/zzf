@@ -11,7 +11,7 @@ module.exports = {
         18: '4.5rem',
       },
       screens: {
-        compact: {min:'599px'},
+        compact: {'min':'599px'},
         medium: {'min': '600px'},
         expanded: {'min': '840px'},
       },

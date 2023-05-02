@@ -46,7 +46,7 @@ const NavDraw = ({
   const [active, setActive] = useState('light');
   return (
     <NavigationDraw onCancel={() => setVisible(false)} visible={visible}>
-      <header className='h-12 pl-6 flex items-center my-2'>
+      <header className='h-12 px-6 flex items-center justify-between my-2'>
         <IconButton
           className={classNames('text-2xl')}
           variant='filled'
@@ -87,7 +87,7 @@ const NavDraw = ({
             target='_blank'
             href='/api/feed.xml'
           >
-            <Tooltip content='Rss 订阅'>
+            <Tooltip placement='right' content='Rss 订阅'>
               <IconButton>
                 <IconSymbols icon='rss_feed' />
               </IconButton>
@@ -108,6 +108,9 @@ const NavDraw = ({
               <IconSymbols icon={`${active}_mode`} />
             </IconButton>
           </Tooltip>
+        </ListItem>
+        <ListItem className='justify-center'>
+          <span>Heycc&apos;s Blog</span>
         </ListItem>
       </List>
     </NavigationDraw>

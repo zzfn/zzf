@@ -9,11 +9,17 @@ function Footer(): JSX.Element {
         'text-[var(var(--md-sys-color-on-surface))]',
         'text-xs',
         'text-center',
-        'mt-16',
+        'my-16',
         'mx-auto',
+        'flex',
+        'justify-around'
       )}
     >
-      <ul className='flex flex-col medium:flex-row flex-wrap gap-x-6 gap-y-4'>
+      <ul className='flex flex-col flex-wrap gap-x-6 gap-y-4'>
+        <li>heycc&apos;s Blog</li>
+        <li>heycc@ooxo.cc</li>
+      </ul>
+      <ul className='flex flex-col flex-wrap gap-x-6 gap-y-4'>
         <li>Copyright&copy;2020-{dayjs().format('YYYY')} </li>
         <li>OOXO.CC Inc. All rights reserved.</li>
         <li>
