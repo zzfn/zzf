@@ -177,6 +177,9 @@ devDependencies:
   jest-environment-jsdom:
     specifier: ^29.5.0
     version: 29.5.0
+  jsx-runtime:
+    specifier: link:@emotion/react/jsx-runtime
+    version: link:@emotion/react/jsx-runtime
   lint-staged:
     specifier: ^13.2.2
     version: 13.2.2
