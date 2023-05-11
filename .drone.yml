@@ -39,6 +39,7 @@ steps:
       - name: next_cache
         path: /drone/src/.next/cache
     commands:
+      - pnpm -v
       - pnpm install
       - npm run build
   - name: build_docker
