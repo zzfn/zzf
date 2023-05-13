@@ -30,7 +30,7 @@ steps:
       - git fetch --no-tags --prune --progress --no-recurse-submodules --depth=1
       - git checkout origin/$DRONE_COMMIT_BRANCH -ft
   - name: build
-    image: node:lts-bullseye-slim
+    image: node:lts-alpine
     depends_on:
       - clone
     volumes:
