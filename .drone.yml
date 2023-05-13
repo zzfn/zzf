@@ -30,7 +30,7 @@ steps:
       - git fetch --no-tags --prune --progress --no-recurse-submodules --depth=1
       - git checkout origin/$DRONE_COMMIT_BRANCH -ft
   - name: build
-    image: hub.oocc.es/home/pnpm:16
+    image: node:lts-bullseye-slim
     depends_on:
       - clone
     volumes:
@@ -39,6 +39,8 @@ steps:
       - name: next_cache
         path: /drone/src/.next/cache
     commands:
+      - corepack enable
+      - corepack prepare pnpm@latest-8 --activate
       - pnpm -v
       - pnpm install
       - npm run build
