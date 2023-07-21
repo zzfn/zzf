@@ -54,12 +54,12 @@ steps:
       - build
     pull: if-not-exists
     settings:
-      registry: hub.oocc.es
+      registry: hub.ccw.es
       username:
         from_secret: nexus_docker_username
       password:
         from_secret: nexus_docker_password
-      repo: hub.oocc.es/home/blog
+      repo: hub.ccw.es/home/blog
       tags: ${DRONE_COMMIT=latest}${DRONE_BUILD_NUMBER}
   - name: oss
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
@@ -91,8 +91,8 @@ steps:
       command_timeout: 2m
       script:
         - echo ${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
-        - kubectl apply -f https://git.oocc.es/oocc/k3s/raw/branch/master/blog.yaml
-        - kubectl set image deployment/blog blog=hub.oocc.es/home/blog:${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
+        - kubectl apply -f https://git.ccw.es/ccw/yaml/raw/branch/master/blog.yaml
+        - kubectl set image deployment/blog blog=hub.ccw.es/home/blog:${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
 trigger:
   branch:
     - main
