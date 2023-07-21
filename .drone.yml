@@ -1,13 +1,13 @@
 kind: pipeline
 type: docker
 name: ci/cd
-volumes:
-  - name: node_modules
-    host:
-      path: /root/drone/node-zzf/node_modules
-  - name: next_cache
-    host:
-      path: /root/drone/node-zzf/next_cache
+#volumes:
+#  - name: node_modules
+#    host:
+#      path: /root/drone/node-zzf/node_modules
+#  - name: next_cache
+#    host:
+#      path: /root/drone/node-zzf/next_cache
 clone:
   disable: true
 steps:
@@ -33,11 +33,11 @@ steps:
     image: node:lts-alpine
     depends_on:
       - clone
-    volumes:
-      - name: node_modules
-        path: /drone/src/node_modules
-      - name: next_cache
-        path: /drone/src/.next/cache
+#    volumes:
+#      - name: node_modules
+#        path: /drone/src/node_modules
+#      - name: next_cache
+#        path: /drone/src/.next/cache
     commands:
       - corepack enable
       - corepack prepare pnpm@latest-8 --activate
