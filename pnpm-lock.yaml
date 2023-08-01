@@ -14,9 +14,6 @@ dependencies:
   '@fingerprintjs/fingerprintjs':
     specifier: ^4.0.0
     version: 4.0.0
-  '@fingerprintjs/fingerprintjs-pro':
-    specifier: ^3.8.5
-    version: 3.8.5
   '@multiavatar/multiavatar':
     specifier: ^1.0.7
     version: 1.0.7
@@ -865,12 +862,6 @@ packages:
   /@eslint/js@8.44.0:
     resolution: {integrity: sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-
-  /@fingerprintjs/fingerprintjs-pro@3.8.5:
-    resolution: {integrity: sha512-07bkz/BrQYIHh0FIQ8rMKx62IKu+gkZrUzNsoT1fLwYfnM0uk+s+XQXLeaDXGMGpHgkZSP4nPMAn+nkRfWy6ww==}
-    dependencies:
-      tslib: 2.6.0
-    dev: false
 
   /@fingerprintjs/fingerprintjs@4.0.0:
     resolution: {integrity: sha512-TEwyYUqEEaVcv4w+KCpQZw7I3bHAiyv/CmRM5/Ouz0DTQHGXjKaEAcNvtL2kOTc2wS5sX+gHVlMymfRm5phACQ==}
