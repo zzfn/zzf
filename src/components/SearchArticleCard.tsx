@@ -1,6 +1,8 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
+import { translateMarkdown } from "../utils/translateMarkdown";
 
 type SearchCardProps = {
   dataSource: any;

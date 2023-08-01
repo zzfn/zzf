@@ -1,24 +1,30 @@
+'use client';
+
 import { marked } from 'marked';
-import { renderToString } from 'react-dom/server';
+import { mangle } from 'marked-mangle';
+import { gfmHeadingId } from 'marked-gfm-heading-id';
+import { renderToStaticMarkup } from 'react-dom/server';
 import ArticleCode from 'components/ArticleCode';
 import React from 'react';
 
 export const translateMarkdown = (text = '') => {
-  const renderer: Partial<marked.Renderer> = {};
-  renderer.code = function (code: string, language: string) {
-    return renderToString(<ArticleCode language={language} code={code} />);
+  const renderer = new marked.Renderer();
+  renderer.code = function (code, language ) {
+    return renderToStaticMarkup(<ArticleCode language={language} code={code} />);
   };
-  renderer.image = function (href: string, title: string, text: string) {
+  renderer.image = function (href, title, text) {
     return `<img loading='lazy' src='${href}'  class='zoom' alt='${text}' />`;
   };
-  renderer.link = function (href: string, title: string, text: string) {
+  renderer.link = function (href, title, text) {
     return `<a target='_blank' href='${href}'>${text}</a>`;
   };
-  renderer.heading = function (text: string, level: unknown, _: string, slugger: marked.Slugger) {
+  renderer.heading = function (text, level, _, slugger) {
     const id = slugger.slug('heading');
     return `
             <h${level} id='${id === 'heading' ? 'heading-0' : id}'>
-              ${text}
+              <a class="text-default no-underline" href="#${
+                id === 'heading' ? 'heading-0' : id
+              }">${text}</a>
             </h${level}>`;
   };
   renderer.table = function (header: React.ReactNode, body: React.ReactNode) {
@@ -31,16 +37,17 @@ export const translateMarkdown = (text = '') => {
     </div>
     `;
   };
+  marked.use(mangle());
+  const options = {
+    prefix: 'heading-',
+  };
+
+  marked.use(gfmHeadingId(options));
   marked.use({
     renderer,
     gfm: true,
     pedantic: false,
     breaks: false,
-    sanitize: false,
-    smartLists: true,
-    smartypants: true,
-    xhtml: true,
-    headerIds: false,
   });
   return marked.parse(text);
 };

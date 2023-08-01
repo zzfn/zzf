@@ -1,0 +1,75 @@
+@import 'prism.css';
+@import '@primer/primitives/tokens-next-private/css/base/size/size';
+@import '@primer/primitives/tokens-next-private/css/base/typography/typography';
+@import '@primer/primitives/tokens-next-private/css/functional/size/border';
+@import '@primer/primitives/tokens-next-private/css/functional/size/breakpoints';
+@import '@primer/primitives/tokens-next-private/css/functional/size/size-coarse';
+@import '@primer/primitives/tokens-next-private/css/functional/size/size-fine';
+@import '@primer/primitives/tokens-next-private/css/functional/size/size';
+@import '@primer/primitives/tokens-next-private/css/functional/size/viewport';
+@import '@primer/primitives/tokens-next-private/css/functional/typography/typography';
+@import '@primer/primitives/tokens-next-private/css/functional/themes/dark';
+@import '@primer/primitives/tokens-next-private/css/functional/themes/light';
+@import '~@oc/design/dist/styles/index.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .icon-fill-1 {
+    font-variation-settings: 'FILL' 1, 'wght' 600 !important;
+  }
+}
+@font-face {
+  font-family: 'JetBrainsMono';
+  font-display: swap;
+  src: url(https://cdn.zzfzzf.com/assets/JetBrainsMono-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-display: block;
+  font-weight: 400;
+  src: url(https://cdn.zzfzzf.com/assets/Material%2BSymbols%2BOutlined.woff2) format('woff2');
+}
+
+body {
+  font-size: 16px;
+  background-color: var(--bgColor-default);
+  color: var(--fgColor-default);
+  overflow-y: scroll;
+  @apply font-sans;
+}
+html {
+  word-break: break-all;
+  scroll-behavior: smooth;
+}
+
+
+em {
+  color: var(--fgColor-accent);
+}
+.symbol_icon{
+  font-family: 'Material Symbols Outlined', emoji;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  user-select: none;
+  transition: font-variation-settings 200ms cubic-bezier(0.2, 0, 0, 1);
+  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+  cursor: pointer;
+  &:hover{
+    color: var(--fgColor-accent);
+    font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+  }
+}
