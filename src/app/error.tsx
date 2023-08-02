@@ -11,7 +11,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
   return (
     <div className='flex justify-center items-center'>
-      <LottiePlayer size={500} url={getCdn('/assets/404.json')} />
+      <LottiePlayer size={500} url={getCdn('/assets/error.json')} />
     </div>
   );
 }
