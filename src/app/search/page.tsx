@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 
 function Page() {
   const [keyword, setKeyword] = useState('');
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState<Article[]>([]);
 
   async function refetch() {
     const { data } = await esList({ keyword });
