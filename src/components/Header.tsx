@@ -9,9 +9,8 @@ const Header = () => {
         Cc
       </Link>
       <nav className='flex gap-x-2 items-center'>
-        <Link href='/tag'>Tag</Link>
+        <Link href='/post'>Post</Link>
         <Link href='/about'>About</Link>
-        <Link href='/lab'>Lab</Link>
         <Link href='/feedback'>Feedback</Link>
         <Link href='/search'>Search</Link>
         <span className='text-2xl inline-flex'>
