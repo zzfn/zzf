@@ -44,7 +44,7 @@ const CardBio = ({ dataSource }: CardProps) => {
   );
 };
 export default async function Page() {
-  const { data } = await friendList();
+  const { data = [] } = await friendList();
   return (
     <>
       <h1 className='mt-18 mb-8 text-2.5xl text-center'>关于</h1>
