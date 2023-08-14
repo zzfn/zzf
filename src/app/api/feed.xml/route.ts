@@ -4,7 +4,7 @@ import { marked } from "marked";
 import { mangle } from "marked-mangle";
 import { gfmHeadingId } from "marked-gfm-heading-id";
 export async function GET() {
-  const { data } = await lastCreated();
+  const { data=[] } = await lastCreated();
   const siteURL = 'https://zzfzzf.com';
   const date = new Date();
   const author = {

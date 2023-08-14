@@ -3,7 +3,7 @@ import { listArchives, listTags } from "api/article";
 import dayjs from "dayjs";
 
 export default async function Page() {
-  const { data } = await listArchives({ });
+  const { data=[] } = await listArchives({ });
   return (
     <>
       <div className='flex flex-col gap-y-2'>
