@@ -1,40 +1,45 @@
 import { listDiscuss } from 'api/discuss';
 import IconSymbols from 'components/IconSymbols';
-import Avatar from './Avatar';
 import CommentPopover from './CommentPopover';
-import Footer from './Footer';
 import CommentCard from './CommentCard';
-type Comment = {
-  id: number;
-  parentCommentId?: number;
-  content: string;
-  children?: Comment[];
-};
+
+function buildTree(nodes: any) {
+  return nodes.reduce((prev: any, curr: any) => {
+    const obj = nodes.find((item: any) => item.id === curr['parentCommentId']);
+    if (obj) {
+      // 存在父节点
+      !Object.prototype.hasOwnProperty.call(obj, 'children') && (obj['children'] = []);
+      obj['children'].push(curr);
+    } else {
+      prev.push(curr);
+    }
+    return prev;
+  }, []);
+}
+
+function tree2list(trees: any = []) {
+  let list: any = [];
+
+  function dfs(node: any) {
+    if (!node) return;
+
+    list.push(node);
+
+    if (node.children && node.children.length > 0) {
+      for (let child of node.children) {
+        dfs(child);
+      }
+    }
+  }
+
+  for (let tree of trees) {
+    dfs(tree);
+  }
+
+  return list;
+}
 const Comment = async ({ id }: { id: string }) => {
   const { data } = await listDiscuss({ id: id });
-  function convertToParentChildStructure(comments: Comment[]): Comment[] {
-    let parentComments: Comment[] = [];
-    let childComments: Record<number, Comment[]> = {};
-
-    // 遍历评论，分为父评论和子评论
-    comments.forEach((comment) => {
-      if (!comment.parentCommentId) {
-        parentComments.push(comment);
-      } else {
-        if (!childComments[comment.parentCommentId]) {
-          childComments[comment.parentCommentId] = [];
-        }
-        childComments[comment.parentCommentId].push(comment);
-      }
-    });
-
-    // 将子评论添加到相应的父评论
-    parentComments.forEach((parentComment) => {
-      parentComment.children = childComments[parentComment.id] || [];
-    });
-
-    return parentComments.reverse();
-  }
   return (
     <>
       <h2 className='flex items-center my-2 gap-x-2'>
@@ -44,7 +49,7 @@ const Comment = async ({ id }: { id: string }) => {
         </CommentPopover>
       </h2>
       <ul className='flex flex-col gap-y-3'>
-        {convertToParentChildStructure(data).map((item: any) => (
+        {buildTree(data).map((item: any) => ({ ...item, children: tree2list(item.children) })).reverse().map((item: any) => (
           <CommentCard key={item.id} item={item} id={id}>
             {item.children?.map((item: any) => (
               <CommentCard key={item.id} item={item} id={id} />
