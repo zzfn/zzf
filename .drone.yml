@@ -60,7 +60,9 @@ steps:
       password:
         from_secret: nexus_docker_password
       repo: hub.ccw.es/home/blog
-      tags: ${DRONE_COMMIT=latest}${DRONE_BUILD_NUMBER}
+      tags:
+        - ${DRONE_COMMIT_SHA:0:8}
+        - latest
   - name: oss
     image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
     depends_on:
@@ -92,7 +94,7 @@ steps:
       script:
         - echo ${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
         - kubectl apply -f https://git.ccw.es/ccw/yaml/raw/branch/master/blog.yaml
-        - kubectl set image deployment/blog blog=hub.ccw.es/home/blog:${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
+        - kubectl set image deployment/blog blog=hub.ccw.es/home/blog:${DRONE_COMMIT_SHA:0:8}
 trigger:
   branch:
     - main
