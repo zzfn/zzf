@@ -1,11 +1,11 @@
 import React from 'react';
-import { listArchives } from 'api/article';
 import IconSymbols from '../components/IconSymbols';
 import Link from 'next/link';
 import dayjs from 'dayjs';
+import { sortByField } from "api/article";
 
 export default async function Page() {
-  const { data } = await listArchives({});
+  const { data } = await sortByField({field:'updateTime'});
   return (
     <>
       <h3 className='my-8 text-2.5xl flex justify-between items-center'>

@@ -63,12 +63,6 @@ export const lastCreated = () => {
     url: '/article/lastCreated',
   });
 };
-export const lastUpdated = () => {
-  return http<LastUpdatedListType[]>({
-    method: 'get',
-    url: '/article/lastUpdated',
-  });
-};
 type ViewType = {
   id: string;
 };
