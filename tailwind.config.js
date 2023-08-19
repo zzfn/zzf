@@ -33,6 +33,8 @@ module.exports = {
         'emphasis': 'var(--bgColor-emphasis)',
         'neutral-muted': 'var(--bgColor-neutral-muted)',
         'secondary-container': 'var(--md-sys-color-secondary-container)',
+        'danger-emphasis':'var(--bgColor-danger-emphasis)',
+        'success-muted':'var(--bgColor-success-muted)'
       },
       typography: {
         DEFAULT: {

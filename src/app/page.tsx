@@ -10,7 +10,7 @@ export default async function Page() {
   const { data } = await sortByField({ field: 'createTime' });
   return (
     <div className='py-6'>
-      <div className='grid grid-cols-2'>
+      <div className='grid lg:grid-cols-2'>
         <div className='text-xl flex justify-center items-center flex-col gap-y-2'>
           <p>看看最近我都写了些什么，</p>
           <p>或许你会发现一些有趣的东西。</p>

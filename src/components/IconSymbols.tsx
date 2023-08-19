@@ -8,7 +8,7 @@ type IconSymbolsProps = {
   onClick?: () => void;
 };
 const IconSymbols: ForwardRefRenderFunction<HTMLElement, IconSymbolsProps> = (
-  { className, icon, onClick, size }: IconSymbolsProps,
+  { className, icon, onClick }: IconSymbolsProps,
   ref,
 ) => {
   return (

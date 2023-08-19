@@ -17,6 +17,13 @@ const Footer = () => {
       >
         RSS feed
       </Link>
+      <Link
+        className='hover:underline'
+        target='_blank'
+        href='/status'
+      >
+         服务状态
+      </Link>
       <a
         className='hover:underline'
         rel='noreferrer'
