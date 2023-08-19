@@ -12,32 +12,39 @@ clone:
   disable: true
 steps:
   - name: clone
-    image: alpine/git
+    image: bitnami/git
     environment:
       SSH_KEY:
         from_secret: ssh_key
     commands:
-      - mkdir $HOME/.ssh
-      - echo -n "$SSH_KEY" > $HOME/.ssh/id_rsa
-      - chmod 600 /root/.ssh/id_rsa
+      - mkdir -p $HOME/.ssh/
+      - echo -n "$SSH_KEY" > $HOME/.ssh/id_ed25519
+      - chmod 600 $HOME/.ssh/id_ed25519
 
-      - touch /root/.ssh/known_hosts
-      - chmod 600 /root/.ssh/known_hosts
-      - ssh-keyscan -H github.com > /etc/ssh/ssh_known_hosts 2> /dev/null
-
+      - touch $HOME/.ssh/known_hosts
+      - chmod 600 $HOME/.ssh/known_hosts
+      - touch $HOME/.ssh/config
+      - chmod 600 $HOME/.ssh/config
+      - echo "Host github.com\n    Hostname ssh.github.com\n    Port 443\n    User git" > $HOME/.ssh/config
+      #      - ssh-keyscan -H github.com > $HOME/.ssh/known_hosts
+      - echo "[ssh.github.com]:443 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" >> $HOME/.ssh/known_hosts
+      #      - git clone --branch $DRONE_COMMIT_BRANCH --single-branch $DRONE_GIT_SSH_URL .
+      #      - git checkout $DRONE_COMMIT
+      - git config --global init.defaultBranch main
       - git init
+      - git config advice.detachedHead false
       - git remote add origin $DRONE_GIT_SSH_URL
-      - git fetch --no-tags --prune --progress --no-recurse-submodules --depth=1
-      - git checkout origin/$DRONE_COMMIT_BRANCH -ft
+      - git fetch --no-tags --prune --no-recurse-submodules origin $DRONE_COMMIT_BRANCH
+      - git checkout $DRONE_COMMIT
   - name: build
     image: node:lts-alpine
     depends_on:
       - clone
-#    volumes:
-#      - name: node_modules
-#        path: /drone/src/node_modules
-#      - name: next_cache
-#        path: /drone/src/.next/cache
+    #    volumes:
+    #      - name: node_modules
+    #        path: /drone/src/node_modules
+    #      - name: next_cache
+    #        path: /drone/src/.next/cache
     commands:
       - corepack enable
       - corepack prepare pnpm@latest-8 --activate
