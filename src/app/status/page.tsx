@@ -3,6 +3,12 @@ import classNames from 'classnames';
 import { Tooltip } from '@oc/design';
 import dayjs from 'dayjs';
 import { monitorStatus } from 'api/monitor';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import locale_cn from 'dayjs/locale/zh-cn';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export const revalidate = 0;
 export default async function Page() {
@@ -29,7 +35,11 @@ export default async function Page() {
             {values.map((value: any) => (
               <Tooltip
                 key={value[0]}
-                content={dayjs(value[0] * 1000).format('YYYY-MM-DD hh:mm:ss')}
+                content={dayjs
+                  .tz(value[0] * 1000, 'Asia/Shanghai')
+                  .utc()
+                  .locale(locale_cn)
+                  .format('YYYY-MM-DD hh:mm:ss')}
               >
                 <li
                   className={classNames(
