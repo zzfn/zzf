@@ -7,7 +7,7 @@ import OnlineCount from "../app/_components/OnlineCount";
 
 const Footer = () => {
   return (
-    <footer className='flex flex-col py-6 text-muted items-center gap-y-2 border-t-2 border-emphasis text-xs'>
+    <footer className='flex flex-col py-6 text-muted items-center gap-y-2 text-xs'>
       Copyright&copy;2020-{dayjs().format('YYYY')}
       <OnlineCount />
       <Link

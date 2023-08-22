@@ -38,6 +38,9 @@ function tree2list(trees: any = []) {
 
   return list;
 }
+
+export const revalidate = 0;
+
 const Comment = async ({ id }: { id: string }) => {
   const { data } = await listDiscuss({ id: id });
   return (
