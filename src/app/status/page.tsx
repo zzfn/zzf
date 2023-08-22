@@ -10,9 +10,9 @@ import locale_cn from 'dayjs/locale/zh-cn';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export const revalidate = 0;
+export const revalidate = 100;
 export default async function Page() {
-  const { data } = await monitorStatus({ t: Date.now() });
+  const { data } = await monitorStatus();
   return (
     <div className='flex flex-col mx-auto max-w-3xl py-10'>
       <h3 className='text-center text-2xl'>服务状态（最近24小时）</h3>
@@ -35,11 +35,7 @@ export default async function Page() {
             {values.map((value: any) => (
               <Tooltip
                 key={value[0]}
-                content={dayjs
-                  .tz(value[0] * 1000, 'Asia/Shanghai')
-                  .utc()
-                  .locale(locale_cn)
-                  .format('YYYY-MM-DD hh:mm:ss')}
+                content={dayjs(value[0] * 1000).format('YYYY-MM-DD HH:mm:ss')}
               >
                 <li
                   className={classNames(
