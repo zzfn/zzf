@@ -1,24 +1,31 @@
 'use client';
-import { useEffect, useLayoutEffect, useState } from "react";
+import { io } from 'socket.io-client';
+import { useEffect, useState } from 'react';
 import Monitor from '../../utils/monitor';
-import * as process from "process";
 
 const OnlineCount = () => {
-  const [count,setCount] = useState(0)
+  const [userId, setUserId] = useState<string | null>(null);
+  const [count, setCount] = useState(0);
+  async function getUserId() {
+    const monitor = new Monitor();
+    const _ = await monitor.getVisitor()
+    setUserId(_)
+  }
   useEffect(() => {
-    const socket = new WebSocket('wss://api.zzfzzf.com');
-    socket.onopen = function () {
-      socket.send('Hello Server!')
-      console.log('WebSocket open');
-    }
-    socket.onmessage = function (event) {
-      console.log('WebSocket message: ', event.data)
-      setCount(event.data);
-    };
-    socket.onerror = function (event) {
-      console.log('WebSocket error: ', event);
-    }
-  }, []);
+    getUserId()
+    if (!userId) return;
+    const socket = io('wss://api.zzfzzf.com', {
+      query: {
+        userId: userId,
+      },
+    });
+    socket.on('connect', () => {
+      console.log('connect success', socket.id);
+    });
+    socket.on('online', (data) => {
+      setCount(data);
+    });
+  }, [userId]);
   return <div>在线人数 {count}</div>;
 };
 export default OnlineCount;
