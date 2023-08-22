@@ -3,12 +3,6 @@ import classNames from 'classnames';
 import { Tooltip } from '@oc/design';
 import dayjs from 'dayjs';
 import { monitorStatus } from 'api/monitor';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-import locale_cn from 'dayjs/locale/zh-cn';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 export const revalidate = 100;
 export default async function Page() {
