@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { Tooltip } from '@oc/design';
 import dayjs from 'dayjs';
 import { monitorStatus } from 'api/monitor';
+import Time from '../_components/Time';
 
 export const revalidate = 100;
 export default async function Page() {
@@ -27,10 +28,7 @@ export default async function Page() {
           </div>
           <ul className='flex gap-x-1'>
             {values.map((value: any) => (
-              <Tooltip
-                key={value[0]}
-                content={dayjs(value[0] * 1000).format('YYYY-MM-DD HH:mm:ss')}
-              >
+              <Tooltip key={value[0]} content={<Time time={value[0] * 1000} />}>
                 <li
                   className={classNames(
                     'w-2 h-4 rounded hover:scale-150 ease-in-out',
