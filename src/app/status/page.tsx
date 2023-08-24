@@ -4,8 +4,12 @@ import { Tooltip } from '@oc/design';
 import dayjs from 'dayjs';
 import { monitorStatus } from 'api/monitor';
 import Time from '../_components/Time';
+import { Metadata } from "next";
 
-export const revalidate = 100;
+export const revalidate = 0;
+export const metadata:Metadata = {
+  title: 'ccw.服务监控',
+}
 export default async function Page() {
   const { data } = await monitorStatus();
   return (
