@@ -25,6 +25,11 @@ const OnlineCount = () => {
     socket.on('online', (data) => {
       setCount(data);
     });
+    return () => {
+      socket.off('connect');
+      socket.off('online');
+      socket.close();
+    };
   }, [userId]);
   return <div>在线人数 {count}</div>;
 };
