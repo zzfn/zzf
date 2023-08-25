@@ -1,10 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import { esList, topSearch } from 'api/article';
+import { esList } from 'api/article';
 import SearchArticleCard from 'components/SearchArticleCard';
-import { Card, Input, Space, Tag } from '@oc/design';
+import { Input } from '@oc/design';
 import classNames from 'classnames';
-import { useQuery } from '@tanstack/react-query';
 
 function Page() {
   const [keyword, setKeyword] = useState('');
@@ -23,18 +22,16 @@ function Page() {
   return (
     <>
       <h1 className='mt-18 mb-8 text-2.5xl text-center'>搜索</h1>
-      <Card>
-        <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action=''>
-          <Input
-            onChange={(event) => setKeyword(event.target.value.trim())}
-            value={keyword}
-            placeholder='elasticsearch强力驱动'
-          />
-        </form>
-        {result.map((item:any) => (
-          <SearchArticleCard dataSource={item} key={item.id} />
-        ))}
-      </Card>
+      <form className={classNames('flex', 'py-4')} onSubmit={handleSubmit} action=''>
+        <Input
+          onChange={(event) => setKeyword(event.target.value.trim())}
+          value={keyword}
+          placeholder='elasticsearch强力驱动'
+        />
+      </form>
+      {result.map((item: any) => (
+        <SearchArticleCard dataSource={item} key={item.id} />
+      ))}
     </>
   );
 }
