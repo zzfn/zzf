@@ -51,7 +51,7 @@ module.exports = {
             '--tw-prose-quote-borders': 'var(--borderColor-muted)',
             '--tw-prose-captions': 'var(--fgColor-default)',
             '--tw-prose-code': 'var(--fgColor-severe)',
-            '--tw-prose-pre-code': 'var(--fgColor-default)',
+            '--tw-prose-pre-code': 'var(--codeMirror-fgColor)',
             '--tw-prose-pre-bg': 'var(--bgColor-muted)',
             '--tw-prose-th-borders': 'var(--fgColor-default)',
             '--tw-prose-td-borders': 'var(--fgColor-default)',
