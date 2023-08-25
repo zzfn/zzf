@@ -14,6 +14,7 @@ import 'prismjs/components/prism-docker';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-ignore';
 import 'prismjs/components/prism-git';
+import 'prismjs/components/prism-sql'
 
 Prism.manual = true;
 
