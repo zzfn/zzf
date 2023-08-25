@@ -2,8 +2,6 @@ import Link from 'next/link';
 import React from 'react';
 import ThemeButton from './ThemeButton';
 import Navigation from './Navigation';
-import IconSymbols from './IconSymbols';
-import { Draw } from '@oc/design';
 import Menu from './Menu';
 
 const navLinks = [
