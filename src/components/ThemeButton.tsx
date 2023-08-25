@@ -1,6 +1,7 @@
 'use client';
 import IconSymbols from './IconSymbols';
 import { useEffect, useState } from 'react';
+import { IconButton } from "@oc/design";
 
 const ThemeButton = () => {
   const [theme, setTheme] = useState('light');
@@ -8,12 +9,14 @@ const ThemeButton = () => {
     document.querySelector('html')?.setAttribute('data-color-mode', theme);
   }, [theme]);
   return (
-    <IconSymbols
-      onClick={() => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-      }}
-      icon={`${theme}_mode`}
-    />
+    <IconButton>
+      <IconSymbols
+        onClick={() => {
+          setTheme(theme === 'light' ? 'dark' : 'light');
+        }}
+        icon={`${theme}_mode`}
+      />
+    </IconButton>
   );
 };
 export default ThemeButton;

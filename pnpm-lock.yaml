@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.7.0
     version: 0.7.0
   '@oc/design':
-    specifier: ^0.0.25
-    version: 0.0.25(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.0.28
+    version: 0.0.28(react-dom@18.2.0)(react@18.2.0)
   '@primer/primitives':
     specifier: ^7.12.0
     version: 7.12.0
@@ -1215,8 +1215,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@oc/design@0.0.25(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-3WWE5HS4GUnGa0NA5QvGTeeWtXplqrAy7r5HmX5WZL1kjFisHQUk9twDdScBK7LVHC2EgWqUs/f3wIGZnXLetg==}
+  /@oc/design@0.0.28(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-TaRroelbTwzWLdAjAjk+BbLD8M/7KpETMiBabT9Uijhu4BNsmRgS1DF2HgkNeNhtnvWciEgMrPk63SvyKC9Yzg==}
     dependencies:
       '@primer/css': 21.0.8
       '@primer/primitives': 7.12.0
