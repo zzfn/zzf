@@ -3,7 +3,6 @@ import IconSymbols from './IconSymbols';
 import React, { useEffect, useState } from 'react';
 import { IconButton } from '@oc/design';
 
-
 const ThemeButton = () => {
   const [theme, setTheme] = useState('light');
   useEffect(() => {
@@ -71,23 +70,22 @@ const ThemeButton = () => {
   };
 
   return (
-      <>
-        <IconButton>
-          <IconSymbols
-              onClick={(event) => {
-                buildThemeTransition(theme === 'light' ? 'dark' : 'light', {
-                  x: event.clientX,
-                  y: event.clientY,
-                  themeSetter: (themeParams)=>{
-                    setTheme(themeParams);
-                    window.localStorage.setItem('theme', themeParams);
-                  },
-                });
-              }}
-              icon={`${theme}_mode`}
-          />
-        </IconButton>
-      </>
+    <>
+      <IconButton
+        onClick={(event) => {
+          buildThemeTransition(theme === 'light' ? 'dark' : 'light', {
+            x: event.clientX,
+            y: event.clientY,
+            themeSetter: (themeParams) => {
+              setTheme(themeParams);
+              window.localStorage.setItem('theme', themeParams);
+            },
+          });
+        }}
+      >
+        <IconSymbols icon={`${theme}_mode`} />
+      </IconButton>
+    </>
   );
 };
 export default ThemeButton;
