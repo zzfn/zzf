@@ -1,15 +1,15 @@
-"use client";
+'use client';
 import React, {
-  Fragment,
   createContext,
+  Fragment,
+  memo,
   useCallback,
   useContext,
   useEffect,
-  useState,
   useMemo,
-  memo,
+  useState,
 } from 'react';
-import type { UseThemeProps, ThemeProviderProps } from './types';
+import type { ThemeProviderProps, UseThemeProps } from './types';
 
 const colorSchemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
@@ -34,7 +34,6 @@ const defaultThemes = ['light', 'dark'];
 
 const Theme: React.FC<ThemeProviderProps> = ({
   forcedTheme,
-  disableTransitionOnChange = false,
   enableSystem = true,
   enableColorScheme = true,
   storageKey = 'theme',
@@ -59,7 +58,6 @@ const Theme: React.FC<ThemeProviderProps> = ({
     }
 
     const name = value ? value[resolved] : resolved;
-    const enable = disableTransitionOnChange ? disableAnimation() : null;
     const d = document.documentElement;
 
     if (attribute === 'class') {
@@ -81,7 +79,6 @@ const Theme: React.FC<ThemeProviderProps> = ({
       d.style.colorScheme = colorScheme;
     }
 
-    enable?.();
   }, []);
 
   const setTheme = useCallback(
@@ -160,7 +157,6 @@ const Theme: React.FC<ThemeProviderProps> = ({
       <ThemeScript
         {...{
           forcedTheme,
-          disableTransitionOnChange,
           enableSystem,
           enableColorScheme,
           storageKey,
@@ -284,26 +280,6 @@ const getTheme = (key: string, fallback?: string) => {
     // Unsupported
   }
   return theme || fallback;
-};
-
-const disableAnimation = () => {
-  const css = document.createElement('style');
-  css.appendChild(
-    document.createTextNode(
-      `*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}`,
-    ),
-  );
-  document.head.appendChild(css);
-
-  return () => {
-    // Force restyle
-    (() => window.getComputedStyle(document.body))();
-
-    // Wait for next tick before removing
-    setTimeout(() => {
-      document.head.removeChild(css);
-    }, 1);
-  };
 };
 
 const getSystemTheme = (e?: MediaQueryList | MediaQueryListEvent) => {

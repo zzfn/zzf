@@ -29,7 +29,6 @@ const ThemeButton = () => {
       !('startViewTransition' in document) ||
       window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
     ) {
-      console.log('222');
       options.themeSetter(theme);
       return;
     }

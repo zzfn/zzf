@@ -1,13 +1,14 @@
 import React from 'react';
 import { listArchives } from 'api/article';
 import dayjs from 'dayjs';
+import List from './_components/List';
 
 export default async function Page() {
   const { data = [] } = await listArchives({});
   return (
     <div className='mx-auto max-w-3xl'>
       <h3 className='mt-6 text-muted'>当前共有 {data.length} 篇文章，加油！</h3>
-      <div className='flex flex-col text-sm p-6'>
+      <List>
         {data.map((post: any) => (
           <a
             key={post.id}
@@ -20,7 +21,7 @@ export default async function Page() {
             </time>
           </a>
         ))}
-      </div>
+      </List>
     </div>
   );
 }

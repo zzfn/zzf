@@ -1,36 +1,36 @@
 'use client';
-import { io } from 'socket.io-client';
-import { useEffect, useState } from 'react';
-import Monitor from '../../utils/monitor';
+import { io, Socket } from 'socket.io-client';
+import { useEffect, useRef, useState } from 'react';
+import Monitor from 'utils/monitor';
 
 const OnlineCount = () => {
-  const [userId, setUserId] = useState<string | null>(null);
   const [count, setCount] = useState(0);
-  async function getUserId() {
+  const socket = useRef<Socket>();
+  async function initSocket() {
     const monitor = new Monitor();
-    const _ = await monitor.getVisitor()
-    setUserId(_)
-  }
-  useEffect(() => {
-    getUserId()
-    if (!userId) return;
-    const socket = io('wss://api.zzfzzf.com', {
+    const userId = await monitor.getVisitor();
+    socket.current = io('wss://api.zzfzzf.com', {
       query: {
         userId: userId,
       },
     });
-    socket.on('connect', () => {
-      console.log('connect success', socket.id);
-    });
-    socket.on('online', (data) => {
+    socket.current.on('online', (data) => {
       setCount(data);
     });
+  }
+
+  useEffect(() => {
+    initSocket().then();
     return () => {
-      socket.off('connect');
-      socket.off('online');
-      socket.close();
+      socket.current?.off('connect');
+      socket.current?.off('online');
+      socket.current?.close();
     };
-  }, [userId]);
-  return <div>在线人数 {count}</div>;
+  }, []);
+  return (
+    <div>
+      在线人数 <span className='font-mono'>{count}</span>
+    </div>
+  );
 };
 export default OnlineCount;

@@ -1,5 +1,4 @@
 import { atom } from 'jotai';
-import { atom as atom2 } from 'recoil';
+import type { PostType } from 'interface/type';
 
-export const articleState = atom({});
-export const articleRecoil = atom2({ key: 'article', default: {} });
+export const articleState = atom<PostType | null>(null);

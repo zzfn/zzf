@@ -1,21 +1,14 @@
 'use client';
 import IconSymbols from './IconSymbols';
 import { Drawer, IconButton } from '@oc/design';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useAtomValue } from 'jotai';
-import {articleRecoil, articleState} from "store/store";
-import {useRecoilValue} from "recoil";
 
 const Menu = ({ navLinks }: any) => {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
-  const atomValue= useAtomValue(articleState);
-  const articleRecoilValue = useRecoilValue(articleRecoil)
-  useEffect(()=>{
-      console.log(pathname,atomValue,articleRecoilValue);
-  },[atomValue])
+
   return (
     <>
       <IconButton>
