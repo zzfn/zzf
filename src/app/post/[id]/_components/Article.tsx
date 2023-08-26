@@ -1,12 +1,12 @@
 'use client';
 import classNames from 'classnames';
 import { translateMarkdown } from 'utils/translateMarkdown';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { updateView } from 'api/article';
 
 const Article = ({ content, id }: { content: string; id: string }) => {
   useEffect(() => {
-    updateView({ id });
+    updateView({id}).then();
   },[]);
   return (
     <article
