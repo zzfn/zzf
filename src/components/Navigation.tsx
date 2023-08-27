@@ -16,9 +16,8 @@ const Navigation = ({ navLinks }: any) => {
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsShow(!!(params.id && pathname.includes('post') && latest > 100));
   });
-
   return isShow ? (
-    <>{atomValue?.title}</>
+    <span>{atomValue?.title}</span>
   ) : (
     <>
       {navLinks.map((link: any) => {

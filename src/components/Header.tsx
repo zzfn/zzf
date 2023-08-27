@@ -3,6 +3,7 @@ import React from 'react';
 import ThemeButton from './ThemeButton';
 import Navigation from './Navigation';
 import Menu from './Menu';
+import Logo from './Logo';
 
 const navLinks = [
   { name: 'Post', href: '/post' },
@@ -16,10 +17,10 @@ const Header = () => {
       <span className='text-2xl lg:hidden'>
         <Menu navLinks={navLinks} />
       </span>
-      <Link href='/' className='border-[currentColor] border-2 hover:text-accent rounded-lg px-4'>
-        Cc
+      <Link href='/'>
+        <Logo />
       </Link>
-      <nav className='gap-x-4 items-center px-6 py-2 font-medium text-zinc-800 bg-muted rounded-2xl hidden lg:flex'>
+      <nav className='gap-x-4 items-center px-6 py-2 font-medium bg-muted rounded-2xl hidden lg:flex'>
         <Navigation navLinks={navLinks} />
       </nav>
       <span className='text-2xl inline-flex'>

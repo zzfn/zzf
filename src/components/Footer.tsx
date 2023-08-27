@@ -1,28 +1,19 @@
 import dayjs from 'dayjs';
 import React from 'react';
 import Link from 'next/link';
-import classNames from 'classnames';
-import IconSymbols from './IconSymbols';
-import OnlineCount from "../app/_components/OnlineCount";
+import OnlineCount from 'app/_components/OnlineCount';
+import Logo from './Logo';
 
 const Footer = () => {
   return (
     <footer className='flex flex-col py-6 text-muted items-center gap-y-2 text-xs'>
       Copyright&copy;2020-{dayjs().format('YYYY')}
       <OnlineCount />
-      <Link
-        className='hover:underline'
-        target='_blank'
-        href='/api/feed.xml'
-      >
+      <Link className='hover:underline' target='_blank' href='/api/feed.xml'>
         RSS feed
       </Link>
-      <Link
-        className='hover:underline'
-        target='_blank'
-        href='/status'
-      >
-         服务状态
+      <Link className='hover:underline' target='_blank' href='/status'>
+        服务状态
       </Link>
       <a
         className='hover:underline'
@@ -32,6 +23,7 @@ const Footer = () => {
       >
         苏ICP备18059856号
       </a>
+      <Logo />
     </footer>
   );
 };
