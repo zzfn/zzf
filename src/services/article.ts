@@ -67,11 +67,11 @@ type ViewType = {
   id: string;
 };
 
-export const updateView = (params: ViewType) => {
+export const updateView = (data: ViewType) => {
   return http<boolean>({
     method: 'post',
     url: '/article/updateViewed',
-    params,
+    data,
   });
 };
 export const topSearch = () => {
