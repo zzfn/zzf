@@ -1,11 +1,13 @@
-import React from 'react';
-import IconSymbols from '../components/IconSymbols';
-import Link from 'next/link';
-import dayjs from 'dayjs';
-import { sortByField } from 'api/article';
-import { diff } from '../utils/time';
 import { Tooltip } from '@oc/design';
+import { sortByField } from 'api/article';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { diff } from '../utils/time';
 
+export const revalidate = 0;
+export const metadata: Metadata = {
+  title: 'ccw.home',
+}
 export default async function Page() {
   const { data } = await sortByField({ field: 'createTime' });
   return (

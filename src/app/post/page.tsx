@@ -1,7 +1,12 @@
-import React from 'react';
 import { listArchives } from 'api/article';
 import dayjs from 'dayjs';
 import List from './_components/List';
+import type { Metadata } from 'next';
+
+export const revalidate = 0;
+export const metadata: Metadata = {
+  title: 'ccw.post',
+}
 
 export default async function Page() {
   const { data = [] } = await listArchives({});
