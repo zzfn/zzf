@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 const draw = {
   hidden: { pathLength: 0, opacity: 0 },
-  visible: (i: number) => {
-    const delay = 1 + i * 0.5;
+  visible: (index: number) => {
+    const delay = (index - 1) * 0.5;
     return {
       pathLength: 1,
       opacity: 1,
@@ -25,7 +25,7 @@ const Logo = () => {
         stroke='var(--color-ansi-red)'
         fill='var(--bgColor-default)'
         variants={draw}
-        custom={1}
+        custom={0}
       />
       <motion.line
         x1='27.5'
@@ -34,7 +34,7 @@ const Logo = () => {
         y2='21.25'
         stroke='var(--color-ansi-green)'
         variants={draw}
-        custom={2}
+        custom={1}
       />
       <motion.line
         x1='27.5'
@@ -43,7 +43,7 @@ const Logo = () => {
         y2='3.75'
         stroke='var(--color-ansi-green)'
         variants={draw}
-        custom={2.5}
+        custom={1.5}
       />
       <motion.rect
         width='17.5'
@@ -54,7 +54,7 @@ const Logo = () => {
         stroke='var(--color-ansi-blue)'
         fill='var(--bgColor-default)'
         variants={draw}
-        custom={3}
+        custom={2}
       />
     </motion.svg>
   );
