@@ -6,7 +6,7 @@ import { diff } from 'utils/time';
 import { Tooltip } from '@oc/design';
 import { notFound } from 'next/navigation';
 import ArticleState from './_components/ArticleState';
-import ArticleNav from "../../../components/ArticleNav";
+import ArticleNav from '../../../components/ArticleNav';
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const { data } = await getArticle({ id: params.id });
@@ -15,8 +15,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
   }
   return (
     <ArticleState articleState={data}>
-      <div className='flex'>
-        <main>
+      <div className='md:grid grid-cols-5 w-full gap-x-2'>
+        <main className='shrink grow-0 basis-full w-full col-span-4'>
           <h1 className='pt-8 text-3xl'>{data.title}</h1>
           <ul className='flex gap-x-2 my-4 text-sm text-muted bg-muted p-6 rounded'>
             <label>创建时间</label>
@@ -33,8 +33,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
           <Article content={data.content} id={data.id} />
           <Comment id={data.id} />
         </main>
-        <aside>
-          <ArticleNav source={data.content}/>
+        <aside className='shrink-0 grow-1 col-span-1'>
+          <ArticleNav source={data.content} />
         </aside>
       </div>
     </ArticleState>
