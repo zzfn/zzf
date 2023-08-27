@@ -40,7 +40,7 @@ const Menu = ({ navLinks }: any) => {
         <IconSymbols onClick={() => setVisible(true)} icon='menu'></IconSymbols>
       </IconButton>
       <Drawer onCancel={() => setVisible(false)} visible={visible}>
-        <nav
+        <motion.nav
           variants={variantsNav}
           className='flex flex-col items-center justify-center h-full gap-y-8'
         >
@@ -60,7 +60,7 @@ const Menu = ({ navLinks }: any) => {
               </motion.li>
             );
           })}
-        </nav>
+        </motion.nav>
       </Drawer>
     </>
   );
