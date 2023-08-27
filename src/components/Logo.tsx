@@ -15,46 +15,53 @@ const draw = {
     };
   },
 };
-const Logo = () => {
+const Logo = ({ width = 150, height = 50 }) => {
+  const scaleFactor = width / 150;
   return (
-    <motion.svg width='75' height='25' viewBox='0 0 75 25' initial='hidden' animate='visible'>
+    <motion.svg
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      initial='hidden'
+      animate='visible'
+    >
       <motion.circle
-        cx='12.5'
-        cy='12.5'
-        r='10'
+        cx={25 * scaleFactor}
+        cy={25 * scaleFactor}
+        r={20 * scaleFactor}
         stroke='var(--color-ansi-red)'
         fill='var(--bgColor-default)'
-        variants={draw}
-        custom={0}
-      />
-      <motion.line
-        x1='27.5'
-        y1='3.75'
-        x2='45'
-        y2='21.25'
-        stroke='var(--color-ansi-green)'
         variants={draw}
         custom={1}
       />
       <motion.line
-        x1='27.5'
-        y1='21.25'
-        x2='45'
-        y2='3.75'
+        x1={55 * scaleFactor}
+        y1={7.5 * scaleFactor}
+        x2={90 * scaleFactor}
+        y2={42.5 * scaleFactor}
         stroke='var(--color-ansi-green)'
         variants={draw}
-        custom={1.5}
+        custom={2}
+      />
+      <motion.line
+        x1={55 * scaleFactor}
+        y1={42.5 * scaleFactor}
+        x2={90 * scaleFactor}
+        y2={7.5 * scaleFactor}
+        stroke='var(--color-ansi-green)'
+        variants={draw}
+        custom={2.5}
       />
       <motion.rect
-        width='17.5'
-        height='17.5'
-        x='51.25'
-        y='3.75'
-        rx='2.5'
+        width={35 * scaleFactor}
+        height={35 * scaleFactor}
+        x={102.5 * scaleFactor}
+        y={7.5 * scaleFactor}
+        rx={5 * scaleFactor}
         stroke='var(--color-ansi-blue)'
         fill='var(--bgColor-default)'
         variants={draw}
-        custom={2}
+        custom={3}
       />
     </motion.svg>
   );

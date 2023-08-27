@@ -18,7 +18,7 @@ const Header = () => {
         <Menu navLinks={navLinks} />
       </span>
       <Link href='/'>
-        <Logo />
+        <Logo width={75} height={25} />
       </Link>
       <nav className='gap-x-4 items-center px-6 py-2 font-medium bg-muted rounded-2xl hidden lg:flex'>
         <Navigation navLinks={navLinks} />

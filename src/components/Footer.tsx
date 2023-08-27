@@ -23,7 +23,7 @@ const Footer = () => {
       >
         苏ICP备18059856号
       </a>
-      <Logo />
+      <Logo width={75} height={25} />
     </footer>
   );
 };
