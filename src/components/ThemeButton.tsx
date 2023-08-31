@@ -1,19 +1,15 @@
 'use client';
 import IconSymbols from './IconSymbols';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { IconButton } from '@oc/design';
+import { useAtom } from 'jotai';
+import { themeModeAtom } from '../store/store';
 
 const ThemeButton = () => {
-  const [theme, setTheme] = useState('light');
+  const [themeMode, setThemeMode] = useAtom(themeModeAtom);
   useEffect(() => {
-    const theme = window.localStorage.getItem('theme');
-    if (theme) {
-      setTheme(theme);
-    }
-  }, []);
-  useEffect(() => {
-    document.querySelector('html')?.setAttribute('data-color-mode', theme);
-  }, [theme]);
+    document.querySelector('html')?.setAttribute('data-color-mode', themeMode);
+  }, [themeMode]);
 
   interface ThemeTransitionOptions {
     x?: number; // 鼠标的x坐标
@@ -72,17 +68,16 @@ const ThemeButton = () => {
     <>
       <IconButton
         onClick={(event) => {
-          buildThemeTransition(theme === 'light' ? 'dark' : 'light', {
+          buildThemeTransition(themeMode === 'light' ? 'dark' : 'light', {
             x: event.clientX,
             y: event.clientY,
             themeSetter: (themeParams) => {
-              setTheme(themeParams);
-              window.localStorage.setItem('theme', themeParams);
+              setThemeMode(themeParams);
             },
           });
         }}
       >
-        <IconSymbols icon={`${theme}_mode`} />
+        <IconSymbols icon={`${themeMode}_mode`} />
       </IconButton>
     </>
   );
