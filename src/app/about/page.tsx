@@ -75,8 +75,9 @@ export default async function Page() {
             />
           ))}
         </div>
+        <a href="https://t.ccw.es/BTH82S">友链申请</a>
         please email <strong>me@ooxo.cc</strong> if u want to be my friend
-        <p>你需要提供</p>
+        <p>请先添加友链</p>
         <div>
           <ul className='list-disc'>
             <li>title: dawn-blog</li>
