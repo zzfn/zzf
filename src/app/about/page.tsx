@@ -2,6 +2,7 @@ import React from 'react';
 import { friendList } from 'api/friend';
 import classNames from 'classnames';
 import Image from 'next/image';
+import {Metadata} from "next";
 
 type FriendCard = {
   logo: string;
@@ -12,6 +13,10 @@ type FriendCard = {
 type CardProps = {
   dataSource: FriendCard;
 };
+export const revalidate = 0;
+export const metadata: Metadata = {
+  title: 'ccw.about',
+}
 const CardBio = ({ dataSource }: CardProps) => {
   const { logo, title, description, url } = dataSource;
   return (
@@ -75,7 +80,7 @@ export default async function Page() {
             />
           ))}
         </div>
-        <a href="https://t.ccw.es/BTH82S">友链申请</a>
+        <a className='text-accent' target='_blank' href="https://t.ccw.es/BTH82S">友链申请</a>
         please email <strong>me@ooxo.cc</strong> if u want to be my friend
         <p>请先添加友链</p>
         <div>
