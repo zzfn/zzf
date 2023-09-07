@@ -11,7 +11,7 @@
     "lint:fix": "next lint --fix",
     "prepare": "husky install",
     "prettier": "prettier --write .",
-    "start": "next start -p 9800",
+    "start": "next start",
     "test": "jest --watch",
     "updateSnapshot": "jest --updateSnapshot"
   },
