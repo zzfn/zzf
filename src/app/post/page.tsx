@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import List from './_components/List';
 import type { Metadata } from 'next';
 
-export const revalidate = 0;
 export const metadata: Metadata = {
   title: 'ccw.post',
 }

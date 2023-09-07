@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { diff } from '../utils/time';
 
-export const revalidate = 0;
 export const metadata: Metadata = {
   title: 'ccw.home',
 }
