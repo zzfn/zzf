@@ -1,13 +1,6 @@
 kind: pipeline
 type: docker
 name: ci/cd
-#volumes:
-#  - name: node_modules
-#    host:
-#      path: /root/drone/node-zzf/node_modules
-#  - name: next_cache
-#    host:
-#      path: /root/drone/node-zzf/next_cache
 clone:
   disable: true
 steps:
@@ -26,10 +19,7 @@ steps:
       - touch $HOME/.ssh/config
       - chmod 600 $HOME/.ssh/config
       - echo "Host github.com\n    Hostname ssh.github.com\n    Port 443\n    User git" > $HOME/.ssh/config
-      #      - ssh-keyscan -H github.com > $HOME/.ssh/known_hosts
       - echo "[ssh.github.com]:443 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" >> $HOME/.ssh/known_hosts
-      #      - git clone --branch $DRONE_COMMIT_BRANCH --single-branch $DRONE_GIT_SSH_URL .
-      #      - git checkout $DRONE_COMMIT
       - git config --global init.defaultBranch main
       - git init
       - git config advice.detachedHead false
@@ -40,11 +30,6 @@ steps:
     image: node:lts-alpine
     depends_on:
       - clone
-    #    volumes:
-    #      - name: node_modules
-    #        path: /drone/src/node_modules
-    #      - name: next_cache
-    #        path: /drone/src/.next/cache
     commands:
       - corepack enable
       - corepack prepare pnpm@latest-8 --activate
@@ -52,6 +37,7 @@ steps:
       - pnpm -v
       - pnpm install
       - npm run build
+      - pnpm remove -D
   - name: build_docker
     image: plugins/docker
     environment:
@@ -102,10 +88,3 @@ steps:
         - echo ${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
         - kubectl apply -f https://git.ccw.es/ccw/yaml/raw/branch/master/blog.yaml
         - kubectl set image deployment/blog blog=hub.ccw.es/home/blog:${DRONE_COMMIT_SHA:0:8}
-trigger:
-  branch:
-    - main
-  event:
-    exclude:
-      - promote
-      - pull_request

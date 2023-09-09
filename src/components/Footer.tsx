@@ -12,7 +12,7 @@ const Footer = () => {
       <Link className='hover:underline' target='_blank' href='/api/feed.xml'>
         RSS feed
       </Link>
-      <Link className='hover:underline' target='_blank' href='/status'>
+      <Link className='hover:underline' target='_blank' href='https://t.ooxo.cc/pu1qh7'>
         服务状态
       </Link>
       <a
