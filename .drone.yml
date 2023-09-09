@@ -36,8 +36,8 @@ steps:
       - pnpm config set store-dir .pnpm-store
       - pnpm -v
       - pnpm install
-      - npm run build
-      - pnpm remove -D
+      - pnpm run build
+      - pnpm prune --prod
   - name: build_docker
     image: plugins/docker
     environment:
