@@ -1,19 +1,20 @@
 import IconSymbols from 'components/IconSymbols';
 import CommentPopover from './CommentPopover';
 import CommentCard from './CommentCard';
+import { fetchData } from "../../../../models/api";
 
 async function getData(params: { objectType: string; objectId: string }) {
-  const url = new URL(`${process.env.NEXT_PUBLIC_V1_URL}/v1/comments`);
-  url.searchParams.set('objectId', params.objectId);
-  url.searchParams.set('objectType', params.objectType);
-  const res = await fetch(url.toString(), {
-    next: { tags: ['comments'] },
-  });
-  return res.json();
+  return fetchData<Array<any>>({
+    endpoint:'/v1/comments',
+    queryParams: params,
+    fetchParams:{
+      next: { tags: ['comments'] },
+    }
+  })
 }
 
 const Comment = async ({ params }: { params: { objectType: string; objectId: string } }) => {
-  const { data = [] } = await getData(params);
+  const data = await getData(params);
   return (
     <>
       <h2 className='flex items-center my-2 gap-x-2'>

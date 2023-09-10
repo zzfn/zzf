@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { fetchData } from '../../models/api';
 
 type FriendCard = {
   logo: string;
@@ -47,9 +48,9 @@ const CardBio = ({ dataSource }: CardProps) => {
   );
 };
 export default async function Page() {
-  const { data = [] } = await fetch(`${process.env.NEXT_PUBLIC_V1_URL}/v1/friend-links`).then(
-    (res) => res.json(),
-  );
+  const data = await fetchData<any>({
+    endpoint: '/v1/friend-links',
+  });
   return (
     <>
       <div className='text-[var(--secondary-text)]'>

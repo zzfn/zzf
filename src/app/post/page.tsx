@@ -12,7 +12,9 @@ async function getData() {
   return fetchData<Array<Article>>({
     endpoint: '/v1/articles',
     fetchParams: {
-      tags: ['article'],
+      next:{
+        tags: ['article'],
+      }
     },
   });
 }

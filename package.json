@@ -9,7 +9,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prepare": "[ -z \"$CI\" ] && husky install",
+    "prepare": "[ -z \"$CI\" ] && husky install || true",
     "prettier": "prettier --write .",
     "start": "next start",
     "test": "jest --watch",

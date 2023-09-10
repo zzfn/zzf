@@ -3,7 +3,12 @@
 type FetchOptions = {
   endpoint: string;
   queryParams?: Record<string, string | number>;
-  fetchParams?: RequestInit & { tags?: Array<string> };
+  fetchParams?: RequestInit & {
+    next?: {
+      revalidate?: false | 0 | number,
+      tags?: Array<string>;
+    };
+  };
 };
 
 async function fetchData<T>({
@@ -11,7 +16,7 @@ async function fetchData<T>({
   queryParams = {},
   fetchParams = {},
 }: FetchOptions): Promise<T> {
-  const url = new URL(endpoint, process.env.NEXT_PUBLIC_V1_URL);
+  const url = new URL(endpoint, process.env.NEXT_PUBLIC_BASE_URL);
 
   // 添加查询参数到URL
   for (const [key, value] of Object.entries(queryParams)) {
