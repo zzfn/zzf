@@ -1,10 +1,12 @@
-import { lastCreated } from "api/article";
-import { Feed } from "feed";
-import { marked } from "marked";
-import { mangle } from "marked-mangle";
-import { gfmHeadingId } from "marked-gfm-heading-id";
+import { Feed } from 'feed';
+import { marked } from 'marked';
+import { mangle } from 'marked-mangle';
+import { gfmHeadingId } from 'marked-gfm-heading-id';
+import { fetchData } from 'models/api';
+import type { Article } from 'types/article';
+
 export async function GET() {
-  const { data=[] } = await lastCreated();
+  const data = await fetchData<Array<Article>>({ endpoint: '/v1/articles?rss=true' });
   const siteURL = 'https://zzfzzf.com';
   const date = new Date();
   const author = {
@@ -13,23 +15,23 @@ export async function GET() {
   };
 
   const feed = new Feed({
-    title: 'zzfn',
-    description: 'zzfn的个人博客',
+    title: 'wawama',
+    description: 'wawama的个人博客',
     id: siteURL,
     link: siteURL,
     image: `${siteURL}/favicon.ico`,
     favicon: `${siteURL}/favicon.ico`,
-    copyright: `All rights reserved ${date.getFullYear()}, zzfn`,
+    copyright: `All rights reserved ${date.getFullYear()}, wawama`,
     updated: date,
-    generator: 'Feed for Node.js',
+    generator: 'Feed for wawama',
     feedLinks: {
       rss2: `${siteURL}/rss/feed.xml`,
     },
     author,
   });
-  marked.use(mangle())
+  marked.use(mangle());
   const options = {
-    prefix: "heading-",
+    prefix: 'heading-',
   };
 
   marked.use(gfmHeadingId(options));
@@ -45,18 +47,16 @@ export async function GET() {
       title: post.title,
       id: url,
       link: url,
-      image: post.logo,
-      description: post.summary,
       content: marked.parse(post.content),
       author: [author],
       contributor: [author],
-      date: new Date(post.updateTime),
+      date: new Date(post.updatedAt),
     });
   });
-  return new Response(feed.rss2(),{
+  return new Response(feed.rss2(), {
     status: 200,
     headers: {
-      "Content-Type": "application/xml"
+      'Content-Type': 'application/xml',
     },
-  })
+  });
 }

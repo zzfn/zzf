@@ -3,7 +3,7 @@ import IconSymbols from './IconSymbols';
 import React, { useEffect } from 'react';
 import { IconButton } from '@oc/design';
 import { useAtom } from 'jotai';
-import { themeModeAtom } from '../store/store';
+import { themeModeAtom } from '../atoms/themeAtoms';
 
 const ThemeButton = () => {
   const [themeMode, setThemeMode] = useAtom(themeModeAtom);
@@ -14,11 +14,11 @@ const ThemeButton = () => {
   interface ThemeTransitionOptions {
     x?: number; // 鼠标的x坐标
     y?: number; // 鼠标的y坐标
-    themeSetter: (theme: 'light' | 'dark' | 'system') => void; // 设置主题的函数
+    themeSetter: (theme: 'light' | 'dark' | 'auto') => void; // 设置主题的函数
   }
 
   const buildThemeTransition = (
-    theme: 'light' | 'dark' | 'system',
+    theme: 'light' | 'dark' | 'auto',
     options: ThemeTransitionOptions,
   ) => {
     if (
@@ -68,7 +68,7 @@ const ThemeButton = () => {
     <>
       <IconButton
         onClick={(event) => {
-          buildThemeTransition(themeMode === 'light' ? 'dark' : 'light', {
+          buildThemeTransition(themeMode === 'light' ? 'dark' :(themeMode==='dark'?'auto': 'light'), {
             x: event.clientX,
             y: event.clientY,
             themeSetter: (themeParams) => {

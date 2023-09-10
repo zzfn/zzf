@@ -1,8 +1,7 @@
 import React from 'react';
-import { friendList } from 'api/friend';
 import classNames from 'classnames';
 import Image from 'next/image';
-import {Metadata} from "next";
+import { Metadata } from 'next';
 
 type FriendCard = {
   logo: string;
@@ -16,7 +15,7 @@ type CardProps = {
 export const revalidate = 0;
 export const metadata: Metadata = {
   title: 'ccw.about',
-}
+};
 const CardBio = ({ dataSource }: CardProps) => {
   const { logo, title, description, url } = dataSource;
   return (
@@ -48,7 +47,9 @@ const CardBio = ({ dataSource }: CardProps) => {
   );
 };
 export default async function Page() {
-  const { data = [] } = await friendList();
+  const { data = [] } = await fetch(`${process.env.NEXT_PUBLIC_V1_URL}/v1/friend-links`).then(
+    (res) => res.json(),
+  );
   return (
     <>
       <div className='text-[var(--secondary-text)]'>
@@ -68,7 +69,7 @@ export default async function Page() {
         </ul>
         <h3 className='text-primary font-bold text-xl my-3'>friends</h3>
         <div className='grid md:grid-cols-2 gap-x-16 m-2'>
-          {data.map((item: any) => (
+          {data?.map((item: any) => (
             <CardBio
               key={item.id}
               dataSource={{
@@ -80,7 +81,9 @@ export default async function Page() {
             />
           ))}
         </div>
-        <a className='text-accent' target='_blank' href="https://t.ccw.es/BTH82S">友链申请</a>
+        <a className='text-accent' target='_blank' href='https://t.ccw.es/BTH82S'>
+          友链申请
+        </a>
         please email <strong>me@ooxo.cc</strong> if u want to be my friend
         <p>请先添加友链</p>
         <div>

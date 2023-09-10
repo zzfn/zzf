@@ -7,29 +7,15 @@ interface Res<T = never> {
   message: string;
 }
 
-/**
- * 字典
- */
-interface Dict {
-  code: string;
-  id: string;
-  name: string;
-}
-
-interface Page<T> {
-  current: number;
-  total: number;
-  size: number;
-  records: T[];
-}
-
-interface NextProps<T> {
-  serverProps: T;
-}
-
 declare module '*.svg' {
   const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   export default content;
 }
 declare module 'zooming';
 declare module '@multiavatar/multiavatar/esm';
+// globals.d.ts
+declare namespace NodeJS {
+  interface ProcessEnv {
+    NEXT_PUBLIC_V1_URL: string;
+  }
+}

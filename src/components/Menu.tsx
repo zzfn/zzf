@@ -54,7 +54,7 @@ const Menu = ({ navLinks }: any) => {
                 whileTap={{ scale: 0.95 }}
                 key={link.name}
               >
-                <Link className={isActive ? 'text-accent' : 'text-default'} href={link.href}>
+                <Link className={isActive ? 'text-accent' : 'text-default'} href={'/' + link.href}>
                   {link.name}
                 </Link>
               </motion.li>

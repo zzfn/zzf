@@ -1,23 +1,46 @@
-"use client";
-import { useEffect, useState } from "react";
-import { saveDiscuss } from "api/discuss";
-import { Input, Message, Popover } from "@oc/design";
-import Monitor from "../../../../utils/monitor";
-import Avatar from "./Avatar";
-import IconSymbols from "../../../../components/IconSymbols";
+'use client';
+import { useEffect, useState } from 'react';
+import { Input, Message, Popover } from '@oc/design';
+import Monitor from '../../../../utils/monitor';
+import Avatar from './Avatar';
+import IconSymbols from '../../../../components/IconSymbols';
+import useSWRMutation from 'swr/mutation';
+import { useCommentOrReply } from '../../../../models/comment';
 
-const CommentPopover = function ({ children, dataSource = {}, onSuccess,articleId }: any) {
+async function sendRequest(
+  url: string,
+  {
+    arg,
+  }: {
+    arg: { objectId: string; content: string; createdBy: string; updatedBy: string };
+  },
+) {
+  return fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(arg),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => res.json());
+}
+
+const CommentPopover = function ({ children, onSuccess, params }: any) {
+  const { action, ...rest } = params;
   const [content, setContent] = useState('');
   const [visitorId, setVisitorId] = useState('');
   const [visible, setVisible] = useState(false);
+  const { data, trigger } = useCommentOrReply(
+    params.action === 'comment' ? `comments` : `replies`,
+    {
+      ...rest,
+      objectId: rest.objectId || 0,
+      content,
+      userID: visitorId,
+    },
+  );
   const handleComment = async () => {
     if (!content) return;
-    const { data } = await saveDiscuss({
-      postId: articleId,
-      content,
-      replyUserId: dataSource.createBy,
-      parentCommentId: dataSource.id,
-    });
+    trigger();
     if (data) {
       onSuccess();
       setVisible(false);
@@ -48,10 +71,13 @@ const CommentPopover = function ({ children, dataSource = {}, onSuccess,articleI
             placeholder='说点什么'
           />
           <div className='flex items-center justify-between py-1'>
-            <Avatar userId={visitorId}/>
-            <IconSymbols onClick={()=>{
-              handleComment()
-            }} icon='send' />
+            <Avatar userId={visitorId} />
+            <IconSymbols
+              onClick={() => {
+                handleComment();
+              }}
+              icon='send'
+            />
           </div>
         </div>
       }

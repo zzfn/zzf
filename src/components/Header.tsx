@@ -6,14 +6,14 @@ import Menu from './Menu';
 import Logo from './Logo';
 
 const navLinks = [
-  { name: 'Post', href: '/post' },
-  { name: 'About', href: '/about' },
-  { name: 'Feedback', href: '/feedback' },
-  { name: 'Search', href: '/search' },
+  { name: 'Post', href: 'post' },
+  { name: 'About', href: 'about' },
+  { name: 'Feedback', href: 'feedback' },
+  { name: 'Search', href: 'search' },
 ];
 const Header = () => {
   return (
-    <header className='flex w-full justify-between items-center py-6 sticky top-0 bg-default z-10'>
+    <header className='flex w-full justify-between items-center py-6 sticky top-0 backdrop-blur-md   z-10'>
       <span className='text-2xl lg:hidden'>
         <Menu navLinks={navLinks} />
       </span>

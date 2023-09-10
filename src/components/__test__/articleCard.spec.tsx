@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-const dataSource: Article = {
+const dataSource: any = {
   id: '6972548384855035914',
   updateTime: '2022-10-11 13:54:56',
   createTime: '2021-05-13 17:23:16',

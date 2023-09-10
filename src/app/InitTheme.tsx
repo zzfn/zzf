@@ -15,31 +15,17 @@ const colorSchemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
 const isServer = typeof window === 'undefined';
 const ThemeContext = createContext<UseThemeProps | undefined>(undefined);
-const defaultContext: UseThemeProps = {
-  setTheme: (_) => {},
-  themes: [],
-};
-
-export const useTheme = () => useContext(ThemeContext) ?? defaultContext;
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = (props) => {
-  const context = useContext(ThemeContext);
-
-  // Ignore nested context providers, just passthrough children
-  if (context) return <Fragment>{props.children}</Fragment>;
-  return <Theme {...props} />;
-};
 
 const defaultThemes = ['light', 'dark'];
 
-const Theme: React.FC<ThemeProviderProps> = ({
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   forcedTheme,
   enableSystem = true,
   enableColorScheme = true,
   storageKey = 'theme',
   themes = defaultThemes,
   defaultTheme = enableSystem ? 'system' : 'light',
-  attribute = 'data-theme',
+  attribute = 'data-color-mode',
   value,
   children,
   nonce,
@@ -140,20 +126,8 @@ const Theme: React.FC<ThemeProviderProps> = ({
     applyTheme(forcedTheme ?? theme);
   }, [forcedTheme, theme]);
 
-  const providerValue = useMemo(
-    () => ({
-      theme,
-      setTheme,
-      forcedTheme,
-      resolvedTheme: theme === 'system' ? resolvedTheme : theme,
-      themes: enableSystem ? [...themes, 'system'] : themes,
-      systemTheme: (enableSystem ? resolvedTheme : undefined) as 'light' | 'dark' | undefined,
-    }),
-    [theme, setTheme, forcedTheme, resolvedTheme, enableSystem, themes],
-  );
-
   return (
-    <ThemeContext.Provider value={providerValue}>
+    <>
       <ThemeScript
         {...{
           forcedTheme,
@@ -170,7 +144,7 @@ const Theme: React.FC<ThemeProviderProps> = ({
         }}
       />
       {children}
-    </ThemeContext.Provider>
+    </>
   );
 };
 

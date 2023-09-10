@@ -1,14 +1,29 @@
 import { Tooltip } from '@oc/design';
-import { sortByField } from 'api/article';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { diff } from '../utils/time';
+import { diff, format } from 'utils/time';
+import { fetchData } from 'models/api';
+import type { Article } from "types/article";
 
 export const metadata: Metadata = {
   title: 'ccw.home',
+};
+
+async function getData() {
+  return fetchData<Array<Article>>({
+    endpoint: '/v1/articles',
+    queryParams: {
+      limit: '6',
+      order: 'updated_at desc',
+    },
+    fetchParams:{
+      tags: ['article'],
+    }
+  });
 }
+
 export default async function Page() {
-  const { data } = await sortByField({ field: 'createTime' });
+  const data = await getData();
   return (
     <div className='py-6'>
       <div className='grid lg:grid-cols-2'>
@@ -25,9 +40,9 @@ export default async function Page() {
             >
               <div>{post.title}</div>
               <div className='flex items-center gap-x-2 text-xs text-muted'>
-                <time className='font-mono'>{diff(post.createTime)}</time>
-                {post.createTime !== post.updateTime && (
-                  <Tooltip content={post.updateTime}>
+                <time className='font-mono'>{diff(post.createdAt)}</time>
+                {post.createdAt !== post.updatedAt && (
+                  <Tooltip content={format(post.updatedAt)}>
                     <span>（已编辑）</span>
                   </Tooltip>
                 )}
