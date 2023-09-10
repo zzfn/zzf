@@ -17,7 +17,9 @@ async function getData() {
       order: 'updated_at desc',
     },
     fetchParams:{
-      tags: ['article'],
+      next:{
+        tags: ['article'],
+      }
     }
   });
 }
