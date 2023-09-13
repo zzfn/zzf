@@ -1,52 +1,30 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Input, Message, Popover } from '@oc/design';
-import Monitor from '../../../../utils/monitor';
+import { IconButton, Input, Message, Popover } from '@oc/design';
+import Monitor from 'utils/monitor';
 import Avatar from './Avatar';
-import IconSymbols from '../../../../components/IconSymbols';
+import IconSymbols from 'components/IconSymbols';
 import useSWRMutation from 'swr/mutation';
-import { useCommentOrReply } from '../../../../models/comment';
+import { useCommentOrReply } from 'models/comment';
 
-async function sendRequest(
-  url: string,
-  {
-    arg,
-  }: {
-    arg: { objectId: string; content: string; createdBy: string; updatedBy: string };
-  },
-) {
-  return fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(arg),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then((res) => res.json());
-}
-
-const CommentPopover = function ({ children, onSuccess, params }: any) {
-  const { action, ...rest } = params;
+const CommentPopover = function ({ children,commentId,mutate }: any) {
   const [content, setContent] = useState('');
   const [visitorId, setVisitorId] = useState('');
   const [visible, setVisible] = useState(false);
-  const { data, trigger } = useCommentOrReply(
-    params.action === 'comment' ? `comments` : `replies`,
+  const { trigger } = useCommentOrReply(
+    'replies',
     {
-      ...rest,
-      objectId: rest.objectId || 0,
+      commentId: commentId,
       content,
       userID: visitorId,
     },
   );
   const handleComment = async () => {
     if (!content) return;
-    trigger();
-    if (data) {
-      onSuccess();
-      setVisible(false);
-      setContent('');
-      Message.success('评论成功');
-    }
+    await trigger();
+    await mutate()
+    setVisible(false)
+    setContent('')
   };
   const getVisitorId = async () => {
     const monitor = new Monitor();
@@ -64,20 +42,24 @@ const CommentPopover = function ({ children, onSuccess, params }: any) {
       placement='bottomLeft'
       content={
         <div className='px-3 py-2'>
-          <Input
-            className='h-full'
-            onChange={(e) => setContent(e.target.value)}
+          <textarea
             value={content}
+            onChange={(evt) => {
+              setContent(evt.target.value);
+            }}
+            rows={3}
+            className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 resize-none'
             placeholder='说点什么'
           />
           <div className='flex items-center justify-between py-1'>
             <Avatar userId={visitorId} />
-            <IconSymbols
+            <IconButton
               onClick={() => {
                 handleComment();
               }}
-              icon='send'
-            />
+            >
+              <IconSymbols icon='send' />
+            </IconButton>
           </div>
         </div>
       }

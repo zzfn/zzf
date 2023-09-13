@@ -6,7 +6,7 @@ import { Tooltip } from '@oc/design';
 import { notFound } from 'next/navigation';
 import ArticleState from './_components/ArticleState';
 import ArticleNav from 'components/ArticleNav';
-import { fetchData } from "models/api";
+import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
 
 async function getData(id: string) {
@@ -38,12 +38,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <span>{data.viewCount}</span>
           </ul>
           <ArticleContent content={data.content} />
-          <Comment
-            params={{
-              objectType: 'article',
-              objectId: data.id,
-            }}
-          />
+          <Comment params={{ objectType: 'article', objectId: data.id }} />
         </main>
         <aside className='shrink-0 grow-1 col-span-1'>
           <ArticleNav source={data.content} />

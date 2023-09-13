@@ -3,12 +3,12 @@ import Comment from "../post/[id]/_components/Comment";
 
 const Page = async () => {
   return (
-    <>
-      <Comment params={{
-        objectId: '',
-        objectType: 'message'
-      }}/>
-    </>
+    <Comment
+      params={{
+        objectId: '0',
+        objectType: 'message',
+      }}
+    />
   );
 };
 

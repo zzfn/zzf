@@ -1,20 +1,12 @@
 'use client';
-import React, {
-  createContext,
-  Fragment,
-  memo,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-import type { ThemeProviderProps, UseThemeProps } from './types';
+import React, { memo, useCallback, useEffect, useState } from 'react';
+import type { ThemeProviderProps } from './types';
+import { useSetAtom } from 'jotai';
+import { userAtom } from '../atoms/userAtoms';
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 const colorSchemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
-const isServer = typeof window === 'undefined';
-const ThemeContext = createContext<UseThemeProps | undefined>(undefined);
 
 const defaultThemes = ['light', 'dark'];
 
@@ -30,11 +22,19 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
   nonce,
 }) => {
+  const setUser = useSetAtom(userAtom);
   const [theme, setThemeState] = useState(() => getTheme(storageKey, defaultTheme));
-  const [resolvedTheme, setResolvedTheme] = useState(() => getTheme(storageKey));
-  const attrs = !value ? themes : Object.values(value);
 
-  const applyTheme = useCallback((theme:any) => {
+  async function getVisitorId() {
+    const { get } = await FingerprintJS.load();
+    const { visitorId } = await get();
+    setUser(visitorId);
+  }
+
+  useEffect(() => {
+    getVisitorId();
+  }, []);
+  const applyTheme = useCallback((theme: any) => {
     let resolved = theme;
     if (!resolved) return;
 
@@ -46,29 +46,20 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     const name = value ? value[resolved] : resolved;
     const d = document.documentElement;
 
-    if (attribute === 'class') {
-      d.classList.remove(...attrs);
-
-      if (name) d.classList.add(name);
+    if (name) {
+      d.setAttribute(attribute, name);
     } else {
-      if (name) {
-        d.setAttribute(attribute, name);
-      } else {
-        d.removeAttribute(attribute);
-      }
+      d.removeAttribute(attribute);
     }
 
     if (enableColorScheme) {
       const fallback = colorSchemes.includes(defaultTheme) ? defaultTheme : null;
-      const colorScheme = colorSchemes.includes(resolved) ? resolved : fallback;
-      // @ts-ignore
-      d.style.colorScheme = colorScheme;
+      d.style.colorScheme = colorSchemes.includes(resolved) ? resolved : fallback;
     }
-
   }, []);
 
   const setTheme = useCallback(
-    (theme:any) => {
+    (theme: any) => {
       const newTheme = typeof theme === 'function' ? theme(theme) : theme;
       setThemeState(newTheme);
 
@@ -84,9 +75,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
   const handleMediaQuery = useCallback(
     (e: MediaQueryListEvent | MediaQueryList) => {
-      const resolved = getSystemTheme(e);
-      setResolvedTheme(resolved);
-
       if (theme === 'system' && enableSystem && !forcedTheme) {
         applyTheme('system');
       }
@@ -139,7 +127,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
           attribute,
           value,
           children,
-          attrs,
           nonce,
         }}
       />
@@ -157,20 +144,13 @@ const ThemeScript = memo(
     enableColorScheme,
     defaultTheme,
     value,
-    attrs,
     nonce,
-  }: ThemeProviderProps & { attrs: string[]; defaultTheme: string }) => {
+  }: ThemeProviderProps & { defaultTheme: string }) => {
     const defaultSystem = defaultTheme === 'system';
 
     // Code-golfing the amount of characters in the script
     const optimization = (() => {
-      if (attribute === 'class') {
-        const removeClasses = `c.remove(${attrs.map((t: string) => `'${t}'`).join(',')})`;
-
-        return `var d=document.documentElement,c=d.classList;${removeClasses};`;
-      } else {
-        return `var d=document.documentElement,n='${attribute}',s='setAttribute';`;
-      }
+      return `var d=document.documentElement,n='${attribute}',s='setAttribute';`;
     })();
 
     const fallbackColorScheme = (() => {
@@ -246,7 +226,6 @@ const ThemeScript = memo(
 
 // Helpers
 const getTheme = (key: string, fallback?: string) => {
-  if (isServer) return undefined;
   let theme;
   try {
     theme = localStorage.getItem(key) || undefined;
@@ -259,6 +238,5 @@ const getTheme = (key: string, fallback?: string) => {
 const getSystemTheme = (e?: MediaQueryList | MediaQueryListEvent) => {
   if (!e) e = window.matchMedia(MEDIA);
   const isDark = e.matches;
-  const systemTheme = isDark ? 'dark' : 'light';
-  return systemTheme;
+  return isDark ? 'dark' : 'light';
 };

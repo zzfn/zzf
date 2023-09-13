@@ -1,7 +1,7 @@
 import Avatar from './Avatar';
 import Footer from './Footer';
 
-const CommentCard = ({ item,children }: any) => {
+const CommentCard = ({ item,children,commentId,mutate }: any) => {
   return (
     <>
       <div key={item.id} className='flex items-start gap-x-4'>
@@ -13,7 +13,7 @@ const CommentCard = ({ item,children }: any) => {
             </div>
             <p className='my-2'>{item.content}</p>
           </div>
-          <Footer dataSource={item} />
+          <Footer mutate={mutate} commentId={commentId} dataSource={item} />
         </div>
       </div>
       <div className='ml-14'>

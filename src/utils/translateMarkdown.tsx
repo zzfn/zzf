@@ -9,27 +9,24 @@ import React from 'react';
 
 export const translateMarkdown = (text = '') => {
   const renderer = new marked.Renderer();
-  renderer.code = function (code, language ) {
+  renderer.code = function (code, language) {
     return renderToStaticMarkup(<ArticleCode language={language} code={code} />);
   };
   renderer.image = function (href, title, text) {
-    return `<img loading='lazy' src='${href}'  class='zoom' alt='${text}' />`;
+    return `<img loading="lazy" src="${href}"  class="zoom" alt="${text}" />`;
   };
   renderer.link = function (href, title, text) {
-    return `<a target='_blank' href='${href}'>${text}</a>`;
+    return `<a target="_blank" href="${href}">${text}</a>`;
   };
-  renderer.heading = function (text, level, _, slugger) {
-    const id = slugger.slug('heading');
+  renderer.heading = function (text, level, raw) {
     return `
-            <h${level} id='${id === 'heading' ? 'heading-0' : id}'>
-              <a class="text-default no-underline" href="#${
-                id === 'heading' ? 'heading-0' : id
-              }">${text}</a>
+            <h${level} id="${text}">
+              <a class="text-default no-underline" href="#${text}">${text}</a>
             </h${level}>`;
   };
   renderer.table = function (header: React.ReactNode, body: React.ReactNode) {
     return `
-    <div class='markdown-table'>
+    <div class="markdown-table">
       <table>
       ${header}
       ${body}

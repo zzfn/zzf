@@ -3,8 +3,9 @@ import './globals.scss';
 import Footer from '../components/Footer';
 import { WebVitals } from './_components/WebVitals';
 import type { Metadata } from 'next';
-import React from 'react';
-import { ThemeProvider } from "./InitTheme";
+import type { ReactNode } from 'react';
+import { ThemeProvider } from './InitTheme';
+
 export const metadata: Metadata = {
   title: 'ccw.奇趣生活实验室',
   description: 'ccw的个人网站,记录个人学习',
@@ -24,8 +25,7 @@ export const metadata: Metadata = {
   ],
 };
 
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       suppressHydrationWarning
@@ -34,11 +34,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       data-dark-theme='dark'
       data-light-theme='light'
     >
-      <body className='container mx-auto px-3'>
+      <body>
         <WebVitals />
         <ThemeProvider>
           <Header />
-          {children}
+          <main className='container mx-auto px-3'>
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>
