@@ -17,5 +17,7 @@ declare module '@multiavatar/multiavatar/esm';
 declare namespace NodeJS {
   interface ProcessEnv {
     NEXT_PUBLIC_BASE_URL: string;
+    NEXT_PUBLIC_CDN_URL: string;
+    NEXT_PUBLIC_WS_URL: string;
   }
 }

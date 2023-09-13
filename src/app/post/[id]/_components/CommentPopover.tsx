@@ -1,39 +1,29 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { IconButton, Input, Message, Popover } from '@oc/design';
-import Monitor from 'utils/monitor';
+import { useState } from 'react';
+import { IconButton, Popover } from '@oc/design';
 import Avatar from './Avatar';
 import IconSymbols from 'components/IconSymbols';
-import useSWRMutation from 'swr/mutation';
 import { useCommentOrReply } from 'models/comment';
+import { useAtomValue } from 'jotai';
+import { userAtom } from 'atoms/userAtoms';
 
-const CommentPopover = function ({ children,commentId,mutate }: any) {
+const CommentPopover = function ({ children, commentId, mutate }: any) {
   const [content, setContent] = useState('');
-  const [visitorId, setVisitorId] = useState('');
+  const visitorId = useAtomValue(userAtom);
   const [visible, setVisible] = useState(false);
-  const { trigger } = useCommentOrReply(
-    'replies',
-    {
-      commentId: commentId,
-      content,
-      userID: visitorId,
-    },
-  );
+  const { trigger } = useCommentOrReply('replies', {
+    commentId: commentId,
+    content,
+    userID: visitorId,
+  });
   const handleComment = async () => {
     if (!content) return;
     await trigger();
-    await mutate()
-    setVisible(false)
-    setContent('')
+    await mutate();
+    setVisible(false);
+    setContent('');
   };
-  const getVisitorId = async () => {
-    const monitor = new Monitor();
-    const id = await monitor.getVisitor();
-    setVisitorId(id);
-  };
-  useEffect(() => {
-    getVisitorId();
-  }, []);
+
   return (
     <Popover
       visible={visible}
