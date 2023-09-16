@@ -35,7 +35,7 @@ export default async function Page() {
             >
               <span>{post.title}</span>
               <time className='font-mono font-thin text-muted'>
-                {dayjs(post.createTime).format('YYYY-MM-DD')}
+                {dayjs(post.createdAt).format('YYYY-MM-DD')}
               </time>
             </a>
           ))}
