@@ -6,7 +6,7 @@ import { fetchData } from '../../models/api';
 
 type FriendCard = {
   logo: string;
-  title: string;
+  name: string;
   description: string;
   url: string;
 };
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: 'ccw.about',
 };
 const CardBio = ({ dataSource }: CardProps) => {
-  const { logo, title, description, url } = dataSource;
+  const { logo, name, description, url } = dataSource;
   return (
     <a
       rel='noreferrer'
@@ -41,7 +41,7 @@ const CardBio = ({ dataSource }: CardProps) => {
         alt=''
       />
       <div className={classNames('flex', 'flex-col', 'justify-between', 'p-2')}>
-        <strong className='text-primary'>{title}</strong>
+        <strong className='text-primary'>{name}</strong>
         <p className='text-neutral-2'>{description}</p>
       </div>
     </a>
@@ -75,7 +75,7 @@ export default async function Page() {
               key={item.id}
               dataSource={{
                 logo: item.logo,
-                title: item.title,
+                name: item.name,
                 description: item.description,
                 url: item.url,
               }}
