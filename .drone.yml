@@ -30,12 +30,12 @@ steps:
       - build
     pull: if-not-exists
     settings:
-      registry: hub.ccw.es
+      registry: hub.ooxo.cc
       username:
         from_secret: nexus_docker_username
       password:
         from_secret: nexus_docker_password
-      repo: hub.ccw.es/home/blog
+      repo: hub.ooxo.cc/home/blog
       tags:
         - ${DRONE_COMMIT_SHA:0:8}
         - latest
@@ -69,5 +69,5 @@ steps:
       command_timeout: 2m
       script:
         - echo ${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
-        - kubectl apply -f https://git.ccw.es/ccw/yaml/raw/branch/master/blog.yaml
-        - kubectl set image deployment/blog blog=hub.ccw.es/home/blog:${DRONE_COMMIT_SHA:0:8}
+        - kubectl apply -f https://git.ooxo.cc/ccw/yaml/raw/branch/master/blog.yaml
+        - kubectl set image deployment/blog blog=hub.ooxo.cc/home/blog:${DRONE_COMMIT_SHA:0:8}
