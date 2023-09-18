@@ -22,7 +22,7 @@ async function getData(params: { objectType: string; objectId: string }) {
 }
 
 const Comment = ({ params }: { params: { objectType: string; objectId: string } }) => {
-  const { data = [],mutate } = useGetComment(params);
+  const { data = [], mutate } = useGetComment(params);
   const visitorId = useAtomValue(userAtom);
   const [isVisible, setIsVisible] = useState(false);
   const [content, setContent] = useState<string>('');
@@ -43,7 +43,7 @@ const Comment = ({ params }: { params: { objectType: string; objectId: string } 
           setIsVisible(!!evt.target.value);
         }}
         rows={3}
-        className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 resize-none'
+        className='block p-2.5 w-full text-sm text-muted bg-muted rounded-lg border border-default focus:ring-blue-500 focus:border-blue-500 resize-none'
         placeholder='说点什么'
       />
       <AnimatePresence>
@@ -59,9 +59,9 @@ const Comment = ({ params }: { params: { objectType: string; objectId: string } 
               <Button
                 onClick={async () => {
                   await trigger();
-                  await mutate()
-                  setContent("")
-                  setIsVisible(false)
+                  await mutate();
+                  setContent('');
+                  setIsVisible(false);
                 }}
               >
                 Post comment
@@ -76,7 +76,9 @@ const Comment = ({ params }: { params: { objectType: string; objectId: string } 
         <div className='py-6'>
           {data.map((item: any) => (
             <CommentCard mutate={mutate} key={item.id} item={item} commentId={item.id}>
-              {item.replies?.map((_: any) => <CommentCard mutate={mutate} commentId={item.id} key={_.id} item={_} />)}
+              {item.replies?.map((_: any) => (
+                <CommentCard mutate={mutate} commentId={item.id} key={_.id} item={_} />
+              ))}
             </CommentCard>
           ))}
         </div>

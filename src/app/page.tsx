@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { diff, format } from 'utils/time';
 import { fetchData } from 'models/api';
 import type { Article } from "types/article";
+import TimeDiff from "./_components/TimeDiff";
 
 export const metadata: Metadata = {
   title: 'ccw.home',
@@ -42,7 +43,7 @@ export default async function Page() {
             >
               <div>{post.title}</div>
               <div className='flex items-center gap-x-2 text-xs text-muted'>
-                <time className='font-mono'>{diff(post.createdAt)}</time>
+                <time className='font-mono'><TimeDiff time={post.createdAt}/></time>
                 {post.createdAt !== post.updatedAt && (
                   <Tooltip content={format(post.updatedAt)}>
                     <span>（已编辑）</span>
