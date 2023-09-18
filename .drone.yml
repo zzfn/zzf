@@ -40,7 +40,7 @@ steps:
         - ${DRONE_COMMIT_SHA:0:8}
         - latest
   - name: oss
-    image: registry.cn-shanghai.aliyuncs.com/zzf2001/drone-aliyun-oss
+    image: wwma/drone-aliyun-oss
     depends_on:
       - build
     settings:
