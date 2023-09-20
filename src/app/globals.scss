@@ -95,6 +95,11 @@ em {
     background-color: var(--bgColor-accent-emphasis);
   }
 }
+[data-color-mode="dark"]{
+  img,svg{
+    filter: brightness(0.8);
+  }
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

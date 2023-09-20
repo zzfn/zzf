@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { diff, format } from 'utils/time';
 import { fetchData } from 'models/api';
-import type { Article } from "types/article";
-import TimeDiff from "./_components/TimeDiff";
+import type { Article } from 'types/article';
+import TimeDiff from './_components/TimeDiff';
+import HomeIcon from "../components/HomeIcon";
 
 export const metadata: Metadata = {
   title: 'ccw.home',
@@ -17,11 +18,11 @@ async function getData() {
       limit: '6',
       order: 'updated_at desc',
     },
-    fetchParams:{
-      next:{
+    fetchParams: {
+      next: {
         tags: ['article'],
-      }
-    }
+      },
+    },
   });
 }
 
@@ -29,6 +30,18 @@ export default async function Page() {
   const data = await getData();
   return (
     <div className='py-6'>
+      <div className='flex justify-between h-[calc(100vh_-_80px)] items-center px-28'>
+        <p className='text-4xl text-muted leading-loose'>
+          Hi, I&apos;m wm👋。
+          <br />
+          <span className='font-thin'>A Js and Go Full Stack </span>
+          <br />
+          <span className='font-medium hover:bg-muted rounded py-3'>
+            {'<'}Developer{'/>'}
+          </span>
+        </p>
+        <HomeIcon/>
+      </div>
       <div className='grid lg:grid-cols-2'>
         <div className='text-xl flex justify-center items-center flex-col gap-y-2'>
           <p>看看最近我都写了些什么，</p>
@@ -43,7 +56,9 @@ export default async function Page() {
             >
               <div>{post.title}</div>
               <div className='flex items-center gap-x-2 text-xs text-muted'>
-                <time className='font-mono'><TimeDiff time={post.createdAt}/></time>
+                <time className='font-mono'>
+                  <TimeDiff time={post.createdAt} />
+                </time>
                 {post.createdAt !== post.updatedAt && (
                   <Tooltip content={format(post.updatedAt)}>
                     <span>（已编辑）</span>

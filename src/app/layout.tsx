@@ -7,7 +7,6 @@ import type { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
 import localFont from 'next/font/local'
 const myFont = localFont({ src: './LXGWWenKaiScreen.woff2',variable:'--font-lxgw' })
-myFont
 export const metadata: Metadata = {
   title: 'ccw.奇趣生活实验室',
   description: 'ccw的个人网站,记录个人学习',
