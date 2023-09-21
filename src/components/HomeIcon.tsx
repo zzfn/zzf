@@ -6,7 +6,7 @@ const HomeIcon = () => {
           <path d='M0 0h1024v1024H0z' />
         </clipPath>
       </defs>
-      <g clip-path='url(#a)'>
+      <g clipPath='url(#a)'>
         <path d='M0 0h1024v1024H0z' fill='var(--bgColor-default)' />
         <path d='M0 0h1024v1024H0z' fill='var(--bgColor-default)' />
         <path

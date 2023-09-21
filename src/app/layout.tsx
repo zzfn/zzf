@@ -5,6 +5,7 @@ import { WebVitals } from './_components/WebVitals';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
+
 export const metadata: Metadata = {
   title: 'ccw.奇趣生活实验室',
   description: 'ccw的个人网站,记录个人学习',
