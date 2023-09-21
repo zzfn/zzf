@@ -1,11 +1,11 @@
 import { Tooltip } from '@oc/design';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { diff, format } from 'utils/time';
+import { format } from 'utils/time';
 import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
 import TimeDiff from './_components/TimeDiff';
-import HomeIcon from "../components/HomeIcon";
+import HomeIcon from '../components/HomeIcon';
 
 export const metadata: Metadata = {
   title: 'ccw.home',
@@ -29,8 +29,8 @@ async function getData() {
 export default async function Page() {
   const data = await getData();
   return (
-    <div className='py-6'>
-      <div className='flex justify-between h-[calc(100vh_-_80px)] items-center px-28'>
+    <>
+      <div className='flex justify-between h-[calc(100vh_-_72px)] items-center p-28 flex-col lg:flex-row'>
         <p className='text-4xl text-muted leading-loose'>
           Hi, I&apos;m wm👋。
           <br />
@@ -75,6 +75,6 @@ export default async function Page() {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }
