@@ -74,7 +74,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        'sans': ['var(--font-lxgw)', ...defaultTheme.fontFamily.sans],
+        'sans': ['LXGW WenKai Screen', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono],
       },
     },
