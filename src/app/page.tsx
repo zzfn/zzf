@@ -8,7 +8,7 @@ import TimeDiff from './_components/TimeDiff';
 import HomeIcon from '../components/HomeIcon';
 
 export const metadata: Metadata = {
-  title: 'ccw.home',
+  title: 'krupp.home',
 };
 
 async function getData() {
@@ -32,7 +32,7 @@ export default async function Page() {
     <>
       <div className='flex justify-between h-[calc(100vh_-_72px)] items-center p-28 flex-col lg:flex-row'>
         <p className='text-4xl text-muted leading-loose'>
-          Hi, I&apos;m wm👋。
+          Hi, I&apos;m krupp👋。
           <br />
           <span className='font-thin'>A Js and Go Full Stack </span>
           <br />

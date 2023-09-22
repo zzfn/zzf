@@ -7,8 +7,8 @@ import type { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
 
 export const metadata: Metadata = {
-  title: 'ccw.奇趣生活实验室',
-  description: 'ccw的个人网站,记录个人学习',
+  title: 'krupp.奇趣生活实验室',
+  description: 'krupp的个人网站,记录个人学习',
   keywords: [
     '前端博客',
     '个人博客',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     'docker',
     'zzfzzf',
     'zzf',
-    'ccw',
+    'krupp',
     '面试',
   ],
 };

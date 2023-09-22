@@ -5,7 +5,7 @@ import { fetchData } from '../../models/api';
 import type { Article } from "types/article";
 
 export const metadata: Metadata = {
-  title: 'ccw.post',
+  title: 'krupp.post',
 };
 
 async function getData() {
