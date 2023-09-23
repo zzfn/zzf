@@ -1,6 +1,6 @@
 # next.js 个人博客
 
-[![Build Status](https://drone.zzfzzf.com/api/badges/zzfn/zzf/status.svg)](https://drone.zzfzzf.com/zzfn/zzf)
+[![Build Status](https://drone.ccw.es/api/badges/zzfn/zzf/status.svg)](https://drone.ccw.es/zzfn/zzf)
 
 ## ✨ 特性
 
