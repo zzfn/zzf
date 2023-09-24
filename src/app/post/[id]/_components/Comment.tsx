@@ -1,25 +1,12 @@
 'use client';
-import IconSymbols from 'components/IconSymbols';
-import CommentPopover from './CommentPopover';
 import CommentCard from './CommentCard';
-import { fetchData } from 'models/api';
-import { Button, IconButton } from '@oc/design';
+import { Button } from '@oc/design';
 import { useEffect, useState } from 'react';
 import Avatar from './Avatar';
 import { useAtomValue } from 'jotai';
 import { userAtom } from 'atoms/userAtoms';
 import { useCommentOrReply, useGetComment } from 'models/comment';
 import { AnimatePresence, motion } from 'framer-motion';
-
-async function getData(params: { objectType: string; objectId: string }) {
-  return fetchData<Array<any>>({
-    endpoint: '/v1/comments',
-    queryParams: params,
-    fetchParams: {
-      next: { tags: ['comments'] },
-    },
-  });
-}
 
 const Comment = ({ params }: { params: { objectType: string; objectId: string } }) => {
   const { data = [], mutate } = useGetComment(params);
