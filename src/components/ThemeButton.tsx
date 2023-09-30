@@ -1,12 +1,14 @@
 'use client';
 import IconSymbols from './IconSymbols';
 import React, { useEffect } from 'react';
-import { IconButton } from '@oc/design';
+import { IconButton, Tooltip } from '@oc/design';
 import { useAtom } from 'jotai';
 import { themeModeAtom } from '../atoms/themeAtoms';
+import { searchAtom } from '../atoms/searchAtoms';
 
 const ThemeButton = () => {
   const [themeMode, setThemeMode] = useAtom(themeModeAtom);
+  const [searchVisible, setSearchVisible] = useAtom(searchAtom);
   useEffect(() => {
     document.querySelector('html')?.setAttribute('data-color-mode', themeMode);
   }, [themeMode]);
@@ -66,15 +68,28 @@ const ThemeButton = () => {
 
   return (
     <>
+      <Tooltip placement='bottomRight' content='command/control + k'>
+        <IconButton>
+          <IconSymbols
+            onClick={() => {
+              setSearchVisible(!searchVisible);
+            }}
+            icon='search'
+          />
+        </IconButton>
+      </Tooltip>
       <IconButton
         onClick={(event) => {
-          buildThemeTransition(themeMode === 'light' ? 'dark' :(themeMode==='dark'?'auto': 'light'), {
-            x: event.clientX,
-            y: event.clientY,
-            themeSetter: (themeParams) => {
-              setThemeMode(themeParams);
+          buildThemeTransition(
+            themeMode === 'light' ? 'dark' : themeMode === 'dark' ? 'auto' : 'light',
+            {
+              x: event.clientX,
+              y: event.clientY,
+              themeSetter: (themeParams) => {
+                setThemeMode(themeParams);
+              },
             },
-          });
+          );
         }}
       >
         <IconSymbols icon={`${themeMode}_mode`} />

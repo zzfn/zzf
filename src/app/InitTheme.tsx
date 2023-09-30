@@ -1,9 +1,14 @@
 'use client';
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import type { ThemeProviderProps } from './types';
-import { useSetAtom } from 'jotai';
+import { useSetAtom,useAtom } from 'jotai';
 import { userAtom } from '../atoms/userAtoms';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import { Input, Modal } from "@oc/design";
+import SearchArticleCard from "../components/SearchArticleCard";
+import useDebouncedCallback from "../hooks/useDebouncedCallback";
+import { useSearch } from "../models/search";
+import { searchAtom } from "../atoms/searchAtoms";
 
 const colorSchemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
@@ -24,13 +29,28 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 }) => {
   const setUser = useSetAtom(userAtom);
   const [theme, setThemeState] = useState(() => getTheme(storageKey, defaultTheme));
-
+  const [searchVisible, setSearchVisible] = useAtom(searchAtom);
   async function getVisitorId() {
     const { get } = await FingerprintJS.load();
     const { visitorId } = await get();
     setUser(visitorId);
   }
+  useEffect(() => {
+    // Handler to call on window keydown
+    function handleKeyDown(event: KeyboardEvent) {
+      if ((event.metaKey || event.ctrlKey) && event.code === 'KeyK') {
+        event.preventDefault();
+        setSearchVisible(true)
+      }
+    }
 
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
   useEffect(() => {
     getVisitorId();
   }, []);
@@ -113,9 +133,22 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   useEffect(() => {
     applyTheme(forcedTheme ?? theme);
   }, [forcedTheme, theme]);
-
+  const [keyword, setKeyword] = useState('');
+  const handleInputChange = useDebouncedCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.trim();
+    setKeyword(value);
+  }, 200);
+  const { data } = useSearch({ keyword });
   return (
     <>
+      <Modal onCancel={()=>setSearchVisible(false)} visible={searchVisible}>
+        <Input onChange={handleInputChange} placeholder='elasticsearch强力驱动' />
+        <div className='h-[50vh] overflow-y-auto'>
+          {data?.map((item) => (
+            <SearchArticleCard dataSource={item} key={item.id} />
+          ))}
+        </div>
+      </Modal>
       <ThemeScript
         {...{
           forcedTheme,

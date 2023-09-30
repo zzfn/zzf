@@ -4,12 +4,13 @@ import ThemeButton from './ThemeButton';
 import Navigation from './Navigation';
 import Menu from './Menu';
 import Logo from './Logo';
+import { IconButton } from "@oc/design";
+import IconSymbols from "./IconSymbols";
 
 const navLinks = [
   { name: 'Post', href: 'post' },
   { name: 'About', href: 'about' },
   { name: 'Feedback', href: 'feedback' },
-  { name: 'Search', href: 'search' },
 ];
 const Header = () => {
   return (
