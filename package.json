@@ -18,7 +18,7 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.1.0",
     "@formkit/auto-animate": "^0.8.0",
-    "@oc/design": "^0.0.30",
+    "@oc/design": "^0.0.32",
     "@primer/primitives": "^7.14.1",
     "@react-spring/web": "^9.7.3",
     "@tailwindcss/typography": "^0.5.10",
