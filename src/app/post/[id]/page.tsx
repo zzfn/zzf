@@ -1,5 +1,4 @@
 import React from 'react';
-import ArticleContent from './_components/Article';
 import Comment from './_components/Comment';
 import { diff, format } from 'utils/time';
 import { Tooltip } from '@oc/design';
@@ -7,6 +6,8 @@ import { notFound } from 'next/navigation';
 import ArticleState from './_components/ArticleState';
 import ArticleNav from 'components/ArticleNav';
 import { fetchData } from 'models/api';
+import classNames from 'classnames';
+import { translateMarkdown } from 'utils/translateMarkdown';
 import type { Article } from 'types/article';
 
 async function getData(id: string) {
@@ -17,6 +18,7 @@ async function getData(id: string) {
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const data = await getData(params.id);
+  const contentHtml = translateMarkdown(data.content);
   if (!data) {
     notFound();
   }
@@ -37,7 +39,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <label>浏览量</label>
             <span>{data.viewCount}</span>
           </ul>
-          <ArticleContent content={data.content} />
+          <article
+            className={classNames(
+              'w-full md:col-span-4',
+              'py-8',
+              'prose',
+              'prose-headings:scroll-mt-20',
+            )}
+            dangerouslySetInnerHTML={{
+              __html: contentHtml,
+            }}
+          />
           <Comment params={{ objectType: 'article', objectId: data.id }} />
         </main>
         <aside className='shrink-0 grow-1 col-span-1'>
