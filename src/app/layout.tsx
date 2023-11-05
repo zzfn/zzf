@@ -7,7 +7,10 @@ import type { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
 
 export const metadata: Metadata = {
-  title: 'krupp.奇趣生活实验室',
+  title:{
+    template: '%s | 奇趣生活实验室',
+    default: 'Krupp',
+  },
   description: 'krupp的个人网站,记录个人学习',
   keywords: [
     '前端博客',

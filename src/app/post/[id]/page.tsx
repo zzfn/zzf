@@ -16,6 +16,13 @@ async function getData(id: string) {
   });
 }
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const { title } = await getData(params.id);
+  return {
+    title: title,
+  };
+}
+
 const Page = async ({ params }: { params: { id: string } }) => {
   const data = await getData(params.id);
   const contentHtml = translateMarkdown(data.content);

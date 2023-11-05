@@ -15,7 +15,7 @@ type CardProps = {
 };
 export const revalidate = 0;
 export const metadata: Metadata = {
-  title: 'krupp.about',
+  title: 'About',
 };
 const CardBio = ({ dataSource }: CardProps) => {
   const { logo, name, description, url } = dataSource;

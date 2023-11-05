@@ -8,7 +8,7 @@ import TimeDiff from './_components/TimeDiff';
 import HomeIcon from '../components/HomeIcon';
 
 export const metadata: Metadata = {
-  title: 'krupp.home',
+  title: 'Home',
 };
 
 async function getData() {
