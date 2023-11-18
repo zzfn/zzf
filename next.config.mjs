@@ -8,6 +8,6 @@ export default {
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
-    domains: ['cdn.zzfzzf.com', 'www.dmoe.cc'],
+    domains: ['cdn.zzfzzf.com'],
   },
 };
