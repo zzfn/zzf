@@ -53,6 +53,9 @@ dependencies:
   marked-gfm-heading-id:
     specifier: ^3.1.1
     version: 3.1.1(marked@10.0.0)
+  marked-highlight:
+    specifier: ^2.0.7
+    version: 2.0.7(marked@10.0.0)
   marked-mangle:
     specifier: ^1.1.5
     version: 1.1.5(marked@10.0.0)
@@ -4779,6 +4782,14 @@ packages:
       marked: '>=4 <11'
     dependencies:
       github-slugger: 2.0.0
+      marked: 10.0.0
+    dev: false
+
+  /marked-highlight@2.0.7(marked@10.0.0):
+    resolution: {integrity: sha512-3IjgV879kEihgjWwVv8HGDkyuKDyR8hssDEjMUAH5LNVhIcZge+u6UKhxPA+daEVMVZeKEHo5gWrLVlLPF1m3g==}
+    peerDependencies:
+      marked: '>=4 <11'
+    dependencies:
       marked: 10.0.0
     dev: false
 
