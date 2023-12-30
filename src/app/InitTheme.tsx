@@ -16,7 +16,6 @@ const MEDIA = '(prefers-color-scheme: dark)';
 const defaultThemes = ['light', 'dark'];
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
-  forcedTheme,
   enableSystem = true,
   enableColorScheme = true,
   storageKey = 'theme',
@@ -90,16 +89,16 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
         // Unsupported
       }
     },
-    [forcedTheme],
+    [],
   );
 
   const handleMediaQuery = useCallback(
     (e: MediaQueryListEvent | MediaQueryList) => {
-      if (theme === 'system' && enableSystem && !forcedTheme) {
+      if (theme === 'system' && enableSystem) {
         applyTheme('system');
       }
     },
-    [theme, forcedTheme],
+    [theme],
   );
 
   // Always listen to System preference
@@ -129,10 +128,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     return () => window.removeEventListener('storage', handleStorage);
   }, [setTheme]);
 
-  // Whenever theme or forcedTheme changes, apply it
   useEffect(() => {
-    applyTheme(forcedTheme ?? theme);
-  }, [forcedTheme, theme]);
+    applyTheme(theme);
+  }, [theme]);
   const [keyword, setKeyword] = useState('');
   const handleInputChange = useDebouncedCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.trim();
@@ -163,7 +161,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       </Modal>
       <ThemeScript
         {...{
-          forcedTheme,
           enableSystem,
           enableColorScheme,
           storageKey,
@@ -182,7 +179,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
 const ThemeScript = memo(
   ({
-    forcedTheme,
     storageKey,
     attribute,
     enableSystem,
@@ -199,10 +195,6 @@ const ThemeScript = memo(
     })();
 
     const fallbackColorScheme = (() => {
-      if (!enableColorScheme) {
-        return '';
-      }
-
       const fallback = colorSchemes.includes(defaultTheme) ? defaultTheme : null;
 
       if (fallback) {
@@ -217,51 +209,24 @@ const ThemeScript = memo(
       const val = literal ? name + `|| ''` : `'${resolvedName}'`;
       let text = '';
 
-      // MUCH faster to set colorScheme alongside HTML attribute/class
-      // as it only incurs 1 style recalculation rather than 2
-      // This can save over 250ms of work for pages with big DOM
       if (enableColorScheme && setColorScheme && !literal && colorSchemes.includes(name)) {
         text += `d.style.colorScheme = '${name}';`;
       }
 
-      if (attribute === 'class') {
-        if (literal || resolvedName) {
-          text += `c.add(${val})`;
-        } else {
-          text += `null`;
-        }
-      } else {
-        if (resolvedName) {
-          text += `d[s](n,${val})`;
-        }
+      if (resolvedName) {
+        text += `d[s](n,${val})`;
       }
 
       return text;
     };
 
-    const scriptSrc = (() => {
-      if (forcedTheme) {
-        return `!function(){${optimization}${updateDOM(forcedTheme)}}()`;
-      }
-
-      if (enableSystem) {
-        return `!function(){try{${optimization}var e=localStorage.getItem('${storageKey}');if('system'===e||(!e&&${defaultSystem})){var t='${MEDIA}',m=window.matchMedia(t);if(m.media!==t||m.matches){${updateDOM(
-          'dark',
-        )}}else{${updateDOM('light')}}}else if(e){${
-          value ? `var x=${JSON.stringify(value)};` : ''
-        }${updateDOM(value ? `x[e]` : 'e', true)}}${
-          !defaultSystem ? `else{` + updateDOM(defaultTheme, false, false) + '}' : ''
-        }${fallbackColorScheme}}catch(e){}}()`;
-      }
-
-      return `!function(){try{${optimization}var e=localStorage.getItem('${storageKey}');if(e){${
-        value ? `var x=${JSON.stringify(value)};` : ''
-      }${updateDOM(value ? `x[e]` : 'e', true)}}else{${updateDOM(
-        defaultTheme,
-        false,
-        false,
-      )};}${fallbackColorScheme}}catch(t){}}();`;
-    })();
+    const scriptSrc = `!function(){try{${optimization}var e=localStorage.getItem('${storageKey}');if('system'===e||(!e&&${defaultSystem})){var t='${MEDIA}',m=window.matchMedia(t);if(m.media!==t||m.matches){${updateDOM(
+      'dark',
+    )}}else{${updateDOM('light')}}}else if(e){${
+      value ? `var x=${JSON.stringify(value)};` : ''
+    }${updateDOM(value ? `x[e]` : 'e', true)}}${
+      !defaultSystem ? `else{` + updateDOM(defaultTheme, false, false) + '}' : ''
+    }${fallbackColorScheme}}catch(e){}}()`
 
     return <script nonce={nonce} dangerouslySetInnerHTML={{ __html: scriptSrc }} />;
   },
