@@ -47,7 +47,7 @@ export async function GET() {
       title: post.title,
       id: url,
       link: url,
-      content: marked.parse(post.content),
+      content: marked.parse(post.content) as string,
       author: [author],
       contributor: [author],
       date: new Date(post.updatedAt),
