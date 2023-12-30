@@ -16,15 +16,11 @@ const MEDIA = '(prefers-color-scheme: dark)';
 const defaultThemes = ['light', 'dark'];
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
-  enableSystem = true,
-  enableColorScheme = true,
   storageKey = 'theme',
   themes = defaultThemes,
-  defaultTheme = enableSystem ? 'system' : 'light',
+  defaultTheme = 'system',
   attribute = 'data-color-mode',
-  value,
   children,
-  nonce,
 }) => {
   const setUser = useSetAtom(userAtom);
   const [theme, setThemeState] = useState(() => getTheme(storageKey, defaultTheme));
@@ -58,12 +54,12 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     if (!resolved) return;
 
     // If theme is system, resolve it before setting theme
-    if (theme === 'system' && enableSystem) {
+    if (theme === 'system') {
       const isDark = window.matchMedia(MEDIA).matches;
       resolved = isDark ? 'dark' : 'light';
     }
 
-    const name = value ? value[resolved] : resolved;
+    const name = resolved;
     const d = document.documentElement;
 
     if (name) {
@@ -72,10 +68,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       d.removeAttribute(attribute);
     }
 
-    if (enableColorScheme) {
-      const fallback = colorSchemes.includes(defaultTheme) ? defaultTheme : null;
-      d.style.colorScheme = colorSchemes.includes(resolved) ? resolved : fallback;
-    }
+    const fallback = colorSchemes.includes(defaultTheme) ? defaultTheme : null;
+    d.style.colorScheme = colorSchemes.includes(resolved) ? resolved : fallback;
   }, []);
 
   const setTheme = useCallback(
@@ -95,7 +89,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
   const handleMediaQuery = useCallback(
     (e: MediaQueryListEvent | MediaQueryList) => {
-      if (theme === 'system' && enableSystem) {
+      if (theme === 'system') {
         applyTheme('system');
       }
     },
@@ -134,8 +128,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   }, [theme]);
   const [keyword, setKeyword] = useState('');
   const handleInputChange = useDebouncedCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value.trim();
-    setKeyword(value);
+    setKeyword(event.target.value.trim());
   }, 200);
   const { data } = useSearch({ keyword });
   const inputRef = useRef<HTMLInputElement>(null);
@@ -162,15 +155,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       </Modal>
       <ThemeScript
         {...{
-          enableSystem,
-          enableColorScheme,
           storageKey,
           themes,
           defaultTheme,
           attribute,
-          value,
           children,
-          nonce,
         }}
       />
       {children}
@@ -182,22 +171,17 @@ const ThemeScript = memo(
   ({
      storageKey,
      attribute,
-     enableSystem,
-     enableColorScheme,
      defaultTheme,
-     value,
-     nonce,
    }: ThemeProviderProps & { defaultTheme: string }) => {
     const hasValidFallback = colorSchemes.includes(defaultTheme);
     const scriptSrc = `!function(){try{
       var d=document.documentElement,c='${attribute}',m=localStorage.getItem('${storageKey}');
-      if(!m){m=${enableSystem ? `window.matchMedia('${MEDIA}').matches?'dark':'light'` : `'${defaultTheme}'`};}
-      ${enableColorScheme ? `d.style.colorScheme=(m==='light'||m==='dark')?m:${hasValidFallback ? `'${defaultTheme}'` : 'null'};` : ''}
-      ${value ? `var v=${JSON.stringify(value)};` : ''}
-      d.setAttribute(c, ${value ? `(v[m]||'')` : `(m||'')`});
+      if(!m){m=window.matchMedia('${MEDIA}').matches?'dark':'light';}
+      ${`d.style.colorScheme=(m==='light'||m==='dark')`}
+      d.setAttribute(c, ${`(m||'')`});
     }catch(e){}}();`;
 
-    return <script nonce={nonce} dangerouslySetInnerHTML={{ __html: scriptSrc }} />;
+    return <script dangerouslySetInnerHTML={{ __html: scriptSrc }} />;
   },
   () => true,
 );
