@@ -59,7 +59,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
     // If theme is system, resolve it before setting theme
     if (theme === 'system' && enableSystem) {
-      resolved = getSystemTheme();
+      const isDark = window.matchMedia(MEDIA).matches;
+      resolved = isDark ? 'dark' : 'light';
     }
 
     const name = value ? value[resolved] : resolved;
@@ -106,10 +107,10 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     const media = window.matchMedia(MEDIA);
 
     // Intentionally use deprecated listener methods to support iOS & old browsers
-    media.addListener(handleMediaQuery);
+    media.addEventListener('change',handleMediaQuery);
     handleMediaQuery(media);
 
-    return () => media.removeListener(handleMediaQuery);
+    return () => media.removeEventListener('change',handleMediaQuery);
   }, [handleMediaQuery]);
 
   // localStorage event handling
@@ -179,60 +180,28 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
 const ThemeScript = memo(
   ({
-    storageKey,
-    attribute,
-    enableSystem,
-    enableColorScheme,
-    defaultTheme,
-    value,
-    nonce,
-  }: ThemeProviderProps & { defaultTheme: string }) => {
-    const defaultSystem = defaultTheme === 'system';
-
-    // Code-golfing the amount of characters in the script
-    const optimization = (() => {
-      return `var d=document.documentElement,n='${attribute}',s='setAttribute';`;
-    })();
-
-    const fallbackColorScheme = (() => {
-      const fallback = colorSchemes.includes(defaultTheme) ? defaultTheme : null;
-
-      if (fallback) {
-        return `if(e==='light'||e==='dark'||!e)d.style.colorScheme=e||'${defaultTheme}'`;
-      } else {
-        return `if(e==='light'||e==='dark')d.style.colorScheme=e`;
-      }
-    })();
-
-    const updateDOM = (name: string, literal: boolean = false, setColorScheme = true) => {
-      const resolvedName = value ? value[name] : name;
-      const val = literal ? name + `|| ''` : `'${resolvedName}'`;
-      let text = '';
-
-      if (enableColorScheme && setColorScheme && !literal && colorSchemes.includes(name)) {
-        text += `d.style.colorScheme = '${name}';`;
-      }
-
-      if (resolvedName) {
-        text += `d[s](n,${val})`;
-      }
-
-      return text;
-    };
-
-    const scriptSrc = `!function(){try{${optimization}var e=localStorage.getItem('${storageKey}');if('system'===e||(!e&&${defaultSystem})){var t='${MEDIA}',m=window.matchMedia(t);if(m.media!==t||m.matches){${updateDOM(
-      'dark',
-    )}}else{${updateDOM('light')}}}else if(e){${
-      value ? `var x=${JSON.stringify(value)};` : ''
-    }${updateDOM(value ? `x[e]` : 'e', true)}}${
-      !defaultSystem ? `else{` + updateDOM(defaultTheme, false, false) + '}' : ''
-    }${fallbackColorScheme}}catch(e){}}()`
+     storageKey,
+     attribute,
+     enableSystem,
+     enableColorScheme,
+     defaultTheme,
+     value,
+     nonce,
+   }: ThemeProviderProps & { defaultTheme: string }) => {
+    const hasValidFallback = colorSchemes.includes(defaultTheme);
+    const scriptSrc = `!function(){try{
+      var d=document.documentElement,c='${attribute}',m=localStorage.getItem('${storageKey}');
+      if(!m){m=${enableSystem ? `window.matchMedia('${MEDIA}').matches?'dark':'light'` : `'${defaultTheme}'`};}
+      ${enableColorScheme ? `d.style.colorScheme=(m==='light'||m==='dark')?m:${hasValidFallback ? `'${defaultTheme}'` : 'null'};` : ''}
+      ${value ? `var v=${JSON.stringify(value)};` : ''}
+      d.setAttribute(c, ${value ? `(v[m]||'')` : `(m||'')`});
+    }catch(e){}}();`;
 
     return <script nonce={nonce} dangerouslySetInnerHTML={{ __html: scriptSrc }} />;
   },
-  // Never re-render this component
   () => true,
 );
+
 
 // Helpers
 const getTheme = (key: string, fallback?: string) => {
@@ -243,10 +212,4 @@ const getTheme = (key: string, fallback?: string) => {
     // Unsupported
   }
   return theme || fallback;
-};
-
-const getSystemTheme = (e?: MediaQueryList | MediaQueryListEvent) => {
-  if (!e) e = window.matchMedia(MEDIA);
-  const isDark = e.matches;
-  return isDark ? 'dark' : 'light';
 };
