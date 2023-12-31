@@ -11,10 +11,6 @@ export default {
       ? 'https://cdn.zzfzzf.com/zzf'
       : '/',
   reactStrictMode: true,
-  webpack: (config, _context) => {
-    config.resolve.alias['jotai'] = path.resolve(__dirname, 'node_modules/jotai')
-    return config;
-  },
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
