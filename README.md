@@ -11,7 +11,7 @@
 ## 博客全栈项目仓库地址
 
 - [用户前台](https://github.com/zzfn/zzf)
-- [管理后台](https://github.com/zzfn/dashboard)
+- [管理后台](https://github.com/zzfn/zeus)
 - [JAVA 服务端](https://github.com/zzfn/blog-server)
 
 ## 相关服务地址
