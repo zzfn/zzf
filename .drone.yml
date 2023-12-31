@@ -13,6 +13,8 @@ steps:
     image: node:lts-alpine
     depends_on:
       - clone
+    environment:
+      TZ: Asia/Shanghai
     commands:
       - corepack enable
       - corepack prepare pnpm@latest-8 --activate
