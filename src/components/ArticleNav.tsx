@@ -91,10 +91,10 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             aria-current={current === `heading-${nav.index}`}
             title={nav.text}
             onClick={() => {
-              setCurrent(`heading-${nav.index}`);
+              setCurrent(nav.text);
             }}
             className={classNames(
-              current === `heading-${nav.index}` && 'text-accent',
+              current === nav.text && 'text-accent',
               'truncate',
             )}
             style={{ marginLeft: `${(nav.level - 1) * 10}px` }}
