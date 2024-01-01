@@ -57,7 +57,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
     });
   }, [source]);
   return (
-    <div className={classNames('transform-gpu hidden md:block  h-full w-36')}>
+    <>
       <ul ref={ulRef} className={classNames('sticky top-20 py-2 text-sm')}>
         <AnimatePresence>
           {hoveredIndex !== null && (
@@ -100,11 +100,11 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             style={{ marginLeft: `${(nav.level - 1) * 10}px` }}
             key={nav.index}
           >
-            <a href={`#${nav.text}`}># {nav.text}</a>
+            <a href={`#${nav.text}`}>{nav.text}</a>
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

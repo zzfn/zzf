@@ -59,7 +59,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           />
           <Comment params={{ objectType: 'article', objectId: data.id }} />
         </main>
-        <aside className='shrink-0 grow-1 col-span-1'>
+        <aside className='shrink-0 grow-1 col-span-1 transform-gpu hidden md:block  h-full w-full'>
           <ArticleNav source={data.content} />
         </aside>
       </div>
