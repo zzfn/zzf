@@ -5,6 +5,7 @@ import { IconButton, Tooltip } from '@oc/design';
 import { useAtom } from 'jotai';
 import { themeModeAtom } from '../atoms/themeAtoms';
 import { searchAtom } from '../atoms/searchAtoms';
+import * as R from 'ramda';
 
 const ThemeButton = () => {
   const [themeMode, setThemeMode] = useAtom(themeModeAtom);
@@ -80,16 +81,19 @@ const ThemeButton = () => {
       </Tooltip>
       <IconButton
         onClick={(event) => {
-          buildThemeTransition(
-            themeMode === 'light' ? 'dark' : themeMode === 'dark' ? 'auto' : 'light',
-            {
-              x: event.clientX,
-              y: event.clientY,
-              themeSetter: (themeParams) => {
-                setThemeMode(themeParams);
-              },
+          const newThemeMode = R.cond([
+            [R.equals('light'), R.always('dark')],
+            [R.equals('dark'), R.always('auto')],
+            [R.T, R.always('light')],
+          ])(themeMode);
+
+          buildThemeTransition(newThemeMode as 'light' | 'dark' | 'auto', {
+            x: event.clientX,
+            y: event.clientY,
+            themeSetter: (themeParams) => {
+              setThemeMode(themeParams);
             },
-          );
+          });
         }}
       >
         <IconSymbols icon={`${themeMode}_mode`} />
