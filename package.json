@@ -41,8 +41,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "swr": "^2.2.4",
-    "ua-parser-js": "^1.0.37",
-    "zooming": "^2.1.1"
+    "ua-parser-js": "^1.0.37"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",

@@ -83,9 +83,6 @@ dependencies:
   ua-parser-js:
     specifier: ^1.0.37
     version: 1.0.37
-  zooming:
-    specifier: ^2.1.1
-    version: 2.1.1
 
 devDependencies:
   '@babel/core':
@@ -6636,7 +6633,3 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
-
-  /zooming@2.1.1:
-    resolution: {integrity: sha512-Z38dkZRQsFNBE67+xDBQLNKMs5J1Gc+s3/zO6iezTrC24VYLJV7YPBdBDJmiLhff5qa6Awxv4wsjqx3oYz2MYA==}
-    dev: false
