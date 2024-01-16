@@ -39,7 +39,7 @@
 - tailwindcss
 - npx sort-package-json
 
-### 后端
+### 后端`(deprecated)`
 
 - SpringBoot
 - SpringCloud`(deprecated)`
@@ -55,6 +55,8 @@
 - sentinel`(deprecated)`
 - RabbitMQ
 - 钉钉机器人
+
+### GO
 
 ### 代码提交关键词
 
