@@ -8,9 +8,10 @@ import { IconButton } from "@oc/design";
 import IconSymbols from "./IconSymbols";
 
 const navLinks = [
-  { name: 'Post', href: 'post' },
-  { name: 'About', href: 'about' },
-  { name: 'Feedback', href: 'feedback' },
+  { name: '文章', href: 'post' },
+  { name: '留言', href: 'feedback' },
+  { name: '友链', href: 'friends' },
+  { name: '关于', href: 'about' },
 ];
 const Header = () => {
   return (

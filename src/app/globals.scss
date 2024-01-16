@@ -45,7 +45,11 @@ html {
   scroll-behavior: smooth;
 }
 
-
+.oc-icon{
+  width: 1em;
+  height: 1em;
+  vertical-align: -2px;
+}
 em {
   color: var(--fgColor-accent);
 }
