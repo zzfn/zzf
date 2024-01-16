@@ -55,7 +55,7 @@ const Page = async () => {
   return (
     <>
       <Alert className="text-sm" type='info'>
-        海内存知己，天涯若比邻
+        <h3 className='text-xl'>海内存知己，天涯若比邻</h3>
       </Alert>
       <Button>和我做朋友吧</Button>
       <div>
