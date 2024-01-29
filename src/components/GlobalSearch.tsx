@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { IconButton, Tooltip } from '@oc/design';
 import IconSymbols from './IconSymbols';
 import { useAtom } from 'jotai/index';

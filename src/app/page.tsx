@@ -30,20 +30,20 @@ export default async function Page() {
   const data = await getData();
   return (
     <>
-      <div className='flex justify-between h-[calc(100vh_-_72px)] items-center p-28 flex-col lg:flex-row'>
-        <p className='text-4xl text-muted leading-loose'>
+      <div className='flex h-[calc(100vh_-_72px)] flex-col items-center justify-between p-28 lg:flex-row'>
+        <p className='text-4xl leading-loose text-muted'>
           Hi, I&apos;m krupp👋。
           <br />
           <span className='font-thin'>A Js and Go Full Stack </span>
           <br />
-          <span className='font-medium hover:bg-muted rounded py-3'>
+          <span className='rounded py-3 font-medium hover:bg-muted'>
             {'<'}Developer{'/>'}
           </span>
         </p>
-        <HomeIcon/>
+        <HomeIcon />
       </div>
       <div className='grid lg:grid-cols-2'>
-        <div className='text-xl flex justify-center items-center flex-col gap-y-2'>
+        <div className='flex flex-col items-center justify-center gap-y-2 text-xl'>
           <p>看看最近我都写了些什么，</p>
           <p>或许你会发现一些有趣的东西。</p>
         </div>
@@ -52,7 +52,7 @@ export default async function Page() {
             <a
               key={post.id}
               href={`/post/${post.id}`}
-              className='hover:bg-muted p-3 rounded-xl border border-default hover:border-primary flex flex-col gap-y-1'
+              className='hover:border-primary flex flex-col gap-y-1 rounded-xl border border-default p-3 hover:bg-muted'
             >
               <div>{post.title}</div>
               <div className='flex items-center gap-x-2 text-xs text-muted'>
@@ -69,7 +69,7 @@ export default async function Page() {
             </a>
           ))}
           <Link href='/post'>
-            <p className='text-center text-muted cursor-pointer hover:underline'>
+            <p className='cursor-pointer text-center text-muted hover:underline'>
               还有更多，去查看
             </p>
           </Link>

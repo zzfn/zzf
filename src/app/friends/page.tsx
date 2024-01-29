@@ -1,7 +1,7 @@
 import React from 'react';
 import Comment from '../post/[id]/_components/Comment';
 import { Metadata } from 'next';
-import { Alert, Button } from "@oc/design";
+import { Alert, Button } from '@oc/design';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { fetchData } from '../../models/api';
@@ -22,7 +22,7 @@ const CardBio = ({ dataSource }: CardProps) => {
         'overflow-hidden',
         'mb-2',
         'bg-surface-5',
-        'hover:bg-neutral-muted'
+        'hover:bg-neutral-muted',
       )}
     >
       <Image
@@ -54,7 +54,7 @@ const Page = async () => {
   });
   return (
     <>
-      <Alert className="text-sm" type='info'>
+      <Alert className='text-sm' type='info'>
         <h3 className='text-xl'>海内存知己，天涯若比邻</h3>
       </Alert>
       <Button>和我做朋友吧</Button>
@@ -67,7 +67,6 @@ const Page = async () => {
         </ul>
       </div>
       <div className='grid grid-cols-2 gap-2'>
-
         {data?.map((item: any) => (
           <CardBio
             key={item.id}

@@ -11,13 +11,15 @@
 @import '@primer/primitives/tokens-next-private/css/functional/themes/dark';
 @import '@primer/primitives/tokens-next-private/css/functional/themes/light';
 @import '~@oc/design/dist/styles/index.css';
-@import "../components/font.css";
+@import '../components/font.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @layer components {
   .icon-fill-1 {
-    font-variation-settings: 'FILL' 1, 'wght' 600 !important;
+    font-variation-settings:
+      'FILL' 1,
+      'wght' 600 !important;
   }
 }
 @font-face {
@@ -32,9 +34,10 @@
   font-weight: 400;
   src: url(https://cdn.zzfzzf.com/assets/Material%2BSymbols%2BOutlined.woff2) format('woff2');
 }
-:root{
+:root {
   scrollbar-color: var(--bgColor-neutral-muted) var(--bgColor-default);
   scrollbar-width: thin;
+  --bgColor-opacity: hsla(0, 0%, 100%, 0.72);
 }
 body {
   font-size: 16px;
@@ -42,14 +45,13 @@ body {
   color: var(--fgColor-default);
   overflow-y: scroll;
   @apply font-sans;
-
 }
 html {
   word-break: break-all;
   scroll-behavior: smooth;
 }
 
-.oc-icon{
+.oc-icon {
   width: 1em;
   height: 1em;
   vertical-align: -2px;
@@ -57,7 +59,7 @@ html {
 em {
   color: var(--fgColor-accent);
 }
-.symbol_icon{
+.symbol_icon {
   font-family: 'Material Symbols Outlined', emoji;
   font-weight: normal;
   font-style: normal;
@@ -74,25 +76,33 @@ em {
   direction: ltr;
   user-select: none;
   transition: font-variation-settings 200ms cubic-bezier(0.2, 0, 0, 1);
-  font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 600,
+    'GRAD' 0,
+    'opsz' 48;
   cursor: pointer;
-  &:hover{
+  &:hover {
     color: var(--fgColor-accent);
-    font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+    font-variation-settings:
+      'FILL' 1,
+      'wght' 600,
+      'GRAD' 0,
+      'opsz' 48;
   }
 }
-.timeline{
+.timeline {
   position: relative;
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     position: absolute;
     left: -1.05rem;
     top: 0;
     bottom: 0;
     border-left: 1px solid var(--bgColor-accent-emphasis);
   }
-  &::after{
-    content: "";
+  &::after {
+    content: '';
     left: -1.28rem;
     top: 50%;
     transform: translateY(-50%);
@@ -103,8 +113,11 @@ em {
     background-color: var(--bgColor-accent-emphasis);
   }
 }
-[data-color-mode="dark"]{
-  img,svg{
+
+[data-color-mode='dark'] {
+  --bgColor-opacity: rgba(29, 29, 31, 0.72);
+  img,
+  svg {
     filter: brightness(0.8);
   }
 }

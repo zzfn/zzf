@@ -3,15 +3,18 @@ import React from 'react';
 import Link from 'next/link';
 import OnlineCount from 'app/_components/OnlineCount';
 import Logo from './Logo';
-import ThemeButton from "./ThemeButton";
+import ThemeButton from './ThemeButton';
 
 const Footer = () => {
   return (
-    <footer className='flex py-6 text-muted items-center gap-x-2 text-xs border-t justify-center'>
+    <footer className='flex items-center justify-center gap-x-2 border-t border-default py-6 text-xs text-muted'>
       Copyright&copy;2020-{dayjs().format('YYYY')}
       <OnlineCount />
       <Link className='hover:underline' target='_blank' href='/api/feed.xml'>
         RSS feed
+      </Link>
+      <Link className='hover:underline' target='_blank' href='/about'>
+        关于
       </Link>
       <Link className='hover:underline' target='_blank' href='https://t.ooxo.cc/pu1qh7'>
         服务状态

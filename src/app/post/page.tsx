@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import List from './_components/List';
 import type { Metadata } from 'next';
 import { fetchData } from '../../models/api';
-import type { Article } from "types/article";
+import type { Article } from 'types/article';
 
 export const metadata: Metadata = {
   title: 'Post',
@@ -12,9 +12,9 @@ async function getData() {
   return fetchData<Array<Article>>({
     endpoint: '/v1/articles',
     fetchParams: {
-      next:{
+      next: {
         tags: ['article'],
-      }
+      },
     },
   });
 }
@@ -31,7 +31,7 @@ export default async function Page() {
             <a
               key={post.id}
               href={`/post/${post.id}`}
-              className='flex items-center justify-between hover:bg-muted py-1 timeline rounded'
+              className='timeline flex items-center justify-between rounded py-1 hover:bg-muted'
             >
               <span>{post.title}</span>
               <time className='font-mono font-thin text-muted'>

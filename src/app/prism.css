@@ -6,7 +6,7 @@
 }
 
 .token.punctuation {
-  color: #999;  /* This color remains unchanged */
+  color: #999; /* This color remains unchanged */
 }
 
 .token.namespace {
@@ -59,7 +59,7 @@
 
 .token.important,
 .token.bold {
-  font-weight: bold;  /* This remains unchanged */
+  font-weight: bold; /* This remains unchanged */
 }
 
 .token.italic {

@@ -1,14 +1,14 @@
 'use client';
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ThemeProviderProps } from './types';
-import { useSetAtom,useAtom } from 'jotai';
+import { useSetAtom, useAtom } from 'jotai';
 import { userAtom } from '../atoms/userAtoms';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
-import { Input, Modal } from "@oc/design";
-import SearchArticleCard from "../components/SearchArticleCard";
-import useDebouncedCallback from "../hooks/useDebouncedCallback";
-import { useSearch } from "../models/search";
-import { searchAtom } from "../atoms/searchAtoms";
+import { Input, Modal } from '@oc/design';
+import SearchArticleCard from '../components/SearchArticleCard';
+import useDebouncedCallback from '../hooks/useDebouncedCallback';
+import { useSearch } from '../models/search';
+import { searchAtom } from '../atoms/searchAtoms';
 
 const colorSchemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
@@ -145,7 +145,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       <Modal onCancel={() => setSearchVisible(false)} visible={searchVisible}>
         <div className='p-6'>
           <Input ref={inputRef} onChange={handleInputChange} placeholder='elasticsearch强力驱动' />
-          <div className='h-[50vh] overflow-y-auto my-6'>
+          <div className='my-6 h-[50vh] overflow-y-auto'>
             {data?.map((item) => <SearchArticleCard dataSource={item} key={item.id} />)}
           </div>
         </div>

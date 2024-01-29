@@ -62,7 +62,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
         <AnimatePresence>
           {hoveredIndex !== null && (
             <motion.div
-              className='bg-muted -z-[1] rounded-2xl'
+              className='-z-[1] rounded-2xl bg-muted'
               initial={{ top: position.top, height: position.height }}
               animate={{ top: position.top, height: position.height }}
               exit={{ opacity: 0 }}
@@ -93,10 +93,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             onClick={() => {
               setCurrent(nav.text);
             }}
-            className={classNames(
-              current === nav.text && 'text-accent',
-              'truncate',
-            )}
+            className={classNames(current === nav.text && 'text-accent', 'truncate')}
             style={{ marginLeft: `${(nav.level - 1) * 10}px` }}
             key={nav.index}
           >

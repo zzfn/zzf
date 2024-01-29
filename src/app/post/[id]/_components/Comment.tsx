@@ -30,7 +30,7 @@ const Comment = ({ params }: { params: { objectType: string; objectId: string } 
           setIsVisible(!!evt.target.value);
         }}
         rows={3}
-        className='block p-2.5 w-full text-sm text-muted bg-muted rounded-lg border border-default focus:ring-blue-500 focus:border-blue-500 resize-none'
+        className='block w-full resize-none rounded-lg border border-default bg-muted p-2.5 text-sm text-muted focus:border-blue-500 focus:ring-blue-500'
         placeholder='说点什么'
       />
       <AnimatePresence>
@@ -40,7 +40,7 @@ const Comment = ({ params }: { params: { objectType: string; objectId: string } 
               initial={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className='flex justify-between items-center py-2'
+              className='flex items-center justify-between py-2'
             >
               <Avatar userId={visitorId} />
               <Button
@@ -58,7 +58,7 @@ const Comment = ({ params }: { params: { objectType: string; objectId: string } 
         )}
       </AnimatePresence>
       {data.length === 0 ? (
-        <div className='h-10 text-center py-6'>暂无评论</div>
+        <div className='h-10 py-6 text-center'>暂无评论</div>
       ) : (
         <div className='py-6'>
           {data.map((item: any) => (

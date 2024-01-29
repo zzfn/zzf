@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { useState } from 'react';
 import { useAtomValue } from 'jotai';
-import { useSelectedLayoutSegment } from 'next/navigation'
-import { articleAtom } from "atoms/articleAtoms";
+import { useSelectedLayoutSegment } from 'next/navigation';
+import { articleAtom } from 'atoms/articleAtoms';
 
 const Navigation = ({ navLinks }: any) => {
   const [isShow, setIsShow] = useState(false);
@@ -14,7 +14,7 @@ const Navigation = ({ navLinks }: any) => {
   const params = useParams();
   const { scrollY } = useScroll();
   const atomValue = useAtomValue(articleAtom);
-  const segment = useSelectedLayoutSegment()
+  const segment = useSelectedLayoutSegment();
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setIsShow(!!(params.id && pathname.includes('post') && latest > 100));

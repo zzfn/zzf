@@ -7,9 +7,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'Invalid secret' }, { status: 401 });
   }
   if (Array.isArray(path)) {
-    path.forEach((p)=>{
+    path.forEach((p) => {
       revalidatePath(p);
-    })
+    });
     return NextResponse.json({ revalidated: true, now: Date.now() });
   }
 

@@ -16,7 +16,7 @@ const OnlineCount = () => {
   }
 
   useEffect(() => {
-    userId && initSocket()
+    userId && initSocket();
     return () => {
       socket.current?.close();
     };

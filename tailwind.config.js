@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [ './src/**/*.{js,ts,jsx,tsx,mdx}',],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       fontSize: {
@@ -11,30 +11,31 @@ module.exports = {
         18: '4.5rem',
       },
       screens: {
-        compact: {'min':'599px'},
-        medium: {'min': '600px'},
-        expanded: {'min': '840px'},
+        compact: { min: '599px' },
+        medium: { min: '600px' },
+        expanded: { min: '840px' },
       },
       colors: {
-        'default': 'var(--fgColor-default)',
-        'muted': 'var(--fgColor-muted)',
-        'accent': 'var(--fgColor-accent)',
+        default: 'var(--fgColor-default)',
+        muted: 'var(--fgColor-muted)',
+        accent: 'var(--fgColor-accent)',
         'on-surface': 'var(--md-sys-color-on-surface)',
       },
       borderColor: {
-        'default': 'var(--borderColor-default)',
-        'muted': 'var(--borderColor-muted)',
-        'emphasis': 'var(--borderColor-emphasis)',
+        default: 'var(--borderColor-default)',
+        muted: 'var(--borderColor-muted)',
+        emphasis: 'var(--borderColor-emphasis)',
         'accent-emphasis': 'var(--borderColor-accent-emphasis)',
       },
       backgroundColor: {
+        opacity: 'var(--bgColor-opacity)',
         default: 'var(--bgColor-default)',
-        'muted': 'var(--bgColor-muted)',
-        'emphasis': 'var(--bgColor-emphasis)',
+        muted: 'var(--bgColor-muted)',
+        emphasis: 'var(--bgColor-emphasis)',
         'neutral-muted': 'var(--bgColor-neutral-muted)',
         'secondary-container': 'var(--md-sys-color-secondary-container)',
-        'danger-emphasis':'var(--bgColor-danger-emphasis)',
-        'success-muted':'var(--bgColor-success-muted)',
+        'danger-emphasis': 'var(--bgColor-danger-emphasis)',
+        'success-muted': 'var(--bgColor-success-muted)',
       },
       typography: {
         DEFAULT: {
@@ -74,7 +75,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        'sans': ['LXGW WenKai Screen', ...defaultTheme.fontFamily.sans],
+        sans: ['LXGW WenKai Screen', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono],
       },
     },

@@ -31,10 +31,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
   }
   return (
     <ArticleState articleState={data}>
-      <div className='md:grid grid-cols-5 w-full gap-x-2'>
-        <main className='shrink grow-0 basis-full w-full col-span-4'>
+      <div className='w-full grid-cols-5 gap-x-2 md:grid'>
+        <main className='col-span-4 w-full shrink grow-0 basis-full'>
           <h1 className='pt-8 text-3xl'>{data.title}</h1>
-          <ul className='flex gap-x-2 my-4 text-sm text-muted bg-muted p-6 rounded'>
+          <ul className='my-4 flex gap-x-2 rounded bg-muted p-6 text-sm text-muted'>
             <label>创建时间</label>
             <Tooltip content={format(data.createdAt)}>
               <time>{diff(data.createdAt)}</time>
@@ -59,7 +59,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           />
           <Comment params={{ objectType: 'article', objectId: data.id }} />
         </main>
-        <aside className='shrink-0 grow-1 col-span-1 transform-gpu hidden md:block  h-full w-full'>
+        <aside className='grow-1 col-span-1 hidden h-full w-full shrink-0  transform-gpu md:block'>
           <ArticleNav source={data.content} />
         </aside>
       </div>

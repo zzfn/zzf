@@ -4,7 +4,7 @@ import { useSetAtom } from 'jotai';
 import { articleAtom } from 'atoms/articleAtoms';
 import { useUpdateArticleViews } from 'models/article';
 import { Modal } from '@oc/design';
-import Image from "next/image";
+import Image from 'next/image';
 
 const ArticleState = ({ children, articleState }: any) => {
   const setAtom = useSetAtom(articleAtom);

@@ -5,7 +5,7 @@ type FetchOptions = {
   queryParams?: Record<string, string | number>;
   fetchParams?: RequestInit & {
     next?: {
-      revalidate?: false | 0 | number,
+      revalidate?: false | 0 | number;
       tags?: Array<string>;
     };
   };

@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <WebVitals />
         <ThemeProvider>
           <Header />
-          <main className='container mx-auto px-3'>{children}</main>
+          <main className='container mx-auto px-3 pt-16'>{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 
@@ -22,9 +22,7 @@ const LottiePlayer: React.FC<LottieProps> = (props) => {
       lottie.destroy(url);
     };
   }, [url]);
-  return (
-    <div style={{ fontSize: `${size}px` }} className='w-[1em] h-[1em]' ref={lottieRef} />
-  );
+  return <div style={{ fontSize: `${size}px` }} className='h-[1em] w-[1em]' ref={lottieRef} />;
 };
 
 export default LottiePlayer;

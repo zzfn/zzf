@@ -9,10 +9,7 @@ const List = ({ children }: { children: ReactNode }) => {
     animate('a', { opacity: 1 });
   });
   return (
-    <div
-      ref={scope}
-      className='flex flex-col text-sm p-6'
-    >
+    <div ref={scope} className='flex flex-col p-6 text-sm'>
       {children}
     </div>
   );

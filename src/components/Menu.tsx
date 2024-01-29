@@ -42,7 +42,7 @@ const Menu = ({ navLinks }: any) => {
       <Drawer onCancel={() => setVisible(false)} visible={visible}>
         <motion.nav
           variants={variantsNav}
-          className='flex flex-col items-center justify-center h-full gap-y-8'
+          className='flex h-full flex-col items-center justify-center gap-y-8'
         >
           {navLinks.map((link: any) => {
             const isActive = pathname === link.href;

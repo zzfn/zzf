@@ -63,9 +63,9 @@ const ThemeButton = () => {
       });
   };
 
-  return <div className='flex border rounded'>
-    {
-      ['light', 'auto', 'dark'].map((theme) => (
+  return (
+    <div className='flex rounded border border-default'>
+      {['light', 'auto', 'dark'].map((theme) => (
         <IconButton
           key={theme}
           onClick={(event) => {
@@ -77,8 +77,8 @@ const ThemeButton = () => {
         >
           <IconSymbols icon={`${theme}_mode`} />
         </IconButton>
-      ))
-    }
-  </div>;
+      ))}
+    </div>
+  );
 };
 export default ThemeButton;
