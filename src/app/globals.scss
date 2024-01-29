@@ -1,5 +1,3 @@
-@import url('https://cdn.zzfzzf.com/lxgw/font.css');
-@import 'prism.css';
 @import '@primer/primitives/tokens-next-private/css/base/size/size';
 @import '@primer/primitives/tokens-next-private/css/base/typography/typography';
 @import '@primer/primitives/tokens-next-private/css/functional/size/border';
@@ -11,7 +9,9 @@
 @import '@primer/primitives/tokens-next-private/css/functional/typography/typography';
 @import '@primer/primitives/tokens-next-private/css/functional/themes/dark';
 @import '@primer/primitives/tokens-next-private/css/functional/themes/light';
+@import 'prism.css';
 @import '~@oc/design/dist/styles/index.css';
+
 
 @tailwind base;
 @tailwind components;

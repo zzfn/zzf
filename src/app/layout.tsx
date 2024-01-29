@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import './font.css'
 import './globals.scss';
 import Footer from '../components/Footer';
 import { WebVitals } from './_components/WebVitals';
