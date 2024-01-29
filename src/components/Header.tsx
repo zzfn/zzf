@@ -1,11 +1,8 @@
 import Link from 'next/link';
-import React from 'react';
-import ThemeButton from './ThemeButton';
 import Navigation from './Navigation';
 import Menu from './Menu';
 import Logo from './Logo';
-import { IconButton } from "@oc/design";
-import IconSymbols from "./IconSymbols";
+import GlobalSearch from './GlobalSearch';
 
 const navLinks = [
   { name: '文章', href: 'post' },
@@ -27,7 +24,7 @@ const Header = () => {
           <Navigation navLinks={navLinks} />
         </nav>
         <span className='text-2xl inline-flex'>
-          <ThemeButton />
+          <GlobalSearch />
         </span>
       </div>
     </header>

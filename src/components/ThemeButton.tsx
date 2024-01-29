@@ -4,12 +4,9 @@ import React, { useEffect } from 'react';
 import { IconButton, Tooltip } from '@oc/design';
 import { useAtom } from 'jotai';
 import { themeModeAtom } from '../atoms/themeAtoms';
-import { searchAtom } from '../atoms/searchAtoms';
-import * as R from 'ramda';
 
 const ThemeButton = () => {
   const [themeMode, setThemeMode] = useAtom(themeModeAtom);
-  const [searchVisible, setSearchVisible] = useAtom(searchAtom);
   useEffect(() => {
     document.querySelector('html')?.setAttribute('data-color-mode', themeMode);
   }, [themeMode]);
@@ -17,7 +14,6 @@ const ThemeButton = () => {
   interface ThemeTransitionOptions {
     x?: number; // 鼠标的x坐标
     y?: number; // 鼠标的y坐标
-    themeSetter: (theme: 'light' | 'dark' | 'auto') => void; // 设置主题的函数
   }
 
   const buildThemeTransition = (
@@ -28,7 +24,7 @@ const ThemeButton = () => {
       !('startViewTransition' in document) ||
       window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
     ) {
-      options.themeSetter(theme);
+      setThemeMode(theme);
       return;
     }
 
@@ -44,7 +40,7 @@ const ThemeButton = () => {
     // @ts-ignore
     document
       .startViewTransition(() => {
-        options.themeSetter(theme);
+        setThemeMode(theme);
         return Promise.resolve();
       })
       ?.ready.then(() => {
@@ -67,38 +63,22 @@ const ThemeButton = () => {
       });
   };
 
-  return (
-    <>
-      <Tooltip placement='bottomRight' content='command/control + k'>
-        <IconButton>
-          <IconSymbols
-            onClick={() => {
-              setSearchVisible(!searchVisible);
-            }}
-            icon='search'
-          />
+  return <div className='flex border rounded'>
+    {
+      ['light', 'auto', 'dark'].map((theme) => (
+        <IconButton
+          key={theme}
+          onClick={(event) => {
+            buildThemeTransition(theme as any, {
+              x: event.clientX,
+              y: event.clientY,
+            });
+          }}
+        >
+          <IconSymbols icon={`${theme}_mode`} />
         </IconButton>
-      </Tooltip>
-      <IconButton
-        onClick={(event) => {
-          const newThemeMode = R.cond([
-            [R.equals('light'), R.always('dark')],
-            [R.equals('dark'), R.always('auto')],
-            [R.T, R.always('light')],
-          ])(themeMode);
-
-          buildThemeTransition(newThemeMode as 'light' | 'dark' | 'auto', {
-            x: event.clientX,
-            y: event.clientY,
-            themeSetter: (themeParams) => {
-              setThemeMode(themeParams);
-            },
-          });
-        }}
-      >
-        <IconSymbols icon={`${themeMode}_mode`} />
-      </IconButton>
-    </>
-  );
+      ))
+    }
+  </div>;
 };
 export default ThemeButton;
