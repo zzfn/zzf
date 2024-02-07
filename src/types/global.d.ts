@@ -19,5 +19,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_BASE_URL: string;
     NEXT_PUBLIC_CDN_URL: string;
     NEXT_PUBLIC_WS_URL: string;
+    REVALIDATE_SECRET: string;
   }
 }

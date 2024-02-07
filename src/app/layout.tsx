@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
 import styles from './layout.module.scss';
+import classNames from 'classnames';
 export const metadata: Metadata = {
   title: {
     template: '%s | 奇趣生活实验室',
@@ -38,7 +39,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       data-dark-theme='dark'
       data-light-theme='light'
     >
-      <body className={styles.body}>
+      <body className={classNames('min-h-screen', 'flex', 'flex-col')}>
         <WebVitals />
         <ThemeProvider>
           <Header />
