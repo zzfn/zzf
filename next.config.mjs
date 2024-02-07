@@ -14,6 +14,6 @@ export default {
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
-    domains: ['cdn.zzfzzf.com','w.zzfzzf.com'],
+    domains: ['cdn.zzfzzf.com', 'w.zzfzzf.com'],
   },
 };

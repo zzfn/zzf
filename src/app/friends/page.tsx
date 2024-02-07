@@ -1,10 +1,11 @@
 import React from 'react';
 import Comment from '../post/[id]/_components/Comment';
 import { Metadata } from 'next';
-import { Alert, Button } from '@oc/design';
+import { Alert, Button, Modal } from '@oc/design';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { fetchData } from '../../models/api';
+import ApplyFriend from './_components/ApplyFriend';
 export const metadata: Metadata = {
   title: '朋友们',
 };
@@ -57,7 +58,7 @@ const Page = async () => {
       <Alert className='text-sm' type='info'>
         <h3 className='text-xl'>海内存知己，天涯若比邻</h3>
       </Alert>
-      <Button>和我做朋友吧</Button>
+      <ApplyFriend />
       <div>
         <ul className='list-disc'>
           <li>title: dawn-blog</li>

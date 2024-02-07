@@ -9,7 +9,7 @@ import { fetchData } from 'models/api';
 import classNames from 'classnames';
 import { translateMarkdown } from 'utils/translateMarkdown';
 import type { Article } from 'types/article';
-import ArticleCount from "./_components/ArticleCount";
+import ArticleCount from './_components/ArticleCount';
 
 async function getData(id: string) {
   return fetchData<Article>({
@@ -45,7 +45,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
               <time>{diff(data.updatedAt)}</time>
             </Tooltip>
             <label>浏览量</label>
-            <span><ArticleCount id={data.id}/></span>
+            <span>
+              <ArticleCount id={data.id} />
+            </span>
           </ul>
           <article
             className={classNames(

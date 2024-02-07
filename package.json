@@ -28,6 +28,7 @@
     "eslint": "^8.56.0",
     "feed": "^4.2.2",
     "framer-motion": "^11.0.3",
+    "immer": "^10.0.3",
     "jotai": "^2.6.4",
     "lottie-web": "^5.12.2",
     "marked": "^11.2.0",

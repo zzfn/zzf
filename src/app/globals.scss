@@ -12,7 +12,6 @@
 @import 'prism.css';
 @import '~@oc/design/dist/styles/index.css';
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,28 +34,23 @@
   font-weight: 400;
   src: url(https://cdn.zzfzzf.com/assets/Material%2BSymbols%2BOutlined.woff2) format('woff2');
 }
-:root {
+* {
   scrollbar-color: var(--bgColor-neutral-muted) var(--bgColor-default);
   scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+:root {
   --bgColor-opacity: hsla(0, 0%, 100%, 0.72);
+  word-break: break-all;
+  scroll-behavior: smooth;
 }
 body {
   font-size: 16px;
   background-color: var(--bgColor-default);
   color: var(--fgColor-default);
-  overflow-y: scroll;
   @apply font-sans;
 }
-html {
-  word-break: break-all;
-  scroll-behavior: smooth;
-}
 
-.oc-icon {
-  width: 1em;
-  height: 1em;
-  vertical-align: -2px;
-}
 em {
   color: var(--fgColor-accent);
 }

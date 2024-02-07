@@ -1,12 +1,12 @@
 import Header from '../components/Header';
-import './font.css'
+import './font.css';
 import './globals.scss';
 import Footer from '../components/Footer';
 import { WebVitals } from './_components/WebVitals';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
-
+import styles from './layout.module.scss';
 export const metadata: Metadata = {
   title: {
     template: '%s | 奇趣生活实验室',
@@ -38,11 +38,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       data-dark-theme='dark'
       data-light-theme='light'
     >
-      <body>
+      <body className={styles.body}>
         <WebVitals />
         <ThemeProvider>
           <Header />
-          <main className='container mx-auto px-3 pt-16'>{children}</main>
+          <main className='container mx-auto grow px-3 pt-16'>{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
