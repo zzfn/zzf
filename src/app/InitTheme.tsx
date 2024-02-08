@@ -3,12 +3,12 @@ import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from '
 import type { ThemeProviderProps } from './types';
 import { useSetAtom, useAtom } from 'jotai';
 import { userAtom } from '../atoms/userAtoms';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { Input, Modal } from '@oc/design';
 import SearchArticleCard from '../components/SearchArticleCard';
 import useDebouncedCallback from '../hooks/useDebouncedCallback';
 import { useSearch } from '../models/search';
 import { searchAtom } from '../atoms/searchAtoms';
+import { fetchData } from '../models/api';
 
 const colorSchemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
@@ -22,12 +22,15 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   const setUser = useSetAtom(userAtom);
   const [theme, setThemeState] = useState(() => getTheme(storageKey, defaultTheme));
   const [searchVisible, setSearchVisible] = useAtom(searchAtom);
-  async function getVisitorId() {
-    const { get } = await FingerprintJS.load();
-    const { visitorId } = await get();
-    setUser(visitorId);
-  }
   useEffect(() => {
+    if (!localStorage.getItem('uid')) {
+      fetchData({
+        endpoint: '/v1/app-users/finger',
+      }).then((res: string) => {
+        localStorage.setItem('uid', res);
+        setUser(res);
+      });
+    }
     // Handler to call on window keydown
     function handleKeyDown(event: KeyboardEvent) {
       if ((event.metaKey || event.ctrlKey) && event.code === 'KeyK') {
@@ -42,9 +45,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
-  useEffect(() => {
-    getVisitorId();
   }, []);
   const applyTheme = useCallback((theme: any) => {
     let resolved = theme;

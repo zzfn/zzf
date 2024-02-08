@@ -4,9 +4,11 @@ import './globals.scss';
 import Footer from '../components/Footer';
 import { WebVitals } from './_components/WebVitals';
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import { createRef, ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
 import classNames from 'classnames';
+import { ConfigProvider } from '@oc/design';
+
 export const metadata: Metadata = {
   title: {
     template: '%s | 奇趣生活实验室',
@@ -40,11 +42,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body className={classNames('min-h-screen', 'flex', 'flex-col')}>
         <WebVitals />
-        <ThemeProvider>
-          <Header />
-          <main className='container mx-auto grow px-3 pt-16'>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <ConfigProvider
+          value={{
+            prefix: 'cw',
+          }}
+        >
+          <ThemeProvider>
+            <Header />
+            <main className='container mx-auto grow px-3 pt-16'>{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </ConfigProvider>
       </body>
     </html>
   );

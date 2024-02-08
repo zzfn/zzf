@@ -1,6 +1,6 @@
 'use client';
 import CommentCard from './CommentCard';
-import { Button } from '@oc/design';
+import { Button, useMessage } from '@oc/design';
 import { useEffect, useState } from 'react';
 import Avatar from './Avatar';
 import { useAtomValue } from 'jotai';
@@ -9,6 +9,7 @@ import { useCommentOrReply, useGetComment } from 'models/comment';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const Comment = ({ params }: { params: { objectType: string; objectId: string } }) => {
+  const message = useMessage();
   const { data = [], mutate } = useGetComment(params);
   const visitorId = useAtomValue(userAtom);
   const [isVisible, setIsVisible] = useState(false);
@@ -49,6 +50,9 @@ const Comment = ({ params }: { params: { objectType: string; objectId: string } 
                   await mutate();
                   setContent('');
                   setIsVisible(false);
+                  message?.add({
+                    content: '操作成功',
+                  });
                 }}
               >
                 Post comment
