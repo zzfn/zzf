@@ -8,12 +8,10 @@ import Image from 'next/image';
 
 const ArticleState = ({ children, articleState }: any) => {
   const setAtom = useSetAtom(articleAtom);
-  const { updateViews } = useUpdateArticleViews(articleState.id);
   const [visible, setVisible] = useState(false);
   const [src, setSrc] = useState('');
   useEffect(() => {
     setAtom(articleState);
-    updateViews().then(console.log);
     const imgList = document.querySelectorAll('img');
     imgList.forEach((img: any) => {
       img.onclick = () => {
