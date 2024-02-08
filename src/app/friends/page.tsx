@@ -18,12 +18,11 @@ const CardBio = ({ dataSource }: CardProps) => {
       href={url}
       className={classNames(
         'flex',
-        'bg-muted',
+        'flex-col',
         'rounded-md',
-        'overflow-hidden',
-        'mb-2',
-        'bg-surface-5',
         'hover:bg-neutral-muted',
+        'justify-center',
+        'items-center',
       )}
     >
       <Image
@@ -33,10 +32,8 @@ const CardBio = ({ dataSource }: CardProps) => {
         src={logo}
         alt=''
       />
-      <div className={classNames('flex', 'flex-col', 'justify-between', 'p-2')}>
-        <strong className='text-primary'>{name}</strong>
-        <p className='text-neutral-2'>{description}</p>
-      </div>
+      <strong className='text-primary'>{name}</strong>
+      <p className='text-neutral-2'>{description}</p>
     </a>
   );
 };
@@ -55,19 +52,11 @@ const Page = async () => {
   });
   return (
     <>
-      <Alert className='text-sm' type='info'>
-        <h3 className='text-xl'>海内存知己，天涯若比邻</h3>
+      <h2 className='my-2 text-2xl'>我的朋友们🧑‍🤝‍🧑</h2>
+      <Alert className='mb-2 text-sm' type='info'>
+        <h3>海内存知己，天涯若比邻</h3>
       </Alert>
-      <ApplyFriend />
-      <div>
-        <ul className='list-disc'>
-          <li>title: dawn-blog</li>
-          <li>url: https://zzfzzf.com</li>
-          <li>bio: 一个前端开发者的博客</li>
-          <li>avatar: https://cdn.zzfzzf.com/assets/logo.png</li>
-        </ul>
-      </div>
-      <div className='grid grid-cols-2 gap-2'>
+      <ul className='grid grid-cols-3 gap-2'>
         {data?.map((item: any) => (
           <CardBio
             key={item.id}
@@ -79,7 +68,25 @@ const Page = async () => {
             }}
           />
         ))}
-      </div>
+      </ul>
+      <Alert type='warning'>申请友链前必读</Alert>
+      <ul className='list-decimal pl-6 leading-8'>
+        <li>确保可以https访问</li>
+        <li>独立域名</li>
+        <li>可访问</li>
+        <li>添加我为友链</li>
+      </ul>
+      <Alert type='success'>
+        <ul className='list-disc pl-6 leading-6'>
+          <li> 我的信息</li>
+          <li>站点标题: dawn-blog</li>
+          <li>站点链接: https://zzfzzf.com</li>
+          <li>站点描述: 一个前端开发者的博客</li>
+          <li>站点头像: https://cdn.zzfzzf.com/assets/logo.png</li>
+        </ul>
+      </Alert>
+
+      <ApplyFriend />
     </>
   );
 };

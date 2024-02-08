@@ -20,9 +20,8 @@ const ApplyFriend = () => {
           setIsVisible(!isVisible);
         }}
       >
-        和我做朋友吧
+        和我做朋友吧（提交刷新即可出现在友链中）
       </Button>
-      <h1>ApplyFriend</h1>
       <Modal onCancel={() => setIsVisible(!isVisible)} visible={isVisible}>
         <div className='p-3'>
           <Input

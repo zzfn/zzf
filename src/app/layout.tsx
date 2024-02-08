@@ -6,7 +6,6 @@ import { WebVitals } from './_components/WebVitals';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
-import styles from './layout.module.scss';
 import classNames from 'classnames';
 export const metadata: Metadata = {
   title: {
