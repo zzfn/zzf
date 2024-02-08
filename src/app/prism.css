@@ -6,7 +6,7 @@
 }
 
 .token.punctuation {
-  color: #999; /* This color remains unchanged */
+  color: var(--codeMirror-fgColor);
 }
 
 .token.namespace {
