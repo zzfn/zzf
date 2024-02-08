@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useAtomValue } from 'jotai';
 import { userAtom } from '../../atoms/userAtoms';
+import AnimatedNumber from '../../components/AnimatedNumber';
 
 const OnlineCount = () => {
   const userId = useAtomValue(userAtom);
@@ -24,7 +25,7 @@ const OnlineCount = () => {
 
   return (
     <div>
-      在线人数 <span className='font-mono'>{count}</span>
+      在线人数 <AnimatedNumber number={count} />
     </div>
   );
 };

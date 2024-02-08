@@ -2,7 +2,6 @@ import dayjs from 'dayjs';
 import React from 'react';
 import Link from 'next/link';
 import OnlineCount from 'app/_components/OnlineCount';
-import Logo from './Logo';
 import ThemeButton from './ThemeButton';
 
 const Footer = () => {
