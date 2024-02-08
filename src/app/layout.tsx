@@ -1,10 +1,9 @@
 import Header from '../components/Header';
-import './font.css';
 import './globals.scss';
 import Footer from '../components/Footer';
 import { WebVitals } from './_components/WebVitals';
 import type { Metadata } from 'next';
-import { createRef, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
 import classNames from 'classnames';
 import { ConfigProvider } from '@oc/design';
@@ -40,6 +39,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       data-dark-theme='dark'
       data-light-theme='light'
     >
+      <head>
+        <link rel='stylesheet' href='https://cdn.zzfzzf.com/lxgw/font.css' />
+      </head>
       <body className={classNames('min-h-screen', 'flex', 'flex-col')}>
         <WebVitals />
         <ConfigProvider
