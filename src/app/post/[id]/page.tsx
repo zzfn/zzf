@@ -35,7 +35,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       <div className='w-full grid-cols-5 gap-x-2 md:grid'>
         <main className='col-span-4 w-full shrink grow-0 basis-full'>
           <h1 className='pt-8 text-3xl'>{data.title}</h1>
-          <ul className='my-4 flex gap-x-2 rounded bg-muted p-6 text-sm text-muted'>
+          <ul className='my-4 flex items-center gap-x-2 rounded bg-muted p-6 text-sm text-muted'>
             <label>创建时间</label>
             <Tooltip content={format(data.createdAt)}>
               <time>{diff(data.createdAt)}</time>
@@ -45,9 +45,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               <time>{diff(data.updatedAt)}</time>
             </Tooltip>
             <label>浏览量</label>
-            <span>
-              <ArticleCount id={data.id} />
-            </span>
+            <ArticleCount id={data.id} />
           </ul>
           <article
             className={classNames(
