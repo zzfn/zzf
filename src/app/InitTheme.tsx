@@ -30,6 +30,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
         localStorage.setItem('uid', res);
         setUser(res);
       });
+    } else {
+      setUser(localStorage.getItem('uid'));
     }
     // Handler to call on window keydown
     function handleKeyDown(event: KeyboardEvent) {
