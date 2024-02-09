@@ -15,8 +15,8 @@ dependencies:
     specifier: ^0.0.45
     version: 0.0.45(react-dom@18.2.0)(react@18.2.0)
   '@oc/icon':
-    specifier: ^0.0.23
-    version: 0.0.23
+    specifier: ^0.0.24
+    version: 0.0.24
   '@primer/primitives':
     specifier: ^7.15.6
     version: 7.15.6
@@ -1189,8 +1189,8 @@ packages:
       - react-dom
     dev: false
 
-  /@oc/icon@0.0.23:
-    resolution: {integrity: sha512-hW3l1gDGP0HgPwgY5yqaH0JOLk+qZAtITF6P32NkpldayctBLmJ+jXkwnrLkNR8kHE3FUOJQIONdNFBYo3MPJQ==}
+  /@oc/icon@0.0.24:
+    resolution: {integrity: sha512-QaAV5iGIIgMobUfBt6xTmMHgptHFkX7eBoxT3pDkd2q+/9U9ZaE24EpcyZRNkTWcAcMV9IiFbKAq5NWXtaOY0A==}
     dev: false
 
   /@pkgjs/parseargs@0.11.0:
@@ -2041,7 +2041,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001585
-      electron-to-chromium: 1.4.663
+      electron-to-chromium: 1.4.664
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.3)
 
@@ -2597,8 +2597,8 @@ packages:
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  /electron-to-chromium@1.4.663:
-    resolution: {integrity: sha512-P4B6wnMUV2aLvqmny1RPlAQPUBTY+skNw4WLX0cVxYQVEzmLQ2h7K2Knc69szclEjcRW63Uj06IXQwOG7GbInQ==}
+  /electron-to-chromium@1.4.664:
+    resolution: {integrity: sha512-k9VKKSkOSNPvSckZgDDl/IQx45E1quMjX8QfLzUsAs/zve8AyFDK+ByRynSP/OfEfryiKHpQeMf00z0leLCc3A==}
 
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}

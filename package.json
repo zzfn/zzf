@@ -19,7 +19,7 @@
     "@fingerprintjs/fingerprintjs": "^4.2.2",
     "@formkit/auto-animate": "^0.8.1",
     "@oc/design": "^0.0.45",
-    "@oc/icon": "^0.0.23",
+    "@oc/icon": "^0.0.24",
     "@primer/primitives": "^7.15.6",
     "@react-spring/web": "^9.7.3",
     "@tailwindcss/typography": "^0.5.10",

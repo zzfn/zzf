@@ -2,7 +2,7 @@ import React from 'react';
 import Comment from '../post/[id]/_components/Comment';
 import type { Metadata } from 'next';
 export const metadata: Metadata = {
-  title: '心得',
+  title: '随笔',
 };
 const Page = async (props: { searchParams: { id: string } }) => {
   return (

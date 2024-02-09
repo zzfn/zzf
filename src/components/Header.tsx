@@ -8,7 +8,7 @@ const navLinks = [
   { name: '文章', href: 'post' },
   { name: '留言', href: 'feedback' },
   { name: '友链', href: 'friends' },
-  { name: '心得', href: 'thinking' },
+  { name: '随笔', href: 'thinking' },
 ];
 const Header = () => {
   return (
