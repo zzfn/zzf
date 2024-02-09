@@ -78,6 +78,7 @@ export default async function Page() {
           </a>
         ))}
       </div>
+      <video className='rounded' controls autoPlay src='https://w.zzfzzf.com/img/home.mp4'></video>
     </>
   );
 }
