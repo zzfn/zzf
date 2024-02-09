@@ -55,7 +55,7 @@ export default async function Page() {
           {Object.entries(groupByYear(data))
             .reverse()
             .map(([key, value]: any) => (
-              <>
+              <div key={key}>
                 <h3 className='text-xl text-accent'>
                   {key}--({value.length})
                 </h3>
@@ -63,7 +63,7 @@ export default async function Page() {
                   <a
                     key={article.id}
                     href={`/post/${article.id}`}
-                    className='timeline flex items-center justify-between rounded py-1 hover:bg-muted'
+                    className='flex items-center justify-between rounded py-1 hover:bg-muted'
                   >
                     <span>{article.title}</span>
                     <time className='font-mono font-thin text-muted'>
@@ -71,7 +71,7 @@ export default async function Page() {
                     </time>
                   </a>
                 ))}
-              </>
+              </div>
             ))}
         </div>
       )}

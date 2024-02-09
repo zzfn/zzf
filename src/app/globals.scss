@@ -86,28 +86,6 @@ em {
       'opsz' 48;
   }
 }
-.timeline {
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    left: -1.05rem;
-    top: 0;
-    bottom: 0;
-    border-left: 1px solid var(--bgColor-accent-emphasis);
-  }
-  &::after {
-    content: '';
-    left: -1.28rem;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 0.5rem;
-    width: 0.5rem;
-    border-radius: 50%;
-    position: absolute;
-    background-color: var(--bgColor-accent-emphasis);
-  }
-}
 
 [data-color-mode='dark'] {
   --bgColor-opacity: rgba(29, 29, 31, 0.72);
