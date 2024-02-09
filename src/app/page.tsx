@@ -56,7 +56,7 @@ export default async function Page() {
           </IconButton>
         </Link>
       </div>
-      <div className='grid grid-cols-2'>
+      <div className='grid md:grid-cols-2'>
         {data.map((post: any) => (
           <a
             key={post.id}
