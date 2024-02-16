@@ -1,4 +1,4 @@
-import { Tooltip, Tag, IconButton } from '@oc/design';
+import { IconButton, Tooltip } from '@oc/design';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { format } from 'utils/time';
@@ -6,10 +6,10 @@ import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
 import TimeDiff from './_components/TimeDiff';
 import Image from 'next/image';
-import { IconArrowForward, IconAuto, IconLabel } from '@oc/icon';
+import { IconArrowForward, IconLabel } from '@oc/icon';
 
 export const metadata: Metadata = {
-  title: 'Home',
+  title: '👋奇趣生活实验室',
 };
 
 async function getData() {
@@ -31,8 +31,9 @@ export default async function Page() {
   const data = await getData();
   return (
     <>
-      <div className='flex items-center gap-x-6'>
+      <div className='my-6 flex items-center gap-x-6'>
         <Image
+          priority={true}
           className='aspect-square rounded-full object-cover'
           width={128}
           height={128}
@@ -78,7 +79,6 @@ export default async function Page() {
           </a>
         ))}
       </div>
-      <video className='rounded' controls autoPlay src='https://w.zzfzzf.com/img/home.mp4'></video>
     </>
   );
 }
