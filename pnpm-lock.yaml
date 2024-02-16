@@ -12,8 +12,8 @@ dependencies:
     specifier: ^0.8.1
     version: 0.8.1
   '@oc/design':
-    specifier: ^0.0.45
-    version: 0.0.45(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.0.46
+    version: 0.0.46(react-dom@18.2.0)(react@18.2.0)
   '@oc/icon':
     specifier: ^0.0.24
     version: 0.0.24
@@ -1178,8 +1178,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  /@oc/design@0.0.45(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-kfaMh+PNAuqc+VqkJitGQbM+2KuUl21FRiBR/P4YuYlIQqlwSo0cMVxFGtQYbSBoeRgV+3zA7UKbZR2iF0X1jw==}
+  /@oc/design@0.0.46(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-leuDp+F+y9RnGBIkPiux1enq7YRB0aqQ27ozvpaMWV/Afjx0aTG6bDb67McabWjyW96NCx5d2Qbu/OYhNNh37Q==}
     dependencies:
       '@primer/primitives': 7.15.6
       framer-motion: 11.0.5(react-dom@18.2.0)(react@18.2.0)
