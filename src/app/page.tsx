@@ -26,9 +26,14 @@ async function getData() {
     },
   });
 }
-
+async function getConfig() {
+  return fetchData<Record<string, any>>({
+    endpoint: '/v1/config/site',
+  });
+}
 export default async function Page() {
   const data = await getData();
+  const config = await getConfig();
   return (
     <div className='my-6 grid grid-cols-1 md:grid-cols-[auto_minmax(0,_calc(100%_-_296px_-_24px))]'>
       <div className='flex flex-col items-center gap-y-6'>
@@ -38,10 +43,10 @@ export default async function Page() {
           width={128}
           height={128}
           alt='avatar'
-          src='https://w.zzfzzf.com/img/1707467164880.webp'
+          src={config.avatar}
         />
-        <h6 className='text-3xl font-bold'>Krupp</h6>
-        <p>遇见即是上上签</p>
+        <h6 className='text-3xl font-bold'>{config.name}</h6>
+        <p>{config.slug}</p>
       </div>
       <div>
         <div className='flex justify-between rounded'>
