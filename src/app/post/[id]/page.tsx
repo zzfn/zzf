@@ -76,7 +76,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 source={data.content}
                 options={{
                   mdxOptions: {
-                    rehypePlugins: [],
+                    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
                     remarkPlugins: [remarkGfm],
                   },
                 }}
