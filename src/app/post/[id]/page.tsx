@@ -4,7 +4,6 @@ import { diff, format } from 'utils/time';
 import { Alert, Tooltip } from '@oc/design';
 import { notFound } from 'next/navigation';
 import ArticleState from './_components/ArticleState';
-import ArticleNav from 'components/ArticleNav';
 import { fetchData } from 'models/api';
 import classNames from 'classnames';
 import type { Article } from 'types/article';
@@ -16,6 +15,7 @@ import Loading from 'components/loading';
 import MdCode from './_components/MdCode';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import ArticleNav from '../../../components/ArticleNav';
 
 async function getData(id: string) {
   return fetchData<Article>({
@@ -64,7 +64,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               <MDXRemote
                 components={{
                   img: MdImage,
-                  pre: MdCode,
+                  code: MdCode,
                   Space: MdSpace,
                   Alert: Alert,
                 }}
