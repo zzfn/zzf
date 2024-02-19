@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Comment from './_components/Comment';
 import { diff, format } from 'utils/time';
-import { Tooltip } from '@oc/design';
+import { Alert, Tooltip } from '@oc/design';
 import { notFound } from 'next/navigation';
 import ArticleState from './_components/ArticleState';
 import ArticleNav from 'components/ArticleNav';
 import { fetchData } from 'models/api';
 import classNames from 'classnames';
-import { translateMarkdown } from 'utils/translateMarkdown';
 import type { Article } from 'types/article';
 import ArticleCount from './_components/ArticleCount';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import MdImage from './_components/MdImage';
+import MdSpace from './_components/MdSpace';
+import Loading from 'components/loading';
+import MdCode from './_components/MdCode';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 async function getData(id: string) {
   return fetchData<Article>({
@@ -26,7 +32,6 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const data = await getData(params.id);
-  const contentHtml = translateMarkdown(data.content);
   if (!data) {
     notFound();
   }
@@ -54,10 +59,24 @@ const Page = async ({ params }: { params: { id: string } }) => {
               'prose',
               'prose-headings:scroll-mt-20',
             )}
-            dangerouslySetInnerHTML={{
-              __html: contentHtml,
-            }}
-          />
+          >
+            <Suspense fallback={<Loading />}>
+              <MDXRemote
+                components={{
+                  img: MdImage,
+                  pre: MdCode,
+                  Space: MdSpace,
+                  Alert: Alert,
+                }}
+                source={data.content}
+                options={{
+                  mdxOptions: {
+                    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+                  },
+                }}
+              />
+            </Suspense>
+          </article>
           <Comment params={{ objectType: 'article', objectId: data.id }} />
         </main>
         <aside className='grow-1 col-span-1 hidden h-full w-full shrink-0  transform-gpu md:block'>

@@ -22,6 +22,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
   const [scrollY, setScrollY] = useState<number>(0);
   const { scrollYProgress } = useScroll();
   const ulRef = useRef<HTMLUListElement>(null);
+
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     setScrollY(latest);
   });
