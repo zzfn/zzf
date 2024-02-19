@@ -18,6 +18,7 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.2.2",
     "@formkit/auto-animate": "^0.8.1",
+    "@next/third-parties": "^14.1.0",
     "@oc/design": "^0.0.46",
     "@oc/icon": "^0.0.24",
     "@primer/primitives": "^7.15.6",

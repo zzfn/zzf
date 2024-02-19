@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 import { ThemeProvider } from './InitTheme';
 import classNames from 'classnames';
 import { ConfigProvider } from '@oc/design';
-
+import { GoogleAnalytics } from '@next/third-parties/google';
 export const metadata: Metadata = {
   title: {
     template: '%s | 奇趣生活实验室',
@@ -56,6 +56,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </ThemeProvider>
         </ConfigProvider>
       </body>
+      <GoogleAnalytics gaId='G-GBJ2W80K7N' />
     </html>
   );
 }
