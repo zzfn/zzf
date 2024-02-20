@@ -2,7 +2,7 @@ import { Feed } from 'feed';
 import { marked } from 'marked';
 import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
-
+export const dynamic = 'force-dynamic';
 export async function GET() {
   const data = await fetchData<Array<Article>>({
     endpoint: '/v1/articles?rss=true',
