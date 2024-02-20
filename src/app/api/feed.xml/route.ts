@@ -4,7 +4,14 @@ import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
 
 export async function GET() {
-  const data = await fetchData<Array<Article>>({ endpoint: '/v1/articles?rss=true' });
+  const data = await fetchData<Array<Article>>({
+    endpoint: '/v1/articles?rss=true',
+    fetchParams: {
+      next: {
+        tags: ['article'],
+      },
+    },
+  });
   const siteURL = 'https://zzfzzf.com';
   const date = new Date();
   const author = {
