@@ -1,7 +1,5 @@
 import { Feed } from 'feed';
 import { marked } from 'marked';
-import { mangle } from 'marked-mangle';
-import { gfmHeadingId } from 'marked-gfm-heading-id';
 import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
 
@@ -29,12 +27,6 @@ export async function GET() {
     },
     author,
   });
-  marked.use(mangle());
-  const options = {
-    prefix: 'heading-',
-  };
-
-  marked.use(gfmHeadingId(options));
   marked.use({
     gfm: true,
     pedantic: false,
@@ -45,7 +37,7 @@ export async function GET() {
     const url = `${siteURL}/post/${post.id}`;
     feed.addItem({
       title: post.title,
-      id: url,
+      id: post.id,
       link: url,
       content: marked.parse(post.content) as string,
       author: [author],
