@@ -17,6 +17,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import ArticleNav from 'components/ArticleNav';
 import remarkGfm from 'remark-gfm';
+import CodeSandpack from '../../_components/CodeSandpack';
 async function getData(id: string) {
   return fetchData<Article>({
     endpoint: `/v1/articles/${id}`,
@@ -67,6 +68,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   code: MdCode,
                   Space: MdSpace,
                   Alert: Alert,
+                  CodeSandpack: CodeSandpack,
                   table: (props) => (
                     <div className='markdown-table'>
                       <table>{props.children}</table>

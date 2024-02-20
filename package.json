@@ -16,6 +16,7 @@
     "updateSnapshot": "jest --updateSnapshot"
   },
   "dependencies": {
+    "@codesandbox/sandpack-react": "^2.12.1",
     "@fingerprintjs/fingerprintjs": "^4.2.2",
     "@formkit/auto-animate": "^0.8.1",
     "@next/third-parties": "^14.1.0",

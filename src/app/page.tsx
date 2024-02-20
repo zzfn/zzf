@@ -7,6 +7,7 @@ import type { Article } from 'types/article';
 import TimeDiff from './_components/TimeDiff';
 import Image from 'next/image';
 import { IconArrowForward, IconLabel } from '@oc/icon';
+import CodeSandpack from './_components/CodeSandpack';
 
 export const metadata: Metadata = {
   title: '👋奇趣生活实验室',
