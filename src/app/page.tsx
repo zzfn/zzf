@@ -1,10 +1,9 @@
 import { IconButton, Tag, Tooltip } from '@oc/design';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { format } from 'utils/time';
+import { diff, format } from 'utils/time';
 import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
-import TimeDiff from './_components/TimeDiff';
 import Image from 'next/image';
 import { IconArrowForward, IconLabel } from '@oc/icon';
 import CodeSandpack from './_components/CodeSandpack';
@@ -73,7 +72,7 @@ export default async function Page() {
                 更新于
                 <Tooltip content={format(post.updatedAt)}>
                   <time className='font-mono'>
-                    <TimeDiff time={post.updatedAt} />
+                    {diff(post.createdAt)}
                   </time>
                 </Tooltip>
                 <span># {post.tag}</span>
