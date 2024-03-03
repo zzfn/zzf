@@ -72,7 +72,7 @@ export default async function Page() {
                 更新于
                 <Tooltip content={format(post.updatedAt)}>
                   <time className='font-mono'>
-                    {diff(post.createdAt)}
+                    {diff(post.updatedAt)}
                   </time>
                 </Tooltip>
                 <span># {post.tag}</span>
