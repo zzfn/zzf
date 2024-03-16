@@ -71,5 +71,5 @@ steps:
       command_timeout: 2m
       script:
         - echo ${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
-        - kubectl apply -f https://git.ooxo.cc/sonic/yaml/raw/branch/master/blog.yaml
+        - kubectl apply -f https://git.ooxo.cc/sonic/yaml/raw/branch/main/blog.yaml
         - kubectl set image deployment/blog blog=hub.ooxo.cc/home/blog:${DRONE_COMMIT_SHA:0:8}
