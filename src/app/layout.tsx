@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     template: '%s | 奇趣生活实验室',
     default: 'Krupp',
   },
+
   description: 'krupp的个人网站,记录个人学习',
   keywords: [
     '前端博客',
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <head>
         <link rel='stylesheet' href='https://cdn.zzfzzf.com/lxgw/font.css' />
+        <link rel='icon' href='/icon?<generated>' type='image/png' sizes='32x32' />
       </head>
       <body className={classNames('min-h-screen', 'flex', 'flex-col')}>
         <WebVitals />
