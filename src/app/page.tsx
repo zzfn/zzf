@@ -7,6 +7,7 @@ import type { Article } from 'types/article';
 import Image from 'next/image';
 import { IconArrowForward, IconLabel } from '@oc/icon';
 import CodeSandpack from './_components/CodeSandpack';
+import dayjs from 'dayjs';
 
 export const metadata: Metadata = {
   title: '👋奇趣生活实验室',
@@ -71,9 +72,7 @@ export default async function Page() {
               <div className='flex items-center gap-x-2 text-xs text-muted'>
                 更新于
                 <Tooltip content={format(post.updatedAt)}>
-                  <time className='font-mono'>
-                    {diff(post.updatedAt)}
-                  </time>
+                  <time className='font-mono'>{dayjs(post.updatedAt).format('YYYY-MM-DD')}</time>
                 </Tooltip>
                 <span># {post.tag}</span>
               </div>
