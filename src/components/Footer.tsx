@@ -15,7 +15,7 @@ const Footer = () => {
       <Link className='hover:underline' target='_blank' href='/about'>
         关于
       </Link>
-      <Link className='hover:underline' target='_blank' href='https://t.ooxo.cc/pu1qh7'>
+      <Link className='hover:underline' target='_blank' href='https://uptime.ccw.es/status/m'>
         服务状态
       </Link>
       <a
