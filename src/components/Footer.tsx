@@ -18,6 +18,13 @@ const Footer = () => {
       <Link className='hover:underline' target='_blank' href='https://uptime.ccw.es/status/m'>
         服务状态
       </Link>
+      <Link
+        className='hover:underline'
+        target='_blank'
+        href='https://m.ccw.es/share/YjgfEi1urh7EmU6i/ccw.es'
+      >
+        访问统计
+      </Link>
       <a
         className='hover:underline'
         rel='noreferrer'
