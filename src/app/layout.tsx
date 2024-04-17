@@ -8,6 +8,7 @@ import { ThemeProvider } from './InitTheme';
 import classNames from 'classnames';
 import { ConfigProvider } from '@oc/design';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
 export const metadata: Metadata = {
   title: {
     template: '%s | 奇趣生活实验室',
@@ -43,6 +44,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <link rel='stylesheet' href='https://cdn.zzfzzf.com/lxgw/font.css' />
         <link rel='icon' href='/icon?<generated>' type='image/png' sizes='32x32' />
+        <Script
+          data-website-id='fd7de47c-29ca-4934-a9a8-154267b49d37'
+          src='https://analytics.us.umami.is/script.js'
+        ></Script>
       </head>
       <body className={classNames('min-h-screen', 'flex', 'flex-col')}>
         <WebVitals />
