@@ -6,8 +6,8 @@ import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
 import Image from 'next/image';
 import { IconArrowForward, IconLabel } from '@oc/icon';
-import CodeSandpack from './_components/CodeSandpack';
 import dayjs from 'dayjs';
+import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: '👋奇趣生活实验室',
@@ -35,6 +35,8 @@ async function getConfig() {
 export default async function Page() {
   const data = await getData();
   const config = await getConfig();
+  const cookieStore = cookies();
+  const username = cookieStore.get('username');
   return (
     <div className='my-6 grid grid-cols-1 md:grid-cols-[auto_minmax(0,_calc(100%_-_296px_-_24px))]'>
       <div className='flex flex-col items-center gap-y-6'>

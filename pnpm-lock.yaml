@@ -21,8 +21,8 @@ dependencies:
     specifier: ^0.0.46
     version: 0.0.46(react-dom@18.2.0)(react@18.2.0)
   '@oc/icon':
-    specifier: ^0.0.24
-    version: 0.0.24
+    specifier: ^0.1.0
+    version: 0.1.0
   '@primer/primitives':
     specifier: ^7.16.0
     version: 7.16.0
@@ -1414,8 +1414,8 @@ packages:
       - react-dom
     dev: false
 
-  /@oc/icon@0.0.24:
-    resolution: {integrity: sha512-QaAV5iGIIgMobUfBt6xTmMHgptHFkX7eBoxT3pDkd2q+/9U9ZaE24EpcyZRNkTWcAcMV9IiFbKAq5NWXtaOY0A==, tarball: https://npm.zzfzzf.com/@oc/icon/-/icon-0.0.24.tgz}
+  /@oc/icon@0.1.0:
+    resolution: {integrity: sha512-6S6yqfGWqWwYe74j23COYz662ByWzqfCwlAljYih7PGMe9R4Fy1ZGnWSJ5X6kVaOG8kTNqlXQUXFJJBfhIgJPQ==}
     dev: false
 
   /@open-draft/deferred-promise@2.2.0:

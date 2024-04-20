@@ -1,24 +1,26 @@
 'use client';
 import CommentCard from './CommentCard';
 import { Button, useMessage } from '@oc/design';
-import { useEffect, useState } from 'react';
-import Avatar from './Avatar';
-import { useAtomValue } from 'jotai';
-import { userAtom } from 'atoms/userAtoms';
+import { useState } from 'react';
 import { useCommentOrReply, useGetComment } from 'models/comment';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const Comment = ({ params }: { params: { objectType: string; objectId: string } }) => {
+const Comment = ({
+  params,
+  username,
+}: {
+  params: { objectType: string; objectId: string };
+  username?: string;
+}) => {
   const message = useMessage();
   const { data = [], mutate } = useGetComment(params);
-  const visitorId = useAtomValue(userAtom);
   const [isVisible, setIsVisible] = useState(false);
   const [content, setContent] = useState<string>('');
   const { trigger } = useCommentOrReply('comments', {
     objectId: params.objectId,
     objectType: params.objectType,
     content,
-    userID: visitorId,
+    userID: username,
   });
   return (
     <>
@@ -43,7 +45,6 @@ const Comment = ({ params }: { params: { objectType: string; objectId: string } 
               transition={{ duration: 0.5 }}
               className='flex items-center justify-between py-2'
             >
-              <Avatar userId={visitorId} />
               <Button
                 onClick={async () => {
                   await trigger();

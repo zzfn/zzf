@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
-import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
+import { fetchData } from '../../../models/api';
 
 type GithubUser = {
   login: string;
@@ -41,8 +41,8 @@ type GithubUser = {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const url = new URL('https://github.com/login/oauth/access_token');
-  url.searchParams.append('client_id', '966d19ff92ce135eeea3');
-  url.searchParams.append('client_secret', '92d89431aefc000637c63d1b6bf0d801bca11d0f');
+  url.searchParams.append('client_id', process.env.GITHUB_CLIENT_ID as string);
+  url.searchParams.append('client_secret', process.env.GITHUB_CLIENT_SECRET as string);
   url.searchParams.append('code', request.nextUrl.searchParams.get('code') as string);
   const response = await fetch(url.href, {
     method: 'post',
@@ -57,7 +57,28 @@ export async function GET(request: NextRequest) {
     },
   });
   const json: GithubUser = await response1.json();
+  console.log(2222, json);
   cookies().set('username', json.login);
   cookies().set('avatar_url', json.avatar_url);
+  console.log(1111, {
+    username: json.login,
+    avatar_url: json.avatar_url,
+    nickname: json.name,
+  });
+  const res = await fetchData<any>({
+    endpoint: '/v1/app-users/github/login',
+    fetchParams: {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: json.login,
+        avatar_url: json.avatar_url,
+        nickname: json.name,
+      }),
+    },
+  });
+  console.log(3333, res);
   return redirect('/');
 }
