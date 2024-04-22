@@ -18,7 +18,7 @@ const MdImage = (props: any) => {
       <AnimatePresence>
         {visible && (
           <Portal className='fixed z-50 h-screen w-screen'>
-            <div className='h-screen w-screen'>11</div>
+            <div className='h-screen w-screen' />
             <Image
               className='cursor-zoom-out bg-opacity object-scale-down'
               fill
