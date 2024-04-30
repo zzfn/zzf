@@ -8,13 +8,19 @@ const MdImage = (props: any) => {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <Image
-        className='cursor-zoom-in rounded transition-all hover:brightness-75'
-        width={200}
-        height={200}
-        onClick={() => setVisible(true)}
-        {...props}
-      />
+      <span className='relative h-36 flex flex-col'>
+        <Image
+          className='cursor-zoom-in rounded transition-all hover:brightness-75'
+          sizes="100vw"
+          fill
+          style={{
+            width: '100%',
+            objectFit: 'scale-down',
+          }}
+          onClick={() => setVisible(true)}
+          {...props}
+        />
+      </span>
       <AnimatePresence>
         {visible && (
           <Portal className='fixed z-50 h-screen w-screen'>

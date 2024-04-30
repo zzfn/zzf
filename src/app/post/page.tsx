@@ -51,7 +51,7 @@ export default async function Page() {
         ))}
       </div>
       {data.length > 0 && (
-        <div className='pl-6 text-sm'>
+        <div className='text-sm'>
           {Object.entries(groupByYear(data))
             .reverse()
             .map(([key, value]: any) => (
