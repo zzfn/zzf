@@ -12,7 +12,7 @@ const navLinks = [
   { name: '文章', href: 'post' },
   { name: '留言', href: 'feedback' },
   { name: '友链', href: 'friends' },
-  { name: '随笔', href: 'thinking' },
+  { name: '心情', href: 'moments' },
 ];
 const Header = () => {
   const cookieStore = cookies();
