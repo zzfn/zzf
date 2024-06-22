@@ -15,13 +15,13 @@ const Footer = () => {
       <Link className='hover:underline' target='_blank' href='/about'>
         关于
       </Link>
-      <Link className='hover:underline' target='_blank' href='https://uptime.ccw.es/status/m'>
+      <Link className='hover:underline' target='_blank' href='https://uptime.wwm.app/status/m'>
         服务状态
       </Link>
       <Link
         className='hover:underline'
         target='_blank'
-        href='https://m.ccw.es/share/YjgfEi1urh7EmU6i/ccw.es'
+        href='https://m.wwm.app/share/YjgfEi1urh7EmU6i/wwm.app'
       >
         访问统计
       </Link>
