@@ -19,6 +19,8 @@ steps:
       - corepack enable
       - corepack prepare pnpm@latest-9 --activate
       - pnpm config set store-dir .pnpm-store
+      - nslookup nexus.ooxo.cc
+      - curl https://nexus.ooxo.cc/repository/npm-hosted/@oc/design/-/design-0.1.0.tgz
       - pnpm -v
       - pnpm install
       - pnpm run build
