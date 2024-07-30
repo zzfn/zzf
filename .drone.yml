@@ -17,7 +17,7 @@ steps:
       TZ: Asia/Shanghai
     commands:
       - corepack enable
-      - corepack prepare pnpm@latest-8 --activate
+      - corepack prepare pnpm@latest-9 --activate
       - pnpm config set store-dir .pnpm-store
       - pnpm -v
       - pnpm install
