@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.13.8",
+    "@dicebear/collection": "^9.2.1",
+    "@dicebear/core": "^9.2.1",
     "@fingerprintjs/fingerprintjs": "^4.2.2",
     "@formkit/auto-animate": "^0.8.2",
     "@next/third-parties": "^14.2.2",
