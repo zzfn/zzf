@@ -7,13 +7,13 @@ import Image from 'next/image';
 import { fetchData } from '../../models/api';
 import ApplyFriend from './_components/ApplyFriend';
 import { createAvatar } from '@dicebear/core';
-import { adventurer } from '@dicebear/collection';
+import { shapes } from '@dicebear/collection';
 export const metadata: Metadata = {
   title: '朋友们',
 };
 const CardBio = ({ dataSource }: CardProps) => {
   const { name, description, url } = dataSource;
-  const avatar = createAvatar(adventurer, {
+  const avatar = createAvatar(shapes, {
     seed: url,
     flip: true,
   });
