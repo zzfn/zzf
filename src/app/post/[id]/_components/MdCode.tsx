@@ -16,10 +16,9 @@ import 'prismjs/components/prism-ignore';
 import 'prismjs/components/prism-git';
 import 'prismjs/components/prism-sql';
 import 'prismjs/components/prism-markup';
-import { Button, Tag, useMessage } from '@oc/design';
+import { useMessage } from '@oc/design';
 
 const MdCode = (props: any) => {
-  console.log('props', props);
   const message = useMessage();
   const lang = props.className?.replace('language-', '');
   if (!props.className) {
@@ -27,17 +26,17 @@ const MdCode = (props: any) => {
   }
   return (
     <>
-      <div className='flex justify-between'>
-        {lang && <Tag>{lang}</Tag>}
-        <Button
-          className='ml-auto'
+      <div className='absolute right-2 top-2 flex justify-end'>
+        {lang && <span className='block px-2 group-hover:hidden'>{lang}</span>}
+        <span
+          className='ml-auto hidden cursor-pointer rounded bg-success-muted px-2 text-accent group-hover:block'
           onClick={async () => {
             await navigator.clipboard.writeText(props.children);
             message?.add({ content: 'Copied', type: 'success' });
           }}
         >
           Copy
-        </Button>
+        </span>
       </div>
       <code
         className={props.className}

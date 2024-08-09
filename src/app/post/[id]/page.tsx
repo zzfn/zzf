@@ -66,6 +66,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 components={{
                   img: MdImage,
                   code: MdCode,
+                  pre: (props) => <pre className='group relative' {...props} />,
                   Space: MdSpace,
                   Alert: Alert,
                   CodeSandpack: CodeSandpack,
