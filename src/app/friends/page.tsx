@@ -6,11 +6,17 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { fetchData } from '../../models/api';
 import ApplyFriend from './_components/ApplyFriend';
+import { createAvatar } from '@dicebear/core';
+import { adventurer } from '@dicebear/collection';
 export const metadata: Metadata = {
   title: '朋友们',
 };
 const CardBio = ({ dataSource }: CardProps) => {
-  const { logo, name, description, url } = dataSource;
+  const { name, description, url } = dataSource;
+  const avatar = createAvatar(adventurer, {
+    seed: url,
+    flip: true,
+  });
   return (
     <a
       rel='noreferrer'
@@ -29,7 +35,7 @@ const CardBio = ({ dataSource }: CardProps) => {
         width={100}
         height={100}
         className={classNames('w-16', 'h-16', 'mr-2')}
-        src={logo}
+        src={avatar.toDataUri()}
         alt=''
       />
       <strong className='text-primary'>{name}</strong>
