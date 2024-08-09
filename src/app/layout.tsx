@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel='icon' href='/icon?<generated>' type='image/png' sizes='32x32' />
         <Script
           data-website-id='dd58bedd-dc7b-48ab-a7c0-adfffc6cd47f'
-          src='https://m.wwm.app/script.js'
+          src='https://m.ccw.es/script.js'
         ></Script>
       </head>
       <body className={classNames('min-h-screen', 'flex', 'flex-col')}>
