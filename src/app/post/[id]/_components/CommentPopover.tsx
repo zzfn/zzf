@@ -42,7 +42,7 @@ const CommentPopover = function ({ children, commentId, mutate }: any) {
             placeholder='说点什么'
           />
           <div className='flex items-center justify-between py-1'>
-            <Avatar userId={visitorId} />
+            <Avatar userId={visitorId!} />
             <IconButton
               onClick={() => {
                 handleComment();
