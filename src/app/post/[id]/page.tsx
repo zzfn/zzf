@@ -55,7 +55,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           </ul>
           <article
             className={classNames(
-              'w-full md:col-span-4',
+              'max-w-2xl md:col-span-4',
               'py-8',
               'prose',
               'prose-headings:scroll-mt-20',
