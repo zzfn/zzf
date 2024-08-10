@@ -39,7 +39,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
   return (
     <ArticleState articleState={data}>
       <div className='w-full grid-cols-5 gap-x-2 md:grid'>
-        <main className='col-span-4 w-full shrink grow-0 basis-full'>
+        <main className='col-span-4 flex w-full shrink grow-0 basis-full flex-col'>
           <h1 className='pt-8 text-3xl'>{data.title}</h1>
           <ul className='my-4 flex items-center gap-x-2 rounded bg-muted p-6 text-sm text-muted'>
             <label>创建时间</label>
@@ -59,6 +59,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               'py-8',
               'prose',
               'prose-headings:scroll-mt-20',
+              'mx-auto',
             )}
           >
             <Suspense fallback={<Loading />}>
