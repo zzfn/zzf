@@ -65,6 +65,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <Suspense fallback={<Loading />}>
               <MDXRemote
                 components={{
+                  a: (props) => <a target='_blank' className='text-blue-500' {...props} />,
                   img: MdImage,
                   code: MdCode,
                   pre: (props) => <pre className='group relative' {...props} />,
