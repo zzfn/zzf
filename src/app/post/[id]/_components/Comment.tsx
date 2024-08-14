@@ -25,7 +25,9 @@ const Comment = ({
   return (
     <>
       <h6 className='text-center font-bold'>评论区</h6>
-      共有评论 <span className='text-accent'>{data.length}</span> 条
+      <p className='flex'>
+        共有评论 <span className='text-accent'>{data.length}</span> 条
+      </p>
       <textarea
         value={content}
         onChange={(evt) => {
