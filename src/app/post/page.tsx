@@ -63,7 +63,7 @@ export default async function Page() {
                   <a
                     key={article.id}
                     href={`/post/${article.id}`}
-                    className='flex items-center justify-between rounded py-1 hover:bg-muted'
+                    className='flex items-center justify-between rounded px-2 py-1 hover:bg-muted'
                   >
                     <span>{article.title}</span>
                     <time className='font-mono font-thin text-muted'>
