@@ -52,17 +52,10 @@ export default async function Page() {
         <p>{config.slug}</p>
       </div>
       <div>
-        <div className='flex justify-between rounded'>
-          <h6 className='flex items-center text-xl text-accent'>
-            <IconLabel />
-            文章
-          </h6>
-          <Link href='/post'>
-            <IconButton>
-              <IconArrowForward />
-            </IconButton>
-          </Link>
-        </div>
+        <h6 className='flex items-center text-xl text-accent'>
+          <IconLabel />
+          Recent blog posts
+        </h6>
         <div className='grid md:grid-cols-2'>
           {data.map((post: any) => (
             <a
@@ -81,6 +74,12 @@ export default async function Page() {
             </a>
           ))}
         </div>
+        <Link
+          className='my-2 block rounded-2xl border border-muted px-6 py-4 text-center transition-transform hover:-translate-y-0.5'
+          href='/post'
+        >
+          View More
+        </Link>
       </div>
     </div>
   );
