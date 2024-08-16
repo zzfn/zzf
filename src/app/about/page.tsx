@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { fetchData } from '../../models/api';
-
 export const revalidate = 0;
 export const metadata: Metadata = {
   title: 'About',

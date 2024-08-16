@@ -1,10 +1,4 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename);
-
-export default {
+const nextConfig = {
   output: 'standalone',
   assetPrefix:
     process.env.NODE_ENV === 'production' && !process.env.VERCEL
@@ -17,3 +11,5 @@ export default {
     domains: ['cdn.zzfzzf.com', 'w.zzfzzf.com'],
   },
 };
+
+export default nextConfig

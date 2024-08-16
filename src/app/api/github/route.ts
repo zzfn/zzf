@@ -57,14 +57,8 @@ export async function GET(request: NextRequest) {
     },
   });
   const json: GithubUser = await response1.json();
-  console.log(2222, json);
   cookies().set('username', json.login);
   cookies().set('avatar_url', json.avatar_url);
-  console.log(1111, {
-    username: json.login,
-    avatar_url: json.avatar_url,
-    nickname: json.name,
-  });
   const res = await fetchData<any>({
     endpoint: '/v1/app-users/github/login',
     fetchParams: {
@@ -79,6 +73,5 @@ export async function GET(request: NextRequest) {
       }),
     },
   });
-  console.log(3333, res);
   return redirect('/');
 }

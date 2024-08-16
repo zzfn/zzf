@@ -91,6 +91,8 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged",
-    "preserveUnused": ["commit-msg"]
+    "preserveUnused": [
+      "commit-msg"
+    ]
   }
 }

@@ -1,11 +1,11 @@
-import { IconButton, Tag, Tooltip } from '@oc/design';
+import { Tooltip } from '@oc/design';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { diff, format } from 'utils/time';
+import { format } from 'utils/time';
 import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
 import Image from 'next/image';
-import { IconArrowForward, IconLabel } from '@oc/icon';
+import { IconLabel } from '@oc/icon';
 import dayjs from 'dayjs';
 import { cookies } from 'next/headers';
 
@@ -36,7 +36,6 @@ export default async function Page() {
   const data = await getData();
   const config = await getConfig();
   const cookieStore = cookies();
-  const username = cookieStore.get('username');
   return (
     <div>
       <div className='flex items-center gap-y-6'>
@@ -67,8 +66,8 @@ export default async function Page() {
               href={`/post/${post.id}`}
               className='hover:border-primary flex flex-col gap-y-1 rounded p-3 hover:bg-muted'
             >
-              <div className='flex text-accent'>{post.title}</div>
-              <div className='flex items-center gap-x-2 text-xs text-muted'>
+              <div className='text-center text-xl text-accent'>{post.title}</div>
+              <div className='flex justify-center gap-x-2 text-xs text-muted'>
                 更新于
                 <Tooltip content={format(post.updatedAt)}>
                   <time className='font-mono'>{dayjs(post.updatedAt).format('YYYY-MM-DD')}</time>
