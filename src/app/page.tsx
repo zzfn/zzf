@@ -55,16 +55,13 @@ export default async function Page() {
         />
       </div>
       <div>
-        <h6 className='flex items-center text-xl text-accent'>
-          <IconLabel />
-          Recent blog posts
-        </h6>
+        <h6 className='text-2xl font-bold text-default'>Recent blog posts</h6>
         <div className='grid md:grid-cols-2'>
           {data.map((post: any) => (
             <a
               key={post.id}
               href={`/post/${post.id}`}
-              className='hover:border-primary flex flex-col gap-y-1 rounded p-3 hover:bg-muted'
+              className='flex flex-col gap-y-1 rounded border-2 border-transparent p-3 hover:border-gray-900 hover:bg-muted'
             >
               <div className='text-center text-xl text-accent'>{post.title}</div>
               <div className='flex justify-center gap-x-2 text-xs text-muted'>
@@ -78,7 +75,7 @@ export default async function Page() {
           ))}
         </div>
         <Link
-          className='my-2 block rounded-2xl border border-muted px-6 py-4 text-center transition-transform hover:-translate-y-0.5'
+          className='my-2 block rounded-2xl border-2 border-gray-900 px-6 py-4 text-center transition-transform hover:-translate-y-0.5'
           href='/post'
         >
           View More

@@ -30,7 +30,7 @@ const Header = () => {
         className={classNames(
           'mx-auto flex items-center justify-between px-3 transition-all duration-1000',
           count > 100
-            ? 'w-1/2 rounded-2xl border bg-neutral-muted [backdrop-filter:saturate(180%)_blur(20px)]'
+            ? 'w-1/2 rounded-2xl border-2 border-gray-900 bg-neutral-muted [backdrop-filter:saturate(180%)_blur(20px)]'
             : 'container',
         )}
       >
@@ -43,7 +43,7 @@ const Header = () => {
         <nav
           className={classNames(
             'hidden items-center gap-x-4 px-6 py-2 font-medium md:flex',
-            count > 100 ? '' : 'rounded-2xl bg-neutral-muted',
+            count > 100 ? '' : 'rounded-2xl border-2 border-gray-900 bg-neutral-muted',
           )}
         >
           <Navigation navLinks={navLinks} />
