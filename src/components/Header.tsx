@@ -40,7 +40,12 @@ const Header = () => {
         <Link href='/'>
           <Logo width={75} height={25} />
         </Link>
-        <nav className='hidden items-center gap-x-4 px-6 py-2 font-medium md:flex'>
+        <nav
+          className={classNames(
+            'hidden items-center gap-x-4 px-6 py-2 font-medium md:flex',
+            count > 100 ? '' : 'rounded-2xl bg-neutral-muted',
+          )}
+        >
           <Navigation navLinks={navLinks} />
         </nav>
         <span className='inline-flex items-center gap-x-2 text-2xl'>
