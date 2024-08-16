@@ -38,18 +38,22 @@ export default async function Page() {
   const cookieStore = cookies();
   const username = cookieStore.get('username');
   return (
-    <div className='my-6 grid grid-cols-1 md:grid-cols-[auto_minmax(0,_calc(100%_-_296px_-_24px))]'>
-      <div className='flex flex-col items-center gap-y-6'>
+    <div>
+      <div className='flex items-center gap-y-6'>
+        <div className='flex w-3/4 flex-col items-center justify-center gap-y-6'>
+          <p className='text-3xl font-normal'>
+            Hi, I&apos;m <span className='font-bold'>{config.name}</span>👋。
+          </p>
+          <p className='text-muted'>{config.slug}</p>
+        </div>
         <Image
           priority={true}
-          className='aspect-square rounded-full object-cover'
-          width={128}
-          height={128}
+          className='aspect-square h-80 w-80 rounded-full object-cover'
+          width={4}
+          height={3}
           alt='avatar'
           src={config.avatar}
         />
-        <h6 className='text-3xl font-bold'>{config.name}</h6>
-        <p>{config.slug}</p>
       </div>
       <div>
         <h6 className='flex items-center text-xl text-accent'>
