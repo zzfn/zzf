@@ -58,11 +58,9 @@ const Page = async () => {
   });
   return (
     <>
-      <h2 className='my-2 text-2xl'>我的朋友们🧑‍🤝‍🧑</h2>
-      <Alert className='mb-2 text-sm' type='info'>
-        <h3>海内存知己，天涯若比邻</h3>
-      </Alert>
-      <ul className='grid grid-cols-3 gap-2'>
+      <h2 className='my-2 text-2xl'>我的朋友们 🧑‍🤝‍🧑</h2>
+      <p className='text-sm'>海内存知己，天涯若比邻</p>
+      <ul className='grid grid-cols-3 gap-8 px-10'>
         {data?.map((item: any) => (
           <CardBio
             key={item.id}
@@ -82,16 +80,13 @@ const Page = async () => {
         <li>可访问</li>
         <li>添加我为友链</li>
       </ul>
-      <Alert type='success'>
-        <ul className='list-disc pl-6 leading-6'>
-          <li> 我的信息</li>
-          <li>站点标题: dawn-blog</li>
-          <li>站点链接: https://zzfzzf.com</li>
-          <li>站点描述: 一个前端开发者的博客</li>
-          <li>站点头像: https://cdn.zzfzzf.com/assets/logo.png</li>
-        </ul>
-      </Alert>
-
+      <ul className='list-disc pl-6 leading-6'>
+        <li> 我的信息</li>
+        <li>站点标题: dawn-blog</li>
+        <li>站点链接: https://zzfzzf.com</li>
+        <li>站点描述: 一个前端开发者的博客</li>
+        <li>站点头像: https://cdn.zzfzzf.com/assets/logo.png</li>
+      </ul>
       <ApplyFriend />
     </>
   );
