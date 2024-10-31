@@ -35,47 +35,57 @@ async function getConfig() {
 export default async function Page() {
   const data = await getData();
   const config = await getConfig();
-  const cookieStore = cookies();
+
   return (
-    <div>
-      <div className='flex items-center gap-y-6'>
-        <div className='flex w-3/4 flex-col items-center justify-center gap-y-6'>
-          <p className='text-3xl font-normal'>
-            Hi, I&apos;m <span className='font-bold'>{config.name}</span>👋。
-          </p>
-          <p className='text-muted'>{config.slug}</p>
-        </div>
+    <div className='mx-auto max-w-6xl px-4 py-12'>
+      {/* 个人信息部分 */}
+      <div className='mb-16 flex flex-col items-center gap-12 rounded-3xl bg-gradient-to-r from-purple-50 to-pink-50 p-8 md:flex-row'>
         <Image
           priority={true}
-          className='aspect-square h-80 w-80 rounded-full object-cover'
-          width={4}
-          height={3}
+          className='aspect-square h-64 w-64 transform rounded-full object-cover ring-4 ring-purple-200 transition-transform duration-300 hover:scale-105 md:h-80 md:w-80'
+          width={400}
+          height={400}
           alt='avatar'
           src={config.avatar}
         />
+        <div className='flex flex-col items-center gap-y-6 md:items-start'>
+          <p className='bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-4xl font-normal text-transparent md:text-5xl'>
+            Hi, I&apos;m <span className='font-bold'>{config.name}</span>👋
+          </p>
+          <p className='text-lg text-gray-600'>{config.slug}</p>
+        </div>
       </div>
+
+      {/* 博客文章部分 */}
       <div>
-        <h6 className='text-2xl font-bold text-default'>Recent blog posts</h6>
-        <div className='grid md:grid-cols-2'>
+        <h6 className='mb-8 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-3xl font-bold text-transparent'>
+          Recent blog posts
+        </h6>
+        <div className='grid gap-6 md:grid-cols-2'>
           {data.map((post: any) => (
             <a
               key={post.id}
               href={`/post/${post.id}`}
-              className='flex flex-col gap-y-1 rounded border-2 border-transparent p-3 hover:border-gray-900 hover:bg-muted'
+              className='group flex flex-col gap-y-3 rounded-xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:border-purple-300 hover:shadow-xl'
             >
-              <div className='text-center text-xl text-accent'>{post.title}</div>
-              <div className='flex justify-center gap-x-2 text-xs text-muted'>
-                更新于
+              <div className='text-xl font-semibold text-gray-800 transition-colors group-hover:text-purple-600'>
+                {post.title}
+              </div>
+              <div className='flex items-center gap-x-3 text-sm text-gray-500'>
+                <span>更新于</span>
                 <Tooltip content={format(post.updatedAt)}>
                   <time className='font-mono'>{dayjs(post.updatedAt).format('YYYY-MM-DD')}</time>
                 </Tooltip>
-                <span># {post.tag}</span>
+                <span className='rounded-full bg-purple-100 px-2 py-1 text-xs text-purple-600'>
+                  {post.tag}
+                </span>
               </div>
             </a>
           ))}
         </div>
+
         <Link
-          className='my-2 block rounded-2xl border-2 border-gray-900 px-6 py-4 text-center transition-transform hover:-translate-y-0.5'
+          className='mt-8 block rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 text-center font-medium text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg'
           href='/post'
         >
           View More

@@ -6,35 +6,68 @@ import ThemeButton from './ThemeButton';
 
 const Footer = () => {
   return (
-    <footer className='flex flex-wrap items-center justify-center gap-x-2 border-t border-default py-6 text-xs text-muted'>
-      Copyright&copy;2020-{dayjs().format('YYYY')}
-      <OnlineCount />
-      <Link className='hover:underline' target='_blank' href='/api/feed.xml'>
-        RSS feed
-      </Link>
-      <Link className='hover:underline' target='_blank' href='/about'>
-        关于
-      </Link>
-      <Link className='hover:underline' target='_blank' href='https://uptime.ccw.es/status/m'>
-        服务状态
-      </Link>
-      <Link
-        className='hover:underline'
-        target='_blank'
-        href='https://m.ccw.es/share/YjgfEi1urh7EmU6i/ccw.es'
-      >
-        访问统计
-      </Link>
-      <a
-        className='hover:underline'
-        rel='noreferrer'
-        target='_blank'
-        href='https://beian.miit.gov.cn'
-      >
-        苏ICP备18059856号
-      </a>
-      <ThemeButton />
+    <footer className='relative mt-12'>
+      {/* 上部分装饰线 */}
+      <div className='absolute left-1/2 top-0 h-px w-1/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600' />
+
+      <div className='mx-auto max-w-6xl px-4 py-8'>
+        <div className='flex flex-col items-center gap-6'>
+          {/* 主要链接 */}
+          <div className='flex flex-wrap items-center justify-center gap-x-6 gap-y-3'>
+            <Link
+              className='text-sm text-gray-600 transition-colors hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400'
+              target='_blank'
+              href='/api/feed.xml'
+            >
+              RSS feed
+            </Link>
+            <Link
+              className='text-sm text-gray-600 transition-colors hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400'
+              target='_blank'
+              href='/about'
+            >
+              关于
+            </Link>
+            <Link
+              className='text-sm text-gray-600 transition-colors hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400'
+              target='_blank'
+              href='https://uptime.ccw.es/status/m'
+            >
+              服务状态
+            </Link>
+            <Link
+              className='text-sm text-gray-600 transition-colors hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400'
+              target='_blank'
+              href='https://m.ccw.es/share/YjgfEi1urh7EmU6i/ccw.es'
+            >
+              访问统计
+            </Link>
+          </div>
+
+          {/* 底部信息 */}
+          <div className='flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400'>
+            <span>Copyright &copy; 2020-{dayjs().format('YYYY')}</span>
+            <span className='hidden sm:block'>•</span>
+            <OnlineCount />
+            <span className='hidden sm:block'>•</span>
+            <a
+              className='transition-colors hover:text-purple-600 dark:hover:text-purple-400'
+              rel='noreferrer'
+              target='_blank'
+              href='https://beian.miit.gov.cn'
+            >
+              苏ICP备18059856号
+            </a>
+          </div>
+
+          {/* 主题切换按钮 */}
+          <div className='mt-2'>
+            <ThemeButton />
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
+
 export default Footer;
