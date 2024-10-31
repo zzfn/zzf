@@ -13,10 +13,10 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 const navLinks = [
-  { name: '文章', href: 'post' },
-  { name: '留言', href: 'feedback' },
-  { name: '友链', href: 'friends' },
-  { name: '心情', href: 'moments' },
+  { name: '文章', href: '/post' },
+  { name: '留言', href: '/feedback' },
+  { name: '友链', href: '/friends' },
+  { name: '心情', href: '/moments' },
 ];
 const Header = () => {
   const { scrollY } = useScroll();
