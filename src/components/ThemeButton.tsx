@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { IconButton, Tooltip } from '@oc/design';
 import { useAtom } from 'jotai';
 import { themeModeAtom } from '../atoms/themeAtoms';
-
+import classNames from 'classnames';
 const ThemeButton = () => {
   const [themeMode, setThemeMode] = useAtom(themeModeAtom);
   useEffect(() => {
@@ -63,20 +63,48 @@ const ThemeButton = () => {
       });
   };
 
+  const themes = [
+    { id: 'light', icon: 'light_mode', label: '浅色' },
+    { id: 'auto', icon: 'auto_mode', label: '自动' },
+    { id: 'dark', icon: 'dark_mode', label: '深色' },
+  ];
+
   return (
-    <div className='flex rounded border border-default'>
-      {['light', 'auto', 'dark'].map((theme) => (
-        <IconButton
-          key={theme}
-          onClick={(event) => {
-            buildThemeTransition(theme as any, {
-              x: event.clientX,
-              y: event.clientY,
-            });
-          }}
-        >
-          <IconSymbols icon={`${theme}_mode`} />
-        </IconButton>
+    <div
+      className={classNames(
+        'flex items-center gap-1 p-1',
+        'rounded-full bg-gray-100/80 backdrop-blur-sm',
+        'border border-gray-200/50',
+        'transition-all duration-300 ease-in-out',
+      )}
+    >
+      {themes.map((theme) => (
+        <Tooltip key={theme.id} content={theme.label}>
+          <button
+            onClick={(event) => {
+              buildThemeTransition(theme.id as any, {
+                x: event.clientX,
+                y: event.clientY,
+              });
+            }}
+            className={classNames(
+              'relative flex h-8 w-8 items-center justify-center',
+              'rounded-full transition-all duration-300',
+              'text-sm hover:bg-white/50',
+              themeMode === theme.id && 'bg-white shadow-sm',
+              themeMode === theme.id ? 'text-blue-500' : 'text-gray-500',
+            )}
+          >
+            <IconSymbols
+              icon={theme.icon}
+              className={classNames(
+                'h-5 w-5 transition-transform',
+                'hover:scale-110',
+                themeMode === theme.id && 'scale-105',
+              )}
+            />
+          </button>
+        </Tooltip>
       ))}
     </div>
   );

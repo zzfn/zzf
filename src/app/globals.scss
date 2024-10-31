@@ -136,3 +136,23 @@ em {
     filter: brightness(0.8);
   }
 }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.animate-typing {
+  animation:
+    typing 2s steps(20, end),
+    blink 0.7s step-end infinite alternate;
+}

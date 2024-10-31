@@ -51,27 +51,33 @@ export default async function Page() {
           />
           <div className='flex flex-col gap-y-2'>
             <h1 className='text-xl font-semibold text-gray-900'>{config.name}</h1>
-            <p className='text-sm text-gray-500'>{config.slug}</p>
-            <div className='flex gap-x-6 text-sm'>
-              <div>
-                <span className='font-semibold'>{data.length}</span> 篇文章
-              </div>
-            </div>
+            <p className='animate-typing w-fit overflow-hidden whitespace-nowrap border-r-2 border-gray-500 pr-1 font-mono text-sm text-gray-500'>
+              {config.slug}
+            </p>
           </div>
         </div>
       </div>
 
       {/* Category Stories */}
       <div className='mb-8 flex gap-4 overflow-x-auto pb-4'>
-        {['技术', '生活', '随笔', '代码'].map((story) => (
-          <div key={story} className='flex flex-col items-center gap-y-1'>
-            <div className='h-16 w-16 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 p-[2px]'>
-              <div className='h-full w-full rounded-full bg-white p-[2px]'>
-                <div className='h-full w-full rounded-full bg-gray-100'></div>
+        {[
+          { name: '技术', icon: '💻' },
+          { name: '生活', icon: '🌟' },
+          { name: '随笔', icon: '✍️' },
+          { name: '代码', icon: '👨‍💻' },
+        ].map((story) => (
+          <Link key={story.name} href='/post'>
+            <div className='flex flex-col items-center gap-y-1'>
+              <div className='h-16 w-16 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 p-[2px]'>
+                <div className='h-full w-full rounded-full bg-white p-[2px]'>
+                  <div className='flex h-full w-full items-center justify-center rounded-full bg-gray-100 text-2xl'>
+                    {story.icon}
+                  </div>
+                </div>
               </div>
+              <span className='text-xs'>{story.name}</span>
             </div>
-            <span className='text-xs'>{story}</span>
-          </div>
+          </Link>
         ))}
       </div>
 
@@ -81,21 +87,32 @@ export default async function Page() {
           <Link
             key={post.id}
             href={`/post/${post.id}`}
-            className='group relative overflow-hidden rounded-xl bg-white shadow-sm transition-all hover:shadow-md'
+            className='group relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 p-[1px] shadow-lg transition-all hover:shadow-cyan-500/20'
           >
             {/* Post Preview */}
-            <div className='w-full bg-gradient-to-br from-purple-50 to-pink-50 p-6'>
-              <h2 className='mb-3 line-clamp-2 text-lg font-medium text-gray-800'>{post.title}</h2>
-              <div className='flex items-center gap-x-2 text-xs text-gray-500'>
-                <time>{dayjs(post.updatedAt).format('YYYY-MM-DD')}</time>
-                <span className='rounded-full bg-gray-100 px-2 py-0.5'>{post.tag}</span>
+            <div className='relative w-full rounded-xl bg-black p-6'>
+              <div className='absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/10 to-purple-500/10'></div>
+              <div className='relative'>
+                <h2 className='mb-3 line-clamp-2 font-mono text-lg font-medium text-white'>
+                  {post.title}
+                </h2>
+                <div className='flex items-center gap-x-3 text-xs text-gray-400'>
+                  <time className='flex items-center gap-1'>
+                    <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500'></span>
+                    {dayjs(post.updatedAt).format('YYYY-MM-DD')}
+                  </time>
+                  <span className='rounded-md border border-gray-700 bg-gray-800/50 px-2 py-0.5 font-mono tracking-wider'>
+                    {post.tag}
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Hover Overlay */}
-            <div className='absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100'>
-              <div className='text-white'>
-                <span className='font-medium'>查看详情</span>
+            <div className='absolute inset-0 flex items-center justify-center bg-gradient-to-br from-cyan-500/80 to-purple-500/80 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100'>
+              <div className='flex items-center gap-2 text-white'>
+                <span className='font-mono tracking-wider'>VIEW POST</span>
+                <span className='animate-pulse'>_</span>
               </div>
             </div>
           </Link>
@@ -104,10 +121,16 @@ export default async function Page() {
 
       {/* View More Button */}
       <Link
-        className='mt-8 block rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-2.5 text-center text-sm font-medium text-white transition-all hover:from-blue-600 hover:to-blue-700'
+        className='group relative mt-8 block overflow-hidden rounded-lg bg-black px-8 py-3 text-center'
         href='/post'
       >
-        查看更多文章
+        <div className='absolute inset-0 flex items-center justify-center'>
+          <div className='h-[500%] w-[200%] animate-spin bg-gradient-to-tr from-violet-500 via-cyan-500 to-purple-500 opacity-50 blur-lg'></div>
+        </div>
+        <span className='relative flex items-center justify-center gap-2 font-mono text-sm font-medium text-white'>
+          <span>EXPLORE MORE</span>
+          <span className='animate-pulse'>_</span>
+        </span>
       </Link>
     </div>
   );
