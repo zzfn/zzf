@@ -46,9 +46,9 @@ const TechBackground = () => {
       hue: number;
       hueSpeed: number;
 
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+      constructor(width: number, height: number) {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
         this.size = Math.random() * 2 + 1;
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = Math.random() * 1 - 0.5;
@@ -62,10 +62,13 @@ const TechBackground = () => {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        if (this.x > canvas.width) this.x = 0;
-        if (this.x < 0) this.x = canvas.width;
-        if (this.y > canvas.height) this.y = 0;
-        if (this.y < 0) this.y = canvas.height;
+        const canvasWidth = canvas?.width ?? 0;
+        const canvasHeight = canvas?.height ?? 0;
+
+        if (this.x > canvasWidth) this.x = 0;
+        if (this.x < 0) this.x = canvasWidth;
+        if (this.y > canvasHeight) this.y = 0;
+        if (this.y < 0) this.y = canvasHeight;
 
         this.pulseSize += this.pulseSpeed;
         this.hue += this.hueSpeed;
@@ -96,7 +99,7 @@ const TechBackground = () => {
     const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / (20000 * dpr)), 80);
     const particles: Particle[] = [];
     for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+      particles.push(new Particle(canvas.width / dpr, canvas.height / dpr));
     }
 
     const animate = () => {
