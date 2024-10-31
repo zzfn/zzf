@@ -98,7 +98,7 @@ export default async function Page() {
                 </h2>
                 <div className='flex items-center gap-x-3 text-xs text-gray-400'>
                   <time className='flex items-center gap-1'>
-                    <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-500'></span>
+                    <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-accent-emphasis'></span>
                     {dayjs(post.updatedAt).format('YYYY-MM-DD')}
                   </time>
                   <span className='rounded-md border border-gray-700 bg-gray-800/50 px-2 py-0.5 font-mono tracking-wider'>

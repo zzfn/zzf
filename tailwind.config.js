@@ -18,7 +18,11 @@ module.exports = {
       colors: {
         default: 'var(--fgColor-default)',
         muted: 'var(--fgColor-muted)',
-        accent: 'var(--fgColor-accent)',
+        accent: {
+          DEFAULT: 'var(--fgColor-accent)',
+          emphasis: 'var(--fgColor-accent-emphasis)',
+          muted: 'var(--fgColor-accent-muted)',
+        },
         'on-surface': 'var(--md-sys-color-on-surface)',
       },
       borderColor: {
@@ -30,12 +34,21 @@ module.exports = {
       backgroundColor: {
         opacity: 'var(--bgColor-opacity)',
         default: 'var(--bgColor-default)',
+        'accent-emphasis': 'var(--bgColor-accent-emphasis)',
         muted: 'var(--bgColor-muted)',
         emphasis: 'var(--bgColor-emphasis)',
         'neutral-muted': 'var(--bgColor-neutral-muted)',
         'secondary-container': 'var(--md-sys-color-secondary-container)',
         'danger-emphasis': 'var(--bgColor-danger-emphasis)',
         'success-muted': 'var(--bgColor-success-muted)',
+        accent: {
+          DEFAULT: 'var(--bgColor-accent)',
+          emphasis: 'var(--bgColor-accent-emphasis)',
+          muted: 'var(--bgColor-accent-muted)',
+        },
+      },
+      backgroundImage: {
+        'accent-gradient': 'var(--gradient-accent)',
       },
       typography: {
         DEFAULT: {

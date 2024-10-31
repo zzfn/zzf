@@ -1,14 +1,22 @@
-@import '@primer/primitives/dist/css/base/size/size';
-@import '@primer/primitives/dist/css/base/typography/typography';
-@import '@primer/primitives/dist/css/functional/size/border';
-@import '@primer/primitives/dist/css/functional/size/breakpoints';
-@import '@primer/primitives/dist/css/functional/size/size-coarse';
-@import '@primer/primitives/dist/css/functional/size/size-fine';
-@import '@primer/primitives/dist/css/functional/size/size';
-@import '@primer/primitives/dist/css/functional/size/viewport';
-@import '@primer/primitives/dist/css/functional/typography/typography';
-@import '@primer/primitives/dist/css/functional/themes/dark';
-@import '@primer/primitives/dist/css/functional/themes/light';
+/* size/typography */
+@import '@primer/primitives/dist/css/base/size/size.css';
+@import '@primer/primitives/dist/css/base/typography/typography.css';
+@import '@primer/primitives/dist/css/functional/size/border.css';
+@import '@primer/primitives/dist/css/functional/size/breakpoints.css';
+@import '@primer/primitives/dist/css/functional/size/size.css';
+@import '@primer/primitives/dist/css/functional/size/viewport.css';
+@import '@primer/primitives/dist/css/functional/typography/typography.css';
+
+/* color */
+@import '@primer/primitives/dist/css/functional/themes/light.css';
+@import '@primer/primitives/dist/css/functional/themes/light-tritanopia.css';
+@import '@primer/primitives/dist/css/functional/themes/light-high-contrast.css';
+@import '@primer/primitives/dist/css/functional/themes/light-colorblind.css';
+@import '@primer/primitives/dist/css/functional/themes/dark.css';
+@import '@primer/primitives/dist/css/functional/themes/dark-colorblind.css';
+@import '@primer/primitives/dist/css/functional/themes/dark-dimmed.css';
+@import '@primer/primitives/dist/css/functional/themes/dark-high-contrast.css';
+@import '@primer/primitives/dist/css/functional/themes/dark-tritanopia.css';
 @import 'prism.css';
 @import '~@oc/design/dist/styles/index.css';
 
@@ -155,4 +163,27 @@ em {
   animation:
     typing 2s steps(20, end),
     blink 0.7s step-end infinite alternate;
+}
+/* 添加 RGB 变量用于 Canvas */
+[data-color-mode='light'] {
+  --color-accent-emphasis-rgb: 31, 111, 235;
+}
+
+[data-color-mode='dark'] {
+  --color-accent-emphasis-rgb: 83, 155, 245;
+}
+:root {
+  --bgColor-accent-emphasis: rgba(88, 166, 255, 1);
+}
+
+[data-color-mode='dark'] {
+  --bgColor-accent-emphasis: rgba(47, 129, 247, 1);
+}
+:root {
+  --gradient-accent: linear-gradient(
+    to right top,
+    var(--bgColor-accent-emphasis),
+    var(--bgColor-accent),
+    var(--bgColor-accent-emphasis)
+  );
 }

@@ -33,8 +33,8 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0
       '@primer/primitives':
-        specifier: ^8.2.4
-        version: 8.2.4
+        specifier: ^9.1.2
+        version: 9.1.2
       '@react-spring/web':
         specifier: ^9.7.4
         version: 9.7.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1006,12 +1006,16 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
+  '@prettier/sync@0.5.2':
+    resolution: {integrity: sha512-Yb569su456XNx5BsH/Vyem7xD6g/y9iLmLUzRKM1a/dhU/D7HqqvkAG72znulXlMXztbV0iiu9O5AL8K98TzZQ==}
+    peerDependencies:
+      prettier: '*'
+
   '@primer/primitives@7.16.0':
     resolution: {integrity: sha512-/3lNloWONQMiasMAmJl5b85tP86e4uElU1d+kQQOBoVoXttni98DEigqQrKgIdwWaEcbp43IU2ks/9EZdwM2XA==}
 
-  '@primer/primitives@8.2.4':
-    resolution: {integrity: sha512-gOLLcqSpscOL8Or/RzUUiZdB7kCuOfeuIzMpJQwxvim6igK2sFROBXzdYoSHbH6lOmIabbpPd2lX5rfMWsUjKA==}
-    engines: {node: '>=18.18.0 <18.19.0'}
+  '@primer/primitives@9.1.2':
+    resolution: {integrity: sha512-KecRJpUdIf14J3gVpoyMMJeQD6Sh5kcHk93N5bYch4XGB0GOZP3ypxz+NByMjr/2HHPsRfCCO5EEgNjmeWYUGQ==}
 
   '@react-hook/intersection-observer@3.1.1':
     resolution: {integrity: sha512-OTDx8/wFaRvzFtKl1dEUEXSOqK2zVJHporiTTdC2xO++0e9FEx9wIrPis5q3lqtXeZH9zYGLbk+aB75qNFbbuw==}
@@ -3106,6 +3110,9 @@ packages:
   make-dir@4.0.0:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
+
+  make-synchronized@0.2.9:
+    resolution: {integrity: sha512-4wczOs8SLuEdpEvp3vGo83wh8rjJ78UsIk7DIX5fxdfmfMJGog4bQzxfvOwq7Q3yCHLC4jp1urPHIxRS/A93gA==}
 
   makeerror@1.0.12:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==}
@@ -5529,9 +5536,17 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+  '@prettier/sync@0.5.2(prettier@3.3.3)':
+    dependencies:
+      make-synchronized: 0.2.9
+      prettier: 3.3.3
+
   '@primer/primitives@7.16.0': {}
 
-  '@primer/primitives@8.2.4': {}
+  '@primer/primitives@9.1.2':
+    dependencies:
+      '@prettier/sync': 0.5.2(prettier@3.3.3)
+      prettier: 3.3.3
 
   '@react-hook/intersection-observer@3.1.1(react@18.3.1)':
     dependencies:
@@ -6711,7 +6726,7 @@ snapshots:
       debug: 4.3.4
       enhanced-resolve: 5.16.0
       eslint: 8.57.0
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.3
@@ -6733,7 +6748,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0):
+  eslint-module-utils@2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.5.4))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
@@ -8066,6 +8081,8 @@ snapshots:
   make-dir@4.0.0:
     dependencies:
       semver: 7.6.0
+
+  make-synchronized@0.2.9: {}
 
   makeerror@1.0.12:
     dependencies:
