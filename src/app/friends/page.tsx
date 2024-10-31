@@ -25,21 +25,36 @@ const CardBio = ({ dataSource }: CardProps) => {
       className={classNames(
         'flex',
         'flex-col',
-        'rounded-md',
+        'rounded-lg',
+        'p-6',
         'hover:bg-neutral-muted',
+        'transition-all',
+        'duration-300',
+        'hover:shadow-lg',
+        'hover:-translate-y-1',
         'justify-center',
         'items-center',
+        'bg-white/50',
+        'backdrop-blur-sm',
       )}
     >
       <Image
         width={100}
         height={100}
-        className={classNames('w-16', 'h-16', 'mr-2')}
+        className={classNames(
+          'w-20',
+          'h-20',
+          'rounded-full',
+          'mb-4',
+          'border-4',
+          'border-white',
+          'shadow-md',
+        )}
         src={avatar.toDataUri()}
-        alt=''
+        alt={name}
       />
-      <strong className='text-primary'>{name}</strong>
-      <p className='text-neutral-2'>{description}</p>
+      <strong className='text-primary mb-2 text-lg'>{name}</strong>
+      <p className='text-neutral-2 text-center text-sm'>{description}</p>
     </a>
   );
 };
@@ -57,10 +72,15 @@ const Page = async () => {
     endpoint: '/v1/friend-links',
   });
   return (
-    <>
-      <h2 className='my-2 text-2xl'>我的朋友们 🧑‍🤝‍🧑</h2>
-      <p className='text-sm'>海内存知己，天涯若比邻</p>
-      <ul className='grid grid-cols-3 gap-8 px-10'>
+    <div className='mx-auto max-w-6xl px-4 py-8'>
+      <div className='mb-12 text-center'>
+        <h2 className='mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent'>
+          我的朋友们 🧑‍🤝‍🧑
+        </h2>
+        <p className='text-neutral-2 text-lg'>海内存知己，天涯若比邻</p>
+      </div>
+
+      <ul className='mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
         {data?.map((item: any) => (
           <CardBio
             key={item.id}
@@ -73,22 +93,31 @@ const Page = async () => {
           />
         ))}
       </ul>
-      <Alert type='warning'>申请友链前必读</Alert>
-      <ul className='list-decimal pl-6 leading-8'>
-        <li>确保可以https访问</li>
-        <li>独立域名</li>
-        <li>可访问</li>
-        <li>添加我为友链</li>
-      </ul>
-      <ul className='list-disc pl-6 leading-6'>
-        <li> 我的信息</li>
-        <li>站点标题: dawn-blog</li>
-        <li>站点链接: https://zzfzzf.com</li>
-        <li>站点描述: 一个前端开发者的博客</li>
-        <li>站点头像: https://cdn.zzfzzf.com/assets/logo.png</li>
-      </ul>
+
+      <div className='mb-8 rounded-xl bg-orange-50 p-8'>
+        <Alert type='warning' className='mb-6'>
+          申请友链前必读
+        </Alert>
+        <ul className='mb-8 list-decimal space-y-2 pl-6 leading-8'>
+          <li>确保可以https访问</li>
+          <li>独立域名</li>
+          <li>可访问</li>
+          <li>添加我为友链</li>
+        </ul>
+
+        <div className='rounded-lg bg-white/70 p-6 backdrop-blur'>
+          <h3 className='mb-4 text-lg font-bold'>我的信息</h3>
+          <ul className='text-neutral-2 space-y-2'>
+            <li>站点标题: dawn-blog</li>
+            <li>站点链接: https://zzfzzf.com</li>
+            <li>站点描述: 一个前端开发者的博客</li>
+            <li>站点头像: https://cdn.zzfzzf.com/assets/logo.png</li>
+          </ul>
+        </div>
+      </div>
+
       <ApplyFriend />
-    </>
+    </div>
   );
 };
 
