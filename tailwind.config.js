@@ -18,6 +18,7 @@ module.exports = {
       colors: {
         default: 'var(--fgColor-default)',
         muted: 'var(--fgColor-muted)',
+        onEmphasis: 'var(--fgColor-onEmphasis)',
         accent: {
           DEFAULT: 'var(--fgColor-accent)',
           emphasis: 'var(--fgColor-accent-emphasis)',

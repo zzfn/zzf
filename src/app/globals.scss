@@ -45,7 +45,7 @@
 * {
   scrollbar-color: var(--bgColor-neutral-muted) var(--bgColor-default);
   scrollbar-width: thin;
-  scrollbar-gutter: stable;
+  // scrollbar-gutter: stable;
 }
 :root {
   --bgColor-opacity: hsla(0, 0%, 100%, 0.72);

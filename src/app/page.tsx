@@ -110,7 +110,7 @@ export default async function Page() {
 
             {/* Hover Overlay */}
             <div className='absolute inset-0 flex items-center justify-center bg-gradient-to-br from-cyan-500/80 to-purple-500/80 opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100'>
-              <div className='flex items-center gap-2 text-white'>
+              <div className='flex items-center gap-2 text-onEmphasis'>
                 <span className='font-mono tracking-wider'>VIEW POST</span>
                 <span className='animate-pulse'>_</span>
               </div>
@@ -121,13 +121,13 @@ export default async function Page() {
 
       {/* View More Button */}
       <Link
-        className='group relative mt-8 block overflow-hidden rounded-lg bg-black px-8 py-3 text-center'
+        className='group relative mt-8 block overflow-hidden rounded-lg bg-emphasis px-8 py-3 text-center'
         href='/post'
       >
         <div className='absolute inset-0 flex items-center justify-center'>
           <div className='h-[500%] w-[200%] animate-spin bg-gradient-to-tr from-violet-500 via-cyan-500 to-purple-500 opacity-50 blur-lg'></div>
         </div>
-        <span className='relative flex items-center justify-center gap-2 font-mono text-sm font-medium text-white'>
+        <span className='relative flex items-center justify-center gap-2 font-mono text-sm font-medium text-onEmphasis'>
           <span>EXPLORE MORE</span>
           <span className='animate-pulse'>_</span>
         </span>
