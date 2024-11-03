@@ -35,7 +35,7 @@ const Comment = ({ params, username }: any) => {
       initial={{ opacity: 0, height: 0 }}
       animate={{ opacity: 1, height: 'auto' }}
       exit={{ opacity: 0, height: 0 }}
-      className='overflow-hidden'
+      style={{ overflow: 'hidden' }}
     >
       <div className='mt-2'>
         <div className='relative'>
@@ -162,12 +162,7 @@ const Comment = ({ params, username }: any) => {
       {/* 评论列表 */}
       <div className='space-y-6'>
         {data.map((comment: any) => (
-          <motion.div
-            key={comment.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className='group relative space-y-4'
-          >
+          <motion.div key={comment.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             {/* 主评论 */}
             <div className='flex gap-4'>
               {/* 头像 */}
