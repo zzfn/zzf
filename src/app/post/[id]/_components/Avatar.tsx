@@ -1,10 +1,9 @@
 import Image from 'next/image';
-import { useMemo } from 'react';
-import { adventurer } from '@dicebear/collection';
+import { croodles } from '@dicebear/collection';
 import { createAvatar } from '@dicebear/core';
 
 const Avatar = function ({ userId = '' }: { userId: string; size?: number }) {
-  const avatar = createAvatar(adventurer, {
+  const avatar = createAvatar(croodles, {
     seed: userId,
     flip: true,
   });

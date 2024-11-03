@@ -72,51 +72,105 @@ const Page = async () => {
     endpoint: '/v1/friend-links',
   });
   return (
-    <div className='mx-auto max-w-6xl px-4 py-8'>
-      <div className='mb-12 text-center'>
-        <h2 className='mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-4xl font-bold text-transparent'>
-          我的朋友们 🧑‍🤝‍🧑
+    <div className='mx-auto max-w-6xl px-4 py-12'>
+      {/* 标题部分 */}
+      <div className='relative mb-16 text-center'>
+        <div className='absolute inset-0 -z-10'>
+          <div className='absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl'></div>
+        </div>
+        <h2 className='mb-4 text-5xl font-bold tracking-tight'>
+          <span className='bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent'>
+            Friends Network
+          </span>
         </h2>
-        <p className='text-neutral-2 text-lg'>海内存知己，天涯若比邻</p>
+        <p className='text-muted/80 text-lg font-medium'>连接创造无限可能</p>
       </div>
 
-      <ul className='mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+      {/* 友链卡片网格 */}
+      <div className='mb-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
         {data?.map((item: any) => (
-          <CardBio
+          <a
             key={item.id}
-            dataSource={{
-              logo: item.logo,
-              name: item.name,
-              description: item.description,
-              url: item.url,
-            }}
-          />
+            href={item.url}
+            target='_blank'
+            rel='noreferrer'
+            className='border-border/50 group relative overflow-hidden rounded-xl border bg-gradient-to-b from-white/50 to-white/30 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl dark:from-neutral-900/50 dark:to-neutral-900/30'
+          >
+            <div className='absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 transition-opacity group-hover:opacity-100'></div>
+            <div className='flex items-center gap-4'>
+              <Image
+                width={60}
+                height={60}
+                src={createAvatar(shapes, {
+                  seed: item.logo,
+                  flip: true,
+                }).toDataUri()}
+                alt={item.name}
+                className='border-border/50 rounded-full border-2 shadow-sm transition-transform group-hover:scale-110'
+              />
+              <div>
+                <h3 className='text-lg font-bold'>{item.name}</h3>
+                <p className='text-muted/80 text-sm'>{item.description}</p>
+              </div>
+            </div>
+          </a>
         ))}
-      </ul>
+      </div>
 
-      <div className='mb-8 rounded-xl bg-orange-50 p-8'>
-        <Alert type='warning' className='mb-6'>
-          申请友链前必读
-        </Alert>
-        <ul className='mb-8 list-decimal space-y-2 pl-6 leading-8'>
-          <li>确保可以https访问</li>
-          <li>独立域名</li>
-          <li>可访问</li>
-          <li>添加我为友链</li>
-        </ul>
+      {/* 申请友链部分 */}
+      <div className='border-border/50 rounded-2xl border bg-gradient-to-b from-white/50 to-white/30 backdrop-blur-sm dark:from-neutral-900/50 dark:to-neutral-900/30'>
+        <div className='border-border/50 border-b p-6'>
+          <h3 className='text-xl font-bold'>申请友链</h3>
+          <p className='text-muted/80 mt-2'>在申请之前，请确保您的网站符合以下要求</p>
+        </div>
 
-        <div className='rounded-lg bg-white/70 p-6 backdrop-blur'>
-          <h3 className='mb-4 text-lg font-bold'>我的信息</h3>
-          <ul className='text-neutral-2 space-y-2'>
-            <li>站点标题: dawn-blog</li>
-            <li>站点链接: https://zzfzzf.com</li>
-            <li>站点描述: 一个前端开发者的博客</li>
-            <li>站点头像: https://cdn.zzfzzf.com/assets/logo.png</li>
-          </ul>
+        <div className='grid gap-6 p-6 lg:grid-cols-2'>
+          <div className='space-y-4'>
+            <div className='rounded-lg bg-blue-500/5 p-4'>
+              <h4 className='mb-3 font-medium'>基本要求</h4>
+              <ul className='text-muted/80 space-y-2 text-sm'>
+                <li className='flex items-center gap-2'>
+                  <span className='text-blue-500'>⚡</span> 支持 HTTPS 访问
+                </li>
+                <li className='flex items-center gap-2'>
+                  <span className='text-purple-500'>⚡</span> 独立的域名
+                </li>
+                <li className='flex items-center gap-2'>
+                  <span className='text-pink-500'>⚡</span> 网站可正常访问
+                </li>
+                <li className='flex items-center gap-2'>
+                  <span className='text-blue-500'>⚡</span> 已添加本站友链
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className='space-y-4'>
+            <div className='rounded-lg bg-purple-500/5 p-4'>
+              <h4 className='mb-3 font-medium'>本站信息</h4>
+              <ul className='text-muted/80 space-y-2 text-sm'>
+                <li className='flex items-center gap-2'>
+                  <span className='text-purple-500'>✦</span> 站点：dawn-blog
+                </li>
+                <li className='flex items-center gap-2'>
+                  <span className='text-pink-500'>✦</span> 链接：https://zzfzzf.com
+                </li>
+                <li className='flex items-center gap-2'>
+                  <span className='text-blue-500'>✦</span> 描述：一个前端开发者的博客
+                </li>
+                <li className='flex items-center gap-2'>
+                  <span className='text-purple-500'>✦</span>{' '}
+                  头像：https://cdn.zzfzzf.com/assets/logo.png
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className='border-border/50 border-t p-6'>
+          <ApplyFriend />
         </div>
       </div>
-
-      <ApplyFriend />
     </div>
   );
 };

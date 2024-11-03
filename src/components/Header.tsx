@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 const navLinks = [
   { name: '文章', href: '/post' },
-  { name: '留言', href: '/feedback' },
+  { name: '留言', href: '/guestbook' },
   { name: '友链', href: '/friends' },
   { name: '心情', href: '/moments' },
 ];
