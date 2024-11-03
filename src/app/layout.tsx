@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import { ConfigProvider } from '@oc/design';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
+import '@oc/design/dist/styles/index.css';
 
 export const metadata: Metadata = {
   title: {

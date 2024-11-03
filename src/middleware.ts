@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { geolocation, ipAddress } from '@vercel/functions';
+
 export function middleware(request: NextRequest) {
-  console.log(request.geo, request.ip);
+  console.log(geolocation(request), ipAddress(request));
 }

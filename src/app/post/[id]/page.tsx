@@ -24,14 +24,16 @@ async function getData(id: string) {
   });
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const { title } = await getData(params.id);
   return {
     title: title,
   };
 }
 
-const Page = async ({ params }: { params: { id: string } }) => {
+const Page = async (props0: { params: Promise<{ id: string }> }) => {
+  const params = await props0.params;
   const data = await getData(params.id);
   if (!data) {
     notFound();

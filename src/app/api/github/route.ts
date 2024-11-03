@@ -57,8 +57,8 @@ export async function GET(request: NextRequest) {
     },
   });
   const json: GithubUser = await response1.json();
-  cookies().set('username', json.login);
-  cookies().set('avatar_url', json.avatar_url);
+  (await cookies()).set('username', json.login);
+  (await cookies()).set('avatar_url', json.avatar_url);
   const res = await fetchData<any>({
     endpoint: '/v1/app-users/github/login',
     fetchParams: {

@@ -35,7 +35,8 @@ function groupByYear(array: Array<Article>) {
   }, {});
 }
 
-export default async function Page({ params }: { params: { tag: string } }) {
+export default async function Page(props: { params: Promise<{ tag: string }> }) {
+  const params = await props.params;
   const data = await getData(params.tag);
 
   return (

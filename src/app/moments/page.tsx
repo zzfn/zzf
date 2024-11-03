@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: '分享生活的点点滴滴，记录日常的所思所想',
 };
 
-const Page = async (props: { searchParams: { id: string } }) => {
+const Page = async (props: { searchParams: Promise<{ id: string }> }) => {
   return (
     <div className='mx-auto max-w-2xl space-y-8 px-4 py-8'>
       <div className='space-y-4'>
@@ -29,10 +29,9 @@ const Page = async (props: { searchParams: { id: string } }) => {
           </div>
         </div>
       </div>
-
       <Comment
         params={{
-          objectId: props.searchParams.id || '0',
+          objectId: (await props.searchParams).id || '0',
           objectType: 'thinking',
         }}
       />

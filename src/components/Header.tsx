@@ -1,13 +1,8 @@
 'use client';
 import Link from 'next/link';
-import Navigation from './Navigation';
 import Menu from './Menu';
 import Logo from './Logo';
 import GlobalSearch from './GlobalSearch';
-import { IconPersonAdd } from '@oc/icon';
-import { IconButton, Tooltip } from '@oc/design';
-import { cookies } from 'next/headers';
-import Image from 'next/image';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import classNames from 'classnames';
 import { useState } from 'react';
