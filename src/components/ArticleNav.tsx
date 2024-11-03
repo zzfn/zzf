@@ -63,10 +63,12 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
   return (
     <div className='sticky top-20'>
       <motion.div
+        // @ts-ignore
         className={classNames('right-4 z-50 md:relative md:right-0', 'transition-all duration-300')}
         animate={{ width: isExpanded ? '240px' : '40px' }}
       >
         <motion.div
+          // @ts-ignore
           className={classNames(
             'border-accent-emphasis/10 bg-default/80 rounded-xl border backdrop-blur-sm',
             'overflow-hidden transition-all duration-300',
@@ -92,6 +94,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
               />
             </div>
             <span className='relative'>{Math.floor(scrollY * 100)}%</span>
+            {/*@ts-ignore*/}
             <motion.div className='absolute right-2' animate={{ rotate: isExpanded ? 180 : 0 }}>
               ▼
             </motion.div>
@@ -100,6 +103,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
           {/* 导航列表 */}
           <motion.ul
             ref={ulRef}
+            // @ts-ignore
             className={classNames(
               'relative max-h-[70vh] overflow-y-auto py-2',
               'scrollbar-thin scrollbar-track-transparent scrollbar-thumb-accent-emphasis/20',
@@ -109,6 +113,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             <AnimatePresence>
               {hoveredIndex !== null && isExpanded && (
                 <motion.div
+                  // @ts-ignore
                   className='bg-accent-emphasis/5 absolute left-0 -z-[1] rounded-lg'
                   initial={{ top: position.top, height: position.height, opacity: 0 }}
                   animate={{ top: position.top, height: position.height, opacity: 1 }}
@@ -122,6 +127,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             {list.map((nav, index) => (
               <motion.li
                 key={nav.index}
+                // @ts-ignore
                 onMouseEnter={(e) => {
                   if (!isExpanded) return;
                   setHoveredIndex(index);
@@ -157,6 +163,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
                 </a>
                 {current === nav.text && (
                   <motion.div
+                    // @ts-ignore
                     className='absolute left-0 top-0 h-full w-0.5 bg-accent-emphasis'
                     layoutId='activeIndicator'
                   />
