@@ -17,7 +17,6 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import ArticleNav from 'components/ArticleNav';
 import remarkGfm from 'remark-gfm';
-import xss from 'xss';
 import CodeSandpack from '../../_components/CodeSandpack';
 async function getData(id: string) {
   return fetchData<Article>({
