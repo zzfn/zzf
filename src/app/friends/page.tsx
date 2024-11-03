@@ -94,7 +94,7 @@ const Page = async () => {
             href={item.url}
             target='_blank'
             rel='noreferrer'
-            className='border-border/50 group relative overflow-hidden rounded-xl border bg-gradient-to-b from-white/50 to-white/30 p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl dark:from-neutral-900/50 dark:to-neutral-900/30'
+            className='border-border/50 group relative overflow-hidden rounded-xl border border-muted bg-muted bg-gradient-to-b p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl'
           >
             <div className='absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 transition-opacity group-hover:opacity-100'></div>
             <div className='flex items-center gap-4'>
@@ -118,7 +118,7 @@ const Page = async () => {
       </div>
 
       {/* 申请友链部分 */}
-      <div className='border-border/50 rounded-2xl border bg-gradient-to-b from-white/50 to-white/30 backdrop-blur-sm dark:from-neutral-900/50 dark:to-neutral-900/30'>
+      <div className='border-border/50 rounded-2xl border border-muted bg-muted backdrop-blur-sm'>
         <div className='border-border/50 border-b p-6'>
           <h3 className='text-xl font-bold'>申请友链</h3>
           <p className='text-muted/80 mt-2'>在申请之前，请确保您的网站符合以下要求</p>
