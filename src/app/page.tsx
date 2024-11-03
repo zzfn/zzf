@@ -83,13 +83,13 @@ export default async function Page() {
           <Link
             key={post.id}
             href={`/post/${post.id}`}
-            className='group relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 p-[1px] shadow-lg transition-all hover:-translate-y-1 hover:shadow-cyan-500/20'
+            className='group relative overflow-hidden rounded-xl shadow-lg transition-all hover:-translate-y-1 hover:shadow-cyan-500/20'
           >
             {/* Post Preview */}
-            <div className='relative w-full rounded-xl bg-black p-6'>
+            <div className='relative w-full rounded-xl bg-muted p-6'>
               <div className='absolute inset-0 rounded-xl bg-gradient-to-br from-cyan-500/10 to-purple-500/10'></div>
               <div className='relative'>
-                <h2 className='mb-3 line-clamp-2 font-mono text-lg font-medium text-white'>
+                <h2 className='mb-3 line-clamp-2 font-mono text-lg font-medium text-muted'>
                   {post.title}
                 </h2>
                 <div className='flex items-center gap-x-3 text-xs text-gray-400'>
@@ -97,7 +97,7 @@ export default async function Page() {
                     <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-accent-emphasis'></span>
                     {dayjs(post.updatedAt).format('YYYY-MM-DD')}
                   </time>
-                  <span className='rounded-md border border-gray-700 bg-gray-800/50 px-2 py-0.5 font-mono tracking-wider'>
+                  <span className='rounded-md border border-gray-700 bg-inset px-2 py-0.5 font-mono tracking-wider text-muted'>
                     {post.tag}
                   </span>
                 </div>

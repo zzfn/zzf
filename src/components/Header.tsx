@@ -31,7 +31,7 @@ const Header = () => {
         className={classNames(
           'mx-auto flex items-center justify-between px-4 transition-all duration-500',
           count > 100
-            ? 'w-[640px] rounded-full border border-gray-200/50 bg-emphasis py-2 shadow-lg backdrop-blur-md'
+            ? 'w-[640px] rounded-full border border-muted bg-muted py-2 shadow-lg backdrop-blur-md'
             : 'container',
         )}
       >
@@ -51,7 +51,7 @@ const Header = () => {
             'hidden items-center gap-x-1 md:flex',
             count > 100
               ? ''
-              : 'rounded-full border border-gray-200/50 bg-emphasis px-4 py-2 backdrop-blur-md',
+              : 'rounded-full border border-muted bg-muted px-4 py-2 backdrop-blur-md',
           )}
         >
           {navLinks.map((link) => (
@@ -59,7 +59,7 @@ const Header = () => {
               key={link.href}
               href={link.href}
               className={classNames(
-                'px-3 py-1.5 text-sm font-medium text-onEmphasis',
+                'px-3 py-1.5 text-sm font-medium text-muted',
                 'rounded-full transition-colors',
                 'hover:bg-gray-100 hover:text-gray-900',
               )}

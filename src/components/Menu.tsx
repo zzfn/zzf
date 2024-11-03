@@ -1,35 +1,12 @@
 'use client';
 import IconSymbols from './IconSymbols';
-import { Drawer, IconButton } from '@oc/design';
+import { IconButton } from '@oc/design';
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import classNames from 'classnames';
 
-const variantsNav = {
-  open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 },
-  },
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
-  },
-};
-const variants = {
-  open: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
-  },
-  closed: {
-    y: 50,
-    opacity: 0,
-    transition: {
-      y: { stiffness: 1000 },
-    },
-  },
-};
 const Menu = ({ navLinks }: any) => {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
@@ -37,32 +14,63 @@ const Menu = ({ navLinks }: any) => {
   return (
     <>
       <IconButton>
-        <IconSymbols onClick={() => setVisible(true)} icon='menu'></IconSymbols>
+        <IconSymbols
+          onClick={() => setVisible(true)}
+          icon='menu'
+          className='text-default transition-colors hover:text-accent'
+        />
       </IconButton>
-      <Drawer onCancel={() => setVisible(false)} visible={visible}>
-        <motion.nav
-          variants={variantsNav}
-          className='flex h-full flex-col items-center justify-center gap-y-8'
-        >
-          {navLinks.map((link: any) => {
-            const isActive = pathname === link.href;
 
-            return (
-              <motion.li
-                variants={variants}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                key={link.name}
-              >
-                <Link className={isActive ? 'text-accent' : 'text-default'} href={'/' + link.href}>
-                  {link.name}
-                </Link>
-              </motion.li>
-            );
-          })}
-        </motion.nav>
-      </Drawer>
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className='bg-emphasis/80 fixed inset-0 z-50 backdrop-blur-sm'
+            onClick={() => setVisible(false)}
+          >
+            <motion.div
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ type: 'spring', damping: 20 }}
+              className='absolute left-4 top-16 w-48 rounded-lg bg-default p-2 shadow-lg'
+              onClick={(e) => e.stopPropagation()}
+            >
+              <nav className='space-y-1'>
+                {navLinks.map((link: any, index: number) => {
+                  const isActive = pathname === link.href;
+
+                  return (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link
+                        href={link.href}
+                        className={classNames(
+                          'group flex items-center justify-between rounded-md px-3 py-2 text-sm transition-colors',
+                          isActive
+                            ? 'bg-accent text-accent'
+                            : 'text-default hover:bg-neutral-muted',
+                        )}
+                        onClick={() => setVisible(false)}
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
+
 export default Menu;

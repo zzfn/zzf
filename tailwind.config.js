@@ -33,10 +33,10 @@ module.exports = {
         'accent-emphasis': 'var(--borderColor-accent-emphasis)',
       },
       backgroundColor: {
-        opacity: 'var(--bgColor-opacity)',
+        transparent: 'var(--bgColor-transparent)',
         default: 'var(--bgColor-default)',
-        'accent-emphasis': 'var(--bgColor-accent-emphasis)',
         muted: 'var(--bgColor-muted)',
+        inset: 'var(--bgColor-inset)',
         emphasis: 'var(--bgColor-emphasis)',
         'neutral-muted': 'var(--bgColor-neutral-muted)',
         'secondary-container': 'var(--md-sys-color-secondary-container)',

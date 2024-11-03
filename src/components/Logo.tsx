@@ -30,7 +30,7 @@ const Logo = ({ width = 150, height = 50 }) => {
         cy={25 * scaleFactor}
         r={20 * scaleFactor}
         stroke='var(--color-ansi-red)'
-        fill='var(--bgColor-default)'
+        fill='var(--bgColor-transparent)'
         variants={draw}
         custom={1}
       />
@@ -59,7 +59,7 @@ const Logo = ({ width = 150, height = 50 }) => {
         y={7.5 * scaleFactor}
         rx={5 * scaleFactor}
         stroke='var(--color-ansi-blue)'
-        fill='var(--bgColor-default)'
+        fill='var(--bgColor-transparent)'
         variants={draw}
         custom={3}
       />
