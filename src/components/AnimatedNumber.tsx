@@ -9,6 +9,7 @@ const AnimatedNumber = ({ number }: { number: number }) => {
     count.set(number);
   }, [number]);
 
+  // @ts-ignore
   return <motion.span className='font-mono'>{rounded}</motion.span>;
 };
 
