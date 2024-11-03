@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { fetchData } from '../../models/api';
 import type { Article } from 'types/article';
 import { Tag } from '@oc/design';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Post',
@@ -55,13 +56,14 @@ export default async function Page() {
         <div className='flex flex-wrap gap-2'>
           {[...data.reduce((acc: Set<string>, cur) => acc.add(cur.tag), new Set())].map(
             (tag: string) => (
-              <Tag
-                key={tag}
-                className='bg-accent/10 hover:bg-accent/20 cursor-pointer rounded-full 
-                px-3 py-1 text-sm text-accent transition-colors'
-              >
-                {tag}
-              </Tag>
+              <Link key={tag} href={`/tag/${tag}`}>
+                <Tag
+                  className='bg-accent/10 hover:bg-accent/20 cursor-pointer rounded-full 
+                  px-3 py-1 text-sm text-accent transition-colors'
+                >
+                  {tag}
+                </Tag>
+              </Link>
             ),
           )}
         </div>
