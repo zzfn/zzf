@@ -15,6 +15,7 @@ const MdImage = (props: any) => {
         style={{
           width: '100%',
           objectFit: 'scale-down',
+          maxHeight: '200px',
         }}
         width={4}
         height={3}

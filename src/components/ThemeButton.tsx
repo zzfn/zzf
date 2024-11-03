@@ -73,7 +73,7 @@ const ThemeButton = () => {
     <div
       className={classNames(
         'flex items-center gap-1 p-1',
-        'rounded-full bg-gray-100/80 backdrop-blur-sm',
+        'rounded-full bg-muted backdrop-blur-sm',
         'border border-gray-200/50',
         'transition-all duration-300 ease-in-out',
       )}
@@ -91,7 +91,7 @@ const ThemeButton = () => {
               'relative flex h-8 w-8 items-center justify-center',
               'rounded-full transition-all duration-300',
               'text-sm hover:bg-white/50',
-              themeMode === theme.id && 'bg-white shadow-sm',
+              themeMode === theme.id && 'bg-accent-muted shadow-sm',
               themeMode === theme.id ? 'text-blue-500' : 'text-gray-500',
             )}
           >

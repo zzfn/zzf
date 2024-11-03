@@ -38,7 +38,7 @@ export default async function Page() {
 
   return (
     <div className='mx-auto max-w-3xl px-4 py-8'>
-      {/* Profile Section - Instagram Style */}
+      {/* Profile Section */}
       <div className='mb-12'>
         <div className='flex items-center gap-8'>
           <Image
@@ -50,44 +50,40 @@ export default async function Page() {
             src={config.avatar}
           />
           <div className='flex flex-col gap-y-2'>
-            <h1 className='text-xl font-semibold text-gray-900'>{config.name}</h1>
-            <p className='animate-typing w-fit overflow-hidden whitespace-nowrap border-r-2 border-gray-500 pr-1 font-mono text-sm text-gray-500'>
+            <h1 className='text-xl font-semibold text-default'>{config.name}</h1>
+            <p className='animate-typing w-fit overflow-hidden whitespace-nowrap border-r-2 border-gray-500 pr-1 font-mono text-sm text-muted'>
               {config.slug}
             </p>
           </div>
         </div>
       </div>
 
-      {/* Category Stories */}
-      <div className='mb-8 flex gap-4 overflow-x-auto pb-4'>
-        {[
-          { name: '技术', icon: '💻' },
-          { name: '生活', icon: '🌟' },
-          { name: '随笔', icon: '✍️' },
-          { name: '代码', icon: '👨‍💻' },
-        ].map((story) => (
-          <Link key={story.name} href='/post'>
-            <div className='flex flex-col items-center gap-y-1'>
-              <div className='h-16 w-16 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 p-[2px]'>
-                <div className='h-full w-full rounded-full bg-white p-[2px]'>
-                  <div className='flex h-full w-full items-center justify-center rounded-full bg-gray-100 text-2xl'>
-                    {story.icon}
-                  </div>
-                </div>
-              </div>
-              <span className='text-xs'>{story.name}</span>
-            </div>
-          </Link>
-        ))}
+      {/* 添加最近活跃状态 */}
+      <div className='mb-12 rounded-xl bg-muted p-6'>
+        <h2 className='mb-4 font-medium text-default'>最近在做什么 ⚡️</h2>
+        <div className='space-y-3'>
+          <div className='flex items-center gap-3 text-sm text-muted'>
+            <span className='h-2 w-2 rounded-full bg-green-400'></span>
+            <span>正在开发新的个人网站</span>
+          </div>
+          <div className='flex items-center gap-3 text-sm text-muted'>
+            <span className='h-2 w-2 rounded-full bg-blue-400'></span>
+            <span>学习 Rust 编程语言</span>
+          </div>
+          <div className='flex items-center gap-3 text-sm text-muted'>
+            <span className='h-2 w-2 rounded-full bg-purple-400'></span>
+            <span>研究 AI 应用开发</span>
+          </div>
+        </div>
       </div>
 
       {/* Posts Grid */}
-      <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+      <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
         {data.map((post: any) => (
           <Link
             key={post.id}
             href={`/post/${post.id}`}
-            className='group relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 p-[1px] shadow-lg transition-all hover:shadow-cyan-500/20'
+            className='group relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 p-[1px] shadow-lg transition-all hover:-translate-y-1 hover:shadow-cyan-500/20'
           >
             {/* Post Preview */}
             <div className='relative w-full rounded-xl bg-black p-6'>
@@ -119,9 +115,9 @@ export default async function Page() {
         ))}
       </div>
 
-      {/* View More Button */}
+      {/* View More Button - 调整上边距 */}
       <Link
-        className='group relative mt-8 block overflow-hidden rounded-lg bg-emphasis px-8 py-3 text-center'
+        className='group relative mt-12 block overflow-hidden rounded-lg bg-emphasis px-8 py-3 text-center'
         href='/post'
       >
         <div className='absolute inset-0 flex items-center justify-center'>
