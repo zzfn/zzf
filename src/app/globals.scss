@@ -34,13 +34,6 @@
   font-display: swap;
   src: url(https://cdn.zzfzzf.com/assets/JetBrainsMono-Regular.woff2) format('woff2');
 }
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-display: block;
-  font-weight: 400;
-  src: url(https://cdn.zzfzzf.com/assets/Material%2BSymbols%2BOutlined.woff2) format('woff2');
-}
 * {
   scrollbar-color: var(--bgColor-neutral-muted) var(--bgColor-default);
   scrollbar-width: thin;
@@ -103,39 +96,6 @@ body {
 em {
   color: var(--fgColor-accent);
 }
-.symbol_icon {
-  font-family: 'Material Symbols Outlined', emoji;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 1em;
-  width: 1em;
-  height: 1em;
-  overflow: hidden;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  user-select: none;
-  transition: font-variation-settings 200ms cubic-bezier(0.2, 0, 0, 1);
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 600,
-    'GRAD' 0,
-    'opsz' 48;
-  cursor: pointer;
-  &:hover {
-    color: var(--fgColor-accent);
-    font-variation-settings:
-      'FILL' 1,
-      'wght' 600,
-      'GRAD' 0,
-      'opsz' 48;
-  }
-}
-
 [data-color-mode='dark'] {
   --bgColor-opacity: rgba(29, 29, 31, 0.72);
   img,

@@ -89,7 +89,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['LXGW WenKai Screen', ...defaultTheme.fontFamily.sans],
+        sans: ['LXGW WenKai Lite', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono],
       },
     },

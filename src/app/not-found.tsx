@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import LottiePlayer from '../components/LottiePlayer';
 import { getCdn } from '../utils/getCdn';
 

@@ -9,8 +9,7 @@ import useDebouncedCallback from '../hooks/useDebouncedCallback';
 import { useSearch } from '../models/search';
 import { searchAtom } from '../atoms/searchAtoms';
 import { fetchData } from '../models/api';
-import IconSymbols from 'components/IconSymbols';
-
+import { Search } from 'lucide-react';
 const colorSchemes = ['light', 'dark'];
 const MEDIA = '(prefers-color-scheme: dark)';
 
@@ -150,13 +149,13 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
           {/* 搜索框区域 */}
           <div className='relative mb-6'>
             <div className='pointer-events-none absolute inset-y-0 left-3 flex items-center'>
-              <IconSymbols icon='search' className='h-5 w-5 text-muted' />
+              <Search className='h-5 w-5 text-muted' />
             </div>
-            <Input
+            <input
               ref={inputRef}
               onChange={handleInputChange}
               placeholder='搜索文章...'
-              className='bg-opacity h-12 w-full rounded-xl border-2 pl-10 pr-4 text-default
+              className='bg-opacity h-12 w-full rounded-xl border-2 pl-12 pr-4 text-default
                         focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent'
             />
             <div className='pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs text-muted'>

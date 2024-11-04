@@ -1,10 +1,10 @@
 'use client';
-import IconSymbols from './IconSymbols';
 import React, { useEffect } from 'react';
-import { IconButton, Tooltip } from '@oc/design';
+import { Tooltip } from '@oc/design';
 import { useAtom } from 'jotai';
 import { themeModeAtom } from '../atoms/themeAtoms';
 import classNames from 'classnames';
+import { Sun, SunMoon, Moon } from 'lucide-react';
 const ThemeButton = () => {
   const [themeMode, setThemeMode] = useAtom(themeModeAtom);
   useEffect(() => {
@@ -64,9 +64,9 @@ const ThemeButton = () => {
   };
 
   const themes = [
-    { id: 'light', icon: 'light_mode', label: '浅色' },
-    { id: 'auto', icon: 'auto_mode', label: '自动' },
-    { id: 'dark', icon: 'dark_mode', label: '深色' },
+    { id: 'light', icon: Sun, label: '浅色' },
+    { id: 'auto', icon: SunMoon, label: '自动' },
+    { id: 'dark', icon: Moon, label: '深色' },
   ];
 
   return (
@@ -78,34 +78,36 @@ const ThemeButton = () => {
         'transition-all duration-300 ease-in-out',
       )}
     >
-      {themes.map((theme) => (
-        <Tooltip key={theme.id} content={theme.label}>
-          <button
-            onClick={(event) => {
-              buildThemeTransition(theme.id as any, {
-                x: event.clientX,
-                y: event.clientY,
-              });
-            }}
-            className={classNames(
-              'relative flex h-8 w-8 items-center justify-center',
-              'rounded-full transition-all duration-300',
-              'text-sm hover:bg-white/50',
-              themeMode === theme.id && 'bg-accent-muted shadow-sm',
-              themeMode === theme.id ? 'text-blue-500' : 'text-gray-500',
-            )}
-          >
-            <IconSymbols
-              icon={theme.icon}
+      {themes.map((theme) => {
+        const Icon = theme.icon;
+        return (
+          <Tooltip key={theme.id} content={theme.label}>
+            <button
+              onClick={(event) => {
+                buildThemeTransition(theme.id as any, {
+                  x: event.clientX,
+                  y: event.clientY,
+                });
+              }}
               className={classNames(
-                'h-5 w-5 transition-transform',
-                'hover:scale-110',
-                themeMode === theme.id && 'scale-105',
+                'relative flex h-8 w-8 items-center justify-center',
+                'rounded-full transition-all duration-300',
+                'text-sm hover:bg-white/50',
+                themeMode === theme.id && 'bg-accent-muted shadow-sm',
+                themeMode === theme.id ? 'text-blue-500' : 'text-gray-500',
               )}
-            />
-          </button>
-        </Tooltip>
-      ))}
+            >
+              <Icon
+                className={classNames(
+                  'h-5 w-5 transition-transform',
+                  'hover:scale-110',
+                  themeMode === theme.id && 'scale-105',
+                )}
+              />
+            </button>
+          </Tooltip>
+        );
+      })}
     </div>
   );
 };

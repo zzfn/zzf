@@ -1,24 +1,19 @@
 'use client';
-import IconSymbols from './IconSymbols';
 import { IconButton } from '@oc/design';
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
-
-const Menu = ({ navLinks }: any) => {
+import { Menu } from 'lucide-react';
+const MenuItem = ({ navLinks }: any) => {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <IconButton>
-        <IconSymbols
-          onClick={() => setVisible(true)}
-          icon='menu'
-          className='text-default transition-colors hover:text-accent'
-        />
+      <IconButton onClick={() => setVisible(true)}>
+        <Menu className='text-default transition-colors hover:text-accent' />
       </IconButton>
 
       <AnimatePresence>
@@ -75,4 +70,4 @@ const Menu = ({ navLinks }: any) => {
   );
 };
 
-export default Menu;
+export default MenuItem;

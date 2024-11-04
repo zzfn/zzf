@@ -1,13 +1,9 @@
-import { Tooltip } from '@oc/design';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { format } from 'utils/time';
 import { fetchData } from 'models/api';
 import type { Article } from 'types/article';
 import Image from 'next/image';
-import { IconLabel } from '@oc/icon';
 import dayjs from 'dayjs';
-import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: '👋奇趣生活实验室',
