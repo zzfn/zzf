@@ -1,7 +1,5 @@
 import React from 'react';
-import Comment from '../post/[id]/_components/Comment';
 import { Metadata } from 'next';
-import { Alert, Button, Modal } from '@oc/design';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { fetchData } from '../../models/api';

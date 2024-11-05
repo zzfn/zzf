@@ -21,7 +21,7 @@
     "@fingerprintjs/fingerprintjs": "^4.4.3",
     "@formkit/auto-animate": "^0.8.2",
     "@next/third-parties": "15.0.2",
-    "@oc/design": "^1.0.0",
+    "@oc/design": "^1.0.3",
     "@oc/icon": "^0.1.0",
     "@primer/primitives": "^9.1.2",
     "@react-spring/web": "^9.7.4",

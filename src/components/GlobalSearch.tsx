@@ -6,7 +6,7 @@ import { Search } from 'lucide-react';
 const GlobalSearch = () => {
   const [searchVisible, setSearchVisible] = useAtom(searchAtom);
   return (
-    <Tooltip placement='bottomRight' content='command/control + k'>
+    <Tooltip placement='bottom-end' content='command/control + k'>
       <IconButton
         onClick={() => {
           setSearchVisible(!searchVisible);

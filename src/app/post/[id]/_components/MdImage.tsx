@@ -1,5 +1,5 @@
 'use client';
-import { Modal, Portal } from '@oc/design';
+import { Portal } from '@oc/design';
 import { useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence } from 'framer-motion';
@@ -26,7 +26,7 @@ const MdImage = (props: any) => {
         {visible && (
           <Portal className='fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center backdrop-blur-md'>
             <Image
-              className='max-h-[95vh] max-w-[95vw] cursor-zoom-out rounded rounded bg-opacity object-scale-down'
+              className='bg-opacity max-h-[95vh] max-w-[95vw] cursor-zoom-out rounded rounded object-scale-down'
               width={4}
               height={3}
               style={{

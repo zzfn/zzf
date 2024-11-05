@@ -64,10 +64,7 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Search */}
-        <span className='flex items-center gap-x-2'>
-          <GlobalSearch />
-        </span>
+        <GlobalSearch />
       </div>
     </header>
   );
