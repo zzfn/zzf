@@ -2,7 +2,8 @@ import dayjs from 'dayjs';
 import React from 'react';
 import Link from 'next/link';
 import OnlineCount from 'app/_components/OnlineCount';
-import ThemeButton from './ThemeButton';
+import ThemeClient from './ThemeClient';
+import UserAvatar from '@/components/UserAvatar';
 
 const Footer = () => {
   return (
@@ -59,10 +60,8 @@ const Footer = () => {
               苏ICP备18059856号
             </a>
           </div>
-
-          {/* 主题切换按钮 */}
           <div className='mt-2'>
-            <ThemeButton />
+            <ThemeClient />
           </div>
         </div>
       </div>

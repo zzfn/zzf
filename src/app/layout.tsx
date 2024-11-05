@@ -4,12 +4,14 @@ import Footer from '../components/Footer';
 import { WebVitals } from './_components/WebVitals';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
-import { ThemeProvider } from './InitTheme';
+import { ThemeProvider } from 'next-themes';
 import classNames from 'classnames';
 import { ConfigProvider } from '@oc/design';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 import '@oc/design/dist/styles/index.css';
+import UserAvatar from '@/components/UserAvatar';
+import { auth } from '../../auth';
 
 export const metadata: Metadata = {
   title: {
@@ -34,7 +36,8 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+async function RootLayout({ children }: { children: ReactNode }) {
+  const session = await auth();
   return (
     <html
       suppressHydrationWarning
@@ -67,17 +70,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             prefix: 'cw',
           }}
         >
-          <ThemeProvider>
-            <div className='relative'>
-              {/* 可选的渐变叠加 */}
-              <div className='from-accent-emphasis/5 fixed inset-0 -z-10 bg-gradient-to-b to-transparent'></div>
-
-              <Header />
-              <main className='container relative mx-auto grow px-4 pb-12 pt-20 md:px-6'>
-                <div className='relative space-y-8'>{children}</div>
-              </main>
-              <Footer />
-            </div>
+          <ThemeProvider attribute='data-color-mode'>
+            <Header>
+              <UserAvatar></UserAvatar>
+            </Header>
+            <main className='container relative mx-auto grow px-4 pb-12 pt-20 md:px-6'>
+              <div className='relative space-y-8'>{children}</div>
+            </main>
+            <Footer />
           </ThemeProvider>
         </ConfigProvider>
       </body>
@@ -85,3 +85,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+export default RootLayout;

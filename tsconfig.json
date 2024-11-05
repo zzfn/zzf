@@ -18,6 +18,7 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
+      "@/*": ["./*"],
       "api/*": ["services/*"]
     },
     "incremental": true,

@@ -1,4 +1,6 @@
-const nextConfig = {
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   output: 'standalone',
   assetPrefix:
     process.env.NODE_ENV === 'production' && !process.env.VERCEL
@@ -8,8 +10,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
-    domains: ['cdn.zzfzzf.com', 'w.zzfzzf.com'],
   },
 };
 
-export default nextConfig
+export default nextConfig;

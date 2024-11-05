@@ -5,7 +5,7 @@ import Logo from './Logo';
 import GlobalSearch from './GlobalSearch';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 const navLinks = [
   { name: '文章', href: '/post' },
@@ -13,7 +13,10 @@ const navLinks = [
   { name: '友链', href: '/friends' },
   { name: '心情', href: '/moments' },
 ];
-const Header = () => {
+interface Props {
+  children: ReactNode;
+}
+const Header = ({ children }: Props) => {
   const { scrollY } = useScroll();
   const [count, setCount] = useState(0);
   useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -64,6 +67,7 @@ const Header = () => {
           ))}
         </nav>
 
+        {/*{children}*/}
         <GlobalSearch />
       </div>
     </header>

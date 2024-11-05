@@ -1,15 +1,10 @@
 'use client';
-import React, { useEffect } from 'react';
 import { Tooltip } from '@oc/design';
-import { useAtom } from 'jotai';
-import { themeModeAtom } from '../atoms/themeAtoms';
 import classNames from 'classnames';
 import { Sun, SunMoon, Moon } from 'lucide-react';
-const ThemeButton = () => {
-  const [themeMode, setThemeMode] = useAtom(themeModeAtom);
-  useEffect(() => {
-    document.querySelector('html')?.setAttribute('data-color-mode', themeMode);
-  }, [themeMode]);
+import { useTheme } from 'next-themes';
+const ThemeSwitch = () => {
+  const { theme, setTheme } = useTheme();
 
   interface ThemeTransitionOptions {
     x?: number; // 鼠标的x坐标
@@ -24,7 +19,7 @@ const ThemeButton = () => {
       !('startViewTransition' in document) ||
       window.matchMedia(`(prefers-reduced-motion: reduce)`).matches
     ) {
-      setThemeMode(theme);
+      setTheme(theme);
       return;
     }
 
@@ -40,7 +35,7 @@ const ThemeButton = () => {
     // @ts-ignore
     document
       .startViewTransition(() => {
-        setThemeMode(theme);
+        setTheme(theme);
         return Promise.resolve();
       })
       ?.ready.then(() => {
@@ -78,13 +73,13 @@ const ThemeButton = () => {
         'transition-all duration-300 ease-in-out',
       )}
     >
-      {themes.map((theme) => {
-        const Icon = theme.icon;
+      {themes.map((themetarget) => {
+        const Icon = themetarget.icon;
         return (
-          <Tooltip key={theme.id} content={theme.label}>
+          <Tooltip key={themetarget.id} content={themetarget.label}>
             <button
               onClick={(event) => {
-                buildThemeTransition(theme.id as any, {
+                buildThemeTransition(themetarget.id as any, {
                   x: event.clientX,
                   y: event.clientY,
                 });
@@ -93,15 +88,15 @@ const ThemeButton = () => {
                 'relative flex h-8 w-8 items-center justify-center',
                 'rounded-full transition-all duration-300',
                 'text-sm hover:bg-white/50',
-                themeMode === theme.id && 'bg-accent-muted shadow-sm',
-                themeMode === theme.id ? 'text-blue-500' : 'text-gray-500',
+                theme === themetarget.id && 'bg-accent-muted shadow-sm',
+                theme === themetarget.id ? 'text-blue-500' : 'text-gray-500',
               )}
             >
               <Icon
                 className={classNames(
                   'h-5 w-5 transition-transform',
                   'hover:scale-110',
-                  themeMode === theme.id && 'scale-105',
+                  theme === themetarget.id && 'scale-105',
                 )}
               />
             </button>
@@ -111,4 +106,4 @@ const ThemeButton = () => {
     </div>
   );
 };
-export default ThemeButton;
+export default ThemeSwitch;

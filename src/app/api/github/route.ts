@@ -1,6 +1,5 @@
 import { NextRequest } from 'next/server';
 import { redirect } from 'next/navigation';
-import { cookies } from 'next/headers';
 import { fetchData } from '../../../models/api';
 
 type GithubUser = {
@@ -57,8 +56,8 @@ export async function GET(request: NextRequest) {
     },
   });
   const json: GithubUser = await response1.json();
-  (await cookies()).set('username', json.login);
-  (await cookies()).set('avatar_url', json.avatar_url);
+  // (await cookies()).set('username', json.login);
+  // (await cookies()).set('avatar_url', json.avatar_url);
   const res = await fetchData<any>({
     endpoint: '/v1/app-users/github/login',
     fetchParams: {
