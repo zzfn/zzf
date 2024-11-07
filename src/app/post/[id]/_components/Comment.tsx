@@ -337,9 +337,9 @@ const Comment = ({ params, username }: CommentProps) => {
               </AnimatePresence>
 
               {/* 回复列表 */}
-              {comment.replies?.length > 0 && (
+              {(comment.replies ?? []).length > 0 && (
                 <div className='ml-12 space-y-4 border-l border-default pl-4'>
-                  {comment.replies.map((reply) => (
+                  {comment.replies?.map((reply) => (
                     <motion.div key={reply.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                       <CommentItem comment={reply} onReply={handleReply} />
                       {activeReplyId === reply.id && (
