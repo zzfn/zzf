@@ -37,7 +37,6 @@ interface CommentProps {
     objectId: string;
     objectType: string;
   };
-  username: string;
 }
 
 // 优化评论项组件
@@ -97,18 +96,21 @@ const CommentMeta = ({
   </>
 );
 
-const Comment = ({ params, username }: CommentProps) => {
+const CommentIns = ({ params }: CommentProps) => {
+  const { data: session } = useSession();
   const message = useMessage();
   const { data = [], mutate } = useGetComment(params);
   const [content, setContent] = useState('');
   const [replyTo, setReplyTo] = useState<string | null>(null);
   const [activeReplyId, setActiveReplyId] = useState<string | null>(null);
-
+  useEffect(() => {
+    console.log(session);
+  }, [session?.user]);
   const { trigger } = useCommentOrReply('comments', {
     objectId: params.objectId,
     objectType: params.objectType,
     content,
-    userID: username,
+    userID: session?.user?.name,
   });
 
   // 优化回复处理函数
@@ -157,7 +159,7 @@ const Comment = ({ params, username }: CommentProps) => {
 
           <button
             onClick={() => signOut()}
-            className='hover:bg-default/5 flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs 
+            className='hover:bg-default/5 flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs
               text-muted transition-colors duration-200 hover:text-accent'
           >
             <LogOut size={14} />
@@ -356,5 +358,9 @@ const Comment = ({ params, username }: CommentProps) => {
     </SessionProvider>
   );
 };
-
+const Comment = ({ params }: any) => (
+  <SessionProvider>
+    <CommentIns params={params}></CommentIns>
+  </SessionProvider>
+);
 export default Comment;
