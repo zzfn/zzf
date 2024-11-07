@@ -71,9 +71,7 @@ async function RootLayout({ children }: { children: ReactNode }) {
           }}
         >
           <ThemeProvider attribute='data-color-mode'>
-            <Header>
-              <UserAvatar></UserAvatar>
-            </Header>
+            <Header />
             <main className='container relative mx-auto grow px-4 pb-12 pt-20 md:px-6'>
               <div className='relative space-y-8'>{children}</div>
             </main>

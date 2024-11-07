@@ -13,10 +13,7 @@ const navLinks = [
   { name: '友链', href: '/friends' },
   { name: '心情', href: '/moments' },
 ];
-interface Props {
-  children: ReactNode;
-}
-const Header = ({ children }: Props) => {
+const Header = () => {
   const { scrollY } = useScroll();
   const [count, setCount] = useState(0);
   useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -66,8 +63,6 @@ const Header = ({ children }: Props) => {
             </Link>
           ))}
         </nav>
-
-        {/*{children}*/}
         <GlobalSearch />
       </div>
     </header>
