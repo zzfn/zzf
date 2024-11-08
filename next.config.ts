@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverActions: {
-      allowedOrigins: ['*.zzfzzf.com', '*.ooxo.cc', '*.ccw.es'],
+      allowedOrigins: ['zzfzzf.com', '*.ooxo.cc', 'ccw.es'],
     },
   },
 };
