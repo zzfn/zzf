@@ -117,9 +117,6 @@ importers:
       remark-gfm:
         specifier: ^3.0.1
         version: 3.0.1
-      simple-icons:
-        specifier: ^13.16.0
-        version: 13.16.0
       swr:
         specifier: ^2.2.5
         version: 2.2.5(react@19.0.0-rc-02c0e824-20241028)
@@ -4198,10 +4195,6 @@ packages:
   simple-git-hooks@2.11.1:
     resolution: {integrity: sha512-tgqwPUMDcNDhuf1Xf6KTUsyeqGdgKMhzaH4PAZZuzguOgTl5uuyeYe/8mWgAr6IBxB5V06uqEf6Dy37gIWDtDg==}
     hasBin: true
-
-  simple-icons@13.16.0:
-    resolution: {integrity: sha512-aMg1efZ0IvYPKdvqUW0woVGSJwb199y9z7j1+6D5zPMn95eMQN0xzKAHefsqQW2K/5LwfgtFK3Gxn9n1eafX0A==}
-    engines: {node: '>=0.12.18'}
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
@@ -9517,8 +9510,6 @@ snapshots:
   signal-exit@4.1.0: {}
 
   simple-git-hooks@2.11.1: {}
-
-  simple-icons@13.16.0: {}
 
   simple-swizzle@0.2.2:
     dependencies:

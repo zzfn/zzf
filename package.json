@@ -50,7 +50,6 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^3.0.1",
-    "simple-icons": "^13.16.0",
     "swr": "^2.2.5",
     "ua-parser-js": "^1.0.38"
   },
