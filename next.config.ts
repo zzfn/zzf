@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['*.zzfzzf.com', '*.ooxo.cc', '*.ccw.es'],
+    },
+  },
 };
 
 export default nextConfig;
