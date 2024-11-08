@@ -10,7 +10,6 @@ import { ConfigProvider } from '@oc/design';
 // import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 import '@oc/design/dist/styles/index.css';
-import { auth } from '../../auth';
 
 export const metadata: Metadata = {
   title: {
@@ -35,8 +34,7 @@ export const metadata: Metadata = {
   ],
 };
 
-async function RootLayout({ children }: { children: ReactNode }) {
-  const session = await auth();
+function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       suppressHydrationWarning
