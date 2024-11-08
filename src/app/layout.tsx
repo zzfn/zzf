@@ -7,10 +7,9 @@ import { ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 import classNames from 'classnames';
 import { ConfigProvider } from '@oc/design';
-import { GoogleAnalytics } from '@next/third-parties/google';
+// import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 import '@oc/design/dist/styles/index.css';
-import UserAvatar from '@/components/UserAvatar';
 import { auth } from '../../auth';
 
 export const metadata: Metadata = {
@@ -79,7 +78,7 @@ async function RootLayout({ children }: { children: ReactNode }) {
           </ThemeProvider>
         </ConfigProvider>
       </body>
-      <GoogleAnalytics gaId='G-GBJ2W80K7N' />
+      {/*<GoogleAnalytics gaId='G-GBJ2W80K7N' />*/}
     </html>
   );
 }
