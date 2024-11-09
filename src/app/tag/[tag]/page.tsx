@@ -52,17 +52,9 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
         <div className='absolute inset-0 bg-[linear-gradient(rgba(var(--color-accent-emphasis-rgb),0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(var(--color-accent-emphasis-rgb),0.05)_1px,transparent_1px)] bg-[size:20px_20px]'></div>
 
         {/* 主要内容 */}
-        <div className='relative rounded-2xl p-8 backdrop-blur-sm'>
-          {/* 装饰性图标 */}
-          <div className='text-accent/10 absolute -left-4 -top-4 select-none'>
-            <div className='relative'>
-              <IconChat className='animate-pulse' />
-              <div className='from-accent/20 absolute inset-0 bg-gradient-to-r to-transparent blur-xl'></div>
-            </div>
-          </div>
-
+        <div className='rounded-2xl backdrop-blur-sm'>
           {/* 标题区域 */}
-          <div className='relative ml-16'>
+          <div className='relative'>
             <div className='border-accent/10 inline-flex items-center gap-3 rounded-2xl border bg-black/5 px-4 py-2 backdrop-blur-md'>
               <h1 className='bg-gradient-to-r from-accent to-purple-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent'>
                 #{decodeURIComponent(params.tag)}
@@ -107,7 +99,7 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
                     <Link
                       key={article.id}
                       href={`/post/${article.id}`}
-                      className='from-accent/5 hover:from-accent/10 group relative block rounded-xl bg-gradient-to-br 
+                      className='from-accent/5 hover:from-accent/10 group relative block rounded-xl bg-gradient-to-br
                         to-transparent p-4 transition-all duration-300'
                     >
                       <div className='flex items-center justify-between gap-4'>
