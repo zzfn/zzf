@@ -59,19 +59,19 @@ function RootLayout({ children }: { children: ReactNode }) {
           'duration-300',
         )}
       >
-        <ConfigProvider
-          value={{
-            prefix: 'cw',
-          }}
-        >
-          <ThemeProvider attribute='data-color-mode'>
+        <ThemeProvider attribute='data-color-mode'>
+          <ConfigProvider
+            value={{
+              prefix: 'cw',
+            }}
+          >
             <Header />
             <main className='container relative mx-auto grow px-4 pb-12 pt-20 md:px-6'>
               <div className='relative space-y-8'>{children}</div>
             </main>
             <Footer />
-          </ThemeProvider>
-        </ConfigProvider>
+          </ConfigProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
