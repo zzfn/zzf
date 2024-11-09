@@ -36,7 +36,7 @@
     "immer": "^10.1.1",
     "jotai": "^2.10.1",
     "lottie-web": "^5.12.2",
-    "lucide-react": "^0.454.0",
+    "lucide-react": "^0.456.0",
     "marked": "^12.0.2",
     "next": "15.0.3",
     "next-auth": "5.0.0-beta.25",
