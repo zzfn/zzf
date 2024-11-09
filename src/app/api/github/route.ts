@@ -6,7 +6,7 @@ type GithubUser = {
   login: string;
   id: number;
   node_id: string;
-  avatar_url: string;
+  avatarUrl: string;
   gravatar_id: string;
   url: string;
   html_url: string;
@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
   });
   const json: GithubUser = await response1.json();
   // (await cookies()).set('username', json.login);
-  // (await cookies()).set('avatar_url', json.avatar_url);
+  // (await cookies()).set('avatarUrl', json.avatarUrl);
   const res = await fetchData<any>({
     endpoint: '/v1/app-users/github/login',
     fetchParams: {
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
       },
       body: JSON.stringify({
         username: json.login,
-        avatar_url: json.avatar_url,
+        avatarUrl: json.avatarUrl,
         nickname: json.name,
       }),
     },

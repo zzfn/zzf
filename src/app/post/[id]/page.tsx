@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import Comment from './_components/Comment';
+import Comment from '@/app/_components/CommenTree/CommentTree';
 import { diff, format } from 'utils/time';
 import { Alert, Tooltip } from '@oc/design';
 import { notFound } from 'next/navigation';

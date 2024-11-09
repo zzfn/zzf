@@ -30,3 +30,19 @@ export const useCommentOrReply = (action: string, body: any) => {
     fetchData,
   );
 };
+
+export const useGithubLogin = (body: any) => {
+  return useSWRMutation(
+    {
+      endpoint: `/v1/app-users/github/login`,
+      fetchParams: {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    },
+    fetchData,
+  );
+};

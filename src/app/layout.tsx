@@ -1,13 +1,11 @@
 import Header from '../components/Header';
 import './globals.scss';
 import Footer from '../components/Footer';
-import { WebVitals } from './_components/WebVitals';
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 import classNames from 'classnames';
 import { ConfigProvider } from '@oc/design';
-// import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 import '@oc/design/dist/styles/index.css';
 
@@ -61,7 +59,6 @@ function RootLayout({ children }: { children: ReactNode }) {
           'duration-300',
         )}
       >
-        <WebVitals />
         <ConfigProvider
           value={{
             prefix: 'cw',
@@ -76,7 +73,6 @@ function RootLayout({ children }: { children: ReactNode }) {
           </ThemeProvider>
         </ConfigProvider>
       </body>
-      {/*<GoogleAnalytics gaId='G-GBJ2W80K7N' />*/}
     </html>
   );
 }

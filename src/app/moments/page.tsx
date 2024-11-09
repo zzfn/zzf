@@ -1,5 +1,5 @@
 import React from 'react';
-import Comment from '../post/[id]/_components/Comment';
+import Comment from '@/app/_components/CommenTree/CommentTree';
 import type { Metadata } from 'next';
 import { Coffee, SparkleIcon } from 'lucide-react';
 

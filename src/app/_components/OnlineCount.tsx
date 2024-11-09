@@ -15,7 +15,6 @@ const OnlineCount = () => {
       setCount(message);
     };
   }
-
   useEffect(() => {
     session?.user?.name && initSocket();
     return () => {

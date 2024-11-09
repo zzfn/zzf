@@ -1,5 +1,5 @@
 import React from 'react';
-import Comment from '../post/[id]/_components/Comment';
+import CommentTree from '@/app/_components/CommenTree/CommentTree';
 import { Metadata } from 'next';
 import { MessageCircle } from 'lucide-react';
 
@@ -26,7 +26,7 @@ const Page = async () => {
         </div>
       </div>
 
-      <Comment
+      <CommentTree
         params={{
           objectId: '0',
           objectType: 'message',
