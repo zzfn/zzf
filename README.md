@@ -32,7 +32,7 @@
 - dayjs
 - typescript
 - react.js
-- prismjs.js
+- shiki
 - eslint
 - prettier
 - babel
