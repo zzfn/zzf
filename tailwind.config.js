@@ -90,7 +90,7 @@ module.exports = {
             },
             pre: {
               overflow: 'initial',
-              paddingBottom: 0,
+              // paddingBottom: 0,
               code: {
                 display: 'block',
                 overflowX: 'auto',
