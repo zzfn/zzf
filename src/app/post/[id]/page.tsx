@@ -57,6 +57,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
           </ul>
           <article
             className={classNames(
+              'w-full',
               'max-w-2xl md:col-span-4',
               'py-8',
               'prose',

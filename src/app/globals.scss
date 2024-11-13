@@ -21,13 +21,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer components {
-  .icon-fill-1 {
-    font-variation-settings:
-      'FILL' 1,
-      'wght' 600 !important;
-  }
-}
+
 @font-face {
   font-family: 'JetBrainsMono';
   font-display: swap;
@@ -93,7 +87,9 @@ body {
   }
 }
 em {
+  font-style: normal;
   color: var(--fgColor-accent);
+  margin-inline: 2px;
 }
 [data-color-mode='dark'] {
   --bgColor-opacity: rgba(29, 29, 31, 0.72);
