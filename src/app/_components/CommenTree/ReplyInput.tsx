@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import { motion } from 'framer-motion';
 import SignIn from '@/app/_components/SignIn';
 import { useState } from 'react';
-import { useCommentOrReply } from '@/models/comment';
+import { useCommentOrReply } from '@/services/comment';
 
 const ReplyInput = ({
   parentId,

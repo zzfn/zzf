@@ -6,7 +6,7 @@ import { Search } from 'lucide-react';
 import SearchArticleCard from './SearchArticleCard';
 import useDebouncedCallback from '../hooks/useDebouncedCallback';
 import { useEffect, useRef, useState } from 'react';
-import { useSearch } from '../models/search';
+import { useSearch } from '../services/search';
 const GlobalSearch = () => {
   const [searchVisible, setSearchVisible] = useAtom(searchAtom);
   const inputRef = useRef<HTMLInputElement>(null);

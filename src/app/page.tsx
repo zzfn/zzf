@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { fetchData } from 'models/api';
+import { fetchData } from 'services/api';
 import type { Article } from 'types/article';
 import Image from 'next/image';
 import dayjs from 'dayjs';

@@ -1,5 +1,5 @@
 'use client';
-import { useGetComment } from '@/models/comment';
+import { useGetComment } from '@/services/comment';
 import TreeItem from '@/app/_components/CommenTree/TreeItem';
 import MainCommentInput from '@/app/_components/CommenTree/MainCommentInput';
 import { SessionProvider } from 'next-auth/react';

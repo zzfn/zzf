@@ -1,4 +1,4 @@
-// models/search.ts
+// services/search.ts
 
 import useSWR from 'swr';
 import { fetchData } from './api';

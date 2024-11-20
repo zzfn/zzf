@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import classNames from 'classnames';
 import Image from 'next/image';
-import { fetchData } from '../../models/api';
+import { fetchData } from '../../services/api';
 import ApplyFriend from './_components/ApplyFriend';
 import { createAvatar } from '@dicebear/core';
 import { shapes } from '@dicebear/collection';

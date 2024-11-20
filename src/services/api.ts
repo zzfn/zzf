@@ -1,4 +1,4 @@
-// models/api.ts
+// services/api.ts
 
 type FetchOptions = {
   endpoint: string;

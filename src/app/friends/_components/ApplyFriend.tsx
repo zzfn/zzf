@@ -1,7 +1,7 @@
 'use client';
 import { useMessage, Input, Modal } from '@oc/design';
 import { useState } from 'react';
-import { fetchData } from '../../../models/api';
+import { fetchData } from '../../../services/api';
 import { produce } from 'immer';
 const ApplyFriend = () => {
   const [isVisible, setIsVisible] = useState(false);

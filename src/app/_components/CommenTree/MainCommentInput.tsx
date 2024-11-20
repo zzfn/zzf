@@ -3,7 +3,7 @@ import SignIn from '@/app/_components/SignIn';
 import { Button, useMessage } from '@oc/design';
 import { useState } from 'react';
 import UserInfo from '@/app/_components/UserInfo';
-import { useCommentOrReply, useGithubLogin } from '@/models/comment';
+import { useCommentOrReply, useGithubLogin } from '@/services/comment';
 interface CommentTreeProps {
   params: {
     objectId: string;

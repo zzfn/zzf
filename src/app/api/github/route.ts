@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 import { redirect } from 'next/navigation';
-import { fetchData } from '../../../models/api';
+import { fetchData } from '../../../services/api';
 
 type GithubUser = {
   login: string;

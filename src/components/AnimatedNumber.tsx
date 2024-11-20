@@ -7,8 +7,7 @@ const AnimatedNumber = ({ number }: { number: number }) => {
 
   useEffect(() => {
     count.set(number);
-  }, [number]);
-
+  }, [count, number]);
   // @ts-ignore
   return <motion.span className='font-mono'>{rounded}</motion.span>;
 };

@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import type { Metadata } from 'next';
-import { fetchData } from '../../../models/api';
+import { fetchData } from '../../../services/api';
 import type { Article } from 'types/article';
 import Link from 'next/link';
 import { IconChat } from '@oc/icon';

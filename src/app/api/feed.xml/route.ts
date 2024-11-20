@@ -1,6 +1,6 @@
 import { Feed } from 'feed';
 import { marked } from 'marked';
-import { fetchData } from 'models/api';
+import { fetchData } from 'services/api';
 import type { Article } from 'types/article';
 export const dynamic = 'force-dynamic';
 export async function GET() {

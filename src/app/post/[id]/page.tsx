@@ -4,7 +4,7 @@ import { diff, format } from 'utils/time';
 import { Alert, Tooltip } from '@oc/design';
 import { notFound } from 'next/navigation';
 import ArticleState from './_components/ArticleState';
-import { fetchData } from 'models/api';
+import { fetchData } from 'services/api';
 import classNames from 'classnames';
 import type { Article } from 'types/article';
 import ArticleCount from './_components/ArticleCount';

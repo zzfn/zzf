@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useUpdateArticleViews } from 'models/article';
+import { useUpdateArticleViews } from 'services/article';
 import AnimatedNumber from '../../../../components/AnimatedNumber';
 
 const ArticleCount = ({ id }: { id: string }) => {
@@ -10,7 +10,7 @@ const ArticleCount = ({ id }: { id: string }) => {
     updateViews().then((res: number) => {
       setNumber(res);
     });
-  }, [id]);
+  }, [id, updateViews]);
 
   return <AnimatedNumber number={number} />;
 };
