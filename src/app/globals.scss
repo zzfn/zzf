@@ -69,7 +69,8 @@ body {
   input[type='tel'],
   input[type='email'],
   input[type='search'],
-  textarea {
+  textarea,
+  label {
     cursor: var(--f-cursor-text);
   }
 

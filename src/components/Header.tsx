@@ -26,7 +26,7 @@ const Header = () => {
         className={classNames(
           'mx-auto flex items-center justify-between px-4 transition-all duration-500',
           count > 100
-            ? 'w-[640px] rounded-full border border-muted bg-muted py-2 shadow-lg backdrop-blur-md'
+            ? 'w-[640px] rounded-full bg-muted py-2 shadow-lg backdrop-blur-md'
             : 'container',
         )}
       >
