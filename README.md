@@ -13,7 +13,7 @@
 - [用户前台](https://github.com/zzfn/zzf)
 - [管理后台](https://github.com/zzfn/zeus)
 - [JAVA 服务端](https://github.com/zzfn/blog-server)
-
+- [GO 服务端](https://github.com/zzfn/blog-server-go)
 ## 相关服务地址
 
 - [C 端地址](https://zzfzzf.com)
