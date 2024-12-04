@@ -1119,7 +1119,7 @@ packages:
     engines: {node: '>=12.4.0'}
 
   '@oc/design@1.0.3':
-    resolution: {integrity: sha512-6031OUuEkWVf/VkYbKgSyXWuJ8zIOunZ9eGtpfeA0Ae2N5pLXt0PfA0DaibUuhXMzXGqN3avEAjWACIEubItog==}
+    resolution: {integrity: sha512-V01l7cYX5d0esWkY40HvmKX40dhMd7ch7+2pVNP4rkx+NNavBH7taFrnADz4cfeBW/Lp89DJjFaqI+ZlFIHaMw==}
     peerDependencies:
       '@primer/primitives': '>=7.0.0'
       framer-motion: '>=11.0.0'
@@ -1127,7 +1127,7 @@ packages:
       react: '>=18.0.0'
 
   '@oc/icon@0.1.0':
-    resolution: {integrity: sha512-6S6yqfGWqWwYe74j23COYz662ByWzqfCwlAljYih7PGMe9R4Fy1ZGnWSJ5X6kVaOG8kTNqlXQUXFJJBfhIgJPQ==}
+    resolution: {integrity: sha512-hWbrq6ycRP23FSo2nxnqa08aH1wlr3hWyJmXtMtY20GoUgD8tV+T3avSP17eHeSY0uCeJeuTJTcEY6i1O8ECrw==}
 
   '@open-draft/deferred-promise@2.2.0':
     resolution: {integrity: sha512-CecwLWx3rhxVQF6V4bAgPS5t+So2sTbPgAzafKkVizyi7tlwpcFpdFqq+wqF2OwNBmqFuu6tOyouTuxgpMfzmA==}
