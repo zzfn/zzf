@@ -55,7 +55,7 @@ module.exports = {
         'danger-emphasis': 'var(--bgColor-danger-emphasis)',
         'success-muted': 'var(--bgColor-success-muted)',
         accent: {
-          DEFAULT: 'var(--bgColor-accent)',
+          default: 'var(--bgColor-accent)',
           emphasis: 'var(--bgColor-accent-emphasis)',
           muted: 'var(--bgColor-accent-muted)',
         },

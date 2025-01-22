@@ -90,7 +90,7 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
               )}
               <button
                 onClick={handleSubmit}
-                className='bg-accent/90 flex items-center gap-1.5 rounded-md px-4
+                className='flex items-center gap-1.5 rounded-md bg-accent-muted px-4
                     py-1.5 text-sm font-medium text-muted transition-colors duration-200 hover:bg-accent'
               >
                 <span>发布</span>
