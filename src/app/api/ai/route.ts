@@ -1,13 +1,12 @@
 import { NextRequest } from 'next/server';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  baseURL: 'https://api.deepseek.com',
-  apiKey: process.env.AI_API_KEY,
-});
 export const POST = async (req: NextRequest) => {
   const json = await req.json();
-  console.log(json);
+  const openai = new OpenAI({
+    baseURL: 'https://api.deepseek.com',
+    apiKey: process.env.AI_API_KEY,
+  });
   const completion = await openai.chat.completions.create({
     messages: [
       {

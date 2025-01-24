@@ -1,5 +1,4 @@
 'use client';
-import OpenAI from 'openai';
 import styles from './AI.module.css';
 import { useEffect, useState } from 'react';
 
