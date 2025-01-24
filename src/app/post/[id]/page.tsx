@@ -18,6 +18,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import ArticleNav from 'components/ArticleNav';
 import remarkGfm from 'remark-gfm';
 import CodeSandpack from '../../_components/CodeSandpack';
+import AI from './_components/AI';
 async function getData(id: string) {
   return fetchData<Article>({
     endpoint: `/v1/articles/${id}`,
@@ -55,6 +56,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
             <label>浏览量</label>
             <ArticleCount id={data.id} />
           </ul>
+          <AI content={data.content}></AI>
           <article
             className={classNames(
               'w-full',

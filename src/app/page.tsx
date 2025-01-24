@@ -35,18 +35,20 @@ export default async function Page() {
   return (
     <div className='mx-auto max-w-3xl px-4 py-8'>
       {/* Profile Section */}
-      <div className='mb-12'>
-        <div className='flex items-center gap-8'>
+      <div className='mb-12 animate-fade-in'>
+        <div className='flex items-center gap-8 rounded-2xl bg-gradient-to-r from-pink-500/5 via-purple-500/5 to-blue-500/5 p-6 backdrop-blur-xs'>
           <Image
             priority={true}
-            className='h-24 w-24 rounded-full object-cover ring-4 ring-pink-100 md:h-32 md:w-32'
+            className='h-24 w-24 rounded-full object-cover ring-4 ring-pink-100 transition-transform duration-300 hover:scale-105 md:h-32 md:w-32'
             width={128}
             height={128}
             alt='avatar'
             src={config.avatar}
           />
           <div className='flex flex-col gap-y-2'>
-            <h1 className='text-xl font-semibold text-default'>{config.name}</h1>
+            <h1 className='bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-2xl font-bold text-default text-transparent'>
+              {config.name}
+            </h1>
             <p className='animate-typing w-fit overflow-hidden whitespace-nowrap border-r-2 border-gray-500 pr-1 font-mono text-sm text-muted'>
               {config.slug}
             </p>
@@ -107,6 +109,20 @@ export default async function Page() {
                 <span className='animate-pulse'>_</span>
               </div>
             </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Articles Section */}
+      <div className='grid gap-6 md:grid-cols-2'>
+        {data?.map((item, index) => (
+          <Link
+            key={item.id}
+            href={`/post/${item.id}`}
+            className='group relative animate-slide-up overflow-hidden rounded-xl border border-muted bg-muted p-4 transition-all hover:-translate-y-1 hover:shadow-xl'
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <div className='absolute inset-0 -z-10 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 opacity-0 transition-opacity group-hover:opacity-100'></div>
           </Link>
         ))}
       </div>

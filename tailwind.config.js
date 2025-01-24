@@ -9,9 +9,24 @@ module.exports = {
           '0%': { backgroundPosition: '-1000px 0' },
           '100%': { backgroundPosition: '1000px 0' },
         },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'slide-up': {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        'scale-in': {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
       },
       animation: {
         shimmer: 'shimmer 2s infinite linear',
+        'fade-in': 'fade-in 0.5s ease-out',
+        'slide-up': 'slide-up 0.5s ease-out',
+        'scale-in': 'scale-in 0.3s ease-out',
       },
       backgroundSize: {
         shimmer: '1000px 100%',
@@ -37,6 +52,16 @@ module.exports = {
           muted: 'var(--fgColor-accent-muted)',
         },
         'on-surface': 'var(--md-sys-color-on-surface)',
+        glass: 'rgba(255, 255, 255, 0.1)',
+        'glass-dark': 'rgba(0, 0, 0, 0.1)',
+      },
+      backdropBlur: {
+        xs: '2px',
+      },
+      boxShadow: {
+        glass: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'glass-dark':
+          '0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06)',
       },
       borderColor: {
         default: 'var(--borderColor-default)',

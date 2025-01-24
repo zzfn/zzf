@@ -15,7 +15,6 @@ async function CodeBlock({ code, lang }: { code: string; lang: string }) {
   return <div dangerouslySetInnerHTML={{ __html: out }} />;
 }
 const MdCode = (props: any) => {
-  console.log(props);
   const lang = props.className?.replace('language-', '');
   if (!props.className) {
     return <code>{props.children}</code>;
