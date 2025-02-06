@@ -16,7 +16,6 @@ const nextConfig: NextConfig = {
       allowedOrigins: ['zzfzzf.com', '*.ooxo.cc', 'ccw.es'],
     },
   },
-  productionBrowserSourceMaps: true,
 };
 
 export default nextConfig;
