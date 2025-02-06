@@ -113,20 +113,6 @@ export default async function Page() {
         ))}
       </div>
 
-      {/* Articles Section */}
-      <div className='grid gap-6 md:grid-cols-2'>
-        {data?.map((item, index) => (
-          <Link
-            key={item.id}
-            href={`/post/${item.id}`}
-            className='group relative animate-slide-up overflow-hidden rounded-xl border border-muted bg-muted p-4 transition-all hover:-translate-y-1 hover:shadow-xl'
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
-            <div className='absolute inset-0 -z-10 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 opacity-0 transition-opacity group-hover:opacity-100'></div>
-          </Link>
-        ))}
-      </div>
-
       {/* View More Button - 调整上边距 */}
       <Link
         className='group relative mt-12 block overflow-hidden rounded-lg bg-emphasis px-8 py-3 text-center'
