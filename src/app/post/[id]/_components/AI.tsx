@@ -2,19 +2,19 @@
 import styles from './AI.module.css';
 import { useEffect, useState } from 'react';
 
-const AI = ({ content }: any) => {
+const AI = ({ content, id }: any) => {
   const [summary, setSummary] = useState<string | null>(null);
   useEffect(() => {
     const fetchSummary = async () => {
       const summary = await fetch('/api/ai', {
         method: 'POST',
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ content, id }),
       });
       const json = await summary.json();
       setSummary(json.content);
     };
     fetchSummary();
-  }, [content]);
+  }, [content, id]);
 
   return (
     <div className={styles.aiWrapper}>

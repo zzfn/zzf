@@ -1,12 +1,11 @@
 .aiWrapper {
-  margin: 24px 0;
+  position: relative;
 }
 
 .aiCard {
-  background: var(--bgColor-muted);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(145deg, var(--bgColor-muted), var(--bgColor-muted));
+  border-radius: 12px;
+  padding: 16px;
   transition: all 0.3s ease;
 }
 
@@ -18,35 +17,55 @@
 .aiHeader {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 12px;
 }
 
 .aiIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: white;
-  margin-right: 12px;
+  margin-right: 10px;
 }
 
 .aiTitle {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--fgColor-muted);
 }
 
 .aiContent {
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--fgColor-default);
-  min-height: 60px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fgColor-muted);
+  padding: 0 4px;
+}
+
+/* 加载动画 */
+.aiContent:empty {
+  height: 80px;
+  background: linear-gradient(
+    90deg,
+    rgba(156, 163, 175, 0.1) 25%,
+    rgba(156, 163, 175, 0.2) 37%,
+    rgba(156, 163, 175, 0.1) 63%
+  );
+  background-size: 400% 100%;
+  animation: loading 1.4s ease infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 
 @media (max-width: 640px) {

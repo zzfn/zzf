@@ -43,20 +43,30 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
     <ArticleState articleState={data}>
       <div className='w-full grid-cols-5 gap-x-2 md:grid'>
         <main className='col-span-4 flex w-full shrink grow-0 basis-full flex-col'>
-          <h1 className='pt-8 text-3xl'>{data.title}</h1>
-          <ul className='my-4 flex items-center gap-x-2 rounded bg-muted p-6 text-sm text-muted'>
-            <label>创建时间</label>
-            <Tooltip content={format(data.createdAt)}>
-              <time>{diff(data.createdAt)}</time>
-            </Tooltip>
-            <label>更新时间</label>
-            <Tooltip content={format(data.updatedAt)}>
-              <time>{diff(data.updatedAt)}</time>
-            </Tooltip>
-            <label>浏览量</label>
-            <ArticleCount id={data.id} />
-          </ul>
-          <AI content={data.content}></AI>
+          <h1 className='pt-8 text-3xl font-bold text-default'>{data.title}</h1>
+          <div className='my-6 rounded-xl p-6 backdrop-blur'>
+            <ul className='flex items-center gap-x-4 text-sm text-muted'>
+              <li className='flex items-center gap-x-2'>
+                <label>创建时间</label>
+                <Tooltip content={format(data.createdAt)}>
+                  <time>{diff(data.createdAt)}</time>
+                </Tooltip>
+              </li>
+              <li className='flex items-center gap-x-2'>
+                <label>更新时间</label>
+                <Tooltip content={format(data.updatedAt)}>
+                  <time>{diff(data.updatedAt)}</time>
+                </Tooltip>
+              </li>
+              <li className='flex items-center gap-x-2'>
+                <label>浏览量</label>
+                <ArticleCount id={data.id} />
+              </li>
+            </ul>
+            <div className='mt-4 border-t border-gray-100 pt-4'>
+              <AI id={data.id} content={data.content} />
+            </div>
+          </div>
           <article
             className={classNames(
               'w-full',

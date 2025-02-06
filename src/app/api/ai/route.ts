@@ -1,10 +1,17 @@
+import { fetchData } from '@/services/api';
 import { NextRequest } from 'next/server';
 import OpenAI from 'openai';
 
 export const POST = async (req: NextRequest) => {
   const json = await req.json();
+  const data = await fetchData({
+    endpoint: `/v1/articles/summary/${json.id}`,
+  });
+  if (data) {
+    return Response.json({ content: data });
+  }
   const openai = new OpenAI({
-    baseURL: 'https://api.deepseek.com',
+    baseURL: 'https://api.siliconflow.cn',
     apiKey: process.env.AI_API_KEY,
   });
   const completion = await openai.chat.completions.create({
@@ -19,7 +26,18 @@ export const POST = async (req: NextRequest) => {
         content: `请简要总结以下Markdown格式的博客内容，并输出纯文本（无任何Markdown格式）：\n\n<${json.content}>`,
       },
     ],
-    model: 'deepseek-chat',
+    model: 'deepseek-ai/DeepSeek-V3',
+  });
+  const summary = completion.choices[0].message.content;
+  const res = await fetchData({
+    endpoint: `/v1/articles/summary/${json.id}`,
+    fetchParams: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ summary }),
+    },
   });
   return Response.json({ content: completion.choices[0].message.content });
 };
