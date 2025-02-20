@@ -32,14 +32,14 @@ const Footer = () => {
             <Link
               className='text-sm text-gray-600 transition-colors hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400'
               target='_blank'
-              href='https://uptime.ccw.es/status/m'
+              href='https://uptime.zzfzzf.com/status/m'
             >
               服务状态
             </Link>
             <Link
               className='text-sm text-gray-600 transition-colors hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400'
               target='_blank'
-              href='https://m.ccw.es/share/YjgfEi1urh7EmU6i/ccw.es'
+              href='https://m.zzfzzf.com/share/YjgfEi1urh7EmU6i/zzfzzf.com'
             >
               访问统计
             </Link>
