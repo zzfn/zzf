@@ -32,7 +32,7 @@ const Footer = () => {
             <Link
               className='text-sm text-gray-600 transition-colors hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400'
               target='_blank'
-              href='https://uptime.zzfzzf.com/status/m'
+              href='https://uptime.zzfzzf.com/status'
             >
               服务状态
             </Link>
