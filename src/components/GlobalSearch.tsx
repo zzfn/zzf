@@ -32,36 +32,35 @@ const GlobalSearch = () => {
             setSearchVisible(!searchVisible);
           }}
         >
-          <Search className='text-default transition-colors hover:text-accent' />
+          <Search className='text-default hover:text-accent transition-colors' />
         </IconButton>
       </Tooltip>
       <Modal onCancel={() => setSearchVisible(false)} visible={searchVisible}>
         {/* 搜索框区域 */}
         <div className='relative mb-6'>
           <div className='pointer-events-none absolute inset-y-0 left-3 flex items-center'>
-            <Search className='h-5 w-5 text-muted' />
+            <Search className='text-muted h-5 w-5' />
           </div>
           <input
             ref={inputRef}
             onChange={handleInputChange}
             placeholder='搜索文章...'
-            className='bg-opacity h-12 w-full rounded-xl border-2 pl-12 pr-4 text-default
-                        focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent'
+            className='bg-opacity text-default focus:border-accent focus:ring-accent h-12 w-full rounded-xl border-2 pr-4 pl-12 focus:ring-1 focus:outline-none'
           />
-          <div className='pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs text-muted'>
-            <kbd className='rounded border border-muted bg-neutral-muted px-1.5 py-0.5 font-mono'>
+          <div className='text-muted pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs'>
+            <kbd className='border-muted bg-neutral-muted rounded-sm border px-1.5 py-0.5 font-mono'>
               ESC
             </kbd>
           </div>
         </div>
 
         {/* 搜索结果区域 */}
-        <div className='bg-opacity relative h-[60vh] overflow-hidden rounded-xl border border-default'>
+        <div className='bg-opacity border-default relative h-[60vh] overflow-hidden rounded-xl border'>
           {/* 搜索结果计数 */}
           {data && data.length > 0 && (
-            <div className='bg-opacity/80 sticky top-0 border-b border-default px-6 py-3 backdrop-blur-sm'>
-              <span className='text-sm text-muted'>
-                找到 <span className='font-mono text-accent'>{data.length}</span> 个结果
+            <div className='bg-opacity/80 border-default sticky top-0 border-b px-6 py-3 backdrop-blur-sm'>
+              <span className='text-muted text-sm'>
+                找到 <span className='text-accent font-mono'>{data.length}</span> 个结果
               </span>
             </div>
           )}
@@ -75,7 +74,7 @@ const GlobalSearch = () => {
                 ))}
               </div>
             ) : (
-              <div className='flex h-full items-center justify-center text-muted'>
+              <div className='text-muted flex h-full items-center justify-center'>
                 <span>开始输入以搜索文章...</span>
               </div>
             )}

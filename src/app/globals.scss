@@ -18,9 +18,13 @@
 @import '@primer/primitives/dist/css/functional/themes/dark-high-contrast.css';
 @import '@primer/primitives/dist/css/functional/themes/dark-tritanopia.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@config "../../tailwind.config.js";
+
+@theme {
+  --color-mint-500: oklch(0.72 0.11 178);
+  --color-onEmphasis: var(--fgColor-onEmphasis);
+}
 
 @font-face {
   font-family: 'JetBrainsMono';
@@ -51,7 +55,7 @@ body {
   font-size: 16px;
   background-color: var(--bgColor-default);
   color: var(--fgColor-default);
-  @apply font-sans;
+  font-family: var(--font-sans);
 }
 @media (hover: hover) and (pointer: fine) {
   body {
