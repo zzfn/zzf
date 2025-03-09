@@ -42,19 +42,6 @@ module.exports = {
         medium: { min: '600px' },
         expanded: { min: '840px' },
       },
-      colors: {
-        default: 'var(--fgColor-default)',
-        muted: 'var(--fgColor-muted)',
-        onEmphasis: 'var(--fgColor-onEmphasis)',
-        accent: {
-          DEFAULT: 'var(--fgColor-accent)',
-          emphasis: 'var(--fgColor-accent-emphasis)',
-          muted: 'var(--fgColor-accent-muted)',
-        },
-        'on-surface': 'var(--md-sys-color-on-surface)',
-        glass: 'rgba(255, 255, 255, 0.1)',
-        'glass-dark': 'rgba(0, 0, 0, 0.1)',
-      },
       backdropBlur: {
         xs: '2px',
       },
@@ -131,5 +118,4 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
 };
