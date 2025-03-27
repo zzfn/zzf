@@ -7,6 +7,7 @@ export type Article = {
   updatedBy: string;
   title: string;
   content: string;
+  summary: string;
   viewCount: number;
   tag: string;
   sortOrder: number;

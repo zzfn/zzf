@@ -43,9 +43,9 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
     <ArticleState articleState={data}>
       <div className='w-full grid-cols-5 gap-x-2 md:grid'>
         <main className='col-span-4 flex w-full shrink grow-0 basis-full flex-col'>
-          <h1 className='pt-8 text-3xl font-bold text-default'>{data.title}</h1>
+          <h1 className='text-default pt-8 text-3xl font-bold'>{data.title}</h1>
           <div className='my-6 rounded-xl p-6 backdrop-blur'>
-            <ul className='flex items-center gap-x-4 text-sm text-muted'>
+            <ul className='text-muted flex items-center gap-x-4 text-sm'>
               <li className='flex items-center gap-x-2'>
                 <label>创建时间</label>
                 <Tooltip content={format(data.createdAt)}>
@@ -64,7 +64,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
               </li>
             </ul>
             <div className='mt-4 border-t border-gray-100 pt-4'>
-              <AI id={data.id} content={data.content} />
+              <AI summary={data.summary} />
             </div>
           </div>
           <article
@@ -105,7 +105,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
           </article>
           <Comment params={{ objectType: 'article', objectId: data.id }} />
         </main>
-        <aside className='grow-1 col-span-1 hidden h-full w-full shrink-0  transform-gpu md:block'>
+        <aside className='col-span-1 hidden h-full w-full shrink-0 grow-1 transform-gpu md:block'>
           <ArticleNav source={data.content} />
         </aside>
       </div>
