@@ -5,7 +5,7 @@ clone:
   disable: true
 steps:
   - name: clone
-    image: wwma/drone-github-clone
+    image: nmtz/drone-github-clone
     settings:
       SSH_KEY:
         from_secret: ssh_key
@@ -43,7 +43,7 @@ steps:
         - ${DRONE_COMMIT_SHA:0:8}
         - latest
   - name: oss
-    image: wwma/drone-aliyun-oss
+    image: nmtz/drone-aliyun-oss
     depends_on:
       - build
     settings:
