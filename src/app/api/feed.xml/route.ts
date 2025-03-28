@@ -20,15 +20,15 @@ export async function GET() {
   };
 
   const feed = new Feed({
-    title: 'wawama',
-    description: 'wawama的个人博客',
+    title: 'nmtz',
+    description: 'nmtz的个人博客',
     id: siteURL,
     link: siteURL,
     image: `${siteURL}/favicon.ico`,
     favicon: `${siteURL}/favicon.ico`,
-    copyright: `All rights reserved ${date.getFullYear()}, wawama`,
+    copyright: `All rights reserved ${date.getFullYear()}, nmtz`,
     updated: date,
-    generator: 'Feed for wawama',
+    generator: 'Feed for nmtz',
     feedLinks: {
       rss2: `${siteURL}/rss/feed.xml`,
     },
