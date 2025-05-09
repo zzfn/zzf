@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import './tailwindcss.css';
 import './globals.scss';
 import Footer from '../components/Footer';
 import type { Metadata } from 'next';
@@ -66,7 +67,7 @@ function RootLayout({ children }: { children: ReactNode }) {
             }}
           >
             <Header />
-            <main className='container relative mx-auto grow px-4 pb-12 pt-20 md:px-6'>
+            <main className='relative container mx-auto grow px-4 pt-20 pb-12 md:px-6'>
               <div className='relative space-y-8'>{children}</div>
             </main>
             <Footer />

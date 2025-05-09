@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/typography";
+
+@config "../../tailwind.config.js";
+
+@theme {
+  /* Colors */
+  --color-mint-500: oklch(0.72 0.11 178);
+  --color-onEmphasis: var(--fgColor-onEmphasis);
+  --color-muted: var(--fgColor-muted);
+  --color-default: var(--fgColor-default);
+  --color-muted: var(--fgColor-muted);
+  --color-onEmphasis: var(--fgColor-onEmphasis);
+  --color-accent: var(--fgColor-accent);
+  --color-accent-emphasis: var(--fgColor-accent-emphasis);
+  --color-accent-muted: var(--fgColor-accent-muted);
+  --color-on-surface: var(--md-sys-color-on-surface);
+  /* Background Colors */
+}
