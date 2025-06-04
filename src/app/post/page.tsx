@@ -2,7 +2,6 @@ import dayjs from 'dayjs';
 import type { Metadata } from 'next';
 import { fetchData } from '../../services/api';
 import type { Article } from 'types/article';
-import { Tag } from '@oc/design';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -93,16 +92,18 @@ export default async function Page() {
         <div className='flex flex-wrap gap-2'>
           {[...data.reduce((acc: Set<string>, cur) => acc.add(cur.tag), new Set())].map(
             (tag: string) => (
-              <Link key={tag} href={`/tag/${tag}`} className='group relative'>
-                <Tag className='bg-opacity border-default text-default hover:border-accent hover:bg-neutral-muted hover:text-accent relative cursor-pointer rounded-md border px-3 py-1.5 text-sm transition-all'>
-                  <span className='font-mono'>{tag}</span>
-                  <span className='text-muted ml-2 text-xs'>
-                    {data
-                      .filter((item) => item.tag === tag)
-                      .length.toString()
-                      .padStart(2, '0')}
-                  </span>
-                </Tag>
+              <Link
+                key={tag}
+                href={`/tag/${tag}`}
+                className='group bg-opacity border-default text-default hover:border-accent hover:bg-neutral-muted hover:text-accent relative cursor-pointer rounded-md border px-3 py-1.5 text-xs transition-all'
+              >
+                <span className='font-mono'>{tag}</span>
+                <span className='text-muted ml-2 text-xs'>
+                  {data
+                    .filter((item) => item.tag === tag)
+                    .length.toString()
+                    .padStart(2, '0')}
+                </span>
               </Link>
             ),
           )}
