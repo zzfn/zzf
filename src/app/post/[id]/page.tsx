@@ -19,6 +19,8 @@ import ArticleNav from 'components/ArticleNav';
 import remarkGfm from 'remark-gfm';
 import CodeSandpack from '../../_components/CodeSandpack';
 import AI from './_components/AI';
+import LinkPreview from '@/components/LinkPreview'; // Added import
+
 async function getData(id: string) {
   return fetchData<Article>({
     endpoint: `/v1/articles/${id}`,
@@ -80,7 +82,19 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
             <Suspense fallback={<Loading />}>
               <MDXRemote
                 components={{
-                  a: (props) => <a target='_blank' className='text-blue-500' {...props} />,
+                  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+                    if (
+                      props.href &&
+                      (props.href.startsWith('http://') || props.href.startsWith('https://'))
+                    ) {
+                      return (
+                        <LinkPreview href={props.href} className='text-blue-500'>
+                          {props.children}
+                        </LinkPreview>
+                      );
+                    }
+                    return <a target='_blank' className='text-blue-500' {...props} />;
+                  },
                   img: MdImage,
                   code: MdCode,
                   pre: (props) => <pre className='group relative' {...props} />,
