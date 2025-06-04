@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+
 import {
   useFloating,
   autoUpdate,
@@ -21,6 +22,8 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
   const [showPreview, setShowPreview] = useState(false);
   const [previewUrl, setPreviewUrl] = useState('');
   const arrowRef = useRef(null);
+  const [screenWidth, setScreenWidth] = useState(1920); // Default to a common desktop width
+  const [screenHeight, setScreenHeight] = useState(1080); // Default to a common desktop height
 
   const { refs, floatingStyles, context } = useFloating({
     open: showPreview,
@@ -44,6 +47,11 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
 
   useEffect(() => {
     setIsClient(true);
+    // Get screen dimensions on client side
+    if (typeof window !== 'undefined') {
+      setScreenWidth(window.screen.width);
+      setScreenHeight(window.screen.height);
+    }
   }, []);
 
   if (!isClient) {
@@ -75,7 +83,25 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
             onMouseEnter={() => setShowPreview(true)}
             onMouseLeave={handleMouseLeave}
           >
-            <iframe src={previewUrl} width='400' height='300' title='Preview' frameBorder='0' />
+            <div
+              style={{
+                width: `${screenWidth * 0.25}px`, // Scale the container width
+                height: `${screenHeight * 0.25}px`, // Scale the container height
+                overflow: 'hidden',
+              }}
+            >
+              <iframe
+                src={previewUrl}
+                style={{
+                  width: `${screenWidth}px`, // Use actual screen width
+                  height: `${screenHeight}px`, // Use actual screen height
+                  transform: 'scale(0.25)',
+                  transformOrigin: 'top left',
+                }}
+                title='Preview'
+                frameBorder='0'
+              />
+            </div>
             <div
               ref={arrowRef}
               className='absolute h-2 w-2 rotate-45 bg-white dark:bg-gray-800'
