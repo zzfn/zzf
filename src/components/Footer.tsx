@@ -7,10 +7,7 @@ import UserAvatar from '@/components/UserAvatar';
 
 const Footer = () => {
   return (
-    <footer className='relative mt-12'>
-      {/* 上部分装饰线 */}
-      <div className='absolute left-1/2 top-0 h-px w-1/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600' />
-
+    <footer className='relative'>
       <div className='mx-auto max-w-6xl px-4 py-8'>
         <div className='flex flex-col items-center gap-6'>
           {/* 主要链接 */}
