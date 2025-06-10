@@ -39,87 +39,97 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
   const data = await getData(params.tag);
 
   return (
-    <div className='mx-auto max-w-3xl px-6 py-12'>
-      {/* 头部区域 - 更现代的设计 */}
-      <div className='relative mb-16 overflow-hidden'>
-        {/* 背景装饰 */}
-        <div className='from-accent/5 absolute inset-0 bg-gradient-to-r to-transparent'></div>
-        <div className='bg-accent/5 absolute -top-20 -right-20 h-40 w-40 rounded-full blur-3xl'></div>
-        <div className='bg-accent/10 absolute right-10 bottom-0 h-20 w-20 rounded-full blur-2xl'></div>
-
-        {/* 网格背景 */}
-        <div className='absolute inset-0 bg-[linear-gradient(rgba(var(--color-accent-emphasis-rgb),0.05)_1px,transparent_1px),linear-gradient(to_right,rgba(var(--color-accent-emphasis-rgb),0.05)_1px,transparent_1px)] bg-[size:20px_20px]'></div>
-
-        {/* 主要内容 */}
-        <div className='rounded-2xl backdrop-blur-sm'>
-          {/* 标题区域 */}
-          <div className='relative'>
-            <div className='border-accent/10 inline-flex items-center gap-3 rounded-2xl border bg-black/5 px-4 py-2 backdrop-blur-md'>
-              <h1 className='from-accent bg-gradient-to-r to-purple-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent'>
-                #{decodeURIComponent(params.tag)}
+    <div className='min-h-screen bg-gray-50'>
+      <div className='mx-auto max-w-3xl px-6 py-16'>
+        {/* 头部区域 - 苹果风格 */}
+        <div className='mb-12'>
+          <div className='rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5'>
+            <div className='text-center'>
+              <div className='mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500'>
+                <span className='text-lg font-semibold text-white'>#</span>
+              </div>
+              <h1 className='text-3xl font-semibold text-gray-900'>
+                {decodeURIComponent(params.tag)}
               </h1>
-              <div className='bg-accent/10 h-8 w-px'></div>
-              <span className='text-accent font-mono text-lg'>
-                {data.length.toString().padStart(2, '0')}
-              </span>
+              <p className='mt-2 text-sm text-gray-500'>{data.length} 篇文章</p>
             </div>
           </div>
-
-          {/* 装饰性线条 */}
-          <div className='from-accent/20 via-accent/10 absolute right-4 bottom-4 left-4 h-px bg-gradient-to-r to-transparent'></div>
         </div>
-      </div>
 
-      {/* 文章列表区域 - 更优雅的展示 */}
-      {data.length > 0 && (
-        <div className='relative space-y-16'>
-          {/* 左侧时间轴装饰线 */}
-          <div className='from-accent/20 via-accent/10 absolute top-0 bottom-0 left-[1.6rem] w-px bg-gradient-to-b to-transparent'></div>
-
-          {Object.entries(groupByYear(data))
-            .reverse()
-            .map(([year, articles]: [string, Article[]]) => (
-              <div key={year} className='relative'>
-                {/* 年份标题区域 */}
-                <div className='mb-6 flex items-center gap-4'>
-                  <div className='shadow-accent/5 bg-default relative z-10 rounded-xl px-4 py-2 shadow-lg'>
-                    <span className='from-accent bg-gradient-to-r to-purple-500 bg-clip-text text-2xl font-bold text-transparent'>
-                      {year}
-                    </span>
+        {/* 文章列表区域 - 苹果卡片风格 */}
+        {data.length > 0 ? (
+          <div className='space-y-8'>
+            {Object.entries(groupByYear(data))
+              .reverse()
+              .map(([year, articles]: [string, Article[]], index) => (
+                <div key={year} className='rounded-3xl bg-white shadow-sm ring-1 ring-black/5'>
+                  {/* 年份标题 */}
+                  <div className='border-b border-gray-100 px-8 py-6'>
+                    <div className='flex items-center justify-between'>
+                      <h2 className='text-lg font-semibold text-gray-900'>{year}</h2>
+                      <span className='rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-600'>
+                        {articles.length}
+                      </span>
+                    </div>
                   </div>
-                  <span className='bg-accent/10 text-accent rounded-full px-3 py-0.5 font-mono text-sm'>
-                    {articles.length.toString().padStart(2, '0')} 篇
-                  </span>
-                </div>
 
-                {/* 文章列表 */}
-                <div className='space-y-2 pl-8'>
-                  {articles.map((article: Article) => (
-                    <Link
-                      key={article.id}
-                      href={`/post/${article.id}`}
-                      className='from-accent/5 hover:from-accent/10 group relative block rounded-xl bg-gradient-to-br to-transparent p-4 transition-all duration-300'
-                    >
-                      <div className='flex items-center justify-between gap-4'>
-                        <div className='flex-1 space-y-1'>
-                          <h3 className='group-hover:text-accent line-clamp-1 font-medium transition-colors'>
+                  {/* 文章列表 */}
+                  <div className='divide-y divide-gray-100'>
+                    {articles.map((article: Article, articleIndex) => (
+                      <Link
+                        key={article.id}
+                        href={`/post/${article.id}`}
+                        className='group flex items-center justify-between px-8 py-4 transition-colors hover:bg-gray-50 active:bg-gray-100'
+                      >
+                        <div className='min-w-0 flex-1'>
+                          <h3 className='truncate text-base font-medium text-gray-900 group-hover:text-blue-600'>
                             {article.title}
                           </h3>
-                          <time className='text-muted-foreground font-mono text-xs'>
-                            {dayjs(article.createdAt).format('YYYY-MM-DD')}
-                          </time>
+                          <p className='mt-1 text-sm text-gray-500'>
+                            {dayjs(article.createdAt).format('YYYY年M月D日')}
+                          </p>
                         </div>
-                        <div className='text-accent/50 group-hover:text-accent transition-all group-hover:translate-x-1'>
-                          →
+                        <div className='ml-4 flex-shrink-0'>
+                          <svg
+                            className='h-5 w-5 text-gray-400 transition-colors group-hover:text-blue-600'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            stroke='currentColor'
+                            strokeWidth={2}
+                          >
+                            <path strokeLinecap='round' strokeLinejoin='round' d='M9 5l7 7-7 7' />
+                          </svg>
                         </div>
-                      </div>
-                    </Link>
-                  ))}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-        </div>
-      )}
+              ))}
+          </div>
+        ) : (
+          /* 空状态 - 苹果风格 */
+          <div className='rounded-3xl bg-white p-16 text-center shadow-sm ring-1 ring-black/5'>
+            <div className='mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100'>
+              <svg
+                className='h-8 w-8 text-gray-400'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z'
+                />
+                <path strokeLinecap='round' strokeLinejoin='round' d='M6 6h.008v.008H6V6z' />
+              </svg>
+            </div>
+            <h3 className='text-lg font-semibold text-gray-900'>暂无文章</h3>
+            <p className='mt-2 text-sm text-gray-500'>这个标签下还没有任何文章</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
