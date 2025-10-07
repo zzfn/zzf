@@ -1,109 +1,157 @@
 import React from 'react';
-import classNames from 'classnames';
-import Image from 'next/image';
 import { Metadata } from 'next';
-import { fetchData } from '../../services/api';
-import { IconCheck } from '@oc/icon';
+
 export const revalidate = 0;
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'Darkroom - 博客后台',
 };
 
-export default async function Page() {
-  const skills = [
-    { name: 'JavaScript', level: 90 },
-    { name: 'React', level: 85 },
-    { name: 'TypeScript', level: 80 },
-    { name: 'Node.js', level: 75 },
-    { name: 'Docker', level: 70 },
-  ];
+// 状态指示器组件
+const StatusIndicator = ({ status }: { status: 'online' | 'normal' }) => (
+  <span className='flex items-center gap-2'>
+    <span className='bg-success-muted h-2 w-2 rounded-full'></span>
+    <span>{status === 'online' ? '在线' : '正常'}</span>
+  </span>
+);
 
-  const connects = [
-    {
-      icon: <IconCheck className='h-5 w-5' />,
-      label: 'Blog',
-      value: 'zzfzzf.com',
-      link: 'https://zzfzzf.com',
-      color: 'from-purple-500 to-pink-500',
+// 统计卡片组件
+const StatCard = ({
+  label,
+  value,
+  color,
+  location,
+}: {
+  label: string;
+  value: string | number;
+  color?: 'success' | 'accent';
+  location?: string;
+}) => (
+  <div className='border-muted bg-muted/50 flex flex-col gap-2 rounded-lg border p-4 backdrop-blur-sm'>
+    <div className='text-sm opacity-60'>{label}</div>
+    <div className='flex items-center gap-2'>
+      {color && (
+        <span
+          className={`h-2 w-2 rounded-full ${color === 'success' ? 'bg-success-muted' : 'bg-accent'}`}
+        ></span>
+      )}
+      <span className='text-2xl font-bold'>{value}</span>
+    </div>
+    {location && (
+      <div className='text-sm opacity-60'>
+        <div>{location}</div>
+      </div>
+    )}
+  </div>
+);
+
+// 详情信息行组件
+const DetailRow = ({
+  items,
+}: {
+  items: { label: string; value: string; hasIndicator?: boolean }[];
+}) => (
+  <div className='border-muted grid grid-cols-4 gap-8 border-b py-4 last:border-b-0'>
+    {items.map((item, index) => (
+      <div key={index} className='flex flex-col gap-1'>
+        <div className='text-sm opacity-60'>{item.label}</div>
+        {item.hasIndicator ? (
+          <StatusIndicator status='normal' />
+        ) : (
+          <div className='font-medium'>{item.value}</div>
+        )}
+      </div>
+    ))}
+  </div>
+);
+
+export default async function Page() {
+  // 模拟数据
+  const stats = {
+    onlineUsers: 'xx',
+    totalReads: 'xx',
+    serviceLatency: 'xx',
+    latestVisitor: {
+      city: 'xx',
+      country: 'xx',
     },
-    {
-      icon: <IconCheck className='h-5 w-5' />,
-      label: 'Email',
-      value: 'me@ooxo.cc',
-      link: 'mailto:me@ooxo.cc',
-      color: 'from-blue-500 to-cyan-500',
-    },
-    {
-      icon: <IconCheck className='h-5 w-5' />,
-      label: 'GitHub',
-      value: 'zzfn',
-      link: 'https://github.com/zzfn',
-      color: 'from-gray-600 to-gray-800',
-    },
-  ];
+  };
+
+  const serviceInfo = {
+    status: 'online',
+    runtime: 'xx',
+    kernelVersion: 'xx',
+    golangVersion: 'xx',
+  };
+
+  const cacheInfo = {
+    status: 'normal',
+    latency: 'xx',
+    cachedData: 'xx',
+    currentCache: 'xx',
+  };
+
+  const systemInfo = {
+    status: 'normal',
+    memoryUsage: 'xx',
+    goroutine: 'xx',
+    gcStw: 'xx',
+  };
 
   return (
-    <div className='space-y-16 py-8 text-gray-700'>
-      {/* Hero Section */}
-      <div className='relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 p-8 text-white'>
-        <div className='relative z-10'>
-          <h1 className='mb-4 text-4xl font-bold'>Hi, I&apos;m won 👋</h1>
-          <p className='text-lg text-white/90'>码农 / 软硬件爱好者 / 爱折腾</p>
+    <div className='bg-default text-default min-h-screen px-4 py-8'>
+      <div className='mx-auto max-w-5xl space-y-8'>
+        {/* 加载指示器 */}
+        <div className='flex items-center gap-3'>
+          <div className='flex items-center justify-center'>
+            <div className='border-muted border-t-default h-8 w-8 animate-spin rounded-full border-4'></div>
+          </div>
+          <p className='opacity-60'>当前正在通过 Cloudflare 访问博客服务</p>
         </div>
-        <div className='absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl'></div>
-        <div className='absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-white/10 blur-3xl'></div>
-      </div>
 
-      {/* Skills Section */}
-      <div className='space-y-6'>
-        <h2 className='text-2xl font-bold'>技能 & 工具</h2>
-        <div className='grid gap-4 md:grid-cols-2'>
-          {skills.map((skill) => (
-            <div key={skill.name} className='space-y-2'>
-              <div className='flex justify-between'>
-                <span className='font-medium'>{skill.name}</span>
-                <span className='text-sm text-gray-500'>{skill.level}%</span>
-              </div>
-              <div className='h-2 overflow-hidden rounded-full bg-gray-100'>
-                <div
-                  className='h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500'
-                  style={{ width: `${skill.level}%` }}
-                />
-              </div>
-            </div>
-          ))}
+        {/* 概览部分 */}
+        <div className='border-muted bg-muted/30 rounded-lg border p-6 backdrop-blur-sm'>
+          <h2 className='mb-4 text-lg opacity-60'>概览</h2>
+          <div className='grid grid-cols-4 gap-4'>
+            <StatCard label='在线人数' value={stats.onlineUsers} color='success' />
+            <StatCard label='总阅读数' value={stats.totalReads} color='accent' />
+            <StatCard label='服务延迟' value='xx ms' />
+            <StatCard
+              label='最新访客'
+              value={stats.latestVisitor.city}
+              location={stats.latestVisitor.country}
+            />
+          </div>
         </div>
-      </div>
 
-      {/* Connect Section */}
-      <div className='space-y-6'>
-        <h2 className='text-2xl font-bold'>联系方式</h2>
-        <div className='grid gap-4 md:grid-cols-3'>
-          {connects.map((connect) => (
-            <a
-              key={connect.label}
-              href={connect.link}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='group relative overflow-hidden rounded-xl border border-gray-100 bg-white p-6 transition-all hover:-translate-y-1 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900'
-            >
-              <div className='flex items-center gap-4'>
-                <div
-                  className={classNames(
-                    'flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r',
-                    connect.color,
-                  )}
-                >
-                  {connect.icon}
-                </div>
-                <div>
-                  <div className='text-sm text-gray-500'>{connect.label}</div>
-                  <div className='font-medium'>{connect.value}</div>
-                </div>
-              </div>
-              <div className='absolute inset-0 -z-10 bg-gradient-to-r opacity-0 blur-xl transition-opacity group-hover:opacity-50' />
-            </a>
-          ))}
+        {/* 详情部分 */}
+        <div className='border-muted bg-muted/30 rounded-lg border p-6 backdrop-blur-sm'>
+          <h2 className='mb-4 text-lg opacity-60'>详情</h2>
+          <div className='space-y-0'>
+            <DetailRow
+              items={[
+                { label: '服务状态', value: '在线', hasIndicator: true },
+                { label: '运行版本', value: serviceInfo.runtime },
+                { label: '内核版本', value: serviceInfo.kernelVersion },
+                { label: 'Golang 版本', value: serviceInfo.golangVersion },
+              ]}
+            />
+            <DetailRow
+              items={[
+                { label: '缓存状态', value: '正常', hasIndicator: true },
+                { label: '缓存延迟', value: 'xx ms' },
+                { label: '已缓存数据', value: cacheInfo.cachedData },
+                { label: '当前缓存库', value: cacheInfo.currentCache },
+              ]}
+            />
+            <DetailRow
+              items={[
+                { label: '内核状态', value: '正常', hasIndicator: true },
+                { label: '内存占用', value: systemInfo.memoryUsage },
+                { label: 'Goroutine', value: systemInfo.goroutine },
+                { label: 'GC-STW', value: 'xx ms' },
+              ]}
+            />
+          </div>
         </div>
       </div>
     </div>
