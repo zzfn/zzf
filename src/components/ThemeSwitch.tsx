@@ -3,12 +3,13 @@ import { Tooltip } from '@oc/design';
 import classNames from 'classnames';
 import { Sun, SunMoon, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
+
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
 
   interface ThemeTransitionOptions {
-    x?: number; // 鼠标的x坐标
-    y?: number; // 鼠标的y坐标
+    x?: number;
+    y?: number;
   }
 
   const buildThemeTransition = (
@@ -67,14 +68,27 @@ const ThemeSwitch = () => {
   return (
     <div
       className={classNames(
-        'flex items-center gap-1 p-1',
-        'rounded-full bg-muted backdrop-blur-sm',
-        'border border-gray-200/50',
+        'relative flex items-center gap-1 p-1',
+        'border-muted bg-muted/30 rounded-full border backdrop-blur-sm',
         'transition-all duration-300 ease-in-out',
+        'shadow-sm hover:shadow-md',
       )}
     >
+      {/* 活动指示器 */}
+      <div
+        className={classNames(
+          'bg-accent/10 absolute h-8 w-8 rounded-full transition-all duration-300',
+          'pointer-events-none',
+        )}
+        style={{
+          transform: `translateX(${themes.findIndex((t) => t.id === theme) * 36}px)`,
+        }}
+      />
+
       {themes.map((themetarget) => {
         const Icon = themetarget.icon;
+        const isActive = theme === themetarget.id;
+
         return (
           <Tooltip key={themetarget.id} content={themetarget.label}>
             <button
@@ -85,18 +99,18 @@ const ThemeSwitch = () => {
                 });
               }}
               className={classNames(
-                'relative flex h-8 w-8 items-center justify-center',
+                'relative z-10 flex h-8 w-8 items-center justify-center',
                 'rounded-full transition-all duration-300',
-                'text-sm hover:bg-white/50',
-                theme === themetarget.id && 'bg-accent-muted shadow-sm',
-                theme === themetarget.id ? 'text-blue-500' : 'text-gray-500',
+                'hover:bg-muted/50',
+                isActive && 'text-accent',
+                !isActive && 'text-muted',
               )}
             >
               <Icon
                 className={classNames(
-                  'h-5 w-5 transition-transform',
+                  'h-4 w-4 transition-all duration-300',
                   'hover:scale-110',
-                  theme === themetarget.id && 'scale-105',
+                  isActive && 'scale-110',
                 )}
               />
             </button>
@@ -106,4 +120,5 @@ const ThemeSwitch = () => {
     </div>
   );
 };
+
 export default ThemeSwitch;
