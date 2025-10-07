@@ -5,16 +5,33 @@
 @config "../../tailwind.config.js";
 
 @theme {
-  /* Colors */
+  /* Text Colors */
   --color-mint-500: oklch(0.72 0.11 178);
-  --color-onEmphasis: var(--fgColor-onEmphasis);
-  --color-muted: var(--fgColor-muted);
   --color-default: var(--fgColor-default);
   --color-muted: var(--fgColor-muted);
   --color-onEmphasis: var(--fgColor-onEmphasis);
   --color-accent: var(--fgColor-accent);
   --color-accent-emphasis: var(--fgColor-accent-emphasis);
   --color-accent-muted: var(--fgColor-accent-muted);
+  --color-severe: var(--fgColor-severe);
   --color-on-surface: var(--md-sys-color-on-surface);
+
   /* Background Colors */
+  --color-bg-transparent: var(--bgColor-transparent);
+  --color-bg-default: var(--bgColor-default);
+  --color-bg-muted: var(--bgColor-muted);
+  --color-bg-inset: var(--bgColor-inset);
+  --color-bg-emphasis: var(--bgColor-emphasis);
+  --color-bg-neutral-muted: var(--bgColor-neutral-muted);
+  --color-bg-danger-emphasis: var(--bgColor-danger-emphasis);
+  --color-bg-success-muted: var(--bgColor-success-muted);
+  --color-bg-accent: var(--bgColor-accent);
+  --color-bg-accent-emphasis: var(--bgColor-accent-emphasis);
+  --color-bg-accent-muted: var(--bgColor-accent-muted);
+
+  /* Border Colors */
+  --color-border-default: var(--borderColor-default);
+  --color-border-muted: var(--borderColor-muted);
+  --color-border-emphasis: var(--borderColor-emphasis);
+  --color-border-accent-emphasis: var(--borderColor-accent-emphasis);
 }

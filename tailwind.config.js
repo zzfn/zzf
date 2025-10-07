@@ -56,6 +56,15 @@ module.exports = {
         emphasis: 'var(--borderColor-emphasis)',
         'accent-emphasis': 'var(--borderColor-accent-emphasis)',
       },
+      textColor: {
+        default: 'var(--fgColor-default)',
+        muted: 'var(--fgColor-muted)',
+        onEmphasis: 'var(--fgColor-onEmphasis)',
+        accent: 'var(--fgColor-accent)',
+        'accent-emphasis': 'var(--fgColor-accent-emphasis)',
+        'accent-muted': 'var(--fgColor-accent-muted)',
+        severe: 'var(--fgColor-severe)',
+      },
       backgroundColor: {
         transparent: 'var(--bgColor-transparent)',
         default: 'var(--bgColor-default)',
