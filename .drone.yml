@@ -10,7 +10,7 @@ steps:
       SSH_KEY:
         from_secret: ssh_key
   - name: build
-    image: node:18-alpine
+    image: node:20-alpine
     depends_on:
       - clone
     environment:
