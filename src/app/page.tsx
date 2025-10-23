@@ -35,14 +35,14 @@ export default async function Page() {
   const data = await getData();
   const config = await getConfig();
 
-  const heroVars: CSSProperties = {
+  const heroVars = {
     '--hero-surface': 'color-mix(in srgb, var(--bgColor-default) 90%, transparent)',
     '--hero-border': 'color-mix(in srgb, var(--borderColor-accent-emphasis) 45%, transparent)',
     '--hero-shadow':
       '0 36px 68px -44px color-mix(in srgb, var(--fgColor-default) 24%, transparent)',
-  };
+  } as CSSProperties;
 
-  const activityVars: CSSProperties = {
+  const activityVars = {
     '--activity-surface': 'color-mix(in srgb, var(--bgColor-muted) 78%, transparent)',
     '--activity-border': 'color-mix(in srgb, var(--borderColor-muted) 80%, transparent)',
     '--activity-shadow':
@@ -50,9 +50,9 @@ export default async function Page() {
     '--activity-dot-primary': 'var(--bgColor-accent-emphasis)',
     '--activity-dot-secondary': 'color-mix(in srgb, var(--bgColor-accent) 78%, transparent)',
     '--activity-dot-tertiary': 'color-mix(in srgb, var(--bgColor-accent-muted) 92%, transparent)',
-  };
+  } as CSSProperties;
 
-  const cardVars: CSSProperties = {
+  const cardVars = {
     '--card-surface': 'color-mix(in srgb, var(--bgColor-default) 86%, transparent)',
     '--card-border': 'color-mix(in srgb, var(--borderColor-muted) 75%, transparent)',
     '--card-inner-border': 'color-mix(in srgb, var(--borderColor-muted) 68%, transparent)',
@@ -63,12 +63,12 @@ export default async function Page() {
       'linear-gradient(135deg, color-mix(in srgb, var(--bgColor-accent) 28%, transparent), color-mix(in srgb, var(--bgColor-accent-emphasis) 32%, transparent))',
     '--card-tag': 'color-mix(in srgb, var(--bgColor-accent-muted) 95%, transparent)',
     '--card-tag-border': 'color-mix(in srgb, var(--borderColor-muted) 78%, transparent)',
-  };
+  } as CSSProperties;
 
-  const ctaVars: CSSProperties = {
+  const ctaVars = {
     '--cta-glow':
       'conic-gradient(from 180deg, color-mix(in srgb, var(--bgColor-accent) 35%, transparent), color-mix(in srgb, var(--bgColor-accent-emphasis) 40%, transparent), transparent 75%)',
-  };
+  } as CSSProperties;
 
   const activityItems = [
     {

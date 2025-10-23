@@ -7,7 +7,9 @@ export async function POST(request: NextRequest) {
     return Response.json({ message: 'Invalid secret' }, { status: 401 });
   }
   if (Array.isArray(tag)) {
-    tag.forEach(revalidateTag);
+    tag.forEach((t) => {
+      revalidateTag(t,'max');
+    });
     return Response.json({ revalidated: true, now: Date.now() });
   }
 
