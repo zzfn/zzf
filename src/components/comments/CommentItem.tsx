@@ -1,6 +1,7 @@
-import Avatar from '@/app/post/[id]/_components/Avatar';
+import Image from 'next/image';
+import Avatar from '@/components/Avatar';
 import { CommentType } from './type';
-import CommentMeta from '@/app/_components/CommenTree/CommentMeta';
+import CommentMeta from './CommentMeta';
 
 const CommentItem = ({
   comment,
@@ -14,10 +15,12 @@ const CommentItem = ({
       <div className='relative h-10 w-10 shrink-0'>
         <div className='bg-accent/10 absolute inset-0 rounded-full'>
           {comment.appUser?.avatarUrl ? (
-            <img
+            <Image
               src={comment.appUser.avatarUrl}
               alt=''
               className='h-full w-full rounded-full object-cover'
+              width={40}
+              height={40}
             />
           ) : (
             <Avatar userId={comment.username} />

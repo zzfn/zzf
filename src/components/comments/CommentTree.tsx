@@ -1,20 +1,9 @@
 'use client';
 import { useGetComment } from '@/services/comment';
-import TreeItem from '@/app/_components/CommenTree/TreeItem';
-import MainCommentInput from '@/app/_components/CommenTree/MainCommentInput';
+import TreeItem from './TreeItem';
+import MainCommentInput from './MainCommentInput';
 import { SessionProvider } from 'next-auth/react';
-
-interface CommentType {
-  id: string;
-  content: string;
-  username: string;
-  createdAt: string;
-  address?: string;
-  appUser?: {
-    avatarUrl?: string;
-  };
-  replies?: CommentType[];
-}
+import type { CommentType } from './type';
 
 interface CommentTreeProps {
   params: {

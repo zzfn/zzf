@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentTree from '@/app/_components/CommenTree/CommentTree';
+import CommentTree from '@/components/comments/CommentTree';
 import { Metadata } from 'next';
 import { MessageCircle } from 'lucide-react';
 

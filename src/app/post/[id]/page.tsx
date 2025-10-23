@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import Comment from '@/app/_components/CommenTree/CommentTree';
+import Comment from '@/components/comments/CommentTree';
 import { diff, format } from 'utils/time';
 import { Alert, Tooltip } from '@oc/design';
 import { notFound } from 'next/navigation';
@@ -17,7 +17,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import ArticleNav from 'components/ArticleNav';
 import remarkGfm from 'remark-gfm';
-import CodeSandpack from '../../_components/CodeSandpack';
+import CodeSandpack from '@/components/integrations/CodeSandpack';
 import AI from './_components/AI';
 import LinkPreview from '@/components/LinkPreview'; // Added import
 

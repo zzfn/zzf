@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
 import { motion } from 'framer-motion';
-import SignIn from '@/app/_components/SignIn';
+import SignIn from '@/components/auth/SignIn';
 import { useState } from 'react';
 import { useCommentOrReply } from '@/services/comment';
 
@@ -15,7 +15,6 @@ const ReplyInput = ({
 }) => {
   const { data: session } = useSession();
   const [content, setContent] = useState('');
-  const [activeReplyId, setActiveReplyId] = useState<string | null>(null);
   const { trigger } = useCommentOrReply('replies', {
     commentId: parentId,
     content,
@@ -69,7 +68,6 @@ const ReplyInput = ({
             )}
             <button
               onClick={() => {
-                setActiveReplyId(null);
                 setContent('');
               }}
               className='bg-default/5 hover:bg-default/10 rounded-md px-3 py-1.5

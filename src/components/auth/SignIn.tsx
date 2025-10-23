@@ -1,6 +1,6 @@
 'use client';
 import { useFormStatus } from 'react-dom';
-import { signInAction } from './actions';
+import { signInAction } from '@/app/actions/auth';
 
 function SignInButton() {
   const { pending } = useFormStatus();

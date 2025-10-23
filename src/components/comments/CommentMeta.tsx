@@ -1,4 +1,4 @@
-import { CommentType } from '@/app/_components/CommenTree/type';
+import { CommentType } from './type';
 const formatTime = (timestamp: string) => {
   return new Date(timestamp).toLocaleString('zh-CN', {
     year: 'numeric',

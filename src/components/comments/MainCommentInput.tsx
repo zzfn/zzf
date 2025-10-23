@@ -1,8 +1,8 @@
 import { useSession } from 'next-auth/react';
-import SignIn from '@/app/_components/SignIn';
+import SignIn from '@/components/auth/SignIn';
 import { Button, useMessage } from '@oc/design';
 import { useState } from 'react';
-import UserInfo from '@/app/_components/UserInfo';
+import UserInfo from '@/components/auth/UserInfo';
 import { useCommentOrReply, useGithubLogin } from '@/services/comment';
 interface CommentTreeProps {
   params: {
@@ -61,7 +61,6 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
         <textarea
           value={content}
           onChange={(e) => {
-            console.log(111, e.target.value);
             setContent(e.target.value);
           }}
           rows={1}

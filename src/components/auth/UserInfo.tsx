@@ -1,6 +1,8 @@
+'use client';
 import { signOut, useSession } from 'next-auth/react';
-import Avatar from '@/app/post/[id]/_components/Avatar';
+import Image from 'next/image';
 import { LogOut } from 'lucide-react';
+import Avatar from '@/components/Avatar';
 
 const UserInfo = () => {
   const { data: session } = useSession();
@@ -12,10 +14,12 @@ const UserInfo = () => {
           <div className='relative h-8 w-8 shrink-0'>
             <div className='bg-accent/10 absolute inset-0 rounded-full'>
               {session.user.image ? (
-                <img
+                <Image
                   src={session.user.image}
                   alt=''
                   className='h-full w-full rounded-full object-cover'
+                  width={32}
+                  height={32}
                 />
               ) : (
                 <Avatar userId={session.user.name || ''} />

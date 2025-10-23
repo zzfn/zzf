@@ -1,9 +1,9 @@
 'use client';
-import CommentItem from '@/app/_components/CommenTree/CommentItem';
+import CommentItem from './CommentItem';
 import { AnimatePresence, motion } from 'framer-motion';
-import ReplyInput from '@/app/_components/CommenTree/ReplyInput';
+import ReplyInput from './ReplyInput';
 import { useState } from 'react';
-import { CommentType } from '@/app/_components/CommenTree/type';
+import { CommentType } from './type';
 
 function TreeItem({ comment, mutate }: { comment: CommentType; mutate: any }) {
   const [activeReplyId, setActiveReplyId] = useState<string | null>(null);
