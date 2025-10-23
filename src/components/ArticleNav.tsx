@@ -70,7 +70,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
         <motion.div
           // @ts-ignore
           className={classNames(
-            'border-accent-emphasis/10 bg-default/80 rounded-xl border backdrop-blur-sm',
+            'border-border-accent-emphasis/10 bg-bg-default/80 rounded-xl border backdrop-blur-sm',
             'overflow-hidden transition-all duration-300',
           )}
           animate={{
@@ -82,14 +82,14 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
           <div
             className={classNames(
               'relative flex h-10 items-center justify-center',
-              'border-accent-emphasis/10 cursor-pointer border-b',
+              'border-border-accent-emphasis/10 cursor-pointer border-b',
               'font-mono text-sm text-accent-emphasis',
             )}
             onClick={() => setIsExpanded(!isExpanded)}
           >
             <div className='absolute inset-0'>
               <div
-                className='bg-accent-emphasis/5 h-full transition-all'
+                className='bg-bg-accent-emphasis/5 h-full transition-all'
                 style={{ width: `${Math.floor(scrollY * 100)}%` }}
               />
             </div>
@@ -114,7 +114,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
               {hoveredIndex !== null && isExpanded && (
                 <motion.div
                   // @ts-ignore
-                  className='bg-accent-emphasis/5 absolute left-0 -z-[1] rounded-lg'
+                  className='bg-bg-accent-emphasis/5 absolute left-0 -z-[1] rounded-lg'
                   initial={{ top: position.top, height: position.height, opacity: 0 }}
                   animate={{ top: position.top, height: position.height, opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -164,7 +164,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
                 {current === nav.text && (
                   <motion.div
                     // @ts-ignore
-                    className='absolute left-0 top-0 h-full w-0.5 bg-accent-emphasis'
+                    className='absolute left-0 top-0 h-full w-0.5 bg-bg-accent-emphasis'
                     layoutId='activeIndicator'
                   />
                 )}

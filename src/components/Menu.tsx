@@ -23,7 +23,7 @@ const MenuItem = ({ navLinks }: any) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             // @ts-ignore
-            className='bg-emphasis/80 fixed inset-0 z-50 backdrop-blur-sm'
+            className='bg-bg-emphasis/80 fixed inset-0 z-50 backdrop-blur-sm'
             onClick={() => setVisible(false)}
           >
             <motion.div
@@ -32,7 +32,7 @@ const MenuItem = ({ navLinks }: any) => {
               exit={{ y: -20, opacity: 0 }}
               transition={{ type: 'spring', damping: 20 }}
               // @ts-ignore
-              className='bg-default absolute top-16 left-4 w-48 rounded-lg p-2 shadow-lg'
+              className='bg-bg-default absolute top-16 left-4 w-48 rounded-lg p-2 shadow-lg'
               onClick={(e: any) => e.stopPropagation()}
             >
               <nav className='space-y-1'>
@@ -51,8 +51,8 @@ const MenuItem = ({ navLinks }: any) => {
                         className={classNames(
                           'group flex items-center justify-between rounded-md px-3 py-2 text-sm transition-colors',
                           isActive
-                            ? 'bg-accent text-accent'
-                            : 'text-default hover:bg-neutral-muted',
+                            ? 'bg-bg-accent text-accent'
+                            : 'text-default hover:bg-bg-neutral-muted',
                         )}
                         onClick={() => setVisible(false)}
                       >

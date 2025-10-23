@@ -104,7 +104,7 @@ const GlobalSearch = () => {
                             inputRef.current.value = item;
                           }
                         }}
-                        className='hover:bg-accent rounded-full bg-neutral-100 px-4 py-2 text-sm transition-all duration-200 hover:scale-105 hover:text-white'
+                        className='hover:bg-bg-accent rounded-full bg-neutral-100 px-4 py-2 text-sm transition-all duration-200 hover:scale-105 hover:text-white'
                       >
                         {item}
                       </button>
@@ -139,7 +139,7 @@ const GlobalSearch = () => {
 
                 {/* 搜索提示 */}
                 <div className='py-8 text-center'>
-                  <div className='bg-accent/10 text-accent inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm'>
+                  <div className='bg-bg-accent/10 text-accent inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm'>
                     <Search className='h-4 w-4' />
                     <span>开始输入关键词进行搜索</span>
                   </div>

@@ -12,7 +12,7 @@ interface AlertProps {
 
 const variantStyles: Record<AlertVariant, string> = {
   info: 'bg-[color:var(--bgColor-muted)] border-[color:var(--borderColor-muted)]',
-  success: 'bg-success-muted border-[color:var(--borderColor-success-muted)]',
+  success: 'bg-bg-success-muted border-[color:var(--borderColor-success-muted)]',
   warning:
     'bg-[color:var(--bgColor-attention-muted)] border-[color:var(--borderColor-attention-muted)]',
   error: 'bg-[color:var(--bgColor-danger-muted)] border-[color:var(--borderColor-danger-muted)]',

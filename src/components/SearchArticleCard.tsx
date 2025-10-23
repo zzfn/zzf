@@ -9,7 +9,7 @@ type SearchCardProps = {
 
 const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
-    <div className='bg-opacity group rounded-lg border border-default p-4 transition-all hover:border-accent hover:shadow-sm'>
+    <div className='bg-opacity group rounded-lg border border-border-default p-4 transition-all hover:border-border-accent hover:shadow-sm'>
       <div className='mb-3'>
         <Link href={`/post/${dataSource.id}`} className='inline-block'>
           <h3
@@ -20,7 +20,7 @@ const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
               'font-mono text-xl font-bold text-default',
               'transition-colors group-hover:text-accent',
               'relative after:absolute after:bottom-0 after:left-0',
-              'after:h-[2px] after:w-0 after:bg-accent',
+              'after:h-[2px] after:w-0 after:bg-bg-accent',
               'after:transition-all group-hover:after:w-full',
             )}
           />
@@ -40,7 +40,7 @@ const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
       {/* 添加底部元信息 */}
       <div className='mt-4 flex items-center gap-4 text-xs text-muted'>
         <div className='flex items-center gap-1'>
-          <span className='h-1 w-1 rounded-full bg-accent-emphasis'></span>
+          <span className='h-1 w-1 rounded-full bg-bg-accent-emphasis'></span>
           <span>{dataSource.tag}</span>
         </div>
       </div>

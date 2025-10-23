@@ -12,7 +12,7 @@ const UserInfo = () => {
       <div className='mb-4 flex items-center justify-between'>
         <div className='flex items-center gap-3'>
           <div className='relative h-8 w-8 shrink-0'>
-            <div className='bg-accent/10 absolute inset-0 rounded-full'>
+            <div className='bg-bg-accent/10 absolute inset-0 rounded-full'>
               {session.user.image ? (
                 <Image
                   src={session.user.image}
@@ -31,7 +31,7 @@ const UserInfo = () => {
 
         <button
           onClick={() => signOut()}
-          className='hover:bg-default/5 flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs
+          className='hover:bg-bg-default/5 flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs
               text-muted transition-colors duration-200 hover:text-accent'
         >
           <LogOut size={14} />

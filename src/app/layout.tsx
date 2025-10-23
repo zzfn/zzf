@@ -54,7 +54,7 @@ function RootLayout({ children }: { children: ReactNode }) {
           'min-h-screen',
           'flex',
           'flex-col',
-          'bg-default',
+          'bg-bg-default',
           'transition-all',
           'duration-300',
         )}

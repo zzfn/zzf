@@ -9,9 +9,9 @@ function SignInButton() {
     <button
       type='submit'
       disabled={pending}
-      className='flex items-center gap-2 rounded-lg bg-emphasis px-4 
+      className='flex items-center gap-2 rounded-lg bg-bg-emphasis px-4 
         py-2 text-white transition-colors 
-        duration-200 hover:bg-accent-emphasis disabled:opacity-70'
+        duration-200 hover:bg-bg-accent-emphasis disabled:opacity-70'
     >
       {pending ? (
         <svg className='h-5 w-5 animate-spin' viewBox='0 0 24 24'>

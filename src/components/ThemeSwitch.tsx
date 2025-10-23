@@ -86,9 +86,9 @@ const ThemeSwitch = () => {
       style={switchVars}
       className={classNames(
         'relative flex h-10 min-w-[210px] items-center overflow-hidden',
-        'border-muted text-muted rounded-[22px] border bg-[color:var(--switch-surface)]',
+        'border-border-muted text-muted rounded-[22px] border bg-[color:var(--switch-surface)]',
         'backdrop-blur-md transition-[box-shadow,transform] duration-300 ease-in-out',
-        'focus-within:border-accent-emphasis shadow-[var(--switch-shadow)]',
+        'focus-within:border-border-accent-emphasis shadow-[var(--switch-shadow)]',
       )}
     >
       <div

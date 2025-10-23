@@ -101,7 +101,7 @@ export default async function Page() {
             src={config.avatar}
           />
           <div className='flex flex-col gap-y-3'>
-            <h1 className='bg-[linear-gradient(120deg,_var(--fgColor-accent),_var(--fgColor-accent-emphasis))] bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl'>
+            <h1 className='bg-[linear-gradient(120deg,_var(--fgColor-accent),_var(--fgColor-sponsors))] bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl'>
               {config.name}
             </h1>
             <p className='animate-typing w-fit overflow-hidden whitespace-nowrap border-r border-[color:var(--hero-border)] pr-2 font-mono text-xs uppercase tracking-wider text-muted sm:text-sm'>
@@ -142,7 +142,7 @@ export default async function Page() {
                 </h2>
                 <div className='flex items-center gap-3 text-xs text-muted'>
                   <time className='flex items-center gap-1'>
-                    <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-accent-emphasis'></span>
+                    <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-bg-accent-emphasis'></span>
                     {dayjs(post.updatedAt).format('YYYY-MM-DD')}
                   </time>
                   <span className='rounded-md border border-[color:var(--card-tag-border)] bg-[color:var(--card-tag)] px-2 py-0.5 font-mono uppercase tracking-wider text-muted'>
@@ -164,7 +164,7 @@ export default async function Page() {
 
       <Link
         style={ctaVars}
-        className='group relative mt-12 block overflow-hidden rounded-2xl border border-accent-emphasis bg-accent px-10 py-4 text-center transition-transform duration-500 hover:-translate-y-1 sm:mt-16'
+        className='group relative mt-12 block overflow-hidden rounded-2xl border border-border-accent-emphasis bg-bg-accent px-10 py-4 text-center transition-transform duration-500 hover:-translate-y-1 sm:mt-16'
         href='/post'
       >
         <div className='pointer-events-none absolute inset-0 flex items-center justify-center opacity-70'>

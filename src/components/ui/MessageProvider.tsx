@@ -34,7 +34,7 @@ const MessageContext = createContext<MessageApi | null>(null);
 
 const variantStyles: Record<MessageType, string> = {
   info: 'bg-[color:var(--bgColor-muted)] border border-[color:var(--borderColor-muted)] text-default',
-  success: 'bg-success-muted border border-[color:var(--borderColor-success-muted)] text-default',
+  success: 'bg-bg-success-muted border border-[color:var(--borderColor-success-muted)] text-default',
   error:
     'bg-[color:var(--bgColor-danger-muted)] border border-[color:var(--borderColor-danger-muted)] text-default',
   warning:

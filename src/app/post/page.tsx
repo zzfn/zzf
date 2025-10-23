@@ -41,14 +41,14 @@ export default async function Page() {
   return (
     <div className='mx-auto max-w-3xl px-6 py-12'>
       {/* ���部状态区域 */}
-      <div className='border-default mb-10 flex items-end justify-between border-b pb-8'>
+      <div className='border-border-default mb-10 flex items-end justify-between border-b pb-8'>
         <div className='space-y-1'>
           <div className='text-muted flex items-center gap-2 text-sm'>
             <div className='flex gap-1'>
               {[...Array(3)].map((_, i) => (
                 <span
                   key={i}
-                  className='bg-accent-emphasis inline-block h-1 w-1 animate-pulse rounded-full'
+                  className='bg-bg-accent-emphasis inline-block h-1 w-1 animate-pulse rounded-full'
                   style={{ animationDelay: `${i * 200}ms` }}
                 />
               ))}
@@ -66,13 +66,13 @@ export default async function Page() {
                 {data.length.toString().padStart(3, '0')}
               </span>
               <span className='text-muted'>条记录</span>
-              <span className='bg-accent-emphasis inline-flex h-2 w-2 animate-ping rounded-full'></span>
+              <span className='bg-bg-accent-emphasis inline-flex h-2 w-2 animate-ping rounded-full'></span>
             </p>
           </div>
         </div>
 
         <div className='flex items-center gap-1.5 text-xs'>
-          <span className='bg-success-muted h-1.5 w-1.5 animate-pulse rounded-full'></span>
+          <span className='bg-bg-success-muted h-1.5 w-1.5 animate-pulse rounded-full'></span>
           <span className='font-mono'>已连接</span>
         </div>
       </div>
@@ -95,7 +95,7 @@ export default async function Page() {
               <Link
                 key={tag}
                 href={`/tag/${tag}`}
-                className='group bg-opacity border-default text-default hover:border-accent hover:bg-neutral-muted hover:text-accent relative cursor-pointer rounded-md border px-3 py-1.5 text-xs transition-all'
+                className='group bg-opacity border-border-default text-default hover:border-border-accent hover:bg-bg-neutral-muted hover:text-accent relative cursor-pointer rounded-md border px-3 py-1.5 text-xs transition-all'
               >
                 <span className='font-mono'>{tag}</span>
                 <span className='text-muted ml-2 text-xs'>
@@ -123,9 +123,9 @@ export default async function Page() {
                 {/* 年份标题区域 */}
                 <div className='relative flex items-center gap-3'>
                   <div className='relative flex h-6 w-6 items-center justify-center'>
-                    <span className='bg-accent/20 absolute h-6 w-6 animate-ping rounded-full'></span>
-                    <span className='bg-accent/30 absolute h-4 w-4 rounded-full'></span>
-                    <span className='bg-accent-emphasis relative h-2 w-2 rounded-full'></span>
+                    <span className='bg-bg-accent/20 absolute h-6 w-6 animate-ping rounded-full'></span>
+                    <span className='bg-bg-accent/30 absolute h-4 w-4 rounded-full'></span>
+                    <span className='bg-bg-accent-emphasis relative h-2 w-2 rounded-full'></span>
                   </div>
                   <div className='flex items-center gap-3'>
                     <h3 className='text-accent font-mono text-xl font-medium'>{year}</h3>
@@ -139,7 +139,7 @@ export default async function Page() {
                 </div>
 
                 {/* 文章列表 */}
-                <div className='border-default ml-3 space-y-1 border-l pl-8'>
+                <div className='border-border-default ml-3 space-y-1 border-l pl-8'>
                   {articles.map((article: Article) => (
                     <Link
                       key={article.id}
@@ -148,7 +148,7 @@ export default async function Page() {
                     >
                       <div className='flex items-center gap-3 overflow-hidden'>
                         <div className='flex items-center gap-2'>
-                          <span className='bg-accent/40 group-hover:bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
+                          <span className='bg-bg-accent/40 group-hover:bg-bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
                           <span className='text-default group-hover:text-accent font-medium transition-colors'>
                             {article.title}
                           </span>
@@ -156,7 +156,7 @@ export default async function Page() {
 
                         {/* 新文章标记 */}
                         {dayjs().diff(article.createdAt, 'day') < 7 && (
-                          <span className='bg-success-muted shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase'>
+                          <span className='bg-bg-success-muted shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase'>
                             New
                           </span>
                         )}

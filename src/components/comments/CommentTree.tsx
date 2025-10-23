@@ -17,7 +17,7 @@ const CommentTree = ({ params }: CommentTreeProps) => {
     <SessionProvider>
       <div className='space-y-8'>
         {/* 评论统计 */}
-        <div className='flex items-center justify-between border-b border-default pb-4'>
+        <div className='flex items-center justify-between border-b border-border-default pb-4'>
           <div className='flex items-center gap-3'>
             <div className='flex items-center gap-2 text-sm text-muted'>
               <span className='font-mono text-accent'>#</span>
@@ -29,7 +29,7 @@ const CommentTree = ({ params }: CommentTreeProps) => {
             </div>
           </div>
           <div className='flex items-center gap-1.5 text-xs'>
-            <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-success-muted'></span>
+            <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-bg-success-muted'></span>
             <span className='font-mono'>实时对话</span>
           </div>
         </div>

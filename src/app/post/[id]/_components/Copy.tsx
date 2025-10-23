@@ -5,7 +5,7 @@ function Copy({ code }: { code: string }) {
   const message = useMessage();
   return (
     <span
-      className='bg-success-muted text-accent ml-auto hidden cursor-pointer rounded px-2 group-hover:block'
+      className='bg-bg-success-muted text-accent ml-auto hidden cursor-pointer rounded px-2 group-hover:block'
       onClick={async () => {
         await navigator.clipboard.writeText(code);
         message?.add({ content: 'Copied', type: 'success' });

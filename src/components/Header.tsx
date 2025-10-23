@@ -26,7 +26,7 @@ const Header = () => {
         className={classNames(
           'mx-auto flex items-center justify-between px-4 transition-all duration-500',
           count > 100
-            ? 'w-[640px] rounded-full bg-muted py-2 shadow-lg backdrop-blur-md'
+            ? 'w-[640px] rounded-full bg-bg-muted py-2 shadow-lg backdrop-blur-md'
             : 'container',
         )}
       >
@@ -46,7 +46,7 @@ const Header = () => {
             'hidden items-center gap-x-1 md:flex',
             count > 100
               ? ''
-              : 'rounded-full border border-muted bg-muted px-4 py-2 backdrop-blur-md',
+              : 'rounded-full border border-border-muted bg-bg-muted px-4 py-2 backdrop-blur-md',
           )}
         >
           {navLinks.map((link) => (

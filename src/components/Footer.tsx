@@ -26,14 +26,14 @@ const Footer = () => {
                 className='group flex items-center gap-2 rounded-full px-3 py-2 text-muted transition-colors hover:text-accent'
                 href='/api/feed.xml'
               >
-                <span className='bg-muted group-hover:bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
+                <span className='bg-bg-muted group-hover:bg-bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
                 RSS feed
               </Link>
               <Link
                 className='group flex items-center gap-2 rounded-full px-3 py-2 text-muted transition-colors hover:text-accent'
                 href='/about'
               >
-                <span className='bg-muted group-hover:bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
+                <span className='bg-bg-muted group-hover:bg-bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
                 关于
               </Link>
               <Link
@@ -41,7 +41,7 @@ const Footer = () => {
                 target='_blank'
                 href='https://uptime.zzfzzf.com/status/m'
               >
-                <span className='bg-muted group-hover:bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
+                <span className='bg-bg-muted group-hover:bg-bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
                 服务状态
               </Link>
               <Link
@@ -49,7 +49,7 @@ const Footer = () => {
                 target='_blank'
                 href='https://m.zzfzzf.com/share/YjgfEi1urh7EmU6i/zzfzzf.com'
               >
-                <span className='bg-muted group-hover:bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
+                <span className='bg-bg-muted group-hover:bg-bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
                 访问统计
               </Link>
             </div>

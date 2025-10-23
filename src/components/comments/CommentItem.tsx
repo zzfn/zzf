@@ -13,7 +13,7 @@ const CommentItem = ({
   return (
     <div className='flex gap-4'>
       <div className='relative h-10 w-10 shrink-0'>
-        <div className='bg-accent/10 absolute inset-0 rounded-full'>
+        <div className='bg-bg-accent/10 absolute inset-0 rounded-full'>
           {comment.appUser?.avatarUrl ? (
             <Image
               src={comment.appUser.avatarUrl}
