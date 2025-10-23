@@ -1,6 +1,7 @@
 'use client';
 import { Tooltip } from '@oc/design';
 import classNames from 'classnames';
+import type { CSSProperties } from 'react';
 import { Sun, SunMoon, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
@@ -65,33 +66,58 @@ const ThemeSwitch = () => {
     { id: 'dark', icon: Moon, label: '深色' },
   ];
 
+  const normalizedTheme = theme === 'system' ? 'auto' : theme;
+  const activeIndex = Math.max(
+    0,
+    themes.findIndex((item) => item.id === normalizedTheme),
+  );
+
+  const switchVars = {
+    '--switch-surface': 'color-mix(in srgb, var(--bgColor-default) 72%, transparent)',
+    '--switch-shadow':
+      '0 24px 48px -28px color-mix(in srgb, var(--fgColor-default) 28%, transparent)',
+    '--switch-indicator': 'color-mix(in srgb, var(--bgColor-default) 94%, transparent)',
+    '--switch-indicator-inset': '0.25rem',
+  } as any;
+
   return (
     <div
+      role="radiogroup"
+      style={switchVars}
       className={classNames(
-        'relative flex items-center gap-1 p-1',
-        'border-muted bg-muted/30 rounded-full border backdrop-blur-sm',
-        'transition-all duration-300 ease-in-out',
-        'shadow-sm hover:shadow-md',
+        'relative flex h-10 min-w-[210px] items-center overflow-hidden',
+        'rounded-[22px] border border-muted bg-[color:var(--switch-surface)] text-muted',
+        'backdrop-blur-md transition-[box-shadow,transform] duration-300 ease-in-out',
+        'shadow-[var(--switch-shadow)] focus-within:border-accent-emphasis',
       )}
     >
-      {/* 活动指示器 */}
       <div
         className={classNames(
-          'bg-accent/10 absolute h-8 w-8 rounded-full transition-all duration-300',
-          'pointer-events-none',
+          'pointer-events-none absolute left-[var(--switch-indicator-inset)]',
+          'rounded-[18px] bg-[color:var(--switch-indicator)]',
+          'transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
+          'ring-1 ring-inset ring-muted',
         )}
         style={{
-          transform: `translateX(${themes.findIndex((t) => t.id === theme) * 36}px)`,
+          top: 'var(--switch-indicator-inset)',
+          bottom: 'var(--switch-indicator-inset)',
+          width: `calc((100% - (2 * var(--switch-indicator-inset))) / ${themes.length})`,
+          transform: `translateX(${activeIndex * 100}%)`,
         }}
       />
 
       {themes.map((themetarget) => {
         const Icon = themetarget.icon;
-        const isActive = theme === themetarget.id;
+        const isActive = normalizedTheme === themetarget.id;
 
         return (
           <Tooltip key={themetarget.id} content={themetarget.label}>
             <button
+              type="button"
+              role="radio"
+              aria-checked={isActive}
+              aria-label={themetarget.label}
+              tabIndex={isActive ? 0 : -1}
               onClick={(event) => {
                 buildThemeTransition(themetarget.id as any, {
                   x: event.clientX,
@@ -99,18 +125,19 @@ const ThemeSwitch = () => {
                 });
               }}
               className={classNames(
-                'relative z-10 flex h-8 w-8 items-center justify-center',
-                'rounded-full transition-all duration-300',
-                'hover:bg-muted/50',
-                isActive && 'text-accent',
-                !isActive && 'text-muted',
+                'relative z-10 flex h-full flex-1 items-center justify-center',
+                'text-sm font-medium transition-colors duration-200',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--borderColor-accent-emphasis)]',
+                'focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--switch-surface)]',
+                isActive
+                  ? 'text-default'
+                  : 'text-muted hover:text-default',
               )}
             >
               <Icon
                 className={classNames(
-                  'h-4 w-4 transition-all duration-300',
-                  'hover:scale-110',
-                  isActive && 'scale-110',
+                  'h-4 w-4 transition-transform duration-300',
+                  isActive ? 'scale-110' : 'scale-100',
                 )}
               />
             </button>
