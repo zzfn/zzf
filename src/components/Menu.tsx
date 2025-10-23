@@ -1,5 +1,5 @@
 'use client';
-import { IconButton } from '@oc/design';
+import { IconButton } from '@/components/ui';
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -13,7 +13,7 @@ const MenuItem = ({ navLinks }: any) => {
   return (
     <>
       <IconButton onClick={() => setVisible(true)}>
-        <Menu className='text-default transition-colors hover:text-accent' />
+        <Menu className='text-default hover:text-accent transition-colors' />
       </IconButton>
 
       <AnimatePresence>
@@ -32,7 +32,7 @@ const MenuItem = ({ navLinks }: any) => {
               exit={{ y: -20, opacity: 0 }}
               transition={{ type: 'spring', damping: 20 }}
               // @ts-ignore
-              className='absolute left-4 top-16 w-48 rounded-lg bg-default p-2 shadow-lg'
+              className='bg-default absolute top-16 left-4 w-48 rounded-lg p-2 shadow-lg'
               onClick={(e: any) => e.stopPropagation()}
             >
               <nav className='space-y-1'>

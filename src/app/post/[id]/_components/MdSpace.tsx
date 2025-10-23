@@ -1,5 +1,5 @@
 'use client';
-import { Space } from '@oc/design';
+import { Space } from '@/components/ui';
 import { Children, Fragment } from 'react';
 
 const MdSpace = (props: any) => {

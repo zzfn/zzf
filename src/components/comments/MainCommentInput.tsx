@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
 import SignIn from '@/components/auth/SignIn';
-import { Button, useMessage } from '@oc/design';
+import { Button, useMessage } from '@/components/ui';
 import { useState } from 'react';
 import UserInfo from '@/components/auth/UserInfo';
 import { useCommentOrReply, useGithubLogin } from '@/services/comment';
@@ -47,8 +47,8 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
 
   if (!session) {
     return (
-      <div className='animate-fade-in flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed border-default p-6'>
-        <p className='text-sm text-muted'>登录后参与讨论</p>
+      <div className='animate-fade-in border-default flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed p-6'>
+        <p className='text-muted text-sm'>登录后参与讨论</p>
         <SignIn />
       </div>
     );
@@ -64,12 +64,10 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
             setContent(e.target.value);
           }}
           rows={1}
-          className='bg-opacity w-full rounded-lg border border-default p-4 pb-14 text-sm
-              transition-colors duration-200 placeholder:text-muted focus:border-accent focus:outline-none
-              focus:ring-1 focus:ring-accent'
+          className='bg-opacity border-default placeholder:text-muted focus:border-accent focus:ring-accent w-full rounded-lg border p-4 pb-14 text-sm transition-colors duration-200 focus:ring-1 focus:outline-none'
           placeholder={replyTo ? `回复 @${replyTo}...` : '参与讨论...'}
         />
-        <div className='absolute bottom-3 right-3 flex items-center gap-3'>
+        <div className='absolute right-3 bottom-3 flex items-center gap-3'>
           {content && (
             <div className='text-muted/80 bg-default/5 rounded-md px-2 py-1 text-xs'>
               <span className='font-mono tabular-nums'>{content.length}</span>
@@ -81,16 +79,14 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
               {replyTo && (
                 <Button
                   onClick={() => setReplyTo(null)}
-                  className='bg-default/5 hover:bg-default/10 rounded-md px-3 py-1.5
-                      text-xs text-muted transition-colors duration-200 hover:text-accent'
+                  className='bg-default/5 hover:bg-default/10 text-muted hover:text-accent rounded-md px-3 py-1.5 text-xs transition-colors duration-200'
                 >
                   取消回复
                 </Button>
               )}
               <button
                 onClick={handleSubmit}
-                className='flex items-center gap-1.5 rounded-md bg-accent-muted px-4
-                    py-1.5 text-sm font-medium text-muted transition-colors duration-200 hover:bg-accent'
+                className='bg-accent-muted text-muted hover:bg-accent flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors duration-200'
               >
                 <span>发布</span>
                 <span className='font-mono'>→</span>

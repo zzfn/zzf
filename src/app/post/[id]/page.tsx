@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import Comment from '@/components/comments/CommentTree';
 import { diff, format } from 'utils/time';
-import { Alert, Tooltip } from '@oc/design';
+import { Alert, Tooltip } from '@/components/ui';
 import { notFound } from 'next/navigation';
 import ArticleState from './_components/ArticleState';
 import { fetchData } from 'services/api';
@@ -59,7 +59,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
     <ArticleState articleState={data}>
       <div
         style={surfaceVars}
-        className='mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:grid md:grid-cols-[minmax(0,1fr)_320px] md:gap-10'
+        className='mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pt-12 pb-16 md:grid md:grid-cols-[minmax(0,1fr)_320px] md:gap-10'
       >
         <main className='flex flex-col gap-12 md:col-start-1'>
           <section className='rounded-3xl border border-[color:var(--post-shell-border)] bg-[color:var(--post-shell-surface)] p-6 shadow-[var(--post-shell-shadow)] backdrop-blur-md sm:p-8'>
@@ -67,7 +67,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
               {data.title}
             </h1>
             <div className='mt-6 rounded-2xl border border-[color:var(--post-meta-border)] bg-[color:var(--post-meta-surface)] p-4 sm:p-6'>
-              <ul className='flex flex-wrap items-center gap-4 text-sm text-muted'>
+              <ul className='text-muted flex flex-wrap items-center gap-4 text-sm'>
                 <li className='flex items-center gap-2'>
                   <span className='text-default/75'>创建时间</span>
                   <Tooltip content={format(data.createdAt)}>

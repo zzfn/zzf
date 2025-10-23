@@ -1,5 +1,5 @@
 'use client';
-import { IconButton, Modal, Tooltip } from '@oc/design';
+import { IconButton, Modal, Tooltip } from '@/components/ui';
 import { useAtom } from 'jotai/index';
 import { searchAtom } from '../atoms/searchAtoms';
 import { Search, Clock, TrendingUp, X } from 'lucide-react';

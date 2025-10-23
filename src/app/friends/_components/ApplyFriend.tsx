@@ -1,5 +1,5 @@
 'use client';
-import { useMessage, Input, Modal } from '@oc/design';
+import { useMessage, Input, Modal } from '@/components/ui';
 import { useState } from 'react';
 import { fetchData } from '../../../services/api';
 import { produce } from 'immer';

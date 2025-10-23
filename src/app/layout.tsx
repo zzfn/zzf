@@ -6,9 +6,8 @@ import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 import classNames from 'classnames';
-import { ConfigProvider } from '@oc/design';
 import Script from 'next/script';
-import '@oc/design/dist/styles/index.css';
+import { ConfigProvider } from '@/components/ui';
 
 export const metadata: Metadata = {
   title: {

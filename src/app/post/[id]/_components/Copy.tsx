@@ -1,11 +1,11 @@
 'use client';
-import { useMessage } from '@oc/design';
+import { useMessage } from '@/components/ui';
 
 function Copy({ code }: { code: string }) {
   const message = useMessage();
   return (
     <span
-      className='ml-auto hidden cursor-pointer rounded bg-success-muted px-2 text-accent group-hover:block'
+      className='bg-success-muted text-accent ml-auto hidden cursor-pointer rounded px-2 group-hover:block'
       onClick={async () => {
         await navigator.clipboard.writeText(code);
         message?.add({ content: 'Copied', type: 'success' });

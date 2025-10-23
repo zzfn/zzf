@@ -1,5 +1,5 @@
 'use client';
-import { Portal } from '@oc/design';
+import { Portal } from '@/components/ui';
 import { useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence } from 'framer-motion';
