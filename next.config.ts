@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
   },
-  transpilePackages: ['next-mdx-remote'],
   experimental: {
     serverActions: {
       allowedOrigins: ['zzfzzf.com', '*.ooxo.cc'],
