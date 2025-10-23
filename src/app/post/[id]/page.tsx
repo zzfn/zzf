@@ -20,6 +20,7 @@ import remarkGfm from 'remark-gfm';
 import CodeSandpack from '@/components/integrations/CodeSandpack';
 import AI from './_components/AI';
 import LinkPreview from '@/components/LinkPreview'; // Added import
+import type { CSSProperties } from 'react';
 
 async function getData(id: string) {
   return fetchData<Article>({
@@ -41,42 +42,58 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
   if (!data) {
     notFound();
   }
+
+  const surfaceVars = {
+    '--post-shell-surface': 'color-mix(in srgb, var(--bgColor-default) 92%, transparent)',
+    '--post-shell-border': 'color-mix(in srgb, var(--borderColor-muted) 72%, transparent)',
+    '--post-shell-shadow':
+      '0 32px 64px -44px color-mix(in srgb, var(--fgColor-default) 26%, transparent)',
+    '--post-meta-surface': 'color-mix(in srgb, var(--bgColor-muted) 86%, transparent)',
+    '--post-meta-border': 'color-mix(in srgb, var(--borderColor-muted) 78%, transparent)',
+    '--post-meta-divider': 'color-mix(in srgb, var(--borderColor-muted) 60%, transparent)',
+    '--post-comment-surface': 'color-mix(in srgb, var(--bgColor-default) 94%, transparent)',
+    '--post-comment-border': 'color-mix(in srgb, var(--borderColor-muted) 70%, transparent)',
+  } as CSSProperties;
+
   return (
     <ArticleState articleState={data}>
-      <div className='w-full grid-cols-5 gap-x-2 md:grid'>
-        <main className='col-span-4 flex w-full shrink grow-0 basis-full flex-col'>
-          <h1 className='text-default pt-8 text-3xl font-bold'>{data.title}</h1>
-          <div className='my-6 rounded-xl p-6 backdrop-blur'>
-            <ul className='text-muted flex items-center gap-x-4 text-sm'>
-              <li className='flex items-center gap-x-2'>
-                <label>创建时间</label>
-                <Tooltip content={format(data.createdAt)}>
-                  <time>{diff(data.createdAt)}</time>
-                </Tooltip>
-              </li>
-              <li className='flex items-center gap-x-2'>
-                <label>更新时间</label>
-                <Tooltip content={format(data.updatedAt)}>
-                  <time>{diff(data.updatedAt)}</time>
-                </Tooltip>
-              </li>
-              <li className='flex items-center gap-x-2'>
-                <label>浏览量</label>
-                <ArticleCount id={data.id} />
-              </li>
-            </ul>
-            <div className='mt-4 border-t border-gray-100 pt-4'>
-              <AI summary={data.summary} />
+      <div
+        style={surfaceVars}
+        className='mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 md:grid md:grid-cols-[minmax(0,1fr)_320px] md:gap-10'
+      >
+        <main className='flex flex-col gap-12 md:col-start-1'>
+          <section className='rounded-3xl border border-[color:var(--post-shell-border)] bg-[color:var(--post-shell-surface)] p-6 shadow-[var(--post-shell-shadow)] backdrop-blur-md sm:p-8'>
+            <h1 className='text-default text-3xl font-semibold tracking-tight md:text-4xl'>
+              {data.title}
+            </h1>
+            <div className='mt-6 rounded-2xl border border-[color:var(--post-meta-border)] bg-[color:var(--post-meta-surface)] p-4 sm:p-6'>
+              <ul className='flex flex-wrap items-center gap-4 text-sm text-muted'>
+                <li className='flex items-center gap-2'>
+                  <span className='text-default/75'>创建时间</span>
+                  <Tooltip content={format(data.createdAt)}>
+                    <time>{diff(data.createdAt)}</time>
+                  </Tooltip>
+                </li>
+                <li className='flex items-center gap-2'>
+                  <span className='text-default/75'>更新时间</span>
+                  <Tooltip content={format(data.updatedAt)}>
+                    <time>{diff(data.updatedAt)}</time>
+                  </Tooltip>
+                </li>
+                <li className='flex items-center gap-2'>
+                  <span className='text-default/75'>浏览量</span>
+                  <ArticleCount id={data.id} />
+                </li>
+              </ul>
+              <div className='mt-4 border-t border-[color:var(--post-meta-divider)] pt-4'>
+                <AI summary={data.summary} />
+              </div>
             </div>
-          </div>
+          </section>
           <article
             className={classNames(
-              'w-full',
-              'max-w-2xl md:col-span-4',
-              'py-8',
-              'prose',
-              'prose-headings:scroll-mt-20',
-              'mx-auto',
+              'mx-auto w-full max-w-2xl rounded-3xl border border-[color:var(--post-shell-border)] bg-[color:var(--post-shell-surface)] px-6 py-8 shadow-[var(--post-shell-shadow)] backdrop-blur-md',
+              'prose prose-headings:scroll-mt-24',
             )}
           >
             <Suspense fallback={<Loading />}>
@@ -88,12 +105,12 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
                       (props.href.startsWith('http://') || props.href.startsWith('https://'))
                     ) {
                       return (
-                        <LinkPreview href={props.href} className='text-blue-500'>
+                        <LinkPreview href={props.href} className='text-accent'>
                           {props.children}
                         </LinkPreview>
                       );
                     }
-                    return <a target='_blank' className='text-blue-500' {...props} />;
+                    return <a target='_blank' className='text-accent' {...props} />;
                   },
                   img: MdImage,
                   code: MdCode,
@@ -117,9 +134,11 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
               />
             </Suspense>
           </article>
-          <Comment params={{ objectType: 'article', objectId: data.id }} />
+          <section className='rounded-3xl border border-[color:var(--post-comment-border)] bg-[color:var(--post-comment-surface)] p-6 shadow-[var(--post-shell-shadow)] backdrop-blur-md sm:p-8'>
+            <Comment params={{ objectType: 'article', objectId: data.id }} />
+          </section>
         </main>
-        <aside className='col-span-1 hidden h-full w-full shrink-0 grow-1 transform-gpu md:block'>
+        <aside className='hidden h-full w-full shrink-0 md:col-start-2 md:block'>
           <ArticleNav source={data.content} />
         </aside>
       </div>

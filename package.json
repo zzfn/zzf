@@ -24,7 +24,6 @@
     "@formkit/auto-animate": "^0.8.2",
     "@next/third-parties": "15.2.1",
     "@oc/design": "^1.0.3",
-    "@oc/icon": "^0.1.0",
     "@primer/primitives": "^10.4.0",
     "@react-spring/web": "^9.7.5",
     "@tailwindcss/typography": "^0.5.16",

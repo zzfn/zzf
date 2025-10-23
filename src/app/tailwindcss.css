@@ -5,33 +5,64 @@
 @config "../../tailwind.config.js";
 
 @theme {
-  /* Text Colors */
-  --color-mint-500: oklch(0.72 0.11 178);
+  /* Foreground */
   --color-default: var(--fgColor-default);
   --color-muted: var(--fgColor-muted);
   --color-onEmphasis: var(--fgColor-onEmphasis);
   --color-accent: var(--fgColor-accent);
-  --color-accent-emphasis: var(--fgColor-accent-emphasis);
   --color-accent-muted: var(--fgColor-accent-muted);
+  --color-accent-emphasis: var(--fgColor-accent-emphasis);
+  --color-danger: var(--fgColor-danger);
+  --color-success: var(--fgColor-success);
+  --color-attention: var(--fgColor-attention);
   --color-severe: var(--fgColor-severe);
-  --color-on-surface: var(--md-sys-color-on-surface);
+  --color-done: var(--fgColor-done);
+  --color-sponsors: var(--fgColor-sponsors);
+  --color-open: var(--fgColor-open);
 
-  /* Background Colors */
+  /* Background */
   --color-bg-transparent: var(--bgColor-transparent);
   --color-bg-default: var(--bgColor-default);
   --color-bg-muted: var(--bgColor-muted);
   --color-bg-inset: var(--bgColor-inset);
   --color-bg-emphasis: var(--bgColor-emphasis);
+  --color-bg-disabled: var(--bgColor-disabled);
   --color-bg-neutral-muted: var(--bgColor-neutral-muted);
+  --color-bg-accent: var(--bgColor-accent);
+  --color-bg-accent-muted: var(--bgColor-accent-muted);
+  --color-bg-accent-emphasis: var(--bgColor-accent-emphasis);
+  --color-bg-danger-muted: var(--bgColor-danger-muted);
   --color-bg-danger-emphasis: var(--bgColor-danger-emphasis);
   --color-bg-success-muted: var(--bgColor-success-muted);
-  --color-bg-accent: var(--bgColor-accent);
-  --color-bg-accent-emphasis: var(--bgColor-accent-emphasis);
-  --color-bg-accent-muted: var(--bgColor-accent-muted);
+  --color-bg-success-emphasis: var(--bgColor-success-emphasis);
+  --color-bg-attention-muted: var(--bgColor-attention-muted);
+  --color-bg-attention-emphasis: var(--bgColor-attention-emphasis);
+  --color-bg-severe-muted: var(--bgColor-severe-muted);
+  --color-bg-severe-emphasis: var(--bgColor-severe-emphasis);
+  --color-bg-done-muted: var(--bgColor-done-muted);
+  --color-bg-done-emphasis: var(--bgColor-done-emphasis);
+  --color-bg-sponsors-muted: var(--bgColor-sponsors-muted);
+  --color-bg-sponsors-emphasis: var(--bgColor-sponsors-emphasis);
 
-  /* Border Colors */
+  /* Border */
   --color-border-default: var(--borderColor-default);
   --color-border-muted: var(--borderColor-muted);
   --color-border-emphasis: var(--borderColor-emphasis);
+  --color-border-transparent: var(--borderColor-transparent);
+  --color-border-accent: var(--borderColor-accent-muted);
   --color-border-accent-emphasis: var(--borderColor-accent-emphasis);
+  --color-border-danger: var(--borderColor-danger-emphasis);
+  --color-border-danger-muted: var(--borderColor-danger-muted);
+  --color-border-success: var(--borderColor-success-emphasis);
+  --color-border-success-muted: var(--borderColor-success-muted);
+  --color-border-attention: var(--borderColor-attention-emphasis);
+  --color-border-attention-muted: var(--borderColor-attention-muted);
+  --color-border-severe: var(--borderColor-severe-emphasis);
+  --color-border-severe-muted: var(--borderColor-severe-muted);
+  --color-border-done: var(--borderColor-done-emphasis);
+  --color-border-done-muted: var(--borderColor-done-muted);
+  --color-border-sponsors: var(--borderColor-sponsors-emphasis);
+  --color-border-sponsors-muted: var(--borderColor-sponsors-muted);
+  --color-border-neutral: var(--borderColor-neutral-emphasis);
+  --color-border-neutral-muted: var(--borderColor-neutral-muted);
 }
