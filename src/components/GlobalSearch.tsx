@@ -19,13 +19,15 @@ const GlobalSearch = () => {
   const searchHistory = ['JavaScript 基础', 'CSS Grid', 'API 设计'];
 
   useEffect(() => {
-    if (searchVisible) {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      });
-    } else {
-      setKeyword('');
+    if (!searchVisible) {
+      return;
     }
+    const timer = window.setTimeout(() => {
+      inputRef.current?.focus();
+    });
+    return () => {
+      window.clearTimeout(timer);
+    };
   }, [searchVisible]);
 
   const handleInputChange = useDebouncedCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +46,13 @@ const GlobalSearch = () => {
       <Tooltip placement='bottom-end' content='搜索 (⌘K)'>
         <IconButton
           onClick={() => {
-            setSearchVisible(!searchVisible);
+            setSearchVisible((prev) => {
+              const next = !prev;
+              if (!next) {
+                clearSearch();
+              }
+              return next;
+            });
           }}
         >
           <Search className='text-fg-default hover:text-fg-accent transition-all duration-200 hover:scale-110' />
@@ -52,7 +60,10 @@ const GlobalSearch = () => {
       </Tooltip>
 
       <Modal
-        onCancel={() => setSearchVisible(false)}
+        onCancel={() => {
+          clearSearch();
+          setSearchVisible(false);
+        }}
         visible={searchVisible}
         className='!max-w-4xl !p-0'
       >
@@ -66,18 +77,18 @@ const GlobalSearch = () => {
                   ref={inputRef}
                   onChange={handleInputChange}
                   placeholder='搜索你感兴趣的内容...'
-                  className='placeholder:text-fg-muted h-14 w-full rounded-2xl border-0 bg-bg-muted pr-12 pl-12 text-lg transition-all duration-200 focus:bg-bg-white focus:outline-none focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
+                  className='placeholder:text-fg-muted bg-bg-muted focus:bg-bg-white h-14 w-full rounded-2xl border-0 pr-12 pl-12 text-lg transition-all duration-200 focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)] focus:outline-none'
                 />
                 {keyword && (
                   <button
                     onClick={clearSearch}
-                    className='absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 transition-colors hover:bg-bg-neutral-muted'
+                    className='hover:bg-bg-neutral-muted absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 transition-colors'
                   >
                     <X className='text-fg-muted h-4 w-4' />
                   </button>
                 )}
               </div>
-              <kbd className='text-fg-muted hidden items-center gap-1 rounded-lg bg-bg-neutral-muted px-3 py-2 font-mono text-xs sm:flex'>
+              <kbd className='text-fg-muted bg-bg-neutral-muted hidden items-center gap-1 rounded-lg px-3 py-2 font-mono text-xs sm:flex'>
                 ESC
               </kbd>
             </div>
@@ -104,7 +115,7 @@ const GlobalSearch = () => {
                             inputRef.current.value = item;
                           }
                         }}
-                        className='hover:bg-bg-accent rounded-full bg-bg-neutral-muted px-4 py-2 text-sm transition-all duration-200 hover:scale-105 hover:text-fg-onEmphasis'
+                        className='hover:bg-bg-accent bg-bg-neutral-muted hover:text-fg-onEmphasis rounded-full px-4 py-2 text-sm transition-all duration-200 hover:scale-105'
                       >
                         {item}
                       </button>
@@ -128,7 +139,7 @@ const GlobalSearch = () => {
                             inputRef.current.value = item;
                           }
                         }}
-                        className='group flex w-full items-center gap-3 rounded-xl p-3 text-left transition-colors duration-200 hover:bg-bg-neutral-muted'
+                        className='group hover:bg-bg-neutral-muted flex w-full items-center gap-3 rounded-xl p-3 text-left transition-colors duration-200'
                       >
                         <Clock className='text-fg-muted group-hover:text-fg-accent h-4 w-4 transition-colors' />
                         <span className='text-fg-default'>{item}</span>
@@ -150,9 +161,10 @@ const GlobalSearch = () => {
               <div className='flex h-full flex-col'>
                 {/* 结果统计 */}
                 {data && data.length > 0 && (
-                  <div className='border-b border-border-muted px-6 py-3'>
+                  <div className='border-border-muted border-b px-6 py-3'>
                     <span className='text-fg-muted text-sm'>
-                      为 &quot;<span className='text-fg-accent font-medium'>{keyword}</span>&quot; 找到
+                      为 &quot;<span className='text-fg-accent font-medium'>{keyword}</span>&quot;
+                      找到
                       <span className='text-fg-accent mx-1 font-medium'>{data.length}</span>
                       个结果
                     </span>
@@ -171,7 +183,7 @@ const GlobalSearch = () => {
                     </div>
                   ) : (
                     <div className='flex h-full flex-col items-center justify-center space-y-4 text-center'>
-                      <div className='flex h-16 w-16 items-center justify-center rounded-full bg-bg-neutral-muted'>
+                      <div className='bg-bg-neutral-muted flex h-16 w-16 items-center justify-center rounded-full'>
                         <Search className='text-fg-muted h-6 w-6' />
                       </div>
                       <div>

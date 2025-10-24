@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import {
   useFloating,
@@ -21,17 +21,35 @@ interface LinkPreviewProps {
 export default function LinkPreview({ href, children, className }: LinkPreviewProps) {
   const [showPreview, setShowPreview] = useState(false);
   const [previewUrl, setPreviewUrl] = useState('');
-  const arrowRef = useRef(null);
-  const [screenWidth, setScreenWidth] = useState(1920); // Default to a common desktop width
-  const [screenHeight, setScreenHeight] = useState(1080); // Default to a common desktop height
+  const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null);
+  const isBrowser = useMemo(() => typeof window !== 'undefined', []);
+  const [screenWidth, setScreenWidth] = useState(() => (isBrowser ? window.screen.width : 1920));
+  const [screenHeight, setScreenHeight] = useState(() => (isBrowser ? window.screen.height : 1080));
 
   const { refs, floatingStyles, context } = useFloating({
     open: showPreview,
     onOpenChange: setShowPreview,
     placement: 'bottom-start',
     whileElementsMounted: autoUpdate,
-    middleware: [offset(10), flip(), shift(), arrow({ element: arrowRef })],
+    middleware: [offset(10), flip(), shift(), arrow({ element: arrowElement })],
   });
+  const setReference = useCallback(
+    (node: HTMLElement | null) => {
+      refs.setReference(node);
+    },
+    [refs],
+  );
+
+  const setFloating = useCallback(
+    (node: HTMLElement | null) => {
+      refs.setFloating(node);
+    },
+    [refs],
+  );
+
+  const setArrowRef = useCallback((node: HTMLDivElement | null) => {
+    setArrowElement(node);
+  }, []);
 
   const handleMouseEnter = (url: string) => {
     setPreviewUrl(url);
@@ -42,19 +60,21 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
     setShowPreview(false);
   };
 
-  // Ensure the component only runs on the client
-  const [isClient, setIsClient] = useState(false);
-
   useEffect(() => {
-    setIsClient(true);
-    // Get screen dimensions on client side
-    if (typeof window !== 'undefined') {
+    if (!isBrowser) {
+      return undefined;
+    }
+    const handleResize = () => {
       setScreenWidth(window.screen.width);
       setScreenHeight(window.screen.height);
-    }
-  }, []);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isBrowser]);
 
-  if (!isClient) {
+  if (!isBrowser) {
     return (
       <a href={href} target='_blank' className={className}>
         {children}
@@ -68,7 +88,7 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
         href={href}
         target='_blank'
         className={className}
-        ref={refs.setReference}
+        ref={setReference}
         onMouseEnter={() => handleMouseEnter(href)}
         onMouseLeave={handleMouseLeave}
       >
@@ -77,9 +97,9 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
       {showPreview && (
         <FloatingPortal>
           <div
-            ref={refs.setFloating}
+            ref={setFloating}
             style={floatingStyles}
-            className='z-50 rounded-md border border-border-muted bg-bg-default p-2 shadow-lg'
+            className='border-border-muted bg-bg-default z-50 rounded-md border p-2 shadow-lg'
             onMouseEnter={() => setShowPreview(true)}
             onMouseLeave={handleMouseLeave}
           >
@@ -103,7 +123,7 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
               />
             </div>
             <div
-              ref={arrowRef}
+              ref={setArrowRef}
               className='absolute h-2 w-2 rotate-45 bg-[color:var(--color-bg-default)]'
               style={{
                 left: context.middlewareData.arrow?.x,

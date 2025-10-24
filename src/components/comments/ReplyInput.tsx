@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import SignIn from '@/components/auth/SignIn';
 import { useState } from 'react';
 import { useCommentOrReply } from '@/services/comment';
+import type { KeyedMutator } from 'swr';
+import type { Comment } from 'types/comment';
 
 const ReplyInput = ({
   parentId,
@@ -10,7 +12,7 @@ const ReplyInput = ({
   mutate,
 }: {
   parentId: string;
-  mutate: any;
+  mutate: KeyedMutator<Comment[] | undefined>;
   username: string;
 }) => {
   const { data: session } = useSession();
@@ -32,8 +34,8 @@ const ReplyInput = ({
         exit={{ opacity: 0, height: 0 }}
         style={{ overflow: 'hidden' }}
       >
-        <div className='mt-2 flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed border-border-default p-4'>
-          <p className='text-sm text-fg-muted'>登录后回复评论</p>
+        <div className='border-border-default mt-2 flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed p-4'>
+          <p className='text-fg-muted text-sm'>登录后回复评论</p>
           <SignIn />
         </div>
       </motion.div>
@@ -53,13 +55,11 @@ const ReplyInput = ({
             value={content}
             onChange={(e) => setContent(e.target.value)}
             rows={2}
-            className='bg-opacity w-full rounded-lg border border-border-default p-4 pb-14 text-sm
-                transition-colors duration-200 placeholder:text-fg-muted focus:border-border-accent-emphasis focus:outline-none
-                focus:ring-1 focus:ring-border-accent-emphasis'
+            className='bg-opacity border-border-default placeholder:text-fg-muted focus:border-border-accent-emphasis focus:ring-border-accent-emphasis w-full rounded-lg border p-4 pb-14 text-sm transition-colors duration-200 focus:ring-1 focus:outline-none'
             placeholder={`回复 @${username}...`}
             autoFocus
           />
-          <div className='absolute bottom-3 right-3 flex items-center gap-3'>
+          <div className='absolute right-3 bottom-3 flex items-center gap-3'>
             {content && (
               <div className='text-fg-muted/80 bg-bg-default/5 rounded-md px-2 py-1 text-xs'>
                 <span className='font-mono tabular-nums'>{content.length}</span>
@@ -70,15 +70,13 @@ const ReplyInput = ({
               onClick={() => {
                 setContent('');
               }}
-              className='bg-bg-default/5 hover:bg-bg-default/10 rounded-md px-3 py-1.5
-                  text-xs text-fg-muted transition-colors duration-200 hover:text-fg-accent'
+              className='bg-bg-default/5 hover:bg-bg-default/10 text-fg-muted hover:text-fg-accent rounded-md px-3 py-1.5 text-xs transition-colors duration-200'
             >
               取消
             </button>
             <button
               onClick={handleSubmit}
-              className='bg-bg-accent/90 flex items-center gap-1.5 rounded-md px-4
-                  py-1.5 text-sm font-medium text-fg-muted transition-colors duration-200 hover:bg-bg-accent'
+              className='bg-bg-accent/90 text-fg-muted hover:bg-bg-accent flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors duration-200'
             >
               <span>发送</span>
               <span className='font-mono'>→</span>

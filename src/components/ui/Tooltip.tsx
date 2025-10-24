@@ -1,7 +1,7 @@
 'use client';
 
 import type { FocusEvent, MouseEvent, MutableRefObject, ReactElement, ReactNode, Ref } from 'react';
-import { Children, cloneElement, useCallback, useEffect, useId, useRef, useState } from 'react';
+import { Children, cloneElement, useCallback, useEffect, useId, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   FloatingArrow,
@@ -34,22 +34,41 @@ type TooltipChildProps<T extends HTMLElement> = TriggerEventHandlers<T> & {
   [key: string]: unknown;
 };
 
+function mergeRefs<T>(refsToMerge: Array<Ref<T> | undefined>) {
+  return (node: T | null) => {
+    refsToMerge.forEach((ref) => {
+      if (!ref) return;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else {
+        (ref as MutableRefObject<T | null>).current = node;
+      }
+    });
+  };
+}
+
 const Tooltip = <T extends HTMLElement = HTMLElement>({
   content,
   placement = 'top',
   children,
 }: TooltipProps<T>) => {
   const [open, setOpen] = useState(false);
-  const arrowRef = useRef<SVGSVGElement | null>(null);
+  const [arrowElement, setArrowElement] = useState<SVGSVGElement | null>(null);
   const tooltipId = useId();
 
   const { refs, floatingStyles, context } = useFloating<T>({
     placement,
-    middleware: [arrow({ element: arrowRef }), offset(8), flip(), shift({ padding: 8 })],
+    middleware: [arrow({ element: arrowElement }), offset(8), flip(), shift({ padding: 8 })],
     strategy: 'fixed',
     whileElementsMounted: autoUpdate,
     transform: false,
   });
+  const setFloatingRef = useCallback(
+    (node: HTMLElement | null) => {
+      refs.setFloating(node);
+    },
+    [refs],
+  );
 
   useEffect(() => {
     return () => {
@@ -71,17 +90,10 @@ const Tooltip = <T extends HTMLElement = HTMLElement>({
   const ariaDescribedBy = describedBy ? `${describedBy} ${tooltipId}`.trim() : tooltipId;
   const childRef = (child as unknown as { ref?: Ref<T> }).ref;
 
-  const mergedRef = useCallback(
-    (node: T | null) => {
-      if (typeof childRef === 'function') {
-        childRef(node);
-      } else if (childRef && typeof childRef === 'object') {
-        (childRef as MutableRefObject<T | null>).current = node;
-      }
-      refs.setReference(node);
-    },
-    [childRef, refs],
-  );
+  const mergedRef = mergeRefs<T>([childRef, refs.setReference]);
+  const setArrowRef = useCallback((node: SVGSVGElement | null) => {
+    setArrowElement(node);
+  }, []);
 
   const handleMouseEnter = (event: MouseEvent<T>) => {
     childProps.onMouseEnter?.(event);
@@ -119,14 +131,14 @@ const Tooltip = <T extends HTMLElement = HTMLElement>({
         {open ? (
           <Portal>
             <motion.div
-              ref={refs.setFloating}
+              ref={setFloatingRef}
               id={tooltipId}
               role='tooltip'
               aria-hidden={!open}
               className={classNames(
                 'pointer-events-none z-[999] max-w-xs',
                 'rounded-[var(--borderRadius-medium)] bg-[color:var(--bgColor-emphasis)]',
-                'text-[length:var(--text-body-size-medium)] text-fg-onEmphasis',
+                'text-fg-onEmphasis text-[length:var(--text-body-size-medium)]',
                 'leading-[var(--text-body-lineHeight-medium)]',
               )}
               style={floatingStyles}
@@ -136,7 +148,7 @@ const Tooltip = <T extends HTMLElement = HTMLElement>({
               transition={{ duration: 0.16, ease: [0.3, 0, 0.5, 1] }}
             >
               <FloatingArrow
-                ref={arrowRef}
+                ref={setArrowRef}
                 context={context}
                 className='fill-[color:var(--bgColor-emphasis)] stroke-none'
               />

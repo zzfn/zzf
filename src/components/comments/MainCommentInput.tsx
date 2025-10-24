@@ -4,12 +4,14 @@ import { Button, useMessage } from '@/components/ui';
 import { useState } from 'react';
 import UserInfo from '@/components/auth/UserInfo';
 import { useCommentOrReply, useGithubLogin } from '@/services/comment';
+import type { KeyedMutator } from 'swr';
+import type { Comment } from 'types/comment';
 interface CommentTreeProps {
   params: {
     objectId: string;
     objectType: string;
   };
-  mutate: any;
+  mutate: KeyedMutator<Comment[] | undefined>;
 }
 
 function MainCommentInput({ params, mutate }: CommentTreeProps) {
@@ -37,6 +39,7 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
       setReplyTo(null);
       message?.add({ content: '发布成功' });
     } catch (error) {
+      console.error(error);
       message?.add({ content: '发布失败', type: 'error' });
     }
   };

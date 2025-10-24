@@ -1,10 +1,10 @@
 'use client';
 import { Portal } from '@/components/ui';
 import { useState } from 'react';
-import Image from 'next/image';
+import Image, { type ImageProps } from 'next/image';
 import { AnimatePresence } from 'framer-motion';
 
-const MdImage = (props: any) => {
+const MdImage = ({ onClick, alt, ...rest }: ImageProps) => {
   const [visible, setVisible] = useState(false);
   return (
     <>
@@ -19,9 +19,12 @@ const MdImage = (props: any) => {
         }}
         width={4}
         height={3}
-        onClick={() => setVisible(true)}
-        alt={props.alt}
-        {...props}
+        onClick={(event) => {
+          setVisible(true);
+          onClick?.(event);
+        }}
+        alt={alt}
+        {...rest}
       />
       <AnimatePresence>
         {visible && (
@@ -35,8 +38,8 @@ const MdImage = (props: any) => {
                 objectFit: 'scale-down',
               }}
               onClick={() => setVisible(false)}
-              alt={props.alt}
-              {...props}
+              alt={alt}
+              {...rest}
             />
           </Portal>
         )}

@@ -1,11 +1,13 @@
 import path from 'path';
 
 const buildEslintCommand = (filenames) =>
-  `next lint --fix --file ${filenames
+  `eslint --fix --max-warnings=0 ${filenames
     .map((f) => path.relative(process.cwd(), f))
-    .join(' --file ')}`;
+    .join(' ')}`;
 
-export default {
+const config = {
   '*.{js,jsx,ts,tsx}': [buildEslintCommand, 'prettier --write'],
   '*.(scss|css)': ['stylelint --fix', 'prettier --write'],
 };
+
+export default config;

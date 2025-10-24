@@ -1,28 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+
+function subscribe(query: string, callback: () => void) {
+  if (typeof window === 'undefined') {
+    return () => undefined;
+  }
+
+  const mediaQueryList = window.matchMedia(query);
+  const handler = () => callback();
+  mediaQueryList.addEventListener('change', handler);
+
+  return () => {
+    mediaQueryList.removeEventListener('change', handler);
+  };
+}
+
+function getSnapshot(query: string) {
+  return typeof window !== 'undefined' ? window.matchMedia(query).matches : false;
+}
 
 function useMediaQuery(query: string) {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const mediaQueryList = window.matchMedia(query);
-
-    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-      setMatches(event.matches);
-    };
-
-    // 设置初始状态
-    setMatches(mediaQueryList.matches);
-
-    // 添加事件监听器
-    mediaQueryList.addEventListener('change', handleMediaQueryChange);
-
-    // 清除事件监听器
-    return () => {
-      mediaQueryList.removeEventListener('change', handleMediaQueryChange);
-    };
-  }, [query]);
-
-  return matches;
+  return useSyncExternalStore(
+    (listener) => subscribe(query, listener),
+    () => getSnapshot(query),
+    () => false,
+  );
 }
 
 export default useMediaQuery;

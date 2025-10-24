@@ -16,18 +16,24 @@ async function CodeBlock({ code, lang }: { code: string; lang: string }) {
 
   return <div dangerouslySetInnerHTML={{ __html: out }} />;
 }
-const MdCode = (props: any) => {
-  const lang = props.className?.replace('language-', '');
-  if (!props.className) {
-    return <code>{props.children}</code>;
+type MdCodeProps = {
+  className?: string;
+  children: string | string[];
+};
+
+const MdCode = ({ className, children }: MdCodeProps) => {
+  const code = Array.isArray(children) ? children.join('') : children;
+  const lang = className?.replace('language-', '');
+  if (!className) {
+    return <code>{code}</code>;
   }
   return (
     <>
-      <div className='absolute right-2 top-2 z-20 flex justify-end'>
+      <div className='absolute top-2 right-2 z-20 flex justify-end'>
         {lang && <span className='block px-2 group-hover:hidden'>{lang}</span>}
-        <Copy code={props.children} />
+        <Copy code={code} />
       </div>
-      <CodeBlock code={props.children} lang={lang}></CodeBlock>
+      <CodeBlock code={code} lang={lang ?? 'text'}></CodeBlock>
     </>
   );
 };

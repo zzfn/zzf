@@ -6,6 +6,13 @@ import Image from 'next/image';
 import dayjs from 'dayjs';
 import type { CSSProperties } from 'react';
 
+type SiteConfig = {
+  avatar: string;
+  name: string;
+  slug: string;
+  [key: string]: unknown;
+};
+
 export const metadata: Metadata = {
   title: '👋奇趣生活实验室',
 };
@@ -26,7 +33,7 @@ async function getData() {
 }
 
 async function getConfig() {
-  return fetchData<Record<string, any>>({
+  return fetchData<SiteConfig>({
     endpoint: '/v1/config/site',
   });
 }
@@ -56,7 +63,8 @@ export default async function Page() {
     '--card-surface': 'color-mix(in srgb, var(--bgColor-default) 86%, transparent)',
     '--card-border': 'color-mix(in srgb, var(--borderColor-muted) 75%, transparent)',
     '--card-inner-border': 'color-mix(in srgb, var(--borderColor-muted) 68%, transparent)',
-    '--card-shadow': '0 28px 60px -38px color-mix(in srgb, var(--fgColor-default) 22%, transparent)',
+    '--card-shadow':
+      '0 28px 60px -38px color-mix(in srgb, var(--fgColor-default) 22%, transparent)',
     '--card-shadow-hover':
       '0 30px 66px -34px color-mix(in srgb, var(--fgColor-default) 32%, transparent)',
     '--card-overlay':
@@ -87,7 +95,7 @@ export default async function Page() {
 
   return (
     <div className='mx-auto max-w-3xl px-4 py-10 sm:py-12'>
-      <div className='mb-12 animate-fade-in'>
+      <div className='animate-fade-in mb-12'>
         <div
           style={heroVars}
           className='flex items-center gap-8 rounded-3xl border border-[color:var(--hero-border)] bg-[color:var(--hero-surface)] p-6 shadow-[var(--hero-shadow)] backdrop-blur-md transition-transform duration-500 hover:-translate-y-1 sm:p-8'
@@ -104,7 +112,7 @@ export default async function Page() {
             <h1 className='bg-[linear-gradient(120deg,_var(--fgColor-accent),_var(--fgColor-sponsors))] bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl'>
               {config.name}
             </h1>
-            <p className='animate-typing w-fit overflow-hidden whitespace-nowrap border-r border-[color:var(--hero-border)] pr-2 font-mono text-xs uppercase tracking-wider text-fg-muted sm:text-sm'>
+            <p className='animate-typing text-fg-muted w-fit overflow-hidden border-r border-[color:var(--hero-border)] pr-2 font-mono text-xs tracking-wider whitespace-nowrap uppercase sm:text-sm'>
               {config.slug}
             </p>
           </div>
@@ -115,10 +123,10 @@ export default async function Page() {
         style={activityVars}
         className='mb-12 rounded-2xl border border-[color:var(--activity-border)] bg-[color:var(--activity-surface)] p-6 shadow-[var(--activity-shadow)] backdrop-blur-md sm:p-8'
       >
-        <h2 className='mb-5 text-base font-medium text-fg-default sm:text-lg'>最近在做什么 ⚡️</h2>
+        <h2 className='text-fg-default mb-5 text-base font-medium sm:text-lg'>最近在做什么 ⚡️</h2>
         <div className='space-y-4'>
           {activityItems.map((item) => (
-            <div key={item.label} className='flex items-center gap-3 text-sm text-fg-muted'>
+            <div key={item.label} className='text-fg-muted flex items-center gap-3 text-sm'>
               <span className={`h-2.5 w-2.5 rounded-full ${item.dotClass}`}></span>
               <span>{item.label}</span>
             </div>
@@ -137,15 +145,15 @@ export default async function Page() {
             <div className='relative rounded-2xl border border-[color:var(--card-inner-border)] bg-[color:var(--card-surface)] p-6'>
               <div className='absolute inset-0 rounded-2xl bg-[var(--card-overlay)] opacity-70'></div>
               <div className='relative flex flex-col gap-4'>
-                <h2 className='line-clamp-2 font-mono text-lg font-medium text-fg-default/90'>
+                <h2 className='text-fg-default/90 line-clamp-2 font-mono text-lg font-medium'>
                   {post.title}
                 </h2>
-                <div className='flex items-center gap-3 text-xs text-fg-muted'>
+                <div className='text-fg-muted flex items-center gap-3 text-xs'>
                   <time className='flex items-center gap-1'>
-                    <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-bg-accent-emphasis'></span>
+                    <span className='bg-bg-accent-emphasis h-1.5 w-1.5 animate-pulse rounded-full'></span>
                     {dayjs(post.updatedAt).format('YYYY-MM-DD')}
                   </time>
-                  <span className='rounded-md border border-[color:var(--card-tag-border)] bg-[color:var(--card-tag)] px-2 py-0.5 font-mono uppercase tracking-wider text-fg-muted'>
+                  <span className='text-fg-muted rounded-md border border-[color:var(--card-tag-border)] bg-[color:var(--card-tag)] px-2 py-0.5 font-mono tracking-wider uppercase'>
                     {post.tag}
                   </span>
                 </div>
@@ -153,7 +161,7 @@ export default async function Page() {
             </div>
 
             <div className='absolute inset-0 flex items-center justify-center bg-[var(--card-overlay)] opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100'>
-              <div className='flex items-center gap-2 text-fg-onEmphasis'>
+              <div className='text-fg-onEmphasis flex items-center gap-2'>
                 <span className='font-mono tracking-wider'>VIEW POST</span>
                 <span className='animate-pulse'>_</span>
               </div>
@@ -164,13 +172,13 @@ export default async function Page() {
 
       <Link
         style={ctaVars}
-        className='group relative mt-12 block overflow-hidden rounded-2xl border border-border-accent-emphasis bg-bg-accent px-10 py-4 text-center transition-transform duration-500 hover:-translate-y-1 sm:mt-16'
+        className='group border-border-accent-emphasis bg-bg-accent relative mt-12 block overflow-hidden rounded-2xl border px-10 py-4 text-center transition-transform duration-500 hover:-translate-y-1 sm:mt-16'
         href='/post'
       >
         <div className='pointer-events-none absolute inset-0 flex items-center justify-center opacity-70'>
           <div className='h-[380%] w-[220%] animate-spin bg-[var(--cta-glow)] blur-2xl'></div>
         </div>
-        <span className='relative flex items-center justify-center gap-2 font-mono text-sm font-medium text-fg-accent'>
+        <span className='text-fg-accent relative flex items-center justify-center gap-2 font-mono text-sm font-medium'>
           <span>EXPLORE MORE</span>
           <span className='animate-pulse'>_</span>
         </span>

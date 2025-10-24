@@ -17,11 +17,21 @@ const Portal = ({ children, container, className }: PortalProps) => {
     if (typeof document === 'undefined') return;
 
     if (container) {
-      if (className) {
-        container.className = `${container.className} ${className}`.trim();
+      const target = container;
+      const classes = className
+        ? className
+            .split(' ')
+            .map((item) => item.trim())
+            .filter(Boolean)
+        : [];
+      if (classes.length > 0) {
+        target.classList.add(...classes);
       }
-      setMountNode(container);
-      return;
+      return () => {
+        if (classes.length > 0) {
+          target.classList.remove(...classes);
+        }
+      };
     }
 
     const element = document.createElement('div');
@@ -29,18 +39,23 @@ const Portal = ({ children, container, className }: PortalProps) => {
       element.className = className;
     }
     document.body.appendChild(element);
-    setMountNode(element);
+    const rafId = window.requestAnimationFrame(() => {
+      setMountNode(element);
+    });
 
     return () => {
+      window.cancelAnimationFrame(rafId);
       document.body.removeChild(element);
     };
   }, [container, className]);
 
-  if (!mountNode) {
+  const targetNode = container ?? mountNode;
+
+  if (!targetNode) {
     return null;
   }
 
-  return createPortal(children, mountNode);
+  return createPortal(children, targetNode);
 };
 
 export default Portal;

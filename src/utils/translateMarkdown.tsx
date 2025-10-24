@@ -11,7 +11,7 @@ export const translateMarkdown = (text = '') => {
 };
 
 export function getTitle(source: string) {
-  let nav: string[] = [];
+  const nav: string[] = [];
   const renderer = new marked.Renderer();
   renderer.heading = function (text, level) {
     nav.push(`${'#'.repeat(level)} ${text}`);

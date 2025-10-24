@@ -1,6 +1,7 @@
 // services/search.ts
 
 import useSWR from 'swr';
+import type { Article } from 'types/article';
 import { fetchData } from './api';
 
 type SearchOptions = {
@@ -8,12 +9,15 @@ type SearchOptions = {
 };
 
 export function useSearch({ keyword }: SearchOptions) {
-  const { data = [] } = useSWR<any[]>(() => {
-    if (!keyword) return null;
-    const endpoint = '/v1/articles/search/es';
-    const queryParams = { keyword };
-    return { endpoint, queryParams };
-  }, fetchData);
+  const { data = [] } = useSWR<Article[] | null>(
+    () => {
+      if (!keyword) return null;
+      const endpoint = '/v1/articles/search/es';
+      const queryParams = { keyword };
+      return { endpoint, queryParams };
+    },
+    (config) => fetchData<Article[]>(config),
+  );
 
-  return { data };
+  return { data: data ?? [] };
 }

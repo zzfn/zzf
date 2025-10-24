@@ -1,7 +1,10 @@
 'use client';
 import { Sandpack } from '@codesandbox/sandpack-react';
+import type { ComponentProps } from 'react';
 
-const CodeSandpack = (props: any) => {
+type CodeSandpackProps = ComponentProps<typeof Sandpack>;
+
+const CodeSandpack = (props: CodeSandpackProps) => {
   return (
     <Sandpack
       {...props}

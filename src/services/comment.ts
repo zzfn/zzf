@@ -1,22 +1,48 @@
-import { fetchData } from './api';
-import useSWRMutation from 'swr/mutation';
 import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
+import type { Comment } from 'types/comment';
+import { fetchData, type FetchConfig } from './api';
 
-export const useGetComment = ({
-  objectType,
-  objectId,
-}: {
+type CommentQuery = {
   objectType: string;
   objectId: string;
-}) => {
-  return useSWR<any[]>(() => {
-    const endpoint = '/v1/comments';
-    const queryParams = { objectType, objectId };
-    return { endpoint, queryParams };
-  }, fetchData);
 };
-export const useCommentOrReply = (action: string, body: any) => {
-  return useSWRMutation(
+
+type CommentPayload = {
+  objectId: string;
+  objectType: string;
+  content: string;
+  username?: string | null;
+};
+
+type ReplyPayload = {
+  commentId: string;
+  content: string;
+  username?: string | null;
+};
+
+type GithubLoginPayload = {
+  username?: string | null;
+  avatarUrl?: string | null;
+};
+
+type CommentAction = 'comments' | 'replies';
+
+const swrFetcher = <T>(config: FetchConfig) => fetchData<T>(config);
+
+export const useGetComment = ({ objectType, objectId }: CommentQuery) => {
+  return useSWR<Comment[]>(
+    () => {
+      const endpoint = '/v1/comments';
+      const queryParams = { objectType, objectId };
+      return { endpoint, queryParams };
+    },
+    (config) => swrFetcher<Comment[]>(config),
+  );
+};
+
+export const useCommentOrReply = (action: CommentAction, body: CommentPayload | ReplyPayload) => {
+  return useSWRMutation<unknown, Error, FetchConfig>(
     {
       endpoint: `/v1/${action}`,
       fetchParams: {
@@ -27,12 +53,12 @@ export const useCommentOrReply = (action: string, body: any) => {
         },
       },
     },
-    fetchData,
+    (config) => swrFetcher<unknown>(config),
   );
 };
 
-export const useGithubLogin = (body: any) => {
-  return useSWRMutation(
+export const useGithubLogin = (body: GithubLoginPayload) => {
+  return useSWRMutation<unknown, Error, FetchConfig>(
     {
       endpoint: `/v1/app-users/github/login`,
       fetchParams: {
@@ -43,6 +69,6 @@ export const useGithubLogin = (body: any) => {
         },
       },
     },
-    fetchData,
+    (config) => swrFetcher<unknown>(config),
   );
 };

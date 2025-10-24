@@ -8,7 +8,16 @@ import { useAtomValue } from 'jotai';
 import { useSelectedLayoutSegment } from 'next/navigation';
 import { articleAtom } from 'atoms/articleAtoms';
 
-const Navigation = ({ navLinks }: any) => {
+type NavigationLink = {
+  href: string;
+  name: string;
+};
+
+type NavigationProps = {
+  navLinks: NavigationLink[];
+};
+
+const Navigation = ({ navLinks }: NavigationProps) => {
   const [isShow, setIsShow] = useState(false);
   const pathname = usePathname();
   const params = useParams();
@@ -23,7 +32,7 @@ const Navigation = ({ navLinks }: any) => {
     <span>{atomValue?.title}</span>
   ) : (
     <>
-      {navLinks.map((link: any) => {
+      {navLinks.map((link) => {
         const isActive = segment === link.href;
 
         return (

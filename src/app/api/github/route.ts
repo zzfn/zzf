@@ -22,13 +22,13 @@ type GithubUser = {
   type: string;
   site_admin: boolean;
   name: string;
-  company?: any;
+  company?: string | null;
   blog: string;
   location: string;
-  email?: any;
-  hireable?: any;
-  bio?: any;
-  twitter_username?: any;
+  email?: string | null;
+  hireable?: boolean | null;
+  bio?: string | null;
+  twitter_username?: string | null;
   public_repos: number;
   public_gists: number;
   followers: number;
@@ -38,7 +38,6 @@ type GithubUser = {
 };
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
   const url = new URL('https://github.com/login/oauth/access_token');
   url.searchParams.append('client_id', process.env.GITHUB_CLIENT_ID as string);
   url.searchParams.append('client_secret', process.env.GITHUB_CLIENT_SECRET as string);
@@ -58,7 +57,7 @@ export async function GET(request: NextRequest) {
   const json: GithubUser = await response1.json();
   // (await cookies()).set('username', json.login);
   // (await cookies()).set('avatarUrl', json.avatarUrl);
-  const res = await fetchData<any>({
+  await fetchData<unknown>({
     endpoint: '/v1/app-users/github/login',
     fetchParams: {
       method: 'post',

@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { getTitle } from 'utils/translateMarkdown';
 import classNames from 'classnames';
 import { AnimatePresence, useMotionValueEvent, useScroll, motion } from 'framer-motion';
@@ -14,11 +14,12 @@ interface NavProps {
   source: string;
 }
 
-const ArticleNav: React.FC<NavProps> = ({ source }) => {
+const ArticleNav = ({ source }: NavProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [position, setPosition] = useState<{ top: number; height: number }>({ top: 0, height: 0 });
-  const [list, setList] = useState<NavData[]>([]);
-  const [current, setCurrent] = useState<string>('');
+  const [current, setCurrent] = useState<string>(() =>
+    typeof window !== 'undefined' ? window.location.hash.replace('#', '') : '',
+  );
   const [scrollY, setScrollY] = useState<number>(0);
   const [isExpanded, setIsExpanded] = useState(true);
   const { scrollYProgress } = useScroll();
@@ -28,17 +29,19 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
     setScrollY(latest);
   });
 
-  useEffect(() => {
-    setCurrent(window.location.hash.replace('#', ''));
+  const list = useMemo<NavData[]>(() => {
     const matchResult = getTitle(source);
-    if (matchResult) {
-      const navData: NavData[] = matchResult.map((r, i) => ({
-        index: i,
-        level: r.match(/^#+/g)?.[0].length || 0,
-        text: r.replace(/#+\s(\S+)\n*/g, '$1'),
-      }));
-      setList(navData);
+    if (!matchResult) {
+      return [];
     }
+    return matchResult.map((r, index) => ({
+      index,
+      level: r.match(/^#+/g)?.[0].length || 0,
+      text: r.replace(/#+\s(\S+)\n*/g, '$1'),
+    }));
+  }, [source]);
+
+  useEffect(() => {
     const navObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -55,20 +58,23 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
         threshold: 0.5,
       },
     );
-    document.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(function (ele) {
+    const headings = Array.from(document.querySelectorAll<HTMLElement>('h1,h2,h3,h4,h5,h6'));
+    headings.forEach((ele) => {
       navObserver.observe(ele);
     });
+
+    return () => {
+      navObserver.disconnect();
+    };
   }, [source]);
 
   return (
     <div className='sticky top-20'>
       <motion.div
-        // @ts-ignore
         className={classNames('right-4 z-50 md:relative md:right-0', 'transition-all duration-300')}
         animate={{ width: isExpanded ? '240px' : '40px' }}
       >
         <motion.div
-          // @ts-ignore
           className={classNames(
             'border-border-accent-emphasis/10 bg-bg-default/80 rounded-xl border backdrop-blur-sm',
             'overflow-hidden transition-all duration-300',
@@ -83,7 +89,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             className={classNames(
               'relative flex h-10 items-center justify-center',
               'border-border-accent-emphasis/10 cursor-pointer border-b',
-              'font-mono text-sm text-fg-accent',
+              'text-fg-accent font-mono text-sm',
             )}
             onClick={() => setIsExpanded(!isExpanded)}
           >
@@ -94,7 +100,6 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
               />
             </div>
             <span className='relative'>{Math.floor(scrollY * 100)}%</span>
-            {/*@ts-ignore*/}
             <motion.div className='absolute right-2' animate={{ rotate: isExpanded ? 180 : 0 }}>
               ▼
             </motion.div>
@@ -103,7 +108,6 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
           {/* 导航列表 */}
           <motion.ul
             ref={ulRef}
-            // @ts-ignore
             className={classNames(
               'relative max-h-[70vh] overflow-y-auto py-2',
               'scrollbar-thin scrollbar-track-transparent scrollbar-thumb-accent-emphasis/20',
@@ -113,8 +117,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             <AnimatePresence>
               {hoveredIndex !== null && isExpanded && (
                 <motion.div
-                  // @ts-ignore
-              className='bg-bg-accent-emphasis/5 absolute left-0 -z-[1] rounded-lg'
+                  className='bg-bg-accent-emphasis/5 absolute left-0 -z-[1] rounded-lg'
                   initial={{ top: position.top, height: position.height, opacity: 0 }}
                   animate={{ top: position.top, height: position.height, opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -127,14 +130,15 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             {list.map((nav, index) => (
               <motion.li
                 key={nav.index}
-                // @ts-ignore
                 onMouseEnter={(e) => {
                   if (!isExpanded) return;
                   setHoveredIndex(index);
                   const liRect = e.currentTarget.getBoundingClientRect();
-                  const ulRect = ulRef.current!.getBoundingClientRect();
+                  const ulElement = ulRef.current;
+                  if (!ulElement) return;
+                  const ulRect = ulElement.getBoundingClientRect();
                   setPosition({
-                    top: liRect.top - ulRect.top + ulRef.current!.scrollTop,
+                    top: liRect.top - ulRect.top + ulElement.scrollTop,
                     height: liRect.height,
                   });
                 }}
@@ -153,7 +157,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
                   href={`#${nav.text}`}
                   onClick={() => setCurrent(nav.text)}
                   className={classNames(
-                    'block truncate text-sm text-fg-muted',
+                    'text-fg-muted block truncate text-sm',
                     'transition-colors duration-200',
                     'hover:text-fg-accent',
                     current === nav.text && 'text-fg-accent',
@@ -163,8 +167,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
                 </a>
                 {current === nav.text && (
                   <motion.div
-                    // @ts-ignore
-                    className='absolute left-0 top-0 h-full w-0.5 bg-bg-accent-emphasis'
+                    className='bg-bg-accent-emphasis absolute top-0 left-0 h-full w-0.5'
                     layoutId='activeIndicator'
                   />
                 )}

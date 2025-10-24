@@ -1,6 +1,11 @@
+import type { ReactNode } from 'react';
 import styles from './AI.module.css';
 
-const AI = ({ summary }: any) => {
+type AIProps = {
+  summary: ReactNode;
+};
+
+const AI = ({ summary }: AIProps) => {
   return (
     <div className={styles.aiWrapper}>
       <div className={styles.aiCard}>

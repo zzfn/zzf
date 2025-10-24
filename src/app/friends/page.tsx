@@ -1,6 +1,4 @@
-import React from 'react';
 import { Metadata } from 'next';
-import classNames from 'classnames';
 import Image from 'next/image';
 import { fetchData } from '../../services/api';
 import ApplyFriend from './_components/ApplyFriend';
@@ -9,64 +7,15 @@ import { shapes } from '@dicebear/collection';
 export const metadata: Metadata = {
   title: '朋友们',
 };
-const CardBio = ({ dataSource }: CardProps) => {
-  const { name, description, url } = dataSource;
-  const avatar = createAvatar(shapes, {
-    seed: url,
-    flip: true,
-  });
-  return (
-    <a
-      rel='noreferrer'
-      target='_blank'
-      href={url}
-      className={classNames(
-        'flex',
-        'flex-col',
-        'rounded-lg',
-        'p-6',
-        'hover:bg-bg-neutral-muted',
-        'transition-all',
-        'duration-300',
-        'hover:shadow-lg',
-        'hover:-translate-y-1',
-        'justify-center',
-        'items-center',
-        'bg-bg-white/50',
-        'backdrop-blur-sm',
-      )}
-    >
-      <Image
-        width={100}
-        height={100}
-        className={classNames(
-          'w-20',
-          'h-20',
-          'rounded-full',
-          'mb-4',
-          'border-4',
-          'border-[color:var(--color-bg-white)]',
-          'shadow-md',
-        )}
-        src={avatar.toDataUri()}
-        alt={name}
-      />
-      <strong className='text-fg-accent mb-2 text-lg'>{name}</strong>
-      <p className='text-fg-muted text-center text-sm'>{description}</p>
-    </a>
-  );
-};
 type FriendCard = {
+  id: string;
   logo: string;
   name: string;
   description: string;
   url: string;
 };
-type CardProps = {
-  dataSource: FriendCard;
-};
 const Page = async () => {
-  const data = await fetchData<any>({
+  const friendLinks = await fetchData<FriendCard[]>({
     endpoint: '/v1/friend-links',
   });
   return (
@@ -86,13 +35,13 @@ const Page = async () => {
 
       {/* 友链卡片网格 */}
       <div className='mb-16 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-        {data?.map((item: any) => (
+        {friendLinks.map((item) => (
           <a
             key={item.id}
             href={item.url}
             target='_blank'
             rel='noreferrer'
-            className='border-border-muted/50 group relative overflow-hidden rounded-xl border border-border-muted bg-bg-muted bg-gradient-to-b p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl'
+            className='border-border-muted/50 group border-border-muted bg-bg-muted relative overflow-hidden rounded-xl border bg-gradient-to-b p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-xl'
           >
             <div className='absolute inset-0 -z-10 bg-gradient-to-r from-[color:color-mix(in_srgb,var(--color-bg-accent-emphasis)_10%,transparent)] via-[color:color-mix(in_srgb,var(--color-bg-upsell-emphasis)_10%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-severe-emphasis)_10%,transparent)] opacity-0 transition-opacity group-hover:opacity-100'></div>
             <div className='flex items-center gap-4'>
@@ -116,7 +65,7 @@ const Page = async () => {
       </div>
 
       {/* 申请友链部分 */}
-      <div className='border-border-muted/50 rounded-2xl border border-border-muted bg-bg-muted backdrop-blur-sm'>
+      <div className='border-border-muted/50 border-border-muted bg-bg-muted rounded-2xl border backdrop-blur-sm'>
         <div className='border-border-muted/50 border-b p-6'>
           <h3 className='text-xl font-bold'>申请友链</h3>
           <p className='text-fg-muted/80 mt-2'>在申请之前，请确保您的网站符合以下要求</p>

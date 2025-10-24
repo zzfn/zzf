@@ -24,8 +24,8 @@ async function getData(tag: string) {
 
 function groupByYear(array: Array<Article>) {
   return array.reduce((acc: Record<string, Array<Article>>, obj) => {
-    let createdAt = new Date(obj.createdAt);
-    let year = createdAt.getFullYear();
+    const createdAt = new Date(obj.createdAt);
+    const year = createdAt.getFullYear();
     if (!acc[year]) {
       acc[year] = [];
     }
@@ -39,19 +39,19 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
   const data = await getData(params.tag);
 
   return (
-    <div className='min-h-screen bg-bg-default'>
+    <div className='bg-bg-default min-h-screen'>
       <div className='mx-auto max-w-3xl px-6 py-16'>
         {/* 头部区域 - 苹果风格 */}
         <div className='mb-12'>
-          <div className='rounded-3xl bg-bg-white p-8 shadow-sm ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_5%,transparent)]'>
+          <div className='bg-bg-white rounded-3xl p-8 shadow-sm ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_5%,transparent)]'>
             <div className='text-center'>
-              <div className='mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-bg-accent-emphasis'>
-                <span className='text-lg font-semibold text-fg-onEmphasis'>#</span>
+              <div className='bg-bg-accent-emphasis mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl'>
+                <span className='text-fg-onEmphasis text-lg font-semibold'>#</span>
               </div>
-              <h1 className='text-3xl font-semibold text-fg-default'>
+              <h1 className='text-fg-default text-3xl font-semibold'>
                 {decodeURIComponent(params.tag)}
               </h1>
-              <p className='mt-2 text-sm text-fg-muted'>{data.length} 篇文章</p>
+              <p className='text-fg-muted mt-2 text-sm'>{data.length} 篇文章</p>
             </div>
           </div>
         </div>
@@ -61,13 +61,16 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
           <div className='space-y-8'>
             {Object.entries(groupByYear(data))
               .reverse()
-              .map(([year, articles]: [string, Article[]], index) => (
-                <div key={year} className='rounded-3xl bg-bg-white shadow-sm ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_5%,transparent)]'>
+              .map(([year, articles]: [string, Article[]]) => (
+                <div
+                  key={year}
+                  className='bg-bg-white rounded-3xl shadow-sm ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_5%,transparent)]'
+                >
                   {/* 年份标题 */}
                   <div className='border-b border-[color:var(--color-border-muted)] px-8 py-6'>
                     <div className='flex items-center justify-between'>
-                      <h2 className='text-lg font-semibold text-fg-default'>{year}</h2>
-                      <span className='rounded-full bg-bg-neutral-muted px-3 py-1 text-sm font-medium text-fg-muted'>
+                      <h2 className='text-fg-default text-lg font-semibold'>{year}</h2>
+                      <span className='bg-bg-neutral-muted text-fg-muted rounded-full px-3 py-1 text-sm font-medium'>
                         {articles.length}
                       </span>
                     </div>
@@ -75,23 +78,23 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
 
                   {/* 文章列表 */}
                   <div className='divide-y divide-[color:var(--color-border-muted)]'>
-                    {articles.map((article: Article, articleIndex) => (
+                    {articles.map((article: Article) => (
                       <Link
                         key={article.id}
                         href={`/post/${article.id}`}
-                        className='group flex items-center justify-between px-8 py-4 transition-colors hover:bg-bg-neutral-muted active:bg-bg-neutral-muted/80'
+                        className='group hover:bg-bg-neutral-muted active:bg-bg-neutral-muted/80 flex items-center justify-between px-8 py-4 transition-colors'
                       >
                         <div className='min-w-0 flex-1'>
-                          <h3 className='truncate text-base font-medium text-fg-default group-hover:text-fg-accent'>
+                          <h3 className='text-fg-default group-hover:text-fg-accent truncate text-base font-medium'>
                             {article.title}
                           </h3>
-                          <p className='mt-1 text-sm text-fg-muted'>
+                          <p className='text-fg-muted mt-1 text-sm'>
                             {dayjs(article.createdAt).format('YYYY年M月D日')}
                           </p>
                         </div>
                         <div className='ml-4 flex-shrink-0'>
                           <svg
-                            className='h-5 w-5 text-fg-muted transition-colors group-hover:text-fg-accent'
+                            className='text-fg-muted group-hover:text-fg-accent h-5 w-5 transition-colors'
                             fill='none'
                             viewBox='0 0 24 24'
                             stroke='currentColor'
@@ -108,10 +111,10 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
           </div>
         ) : (
           /* 空状态 - 苹果风格 */
-          <div className='rounded-3xl bg-bg-white p-16 text-center shadow-sm ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_5%,transparent)]'>
-            <div className='mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-bg-neutral-muted'>
+          <div className='bg-bg-white rounded-3xl p-16 text-center shadow-sm ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_5%,transparent)]'>
+            <div className='bg-bg-neutral-muted mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full'>
               <svg
-                className='h-8 w-8 text-fg-muted'
+                className='text-fg-muted h-8 w-8'
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
@@ -125,8 +128,8 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
                 <path strokeLinecap='round' strokeLinejoin='round' d='M6 6h.008v.008H6V6z' />
               </svg>
             </div>
-            <h3 className='text-lg font-semibold text-fg-default'>暂无文章</h3>
-            <p className='mt-2 text-sm text-fg-muted'>这个标签下还没有任何文章</p>
+            <h3 className='text-fg-default text-lg font-semibold'>暂无文章</h3>
+            <p className='text-fg-muted mt-2 text-sm'>这个标签下还没有任何文章</p>
           </div>
         )}
       </div>
