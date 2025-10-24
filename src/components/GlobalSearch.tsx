@@ -77,7 +77,7 @@ const GlobalSearch = () => {
                   ref={inputRef}
                   onChange={handleInputChange}
                   placeholder='搜索你感兴趣的内容...'
-                  className='placeholder:text-fg-muted bg-bg-muted focus:bg-bg-white h-14 w-full rounded-2xl border-0 pr-12 pl-12 text-lg transition-all duration-200 focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)] focus:outline-none'
+                  className='placeholder:text-fg-muted bg-bg-muted h-14 w-full rounded-2xl border-0 pr-12 pl-12 text-lg transition-all duration-200 focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)] focus:outline-none'
                 />
                 {keyword && (
                   <button

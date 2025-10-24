@@ -8,3 +8,5 @@ export { default as Portal } from './Portal';
 export { default as Space } from './Space';
 export { default as Tooltip } from './Tooltip';
 export { useMessage } from './MessageProvider';
+export { GlassCard } from './GlassCard';
+export type { GlassCardProps } from './GlassCard';
