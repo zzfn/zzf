@@ -42,146 +42,173 @@ export default async function Page() {
   const data = await getData();
   const config = await getConfig();
 
-  const heroVars = {
-    '--hero-surface': 'color-mix(in srgb, var(--bgColor-default) 90%, transparent)',
-    '--hero-border': 'color-mix(in srgb, var(--borderColor-accent-emphasis) 45%, transparent)',
-    '--hero-shadow':
-      '0 36px 68px -44px color-mix(in srgb, var(--fgColor-default) 24%, transparent)',
-  } as CSSProperties;
-
-  const activityVars = {
-    '--activity-surface': 'color-mix(in srgb, var(--bgColor-muted) 78%, transparent)',
-    '--activity-border': 'color-mix(in srgb, var(--borderColor-muted) 80%, transparent)',
-    '--activity-shadow':
-      '0 28px 52px -34px color-mix(in srgb, var(--fgColor-default) 20%, transparent)',
-    '--activity-dot-primary': 'var(--bgColor-accent-emphasis)',
-    '--activity-dot-secondary': 'color-mix(in srgb, var(--bgColor-accent) 78%, transparent)',
-    '--activity-dot-tertiary': 'color-mix(in srgb, var(--bgColor-accent-muted) 92%, transparent)',
-  } as CSSProperties;
-
-  const cardVars = {
-    '--card-surface': 'color-mix(in srgb, var(--bgColor-default) 86%, transparent)',
-    '--card-border': 'color-mix(in srgb, var(--borderColor-muted) 75%, transparent)',
-    '--card-inner-border': 'color-mix(in srgb, var(--borderColor-muted) 68%, transparent)',
-    '--card-shadow':
-      '0 28px 60px -38px color-mix(in srgb, var(--fgColor-default) 22%, transparent)',
-    '--card-shadow-hover':
-      '0 30px 66px -34px color-mix(in srgb, var(--fgColor-default) 32%, transparent)',
-    '--card-overlay':
-      'linear-gradient(135deg, color-mix(in srgb, var(--bgColor-accent) 28%, transparent), color-mix(in srgb, var(--bgColor-accent-emphasis) 32%, transparent))',
-    '--card-tag': 'color-mix(in srgb, var(--bgColor-accent-muted) 95%, transparent)',
-    '--card-tag-border': 'color-mix(in srgb, var(--borderColor-muted) 78%, transparent)',
-  } as CSSProperties;
-
-  const ctaVars = {
-    '--cta-glow':
-      'conic-gradient(from 180deg, color-mix(in srgb, var(--bgColor-accent) 35%, transparent), color-mix(in srgb, var(--bgColor-accent-emphasis) 40%, transparent), transparent 75%)',
-  } as CSSProperties;
-
   const activityItems = [
     {
       label: '正在开发新的个人网站',
-      dotClass: 'bg-[color:var(--activity-dot-primary)]',
+      color: 'var(--color-bg-accent-emphasis)',
     },
     {
       label: '学习 Rust 编程语言',
-      dotClass: 'bg-[color:var(--activity-dot-secondary)]',
+      color: 'color-mix(in srgb, var(--color-bg-accent) 70%, transparent)',
     },
     {
       label: '研究 AI 应用开发',
-      dotClass: 'bg-[color:var(--activity-dot-tertiary)]',
+      color: 'color-mix(in srgb, var(--color-bg-accent-muted) 80%, transparent)',
     },
   ];
 
   return (
     <div className='mx-auto max-w-3xl px-4 py-10 sm:py-12'>
-      <div className='animate-fade-in mb-12'>
-        <div
-          style={heroVars}
-          className='flex items-center gap-8 rounded-3xl border border-[color:var(--hero-border)] bg-[color:var(--hero-surface)] p-6 shadow-[var(--hero-shadow)] backdrop-blur-md transition-transform duration-500 hover:-translate-y-1 sm:p-8'
-        >
-          <Image
-            priority={true}
-            className='h-24 w-24 rounded-full object-cover ring-4 ring-[color:var(--hero-border)] ring-offset-2 ring-offset-[color:var(--hero-surface)] transition-transform duration-300 hover:scale-105 md:h-32 md:w-32'
-            width={128}
-            height={128}
-            alt='avatar'
-            src={config.avatar}
-          />
-          <div className='flex flex-col gap-y-3'>
-            <h1 className='bg-[linear-gradient(120deg,_var(--fgColor-accent),_var(--fgColor-sponsors))] bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl'>
-              {config.name}
-            </h1>
-            <p className='animate-typing text-fg-muted w-fit overflow-hidden border-r border-[color:var(--hero-border)] pr-2 font-mono text-xs tracking-wider whitespace-nowrap uppercase sm:text-sm'>
-              {config.slug}
-            </p>
+      {/* Hero区域 - 液态玻璃风格 */}
+      <div className='animate-in fade-in slide-in-from-top-4 mb-12 duration-700'>
+        <div className='group relative overflow-hidden rounded-[2rem] backdrop-blur-xl transition-all duration-500 hover:scale-[1.02]'>
+          {/* 玻璃背景层 */}
+          <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-white)_90%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-white)_80%,transparent)]' />
+
+          {/* 光晕效果 */}
+          <div className='absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[color:var(--color-bg-accent-emphasis)] opacity-20 blur-3xl transition-all duration-700 group-hover:opacity-30' />
+
+          {/* 内容层 */}
+          <div className='relative flex items-center gap-6 p-8 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_8%,transparent)] sm:gap-8 sm:p-10'>
+            {/* 头像 */}
+            <div className='relative flex-shrink-0'>
+              <div className='absolute inset-0 rounded-full bg-[color:var(--color-bg-accent-emphasis)] opacity-30 blur-2xl' />
+              <Image
+                priority={true}
+                className='relative h-24 w-24 rounded-full object-cover ring-4 ring-[color:color-mix(in_srgb,var(--color-fg-accent)_30%,transparent)] ring-offset-2 ring-offset-[color:color-mix(in_srgb,var(--color-bg-white)_90%,transparent)] transition-transform duration-500 group-hover:scale-110 md:h-32 md:w-32'
+                width={128}
+                height={128}
+                alt='avatar'
+                src={config.avatar}
+              />
+            </div>
+
+            {/* 文字信息 */}
+            <div className='flex min-w-0 flex-1 flex-col gap-y-3'>
+              <h1 className='bg-gradient-to-r from-[color:var(--color-fg-accent)] to-[color:var(--color-fg-sponsors)] bg-clip-text text-2xl font-bold tracking-tight text-transparent sm:text-3xl'>
+                {config.name}
+              </h1>
+              <p className='text-fg-muted w-fit overflow-hidden font-mono text-xs font-medium uppercase tracking-wider sm:text-sm'>
+                {config.slug}
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div
-        style={activityVars}
-        className='mb-12 rounded-2xl border border-[color:var(--activity-border)] bg-[color:var(--activity-surface)] p-6 shadow-[var(--activity-shadow)] backdrop-blur-md sm:p-8'
-      >
-        <h2 className='text-fg-default mb-5 text-base font-medium sm:text-lg'>最近在做什么 ⚡️</h2>
-        <div className='space-y-4'>
-          {activityItems.map((item) => (
-            <div key={item.label} className='text-fg-muted flex items-center gap-3 text-sm'>
-              <span className={`h-2.5 w-2.5 rounded-full ${item.dotClass}`}></span>
-              <span>{item.label}</span>
+      {/* Activity区域 - 液态玻璃风格 */}
+      <div className='animate-in fade-in slide-in-from-bottom-4 mb-12 duration-700' style={{ animationDelay: '100ms' }}>
+        <div className='group relative overflow-hidden rounded-[2rem] backdrop-blur-xl transition-all duration-500 hover:scale-[1.01]'>
+          {/* 玻璃背景 */}
+          <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-white)_85%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-white)_75%,transparent)]' />
+
+          {/* 顶部光效 */}
+          <div className='absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-[color:color-mix(in_srgb,var(--color-fg-accent)_30%,transparent)] to-transparent' />
+
+          {/* 内容 */}
+          <div className='relative p-8 shadow-[0_8px_32px_0_rgba(0,0,0,0.06)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_6%,transparent)]'>
+            <h2 className='text-fg-default mb-6 text-lg font-bold sm:text-xl'>最近在做什么 ⚡️</h2>
+            <div className='space-y-4'>
+              {activityItems.map((item, index) => (
+                <div
+                  key={item.label}
+                  className='text-fg-muted flex items-center gap-3 text-sm font-medium transition-all duration-300 hover:translate-x-2 hover:text-[color:var(--color-fg-default)]'
+                >
+                  <span
+                    className='h-2.5 w-2.5 rounded-full shadow-lg transition-all duration-300 hover:scale-125'
+                    style={{ backgroundColor: item.color }}
+                  ></span>
+                  <span>{item.label}</span>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
-      <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
-        {data.map((post: Article) => (
+      {/* 文章卡片网格 - 液态玻璃风格 */}
+      <div className='mb-12 grid grid-cols-1 gap-6 md:grid-cols-2'>
+        {data.map((post: Article, index) => (
           <Link
             key={post.id}
             href={`/post/${post.id}`}
-            style={cardVars}
-            className='group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--card-border)] bg-[color:var(--card-surface)] shadow-[var(--card-shadow)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[var(--card-shadow-hover)]'
+            className='animate-in fade-in slide-in-from-bottom-4 duration-700'
+            style={{ animationDelay: `${200 + index * 100}ms` }}
           >
-            <div className='relative rounded-2xl border border-[color:var(--card-inner-border)] bg-[color:var(--card-surface)] p-6'>
-              <div className='absolute inset-0 rounded-2xl bg-[var(--card-overlay)] opacity-70'></div>
-              <div className='relative flex flex-col gap-4'>
-                <h2 className='text-fg-default/90 line-clamp-2 font-mono text-lg font-medium'>
+            <div className='group relative h-full overflow-hidden rounded-[2rem] backdrop-blur-xl transition-all duration-500 hover:scale-[1.03]'>
+              {/* 玻璃背景 */}
+              <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-white)_85%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-white)_70%,transparent)]' />
+
+              {/* 光晕装饰 */}
+              <div className='absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[color:var(--color-bg-accent-emphasis)] opacity-0 blur-3xl transition-all duration-500 group-hover:opacity-20' />
+
+              {/* 内容 */}
+              <div className='relative flex h-full flex-col gap-4 p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.06)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_6%,transparent)]'>
+                <h2 className='text-fg-default line-clamp-2 text-lg font-bold transition-colors duration-300 group-hover:text-[color:var(--color-fg-accent)]'>
                   {post.title}
                 </h2>
-                <div className='text-fg-muted flex items-center gap-3 text-xs'>
-                  <time className='flex items-center gap-1'>
+
+                <div className='mt-auto flex items-center gap-3'>
+                  <time className='text-fg-muted flex items-center gap-1.5 text-xs font-medium'>
                     <span className='bg-bg-accent-emphasis h-1.5 w-1.5 animate-pulse rounded-full'></span>
                     {dayjs(post.updatedAt).format('YYYY-MM-DD')}
                   </time>
-                  <span className='text-fg-muted rounded-md border border-[color:var(--card-tag-border)] bg-[color:var(--card-tag)] px-2 py-0.5 font-mono tracking-wider uppercase'>
+                  <span className='text-fg-accent flex items-center gap-1 rounded-full bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-accent-emphasis)_15%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-accent-emphasis)_10%,transparent)] px-3 py-1 text-xs font-semibold uppercase ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-accent)_20%,transparent)]'>
                     {post.tag}
                   </span>
                 </div>
-              </div>
-            </div>
 
-            <div className='absolute inset-0 flex items-center justify-center bg-[var(--card-overlay)] opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100'>
-              <div className='text-fg-onEmphasis flex items-center gap-2'>
-                <span className='font-mono tracking-wider'>VIEW POST</span>
-                <span className='animate-pulse'>_</span>
+                {/* 悬浮箭头 */}
+                <div className='absolute bottom-6 right-6 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100'>
+                  <div className='flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[color:var(--color-bg-accent-emphasis)] to-[color:color-mix(in_srgb,var(--color-bg-accent-emphasis)_80%,var(--color-fg-black))] shadow-lg'>
+                    <svg
+                      className='h-5 w-5 text-[color:var(--color-fg-onEmphasis)]'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                      strokeWidth={2.5}
+                    >
+                      <path strokeLinecap='round' strokeLinejoin='round' d='M9 5l7 7-7 7' />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
           </Link>
         ))}
       </div>
 
+      {/* CTA按钮 - 液态玻璃风格 */}
       <Link
-        style={ctaVars}
-        className='group border-border-accent-emphasis bg-bg-accent relative mt-12 block overflow-hidden rounded-2xl border px-10 py-4 text-center transition-transform duration-500 hover:-translate-y-1 sm:mt-16'
         href='/post'
+        className='animate-in fade-in slide-in-from-bottom-4 duration-700'
+        style={{ animationDelay: `${200 + data.length * 100}ms` }}
       >
-        <div className='pointer-events-none absolute inset-0 flex items-center justify-center opacity-70'>
-          <div className='h-[380%] w-[220%] animate-spin bg-[var(--cta-glow)] blur-2xl'></div>
+        <div className='group relative overflow-hidden rounded-[2rem] backdrop-blur-xl transition-all duration-500 hover:scale-[1.02]'>
+          {/* 动态光晕背景 */}
+          <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-accent-emphasis)_20%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-accent)_15%,transparent)]' />
+
+          {/* 旋转光效 */}
+          <div className='pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100'>
+            <div className='h-[200%] w-[200%] animate-spin bg-[conic-gradient(from_180deg,color-mix(in_srgb,var(--color-bg-accent)_30%,transparent),color-mix(in_srgb,var(--color-bg-accent-emphasis)_40%,transparent),transparent_60%)] blur-2xl' style={{ animationDuration: '3s' }}></div>
+          </div>
+
+          {/* 内容 */}
+          <div className='relative px-10 py-6 text-center shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-accent)_20%,transparent)]'>
+            <span className='text-fg-accent flex items-center justify-center gap-2 text-sm font-bold uppercase tracking-wider'>
+              <span>探索更多</span>
+              <svg
+                className='h-4 w-4 transition-transform duration-300 group-hover:translate-x-1'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap='round' strokeLinejoin='round' d='M9 5l7 7-7 7' />
+              </svg>
+            </span>
+          </div>
         </div>
-        <span className='text-fg-accent relative flex items-center justify-center gap-2 font-mono text-sm font-medium'>
-          <span>EXPLORE MORE</span>
-          <span className='animate-pulse'>_</span>
-        </span>
       </Link>
     </div>
   );
