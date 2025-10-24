@@ -170,7 +170,7 @@ export default async function Page() {
         <div className='pointer-events-none absolute inset-0 flex items-center justify-center opacity-70'>
           <div className='h-[380%] w-[220%] animate-spin bg-[var(--cta-glow)] blur-2xl'></div>
         </div>
-        <span className='relative flex items-center justify-center gap-2 font-mono text-sm font-medium text-onEmphasis'>
+        <span className='relative flex items-center justify-center gap-2 font-mono text-sm font-medium text-accent-emphasis'>
           <span>EXPLORE MORE</span>
           <span className='animate-pulse'>_</span>
         </span>

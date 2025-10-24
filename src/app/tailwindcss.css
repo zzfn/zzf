@@ -105,11 +105,8 @@
   --color-border-neutral-muted: var(--borderColor-neutral-muted);
 
   /* Font family */
-  --font-family-sans: "LXGW WenKai Lite", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-mono: "JetBrainsMono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
-  /* Spacing */
-  --spacing-18: 4.5rem;
+  --font-sans: "LXGW WenKai Lite", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-mono: "JetBrainsMono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Animation */
   --animate-shimmer: shimmer 2s infinite linear;

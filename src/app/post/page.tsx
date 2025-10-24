@@ -37,146 +37,132 @@ function groupByYear(array: Array<Article>) {
 
 export default async function Page() {
   const data = await getData();
+  const uniqueTags = [...new Set(data.map((item) => item.tag))];
+  const groupedArticles = Object.entries(groupByYear(data)).sort(
+    (a, b) => Number(b[0]) - Number(a[0]),
+  );
 
   return (
-    <div className='mx-auto max-w-3xl px-6 py-12'>
-      {/* ���部状态区域 */}
-      <div className='border-border-default mb-10 flex items-end justify-between border-b pb-8'>
-        <div className='space-y-1'>
-          <div className='text-muted flex items-center gap-2 text-sm'>
-            <div className='flex gap-1'>
-              {[...Array(3)].map((_, i) => (
-                <span
-                  key={i}
-                  className='bg-bg-accent-emphasis inline-block h-1 w-1 animate-pulse rounded-full'
-                  style={{ animationDelay: `${i * 200}ms` }}
-                />
-              ))}
-            </div>
-            <span className='font-mono tracking-wider'>系统就绪</span>
-          </div>
-          <div className='group text-default flex items-baseline gap-2'>
-            <div className='flex items-center gap-2'>
-              <span className='text-muted font-mono'>[</span>
-              <span className='text-accent animate-pulse font-mono'>$</span>
-              <span className='text-muted font-mono'>]</span>
-            </div>
-            <p className='flex items-center gap-2'>
-              <span className='text-accent font-mono font-medium'>
-                {data.length.toString().padStart(3, '0')}
-              </span>
-              <span className='text-muted'>条记录</span>
-              <span className='bg-bg-accent-emphasis inline-flex h-2 w-2 animate-ping rounded-full'></span>
+    <div className='mx-auto flex max-w-4xl flex-col gap-12 px-6 pb-16 pt-12'>
+      <section className='relative overflow-hidden rounded-3xl border border-border-muted bg-bg-default/90 p-10 shadow-xl backdrop-blur'>
+        <div className='pointer-events-none absolute inset-0'>
+          <div className='bg-bg-accent/20 absolute -left-16 top-10 h-40 w-40 rounded-full blur-3xl' />
+          <div className='bg-bg-accent/10 absolute bottom-0 right-0 h-32 w-32 rounded-full blur-2xl' />
+        </div>
+
+        <div className='relative flex flex-col gap-8'>
+          <div className='space-y-4'>
+            <span className='text-muted font-mono text-xs uppercase tracking-[0.35em]'>
+              Post Archive
+            </span>
+            <h1 className='text-default text-3xl font-semibold leading-tight sm:text-4xl'>
+              灵感陈列室
+            </h1>
+            <p className='text-muted max-w-2xl text-sm leading-relaxed'>
+              以轻盈的节奏回顾过往作品，像翻阅一册光滑的相册。挑选一个主题，或按照年份慢慢品读。
             </p>
           </div>
-        </div>
 
-        <div className='flex items-center gap-1.5 text-xs'>
-          <span className='bg-bg-success-muted h-1.5 w-1.5 animate-pulse rounded-full'></span>
-          <span className='font-mono'>已连接</span>
-        </div>
-      </div>
-
-      {/* 标签区域 */}
-      <div className='mb-12 space-y-4'>
-        <div className='flex items-center gap-3'>
-          <div className='text-muted flex items-center gap-2 text-sm'>
-            <span className='text-accent font-mono'>#</span>
-            <span className='font-medium'>标签导航</span>
+          <div className='flex flex-wrap items-center gap-6 text-sm'>
+            <div className='flex items-center gap-2 text-default'>
+              <span className='bg-bg-success-muted h-2 w-2 animate-pulse rounded-full'></span>
+              <span className='font-medium'>
+                {data.length.toString().padStart(3, '0')} 篇文章已上架
+              </span>
+            </div>
+            <div className='flex items-center gap-2 text-muted'>
+              <span className='font-mono text-xs uppercase tracking-[0.35em]'>
+                {uniqueTags.length.toString().padStart(2, '0')}
+              </span>
+              <span>个主题标签</span>
+            </div>
           </div>
-          <span className='text-muted font-mono text-xs'>
-            {[...new Set(data.map((item) => item.tag))].length.toString().padStart(2, '0')} 个分类
+        </div>
+      </section>
+
+      <section className='rounded-3xl border border-border-muted bg-bg-muted/40 p-8 shadow-sm backdrop-blur'>
+        <header className='flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'>
+          <div className='space-y-1'>
+            <span className='text-muted font-mono text-xs uppercase tracking-[0.4em]'>
+              Tags
+            </span>
+            <h2 className='text-default text-xl font-semibold sm:text-2xl'>挑选一个主题</h2>
+          </div>
+          <span className='text-muted text-xs'>
+            {uniqueTags.length.toString().padStart(2, '0')} 个分类 · 精选排列
           </span>
-        </div>
+        </header>
 
-        <div className='flex flex-wrap gap-2'>
-          {[...data.reduce((acc: Set<string>, cur) => acc.add(cur.tag), new Set())].map(
-            (tag: string) => (
-              <Link
-                key={tag}
-                href={`/tag/${tag}`}
-                className='group bg-opacity border-border-default text-default hover:border-border-accent hover:bg-bg-neutral-muted hover:text-accent relative cursor-pointer rounded-md border px-3 py-1.5 text-xs transition-all'
-              >
-                <span className='font-mono'>{tag}</span>
-                <span className='text-muted ml-2 text-xs'>
-                  {data
-                    .filter((item) => item.tag === tag)
-                    .length.toString()
-                    .padStart(2, '0')}
-                </span>
-              </Link>
-            ),
-          )}
+        <div className='mt-8 grid gap-3 sm:grid-cols-2'>
+          {uniqueTags.map((tag: string) => (
+            <Link
+              key={tag}
+              href={`/tag/${tag}`}
+              className='border-border-muted hover:border-border-accent hover:bg-bg-default/90 group flex items-center justify-between gap-4 rounded-full border bg-bg-default/70 px-4 py-3 text-sm transition-all backdrop-blur'
+            >
+              <span className='text-default transition-colors group-hover:text-accent'>
+                {tag}
+              </span>
+              <span className='text-muted font-mono text-xs'>
+                {data
+                  .filter((item) => item.tag === tag)
+                  .length.toString()
+                  .padStart(2, '0')}
+              </span>
+            </Link>
+          ))}
         </div>
-      </div>
+      </section>
 
-      {/* 文章列表区域 */}
       {data.length > 0 && (
-        <div className='relative space-y-12'>
-          {/* 装饰线 */}
-          <div className='from-accent/50 via-accent/10 absolute top-0 left-[11px] h-full w-[1px] bg-gradient-to-b to-transparent'></div>
-
-          {Object.entries(groupByYear(data))
-            .reverse()
-            .map(([year, articles]: [string, Article[]]) => (
-              <div key={year} className='relative space-y-4'>
-                {/* 年份标题区域 */}
-                <div className='relative flex items-center gap-3'>
-                  <div className='relative flex h-6 w-6 items-center justify-center'>
-                    <span className='bg-bg-accent/20 absolute h-6 w-6 animate-ping rounded-full'></span>
-                    <span className='bg-bg-accent/30 absolute h-4 w-4 rounded-full'></span>
-                    <span className='bg-bg-accent-emphasis relative h-2 w-2 rounded-full'></span>
-                  </div>
-                  <div className='flex items-center gap-3'>
-                    <h3 className='text-accent font-mono text-xl font-medium'>{year}</h3>
-                    <div className='bg-opacity flex items-center gap-2 rounded-full px-3 py-1 text-xs'>
-                      <span className='text-muted font-mono'>COUNT:</span>
-                      <span className='text-accent font-mono'>
-                        {articles.length.toString().padStart(2, '0')}
-                      </span>
-                    </div>
-                  </div>
+        <section className='flex flex-col gap-10'>
+          {groupedArticles.map(([year, articles]: [string, Article[]]) => (
+            <div
+              key={year}
+              className='rounded-3xl border border-border-muted bg-bg-default/80 p-8 shadow-sm backdrop-blur'
+            >
+              <header className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
+                <div className='flex items-baseline gap-3'>
+                  <h3 className='text-default text-2xl font-semibold sm:text-3xl'>{year}</h3>
+                  <span className='text-muted font-mono text-xs uppercase tracking-[0.35em]'>
+                    {articles.length.toString().padStart(2, '0')} entries
+                  </span>
                 </div>
+                <div className='border-border-muted bg-bg-muted/60 flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-muted'>
+                  <span className='font-mono uppercase tracking-[0.3em]'>Archive</span>
+                </div>
+              </header>
 
-                {/* 文章列表 */}
-                <div className='border-border-default ml-3 space-y-1 border-l pl-8'>
-                  {articles.map((article: Article) => (
-                    <Link
-                      key={article.id}
-                      href={`/post/${article.id}`}
-                      className='group flex items-center justify-between py-3 transition-all hover:px-4'
-                    >
-                      <div className='flex items-center gap-3 overflow-hidden'>
-                        <div className='flex items-center gap-2'>
-                          <span className='bg-bg-accent/40 group-hover:bg-bg-accent h-1.5 w-1.5 rounded-full transition-colors'></span>
-                          <span className='text-default group-hover:text-accent font-medium transition-colors'>
-                            {article.title}
-                          </span>
-                        </div>
-
-                        {/* 新文章标记 */}
-                        {dayjs().diff(article.createdAt, 'day') < 7 && (
-                          <span className='bg-bg-success-muted shrink-0 rounded px-1.5 py-0.5 text-[10px] font-medium uppercase'>
-                            New
-                          </span>
-                        )}
-                      </div>
-
-                      <div className='text-muted flex items-center gap-6 text-xs'>
-                        <span className='shrink-0 font-mono'>{article.tag}</span>
-                        <time className='shrink-0 font-mono tabular-nums'>
+              <div className='mt-6 space-y-3'>
+                {articles.map((article: Article) => (
+                  <Link
+                    key={article.id}
+                    href={`/post/${article.id}`}
+                    className='border-border-muted hover:border-border-accent hover:bg-bg-default/95 group flex flex-col gap-3 rounded-2xl border px-5 py-4 transition-all hover:shadow-md sm:flex-row sm:items-center sm:justify-between'
+                  >
+                    <div className='flex flex-col gap-2'>
+                      <span className='text-default text-base font-medium transition-colors group-hover:text-accent'>
+                        {article.title}
+                      </span>
+                      <div className='text-muted flex flex-wrap items-center gap-3 text-xs'>
+                        <span className='font-mono uppercase tracking-[0.3em]'>{article.tag}</span>
+                        <time className='font-mono tabular-nums'>
                           {dayjs(article.createdAt).format('MM-DD')}
                         </time>
-                        <span className='text-accent font-mono opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100'>
-                          →
-                        </span>
                       </div>
-                    </Link>
-                  ))}
-                </div>
+                    </div>
+
+                    {dayjs().diff(article.createdAt, 'day') < 7 && (
+                      <span className='bg-bg-success-muted text-default shrink-0 rounded-full px-3 py-1 text-xs font-medium uppercase tracking-[0.2em]'>
+                        New
+                      </span>
+                    )}
+                  </Link>
+                ))}
               </div>
-            ))}
-        </div>
+            </div>
+          ))}
+        </section>
       )}
     </div>
   );
