@@ -41,8 +41,8 @@ const Header = () => {
         </span>
 
         {/* Logo */}
-        <Link href='/' className='relative z-10 transition-transform duration-300 hover:scale-105'>
-          <Logo width={75} height={25} />
+        <Link href='/' className='relative z-10 logo-spin-hover'>
+            <Logo width={75} height={25} />
         </Link>
 
         {/* Navigation */}

@@ -71,7 +71,7 @@ export default async function Page() {
           {/* 内容层 */}
           <div className='relative flex items-center gap-6 p-8 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] ring-1 ring-border-muted sm:gap-8 sm:p-10'>
             {/* 头像 */}
-            <div className='relative flex-shrink-0'>
+            <div className='logo-spin-hover relative flex-shrink-0'>
               <div className='absolute inset-0 rounded-full bg-[color:var(--color-bg-accent-emphasis)] opacity-30 blur-2xl' />
               <Image
                 priority={true}

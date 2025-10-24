@@ -42,6 +42,19 @@
     }
 }
 
+@keyframes logo-spin {
+    0% {
+        transform: rotate(0turn);
+    }
+    100% {
+        transform: rotate(666turn);
+    }
+}
+
+.logo-spin-hover:hover {
+    animation: logo-spin 59s cubic-bezier(.34, 0, .84, 1) 1s forwards;
+}
+
 @theme inline {
     /* Foreground */
     --color-fg-accent: var(--fgColor-accent);
@@ -141,6 +154,7 @@
     --animate-fade-in: fade-in 0.5s ease-out;
     --animate-slide-up: slide-up 0.5s ease-out;
     --animate-scale-in: scale-in 0.3s ease-out;
+    --animate-logo-spin: logo-spin 59s cubic-bezier(.34, 0, .84, 1) 1s forwards;
 
     /* Background size & images */
     --background-size-shimmer: 1000px 100%;
