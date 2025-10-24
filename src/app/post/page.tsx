@@ -52,25 +52,25 @@ export default async function Page() {
 
         <div className='relative flex flex-col gap-8'>
           <div className='space-y-4'>
-            <span className='text-muted font-mono text-xs uppercase tracking-[0.35em]'>
+            <span className='text-fg-muted font-mono text-xs uppercase tracking-[0.35em]'>
               Post Archive
             </span>
-            <h1 className='text-default text-3xl font-semibold leading-tight sm:text-4xl'>
+            <h1 className='text-fg-default text-3xl font-semibold leading-tight sm:text-4xl'>
               灵感陈列室
             </h1>
-            <p className='text-muted max-w-2xl text-sm leading-relaxed'>
+            <p className='text-fg-muted max-w-2xl text-sm leading-relaxed'>
               以轻盈的节奏回顾过往作品，像翻阅一册光滑的相册。挑选一个主题，或按照年份慢慢品读。
             </p>
           </div>
 
           <div className='flex flex-wrap items-center gap-6 text-sm'>
-            <div className='flex items-center gap-2 text-default'>
+            <div className='flex items-center gap-2 text-fg-default'>
               <span className='bg-bg-success-muted h-2 w-2 animate-pulse rounded-full'></span>
               <span className='font-medium'>
                 {data.length.toString().padStart(3, '0')} 篇文章已上架
               </span>
             </div>
-            <div className='flex items-center gap-2 text-muted'>
+            <div className='flex items-center gap-2 text-fg-muted'>
               <span className='font-mono text-xs uppercase tracking-[0.35em]'>
                 {uniqueTags.length.toString().padStart(2, '0')}
               </span>
@@ -83,12 +83,12 @@ export default async function Page() {
       <section className='rounded-3xl border border-border-muted bg-bg-muted/40 p-8 shadow-sm backdrop-blur'>
         <header className='flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between'>
           <div className='space-y-1'>
-            <span className='text-muted font-mono text-xs uppercase tracking-[0.4em]'>
+            <span className='text-fg-muted font-mono text-xs uppercase tracking-[0.4em]'>
               Tags
             </span>
-            <h2 className='text-default text-xl font-semibold sm:text-2xl'>挑选一个主题</h2>
+            <h2 className='text-fg-default text-xl font-semibold sm:text-2xl'>挑选一个主题</h2>
           </div>
-          <span className='text-muted text-xs'>
+          <span className='text-fg-muted text-xs'>
             {uniqueTags.length.toString().padStart(2, '0')} 个分类 · 精选排列
           </span>
         </header>
@@ -98,12 +98,12 @@ export default async function Page() {
             <Link
               key={tag}
               href={`/tag/${tag}`}
-              className='border-border-muted hover:border-border-accent hover:bg-bg-default/90 group flex items-center justify-between gap-4 rounded-full border bg-bg-default/70 px-4 py-3 text-sm transition-all backdrop-blur'
+              className='border-border-muted hover:border-border-accent-emphasis hover:bg-bg-default/90 group flex items-center justify-between gap-4 rounded-full border bg-bg-default/70 px-4 py-3 text-sm transition-all backdrop-blur'
             >
-              <span className='text-default transition-colors group-hover:text-accent'>
+              <span className='text-fg-default transition-colors group-hover:text-fg-accent'>
                 {tag}
               </span>
-              <span className='text-muted font-mono text-xs'>
+              <span className='text-fg-muted font-mono text-xs'>
                 {data
                   .filter((item) => item.tag === tag)
                   .length.toString()
@@ -123,12 +123,12 @@ export default async function Page() {
             >
               <header className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
                 <div className='flex items-baseline gap-3'>
-                  <h3 className='text-default text-2xl font-semibold sm:text-3xl'>{year}</h3>
-                  <span className='text-muted font-mono text-xs uppercase tracking-[0.35em]'>
+                  <h3 className='text-fg-default text-2xl font-semibold sm:text-3xl'>{year}</h3>
+                  <span className='text-fg-muted font-mono text-xs uppercase tracking-[0.35em]'>
                     {articles.length.toString().padStart(2, '0')} entries
                   </span>
                 </div>
-                <div className='border-border-muted bg-bg-muted/60 flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-muted'>
+                <div className='border-border-muted bg-bg-muted/60 flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-fg-muted'>
                   <span className='font-mono uppercase tracking-[0.3em]'>Archive</span>
                 </div>
               </header>
@@ -138,13 +138,13 @@ export default async function Page() {
                   <Link
                     key={article.id}
                     href={`/post/${article.id}`}
-                    className='border-border-muted hover:border-border-accent hover:bg-bg-default/95 group flex flex-col gap-3 rounded-2xl border px-5 py-4 transition-all hover:shadow-md sm:flex-row sm:items-center sm:justify-between'
+                    className='border-border-muted hover:border-border-accent-emphasis hover:bg-bg-default/95 group flex flex-col gap-3 rounded-2xl border px-5 py-4 transition-all hover:shadow-md sm:flex-row sm:items-center sm:justify-between'
                   >
                     <div className='flex flex-col gap-2'>
-                      <span className='text-default text-base font-medium transition-colors group-hover:text-accent'>
+                      <span className='text-fg-default text-base font-medium transition-colors group-hover:text-fg-accent'>
                         {article.title}
                       </span>
-                      <div className='text-muted flex flex-wrap items-center gap-3 text-xs'>
+                      <div className='text-fg-muted flex flex-wrap items-center gap-3 text-xs'>
                         <span className='font-mono uppercase tracking-[0.3em]'>{article.tag}</span>
                         <time className='font-mono tabular-nums'>
                           {dayjs(article.createdAt).format('MM-DD')}
@@ -153,7 +153,7 @@ export default async function Page() {
                     </div>
 
                     {dayjs().diff(article.createdAt, 'day') < 7 && (
-                      <span className='bg-bg-success-muted text-default shrink-0 rounded-full px-3 py-1 text-xs font-medium uppercase tracking-[0.2em]'>
+                      <span className='bg-bg-success-muted text-fg-default shrink-0 rounded-full px-3 py-1 text-xs font-medium uppercase tracking-[0.2em]'>
                         New
                       </span>
                     )}

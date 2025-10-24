@@ -11,8 +11,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...props },
     <input
       ref={ref}
       className={classNames(
-        'text-default w-full rounded-lg border border-[color:var(--borderColor-muted)] bg-[color:var(--bgColor-default)] px-4 py-2 text-sm transition-colors duration-200',
-        'placeholder:text-muted focus:border-[color:var(--borderColor-accent-emphasis)] focus:ring-2 focus:ring-[color:var(--borderColor-accent-emphasis)]/40 focus:outline-none',
+        'text-fg-default w-full rounded-lg border border-[color:var(--borderColor-muted)] bg-[color:var(--bgColor-default)] px-4 py-2 text-sm transition-colors duration-200',
+        'placeholder:text-fg-muted focus:border-[color:var(--borderColor-accent-emphasis)] focus:ring-2 focus:ring-[color:var(--borderColor-accent-emphasis)]/40 focus:outline-none',
         className,
       )}
       {...props}

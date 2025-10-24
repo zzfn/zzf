@@ -3,7 +3,7 @@
 }
 
 .aiCard {
-  background: linear-gradient(145deg, var(--bgColor-muted), var(--bgColor-muted));
+  background: linear-gradient(145deg, var(--color-bg-muted), var(--color-bg-muted));
   border-radius: 12px;
   padding: 16px;
   transition: all 0.3s ease;
@@ -11,7 +11,7 @@
 
 .aiCard:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-glass);
 }
 
 .aiHeader {
@@ -27,8 +27,8 @@
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: white;
+  background: var(--gradient-accent);
+  color: var(--color-fg-onEmphasis);
   margin-right: 10px;
 }
 
@@ -36,13 +36,13 @@
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: var(--fgColor-muted);
+  color: var(--color-fg-muted);
 }
 
 .aiContent {
   font-size: 14px;
   line-height: 1.7;
-  color: var(--fgColor-muted);
+  color: var(--color-fg-muted);
   padding: 0 4px;
 }
 
@@ -51,9 +51,9 @@
   height: 80px;
   background: linear-gradient(
     90deg,
-    rgba(156, 163, 175, 0.1) 25%,
-    rgba(156, 163, 175, 0.2) 37%,
-    rgba(156, 163, 175, 0.1) 63%
+    color-mix(in srgb, var(--color-fg-muted) 20%, transparent) 25%,
+    color-mix(in srgb, var(--color-fg-muted) 32%, transparent) 37%,
+    color-mix(in srgb, var(--color-fg-muted) 20%, transparent) 63%
   );
   background-size: 400% 100%;
   animation: loading 1.4s ease infinite;

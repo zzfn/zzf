@@ -9,7 +9,7 @@ type SearchCardProps = {
 
 const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
   return (
-    <div className='bg-opacity group rounded-lg border border-border-default p-4 transition-all hover:border-border-accent hover:shadow-sm'>
+    <div className='bg-opacity group rounded-lg border border-border-default p-4 transition-all hover:border-border-accent-emphasis hover:shadow-sm'>
       <div className='mb-3'>
         <Link href={`/post/${dataSource.id}`} className='inline-block'>
           <h3
@@ -17,8 +17,8 @@ const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
               __html: dataSource.title,
             }}
             className={classNames(
-              'font-mono text-xl font-bold text-default',
-              'transition-colors group-hover:text-accent',
+              'font-mono text-xl font-bold text-fg-default',
+              'transition-colors group-hover:text-fg-accent',
               'relative after:absolute after:bottom-0 after:left-0',
               'after:h-[2px] after:w-0 after:bg-bg-accent',
               'after:transition-all group-hover:after:w-full',
@@ -28,8 +28,8 @@ const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
       </div>
       <div
         className={classNames(
-          'prose-sm prose-neutral dark:prose-invert',
-          'line-clamp-2 text-muted',
+          'prose-sm dark:prose-invert',
+          'line-clamp-2 text-fg-muted',
           'px-1',
         )}
         dangerouslySetInnerHTML={{
@@ -38,7 +38,7 @@ const SearchArticleCard: React.FC<SearchCardProps> = ({ dataSource }) => {
       />
 
       {/* 添加底部元信息 */}
-      <div className='mt-4 flex items-center gap-4 text-xs text-muted'>
+      <div className='mt-4 flex items-center gap-4 text-xs text-fg-muted'>
         <div className='flex items-center gap-1'>
           <span className='h-1 w-1 rounded-full bg-bg-accent-emphasis'></span>
           <span>{dataSource.tag}</span>

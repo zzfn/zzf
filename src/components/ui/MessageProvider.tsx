@@ -33,12 +33,12 @@ interface MessageApi {
 const MessageContext = createContext<MessageApi | null>(null);
 
 const variantStyles: Record<MessageType, string> = {
-  info: 'bg-[color:var(--bgColor-muted)] border border-[color:var(--borderColor-muted)] text-default',
-  success: 'bg-bg-success-muted border border-[color:var(--borderColor-success-muted)] text-default',
+  info: 'bg-[color:var(--bgColor-muted)] border border-[color:var(--borderColor-muted)] text-fg-default',
+  success: 'bg-bg-success-muted border border-[color:var(--borderColor-success-muted)] text-fg-default',
   error:
-    'bg-[color:var(--bgColor-danger-muted)] border border-[color:var(--borderColor-danger-muted)] text-default',
+    'bg-[color:var(--bgColor-danger-muted)] border border-[color:var(--borderColor-danger-muted)] text-fg-default',
   warning:
-    'bg-[color:var(--bgColor-attention-muted)] border border-[color:var(--borderColor-attention-muted)] text-default',
+    'bg-[color:var(--bgColor-attention-muted)] border border-[color:var(--borderColor-attention-muted)] text-fg-default',
 };
 
 const DEFAULT_DURATION = 2600;

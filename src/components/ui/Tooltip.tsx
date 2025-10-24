@@ -126,7 +126,7 @@ const Tooltip = <T extends HTMLElement = HTMLElement>({
               className={classNames(
                 'pointer-events-none z-[999] max-w-xs',
                 'rounded-[var(--borderRadius-medium)] bg-[color:var(--bgColor-emphasis)]',
-                'text-[length:var(--text-body-size-medium)] text-[color:var(--fgColor-onEmphasis)]',
+                'text-[length:var(--text-body-size-medium)] text-fg-onEmphasis',
                 'leading-[var(--text-body-lineHeight-medium)]',
               )}
               style={floatingStyles}

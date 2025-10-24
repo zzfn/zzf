@@ -47,7 +47,7 @@ const GlobalSearch = () => {
             setSearchVisible(!searchVisible);
           }}
         >
-          <Search className='text-default hover:text-accent transition-all duration-200 hover:scale-110' />
+          <Search className='text-fg-default hover:text-fg-accent transition-all duration-200 hover:scale-110' />
         </IconButton>
       </Tooltip>
 
@@ -61,23 +61,23 @@ const GlobalSearch = () => {
           <div className='relative p-6 pb-4'>
             <div className='flex items-center gap-4'>
               <div className='relative flex-1'>
-                <Search className='text-muted absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2' />
+                <Search className='text-fg-muted absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2' />
                 <input
                   ref={inputRef}
                   onChange={handleInputChange}
                   placeholder='搜索你感兴趣的内容...'
-                  className='placeholder:text-muted focus:ring-accent/20 h-14 w-full rounded-2xl border-0 bg-neutral-50 pr-12 pl-12 text-lg transition-all duration-200 focus:bg-white focus:ring-2 focus:outline-none'
+                  className='placeholder:text-fg-muted h-14 w-full rounded-2xl border-0 bg-bg-muted pr-12 pl-12 text-lg transition-all duration-200 focus:bg-bg-white focus:outline-none focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
                 />
                 {keyword && (
                   <button
                     onClick={clearSearch}
-                    className='absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 transition-colors hover:bg-neutral-200'
+                    className='absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 transition-colors hover:bg-bg-neutral-muted'
                   >
-                    <X className='text-muted h-4 w-4' />
+                    <X className='text-fg-muted h-4 w-4' />
                   </button>
                 )}
               </div>
-              <kbd className='text-muted hidden items-center gap-1 rounded-lg bg-neutral-100 px-3 py-2 font-mono text-xs sm:flex'>
+              <kbd className='text-fg-muted hidden items-center gap-1 rounded-lg bg-bg-neutral-muted px-3 py-2 font-mono text-xs sm:flex'>
                 ESC
               </kbd>
             </div>
@@ -91,8 +91,8 @@ const GlobalSearch = () => {
                 {/* 热门搜索 */}
                 <div>
                   <div className='mb-4 flex items-center gap-2'>
-                    <TrendingUp className='text-accent h-4 w-4' />
-                    <h3 className='text-default font-medium'>热门搜索</h3>
+                    <TrendingUp className='text-fg-accent h-4 w-4' />
+                    <h3 className='text-fg-default font-medium'>热门搜索</h3>
                   </div>
                   <div className='flex flex-wrap gap-2'>
                     {hotSearches.map((item, index) => (
@@ -104,7 +104,7 @@ const GlobalSearch = () => {
                             inputRef.current.value = item;
                           }
                         }}
-                        className='hover:bg-bg-accent rounded-full bg-neutral-100 px-4 py-2 text-sm transition-all duration-200 hover:scale-105 hover:text-white'
+                        className='hover:bg-bg-accent rounded-full bg-bg-neutral-muted px-4 py-2 text-sm transition-all duration-200 hover:scale-105 hover:text-fg-onEmphasis'
                       >
                         {item}
                       </button>
@@ -115,8 +115,8 @@ const GlobalSearch = () => {
                 {/* 搜索历史 */}
                 <div>
                   <div className='mb-4 flex items-center gap-2'>
-                    <Clock className='text-muted h-4 w-4' />
-                    <h3 className='text-default font-medium'>最近搜索</h3>
+                    <Clock className='text-fg-muted h-4 w-4' />
+                    <h3 className='text-fg-default font-medium'>最近搜索</h3>
                   </div>
                   <div className='space-y-2'>
                     {searchHistory.map((item, index) => (
@@ -128,10 +128,10 @@ const GlobalSearch = () => {
                             inputRef.current.value = item;
                           }
                         }}
-                        className='group flex w-full items-center gap-3 rounded-xl p-3 text-left transition-colors duration-200 hover:bg-neutral-50'
+                        className='group flex w-full items-center gap-3 rounded-xl p-3 text-left transition-colors duration-200 hover:bg-bg-neutral-muted'
                       >
-                        <Clock className='text-muted group-hover:text-accent h-4 w-4 transition-colors' />
-                        <span className='text-default'>{item}</span>
+                        <Clock className='text-fg-muted group-hover:text-fg-accent h-4 w-4 transition-colors' />
+                        <span className='text-fg-default'>{item}</span>
                       </button>
                     ))}
                   </div>
@@ -139,7 +139,7 @@ const GlobalSearch = () => {
 
                 {/* 搜索提示 */}
                 <div className='py-8 text-center'>
-                  <div className='bg-bg-accent/10 text-accent inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm'>
+                  <div className='bg-bg-accent/10 text-fg-accent inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm'>
                     <Search className='h-4 w-4' />
                     <span>开始输入关键词进行搜索</span>
                   </div>
@@ -150,10 +150,10 @@ const GlobalSearch = () => {
               <div className='flex h-full flex-col'>
                 {/* 结果统计 */}
                 {data && data.length > 0 && (
-                  <div className='border-b border-neutral-100 px-6 py-3'>
-                    <span className='text-muted text-sm'>
-                      为 &quot;<span className='text-accent font-medium'>{keyword}</span>&quot; 找到
-                      <span className='text-accent mx-1 font-medium'>{data.length}</span>
+                  <div className='border-b border-border-muted px-6 py-3'>
+                    <span className='text-fg-muted text-sm'>
+                      为 &quot;<span className='text-fg-accent font-medium'>{keyword}</span>&quot; 找到
+                      <span className='text-fg-accent mx-1 font-medium'>{data.length}</span>
                       个结果
                     </span>
                   </div>
@@ -171,12 +171,12 @@ const GlobalSearch = () => {
                     </div>
                   ) : (
                     <div className='flex h-full flex-col items-center justify-center space-y-4 text-center'>
-                      <div className='flex h-16 w-16 items-center justify-center rounded-full bg-neutral-100'>
-                        <Search className='text-muted h-6 w-6' />
+                      <div className='flex h-16 w-16 items-center justify-center rounded-full bg-bg-neutral-muted'>
+                        <Search className='text-fg-muted h-6 w-6' />
                       </div>
                       <div>
-                        <h3 className='text-default mb-1 font-medium'>未找到相关内容</h3>
-                        <p className='text-muted text-sm'>试试其他关键词，或查看热门搜索</p>
+                        <h3 className='text-fg-default mb-1 font-medium'>未找到相关内容</h3>
+                        <p className='text-fg-muted text-sm'>试试其他关键词，或查看热门搜索</p>
                       </div>
                     </div>
                   )}

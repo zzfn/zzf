@@ -33,7 +33,7 @@ const ReplyInput = ({
         style={{ overflow: 'hidden' }}
       >
         <div className='mt-2 flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed border-border-default p-4'>
-          <p className='text-sm text-muted'>登录后回复评论</p>
+          <p className='text-sm text-fg-muted'>登录后回复评论</p>
           <SignIn />
         </div>
       </motion.div>
@@ -54,14 +54,14 @@ const ReplyInput = ({
             onChange={(e) => setContent(e.target.value)}
             rows={2}
             className='bg-opacity w-full rounded-lg border border-border-default p-4 pb-14 text-sm
-                transition-colors duration-200 placeholder:text-muted focus:border-border-accent focus:outline-none
-                focus:ring-1 focus:ring-accent'
+                transition-colors duration-200 placeholder:text-fg-muted focus:border-border-accent-emphasis focus:outline-none
+                focus:ring-1 focus:ring-border-accent-emphasis'
             placeholder={`回复 @${username}...`}
             autoFocus
           />
           <div className='absolute bottom-3 right-3 flex items-center gap-3'>
             {content && (
-              <div className='text-muted/80 bg-bg-default/5 rounded-md px-2 py-1 text-xs'>
+              <div className='text-fg-muted/80 bg-bg-default/5 rounded-md px-2 py-1 text-xs'>
                 <span className='font-mono tabular-nums'>{content.length}</span>
                 <span className='ml-1'>字</span>
               </div>
@@ -71,14 +71,14 @@ const ReplyInput = ({
                 setContent('');
               }}
               className='bg-bg-default/5 hover:bg-bg-default/10 rounded-md px-3 py-1.5
-                  text-xs text-muted transition-colors duration-200 hover:text-accent'
+                  text-xs text-fg-muted transition-colors duration-200 hover:text-fg-accent'
             >
               取消
             </button>
             <button
               onClick={handleSubmit}
               className='bg-bg-accent/90 flex items-center gap-1.5 rounded-md px-4
-                  py-1.5 text-sm font-medium text-muted transition-colors duration-200 hover:bg-bg-accent'
+                  py-1.5 text-sm font-medium text-fg-muted transition-colors duration-200 hover:bg-bg-accent'
             >
               <span>发送</span>
               <span className='font-mono'>→</span>

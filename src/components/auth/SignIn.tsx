@@ -10,7 +10,7 @@ function SignInButton() {
       type='submit'
       disabled={pending}
       className='flex items-center gap-2 rounded-lg bg-bg-emphasis px-4 
-        py-2 text-white transition-colors 
+        py-2 text-fg-onEmphasis transition-colors 
         duration-200 hover:bg-bg-accent-emphasis disabled:opacity-70'
     >
       {pending ? (

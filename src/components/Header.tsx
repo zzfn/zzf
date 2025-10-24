@@ -54,9 +54,9 @@ const Header = () => {
               key={link.href}
               href={link.href}
               className={classNames(
-                'px-3 py-1.5 text-sm font-medium text-muted',
+                'px-3 py-1.5 text-sm font-medium text-fg-muted',
                 'rounded-full transition-colors',
-                'hover:bg-gray-100 hover:text-gray-900',
+                'hover:bg-bg-neutral-muted hover:text-fg-default',
               )}
             >
               {link.name}

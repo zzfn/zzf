@@ -22,7 +22,7 @@ const Alert = ({ title, children, className, variant = 'info' }: AlertProps) => 
   return (
     <div
       className={classNames(
-        'not-prose text-default rounded-2xl border px-4 py-3 text-sm shadow-sm',
+        'not-prose text-fg-default rounded-2xl border px-4 py-3 text-sm shadow-sm',
         variantStyles[variant],
         className,
       )}

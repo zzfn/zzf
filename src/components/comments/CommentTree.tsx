@@ -19,11 +19,11 @@ const CommentTree = ({ params }: CommentTreeProps) => {
         {/* 评论统计 */}
         <div className='flex items-center justify-between border-b border-border-default pb-4'>
           <div className='flex items-center gap-3'>
-            <div className='flex items-center gap-2 text-sm text-muted'>
-              <span className='font-mono text-accent'>#</span>
+            <div className='flex items-center gap-2 text-sm text-fg-muted'>
+              <span className='font-mono text-fg-accent'>#</span>
               <span className='font-medium'>讨论区</span>
             </div>
-            <div className='flex items-center gap-1 text-xs text-muted'>
+            <div className='flex items-center gap-1 text-xs text-fg-muted'>
               <span className='font-mono'>{data.length.toString().padStart(2, '0')}</span>
               <span>条评论</span>
             </div>

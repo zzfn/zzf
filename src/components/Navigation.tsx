@@ -28,7 +28,7 @@ const Navigation = ({ navLinks }: any) => {
 
         return (
           <Link
-            className={isActive ? 'text-accent' : 'text-default'}
+            className={isActive ? 'text-fg-accent' : 'text-fg-default'}
             href={`/${link.href}`}
             key={link.name}
           >

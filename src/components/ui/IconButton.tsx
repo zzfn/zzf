@@ -17,10 +17,10 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         ref={ref}
         type={type ?? 'button'}
         className={classNames(
-          'text-muted grid h-8 w-8 place-content-center rounded-md border border-border-transparent bg-bg-transparent transition-colors duration-200 ease-[cubic-bezier(0.3,0,0.5,1)]',
+          'text-fg-muted grid h-8 w-8 place-content-center rounded-md border border-border-transparent bg-bg-transparent transition-colors duration-200 ease-[cubic-bezier(0.3,0,0.5,1)]',
           'p-0',
           'flex-shrink-0 cursor-pointer select-none',
-          'hover:text-default hover:bg-[color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg))]',
+          'hover:text-fg-default hover:bg-[color:var(--button-default-bgColor-hover,var(--color-btn-hover-bg))]',
           'focus-visible:ring-2 focus-visible:ring-[color:var(--borderColor-accent-emphasis)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--bgColor-default)] focus-visible:outline-none',
           variant === 'bordered' && 'border-[color:var(--borderColor-default)]',
           className,

@@ -79,7 +79,7 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
           <div
             ref={refs.setFloating}
             style={floatingStyles}
-            className='z-50 rounded-md border bg-white p-2 shadow-lg dark:border-gray-700 dark:bg-gray-800'
+            className='z-50 rounded-md border border-border-muted bg-bg-default p-2 shadow-lg'
             onMouseEnter={() => setShowPreview(true)}
             onMouseLeave={handleMouseLeave}
           >
@@ -104,7 +104,7 @@ export default function LinkPreview({ href, children, className }: LinkPreviewPr
             </div>
             <div
               ref={arrowRef}
-              className='absolute h-2 w-2 rotate-45 bg-white dark:bg-gray-800'
+              className='absolute h-2 w-2 rotate-45 bg-[color:var(--color-bg-default)]'
               style={{
                 left: context.middlewareData.arrow?.x,
                 top: context.middlewareData.arrow?.y,

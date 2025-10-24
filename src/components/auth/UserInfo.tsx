@@ -26,13 +26,13 @@ const UserInfo = () => {
               )}
             </div>
           </div>
-          <span className='text-sm font-medium text-default'>{session.user.name}</span>
+          <span className='text-sm font-medium text-fg-default'>{session.user.name}</span>
         </div>
 
         <button
           onClick={() => signOut()}
           className='hover:bg-bg-default/5 flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs
-              text-muted transition-colors duration-200 hover:text-accent'
+              text-fg-muted transition-colors duration-200 hover:text-fg-accent'
         >
           <LogOut size={14} />
           <span>退出登录</span>

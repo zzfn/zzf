@@ -13,7 +13,7 @@ const MenuItem = ({ navLinks }: any) => {
   return (
     <>
       <IconButton onClick={() => setVisible(true)}>
-        <Menu className='text-default hover:text-accent transition-colors' />
+        <Menu className='text-fg-default hover:text-fg-accent transition-colors' />
       </IconButton>
 
       <AnimatePresence>
@@ -51,8 +51,8 @@ const MenuItem = ({ navLinks }: any) => {
                         className={classNames(
                           'group flex items-center justify-between rounded-md px-3 py-2 text-sm transition-colors',
                           isActive
-                            ? 'bg-bg-accent text-accent'
-                            : 'text-default hover:bg-bg-neutral-muted',
+                            ? 'bg-bg-accent text-fg-accent'
+                            : 'text-fg-default hover:bg-bg-neutral-muted',
                         )}
                         onClick={() => setVisible(false)}
                       >

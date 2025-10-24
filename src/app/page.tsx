@@ -104,7 +104,7 @@ export default async function Page() {
             <h1 className='bg-[linear-gradient(120deg,_var(--fgColor-accent),_var(--fgColor-sponsors))] bg-clip-text text-2xl font-semibold text-transparent sm:text-3xl'>
               {config.name}
             </h1>
-            <p className='animate-typing w-fit overflow-hidden whitespace-nowrap border-r border-[color:var(--hero-border)] pr-2 font-mono text-xs uppercase tracking-wider text-muted sm:text-sm'>
+            <p className='animate-typing w-fit overflow-hidden whitespace-nowrap border-r border-[color:var(--hero-border)] pr-2 font-mono text-xs uppercase tracking-wider text-fg-muted sm:text-sm'>
               {config.slug}
             </p>
           </div>
@@ -115,10 +115,10 @@ export default async function Page() {
         style={activityVars}
         className='mb-12 rounded-2xl border border-[color:var(--activity-border)] bg-[color:var(--activity-surface)] p-6 shadow-[var(--activity-shadow)] backdrop-blur-md sm:p-8'
       >
-        <h2 className='mb-5 text-base font-medium text-default sm:text-lg'>最近在做什么 ⚡️</h2>
+        <h2 className='mb-5 text-base font-medium text-fg-default sm:text-lg'>最近在做什么 ⚡️</h2>
         <div className='space-y-4'>
           {activityItems.map((item) => (
-            <div key={item.label} className='flex items-center gap-3 text-sm text-muted'>
+            <div key={item.label} className='flex items-center gap-3 text-sm text-fg-muted'>
               <span className={`h-2.5 w-2.5 rounded-full ${item.dotClass}`}></span>
               <span>{item.label}</span>
             </div>
@@ -137,15 +137,15 @@ export default async function Page() {
             <div className='relative rounded-2xl border border-[color:var(--card-inner-border)] bg-[color:var(--card-surface)] p-6'>
               <div className='absolute inset-0 rounded-2xl bg-[var(--card-overlay)] opacity-70'></div>
               <div className='relative flex flex-col gap-4'>
-                <h2 className='line-clamp-2 font-mono text-lg font-medium text-default/90'>
+                <h2 className='line-clamp-2 font-mono text-lg font-medium text-fg-default/90'>
                   {post.title}
                 </h2>
-                <div className='flex items-center gap-3 text-xs text-muted'>
+                <div className='flex items-center gap-3 text-xs text-fg-muted'>
                   <time className='flex items-center gap-1'>
                     <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-bg-accent-emphasis'></span>
                     {dayjs(post.updatedAt).format('YYYY-MM-DD')}
                   </time>
-                  <span className='rounded-md border border-[color:var(--card-tag-border)] bg-[color:var(--card-tag)] px-2 py-0.5 font-mono uppercase tracking-wider text-muted'>
+                  <span className='rounded-md border border-[color:var(--card-tag-border)] bg-[color:var(--card-tag)] px-2 py-0.5 font-mono uppercase tracking-wider text-fg-muted'>
                     {post.tag}
                   </span>
                 </div>
@@ -153,7 +153,7 @@ export default async function Page() {
             </div>
 
             <div className='absolute inset-0 flex items-center justify-center bg-[var(--card-overlay)] opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100'>
-              <div className='flex items-center gap-2 text-onEmphasis'>
+              <div className='flex items-center gap-2 text-fg-onEmphasis'>
                 <span className='font-mono tracking-wider'>VIEW POST</span>
                 <span className='animate-pulse'>_</span>
               </div>
@@ -170,7 +170,7 @@ export default async function Page() {
         <div className='pointer-events-none absolute inset-0 flex items-center justify-center opacity-70'>
           <div className='h-[380%] w-[220%] animate-spin bg-[var(--cta-glow)] blur-2xl'></div>
         </div>
-        <span className='relative flex items-center justify-center gap-2 font-mono text-sm font-medium text-accent-emphasis'>
+        <span className='relative flex items-center justify-center gap-2 font-mono text-sm font-medium text-fg-accent'>
           <span>EXPLORE MORE</span>
           <span className='animate-pulse'>_</span>
         </span>

@@ -29,8 +29,8 @@ const CommentItem = ({
       </div>
 
       <div className='flex-1 space-y-2'>
-        <div className='font-medium text-default'>{comment.username}</div>
-        <p className='whitespace-pre-wrap text-sm text-default'>{comment.content}</p>
+        <div className='font-medium text-fg-default'>{comment.username}</div>
+        <p className='whitespace-pre-wrap text-sm text-fg-default'>{comment.content}</p>
         <CommentMeta comment={comment} onReply={onReply} />
       </div>
     </div>

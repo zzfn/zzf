@@ -83,7 +83,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
             className={classNames(
               'relative flex h-10 items-center justify-center',
               'border-border-accent-emphasis/10 cursor-pointer border-b',
-              'font-mono text-sm text-accent-emphasis',
+              'font-mono text-sm text-fg-accent',
             )}
             onClick={() => setIsExpanded(!isExpanded)}
           >
@@ -114,7 +114,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
               {hoveredIndex !== null && isExpanded && (
                 <motion.div
                   // @ts-ignore
-                  className='bg-bg-accent-emphasis/5 absolute left-0 -z-[1] rounded-lg'
+              className='bg-bg-accent-emphasis/5 absolute left-0 -z-[1] rounded-lg'
                   initial={{ top: position.top, height: position.height, opacity: 0 }}
                   animate={{ top: position.top, height: position.height, opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -142,7 +142,7 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
                 className={classNames(
                   'group relative px-3 py-1.5',
                   'transition-all duration-200',
-                  current === nav.text && 'text-accent-emphasis',
+                  current === nav.text && 'text-fg-accent',
                 )}
                 style={{
                   marginLeft: isExpanded ? `${(nav.level - 1) * 10}px` : 0,
@@ -153,10 +153,10 @@ const ArticleNav: React.FC<NavProps> = ({ source }) => {
                   href={`#${nav.text}`}
                   onClick={() => setCurrent(nav.text)}
                   className={classNames(
-                    'block truncate text-sm text-muted',
+                    'block truncate text-sm text-fg-muted',
                     'transition-colors duration-200',
-                    'hover:text-accent-emphasis',
-                    current === nav.text && 'text-accent-emphasis',
+                    'hover:text-fg-accent',
+                    current === nav.text && 'text-fg-accent',
                   )}
                 >
                   {nav.text}

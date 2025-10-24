@@ -98,7 +98,7 @@ export default async function Page() {
   };
 
   return (
-    <div className='bg-bg-default text-default min-h-screen px-4 py-8'>
+    <div className='bg-bg-default text-fg-default min-h-screen px-4 py-8'>
       <div className='mx-auto max-w-5xl space-y-8'>
         {/* 加载指示器 */}
         <div className='flex items-center gap-3'>

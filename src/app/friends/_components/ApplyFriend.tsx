@@ -17,24 +17,24 @@ const ApplyFriend = () => {
     <div>
       <button
         onClick={() => setIsVisible(true)}
-        className='group relative overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-3 text-white shadow-lg transition-all hover:scale-105'
+        className='group relative overflow-hidden rounded-lg bg-gradient-to-r from-[color:var(--color-bg-accent-emphasis)] to-[color:var(--color-bg-upsell-emphasis)] px-8 py-3 text-fg-onEmphasis shadow-lg transition-all hover:scale-105'
       >
         <span className='relative z-10'>申请友链</span>
-        <div className='absolute inset-0 -z-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 blur transition-opacity group-hover:opacity-50'></div>
+        <div className='absolute inset-0 -z-0 bg-gradient-to-r from-[color:var(--color-bg-accent-emphasis)] to-[color:var(--color-bg-upsell-emphasis)] opacity-0 blur transition-opacity group-hover:opacity-50'></div>
       </button>
 
       <Modal onCancel={() => setIsVisible(false)} visible={isVisible}>
         <div className='space-y-6 p-6'>
           <div className='text-center'>
-            <h3 className='bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent'>
+            <h3 className='bg-gradient-to-r from-[color:var(--color-bg-accent-emphasis)] to-[color:var(--color-bg-upsell-emphasis)] bg-clip-text text-2xl font-bold text-transparent'>
               申请友链
             </h3>
-            <p className='text-muted/60 mt-2 text-sm'>填写您的网站信息，加入我们的朋友圈</p>
+            <p className='text-fg-muted/60 mt-2 text-sm'>填写您的网站信息，加入我们的朋友圈</p>
           </div>
 
           <div className='space-y-4'>
             <div className='space-y-2'>
-              <label className='text-muted/80 text-sm font-medium'>站点标题</label>
+              <label className='text-fg-muted/80 text-sm font-medium'>站点标题</label>
               <Input
                 value={formData.name}
                 onChange={(event) =>
@@ -45,12 +45,12 @@ const ApplyFriend = () => {
                   )
                 }
                 placeholder='输入您的站点名称'
-                className='border-border/50 w-full rounded-lg border bg-white/50 px-4 py-2.5 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
+                className='border-border-muted/50 w-full rounded-lg border bg-bg-white/50 px-4 py-2.5 backdrop-blur-sm focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
               />
             </div>
 
             <div className='space-y-2'>
-              <label className='text-muted/80 text-sm font-medium'>站点地址</label>
+              <label className='text-fg-muted/80 text-sm font-medium'>站点地址</label>
               <Input
                 value={formData.url}
                 onChange={(event) =>
@@ -61,12 +61,12 @@ const ApplyFriend = () => {
                   )
                 }
                 placeholder='https://example.com'
-                className='border-border/50 w-full rounded-lg border bg-white/50 px-4 py-2.5 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
+                className='border-border-muted/50 w-full rounded-lg border bg-bg-white/50 px-4 py-2.5 backdrop-blur-sm focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
               />
             </div>
 
             <div className='space-y-2'>
-              <label className='text-muted/80 text-sm font-medium'>站点头像</label>
+              <label className='text-fg-muted/80 text-sm font-medium'>站点头像</label>
               <Input
                 value={formData.logo}
                 onChange={(event) =>
@@ -77,12 +77,12 @@ const ApplyFriend = () => {
                   )
                 }
                 placeholder='头像图片链接'
-                className='border-border/50 w-full rounded-lg border bg-white/50 px-4 py-2.5 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
+                className='border-border-muted/50 w-full rounded-lg border bg-bg-white/50 px-4 py-2.5 backdrop-blur-sm focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
               />
             </div>
 
             <div className='space-y-2'>
-              <label className='text-muted/80 text-sm font-medium'>站点描述</label>
+              <label className='text-fg-muted/80 text-sm font-medium'>站点描述</label>
               <Input
                 value={formData.description}
                 onChange={(event) =>
@@ -93,7 +93,7 @@ const ApplyFriend = () => {
                   )
                 }
                 placeholder='简单介绍一下您的网站'
-                className='border-border/50 w-full rounded-lg border bg-white/50 px-4 py-2.5 backdrop-blur-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
+                className='border-border-muted/50 w-full rounded-lg border bg-bg-white/50 px-4 py-2.5 backdrop-blur-sm focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
               />
             </div>
           </div>
@@ -119,7 +119,7 @@ const ApplyFriend = () => {
               });
               setIsVisible(false);
             }}
-            className='w-full rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 py-3 font-medium text-white transition-all hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]'
+            className='w-full rounded-lg bg-gradient-to-r from-[color:var(--color-bg-accent-emphasis)] to-[color:var(--color-bg-upsell-emphasis)] py-3 font-medium text-fg-onEmphasis transition-all hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]'
           >
             提交申请
           </button>

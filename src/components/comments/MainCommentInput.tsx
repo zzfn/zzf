@@ -48,7 +48,7 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
   if (!session) {
     return (
       <div className='animate-fade-in border-border-default flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed p-6'>
-        <p className='text-muted text-sm'>登录后参与讨论</p>
+        <p className='text-fg-muted text-sm'>登录后参与讨论</p>
         <SignIn />
       </div>
     );
@@ -64,12 +64,12 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
             setContent(e.target.value);
           }}
           rows={1}
-          className='bg-opacity border-border-default placeholder:text-muted focus:border-border-accent focus:ring-accent w-full rounded-lg border p-4 pb-14 text-sm transition-colors duration-200 focus:ring-1 focus:outline-none'
+          className='bg-opacity border-border-default placeholder:text-fg-muted focus:border-border-accent-emphasis focus:ring-border-accent-emphasis w-full rounded-lg border p-4 pb-14 text-sm transition-colors duration-200 focus:ring-1 focus:outline-none'
           placeholder={replyTo ? `回复 @${replyTo}...` : '参与讨论...'}
         />
         <div className='absolute right-3 bottom-3 flex items-center gap-3'>
           {content && (
-            <div className='text-muted/80 bg-bg-default/5 rounded-md px-2 py-1 text-xs'>
+            <div className='text-fg-muted/80 bg-bg-default/5 rounded-md px-2 py-1 text-xs'>
               <span className='font-mono tabular-nums'>{content.length}</span>
               <span className='ml-1'>字</span>
             </div>
@@ -79,14 +79,14 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
               {replyTo && (
                 <Button
                   onClick={() => setReplyTo(null)}
-                  className='bg-bg-default/5 hover:bg-bg-default/10 text-muted hover:text-accent rounded-md px-3 py-1.5 text-xs transition-colors duration-200'
+                  className='bg-bg-default/5 hover:bg-bg-default/10 text-fg-muted hover:text-fg-accent rounded-md px-3 py-1.5 text-xs transition-colors duration-200'
                 >
                   取消回复
                 </Button>
               )}
               <button
                 onClick={handleSubmit}
-                className='bg-bg-accent-muted text-muted hover:bg-bg-accent flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors duration-200'
+                className='bg-bg-accent-muted text-fg-muted hover:bg-bg-accent flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors duration-200'
               >
                 <span>发布</span>
                 <span className='font-mono'>→</span>

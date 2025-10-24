@@ -37,7 +37,7 @@ const Modal = ({ visible, onCancel, children, className }: ModalProps) => {
       <div
         role='presentation'
         onClick={handleBackdropClick}
-        className='fixed inset-0 z-[1100] flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm'
+        className='fixed inset-0 z-[1100] flex items-center justify-center bg-[color:color-mix(in_srgb,var(--color-fg-black)_40%,transparent)] p-4 backdrop-blur-sm'
       >
         <div
           role='dialog'

@@ -63,25 +63,25 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
       >
         <main className='flex flex-col gap-12 md:col-start-1'>
           <section className='rounded-3xl border border-[color:var(--post-shell-border)] bg-[color:var(--post-shell-surface)] p-6 shadow-[var(--post-shell-shadow)] backdrop-blur-md sm:p-8'>
-            <h1 className='text-default text-3xl font-semibold tracking-tight md:text-4xl'>
+            <h1 className='text-fg-default text-3xl font-semibold tracking-tight md:text-4xl'>
               {data.title}
             </h1>
             <div className='mt-6 rounded-2xl border border-[color:var(--post-meta-border)] bg-[color:var(--post-meta-surface)] p-4 sm:p-6'>
-              <ul className='text-muted flex flex-wrap items-center gap-4 text-sm'>
+              <ul className='text-fg-muted flex flex-wrap items-center gap-4 text-sm'>
                 <li className='flex items-center gap-2'>
-                  <span className='text-default/75'>创建时间</span>
+                  <span className='text-fg-default/75'>创建时间</span>
                   <Tooltip content={format(data.createdAt)}>
                     <time>{diff(data.createdAt)}</time>
                   </Tooltip>
                 </li>
                 <li className='flex items-center gap-2'>
-                  <span className='text-default/75'>更新时间</span>
+                  <span className='text-fg-default/75'>更新时间</span>
                   <Tooltip content={format(data.updatedAt)}>
                     <time>{diff(data.updatedAt)}</time>
                   </Tooltip>
                 </li>
                 <li className='flex items-center gap-2'>
-                  <span className='text-default/75'>浏览量</span>
+                  <span className='text-fg-default/75'>浏览量</span>
                   <ArticleCount id={data.id} />
                 </li>
               </ul>
@@ -105,12 +105,12 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
                       (props.href.startsWith('http://') || props.href.startsWith('https://'))
                     ) {
                       return (
-                        <LinkPreview href={props.href} className='text-accent'>
+                        <LinkPreview href={props.href} className='text-fg-accent'>
                           {props.children}
                         </LinkPreview>
                       );
                     }
-                    return <a target='_blank' className='text-accent' {...props} />;
+                    return <a target='_blank' className='text-fg-accent' {...props} />;
                   },
                   img: MdImage,
                   code: MdCode,

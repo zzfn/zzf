@@ -16,7 +16,7 @@ const CommentMeta = ({
   onReply: (id: string) => void;
 }) => (
   <>
-    <div className='flex items-center gap-3 text-xs text-muted'>
+    <div className='flex items-center gap-3 text-xs text-fg-muted'>
       <span>{formatTime(comment.createdAt)}</span>
       {comment.address && (
         <>
@@ -25,7 +25,7 @@ const CommentMeta = ({
         </>
       )}
     </div>
-    <button onClick={() => onReply(comment.id)} className='text-xs text-muted hover:text-accent'>
+    <button onClick={() => onReply(comment.id)} className='text-xs text-fg-muted hover:text-fg-accent'>
       回复
     </button>
   </>

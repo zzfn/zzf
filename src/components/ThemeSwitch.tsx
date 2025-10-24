@@ -86,7 +86,7 @@ const ThemeSwitch = () => {
       style={switchVars}
       className={classNames(
         'relative flex h-10 min-w-[210px] items-center overflow-hidden',
-        'border-border-muted text-muted rounded-[22px] border bg-[color:var(--switch-surface)]',
+        'border-border-muted text-fg-muted rounded-[22px] border bg-[color:var(--switch-surface)]',
         'backdrop-blur-md transition-[box-shadow,transform] duration-300 ease-in-out',
         'focus-within:border-border-accent-emphasis shadow-[var(--switch-shadow)]',
       )}
@@ -96,7 +96,7 @@ const ThemeSwitch = () => {
           'pointer-events-none absolute left-[var(--switch-indicator-inset)]',
           'rounded-[18px] bg-[color:var(--switch-indicator)]',
           'transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
-          'ring-muted ring-1 ring-inset',
+          'ring-border-muted ring-1 ring-inset',
         )}
         style={{
           top: 'var(--switch-indicator-inset)',
@@ -129,7 +129,7 @@ const ThemeSwitch = () => {
                 'text-sm font-medium transition-colors duration-200',
                 'focus-visible:ring-2 focus-visible:ring-[color:var(--borderColor-accent-emphasis)] focus-visible:outline-none',
                 'focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--switch-surface)]',
-                isActive ? 'text-default' : 'text-muted hover:text-default',
+                isActive ? 'text-fg-default' : 'text-fg-muted hover:text-fg-default',
               )}
             >
               <Icon

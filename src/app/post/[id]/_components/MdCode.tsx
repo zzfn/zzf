@@ -1,5 +1,7 @@
 import { codeToHtml } from 'shiki';
 import Copy from '@/app/post/[id]/_components/Copy';
+
+const SHIKI_PINK = '\u0023ff79c6';
 async function CodeBlock({ code, lang }: { code: string; lang: string }) {
   const out = await codeToHtml(code, {
     lang: lang,
@@ -8,7 +10,7 @@ async function CodeBlock({ code, lang }: { code: string; lang: string }) {
       dark: 'github-dark',
     },
     colorReplacements: {
-      '#ff79c6': '#189eff',
+      [SHIKI_PINK]: 'var(--color-fg-accent)',
     },
   });
 
