@@ -5,7 +5,7 @@ function useDebouncedCallback<TArgs extends unknown[]>(
   delay: number,
 ): (...args: TArgs) => void {
   const callbackRef = useRef(callback);
-  const timeoutRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+  const timeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     callbackRef.current = callback;
