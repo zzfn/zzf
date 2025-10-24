@@ -26,13 +26,13 @@ const Header = () => {
         className={classNames(
           'mx-auto flex items-center justify-between px-4 transition-all duration-500',
           count > 100
-            ? 'relative w-[640px] overflow-hidden rounded-full py-2 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_8%,transparent)] backdrop-blur-xl'
+            ? 'relative w-[640px] overflow-hidden rounded-full py-2 shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] ring-1 ring-border-muted backdrop-blur-xl'
             : 'container',
         )}
       >
         {/* 玻璃背景层 - 只在收缩状态显示 */}
         {count > 100 && (
-          <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-white)_92%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-white)_85%,transparent)]' />
+          <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-default)_90%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-muted)_80%,transparent)]' />
         )}
 
         {/* Mobile Menu */}
@@ -51,12 +51,12 @@ const Header = () => {
             'relative z-10 hidden items-center gap-x-1 md:flex',
             count > 100
               ? ''
-              : 'overflow-hidden rounded-full px-4 py-2 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_6%,transparent)] backdrop-blur-xl',
+              : 'overflow-hidden rounded-full px-4 py-2 shadow-[0_4px_16px_0_rgba(0,0,0,0.08)] ring-1 ring-border-muted backdrop-blur-xl',
           )}
         >
           {/* 导航背景 - 只在展开状态显示 */}
           {count <= 100 && (
-            <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-white)_88%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-white)_80%,transparent)]' />
+            <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-default)_88%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-muted)_80%,transparent)]' />
           )}
 
           {navLinks.map((link) => (

@@ -45,13 +45,13 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
         <div className='animate-in fade-in slide-in-from-top-4 mb-12 duration-700'>
           <div className='group relative overflow-hidden rounded-[2rem] backdrop-blur-xl transition-all duration-500 hover:scale-[1.02]'>
             {/* 玻璃背景层 */}
-            <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-white)_90%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-white)_80%,transparent)]' />
+            <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-default)_90%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-muted)_80%,transparent)]' />
 
             {/* 光晕效果 */}
             <div className='absolute -top-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-[color:var(--color-bg-accent-emphasis)] opacity-20 blur-3xl transition-all duration-700 group-hover:opacity-30' />
 
             {/* 内容层 */}
-            <div className='relative p-10 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_8%,transparent)]'>
+            <div className='relative p-10 shadow-[0_8px_32px_0_rgba(0,0,0,0.08)] ring-1 ring-border-muted'>
               <div className='text-center'>
                 {/* 图标容器 - 带光晕 */}
                 <div className='relative mb-6 inline-flex'>
@@ -87,13 +87,10 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
                 >
                   <div className='group relative overflow-hidden rounded-[2rem] backdrop-blur-xl transition-all duration-500 hover:scale-[1.01]'>
                     {/* 玻璃背景 */}
-                    <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-white)_85%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-white)_75%,transparent)]' />
-
-                    {/* 顶部光效 */}
-                    <div className='absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-[color:color-mix(in_srgb,var(--color-fg-accent)_30%,transparent)] to-transparent' />
+                    <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-default)_85%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-muted)_75%,transparent)]' />
 
                     {/* 内容 */}
-                    <div className='relative shadow-[0_8px_32px_0_rgba(0,0,0,0.06)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_6%,transparent)]'>
+                    <div className='relative shadow-[0_8px_32px_0_rgba(0,0,0,0.06)] ring-1 ring-border-muted'>
                       {/* 年份标题 */}
                       <div className='border-b border-[color:color-mix(in_srgb,var(--color-border-muted)_50%,transparent)] bg-gradient-to-r from-transparent via-[color:color-mix(in_srgb,var(--color-bg-accent-muted)_10%,transparent)] to-transparent px-8 py-6 backdrop-blur-sm'>
                         <div className='flex items-center justify-between'>
@@ -156,14 +153,14 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
           <div className='animate-in fade-in slide-in-from-bottom-4 duration-700'>
             <div className='group relative overflow-hidden rounded-[2rem] backdrop-blur-xl'>
               {/* 玻璃背景 */}
-              <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-white)_85%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-white)_75%,transparent)]' />
+              <div className='absolute inset-0 bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-default)_85%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-muted)_75%,transparent)]' />
 
               {/* 光晕效果 */}
               <div className='absolute top-1/2 left-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[color:var(--color-bg-neutral-muted)] opacity-10 blur-3xl' />
 
               {/* 内容 */}
-              <div className='relative p-20 text-center shadow-[0_8px_32px_0_rgba(0,0,0,0.06)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_6%,transparent)]'>
-                <div className='relative mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-neutral-muted)_60%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-neutral-muted)_40%,transparent)] ring-1 ring-[color:color-mix(in_srgb,var(--color-fg-black)_5%,transparent)] backdrop-blur-sm transition-transform duration-500 group-hover:scale-110'>
+              <div className='relative p-20 text-center shadow-[0_8px_32px_0_rgba(0,0,0,0.06)] ring-1 ring-border-muted'>
+                <div className='relative mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[color:color-mix(in_srgb,var(--color-bg-neutral-muted)_60%,transparent)] to-[color:color-mix(in_srgb,var(--color-bg-neutral-muted)_40%,transparent)] ring-1 ring-border-muted backdrop-blur-sm transition-transform duration-500 group-hover:scale-110'>
                   <svg
                     className='h-10 w-10 text-[color:var(--color-fg-muted)] transition-colors'
                     fill='none'
