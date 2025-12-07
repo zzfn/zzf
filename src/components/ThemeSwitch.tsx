@@ -74,13 +74,13 @@ const ThemeSwitch = () => {
     themes.findIndex((item) => item.id === normalizedTheme),
   );
 
-  const switchVars: CSSProperties = {
+  const switchVars = {
     '--switch-surface': 'color-mix(in srgb, var(--bgColor-default) 72%, transparent)',
     '--switch-shadow':
       '0 24px 48px -28px color-mix(in srgb, var(--fgColor-default) 28%, transparent)',
     '--switch-indicator': 'color-mix(in srgb, var(--bgColor-default) 94%, transparent)',
     '--switch-indicator-inset': '0.25rem',
-  };
+  } as CSSProperties;
 
   return (
     <div
