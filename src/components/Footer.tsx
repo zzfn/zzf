@@ -5,12 +5,12 @@ import OnlineCount from '@/components/metrics/OnlineCount';
 import ThemeClient from './ThemeClient';
 
 const Footer = () => {
-  const footerSurface: CSSProperties = {
+  const footerSurface = {
     '--footer-surface': 'color-mix(in srgb, var(--bgColor-default) 82%, transparent)',
     '--footer-divider': 'color-mix(in srgb, var(--borderColor-muted) 70%, transparent)',
     '--footer-shadow':
       '0 28px 42px -36px color-mix(in srgb, var(--fgColor-default) 30%, transparent)',
-  };
+  } as CSSProperties;
 
   return (
     <footer
