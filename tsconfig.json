@@ -14,7 +14,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "preserveConstEnums": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

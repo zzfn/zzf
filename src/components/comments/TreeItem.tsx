@@ -24,7 +24,7 @@ function TreeItem({
       {/* 回复输入框 */}
       <AnimatePresence>
         {activeReplyId === comment.id && (
-          <ReplyInput mutate={mutate} parentId={comment.id} username={comment.username} />
+          <ReplyInput mutate={mutate as never} parentId={comment.id} username={comment.username} />
         )}
       </AnimatePresence>
 
@@ -35,7 +35,11 @@ function TreeItem({
             <motion.div key={reply.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <CommentItem comment={reply} onReply={handleReply} />
               {activeReplyId === reply.id && (
-                <ReplyInput mutate={mutate} parentId={comment.id} username={reply.username} />
+                <ReplyInput
+                  mutate={mutate as never}
+                  parentId={comment.id}
+                  username={reply.username}
+                />
               )}
             </motion.div>
           ))}

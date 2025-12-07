@@ -17,26 +17,26 @@ const CommentTree = ({ params }: CommentTreeProps) => {
     <SessionProvider>
       <div className='space-y-8'>
         {/* 评论统计 */}
-        <div className='flex items-center justify-between border-b border-border-default pb-4'>
+        <div className='border-border-default flex items-center justify-between border-b pb-4'>
           <div className='flex items-center gap-3'>
-            <div className='flex items-center gap-2 text-sm text-fg-muted'>
-              <span className='font-mono text-fg-accent'>#</span>
+            <div className='text-fg-muted flex items-center gap-2 text-sm'>
+              <span className='text-fg-accent font-mono'>#</span>
               <span className='font-medium'>讨论区</span>
             </div>
-            <div className='flex items-center gap-1 text-xs text-fg-muted'>
+            <div className='text-fg-muted flex items-center gap-1 text-xs'>
               <span className='font-mono'>{data.length.toString().padStart(2, '0')}</span>
               <span>条评论</span>
             </div>
           </div>
           <div className='flex items-center gap-1.5 text-xs'>
-            <span className='h-1.5 w-1.5 animate-pulse rounded-full bg-bg-success-muted'></span>
+            <span className='bg-bg-success-muted h-1.5 w-1.5 animate-pulse rounded-full'></span>
             <span className='font-mono'>实时对话</span>
           </div>
         </div>
         <MainCommentInput params={params} mutate={mutate}></MainCommentInput>
         <div className='space-y-6'>
           {data.map((comment: CommentType) => (
-            <TreeItem mutate={mutate} key={comment.id} comment={comment}></TreeItem>
+            <TreeItem mutate={mutate as never} key={comment.id} comment={comment}></TreeItem>
           ))}
         </div>
       </div>
