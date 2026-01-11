@@ -13,13 +13,10 @@ import MdImage from './_components/MdImage';
 import MdSpace from './_components/MdSpace';
 import Loading from 'components/loading';
 import MdCode from './_components/MdCode';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import ArticleNav from 'components/ArticleNav';
 import remarkGfm from 'remark-gfm';
 import CodeSandpack from '@/components/integrations/CodeSandpack';
 import AI from './_components/AI';
-import LinkPreview from '@/components/LinkPreview'; // Added import
 import type { CSSProperties } from 'react';
 
 async function getData(id: string) {
@@ -62,33 +59,70 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
         className='mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pt-12 pb-16 md:grid md:grid-cols-[minmax(0,1fr)_320px] md:gap-10'
       >
         <main className='flex flex-col gap-12 md:col-start-1'>
-          <section className='rounded-3xl border border-[color:var(--post-shell-border)] bg-[color:var(--post-shell-surface)] p-6 shadow-[var(--post-shell-shadow)] backdrop-blur-md sm:p-8'>
-            <h1 className='text-fg-default text-3xl font-semibold tracking-tight md:text-4xl'>
+          <section className='rounded-3xl border border-[color:var(--post-shell-border)] bg-[color:var(--post-shell-surface)] p-8 shadow-[var(--post-shell-shadow)] backdrop-blur-md sm:p-12'>
+            <h1 className='text-4xl font-bold tracking-tight text-[color:var(--fgColor-default)] md:text-5xl lg:text-6xl'>
               {data.title}
             </h1>
-            <div className='mt-6 rounded-2xl border border-[color:var(--post-meta-border)] bg-[color:var(--post-meta-surface)] p-4 sm:p-6'>
-              <ul className='text-fg-muted flex flex-wrap items-center gap-4 text-sm'>
-                <li className='flex items-center gap-2'>
-                  <span className='text-fg-default/75'>创建时间</span>
-                  <Tooltip content={format(data.createdAt)}>
-                    <time>{diff(data.createdAt)}</time>
-                  </Tooltip>
-                </li>
-                <li className='flex items-center gap-2'>
-                  <span className='text-fg-default/75'>更新时间</span>
-                  <Tooltip content={format(data.updatedAt)}>
-                    <time>{diff(data.updatedAt)}</time>
-                  </Tooltip>
-                </li>
-                <li className='flex items-center gap-2'>
-                  <span className='text-fg-default/75'>浏览量</span>
+
+            <div className='text-fg-muted mt-8 flex flex-wrap items-center gap-3 text-sm'>
+              <Tooltip content={format(data.createdAt)}>
+                <div className='flex items-center gap-1.5'>
+                  <svg className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
+                    />
+                  </svg>
+                  <time>创建于 {diff(data.createdAt)}</time>
+                </div>
+              </Tooltip>
+
+              <span className='text-fg-default/40'>•</span>
+
+              <Tooltip content={format(data.updatedAt)}>
+                <div className='flex items-center gap-1.5'>
+                  <svg className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
+                    />
+                  </svg>
+                  <time>更新于 {diff(data.updatedAt)}</time>
+                </div>
+              </Tooltip>
+
+              <span className='text-fg-default/40'>•</span>
+
+              <div className='flex items-center gap-1.5'>
+                <svg className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'
+                  />
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
+                  />
+                </svg>
+                <span>
                   <ArticleCount id={data.id} />
-                </li>
-              </ul>
-              <div className='mt-4 border-t border-[color:var(--post-meta-divider)] pt-4'>
-                <AI summary={data.summary} />
+                </span>
               </div>
             </div>
+
+            {data.summary && (
+              <div className='mt-6 border-t border-[color:var(--post-meta-divider)] pt-6'>
+                <AI summary={data.summary} />
+              </div>
+            )}
           </section>
           <article
             className={classNames(
@@ -101,16 +135,6 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
                 source={data.content}
                 components={{
                   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-                    if (
-                      props.href &&
-                      (props.href.startsWith('http://') || props.href.startsWith('https://'))
-                    ) {
-                      return (
-                        <LinkPreview href={props.href} className='text-fg-accent'>
-                          {props.children}
-                        </LinkPreview>
-                      );
-                    }
                     return <a target='_blank' className='text-fg-accent' {...props} />;
                   },
                   img: MdImage,
@@ -127,7 +151,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
                 }}
                 options={{
                   mdxOptions: {
-                    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] as any,
+                    rehypePlugins: [],
                     remarkPlugins: [remarkGfm] as any,
                   },
                 }}
