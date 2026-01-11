@@ -17,53 +17,53 @@ const Footer = () => {
       style={footerSurface}
       className='relative mt-auto border-t border-[color:var(--footer-divider)] bg-[color:var(--footer-surface)] backdrop-blur-md'
     >
-      <div className='mx-auto flex max-w-6xl flex-col gap-8 px-6 py-8 sm:px-8 md:py-10'>
-        <div className='flex flex-col gap-8 md:flex-row md:justify-between md:gap-16'>
-          <div className='space-y-4'>
-            <h3 className='text-fg-default text-xs font-medium tracking-wider uppercase'>
+      <div className='mx-auto flex max-w-6xl flex-col gap-0 px-6 sm:px-8'>
+        <div className='grid grid-cols-1 gap-12 py-10 md:grid-cols-3 md:gap-8 md:py-12'>
+          <div>
+            <h3 className='text-fg-default mb-4 text-xs font-semibold tracking-widest uppercase'>
               快速导航
             </h3>
-            <div className='grid grid-cols-1 gap-1 text-sm sm:grid-cols-2'>
+            <nav className='flex flex-col gap-3'>
               <Link
-                className='text-fg-muted hover:text-fg-default py-1 transition-colors'
+                className='text-fg-muted hover:text-fg-default text-sm transition-colors'
                 href='/api/feed.xml'
               >
                 RSS feed
               </Link>
               <Link
-                className='text-fg-muted hover:text-fg-default py-1 transition-colors'
+                className='text-fg-muted hover:text-fg-default text-sm transition-colors'
                 href='/about'
               >
                 关于
               </Link>
               <Link
-                className='text-fg-muted hover:text-fg-default py-1 transition-colors'
+                className='text-fg-muted hover:text-fg-default text-sm transition-colors'
                 target='_blank'
                 href='https://uptime.zzfzzf.com/status/m'
               >
                 服务状态
               </Link>
               <Link
-                className='text-fg-muted hover:text-fg-default py-1 transition-colors'
+                className='text-fg-muted hover:text-fg-default text-sm transition-colors'
                 target='_blank'
                 href='https://m.zzfzzf.com/share/YjgfEi1urh7EmU6i/zzfzzf.com'
               >
                 访问统计
               </Link>
-            </div>
+            </nav>
           </div>
 
-          <div className='space-y-4'>
-            <h3 className='text-fg-default text-xs font-medium tracking-wider uppercase'>
+          <div>
+            <h3 className='text-fg-default mb-4 text-xs font-semibold tracking-widest uppercase'>
               站点信息
             </h3>
-            <div className='text-fg-muted space-y-2 text-sm'>
+            <div className='text-fg-muted flex flex-col gap-3 text-sm'>
               <div className='flex items-center gap-3'>
                 <OnlineCount />
               </div>
-              <div className='text-fg-muted'>&copy; 2020-{dayjs().format('YYYY')}</div>
+              <div>&copy; 2020-{dayjs().format('YYYY')}</div>
               <a
-                className='hover:text-fg-default text-fg-muted block transition-colors'
+                className='hover:text-fg-default transition-colors'
                 rel='noreferrer'
                 target='_blank'
                 href='https://beian.miit.gov.cn'
@@ -72,13 +72,26 @@ const Footer = () => {
               </a>
             </div>
           </div>
+
+          <div>
+            <h3 className='text-fg-default mb-4 text-xs font-semibold tracking-widest uppercase'>
+              技术栈
+            </h3>
+            <div className='text-fg-muted flex flex-col gap-3 text-sm'>
+              <div>Next.js</div>
+              <div>Tailwind CSS</div>
+              <div>TypeScript</div>
+              <div className='pt-2'>
+                <ThemeClient />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className='flex flex-col gap-4 border-t border-[color:var(--footer-divider)] pt-6 sm:flex-row sm:items-center sm:justify-between'>
+        <div className='border-t border-[color:var(--footer-divider)] py-6 text-center'>
           <div className='text-fg-muted text-xs'>
             Built with Next.js · Tailwind CSS · {dayjs().format('YYYY')}
           </div>
-          <ThemeClient />
         </div>
       </div>
     </footer>
