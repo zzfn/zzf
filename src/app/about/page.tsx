@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import { fetchData } from '@/services/api';
 
 export const revalidate = 0;
 export const metadata: Metadata = {
@@ -7,10 +8,10 @@ export const metadata: Metadata = {
 };
 
 // 状态指示器组件
-const StatusIndicator = ({ status }: { status: 'online' | 'normal' }) => (
+const StatusIndicator = ({ status }: { status: string }) => (
   <span className='flex items-center gap-2'>
     <span className='bg-bg-success-muted h-2 w-2 rounded-full'></span>
-    <span>{status === 'online' ? '在线' : '正常'}</span>
+    <span>{status}</span>
   </span>
 );
 
@@ -55,7 +56,7 @@ const DetailRow = ({
       <div key={index} className='flex flex-col gap-1'>
         <div className='text-sm opacity-60'>{item.label}</div>
         {item.hasIndicator ? (
-          <StatusIndicator status='normal' />
+          <StatusIndicator status={item.value} />
         ) : (
           <div className='font-medium'>{item.value}</div>
         )}
@@ -64,38 +65,58 @@ const DetailRow = ({
   </div>
 );
 
-export default async function Page() {
-  // 模拟数据
-  const stats = {
-    onlineUsers: 'xx',
-    totalReads: 'xx',
-    serviceLatency: 'xx',
-    latestVisitor: {
-      city: 'xx',
-      country: 'xx',
+interface OverviewData {
+  basicStats: {
+    onlineUsers: number;
+    totalViews: number;
+  };
+  serviceInfo: {
+    status: string;
+    version: string;
+    goVersion: string;
+    kernelVersion: string;
+  };
+  cacheInfo: {
+    status: string;
+    latency: string;
+    cachedKeys: number;
+    cacheBackend: string;
+    memoryUsage: string;
+  };
+  performanceInfo: {
+    memoryUsage: string;
+    goroutines: number;
+    gcstwTime: string;
+    averageLatency: string;
+  };
+  requestStats: {
+    totalRequests: number;
+    qps: number;
+    uptime: string;
+    p50Latency: string;
+    p95Latency: string;
+    p99Latency: string;
+  };
+  databaseStats: {
+    status: string;
+    maxOpenConns: number;
+    openConns: number;
+    inUse: number;
+    idle: number;
+  };
+}
+
+async function getOverviewData(): Promise<OverviewData> {
+  return fetchData<OverviewData>({
+    endpoint: '/v1/stats/overview',
+    fetchParams: {
+      next: { revalidate: 0 },
     },
-  };
+  });
+}
 
-  const serviceInfo = {
-    status: 'online',
-    runtime: 'xx',
-    kernelVersion: 'xx',
-    golangVersion: 'xx',
-  };
-
-  const cacheInfo = {
-    status: 'normal',
-    latency: 'xx',
-    cachedData: 'xx',
-    currentCache: 'xx',
-  };
-
-  const systemInfo = {
-    status: 'normal',
-    memoryUsage: 'xx',
-    goroutine: 'xx',
-    gcStw: 'xx',
-  };
+export default async function Page() {
+  const data = await getOverviewData();
 
   return (
     <div className='bg-bg-default text-fg-default min-h-screen px-4 py-8'>
@@ -112,14 +133,10 @@ export default async function Page() {
         <div className='border-border-muted bg-bg-muted/30 rounded-lg border p-6 backdrop-blur-sm'>
           <h2 className='mb-4 text-lg opacity-60'>概览</h2>
           <div className='grid grid-cols-4 gap-4'>
-            <StatCard label='在线人数' value={stats.onlineUsers} color='success' />
-            <StatCard label='总阅读数' value={stats.totalReads} color='accent' />
-            <StatCard label='服务延迟' value='xx ms' />
-            <StatCard
-              label='最新访客'
-              value={stats.latestVisitor.city}
-              location={stats.latestVisitor.country}
-            />
+            <StatCard label='在线人数' value={data.basicStats.onlineUsers} color='success' />
+            <StatCard label='总阅读数' value={data.basicStats.totalViews} color='accent' />
+            <StatCard label='服务延迟' value={data.performanceInfo.averageLatency} />
+            <StatCard label='运行时间' value={data.requestStats.uptime} />
           </div>
         </div>
 
@@ -129,26 +146,45 @@ export default async function Page() {
           <div className='space-y-0'>
             <DetailRow
               items={[
-                { label: '服务状态', value: '在线', hasIndicator: true },
-                { label: '运行版本', value: serviceInfo.runtime },
-                { label: '内核版本', value: serviceInfo.kernelVersion },
-                { label: 'Golang 版本', value: serviceInfo.golangVersion },
+                { label: '服务状态', value: data.serviceInfo.status, hasIndicator: true },
+                { label: '运行版本', value: data.serviceInfo.version },
+                { label: '内核版本', value: data.serviceInfo.kernelVersion },
+                { label: 'Golang 版本', value: data.serviceInfo.goVersion },
               ]}
             />
             <DetailRow
               items={[
-                { label: '缓存状态', value: '正常', hasIndicator: true },
-                { label: '缓存延迟', value: 'xx ms' },
-                { label: '已缓存数据', value: cacheInfo.cachedData },
-                { label: '当前缓存库', value: cacheInfo.currentCache },
+                { label: '缓存状态', value: data.cacheInfo.status, hasIndicator: true },
+                { label: '缓存延迟', value: data.cacheInfo.latency },
+                { label: '已缓存数据', value: `${data.cacheInfo.cachedKeys} 条` },
+                { label: '当前缓存库', value: data.cacheInfo.cacheBackend },
               ]}
             />
             <DetailRow
               items={[
-                { label: '内核状态', value: '正常', hasIndicator: true },
-                { label: '内存占用', value: systemInfo.memoryUsage },
-                { label: 'Goroutine', value: systemInfo.goroutine },
-                { label: 'GC-STW', value: 'xx ms' },
+                { label: '数据库状态', value: data.databaseStats.status, hasIndicator: true },
+                {
+                  label: '活跃连接',
+                  value: `${data.databaseStats.inUse}/${data.databaseStats.openConns}`,
+                },
+                { label: '空闲连接', value: data.databaseStats.idle.toString() },
+                { label: '内存占用', value: data.performanceInfo.memoryUsage },
+              ]}
+            />
+            <DetailRow
+              items={[
+                { label: 'QPS', value: data.requestStats.qps.toFixed(2) },
+                { label: 'P50 延迟', value: data.requestStats.p50Latency },
+                { label: 'P95 延迟', value: data.requestStats.p95Latency },
+                { label: 'P99 延迟', value: data.requestStats.p99Latency },
+              ]}
+            />
+            <DetailRow
+              items={[
+                { label: 'Goroutine', value: data.performanceInfo.goroutines.toString() },
+                { label: 'GC-STW', value: data.performanceInfo.gcstwTime },
+                { label: '缓存内存', value: data.cacheInfo.memoryUsage },
+                { label: '总请求数', value: data.requestStats.totalRequests.toString() },
               ]}
             />
           </div>
