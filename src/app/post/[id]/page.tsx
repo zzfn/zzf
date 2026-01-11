@@ -8,7 +8,7 @@ import { fetchData } from 'services/api';
 import classNames from 'classnames';
 import type { Article } from 'types/article';
 import ArticleCount from './_components/ArticleCount';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { MDXRemote } from 'next-mdx-remote-client/rsc';
 import MdImage from './_components/MdImage';
 import MdSpace from './_components/MdSpace';
 import Loading from 'components/loading';
@@ -98,6 +98,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
           >
             <Suspense fallback={<Loading />}>
               <MDXRemote
+                source={data.content}
                 components={{
                   a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
                     if (
@@ -124,11 +125,10 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
                     </div>
                   ),
                 }}
-                source={data.content}
                 options={{
                   mdxOptions: {
-                    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
-                    remarkPlugins: [remarkGfm],
+                    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings] as any,
+                    remarkPlugins: [remarkGfm] as any,
                   },
                 }}
               />
