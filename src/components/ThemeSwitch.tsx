@@ -1,7 +1,8 @@
 'use client';
+
 import { Tooltip } from '@/components/ui';
 import classNames from 'classnames';
-import type { CSSProperties } from 'react';
+import { motion } from 'framer-motion';
 import { Moon, Sun, SunMoon } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -14,6 +15,16 @@ type ViewTransition = {
 
 type DocumentWithViewTransition = Document & {
   startViewTransition?: (callback: () => void | Promise<void>) => ViewTransition | undefined;
+};
+
+// Claymorphism 样式
+const clayStyle = {
+  boxShadow: `
+    6px 6px 12px color-mix(in srgb, var(--fgColor-default) 8%, transparent),
+    -3px -3px 8px color-mix(in srgb, var(--bgColor-default) 80%, white),
+    inset 1px 1px 2px color-mix(in srgb, var(--bgColor-default) 50%, white),
+    inset -1px -1px 2px color-mix(in srgb, var(--fgColor-default) 5%, transparent)
+  `,
 };
 
 const ThemeSwitch = () => {
@@ -61,10 +72,34 @@ const ThemeSwitch = () => {
     });
   };
 
-  const themes: Array<{ id: ThemeOption; icon: LucideIcon; label: string }> = [
-    { id: 'light', icon: Sun, label: '浅色' },
-    { id: 'auto', icon: SunMoon, label: '自动' },
-    { id: 'dark', icon: Moon, label: '深色' },
+  const themes: Array<{
+    id: ThemeOption;
+    icon: LucideIcon;
+    label: string;
+    emoji: string;
+    gradient: string;
+  }> = [
+    {
+      id: 'light',
+      icon: Sun,
+      label: '浅色',
+      emoji: '☀️',
+      gradient: 'from-amber-400 to-orange-500',
+    },
+    {
+      id: 'auto',
+      icon: SunMoon,
+      label: '自动',
+      emoji: '🌗',
+      gradient: 'from-violet-500 to-purple-600',
+    },
+    {
+      id: 'dark',
+      icon: Moon,
+      label: '深色',
+      emoji: '🌙',
+      gradient: 'from-indigo-500 to-blue-600',
+    },
   ];
 
   const normalizedTheme: ThemeOption =
@@ -74,47 +109,39 @@ const ThemeSwitch = () => {
     themes.findIndex((item) => item.id === normalizedTheme),
   );
 
-  const switchVars = {
-    '--switch-surface': 'color-mix(in srgb, var(--bgColor-default) 92%, transparent)',
-    '--switch-shadow':
-      '0 24px 48px -28px color-mix(in srgb, var(--fgColor-default) 35%, transparent)',
-    '--switch-indicator': 'color-mix(in srgb, var(--bgColor-muted) 98%, transparent)',
-    '--switch-indicator-inset': '0.25rem',
-  } as CSSProperties;
+  const activeTheme = themes[activeIndex];
 
   return (
     <div
       role='radiogroup'
-      style={switchVars}
-      className={classNames(
-        'relative flex h-10 min-w-[210px] items-center overflow-hidden',
-        'border-border-muted text-fg-muted rounded-[22px] border bg-[color:var(--switch-surface)]',
-        'backdrop-blur-md transition-[box-shadow,transform] duration-300 ease-in-out',
-        'focus-within:border-border-accent-emphasis shadow-[var(--switch-shadow)]',
-      )}
+      className='bg-bg-muted relative flex h-10 items-center gap-1 rounded-2xl p-1'
+      style={clayStyle}
     >
-      <div
+      {/* 滑动指示器 - 横向 */}
+      <motion.div
         className={classNames(
-          'pointer-events-none absolute left-[var(--switch-indicator-inset)]',
-          'rounded-[18px] bg-[color:var(--switch-indicator)]',
-          'transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
-          'ring-border-muted ring-1 ring-inset',
+          'pointer-events-none absolute top-1 bottom-1 left-1 rounded-xl bg-gradient-to-br',
+          activeTheme.gradient,
         )}
         style={{
-          top: 'var(--switch-indicator-inset)',
-          bottom: 'var(--switch-indicator-inset)',
-          width: `calc((100% - (2 * var(--switch-indicator-inset))) / ${themes.length})`,
-          transform: `translateX(${activeIndex * 100}%)`,
+          width: `calc((100% - 8px) / ${themes.length})`,
+        }}
+        animate={{
+          x: activeIndex * 44, // 每个按钮宽度 40px + 4px 间距
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 500,
+          damping: 30,
         }}
       />
 
       {themes.map((themeOption) => {
-        const Icon = themeOption.icon;
         const isActive = normalizedTheme === themeOption.id;
 
         return (
           <Tooltip key={themeOption.id} content={themeOption.label}>
-            <button
+            <motion.button
               type='button'
               role='radio'
               aria-checked={isActive}
@@ -127,20 +154,22 @@ const ThemeSwitch = () => {
                 });
               }}
               className={classNames(
-                'relative z-10 flex h-full flex-1 items-center justify-center',
+                'relative z-10 flex h-8 w-10 items-center justify-center rounded-xl',
                 'text-sm font-medium transition-colors duration-200',
-                'focus-visible:ring-2 focus-visible:ring-[color:var(--borderColor-accent-emphasis)] focus-visible:outline-none',
-                'focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--switch-surface)]',
-                isActive ? 'text-fg-default' : 'text-fg-muted hover:text-fg-default',
+                'focus-visible:ring-border-accent-emphasis focus-visible:ring-2 focus-visible:outline-none',
+                isActive ? 'text-white' : 'text-fg-muted',
               )}
+              whileHover={isActive ? undefined : { scale: 0.95 }}
+              whileTap={{ scale: 0.9 }}
             >
-              <Icon
-                className={classNames(
-                  'h-4 w-4 transition-transform duration-300',
-                  isActive ? 'scale-110' : 'scale-100',
-                )}
-              />
-            </button>
+              <motion.span
+                className='text-base'
+                animate={isActive ? { rotate: [0, 10, -10, 0], scale: [1, 1.2, 1] } : {}}
+                transition={{ duration: 0.5 }}
+              >
+                {themeOption.emoji}
+              </motion.span>
+            </motion.button>
           </Tooltip>
         );
       })}

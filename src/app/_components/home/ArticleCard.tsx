@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import dayjs from 'dayjs';
+import { motion } from 'framer-motion';
 import type { Article } from 'types/article';
 
 interface ArticleCardProps {
@@ -7,56 +10,98 @@ interface ArticleCardProps {
   index: number;
 }
 
+// 预定义的鲜艳渐变色调色板
+const vibrantGradients = [
+  { from: 'from-violet-500', to: 'to-purple-600', light: 'violet' },
+  { from: 'from-rose-500', to: 'to-pink-600', light: 'rose' },
+  { from: 'from-cyan-500', to: 'to-blue-600', light: 'cyan' },
+  { from: 'from-emerald-500', to: 'to-teal-600', light: 'emerald' },
+  { from: 'from-amber-500', to: 'to-orange-600', light: 'amber' },
+  { from: 'from-fuchsia-500', to: 'to-pink-600', light: 'fuchsia' },
+];
+
+// Claymorphism 样式
+const clayStyle = {
+  boxShadow: `
+    8px 8px 16px color-mix(in srgb, var(--fgColor-default) 8%, transparent),
+    -4px -4px 12px color-mix(in srgb, var(--bgColor-default) 80%, white),
+    inset 1px 1px 2px color-mix(in srgb, var(--bgColor-default) 50%, white),
+    inset -1px -1px 2px color-mix(in srgb, var(--fgColor-default) 5%, transparent)
+  `,
+};
+
 export function ArticleCard({ article, index }: ArticleCardProps) {
+  const gradient = vibrantGradients[index % vibrantGradients.length];
+
   return (
-    <Link
-      href={`/post/${article.id}`}
-      className='group relative block h-full'
-      style={{
-        animation: `slide-up 0.5s ease-out ${200 + index * 100}ms both`,
+    <motion.div
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: [0.23, 1, 0.32, 1],
       }}
     >
-      <div className='relative h-full overflow-hidden rounded-3xl border border-[color:var(--color-border-default)] bg-[color:var(--color-bg-muted)]/80 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.02] hover:border-[color:var(--color-border-accent-muted)] hover:shadow-2xl'>
-        <div className='absolute inset-0 bg-gradient-to-br from-[color:var(--color-bg-accent-muted)]/50 via-transparent to-[color:var(--color-bg-default)]/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100' />
+      <Link href={`/post/${article.id}`} className='group block h-full'>
+        <motion.div
+          className='bg-bg-muted relative h-full overflow-hidden rounded-3xl p-6'
+          style={clayStyle}
+          whileHover={{ scale: 1.02, y: -4 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+        >
+          {/* 装饰性色块 - 右上角 */}
+          <div
+            className={`absolute -top-8 -right-8 h-24 w-24 rounded-2xl bg-gradient-to-br ${gradient.from} ${gradient.to} opacity-20 blur-xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-40`}
+          />
 
-        <div className='absolute -top-20 -right-20 h-40 w-40 rounded-full bg-gradient-to-br from-[color:var(--color-bg-accent-emphasis)]/30 via-[color:var(--color-bg-accent)]/10 to-transparent blur-3xl transition-all duration-700 group-hover:scale-150' />
-        <div className='absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-gradient-to-tr from-[color:var(--color-bg-accent)]/30 via-[color:var(--color-bg-accent-muted)]/10 to-transparent blur-3xl transition-all duration-700 group-hover:scale-150' />
-
-        <div className='absolute inset-0 rounded-3xl bg-gradient-to-tr from-[color:var(--color-bg-default)]/50 via-[color:var(--color-bg-accent-muted)]/20 to-transparent' />
-        <div className='absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--color-border-muted)] to-transparent' />
-        <div className='absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[color:var(--color-border-muted)] to-transparent' />
-        <div className='absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-[color:var(--color-border-muted)] to-transparent' />
-        <div className='absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-[color:var(--color-border-muted)] to-transparent' />
-
-        <div className='relative flex h-full flex-col p-6'>
-          <div className='mb-4 flex items-center gap-3'>
-            <span className='rounded-full bg-[color:var(--color-bg-accent-muted)]/60 px-3 py-1.5 text-[10px] font-semibold tracking-widest text-[color:var(--color-fg-accent)] uppercase ring-1 ring-[color:var(--color-border-accent-muted)]/60 backdrop-blur-md'>
+          {/* 标签和日期 */}
+          <div className='relative mb-4 flex items-center gap-3'>
+            <span
+              className={`inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-br ${gradient.from} ${gradient.to} px-3 py-1.5 text-[10px] font-bold tracking-wider text-white uppercase shadow-lg`}
+            >
+              <span className='text-xs'>📌</span>
               {article.tag}
             </span>
-            <div className='h-1 w-1 rounded-full bg-[color:var(--color-border-muted)]' />
-            <time className='text-xs text-[color:var(--color-fg-muted)]'>
-              {dayjs(article.updatedAt).format('YYYY年MM月DD日')}
+            <div className='bg-border-muted h-1 w-1 rounded-full' />
+            <time className='text-fg-muted flex items-center gap-1.5 text-xs'>
+              <span>📅</span>
+              {dayjs(article.updatedAt).format('MM/DD')}
             </time>
           </div>
 
-          <h3 className='mb-auto line-clamp-3 text-xl leading-relaxed font-bold text-[color:var(--color-fg-default)] transition-all duration-300 group-hover:text-[color:var(--color-fg-accent)] group-hover:drop-shadow-md'>
+          {/* 标题 */}
+          <h3 className='text-fg-default group-hover:text-fg-accent relative mb-auto line-clamp-3 text-xl leading-relaxed font-bold transition-colors duration-300'>
             {article.title}
           </h3>
 
-          <div className='mt-6 flex items-center gap-2 text-sm font-medium text-[color:var(--color-fg-muted)] transition-colors duration-300 group-hover:text-[color:var(--color-fg-accent)]'>
-            <span>阅读全文</span>
-            <svg
-              className='h-4 w-4 -translate-x-1 opacity-60 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-              strokeWidth={2.5}
+          {/* 阅读更多按钮 */}
+          <div className='mt-6'>
+            <motion.div
+              className='inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium'
+              style={{
+                boxShadow: `
+                  inset 4px 4px 8px color-mix(in srgb, var(--fgColor-default) 6%, transparent),
+                  inset -2px -2px 6px color-mix(in srgb, var(--bgColor-default) 60%, white)
+                `,
+              }}
+              whileHover={{ x: 4 }}
             >
-              <path strokeLinecap='round' strokeLinejoin='round' d='M17 8l4 4m0 0l-4 4m4-4H3' />
-            </svg>
+              <span className='text-fg-muted group-hover:text-fg-accent transition-colors'>
+                阅读全文
+              </span>
+              <motion.span className='text-base' initial={{ x: 0 }} whileHover={{ x: 4 }}>
+                →
+              </motion.span>
+            </motion.div>
           </div>
-        </div>
-      </div>
-    </Link>
+
+          {/* 底部装饰线 */}
+          <div
+            className={`absolute right-6 bottom-0 left-6 h-1 rounded-full bg-gradient-to-r ${gradient.from} ${gradient.to} opacity-0 transition-opacity duration-300 group-hover:opacity-60`}
+          />
+        </motion.div>
+      </Link>
+    </motion.div>
   );
 }

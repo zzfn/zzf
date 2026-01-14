@@ -1,45 +1,57 @@
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface ExploreMoreCTAProps {
   animationDelay: number;
 }
 
+// Claymorphism 样式
+const clayStyle = {
+  boxShadow: `
+    8px 8px 16px color-mix(in srgb, var(--fgColor-default) 8%, transparent),
+    -4px -4px 12px color-mix(in srgb, var(--bgColor-default) 80%, white),
+    inset 1px 1px 2px color-mix(in srgb, var(--bgColor-default) 50%, white),
+    inset -1px -1px 2px color-mix(in srgb, var(--fgColor-default) 5%, transparent)
+  `,
+};
+
 export function ExploreMoreCTA({ animationDelay }: ExploreMoreCTAProps) {
   return (
-    <Link
-      href='/post'
-      className='group relative block'
-      style={{
-        animation: `slide-up 0.5s ease-out ${animationDelay}ms both`,
+    <motion.div
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{
+        duration: 0.5,
+        delay: animationDelay / 1000,
+        ease: [0.23, 1, 0.32, 1],
       }}
     >
-      <div className='relative overflow-hidden rounded-3xl border border-[color:var(--color-border-default)] bg-[color:var(--color-bg-muted)]/80 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.02] hover:border-[color:var(--color-border-accent-muted)] hover:shadow-2xl'>
-        <div className='absolute inset-0 bg-gradient-to-br from-[color:var(--color-bg-accent-muted)]/50 via-transparent to-[color:var(--color-bg-default)]/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100' />
+      <Link href='/post' className='group block'>
+        <motion.div
+          className='bg-bg-muted relative overflow-hidden rounded-2xl transition-transform duration-300'
+          style={clayStyle}
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          {/* 渐变背景 */}
+          <div className='absolute inset-0 bg-gradient-to-r from-violet-500/10 via-purple-500/10 to-pink-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
 
-        <div className='absolute -top-20 -right-20 h-40 w-40 rounded-full bg-gradient-to-br from-[color:var(--color-bg-accent-emphasis)]/30 via-[color:var(--color-bg-accent)]/10 to-transparent blur-3xl transition-all duration-700 group-hover:scale-150' />
-        <div className='absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-gradient-to-tr from-[color:var(--color-bg-accent)]/30 via-[color:var(--color-bg-accent-muted)]/10 to-transparent blur-3xl transition-all duration-700 group-hover:scale-150' />
+          <div className='relative flex items-center justify-center gap-3 px-6 py-4'>
+            <span className='text-base'>📖</span>
+            <span className='text-fg-default group-hover:text-fg-accent text-sm font-bold transition-colors duration-300'>
+              查看全部文章
+            </span>
+            <motion.span className='text-fg-muted text-lg' initial={{ x: 0 }} whileHover={{ x: 4 }}>
+              →
+            </motion.span>
+          </div>
 
-        <div className='absolute inset-0 rounded-3xl bg-gradient-to-tr from-[color:var(--color-bg-default)]/50 via-[color:var(--color-bg-accent-muted)]/20 to-transparent' />
-        <div className='absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--color-border-muted)] to-transparent' />
-        <div className='absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[color:var(--color-border-muted)] to-transparent' />
-        <div className='absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-[color:var(--color-border-muted)] to-transparent' />
-        <div className='absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-[color:var(--color-border-muted)] to-transparent' />
-
-        <div className='relative flex items-center justify-center gap-2 px-6 py-4'>
-          <span className='text-sm font-semibold text-[color:var(--color-fg-default)] transition-all duration-300 group-hover:text-[color:var(--color-fg-accent)]'>
-            查看全部
-          </span>
-          <svg
-            className='h-4 w-4 -translate-x-1 opacity-60 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            strokeWidth={2.5}
-          >
-            <path strokeLinecap='round' strokeLinejoin='round' d='M17 8l4 4m0 0l-4 4m4-4H3' />
-          </svg>
-        </div>
-      </div>
-    </Link>
+          {/* 底部装饰线 */}
+          <div className='absolute right-1/4 bottom-0 left-1/4 h-0.5 rounded-full bg-gradient-to-r from-violet-500 via-purple-500 to-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-60' />
+        </motion.div>
+      </Link>
+    </motion.div>
   );
 }
