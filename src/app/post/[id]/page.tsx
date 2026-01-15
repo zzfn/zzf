@@ -18,6 +18,8 @@ import remarkGfm from 'remark-gfm';
 import CodeSandpack from '@/components/integrations/CodeSandpack';
 import AI from './_components/AI';
 import type { CSSProperties } from 'react';
+import { ClayCard } from '@/components/ui/ClayCard';
+import { Sparkles, BookOpen, Clock, RefreshCw, Eye } from 'lucide-react';
 
 async function getData(id: string) {
   return fetchData<Article>({
@@ -27,9 +29,9 @@ async function getData(id: string) {
 
 export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
-  const { title } = await getData(params.id);
+  const data = await getData(params.id);
   return {
-    title: title,
+    title: data?.title || '文章详情',
   };
 }
 
@@ -54,117 +56,116 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
 
   return (
     <ArticleState articleState={data}>
-      <div
-        style={surfaceVars}
-        className='mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pt-12 pb-16 md:grid md:grid-cols-[minmax(0,1fr)_320px] md:gap-10'
-      >
-        <main className='flex flex-col gap-12 md:col-start-1'>
-          <section className='rounded-3xl border border-[color:var(--post-shell-border)] bg-[color:var(--post-shell-surface)] p-8 shadow-[var(--post-shell-shadow)] backdrop-blur-md sm:p-12'>
-            <h1 className='text-4xl font-bold tracking-tight text-[color:var(--fgColor-default)] md:text-5xl lg:text-6xl'>
-              {data.title}
-            </h1>
+      <div style={surfaceVars} className='min-h-screen bg-[color:var(--bgColor-default)] pb-20'>
+        {/* 背景装饰 */}
+        <div className='pointer-events-none absolute top-0 left-0 -z-10 h-[500px] w-full overflow-hidden'>
+          <div className='absolute top-[-10%] left-[-5%] h-[40%] w-[40%] rounded-full bg-pink-400 opacity-10 blur-[100px]' />
+          <div className='absolute top-[-5%] right-[-5%] h-[30%] w-[30%] rounded-full bg-blue-400 opacity-10 blur-[100px]' />
+        </div>
 
-            <div className='text-fg-muted mt-8 flex flex-wrap items-center gap-3 text-sm'>
-              <Tooltip content={format(data.createdAt)}>
-                <div className='flex items-center gap-1.5'>
-                  <svg className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-                    />
-                  </svg>
-                  <time>创建于 {diff(data.createdAt)}</time>
-                </div>
-              </Tooltip>
-
-              <span className='text-fg-default/40'>•</span>
-
-              <Tooltip content={format(data.updatedAt)}>
-                <div className='flex items-center gap-1.5'>
-                  <svg className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={2}
-                      d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
-                    />
-                  </svg>
-                  <time>更新于 {diff(data.updatedAt)}</time>
-                </div>
-              </Tooltip>
-
-              <span className='text-fg-default/40'>•</span>
-
-              <div className='flex items-center gap-1.5'>
-                <svg className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'
-                  />
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeWidth={2}
-                    d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z'
-                  />
-                </svg>
-                <span>
-                  <ArticleCount id={data.id} />
-                </span>
+        <div className='mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 pt-10 md:grid md:grid-cols-[minmax(0,1fr)_340px]'>
+          <main className='flex flex-col gap-10 md:col-start-1'>
+            {/* 文章顶部信息卡片 */}
+            <ClayCard color='blue' className='relative overflow-visible !p-8 md:!p-12'>
+              <div className='mb-6 flex w-fit items-center gap-2 rounded-full bg-white/40 px-3 py-1 text-xs font-bold text-blue-600'>
+                <Sparkles size={14} /> 深度探索
               </div>
-            </div>
 
-            {data.summary && (
-              <div className='mt-6 border-t border-[color:var(--post-meta-divider)] pt-6'>
-                <AI summary={data.summary} />
+              <h1 className='text-fg-default mb-8 text-4xl leading-[1.2] font-bold tracking-tight md:text-5xl lg:text-6xl'>
+                {data.title}
+              </h1>
+
+              <div className='text-fg-muted flex flex-wrap items-center gap-6 border-t border-white/20 pt-8 text-sm font-bold'>
+                <Tooltip content={format(data.createdAt)}>
+                  <div className='flex items-center gap-2'>
+                    <Clock size={16} className='text-blue-500' />
+                    <span>创建于 {diff(data.createdAt)}</span>
+                  </div>
+                </Tooltip>
+
+                <Tooltip content={format(data.updatedAt)}>
+                  <div className='flex items-center gap-2'>
+                    <RefreshCw size={16} className='text-pink-500' />
+                    <span>更新于 {diff(data.updatedAt)}</span>
+                  </div>
+                </Tooltip>
+
+                <div className='flex items-center gap-2'>
+                  <Eye size={16} className='text-green-500' />
+                  <span>
+                    <ArticleCount id={data.id} /> 次阅读
+                  </span>
+                </div>
               </div>
-            )}
-          </section>
-          <article
-            className={classNames(
-              'mx-auto w-full max-w-2xl rounded-3xl border border-[color:var(--post-shell-border)] bg-[color:var(--post-shell-surface)] px-6 py-8 shadow-[var(--post-shell-shadow)] backdrop-blur-md',
-              'prose prose-headings:scroll-mt-24',
-            )}
-          >
-            <Suspense fallback={<Loading />}>
-              <MDXRemote
-                source={data.content}
-                components={{
-                  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-                    return <a target='_blank' className='text-fg-accent' {...props} />;
-                  },
-                  img: MdImage,
-                  code: MdCode,
-                  pre: (props) => <pre className='group relative' {...props} />,
-                  Space: MdSpace,
-                  Alert: Alert,
-                  CodeSandpack: CodeSandpack,
-                  table: (props) => (
-                    <div className='markdown-table'>
-                      <table>{props.children}</table>
-                    </div>
-                  ),
-                }}
-                options={{
-                  mdxOptions: {
-                    rehypePlugins: [],
-                    remarkPlugins: [remarkGfm] as any,
-                  },
-                }}
-              />
-            </Suspense>
-          </article>
-          <section className='rounded-3xl border border-[color:var(--post-comment-border)] bg-[color:var(--post-comment-surface)] p-6 shadow-[var(--post-shell-shadow)] backdrop-blur-md sm:p-8'>
-            <Comment params={{ objectType: 'article', objectId: data.id }} />
-          </section>
-        </main>
-        <aside className='hidden h-full w-full shrink-0 md:col-start-2 md:block'>
-          <ArticleNav source={data.content} />
-        </aside>
+
+              {data.summary && (
+                <div className='mt-10'>
+                  <AI summary={data.summary} />
+                </div>
+              )}
+            </ClayCard>
+
+            {/* 文章主体内容 */}
+            <ClayCard className='overflow-hidden !p-0'>
+              <article
+                className={classNames(
+                  'prose prose-headings:scroll-mt-24 max-w-none px-6 py-10 md:px-12 md:py-16',
+                  'prose-p:text-lg prose-p:leading-relaxed prose-headings:font-bold prose-headings:text-fg-default',
+                  'prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline',
+                  'prose-img:rounded-[2rem] prose-img:shadow-xl prose-img:border-4 prose-img:border-white/50',
+                )}
+              >
+                <Suspense fallback={<Loading />}>
+                  <MDXRemote
+                    source={data.content}
+                    components={{
+                      a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+                        return <a target='_blank' className='text-fg-accent' {...props} />;
+                      },
+                      img: MdImage,
+                      code: MdCode,
+                      pre: (props) => <pre className='group relative' {...props} />,
+                      Space: MdSpace,
+                      Alert: Alert,
+                      CodeSandpack: CodeSandpack,
+                      table: (props) => (
+                        <div className='markdown-table'>
+                          <table>{props.children}</table>
+                        </div>
+                      ),
+                    }}
+                    options={{
+                      mdxOptions: {
+                        rehypePlugins: [],
+                        remarkPlugins: [remarkGfm] as any,
+                      },
+                    }}
+                  />
+                </Suspense>
+              </article>
+            </ClayCard>
+
+            {/* 评论区 */}
+            <ClayCard color='default' className='!p-8'>
+              <h2 className='mb-8 flex items-center gap-3 text-2xl font-bold'>
+                <BookOpen className='text-pink-500' /> 讨论与反馈
+              </h2>
+              <Comment params={{ objectType: 'article', objectId: data.id }} />
+            </ClayCard>
+          </main>
+
+          {/* 侧边栏 */}
+          <aside className='flex flex-col gap-8'>
+            <ClayCard color='yellow' className='!p-6'>
+              <h3 className='mb-4 flex items-center gap-2 text-lg font-bold'>
+                <Sparkles size={18} className='text-yellow-600' /> 内容导航
+              </h3>
+              <div className='custom-scrollbar max-h-[60vh] overflow-y-auto'>
+                <ArticleNav source={data.content} />
+              </div>
+            </ClayCard>
+          </aside>
+        </div>
       </div>
     </ArticleState>
   );
