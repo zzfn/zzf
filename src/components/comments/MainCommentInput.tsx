@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
 import SignIn from '@/components/auth/SignIn';
-import { Button, useMessage } from '@/components/ui';
+import { useMessage } from '@/components/ui';
 import { useState } from 'react';
 import UserInfo from '@/components/auth/UserInfo';
 import { useCommentOrReply, useGithubLogin } from '@/services/comment';
@@ -58,43 +58,48 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
   }
 
   return (
-    <div className='animate-fade-in relative space-y-4'>
-      <UserInfo />
-      <div className='relative'>
+    <div className='animate-fade-in relative space-y-6'>
+      <div className='flex items-center gap-3'>
+        <div className='bg-bg-accent-muted h-10 w-10 overflow-hidden rounded-2xl border-2 border-white/50 shadow-sm'>
+          <UserInfo />
+        </div>
+        <span className='text-fg-default text-sm font-bold'>@{session.user?.name}</span>
+      </div>
+
+      <div className='clay relative !rounded-2xl !p-1'>
         <textarea
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
           }}
-          rows={1}
-          className='bg-opacity border-border-default placeholder:text-fg-muted focus:border-border-accent-emphasis focus:ring-border-accent-emphasis w-full rounded-lg border p-4 pb-14 text-sm transition-colors duration-200 focus:ring-1 focus:outline-none'
-          placeholder={replyTo ? `回复 @${replyTo}...` : '参与讨论...'}
+          rows={3}
+          className='placeholder:text-fg-muted/50 w-full rounded-2xl border-none bg-transparent p-4 pb-16 text-lg font-medium focus:ring-0 focus:outline-none'
+          placeholder={replyTo ? `回复 @${replyTo}...` : '分享你的想法...'}
         />
-        <div className='absolute right-3 bottom-3 flex items-center gap-3'>
+        <div className='absolute right-4 bottom-4 flex items-center gap-4'>
           {content && (
-            <div className='text-fg-muted/80 bg-bg-default/5 rounded-md px-2 py-1 text-xs'>
-              <span className='font-mono tabular-nums'>{content.length}</span>
-              <span className='ml-1'>字</span>
+            <div className='text-fg-muted/60 rounded-lg bg-white/40 px-2 py-1 text-[10px] leading-none font-black tracking-widest uppercase'>
+              <span className='tabular-nums'>{content.length}</span> chars
             </div>
           )}
           {content && (
-            <>
+            <div className='flex gap-2'>
               {replyTo && (
-                <Button
+                <button
                   onClick={() => setReplyTo(null)}
-                  className='bg-bg-default/5 hover:bg-bg-default/10 text-fg-muted hover:text-fg-accent rounded-md px-3 py-1.5 text-xs transition-colors duration-200'
+                  className='text-fg-muted rounded-xl bg-white/50 px-4 py-2 text-sm font-bold transition-all hover:bg-white/80'
                 >
-                  取消回复
-                </Button>
+                  取消
+                </button>
               )}
               <button
                 onClick={handleSubmit}
-                className='bg-bg-accent-muted text-fg-muted hover:bg-bg-accent flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors duration-200'
+                className='clay-btn clay-blue group flex items-center gap-2 !rounded-xl !px-6 !py-2 !text-sm'
               >
-                <span>发布</span>
-                <span className='font-mono'>→</span>
+                <span>发送</span>
+                <span className='transition-transform group-hover:translate-x-1'>→</span>
               </button>
-            </>
+            </div>
           )}
         </div>
       </div>
