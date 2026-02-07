@@ -37,13 +37,13 @@ const Modal = ({ visible, onCancel, children, className }: ModalProps) => {
       <div
         role='presentation'
         onClick={handleBackdropClick}
-        className='fixed inset-0 z-[1100] flex items-center justify-center bg-[color:color-mix(in_srgb,var(--color-fg-black)_40%,transparent)] p-4 backdrop-blur-sm'
+        className='fixed inset-0 z-[1100] flex items-center justify-center bg-[color:color-mix(in_srgb,var(--color-fg-black)_40%,transparent)] p-4'
       >
         <div
           role='dialog'
           aria-modal='true'
           className={classNames(
-            'w-full max-w-lg rounded-3xl border border-[color:var(--borderColor-muted)] bg-[color:var(--bgColor-default)] p-6 shadow-2xl transition-all',
+            'w-full max-w-lg rounded-xl border border-[color:var(--borderColor-muted)] bg-[color:var(--bgColor-default)] p-6 shadow-[0_8px_32px_rgba(0,0,0,0.10)] transition-all',
             className,
           )}
         >

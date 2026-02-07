@@ -34,7 +34,8 @@ const MessageContext = createContext<MessageApi | null>(null);
 
 const variantStyles: Record<MessageType, string> = {
   info: 'bg-[color:var(--bgColor-muted)] border border-[color:var(--borderColor-muted)] text-fg-default',
-  success: 'bg-bg-success-muted border border-[color:var(--borderColor-success-muted)] text-fg-default',
+  success:
+    'bg-bg-success-muted border border-[color:var(--borderColor-success-muted)] text-fg-default',
   error:
     'bg-[color:var(--bgColor-danger-muted)] border border-[color:var(--borderColor-danger-muted)] text-fg-default',
   warning:
@@ -103,7 +104,7 @@ const MessageProvider = ({ children }: { children: ReactNode }) => {
               <div
                 key={message.id}
                 className={classNames(
-                  'pointer-events-auto rounded-xl p-4 text-sm shadow-lg backdrop-blur-md transition-all',
+                  'border-border-muted pointer-events-auto rounded-lg border p-4 text-sm shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all',
                   variantStyles[message.type ?? 'info'],
                 )}
               >

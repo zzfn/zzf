@@ -167,72 +167,40 @@
   --blur-backdrop-xs: 2px;
 
   /* Shadows */
-  --shadow-glass: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-glass-dark: 0 4px 6px -1px rgba(255, 255, 255, 0.1),
-    0 2px 4px -1px rgba(255, 255, 255, 0.06);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
 
   /* Breakpoints */
   --breakpoint-compact: 599px;
   --breakpoint-medium: 600px;
   --breakpoint-expanded: 840px;
-
-  /* Claymorphism Colors */
-  --color-clay-blue: rgba(147, 197, 253, 0.4);
-  --color-clay-pink: rgba(249, 168, 212, 0.4);
-  --color-clay-green: rgba(167, 243, 208, 0.4);
-  --color-clay-yellow: rgba(253, 230, 138, 0.4);
 }
 
-@utility clay {
-  background: color-mix(in srgb, var(--bgColor-default), white 60%);
-  box-shadow:
-    8px 8px 16px 0 rgba(0, 0, 0, 0.1),
-    inset 6px 6px 12px 0 rgba(255, 255, 255, 0.8),
-    inset -6px -6px 12px 0 rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 2rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
+@utility card {
+  background: var(--bgColor-default);
+  border: 1px solid var(--borderColor-muted);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 160ms ease-out;
   &:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      12px 12px 24px 0 rgba(0, 0, 0, 0.15),
-      inset 8px 8px 16px 0 rgba(255, 255, 255, 0.9),
-      inset -8px -8px 16px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--borderColor-default);
   }
 }
 
-@utility clay-blue {
-  background: rgba(191, 219, 254, 0.7);
-  box-shadow:
-    10px 10px 20px 0 rgba(37, 99, 235, 0.2),
-    inset 6px 6px 12px 0 rgba(255, 255, 255, 0.8),
-    inset -6px -6px 12px 0 rgba(37, 99, 235, 0.15);
-}
-
-@utility clay-pink {
-  background: rgba(251, 207, 232, 0.7);
-  box-shadow:
-    10px 10px 20px 0 rgba(219, 39, 119, 0.2),
-    inset 6px 6px 12px 0 rgba(255, 255, 255, 0.8),
-    inset -6px -6px 12px 0 rgba(219, 39, 119, 0.15);
-}
-
-@utility clay-green {
-  background: rgba(187, 247, 208, 0.7);
-  box-shadow:
-    10px 10px 20px 0 rgba(22, 163, 74, 0.2),
-    inset 6px 6px 12px 0 rgba(255, 255, 255, 0.8),
-    inset -6px -6px 12px 0 rgba(22, 163, 74, 0.15);
-}
-
-@utility clay-yellow {
-  background: rgba(254, 240, 138, 0.7);
-  box-shadow:
-    10px 10px 20px 0 rgba(202, 138, 4, 0.2),
-    inset 6px 6px 12px 0 rgba(255, 255, 255, 0.8),
-    inset -6px -6px 12px 0 rgba(202, 138, 4, 0.15);
+@utility card-interactive {
+  background: var(--bgColor-default);
+  border: 1px solid var(--borderColor-muted);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 160ms ease-out;
+  &:hover {
+    border-radius: 0;
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--borderColor-default);
+  }
 }
 
 @utility prose {

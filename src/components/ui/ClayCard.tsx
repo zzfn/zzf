@@ -4,31 +4,26 @@ import type { ReactNode } from 'react';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 
-interface ClayCardProps {
+interface CardProps {
   children: ReactNode;
-  color?: 'blue' | 'pink' | 'green' | 'yellow' | 'default';
   className?: string;
   delay?: number;
+  interactive?: boolean;
 }
 
-export function ClayCard({ children, color = 'default', className, delay = 0 }: ClayCardProps) {
-  const colorClass = {
-    default: '',
-    blue: 'clay-blue',
-    pink: 'clay-pink',
-    green: 'clay-green',
-    yellow: 'clay-yellow',
-  }[color];
-
+export function Card({ children, className, delay = 0, interactive = false }: CardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className={classNames('clay p-6', colorClass, className)}
+      transition={{ duration: 0.25, delay, ease: 'easeOut' }}
+      className={classNames(interactive ? 'card-interactive' : 'card', 'p-6', className)}
     >
       {children}
     </motion.div>
   );
 }
+
+// 向后兼容别名
+export const ClayCard = Card;
