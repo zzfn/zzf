@@ -32,15 +32,15 @@ const MenuItem = ({ navLinks }: MenuItemProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className='bg-bg-emphasis/80 fixed inset-0 z-50 backdrop-blur-sm'
+            className='bg-bg-emphasis/60 fixed inset-0 z-50'
             onClick={() => setVisible(false)}
           >
             <motion.div
-              initial={{ y: -20, opacity: 0 }}
+              initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ type: 'spring', damping: 20 }}
-              className='bg-bg-default absolute top-16 left-4 w-48 rounded-lg p-2 shadow-lg'
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.16, ease: 'easeOut' }}
+              className='border-border-muted bg-bg-default absolute top-16 left-4 w-48 rounded-lg border p-2 shadow-[0_4px_16px_rgba(0,0,0,0.08)]'
               onClick={(event) => event.stopPropagation()}
             >
               <nav className='space-y-1'>
@@ -52,15 +52,15 @@ const MenuItem = ({ navLinks }: MenuItemProps) => {
                       key={link.name}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.05 }}
                     >
                       <Link
                         href={link.href}
                         className={classNames(
-                          'group flex items-center justify-between rounded-md px-3 py-2 text-sm transition-colors',
+                          'group flex items-center justify-between rounded-md px-3 py-2 text-sm transition-all duration-[160ms] ease-out',
                           isActive
                             ? 'bg-bg-accent text-fg-accent'
-                            : 'text-fg-default hover:bg-bg-neutral-muted',
+                            : 'text-fg-default hover:bg-bg-muted',
                         )}
                         onClick={() => setVisible(false)}
                       >

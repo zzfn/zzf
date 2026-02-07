@@ -17,16 +17,6 @@ type DocumentWithViewTransition = Document & {
   startViewTransition?: (callback: () => void | Promise<void>) => ViewTransition | undefined;
 };
 
-// Claymorphism 样式
-const clayStyle = {
-  boxShadow: `
-    6px 6px 12px color-mix(in srgb, var(--fgColor-default) 8%, transparent),
-    -3px -3px 8px color-mix(in srgb, var(--bgColor-default) 80%, white),
-    inset 1px 1px 2px color-mix(in srgb, var(--bgColor-default) 50%, white),
-    inset -1px -1px 2px color-mix(in srgb, var(--fgColor-default) 5%, transparent)
-  `,
-};
-
 const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme();
 
@@ -77,29 +67,10 @@ const ThemeSwitch = () => {
     icon: LucideIcon;
     label: string;
     emoji: string;
-    gradient: string;
   }> = [
-    {
-      id: 'light',
-      icon: Sun,
-      label: '浅色',
-      emoji: '☀️',
-      gradient: 'from-amber-400 to-orange-500',
-    },
-    {
-      id: 'auto',
-      icon: SunMoon,
-      label: '自动',
-      emoji: '🌗',
-      gradient: 'from-violet-500 to-purple-600',
-    },
-    {
-      id: 'dark',
-      icon: Moon,
-      label: '深色',
-      emoji: '🌙',
-      gradient: 'from-indigo-500 to-blue-600',
-    },
+    { id: 'light', icon: Sun, label: '浅色', emoji: '☀️' },
+    { id: 'auto', icon: SunMoon, label: '自动', emoji: '🌗' },
+    { id: 'dark', icon: Moon, label: '深色', emoji: '🌙' },
   ];
 
   const normalizedTheme: ThemeOption =
@@ -109,25 +80,19 @@ const ThemeSwitch = () => {
     themes.findIndex((item) => item.id === normalizedTheme),
   );
 
-  const activeTheme = themes[activeIndex];
-
   return (
     <div
       role='radiogroup'
-      className='bg-bg-muted relative flex h-10 items-center gap-1 rounded-2xl p-1'
-      style={clayStyle}
+      className='border-border-muted bg-bg-default relative flex h-10 items-center gap-1 rounded-lg border p-1'
     >
-      {/* 滑动指示器 - 横向 */}
+      {/* 滑动指示器 */}
       <motion.div
-        className={classNames(
-          'pointer-events-none absolute top-1 bottom-1 left-1 rounded-xl bg-gradient-to-br',
-          activeTheme.gradient,
-        )}
+        className='bg-bg-emphasis pointer-events-none absolute top-1 bottom-1 left-1 rounded-md'
         style={{
           width: `calc((100% - 8px) / ${themes.length})`,
         }}
         animate={{
-          x: activeIndex * 44, // 每个按钮宽度 40px + 4px 间距
+          x: activeIndex * 44,
         }}
         transition={{
           type: 'spring',
@@ -154,10 +119,10 @@ const ThemeSwitch = () => {
                 });
               }}
               className={classNames(
-                'relative z-10 flex h-8 w-10 items-center justify-center rounded-xl',
-                'text-sm font-medium transition-colors duration-200',
+                'relative z-10 flex h-8 w-10 items-center justify-center rounded-md',
+                'text-sm font-medium transition-colors duration-[160ms]',
                 'focus-visible:ring-border-accent-emphasis focus-visible:ring-2 focus-visible:outline-none',
-                isActive ? 'text-white' : 'text-fg-muted',
+                isActive ? 'text-fg-onEmphasis' : 'text-fg-muted',
               )}
               whileHover={isActive ? undefined : { scale: 0.95 }}
               whileTap={{ scale: 0.9 }}

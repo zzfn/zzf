@@ -71,13 +71,16 @@ const ArticleNav = ({ source }: NavProps) => {
   return (
     <div className='sticky top-20'>
       <motion.div
-        className={classNames('right-4 z-50 md:relative md:right-0', 'transition-all duration-300')}
+        className={classNames(
+          'right-4 z-50 md:relative md:right-0',
+          'transition-all duration-[160ms]',
+        )}
         animate={{ width: isExpanded ? '240px' : '40px' }}
       >
         <motion.div
           className={classNames(
-            'border-border-accent-emphasis/10 bg-bg-default/80 rounded-xl border backdrop-blur-sm',
-            'overflow-hidden transition-all duration-300',
+            'border-border-muted bg-bg-default rounded-lg border',
+            'overflow-hidden transition-all duration-[160ms]',
           )}
           animate={{
             width: isExpanded ? '240px' : '80px',
@@ -88,14 +91,14 @@ const ArticleNav = ({ source }: NavProps) => {
           <div
             className={classNames(
               'relative flex h-10 items-center justify-center',
-              'border-border-accent-emphasis/10 cursor-pointer border-b',
+              'border-border-muted cursor-pointer border-b',
               'text-fg-accent font-mono text-sm',
             )}
             onClick={() => setIsExpanded(!isExpanded)}
           >
             <div className='absolute inset-0'>
               <div
-                className='bg-bg-accent-emphasis/5 h-full transition-all'
+                className='bg-bg-accent-muted h-full transition-all'
                 style={{ width: `${Math.floor(scrollY * 100)}%` }}
               />
             </div>
@@ -117,7 +120,7 @@ const ArticleNav = ({ source }: NavProps) => {
             <AnimatePresence>
               {hoveredIndex !== null && isExpanded && (
                 <motion.div
-                  className='bg-bg-accent-emphasis/5 absolute left-0 -z-[1] rounded-lg'
+                  className='bg-bg-muted absolute left-0 -z-[1] rounded-md'
                   initial={{ top: position.top, height: position.height, opacity: 0 }}
                   animate={{ top: position.top, height: position.height, opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -145,7 +148,7 @@ const ArticleNav = ({ source }: NavProps) => {
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={classNames(
                   'group relative px-3 py-1.5',
-                  'transition-all duration-200',
+                  'transition-all duration-[160ms]',
                   current === nav.text && 'text-fg-accent',
                 )}
                 style={{
@@ -158,7 +161,7 @@ const ArticleNav = ({ source }: NavProps) => {
                   onClick={() => setCurrent(nav.text)}
                   className={classNames(
                     'text-fg-muted block truncate text-sm',
-                    'transition-colors duration-200',
+                    'transition-colors duration-[160ms]',
                     'hover:text-fg-accent',
                     current === nav.text && 'text-fg-accent',
                   )}
