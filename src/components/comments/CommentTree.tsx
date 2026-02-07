@@ -19,20 +19,20 @@ const CommentTree = ({ params }: CommentTreeProps) => {
     <SessionProvider>
       <div className='animate-fade-in space-y-10'>
         {/* 评论统计头 */}
-        <div className='flex items-center justify-between border-b border-white/20 pb-6'>
+        <div className='border-border-muted flex items-center justify-between border-b pb-6'>
           <div className='flex items-center gap-4'>
-            <div className='bg-bg-accent-muted text-fg-accent flex h-10 w-10 items-center justify-center rounded-2xl shadow-sm'>
+            <div className='border-border-muted text-fg-muted flex h-10 w-10 items-center justify-center rounded-lg border'>
               <MessageCircle size={20} />
             </div>
             <div>
-              <h3 className='text-fg-default text-lg font-bold'>交流互动</h3>
-              <p className='text-fg-muted text-xs font-bold tracking-wider uppercase'>
+              <h3 className='text-fg-default text-lg font-semibold'>交流互动</h3>
+              <p className='text-fg-muted text-xs font-medium tracking-wider uppercase'>
                 {data.length} 条精彩讨论
               </p>
             </div>
           </div>
 
-          <div className='bg-bg-success-muted text-fg-success flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-black uppercase'>
+          <div className='border-border-muted text-fg-muted flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase'>
             <span className='relative flex h-2 w-2'>
               <span className='bg-bg-success-emphasis absolute inline-flex h-full w-full animate-ping rounded-full opacity-75'></span>
               <span className='bg-bg-success-emphasis relative inline-flex h-2 w-2 rounded-full'></span>

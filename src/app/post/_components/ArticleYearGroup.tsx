@@ -9,7 +9,7 @@ interface ArticleYearGroupProps {
 
 export function ArticleYearGroup({ year, articles }: ArticleYearGroupProps) {
   return (
-    <div className='border-border-muted bg-bg-default/80 rounded-3xl border p-8 shadow-sm backdrop-blur'>
+    <div className='border-border-muted bg-bg-default rounded-xl border p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)]'>
       <header className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
         <div className='flex items-baseline gap-3'>
           <h3 className='text-fg-default text-2xl font-semibold sm:text-3xl'>{year}</h3>
@@ -17,7 +17,7 @@ export function ArticleYearGroup({ year, articles }: ArticleYearGroupProps) {
             {articles.length.toString().padStart(2, '0')} entries
           </span>
         </div>
-        <div className='border-border-muted bg-bg-muted/60 text-fg-muted flex items-center gap-2 rounded-full border px-3 py-1 text-xs'>
+        <div className='border-border-muted bg-bg-muted text-fg-muted flex items-center gap-2 rounded-full border px-3 py-1 text-xs'>
           <span className='font-mono tracking-[0.3em] uppercase'>Archive</span>
         </div>
       </header>
@@ -27,10 +27,10 @@ export function ArticleYearGroup({ year, articles }: ArticleYearGroupProps) {
           <Link
             key={article.id}
             href={`/post/${article.id}`}
-            className='border-border-muted hover:border-border-accent-emphasis hover:bg-bg-default/95 group flex flex-col gap-3 rounded-2xl border px-5 py-4 transition-all hover:shadow-md sm:flex-row sm:items-center sm:justify-between'
+            className='group border-border-muted hover:border-border-default flex flex-col gap-3 rounded-lg border px-5 py-4 transition-all duration-[160ms] ease-out hover:translate-x-1 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] sm:flex-row sm:items-center sm:justify-between'
           >
             <div className='flex flex-col gap-2'>
-              <span className='text-fg-default group-hover:text-fg-accent text-base font-medium transition-colors'>
+              <span className='text-fg-default group-hover:text-fg-accent text-base font-medium transition-colors duration-[160ms]'>
                 {article.title}
               </span>
               <div className='text-fg-muted flex flex-wrap items-center gap-3 text-xs'>

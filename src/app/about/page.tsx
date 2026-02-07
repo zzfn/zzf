@@ -27,7 +27,7 @@ const StatCard = ({
   color?: 'success' | 'accent';
   location?: string;
 }) => (
-  <div className='border-border-muted bg-bg-muted/50 flex flex-col gap-2 rounded-lg border p-4 backdrop-blur-sm'>
+  <div className='border-border-muted bg-bg-default flex flex-col gap-2 rounded-lg border p-4'>
     <div className='text-sm opacity-60'>{label}</div>
     <div className='flex items-center gap-2'>
       {color && (
@@ -130,7 +130,7 @@ export default async function Page() {
         </div>
 
         {/* 概览部分 */}
-        <div className='border-border-muted bg-bg-muted/30 rounded-lg border p-6 backdrop-blur-sm'>
+        <div className='border-border-muted bg-bg-default rounded-lg border p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)]'>
           <h2 className='mb-4 text-lg opacity-60'>概览</h2>
           <div className='grid grid-cols-4 gap-4'>
             <StatCard label='在线人数' value={data.basicStats.onlineUsers} color='success' />
@@ -141,7 +141,7 @@ export default async function Page() {
         </div>
 
         {/* 详情部分 */}
-        <div className='border-border-muted bg-bg-muted/30 rounded-lg border p-6 backdrop-blur-sm'>
+        <div className='border-border-muted bg-bg-default rounded-lg border p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)]'>
           <h2 className='mb-4 text-lg opacity-60'>详情</h2>
           <div className='space-y-0'>
             <DetailRow

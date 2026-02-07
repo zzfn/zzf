@@ -50,7 +50,7 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
 
   if (!session) {
     return (
-      <div className='animate-fade-in border-border-default flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed p-6'>
+      <div className='animate-fade-in border-border-muted flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed p-6'>
         <p className='text-fg-muted text-sm'>登录后参与讨论</p>
         <SignIn />
       </div>
@@ -60,25 +60,25 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
   return (
     <div className='animate-fade-in relative space-y-6'>
       <div className='flex items-center gap-3'>
-        <div className='bg-bg-accent-muted h-10 w-10 overflow-hidden rounded-2xl border-2 border-white/50 shadow-sm'>
+        <div className='border-border-muted h-10 w-10 overflow-hidden rounded-lg border'>
           <UserInfo />
         </div>
-        <span className='text-fg-default text-sm font-bold'>@{session.user?.name}</span>
+        <span className='text-fg-default text-sm font-semibold'>@{session.user?.name}</span>
       </div>
 
-      <div className='clay relative !rounded-2xl !p-1'>
+      <div className='border-border-muted relative rounded-lg border p-1'>
         <textarea
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
           }}
           rows={3}
-          className='placeholder:text-fg-muted/50 w-full rounded-2xl border-none bg-transparent p-4 pb-16 text-lg font-medium focus:ring-0 focus:outline-none'
+          className='placeholder:text-fg-muted/50 w-full rounded-lg border-none bg-transparent p-4 pb-16 text-lg font-medium focus:ring-0 focus:outline-none'
           placeholder={replyTo ? `回复 @${replyTo}...` : '分享你的想法...'}
         />
         <div className='absolute right-4 bottom-4 flex items-center gap-4'>
           {content && (
-            <div className='text-fg-muted/60 rounded-lg bg-white/40 px-2 py-1 text-[10px] leading-none font-black tracking-widest uppercase'>
+            <div className='text-fg-muted border-border-muted rounded-md border px-2 py-1 text-[10px] leading-none font-medium tracking-widest uppercase'>
               <span className='tabular-nums'>{content.length}</span> chars
             </div>
           )}
@@ -87,17 +87,19 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
               {replyTo && (
                 <button
                   onClick={() => setReplyTo(null)}
-                  className='text-fg-muted rounded-xl bg-white/50 px-4 py-2 text-sm font-bold transition-all hover:bg-white/80'
+                  className='text-fg-muted border-border-muted hover:bg-bg-muted rounded-lg border px-4 py-2 text-sm font-medium transition-all duration-[160ms]'
                 >
                   取消
                 </button>
               )}
               <button
                 onClick={handleSubmit}
-                className='clay-btn clay-blue group flex items-center gap-2 !rounded-xl !px-6 !py-2 !text-sm'
+                className='group bg-bg-emphasis text-fg-onEmphasis flex items-center gap-2 rounded-lg px-6 py-2 text-sm font-medium transition-all duration-[160ms] hover:translate-x-1 hover:rounded-none'
               >
                 <span>发送</span>
-                <span className='transition-transform group-hover:translate-x-1'>→</span>
+                <span className='transition-transform duration-[160ms] group-hover:translate-x-1'>
+                  →
+                </span>
               </button>
             </div>
           )}

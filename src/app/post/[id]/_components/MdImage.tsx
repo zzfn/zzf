@@ -9,7 +9,7 @@ const MdImage = ({ onClick, alt, ...rest }: ImageProps) => {
   return (
     <>
       <Image
-        className='m-0 w-full cursor-zoom-in rounded-3xl transition-all hover:brightness-75'
+        className='border-border-muted m-0 w-full cursor-zoom-in rounded-lg border transition-all hover:brightness-75'
         sizes='100vw'
         loading='lazy'
         style={{
@@ -28,7 +28,7 @@ const MdImage = ({ onClick, alt, ...rest }: ImageProps) => {
       />
       <AnimatePresence>
         {visible && (
-          <Portal className='fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center backdrop-blur-md'>
+          <Portal className='bg-bg-emphasis/60 fixed top-0 left-0 z-50 flex h-screen w-screen items-center justify-center'>
             <Image
               className='bg-opacity max-h-[95vh] max-w-[95vw] cursor-zoom-out rounded object-scale-down'
               width={4}

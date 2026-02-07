@@ -5,13 +5,8 @@ interface PostArchiveHeaderProps {
 
 export function PostArchiveHeader({ totalPosts, totalTags }: PostArchiveHeaderProps) {
   return (
-    <section className='border-border-muted bg-bg-default/90 relative overflow-hidden rounded-3xl border p-10 shadow-xl backdrop-blur'>
-      <div className='pointer-events-none absolute inset-0'>
-        <div className='bg-bg-accent/20 absolute top-10 -left-16 h-40 w-40 rounded-full blur-3xl' />
-        <div className='bg-bg-accent/10 absolute right-0 bottom-0 h-32 w-32 rounded-full blur-2xl' />
-      </div>
-
-      <div className='relative flex flex-col gap-8'>
+    <section className='border-border-muted bg-bg-default rounded-xl border p-10 shadow-[0_1px_3px_rgba(0,0,0,0.08)]'>
+      <div className='flex flex-col gap-8'>
         <div className='space-y-4'>
           <span className='text-fg-muted font-mono text-xs tracking-[0.35em] uppercase'>
             Post Archive
