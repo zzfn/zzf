@@ -71,16 +71,13 @@ const ArticleNav = ({ source }: NavProps) => {
   return (
     <div className='sticky top-20'>
       <motion.div
-        className={classNames(
-          'right-4 z-50 md:relative md:right-0',
-          'transition-all duration-[160ms]',
-        )}
+        className={classNames('right-4 z-50 md:relative md:right-0', 'transition-all duration-200')}
         animate={{ width: isExpanded ? '240px' : '40px' }}
       >
         <motion.div
           className={classNames(
-            'border-border-muted bg-bg-default rounded-lg border',
-            'overflow-hidden transition-all duration-[160ms]',
+            'border-border-muted bg-bg-default rounded-2xl border',
+            'overflow-hidden transition-all duration-200',
           )}
           animate={{
             width: isExpanded ? '240px' : '80px',
@@ -148,7 +145,7 @@ const ArticleNav = ({ source }: NavProps) => {
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={classNames(
                   'group relative px-3 py-1.5',
-                  'transition-all duration-[160ms]',
+                  'transition-all duration-200',
                   current === nav.text && 'text-fg-accent',
                 )}
                 style={{
@@ -161,7 +158,7 @@ const ArticleNav = ({ source }: NavProps) => {
                   onClick={() => setCurrent(nav.text)}
                   className={classNames(
                     'text-fg-muted block truncate text-sm',
-                    'transition-colors duration-[160ms]',
+                    'transition-colors duration-200',
                     'hover:text-fg-accent',
                     current === nav.text && 'text-fg-accent',
                   )}

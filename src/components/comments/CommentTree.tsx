@@ -21,7 +21,7 @@ const CommentTree = ({ params }: CommentTreeProps) => {
         {/* 评论统计头 */}
         <div className='border-border-muted flex items-center justify-between border-b pb-6'>
           <div className='flex items-center gap-4'>
-            <div className='border-border-muted text-fg-muted flex h-10 w-10 items-center justify-center rounded-lg border'>
+            <div className='border-border-muted text-fg-muted flex h-10 w-10 items-center justify-center rounded-2xl border'>
               <MessageCircle size={20} />
             </div>
             <div>

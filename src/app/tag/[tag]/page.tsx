@@ -42,10 +42,10 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
     <div className='bg-bg-default min-h-screen'>
       <div className='mx-auto max-w-3xl px-6 py-16'>
         {/* 头部区域 */}
-        <div className='border-border-muted bg-bg-default mb-12 rounded-xl border p-10 shadow-[0_1px_3px_rgba(0,0,0,0.08)]'>
+        <div className='border-jan-ink bg-bg-default mb-12 rounded-3xl border-2 p-10 shadow-[3px_3px_0_var(--color-jan-ink)]'>
           <div className='text-center'>
             <div className='relative mb-6 inline-flex'>
-              <div className='border-border-muted bg-bg-muted flex h-16 w-16 items-center justify-center rounded-xl border'>
+              <div className='border-border-muted bg-bg-muted flex h-16 w-16 items-center justify-center rounded-3xl border'>
                 <span className='text-fg-default text-2xl font-semibold'>#</span>
               </div>
             </div>
@@ -65,7 +65,7 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
               .map(([year, articles]: [string, Article[]]) => (
                 <div
                   key={year}
-                  className='border-border-muted bg-bg-default rounded-xl border shadow-[0_1px_3px_rgba(0,0,0,0.08)]'
+                  className='border-jan-ink bg-bg-default rounded-3xl border-2 shadow-[3px_3px_0_var(--color-jan-ink)]'
                 >
                   {/* 年份标题 */}
                   <div className='border-border-muted border-b px-8 py-6'>
@@ -85,10 +85,10 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
                       <Link
                         key={article.id}
                         href={`/post/${article.id}`}
-                        className='group/item hover:bg-bg-muted relative flex items-center justify-between px-8 py-5 transition-all duration-[160ms] ease-out hover:translate-x-1'
+                        className='group/item hover:bg-bg-muted relative flex items-center justify-between px-8 py-5 transition-all duration-200 ease-out hover:-translate-y-0.5'
                       >
                         <div className='min-w-0 flex-1'>
-                          <h3 className='text-fg-default group-hover/item:text-fg-accent truncate text-base font-medium transition-colors duration-[160ms]'>
+                          <h3 className='text-fg-default group-hover/item:text-fg-accent truncate text-base font-medium transition-colors duration-200'>
                             {article.title}
                           </h3>
                           <p className='text-fg-muted mt-1.5 text-sm'>
@@ -96,7 +96,7 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
                           </p>
                         </div>
 
-                        <div className='ml-4 flex-shrink-0 opacity-0 transition-all duration-[160ms] group-hover/item:translate-x-1 group-hover/item:opacity-100'>
+                        <div className='ml-4 flex-shrink-0 opacity-0 transition-all duration-200 group-hover/item:-translate-y-0.5 group-hover/item:opacity-100'>
                           <svg
                             className='text-fg-muted h-5 w-5'
                             fill='none'
@@ -115,8 +115,8 @@ export default async function Page(props: { params: Promise<{ tag: string }> }) 
           </div>
         ) : (
           /* 空状态 */
-          <div className='border-border-muted bg-bg-default rounded-xl border p-20 text-center shadow-[0_1px_3px_rgba(0,0,0,0.08)]'>
-            <div className='border-border-muted bg-bg-muted relative mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-xl border'>
+          <div className='border-jan-ink bg-bg-default rounded-3xl border-2 p-20 text-center shadow-[3px_3px_0_var(--color-jan-ink)]'>
+            <div className='border-border-muted bg-bg-muted relative mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl border'>
               <svg
                 className='text-fg-muted h-10 w-10'
                 fill='none'

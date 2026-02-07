@@ -38,7 +38,7 @@ const Page = async () => {
             href={item.url}
             target='_blank'
             rel='noreferrer'
-            className='group border-border-muted bg-bg-default hover:border-border-default relative overflow-hidden rounded-lg border p-6 shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition-all duration-[160ms] ease-out hover:translate-x-1 hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]'
+            className='group border-jan-ink bg-bg-default hover:border-jan-ink relative overflow-hidden rounded-2xl border-2 p-6 shadow-[3px_3px_0_var(--color-jan-ink)] transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[5px_5px_0_var(--color-jan-ink)]'
           >
             <div className='flex items-center gap-4'>
               <Image
@@ -49,7 +49,7 @@ const Page = async () => {
                   flip: true,
                 }).toDataUri()}
                 alt={item.name}
-                className='border-border-muted rounded-full border-2 shadow-sm transition-transform duration-[160ms] group-hover:scale-105'
+                className='border-border-muted rounded-full border shadow-sm transition-transform duration-200 group-hover:scale-105'
               />
               <div>
                 <h3 className='text-lg font-semibold'>{item.name}</h3>
@@ -61,7 +61,7 @@ const Page = async () => {
       </div>
 
       {/* 申请友链部分 */}
-      <div className='border-border-muted bg-bg-default rounded-xl border'>
+      <div className='border-jan-ink bg-bg-default rounded-3xl border-2'>
         <div className='border-border-muted border-b p-6'>
           <h3 className='text-xl font-semibold'>申请友链</h3>
           <p className='text-fg-muted mt-2'>在申请之前，请确保您的网站符合以下要求</p>
@@ -69,7 +69,7 @@ const Page = async () => {
 
         <div className='grid gap-6 p-6 lg:grid-cols-2'>
           <div className='space-y-4'>
-            <div className='border-border-muted rounded-lg border p-4'>
+            <div className='border-border-muted rounded-2xl border p-4'>
               <h4 className='mb-3 font-medium'>基本要求</h4>
               <ul className='text-fg-muted space-y-2 text-sm'>
                 <li className='flex items-center gap-2'>
@@ -89,7 +89,7 @@ const Page = async () => {
           </div>
 
           <div className='space-y-4'>
-            <div className='border-border-muted rounded-lg border p-4'>
+            <div className='border-border-muted rounded-2xl border p-4'>
               <h4 className='mb-3 font-medium'>本站信息</h4>
               <ul className='text-fg-muted space-y-2 text-sm'>
                 <li className='flex items-center gap-2'>

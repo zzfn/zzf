@@ -83,11 +83,11 @@ const ThemeSwitch = () => {
   return (
     <div
       role='radiogroup'
-      className='border-border-muted bg-bg-default relative flex h-10 items-center gap-1 rounded-lg border p-1'
+      className='border-border-muted bg-bg-default relative flex h-10 items-center gap-1 rounded-2xl border p-1'
     >
       {/* 滑动指示器 */}
       <motion.div
-        className='bg-bg-emphasis pointer-events-none absolute top-1 bottom-1 left-1 rounded-md'
+        className='bg-bg-emphasis pointer-events-none absolute top-1 bottom-1 left-1 rounded-xl'
         style={{
           width: `calc((100% - 8px) / ${themes.length})`,
         }}
@@ -119,8 +119,8 @@ const ThemeSwitch = () => {
                 });
               }}
               className={classNames(
-                'relative z-10 flex h-8 w-10 items-center justify-center rounded-md',
-                'text-sm font-medium transition-colors duration-[160ms]',
+                'relative z-10 flex h-8 w-10 items-center justify-center rounded-xl',
+                'text-sm font-medium transition-colors duration-200',
                 'focus-visible:ring-border-accent-emphasis focus-visible:ring-2 focus-visible:outline-none',
                 isActive ? 'text-fg-onEmphasis' : 'text-fg-muted',
               )}

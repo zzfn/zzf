@@ -22,7 +22,7 @@ export function ActivitySection({ items }: ActivitySectionProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, delay: 0.1, ease: 'easeOut' }}
     >
-      <div className='border-border-muted bg-bg-default hover:border-border-default relative overflow-hidden rounded-xl border shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition-all duration-[160ms] ease-out hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]'>
+      <div className='border-jan-ink bg-jan-purple-bg hover:border-jan-ink relative overflow-hidden rounded-3xl border-2 shadow-[3px_3px_0_var(--color-jan-ink)] transition-all duration-200 ease-out hover:shadow-[5px_5px_0_var(--color-jan-ink)]'>
         <div className='p-8'>
           <h2 className='text-fg-default mb-6 flex items-center gap-3 text-lg font-semibold sm:text-xl'>
             ⚡ 最近在做什么
@@ -33,7 +33,7 @@ export function ActivitySection({ items }: ActivitySectionProps) {
           {items.map((item, index) => (
             <motion.div
               key={item.label}
-              className='border-border-muted hover:bg-bg-muted flex items-center gap-3 border-t px-8 py-4 transition-all duration-[160ms] ease-out hover:translate-x-1'
+              className='border-border-muted hover:bg-jan-purple/10 flex items-center gap-3 border-t px-8 py-4 transition-all duration-200 ease-out hover:-translate-y-0.5'
             >
               <span className='text-base'>
                 {item.emoji || defaultEmojis[index % defaultEmojis.length]}

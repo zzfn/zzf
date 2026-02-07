@@ -90,6 +90,20 @@ em {
 }
 [data-color-mode='dark'] {
   --bgColor-opacity: rgba(29, 29, 31, 0.72);
+  /* Jan.ai 暗色模式适配 */
+  --color-jan-ink: #e5e5e5;
+  --color-jan-ink-light: #d4d4d4;
+  --color-jan-purple: #a78bfa;
+  --color-jan-purple-light: #7c3aed;
+  --color-jan-purple-bg: rgba(124, 58, 237, 0.1);
+  --color-jan-yellow: #fde047;
+  --color-jan-yellow-light: #eab308;
+  --color-jan-yellow-bg: rgba(234, 179, 8, 0.1);
+  --color-jan-teal: #5eead4;
+  --color-jan-teal-light: #0d9488;
+  --color-jan-teal-bg: rgba(13, 148, 136, 0.1);
+  --color-jan-coral: #fb7185;
+  --color-jan-coral-bg: rgba(244, 63, 94, 0.1);
   img,
   svg {
     filter: brightness(0.8);

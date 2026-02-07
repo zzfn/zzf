@@ -9,7 +9,7 @@ const MdImage = ({ onClick, alt, ...rest }: ImageProps) => {
   return (
     <>
       <Image
-        className='border-border-muted m-0 w-full cursor-zoom-in rounded-lg border transition-all hover:brightness-75'
+        className='border-border-muted m-0 w-full cursor-zoom-in rounded-2xl border transition-all hover:brightness-75'
         sizes='100vw'
         loading='lazy'
         style={{

@@ -57,7 +57,7 @@ const Footer = () => {
         <div className='grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4'>
           {/* Logo 区块 */}
           <motion.div className='sm:col-span-2 lg:col-span-1' variants={blockVariants}>
-            <div className='border-border-muted bg-bg-default hover:border-border-default h-full rounded-lg border p-6 transition-all duration-[160ms] ease-out hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]'>
+            <div className='border-jan-ink bg-bg-default hover:border-jan-ink h-full rounded-2xl border-2 p-6 transition-all duration-200 ease-out hover:shadow-[5px_5px_0_var(--color-jan-ink)]'>
               <Link href='/' className='logo-spin-hover inline-block'>
                 <Logo width={80} height={27} />
               </Link>
@@ -71,7 +71,7 @@ const Footer = () => {
 
           {/* 导航区块 */}
           <motion.div variants={blockVariants}>
-            <div className='border-border-muted bg-bg-default hover:border-border-default h-full rounded-lg border p-6 transition-all duration-[160ms] ease-out hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]'>
+            <div className='border-jan-ink bg-bg-default hover:border-jan-ink h-full rounded-2xl border-2 p-6 transition-all duration-200 ease-out hover:shadow-[5px_5px_0_var(--color-jan-ink)]'>
               <h3 className='text-fg-default mb-4 flex items-center gap-2 text-sm font-semibold'>
                 🧭 导航
               </h3>
@@ -82,7 +82,7 @@ const Footer = () => {
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noreferrer' : undefined}
-                    className='group border-border-muted hover:border-border-default flex items-center gap-2 rounded-lg border px-3 py-2 text-sm transition-all duration-[160ms] ease-out hover:translate-x-1'
+                    className='group border-border-muted hover:border-border-default flex items-center gap-2 rounded-2xl border px-3 py-2 text-sm transition-all duration-200 ease-out hover:-translate-y-0.5'
                   >
                     <span className='text-sm'>{link.icon}</span>
                     <span className='text-fg-muted group-hover:text-fg-default transition-colors'>
@@ -96,7 +96,7 @@ const Footer = () => {
 
           {/* 技术栈区块 */}
           <motion.div variants={blockVariants}>
-            <div className='border-border-muted bg-bg-default hover:border-border-default h-full rounded-lg border p-6 transition-all duration-[160ms] ease-out hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]'>
+            <div className='border-jan-ink bg-bg-default hover:border-jan-ink h-full rounded-2xl border-2 p-6 transition-all duration-200 ease-out hover:shadow-[5px_5px_0_var(--color-jan-ink)]'>
               <h3 className='text-fg-default mb-4 flex items-center gap-2 text-sm font-semibold'>
                 ⚙️ 技术栈
               </h3>
@@ -104,7 +104,7 @@ const Footer = () => {
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
-                    className='border-border-muted hover:border-border-default flex items-center gap-3 rounded-lg border px-3 py-2.5 text-sm transition-all duration-[160ms] ease-out hover:translate-x-1'
+                    className='border-border-muted hover:border-border-default flex items-center gap-3 rounded-2xl border px-3 py-2.5 text-sm transition-all duration-200 ease-out hover:-translate-y-0.5'
                   >
                     <span className='text-lg'>{tech.emoji}</span>
                     <span className='text-fg-default font-medium'>{tech.name}</span>
@@ -116,12 +116,12 @@ const Footer = () => {
 
           {/* 状态区块 */}
           <motion.div variants={blockVariants}>
-            <div className='border-border-muted bg-bg-default hover:border-border-default h-full rounded-lg border p-6 transition-all duration-[160ms] ease-out hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]'>
+            <div className='border-jan-ink bg-bg-default hover:border-jan-ink h-full rounded-2xl border-2 p-6 transition-all duration-200 ease-out hover:shadow-[5px_5px_0_var(--color-jan-ink)]'>
               <h3 className='text-fg-default mb-4 flex items-center gap-2 text-sm font-semibold'>
                 📈 站点状态
               </h3>
 
-              <div className='border-border-muted mb-3 flex items-center gap-3 rounded-lg border px-3 py-3'>
+              <div className='border-border-muted mb-3 flex items-center gap-3 rounded-2xl border px-3 py-3'>
                 <span className='relative flex h-3 w-3'>
                   <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75' />
                   <span className='relative inline-flex h-3 w-3 rounded-full bg-green-500' />
@@ -131,7 +131,7 @@ const Footer = () => {
                 </span>
               </div>
 
-              <div className='border-border-muted flex items-center gap-3 rounded-lg border px-3 py-3'>
+              <div className='border-border-muted flex items-center gap-3 rounded-2xl border px-3 py-3'>
                 <span className='text-base'>⏱️</span>
                 <span className='text-fg-muted text-sm'>
                   运行 {parseInt(currentYear) - 2020}+ 年
@@ -143,7 +143,7 @@ const Footer = () => {
 
         {/* 底部信息条 */}
         <motion.div className='mt-8' variants={blockVariants}>
-          <div className='border-border-muted bg-bg-default flex items-center justify-between gap-4 rounded-lg border px-6 py-4'>
+          <div className='border-jan-ink bg-bg-default flex items-center justify-between gap-4 rounded-2xl border-2 px-6 py-4'>
             <div className='text-fg-muted flex flex-wrap items-center gap-3 text-xs'>
               <span className='flex items-center gap-1.5'>
                 <span>©</span>
@@ -151,7 +151,7 @@ const Footer = () => {
               </span>
               <span className='bg-border-muted h-4 w-px' />
               <a
-                className='hover:text-fg-default transition-colors duration-[160ms]'
+                className='hover:text-fg-default transition-colors duration-200'
                 rel='noreferrer'
                 target='_blank'
                 href='https://beian.miit.gov.cn'

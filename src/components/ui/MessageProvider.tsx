@@ -104,7 +104,7 @@ const MessageProvider = ({ children }: { children: ReactNode }) => {
               <div
                 key={message.id}
                 className={classNames(
-                  'border-border-muted pointer-events-auto rounded-lg border p-4 text-sm shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all',
+                  'border-border-muted pointer-events-auto rounded-2xl border p-4 text-sm shadow-md transition-all',
                   variantStyles[message.type ?? 'info'],
                 )}
               >

@@ -5,7 +5,7 @@ interface PostArchiveHeaderProps {
 
 export function PostArchiveHeader({ totalPosts, totalTags }: PostArchiveHeaderProps) {
   return (
-    <section className='border-border-muted bg-bg-default rounded-xl border p-10 shadow-[0_1px_3px_rgba(0,0,0,0.08)]'>
+    <section className='border-jan-ink bg-bg-default rounded-3xl border-2 p-10 shadow-[3px_3px_0_var(--color-jan-ink)]'>
       <div className='flex flex-col gap-8'>
         <div className='space-y-4'>
           <span className='text-fg-muted font-mono text-xs tracking-[0.35em] uppercase'>

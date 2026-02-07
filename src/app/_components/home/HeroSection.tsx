@@ -22,7 +22,7 @@ export function HeroSection({ config }: HeroSectionProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
-      <div className='border-border-muted bg-bg-default hover:border-border-default relative overflow-hidden rounded-xl border p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition-all duration-[160ms] ease-out hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] sm:p-10'>
+      <div className='border-jan-ink bg-jan-yellow-bg hover:border-jan-ink relative overflow-hidden rounded-3xl border-2 p-8 shadow-[3px_3px_0_var(--color-jan-ink)] transition-all duration-200 ease-out hover:shadow-[5px_5px_0_var(--color-jan-ink)] sm:p-10'>
         <div className='relative flex items-center gap-6 sm:gap-8'>
           {/* 头像 */}
           <motion.div
@@ -32,7 +32,7 @@ export function HeroSection({ config }: HeroSectionProps) {
           >
             <Image
               priority={true}
-              className='border-border-muted relative h-24 w-24 rounded-full border-2 object-cover transition-all duration-[160ms] md:h-32 md:w-32'
+              className='border-border-muted relative h-24 w-24 rounded-full border object-cover transition-all duration-200 md:h-32 md:w-32'
               width={128}
               height={128}
               alt='avatar'

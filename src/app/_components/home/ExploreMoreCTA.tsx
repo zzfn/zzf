@@ -19,13 +19,13 @@ export function ExploreMoreCTA({ animationDelay }: ExploreMoreCTAProps) {
       }}
     >
       <Link href='/post' className='group block'>
-        <div className='border-border-muted bg-bg-default group-hover:border-border-default relative overflow-hidden rounded-lg border shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition-all duration-[160ms] ease-out group-hover:translate-x-1 group-hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)]'>
+        <div className='border-jan-ink bg-jan-teal-bg group-hover:border-jan-ink relative overflow-hidden rounded-2xl border-2 shadow-[3px_3px_0_var(--color-jan-ink)] transition-all duration-200 ease-out group-hover:-translate-y-1 group-hover:shadow-[5px_5px_0_var(--color-jan-ink)]'>
           <div className='relative flex items-center justify-center gap-3 px-6 py-4'>
             <span className='text-base'>📖</span>
-            <span className='text-fg-default group-hover:text-fg-accent text-sm font-semibold transition-colors duration-[160ms]'>
+            <span className='text-fg-default group-hover:text-fg-accent text-sm font-semibold transition-colors duration-200'>
               查看全部文章
             </span>
-            <span className='text-fg-muted text-lg transition-transform duration-[160ms] group-hover:translate-x-1'>
+            <span className='text-fg-muted text-lg transition-transform duration-200 group-hover:-translate-y-0.5'>
               →
             </span>
           </div>

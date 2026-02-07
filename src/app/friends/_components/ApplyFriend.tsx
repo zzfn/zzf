@@ -17,7 +17,7 @@ const ApplyFriend = () => {
     <div>
       <button
         onClick={() => setIsVisible(true)}
-        className='bg-bg-emphasis text-fg-onEmphasis rounded-lg px-8 py-3 transition-all duration-[160ms] ease-out hover:translate-x-1 hover:rounded-none'
+        className='bg-bg-emphasis text-fg-onEmphasis rounded-2xl px-8 py-3 transition-all duration-200 ease-out hover:-translate-y-0.5'
       >
         <span>申请友链</span>
       </button>
@@ -44,7 +44,7 @@ const ApplyFriend = () => {
                   )
                 }
                 placeholder='输入您的站点名称'
-                className='border-border-muted bg-bg-default w-full rounded-lg border px-4 py-2.5 focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
+                className='border-border-muted bg-bg-default w-full rounded-2xl border px-4 py-2.5 focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
               />
             </div>
 
@@ -60,7 +60,7 @@ const ApplyFriend = () => {
                   )
                 }
                 placeholder='https://example.com'
-                className='border-border-muted bg-bg-default w-full rounded-lg border px-4 py-2.5 focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
+                className='border-border-muted bg-bg-default w-full rounded-2xl border px-4 py-2.5 focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
               />
             </div>
 
@@ -76,7 +76,7 @@ const ApplyFriend = () => {
                   )
                 }
                 placeholder='头像图片链接'
-                className='border-border-muted bg-bg-default w-full rounded-lg border px-4 py-2.5 focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
+                className='border-border-muted bg-bg-default w-full rounded-2xl border px-4 py-2.5 focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
               />
             </div>
 
@@ -92,7 +92,7 @@ const ApplyFriend = () => {
                   )
                 }
                 placeholder='简单介绍一下您的网站'
-                className='border-border-muted bg-bg-default w-full rounded-lg border px-4 py-2.5 focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
+                className='border-border-muted bg-bg-default w-full rounded-2xl border px-4 py-2.5 focus:border-[color:var(--color-border-accent-emphasis)] focus:ring-2 focus:ring-[color:color-mix(in_srgb,var(--color-border-accent-emphasis)_20%,transparent)]'
               />
             </div>
           </div>
@@ -118,7 +118,7 @@ const ApplyFriend = () => {
               });
               setIsVisible(false);
             }}
-            className='bg-bg-emphasis text-fg-onEmphasis w-full rounded-lg py-3 font-medium transition-all duration-[160ms] ease-out hover:translate-x-1 hover:rounded-none'
+            className='bg-bg-emphasis text-fg-onEmphasis w-full rounded-2xl py-3 font-medium transition-all duration-200 ease-out hover:-translate-y-0.5'
           >
             提交申请
           </button>

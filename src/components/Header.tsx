@@ -26,7 +26,7 @@ const Header = () => {
         className={classNames(
           'mx-auto flex items-center justify-between px-4 transition-all duration-[250ms] ease-out',
           count > 100
-            ? 'border-border-muted bg-bg-default relative w-[640px] overflow-hidden rounded-lg border py-2 shadow-[0_1px_3px_rgba(0,0,0,0.08)]'
+            ? 'border-jan-ink bg-bg-default relative w-[640px] overflow-hidden rounded-2xl border-2 py-2 shadow-[3px_3px_0_var(--color-jan-ink)]'
             : 'container',
         )}
       >
@@ -46,7 +46,7 @@ const Header = () => {
             'relative z-10 hidden items-center gap-x-1 md:flex',
             count > 100
               ? ''
-              : 'border-border-muted bg-bg-default overflow-hidden rounded-lg border px-4 py-2 shadow-[0_1px_3px_rgba(0,0,0,0.08)]',
+              : 'border-jan-ink bg-bg-default overflow-hidden rounded-2xl border-2 px-4 py-2 shadow-[3px_3px_0_var(--color-jan-ink)]',
           )}
         >
           {navLinks.map((link) => (
@@ -55,8 +55,8 @@ const Header = () => {
               href={link.href}
               className={classNames(
                 'text-fg-muted relative z-10 px-3 py-1.5 text-sm font-medium',
-                'rounded-lg transition-all duration-[160ms] ease-out',
-                'hover:text-fg-default hover:bg-bg-muted',
+                'rounded-2xl transition-all duration-200 ease-out',
+                'hover:text-fg-default hover:bg-jan-yellow/20',
               )}
             >
               {link.name}

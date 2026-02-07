@@ -43,7 +43,7 @@ const Modal = ({ visible, onCancel, children, className }: ModalProps) => {
           role='dialog'
           aria-modal='true'
           className={classNames(
-            'w-full max-w-lg rounded-xl border border-[color:var(--borderColor-muted)] bg-[color:var(--bgColor-default)] p-6 shadow-[0_8px_32px_rgba(0,0,0,0.10)] transition-all',
+            'border-jan-ink w-full max-w-lg rounded-3xl border-2 bg-[color:var(--bgColor-default)] p-6 shadow-[5px_5px_0_var(--color-jan-ink)] transition-all',
             className,
           )}
         >

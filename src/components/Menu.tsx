@@ -40,7 +40,7 @@ const MenuItem = ({ navLinks }: MenuItemProps) => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 0.16, ease: 'easeOut' }}
-              className='border-border-muted bg-bg-default absolute top-16 left-4 w-48 rounded-lg border p-2 shadow-[0_4px_16px_rgba(0,0,0,0.08)]'
+              className='border-jan-ink bg-bg-default absolute top-16 left-4 w-48 rounded-2xl border-2 p-2 shadow-[5px_5px_0_var(--color-jan-ink)]'
               onClick={(event) => event.stopPropagation()}
             >
               <nav className='space-y-1'>
@@ -57,7 +57,7 @@ const MenuItem = ({ navLinks }: MenuItemProps) => {
                       <Link
                         href={link.href}
                         className={classNames(
-                          'group flex items-center justify-between rounded-md px-3 py-2 text-sm transition-all duration-[160ms] ease-out',
+                          'group flex items-center justify-between rounded-xl px-3 py-2 text-sm transition-all duration-200 ease-out',
                           isActive
                             ? 'bg-bg-accent text-fg-accent'
                             : 'text-fg-default hover:bg-bg-muted',

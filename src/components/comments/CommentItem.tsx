@@ -14,12 +14,12 @@ const CommentItem = ({
     <div className='group flex gap-5'>
       {/* 头像容器 */}
       <div className='relative h-12 w-12 shrink-0'>
-        <div className='border-border-muted flex items-center justify-center overflow-hidden rounded-lg border'>
+        <div className='border-border-muted flex items-center justify-center overflow-hidden rounded-2xl border'>
           {comment.appUser?.avatarUrl ? (
             <Image
               src={comment.appUser.avatarUrl}
               alt=''
-              className='h-full w-full object-cover transition-transform duration-[160ms] group-hover:scale-105'
+              className='h-full w-full object-cover transition-transform duration-200 group-hover:scale-105'
               width={48}
               height={48}
             />
@@ -38,7 +38,7 @@ const CommentItem = ({
           </span>
         </div>
 
-        <div className='text-fg-default border-border-muted hover:bg-bg-muted rounded-lg border p-4 text-[15px] leading-relaxed font-medium transition-colors duration-[160ms]'>
+        <div className='text-fg-default border-border-muted hover:bg-bg-muted rounded-2xl border p-4 text-[15px] leading-relaxed font-medium transition-colors duration-200'>
           {comment.content}
         </div>
 
