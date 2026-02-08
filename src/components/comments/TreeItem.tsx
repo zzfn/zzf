@@ -24,23 +24,33 @@ function TreeItem({
       {/* 回复输入框 */}
       <AnimatePresence>
         {activeReplyId === comment.id && (
-          <ReplyInput mutate={mutate as never} parentId={comment.id} username={comment.username} />
+          <div className='mt-3 ml-14'>
+            <ReplyInput
+              mutate={mutate as never}
+              parentId={comment.id}
+              username={comment.username}
+            />
+          </div>
         )}
       </AnimatePresence>
 
       {/* 回复列表 */}
       {(comment.replies ?? []).length > 0 && (
-        <div className='border-border-default ml-12 space-y-4 border-l pl-4'>
+        <div className='border-border-muted relative mt-4 ml-14 space-y-3 border-l-2 pl-6'>
           {comment.replies?.map((reply) => (
             <motion.div key={reply.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <CommentItem comment={reply} onReply={handleReply} />
-              {activeReplyId === reply.id && (
-                <ReplyInput
-                  mutate={mutate as never}
-                  parentId={comment.id}
-                  username={reply.username}
-                />
-              )}
+              <AnimatePresence>
+                {activeReplyId === reply.id && (
+                  <div className='mt-3 ml-14'>
+                    <ReplyInput
+                      mutate={mutate as never}
+                      parentId={comment.id}
+                      username={reply.username}
+                    />
+                  </div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>

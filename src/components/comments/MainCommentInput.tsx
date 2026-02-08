@@ -58,51 +58,52 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
   }
 
   return (
-    <div className='animate-fade-in relative space-y-6'>
-      <div className='flex items-center gap-3'>
-        <div className='border-border-muted h-10 w-10 overflow-hidden rounded-2xl border'>
-          <UserInfo />
+    <div className='animate-fade-in space-y-4'>
+      <div className='border-border-muted bg-bg-subtle rounded-2xl border p-5'>
+        <div className='mb-4 flex items-center gap-3'>
+          <div className='border-border-muted h-10 w-10 overflow-hidden rounded-xl border'>
+            <UserInfo />
+          </div>
+          <span className='text-fg-default text-sm font-semibold'>@{session.user?.name}</span>
         </div>
-        <span className='text-fg-default text-sm font-semibold'>@{session.user?.name}</span>
-      </div>
 
-      <div className='border-border-muted relative rounded-2xl border p-1'>
         <textarea
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
           }}
           rows={3}
-          className='placeholder:text-fg-muted/50 w-full rounded-lg border-none bg-transparent p-4 pb-16 text-lg font-medium focus:ring-0 focus:outline-none'
+          className='placeholder:text-fg-muted/50 border-border-muted bg-bg-default focus:border-border-accent-emphasis focus:ring-border-accent-emphasis mb-4 w-full resize-none rounded-xl border p-4 text-[15px] font-medium transition-colors focus:ring-1 focus:outline-none'
           placeholder={replyTo ? `回复 @${replyTo}...` : '分享你的想法...'}
         />
-        <div className='absolute right-4 bottom-4 flex items-center gap-4'>
-          {content && (
-            <div className='text-fg-muted border-border-muted rounded-xl border px-2 py-1 text-[10px] leading-none font-medium tracking-widest uppercase'>
-              <span className='tabular-nums'>{content.length}</span> chars
-            </div>
-          )}
-          {content && (
-            <div className='flex gap-2'>
-              {replyTo && (
-                <button
-                  onClick={() => setReplyTo(null)}
-                  className='text-fg-muted border-border-muted hover:bg-bg-muted rounded-2xl border px-4 py-2 text-sm font-medium transition-all duration-200'
-                >
-                  取消
-                </button>
-              )}
+
+        <div className='flex items-center justify-between'>
+          <div className='text-fg-muted text-xs'>
+            {content && (
+              <span className='bg-bg-muted rounded-lg px-2 py-1 font-medium tabular-nums'>
+                {content.length} 字
+              </span>
+            )}
+          </div>
+
+          <div className='flex gap-2'>
+            {replyTo && (
               <button
-                onClick={handleSubmit}
-                className='group bg-bg-emphasis text-fg-onEmphasis flex items-center gap-2 rounded-2xl px-6 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5'
+                onClick={() => setReplyTo(null)}
+                className='text-fg-muted hover:bg-bg-muted border-border-muted rounded-xl border px-4 py-2 text-sm font-medium transition-colors'
               >
-                <span>发送</span>
-                <span className='transition-transform duration-200 group-hover:-translate-y-0.5'>
-                  →
-                </span>
+                取消
               </button>
-            </div>
-          )}
+            )}
+            <button
+              onClick={handleSubmit}
+              disabled={!content.trim()}
+              className='bg-bg-emphasis text-fg-onEmphasis group flex items-center gap-2 rounded-xl px-6 py-2 text-sm font-medium transition-all hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50'
+            >
+              <span>发送</span>
+              <span className='transition-transform group-hover:translate-x-0.5'>→</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

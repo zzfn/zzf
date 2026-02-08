@@ -34,7 +34,7 @@ const ReplyInput = ({
         exit={{ opacity: 0, height: 0 }}
         style={{ overflow: 'hidden' }}
       >
-        <div className='border-border-default mt-2 flex flex-col items-center justify-center space-y-3 rounded-lg border border-dashed p-4'>
+        <div className='border-border-muted bg-bg-subtle flex flex-col items-center justify-center space-y-3 rounded-xl border border-dashed p-4'>
           <p className='text-fg-muted text-sm'>登录后回复评论</p>
           <SignIn />
         </div>
@@ -49,37 +49,46 @@ const ReplyInput = ({
       exit={{ opacity: 0, height: 0 }}
       style={{ overflow: 'hidden' }}
     >
-      <div className='mt-2'>
-        <div className='relative'>
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            rows={2}
-            className='bg-opacity border-border-default placeholder:text-fg-muted focus:border-border-accent-emphasis focus:ring-border-accent-emphasis w-full rounded-lg border p-4 pb-14 text-sm transition-colors duration-200 focus:ring-1 focus:outline-none'
-            placeholder={`回复 @${username}...`}
-            autoFocus
-          />
-          <div className='absolute right-3 bottom-3 flex items-center gap-3'>
+      <div className='border-border-muted bg-bg-subtle rounded-xl border p-4'>
+        <div className='mb-3 flex items-center gap-2'>
+          <span className='text-fg-muted text-xs'>回复</span>
+          <span className='text-fg-default text-xs font-semibold'>@{username}</span>
+        </div>
+
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          rows={2}
+          className='placeholder:text-fg-muted/50 border-border-muted bg-bg-default focus:border-border-accent-emphasis focus:ring-border-accent-emphasis mb-3 w-full resize-none rounded-lg border p-3 text-sm transition-colors focus:ring-1 focus:outline-none'
+          placeholder='输入回复内容...'
+          autoFocus
+        />
+
+        <div className='flex items-center justify-between'>
+          <div className='text-fg-muted text-xs'>
             {content && (
-              <div className='text-fg-muted/80 bg-bg-default/5 rounded-md px-2 py-1 text-xs'>
-                <span className='font-mono tabular-nums'>{content.length}</span>
-                <span className='ml-1'>字</span>
-              </div>
+              <span className='bg-bg-muted rounded-lg px-2 py-1 font-medium tabular-nums'>
+                {content.length} 字
+              </span>
             )}
+          </div>
+
+          <div className='flex gap-2'>
             <button
               onClick={() => {
                 setContent('');
               }}
-              className='bg-bg-default/5 hover:bg-bg-default/10 text-fg-muted hover:text-fg-accent rounded-md px-3 py-1.5 text-xs transition-colors duration-200'
+              className='text-fg-muted hover:bg-bg-muted border-border-muted rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors'
             >
               取消
             </button>
             <button
               onClick={handleSubmit}
-              className='bg-bg-accent/90 text-fg-muted hover:bg-bg-accent flex items-center gap-1.5 rounded-md px-4 py-1.5 text-sm font-medium transition-colors duration-200'
+              disabled={!content.trim()}
+              className='bg-bg-emphasis text-fg-onEmphasis flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-medium transition-all hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50'
             >
               <span>发送</span>
-              <span className='font-mono'>→</span>
+              <span>→</span>
             </button>
           </div>
         </div>

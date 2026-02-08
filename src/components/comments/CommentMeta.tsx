@@ -1,4 +1,6 @@
 import { CommentType } from './type';
+import { MessageSquare } from 'lucide-react';
+
 const formatTime = (timestamp: string) => {
   return new Date(timestamp).toLocaleString('zh-CN', {
     year: 'numeric',
@@ -8,6 +10,7 @@ const formatTime = (timestamp: string) => {
     minute: '2-digit',
   });
 };
+
 const CommentMeta = ({
   comment,
   onReply,
@@ -15,19 +18,23 @@ const CommentMeta = ({
   comment: CommentType;
   onReply: (id: string) => void;
 }) => (
-  <>
-    <div className='flex items-center gap-3 text-xs text-fg-muted'>
-      <span>{formatTime(comment.createdAt)}</span>
-      {comment.address && (
-        <>
-          <span>·</span>
-          <span>{comment.address}</span>
-        </>
-      )}
-    </div>
-    <button onClick={() => onReply(comment.id)} className='text-xs text-fg-muted hover:text-fg-accent'>
-      回复
+  <div className='text-fg-muted flex items-center gap-3 text-xs'>
+    <span>{formatTime(comment.createdAt)}</span>
+    {comment.address && (
+      <>
+        <span>·</span>
+        <span>{comment.address}</span>
+      </>
+    )}
+    <span>·</span>
+    <button
+      onClick={() => onReply(comment.id)}
+      className='hover:text-fg-accent flex items-center gap-1 transition-colors'
+    >
+      <MessageSquare size={12} />
+      <span>回复</span>
     </button>
-  </>
+  </div>
 );
+
 export default CommentMeta;
