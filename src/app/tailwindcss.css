@@ -166,30 +166,69 @@
   --blur-xs: 2px;
   --blur-backdrop-xs: 2px;
 
-  /* Jan.ai 品牌色 */
-  --color-jan-ink: #1a1a1a;
-  --color-jan-ink-light: #2d2d2d;
-  --color-jan-purple: #7c3aed;
-  --color-jan-purple-light: #a78bfa;
-  --color-jan-purple-bg: #f5f3ff;
-  --color-jan-yellow: #eab308;
-  --color-jan-yellow-light: #fde047;
-  --color-jan-yellow-bg: #fefce8;
-  --color-jan-teal: #0d9488;
-  --color-jan-teal-light: #5eead4;
-  --color-jan-teal-bg: #f0fdfa;
-  --color-jan-coral: #f43f5e;
-  --color-jan-coral-bg: #fff1f2;
+  /* Jan.ai 品牌色 - 引用 CSS 变量以支持深色模式切换 */
+  --color-jan-ink: var(--jan-ink);
+  --color-jan-ink-light: var(--jan-ink-light);
+  --color-jan-purple: var(--jan-purple);
+  --color-jan-purple-light: var(--jan-purple-light);
+  --color-jan-purple-bg: var(--jan-purple-bg);
+  --color-jan-yellow: var(--jan-yellow);
+  --color-jan-yellow-light: var(--jan-yellow-light);
+  --color-jan-yellow-bg: var(--jan-yellow-bg);
+  --color-jan-yellow-hover: var(--jan-yellow-hover);
+  --color-jan-teal: var(--jan-teal);
+  --color-jan-teal-light: var(--jan-teal-light);
+  --color-jan-teal-bg: var(--jan-teal-bg);
+  --color-jan-coral: var(--jan-coral);
+  --color-jan-coral-bg: var(--jan-coral-bg);
+  --color-jan-coral-hover: var(--jan-coral-hover);
 
   /* Shadows */
-  --shadow-sm: 3px 3px 0 var(--color-jan-ink);
-  --shadow-md: 5px 5px 0 var(--color-jan-ink);
-  --shadow-lg: 8px 8px 0 var(--color-jan-ink);
+  --shadow-sm: 3px 3px 0 var(--jan-ink);
+  --shadow-md: 5px 5px 0 var(--jan-ink);
+  --shadow-lg: 8px 8px 0 var(--jan-ink);
 
   /* Breakpoints */
   --breakpoint-compact: 599px;
   --breakpoint-medium: 600px;
   --breakpoint-expanded: 840px;
+}
+
+:root,
+[data-color-mode='light'] {
+  --jan-ink: #1a1a1a;
+  --jan-ink-light: #2d2d2d;
+  --jan-purple: #7c3aed;
+  --jan-purple-light: #a78bfa;
+  --jan-purple-bg: #f5f3ff;
+  --jan-yellow: #eab308;
+  --jan-yellow-light: #fde047;
+  --jan-yellow-bg: #fefce8;
+  --jan-yellow-hover: rgba(234, 179, 8, 0.2);
+  --jan-teal: #0d9488;
+  --jan-teal-light: #5eead4;
+  --jan-teal-bg: #f0fdfa;
+  --jan-coral: #f43f5e;
+  --jan-coral-bg: #fff1f2;
+  --jan-coral-hover: rgba(244, 63, 94, 0.8);
+}
+
+[data-color-mode='dark'] {
+  --jan-ink: #e5e5e5;
+  --jan-ink-light: #d4d4d4;
+  --jan-purple: #a78bfa;
+  --jan-purple-light: #7c3aed;
+  --jan-purple-bg: rgba(124, 58, 237, 0.08);
+  --jan-yellow: #fde047;
+  --jan-yellow-light: #eab308;
+  --jan-yellow-bg: rgba(234, 179, 8, 0.06);
+  --jan-yellow-hover: rgba(253, 224, 71, 0.15);
+  --jan-teal: #5eead4;
+  --jan-teal-light: #0d9488;
+  --jan-teal-bg: rgba(13, 148, 136, 0.08);
+  --jan-coral: #fb7185;
+  --jan-coral-bg: rgba(244, 63, 94, 0.08);
+  --jan-coral-hover: rgba(251, 113, 133, 0.8);
 }
 
 @utility card {
