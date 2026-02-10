@@ -93,9 +93,6 @@ importers:
       postcss-scss:
         specifier: ^4.0.9
         version: 4.0.9(postcss@8.4.47)
-      ramda:
-        specifier: ^0.29.1
-        version: 0.29.1
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -142,9 +139,6 @@ importers:
       '@types/node':
         specifier: ^20.17.6
         version: 20.17.6
-      '@types/ramda':
-        specifier: ^0.29.12
-        version: 0.29.12
       '@types/react':
         specifier: 19.0.10
         version: 19.0.10
@@ -1540,9 +1534,6 @@ packages:
 
   '@types/node@20.17.6':
     resolution: {integrity: sha512-VEI7OdvK2wP7XHnsuXbAJnEpEkF6NjSN45QJlL4VGqZSXsnicpesdTWsg9RISeSdYd3yeRj/y3k5KGjUXYnFwQ==}
-
-  '@types/ramda@0.29.12':
-    resolution: {integrity: sha512-sgIEjpJhdQPB52gDF4aphs9nl0xe54CR22DPdWqT8gQHjZYmVApgA0R3/CpMbl0Y8az2TEZrPNL2zy0EvjbkLA==}
 
   '@types/react-dom@19.0.4':
     resolution: {integrity: sha512-4fSQ8vWFkg+TGhePfUzVmat3eC14TXYSsiiDSLI0dVLsrm9gZFABjPy/Qu6TKgl1tq1Bu1yDsuQgY3A3DOjCcg==}
@@ -4369,9 +4360,6 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  ramda@0.29.1:
-    resolution: {integrity: sha512-OfxIeWzd4xdUNxlWhgFazxsA/nl3mS4/jGZI5n00uWOoSSFRhC1b6gl6xvmzUamgmqELraWp0J/qqVlXYPDPyA==}
-
   react-devtools-inline@4.4.0:
     resolution: {integrity: sha512-ES0GolSrKO8wsKbsEkVeiR/ZAaHQTY4zDh1UW8DImVmm8oaGLl3ijJDvSGe+qDRKPZdPRnDtWWnSvvrgxXdThQ==}
 
@@ -4890,9 +4878,6 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4'
 
-  ts-toolbelt@9.6.0:
-    resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
-
   tsconfig-paths@3.15.0:
     resolution: {integrity: sha512-2Ac2RgzDe/cn48GvOe3M+o82pEFewD3UPbyoUHHdKasHwJKjds4fLXWf/Ux5kATBKN20oaFGu+jbElp1pos0mg==}
 
@@ -4949,9 +4934,6 @@ packages:
   typed-array-length@1.0.7:
     resolution: {integrity: sha512-3KS2b+kL7fsuk/eJZ7EQdnEmQoaho/r6KUef7hxvltNA5DR8NAUM+8wJMbJyZ4G9/7i3v5zPBIMN5aybAh2/Jg==}
     engines: {node: '>= 0.4'}
-
-  types-ramda@0.29.10:
-    resolution: {integrity: sha512-5PJiW/eiTPyXXBYGZOYGezMl6qj7keBiZheRwfjJZY26QPHsNrjfJnz0mru6oeqqoTHOni893Jfd6zyUXfQRWg==}
 
   typescript-eslint@8.46.2:
     resolution: {integrity: sha512-vbw8bOmiuYNdzzV3lsiWv6sRwjyuKJMQqWulBOU7M0RrxedXledX8G8kBbQeiOYDnTfiXz0Y4081E1QMNB6iQg==}
@@ -6657,10 +6639,6 @@ snapshots:
   '@types/node@20.17.6':
     dependencies:
       undici-types: 6.19.8
-
-  '@types/ramda@0.29.12':
-    dependencies:
-      types-ramda: 0.29.10
 
   '@types/react-dom@19.0.4(@types/react@19.0.10)':
     dependencies:
@@ -10175,8 +10153,6 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  ramda@0.29.1: {}
-
   react-devtools-inline@4.4.0:
     dependencies:
       es6-symbol: 3.1.4
@@ -10855,8 +10831,6 @@ snapshots:
     dependencies:
       typescript: 5.6.3
 
-  ts-toolbelt@9.6.0: {}
-
   tsconfig-paths@3.15.0:
     dependencies:
       '@types/json5': 0.0.29
@@ -10942,10 +10916,6 @@ snapshots:
       is-typed-array: 1.1.15
       possible-typed-array-names: 1.0.0
       reflect.getprototypeof: 1.0.6
-
-  types-ramda@0.29.10:
-    dependencies:
-      ts-toolbelt: 9.6.0
 
   typescript-eslint@8.46.2(eslint@9.38.0(jiti@2.4.2))(typescript@5.6.3):
     dependencies:

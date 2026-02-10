@@ -5,6 +5,7 @@ import { HeroSection } from './_components/home/HeroSection';
 import { ActivitySection } from './_components/home/ActivitySection';
 import { ArticleCard } from './_components/home/ArticleCard';
 import { ExploreMoreCTA } from './_components/home/ExploreMoreCTA';
+import { PageWrapper } from '@/components/ui/PageTransition';
 
 type SiteConfig = {
   avatar: string;
@@ -16,6 +17,9 @@ type SiteConfig = {
 export const metadata: Metadata = {
   title: '👋奇趣生活实验室',
 };
+
+// ISR 缓存配置：首页每 10 分钟重新验证
+export const revalidate = 600; // 10 分钟
 
 async function getData() {
   return fetchData<Array<Article>>({
@@ -58,18 +62,20 @@ export default async function Page() {
   ];
 
   return (
-    <div className='mx-auto max-w-3xl px-4 py-10 sm:py-12'>
-      <HeroSection config={config} />
-      <ActivitySection items={activityItems} />
+    <PageWrapper>
+      <div className='mx-auto max-w-3xl px-4 py-10 sm:py-12'>
+        <HeroSection config={config} />
+        <ActivitySection items={activityItems} />
 
-      {/* 文章卡片网格 */}
-      <div className='mb-12 grid grid-cols-1 gap-6 md:grid-cols-2'>
-        {data.map((article, index) => (
-          <ArticleCard key={article.id} article={article} index={index} />
-        ))}
+        {/* 文章卡片网格 */}
+        <div className='mb-12 grid grid-cols-1 gap-6 md:grid-cols-2'>
+          {data.map((article, index) => (
+            <ArticleCard key={article.id} article={article} index={index} />
+          ))}
+        </div>
+
+        <ExploreMoreCTA animationDelay={200 + data.length * 100} />
       </div>
-
-      <ExploreMoreCTA animationDelay={200 + data.length * 100} />
-    </div>
+    </PageWrapper>
   );
 }

@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'Post',
 };
 
+// ISR 缓存配置：文章列表每 30 分钟重新验证
+export const revalidate = 1800; // 30 分钟
+
 async function getData() {
   return fetchData<Array<Article>>({
     endpoint: '/v1/articles',

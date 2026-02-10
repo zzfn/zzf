@@ -8,6 +8,15 @@ import { ThemeProvider } from 'next-themes';
 import classNames from 'classnames';
 import Script from 'next/script';
 import { ConfigProvider } from '@/components/ui';
+import { JetBrains_Mono } from 'next/font/google';
+import { ScrollToTop } from '@/components/ui/ScrollToTop';
+
+// 优化字体加载：使用 next/font 优化 JetBrains Mono
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -42,7 +51,16 @@ function RootLayout({ children }: { children: ReactNode }) {
       data-light-theme='light'
     >
       <head>
-        <link rel='stylesheet' href='https://cdn.zzfzzf.com/lxgw/font.css' />
+        {/* 优化霞鹜文楷字体加载：添加 media 属性和 rel=preload */}
+        <link
+          rel='preload'
+          href='https://cdn.zzfzzf.com/lxgw/font.css'
+          as='style'
+          onLoad="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript>
+          <link rel='stylesheet' href='https://cdn.zzfzzf.com/lxgw/font.css' />
+        </noscript>
         <link rel='icon' href='/icon?<generated>' type='image/png' sizes='32x32' />
         <Script
           data-website-id='dd58bedd-dc7b-48ab-a7c0-adfffc6cd47f'
@@ -57,6 +75,7 @@ function RootLayout({ children }: { children: ReactNode }) {
           'bg-bg-default',
           'transition-all',
           'duration-300',
+          jetbrainsMono.variable,
         )}
       >
         <ThemeProvider attribute='data-color-mode'>
@@ -70,6 +89,7 @@ function RootLayout({ children }: { children: ReactNode }) {
               <div className='relative space-y-8'>{children}</div>
             </main>
             <Footer />
+            <ScrollToTop />
           </ConfigProvider>
         </ThemeProvider>
       </body>

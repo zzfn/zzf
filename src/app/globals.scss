@@ -18,11 +18,7 @@
 @import '@primer/primitives/dist/css/functional/themes/dark-high-contrast.css';
 @import '@primer/primitives/dist/css/functional/themes/dark-tritanopia.css';
 
-@font-face {
-  font-family: 'JetBrainsMono';
-  font-display: swap;
-  src: url(https://cdn.zzfzzf.com/assets/JetBrainsMono-Regular.woff2) format('woff2');
-}
+/* JetBrains Mono 现在通过 next/font 优化加载，不再需要本地的 @font-face */
 * {
   scrollbar-color: var(--bgColor-neutral-muted) var(--bgColor-default);
   scrollbar-width: thin;
