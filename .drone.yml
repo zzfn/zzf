@@ -5,7 +5,7 @@ clone:
   disable: true
 steps:
   - name: clone
-    image: nmtz/drone-github-clone
+    image: zot.ooxo.cc/nmtz/drone-github-clone
     settings:
       SSH_KEY:
         from_secret: ssh_key
@@ -24,7 +24,7 @@ steps:
       - pnpm run build
       - pnpm prune --prod
   - name: build_docker
-    image: plugins/docker
+    image: zot.ooxo.cc/plugins/kaniko
     environment:
       API_KEY:
         from_secret: api_key
@@ -32,17 +32,17 @@ steps:
       - build
     pull: if-not-exists
     settings:
-      registry: hub.ooxo.cc
+      registry: zot.ooxo.cc
       username:
         from_secret: nexus_docker_username
       password:
         from_secret: nexus_docker_password
-      repo: hub.ooxo.cc/home/blog
+      repo: zot.ooxo.cc/blog
       tags:
         - ${DRONE_COMMIT_SHA:0:8}
         - latest
   - name: oss
-    image: nmtz/drone-aliyun-oss
+    image: zot.ooxo.cc/nmtz/drone-aliyun-oss
     depends_on:
       - build
     settings:
@@ -72,4 +72,4 @@ steps:
       script:
         - echo ${DRONE_COMMIT}${DRONE_BUILD_NUMBER}
         - kubectl apply -f https://git.ooxo.cc/sonic/yaml/raw/branch/main/blog.yaml
-        - kubectl set image deployment/blog blog=hub.ooxo.cc/home/blog:${DRONE_COMMIT_SHA:0:8}
+        - kubectl set image deployment/blog blog=zot.ooxo.cc/blog:${DRONE_COMMIT_SHA:0:8}
