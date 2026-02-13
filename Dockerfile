@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM zot.ooxo.cc/node:20-alpine
 WORKDIR /app
 
 COPY public ./public
