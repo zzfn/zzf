@@ -300,7 +300,7 @@
   --tw-prose-headings: var(--fgColor-default);
   --tw-prose-lead: var(--fgColor-default);
   --tw-prose-links: var(--fgColor-accent);
-  --tw-prose-bold: var(--fgColor-default);
+  --tw-prose-bold: var(--fgColor-emphasis);
   --tw-prose-counters: var(--fgColor-default);
   --tw-prose-bullets: var(--fgColor-default);
   --tw-prose-hr: var(--borderColor-emphasis);
@@ -326,5 +326,10 @@
     display: block;
     overflow-x: auto;
     padding-bottom: 0.8571429em;
+  }
+
+  & :where(strong) {
+    color: var(--fgColor-emphasis);
+    font-weight: 600;
   }
 }
