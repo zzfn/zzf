@@ -9,7 +9,6 @@ import classNames from 'classnames';
 import Script from 'next/script';
 import { ConfigProvider } from '@/components/ui';
 import { JetBrains_Mono } from 'next/font/google';
-import { ScrollToTop } from '@/components/ui/ScrollToTop';
 
 // 优化字体加载：使用 next/font 优化 JetBrains Mono
 const jetbrainsMono = JetBrains_Mono({
@@ -89,7 +88,6 @@ function RootLayout({ children }: { children: ReactNode }) {
               <div className='relative space-y-8'>{children}</div>
             </main>
             <Footer />
-            <ScrollToTop />
           </ConfigProvider>
         </ThemeProvider>
       </body>

@@ -1,5 +1,3 @@
-import { ArticleListSkeleton } from '@/components/ui/ArticleCardSkeleton';
-
 export default function Loading() {
   return (
     <div className='mx-auto max-w-3xl px-4 py-10 sm:py-12'>
@@ -23,7 +21,14 @@ export default function Loading() {
       </div>
 
       {/* 文章卡片骨架 */}
-      <ArticleListSkeleton count={6} />
+      <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div
+            key={i}
+            className='border-border-muted bg-bg-muted h-48 animate-pulse rounded-2xl border-2'
+          />
+        ))}
+      </div>
     </div>
   );
 }
