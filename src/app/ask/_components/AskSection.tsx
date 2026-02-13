@@ -74,7 +74,7 @@ export function AskSection() {
         throw new Error('请求失败');
       }
 
-      reader = res.body?.getReader();
+      reader = res.body?.getReader() ?? null;
       const decoder = new TextDecoder();
 
       if (!reader) {
@@ -179,19 +179,27 @@ export function AskSection() {
               onChange={(e) => setQuestion(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder='问我任何关于博客内容的问题...'
-              error={!!error}
               disabled={loading}
             />
             {error && <p className='text-jan-coral mt-2 text-xs'>{error}</p>}
           </div>
           <Button
             onClick={handleAsk}
-            loading={loading}
             disabled={!question.trim() || loading}
-            icon={<Send className='h-4 w-4' />}
             variant='primary'
+            className='gap-2'
           >
-            提问
+            {loading ? (
+              <>
+                <span className='inline-block h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent' />
+                生成中
+              </>
+            ) : (
+              <>
+                <Send className='h-4 w-4' />
+                提问
+              </>
+            )}
           </Button>
         </div>
       </div>

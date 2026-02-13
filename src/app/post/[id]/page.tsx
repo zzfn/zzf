@@ -23,7 +23,6 @@ import { Sparkles, BookOpen, Clock, RefreshCw, Eye } from 'lucide-react';
 // 动态导入 CodeSandpack 以减少初始 bundle 大小（仅在文章中使用代码沙盒时加载）
 const CodeSandpack = dynamic(() => import('@/components/integrations/CodeSandpack'), {
   loading: () => <div className='bg-bg-muted min-h-[400px] w-full animate-pulse rounded-lg' />,
-  ssr: false, // CodeSandpack 不需要 SSR，减少服务器负载
 });
 
 // ISR 缓存配置：每小时重新验证页面，提升性能和 SEO

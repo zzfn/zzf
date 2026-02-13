@@ -50,16 +50,8 @@ function RootLayout({ children }: { children: ReactNode }) {
       data-light-theme='light'
     >
       <head>
-        {/* 优化霞鹜文楷字体加载：添加 media 属性和 rel=preload */}
-        <link
-          rel='preload'
-          href='https://cdn.zzfzzf.com/lxgw/font.css'
-          as='style'
-          onLoad="this.onload=null;this.rel='stylesheet'"
-        />
-        <noscript>
-          <link rel='stylesheet' href='https://cdn.zzfzzf.com/lxgw/font.css' />
-        </noscript>
+        {/* 优化霞鹜文楷字体加载 */}
+        <link rel='stylesheet' href='https://cdn.zzfzzf.com/lxgw/font.css' />
         <link rel='icon' href='/icon?<generated>' type='image/png' sizes='32x32' />
         <Script
           data-website-id='dd58bedd-dc7b-48ab-a7c0-adfffc6cd47f'
