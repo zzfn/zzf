@@ -58,7 +58,7 @@ export function AskSection() {
     let reader: ReadableStreamDefaultReader<Uint8Array> | null = null;
 
     try {
-      const res = await fetch('http://localhost:8000/v1/articles/rag/question', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/v1/articles/rag/question`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
