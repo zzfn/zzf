@@ -227,7 +227,7 @@ export function AskSection() {
                 )}
               </div>
               <div
-                className='text-fg-default prose prose-sm dark:prose-invert max-w-none leading-relaxed'
+                className='prose prose-p:text-lg prose-p:leading-relaxed prose-headings:font-semibold prose-headings:text-fg-default prose-a:text-fg-accent prose-a:no-underline hover:prose-a:underline prose-img:rounded-lg prose-img:border prose-img:border-border-muted max-w-none'
                 dangerouslySetInnerHTML={{ __html: renderedAnswer }}
               />
             </div>
