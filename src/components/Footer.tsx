@@ -13,7 +13,7 @@ const Footer = () => {
   const navLinks = [
     { name: 'RSS', href: '/api/feed.xml', icon: '📡' },
     { name: '关于', href: '/about', icon: '👋' },
-    { name: '服务状态', href: 'https://uptime.zzfzzf.com/status/m', icon: '🟢', external: true },
+    { name: '服务状态', href: 'https://stat.zzfzzf.com', icon: '🟢', external: true },
     {
       name: '统计',
       href: 'https://m.zzfzzf.com/share/YjgfEi1urh7EmU6i/zzfzzf.com',
