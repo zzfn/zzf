@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'w.zzfzzf.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'github.com',
       },
       {
