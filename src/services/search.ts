@@ -12,7 +12,7 @@ export function useSearch({ keyword }: SearchOptions) {
   const { data = [] } = useSWR<Article[] | null>(
     () => {
       if (!keyword) return null;
-      const endpoint = '/v1/articles/search/es';
+      const endpoint = '/v1/articles/search';
       const queryParams = { keyword };
       return { endpoint, queryParams };
     },
