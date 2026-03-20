@@ -1,4 +1,5 @@
 'use client';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useFormStatus } from 'react-dom';
 import { signInAction } from '@/app/actions/auth';
 
@@ -60,8 +61,22 @@ function SignInButton() {
 }
 
 function SignIn() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const handleSubmit = () => {
+    const query = searchParams.toString();
+    const currentPath = query ? `${pathname}?${query}` : pathname;
+    window.sessionStorage.setItem('post_login_redirect', currentPath);
+  };
+
   return (
-    <form action={() => signInAction()}>
+    <form
+      action={() => signInAction()}
+      onSubmit={() => {
+        handleSubmit();
+      }}
+    >
       <SignInButton />
     </form>
   );

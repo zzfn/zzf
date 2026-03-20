@@ -23,6 +23,12 @@ export default function AuthCallbackPage() {
 
   useEffect(() => {
     if (status === 'success') {
+      const storedRedirect = window.sessionStorage.getItem('post_login_redirect');
+      const redirectTarget =
+        storedRedirect && storedRedirect.startsWith('/') && !storedRedirect.startsWith('//')
+          ? storedRedirect
+          : '/';
+
       mutate({
         endpoint: CURRENT_USER_ENDPOINT,
         fetchParams: {
@@ -31,7 +37,8 @@ export default function AuthCallbackPage() {
       });
 
       const timer = window.setTimeout(() => {
-        router.replace('/');
+        window.sessionStorage.removeItem('post_login_redirect');
+        router.replace(redirectTarget);
         router.refresh();
       }, 1200);
 
@@ -43,7 +50,7 @@ export default function AuthCallbackPage() {
 
   const description =
     status === 'success'
-      ? 'Discourse 登录成功，正在返回首页...'
+      ? 'Discourse 登录成功，正在返回之前的页面...'
       : ERROR_MESSAGE[error || ''] || '登录未完成，请重新尝试。';
 
   return (
