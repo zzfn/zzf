@@ -1,7 +1,7 @@
 'use server';
 
-import { signIn } from '../../../auth';
+import { redirect } from 'next/navigation';
 
 export async function signInAction() {
-  await signIn('github');
+  redirect(new URL('/v1/app-users/discourse/login', process.env.NEXT_PUBLIC_BASE_URL).toString());
 }

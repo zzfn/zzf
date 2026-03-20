@@ -1,8 +1,8 @@
-import { useSession } from 'next-auth/react';
 import { motion } from 'framer-motion';
 import SignIn from '@/components/auth/SignIn';
 import { useState } from 'react';
 import { useCommentOrReply } from '@/services/comment';
+import { useCurrentUser } from '@/services/auth';
 import type { KeyedMutator } from 'swr';
 import type { Comment } from 'types/comment';
 
@@ -15,18 +15,18 @@ const ReplyInput = ({
   mutate: KeyedMutator<Comment[] | undefined>;
   username: string;
 }) => {
-  const { data: session } = useSession();
+  const { currentUser } = useCurrentUser();
   const [content, setContent] = useState('');
   const { trigger } = useCommentOrReply('replies', {
     commentId: parentId,
     content,
-    username: session?.user?.name,
+    username: currentUser?.username,
   });
   async function handleSubmit() {
     await trigger();
     await mutate();
   }
-  if (!session) {
+  if (!currentUser) {
     return (
       <motion.div
         initial={{ opacity: 0, height: 0 }}

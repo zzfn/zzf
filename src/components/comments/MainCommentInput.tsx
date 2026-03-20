@@ -1,9 +1,9 @@
-import { useSession } from 'next-auth/react';
 import SignIn from '@/components/auth/SignIn';
 import { useMessage } from '@/components/ui';
 import { useState } from 'react';
 import UserInfo from '@/components/auth/UserInfo';
-import { useCommentOrReply, useGithubLogin } from '@/services/comment';
+import { useCommentOrReply } from '@/services/comment';
+import { useCurrentUser } from '@/services/auth';
 import type { KeyedMutator } from 'swr';
 import type { Comment } from 'types/comment';
 interface CommentTreeProps {
@@ -17,23 +17,18 @@ interface CommentTreeProps {
 function MainCommentInput({ params, mutate }: CommentTreeProps) {
   const [content, setContent] = useState('');
   const [replyTo, setReplyTo] = useState<string | null>(null);
-  const { data: session, status } = useSession();
-  const { trigger: githubLogin } = useGithubLogin({
-    username: session?.user?.name,
-    avatarUrl: session?.user?.image,
-  });
+  const { currentUser, isLoading } = useCurrentUser();
   const message = useMessage();
   const { trigger } = useCommentOrReply('comments', {
     objectId: params.objectId,
     objectType: params.objectType,
     content,
-    username: session?.user?.name,
+    username: currentUser?.username,
   });
 
   const handleSubmit = async () => {
     try {
       await trigger();
-      await githubLogin();
       await mutate();
       setContent('');
       setReplyTo(null);
@@ -44,11 +39,11 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
     }
   };
 
-  if (status === 'loading') {
+  if (isLoading) {
     return <div>loading...</div>;
   }
 
-  if (!session) {
+  if (!currentUser) {
     return (
       <div className='animate-fade-in border-border-muted flex flex-col items-center justify-center space-y-3 rounded-2xl border border-dashed p-6'>
         <p className='text-fg-muted text-sm'>登录后参与讨论</p>
@@ -60,12 +55,7 @@ function MainCommentInput({ params, mutate }: CommentTreeProps) {
   return (
     <div className='animate-fade-in space-y-4'>
       <div className='border-border-muted bg-bg-subtle rounded-2xl border p-5'>
-        <div className='mb-4 flex items-center gap-3'>
-          <div className='border-border-muted h-10 w-10 overflow-hidden rounded-xl border'>
-            <UserInfo />
-          </div>
-          <span className='text-fg-default text-sm font-semibold'>@{session.user?.name}</span>
-        </div>
+        <UserInfo />
 
         <textarea
           value={content}

@@ -1,18 +1,18 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import AnimatedNumber from '@/components/AnimatedNumber';
-import { useSession, SessionProvider } from 'next-auth/react';
+import { useCurrentUser } from '@/services/auth';
 const OnlineCount = () => {
-  const { data: session } = useSession();
+  const { currentUser } = useCurrentUser();
   const [count, setCount] = useState(0);
   const socket = useRef<WebSocket | null>(null); // 使用 null 初始化 ref
   useEffect(() => {
-    if (!session?.user?.name) {
+    if (!currentUser?.username) {
       return undefined;
     }
 
     const socketInstance = new WebSocket(
-      `${process.env.NEXT_PUBLIC_WS_URL}/v1/ws?userId=${session.user.name}`,
+      `${process.env.NEXT_PUBLIC_WS_URL}/v1/ws?userId=${currentUser.username}`,
     );
 
     socketInstance.onmessage = (event) => {
@@ -25,7 +25,7 @@ const OnlineCount = () => {
       socket.current?.close();
       socket.current = null;
     };
-  }, [session?.user?.name]);
+  }, [currentUser?.username]);
 
   return (
     <div>
@@ -33,10 +33,4 @@ const OnlineCount = () => {
     </div>
   );
 };
-
-const OnlineCountWithSessionProvider = () => (
-  <SessionProvider>
-    <OnlineCount></OnlineCount>
-  </SessionProvider>
-);
-export default OnlineCountWithSessionProvider;
+export default OnlineCount;

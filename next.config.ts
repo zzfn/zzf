@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'ccw.es',
+      },
+      {
+        protocol: 'https',
         hostname: 'w.zzfzzf.com',
       },
       {

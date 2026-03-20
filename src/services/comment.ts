@@ -21,11 +21,6 @@ type ReplyPayload = {
   username?: string | null;
 };
 
-type GithubLoginPayload = {
-  username?: string | null;
-  avatarUrl?: string | null;
-};
-
 type CommentAction = 'comments' | 'replies';
 
 const swrFetcher = <T>(config: FetchConfig) => fetchData<T>(config);
@@ -47,22 +42,7 @@ export const useCommentOrReply = (action: CommentAction, body: CommentPayload | 
       endpoint: `/v1/${action}`,
       fetchParams: {
         method: 'POST',
-        body: JSON.stringify(body),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    },
-    (config) => swrFetcher<unknown>(config),
-  );
-};
-
-export const useGithubLogin = (body: GithubLoginPayload) => {
-  return useSWRMutation<unknown, Error, FetchConfig>(
-    {
-      endpoint: `/v1/app-users/github/login`,
-      fetchParams: {
-        method: 'POST',
+        credentials: 'include',
         body: JSON.stringify(body),
         headers: {
           'Content-Type': 'application/json',
