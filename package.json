@@ -31,6 +31,7 @@
     "eslint": "^9.38.0",
     "feed": "^4.2.2",
     "framer-motion": "12.4.0",
+    "html-react-parser": "^5.2.17",
     "immer": "^10.1.1",
     "jotai": "^2.11.3",
     "lottie-web": "^5.12.2",
@@ -43,7 +44,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "remark-gfm": "^4.0.0",
-    "shiki": "^3.21.0",
+    "shiki": "^4.0.2",
     "swr": "^2.3.0"
   },
   "devDependencies": {

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Avatar from '@/components/Avatar';
 import { CommentType } from './type';
 import CommentMeta from './CommentMeta';
+import parse from 'html-react-parser';
 
 const CommentItem = ({
   comment,
@@ -10,15 +11,18 @@ const CommentItem = ({
   comment: CommentType;
   onReply: (id: string) => void;
 }) => {
+  // 获取头像 URL：优先使用 Discourse 头像，否则使用本地系统头像
+  const avatarUrl = comment.avatarUrl || comment.appUser?.avatarUrl;
+
   return (
     <div className='group bg-bg-subtle hover:bg-bg-muted border-border-muted rounded-2xl border p-5 transition-all duration-200'>
       <div className='flex gap-4'>
         {/* 头像容器 */}
         <div className='relative h-10 w-10 shrink-0'>
           <div className='border-border-muted flex items-center justify-center overflow-hidden rounded-xl border'>
-            {comment.appUser?.avatarUrl ? (
+            {avatarUrl ? (
               <Image
-                src={comment.appUser.avatarUrl}
+                src={avatarUrl}
                 alt=''
                 className='h-full w-full object-cover transition-transform duration-200 group-hover:scale-105'
                 width={40}
@@ -34,15 +38,25 @@ const CommentItem = ({
           {/* 用户信息 */}
           <div className='flex items-center gap-2'>
             <span className='text-fg-default text-sm font-semibold'>@{comment.username}</span>
-            <span className='bg-border-muted h-1 w-1 rounded-full' />
-            <span className='text-fg-muted text-[10px] font-medium tracking-wider uppercase'>
-              Level 1 Maker
-            </span>
+            {comment.name && comment.name !== comment.username && (
+              <>
+                <span className='bg-border-muted h-1 w-1 rounded-full' />
+                <span className='text-fg-muted text-sm'>{comment.name}</span>
+              </>
+            )}
+            {comment.userTitle && (
+              <>
+                <span className='bg-border-muted h-1 w-1 rounded-full' />
+                <span className='text-fg-muted text-[10px] font-medium tracking-wider uppercase'>
+                  {comment.userTitle}
+                </span>
+              </>
+            )}
           </div>
 
-          {/* 评论内容 */}
-          <div className='text-fg-default text-[15px] leading-relaxed font-medium'>
-            {comment.content}
+          {/* 评论内容 - 渲染 HTML */}
+          <div className='prose prose-sm max-w-none dark:prose-invert text-fg-default text-[15px] leading-relaxed'>
+            {parse(comment.content)}
           </div>
 
           {/* Meta 信息 */}
