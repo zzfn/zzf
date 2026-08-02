@@ -35,7 +35,7 @@ export function ArticleCard({ article, index }: ArticleCardProps) {
           </div>
 
           {/* 标题 */}
-          <h3 className='text-fg-default group-hover:text-fg-accent relative mb-auto line-clamp-3 text-xl leading-relaxed font-semibold transition-colors duration-200'>
+          <h3 className='text-fg-default group-hover:text-fg-accent relative mb-auto line-clamp-3 text-lg leading-relaxed font-semibold transition-colors duration-200 sm:text-xl'>
             {article.title}
           </h3>
 
