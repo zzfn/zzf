@@ -1,69 +1,33 @@
 'use client';
+
 import { motion } from 'framer-motion';
 
-const draw = {
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: (index: number) => {
-    const delay = (index - 1) * 0.5;
-    return {
-      pathLength: 1,
-      opacity: 1,
-      transition: {
-        pathLength: { delay, type: 'spring', duration: 1.5, bounce: 0 },
-        opacity: { delay, duration: 0.01 },
-      },
-    };
-  },
-};
-const Logo = ({ width = 150, height = 50 }) => {
-  const scaleFactor = width / 150;
+interface LogoProps {
+  className?: string;
+}
+
+const Logo = ({ className }: LogoProps) => {
   return (
-    <motion.svg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      initial='hidden'
-      animate='visible'
+    <motion.div
+      className={`inline-flex items-center gap-2 select-none group ${className || ''}`}
+      whileHover={{ scale: 1.02 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
     >
-      <motion.circle
-        cx={25 * scaleFactor}
-        cy={25 * scaleFactor}
-        r={20 * scaleFactor}
-        stroke='var(--color-ansi-red)'
-        fill='var(--bgColor-transparent)'
-        variants={draw}
-        custom={1}
-      />
-      <motion.line
-        x1={55 * scaleFactor}
-        y1={7.5 * scaleFactor}
-        x2={90 * scaleFactor}
-        y2={42.5 * scaleFactor}
-        stroke='var(--color-ansi-green)'
-        variants={draw}
-        custom={2}
-      />
-      <motion.line
-        x1={55 * scaleFactor}
-        y1={42.5 * scaleFactor}
-        x2={90 * scaleFactor}
-        y2={7.5 * scaleFactor}
-        stroke='var(--color-ansi-green)'
-        variants={draw}
-        custom={2.5}
-      />
-      <motion.rect
-        width={35 * scaleFactor}
-        height={35 * scaleFactor}
-        x={102.5 * scaleFactor}
-        y={7.5 * scaleFactor}
-        rx={5 * scaleFactor}
-        stroke='var(--color-ansi-blue)'
-        fill='var(--bgColor-transparent)'
-        variants={draw}
-        custom={3}
-      />
-    </motion.svg>
+      {/* 现代几何光晕徽标 */}
+      <div className='relative flex h-7 w-7 items-center justify-center rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 p-[1.5px] shadow-xs transition-shadow duration-300 group-hover:shadow-md'>
+        <div className='flex h-full w-full items-center justify-center rounded-[10px] bg-bg-default dark:bg-zinc-950 transition-colors'>
+          <span className='font-mono text-xs font-black tracking-tighter bg-gradient-to-r from-purple-500 via-indigo-500 to-cyan-500 bg-clip-text text-transparent'>
+            K.
+          </span>
+        </div>
+      </div>
+
+      {/* 品牌名称 */}
+      <span className='font-mono text-sm font-bold tracking-tight text-fg-default group-hover:text-fg-accent transition-colors'>
+        krupp<span className='text-fg-accent'>.</span>
+      </span>
+    </motion.div>
   );
 };
+
 export default Logo;

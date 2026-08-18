@@ -1,8 +1,10 @@
 'use client';
-import { useEffect, useMemo, useRef, useState } from 'react';
+
+import { useEffect, useMemo, useState } from 'react';
 import { getTitle } from 'utils/translateMarkdown';
 import classNames from 'classnames';
-import { AnimatePresence, useMotionValueEvent, useScroll, motion } from 'framer-motion';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { ArrowUp, AlignLeft } from 'lucide-react';
 
 interface NavData {
   index: number;
@@ -15,15 +17,11 @@ interface NavProps {
 }
 
 const ArticleNav = ({ source }: NavProps) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [position, setPosition] = useState<{ top: number; height: number }>({ top: 0, height: 0 });
   const [current, setCurrent] = useState<string>(() =>
     typeof window !== 'undefined' ? window.location.hash.replace('#', '') : '',
   );
   const [scrollY, setScrollY] = useState<number>(0);
-  const [isExpanded, setIsExpanded] = useState(true);
   const { scrollYProgress } = useScroll();
-  const ulRef = useRef<HTMLUListElement>(null);
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     setScrollY(latest);
@@ -43,8 +41,8 @@ const ArticleNav = ({ source }: NavProps) => {
 
   useEffect(() => {
     const navObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting && entry.target.getAttribute('id')) {
             const curr = entry.target.getAttribute('id');
             if (curr) {
@@ -54,10 +52,11 @@ const ArticleNav = ({ source }: NavProps) => {
         });
       },
       {
-        rootMargin: '-30px 0px -30px 0px',
-        threshold: 0.5,
+        rootMargin: '-80px 0px -60% 0px',
+        threshold: 0.1,
       },
     );
+
     const headings = Array.from(document.querySelectorAll<HTMLElement>('h1,h2,h3,h4,h5,h6'));
     headings.forEach((ele) => {
       navObserver.observe(ele);
@@ -68,114 +67,82 @@ const ArticleNav = ({ source }: NavProps) => {
     };
   }, [source]);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const progressPercent = Math.min(100, Math.max(0, Math.round(scrollY * 100)));
+
   return (
-    <div className='sticky top-20'>
-      <motion.div
-        className={classNames('right-4 z-50 md:relative md:right-0', 'transition-all duration-200')}
-        animate={{ width: isExpanded ? '240px' : '40px' }}
-      >
-        <motion.div
-          className={classNames(
-            'border-border-muted bg-bg-default rounded-2xl border',
-            'overflow-hidden transition-all duration-200',
-          )}
-          animate={{
-            width: isExpanded ? '240px' : '80px',
-            height: isExpanded ? 'auto' : '40px',
-          }}
-        >
-          {/* 进度指示器和展开按钮 */}
-          <div
-            className={classNames(
-              'relative flex h-10 items-center justify-center',
-              'border-border-muted cursor-pointer border-b',
-              'text-fg-accent font-mono text-sm',
-            )}
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
-            <div className='absolute inset-0'>
-              <div
-                className='bg-bg-accent-muted h-full transition-all'
-                style={{ width: `${Math.floor(scrollY * 100)}%` }}
-              />
-            </div>
-            <span className='relative'>{Math.floor(scrollY * 100)}%</span>
-            <motion.div className='absolute right-2' animate={{ rotate: isExpanded ? 180 : 0 }}>
-              ▼
-            </motion.div>
-          </div>
+    <div className='flex flex-col gap-4'>
+      {/* 顶部阅读进度条指示 */}
+      <div className='flex items-center justify-between border-b border-border-muted/50 pb-3'>
+        <div className='flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-fg-muted'>
+          <AlignLeft size={14} className='text-fg-accent' />
+          <span>目录导航</span>
+        </div>
+        <div className='flex items-center gap-1.5 font-mono text-xs font-medium text-fg-default'>
+          <span>{progressPercent}%</span>
+          <span className='text-[10px] text-fg-muted'>READ</span>
+        </div>
+      </div>
 
-          {/* 导航列表 */}
-          <motion.ul
-            ref={ulRef}
-            className={classNames(
-              'relative max-h-[70vh] overflow-y-auto py-2',
-              'scrollbar-thin scrollbar-track-transparent scrollbar-thumb-accent-emphasis/20',
-            )}
-            animate={{ opacity: isExpanded ? 1 : 0 }}
-          >
-            <AnimatePresence>
-              {hoveredIndex !== null && isExpanded && (
-                <motion.div
-                  className='bg-bg-muted absolute left-0 -z-[1] rounded-md'
-                  initial={{ top: position.top, height: position.height, opacity: 0 }}
-                  animate={{ top: position.top, height: position.height, opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  style={{ width: '100%' }}
-                  transition={{ type: 'spring', damping: 25, stiffness: 150 }}
-                />
-              )}
-            </AnimatePresence>
+      {/* 线性平滑进度条 */}
+      <div className='h-1 w-full overflow-hidden rounded-full bg-bg-muted'>
+        <div
+          className='h-full bg-fg-accent transition-all duration-150 ease-out'
+          style={{ width: `${progressPercent}%` }}
+        />
+      </div>
 
-            {list.map((nav, index) => (
-              <motion.li
+      {/* 目录列表 */}
+      {list.length > 0 ? (
+        <ul className='max-h-[60vh] space-y-1 overflow-y-auto py-1 pr-1 text-xs'>
+          {list.map((nav) => {
+            const isActive = current === nav.text;
+            return (
+              <li
                 key={nav.index}
-                onMouseEnter={(e) => {
-                  if (!isExpanded) return;
-                  setHoveredIndex(index);
-                  const liRect = e.currentTarget.getBoundingClientRect();
-                  const ulElement = ulRef.current;
-                  if (!ulElement) return;
-                  const ulRect = ulElement.getBoundingClientRect();
-                  setPosition({
-                    top: liRect.top - ulRect.top + ulElement.scrollTop,
-                    height: liRect.height,
-                  });
-                }}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={classNames(
-                  'group relative px-3 py-1.5',
-                  'transition-all duration-200',
-                  current === nav.text && 'text-fg-accent',
-                )}
                 style={{
-                  marginLeft: isExpanded ? `${(nav.level - 1) * 10}px` : 0,
-                  opacity: isExpanded ? 1 : 0,
+                  paddingLeft: `${Math.max(0, (nav.level - 2) * 12)}px`,
                 }}
               >
                 <a
                   href={`#${nav.text}`}
-                  onClick={() => setCurrent(nav.text)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById(nav.text);
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      setCurrent(nav.text);
+                    }
+                  }}
                   className={classNames(
-                    'text-fg-muted block truncate text-sm',
-                    'transition-colors duration-200',
-                    'hover:text-fg-accent',
-                    current === nav.text && 'text-fg-accent',
+                    'block truncate rounded-lg px-2.5 py-1.5 transition-all duration-150',
+                    isActive
+                      ? 'bg-fg-default/8 text-fg-accent font-semibold border-l-2 border-fg-accent'
+                      : 'text-fg-muted hover:bg-bg-muted/60 hover:text-fg-default',
                   )}
+                  title={nav.text}
                 >
                   {nav.text}
                 </a>
-                {current === nav.text && (
-                  <motion.div
-                    className='bg-bg-accent-emphasis absolute top-0 left-0 h-full w-0.5'
-                    layoutId='activeIndicator'
-                  />
-                )}
-              </motion.li>
-            ))}
-          </motion.ul>
-        </motion.div>
-      </motion.div>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className='text-xs text-fg-muted py-2'>正文未包含层级目录</p>
+      )}
+
+      {/* 回到顶部按钮 */}
+      <button
+        onClick={scrollToTop}
+        className='group mt-2 flex items-center justify-center gap-1.5 rounded-xl border border-border-muted/50 bg-bg-muted/30 py-2 text-xs text-fg-muted transition-all hover:bg-bg-muted hover:text-fg-default cursor-pointer'
+      >
+        <ArrowUp size={13} className='transition-transform group-hover:-translate-y-0.5' />
+        <span>回到顶部</span>
+      </button>
     </div>
   );
 };

@@ -17,15 +17,15 @@ import ArticleNav from 'components/ArticleNav';
 import remarkGfm from 'remark-gfm';
 import dynamic from 'next/dynamic';
 import AI from './_components/AI';
-import { Card } from '@/components/ui/ClayCard';
-import { Sparkles, BookOpen, Clock, RefreshCw, Eye } from 'lucide-react';
+import { Clock, RefreshCw, Eye, Tag, ArrowLeft, MessageSquare } from 'lucide-react';
+import Link from 'next/link';
 
-// 动态导入 CodeSandpack 以减少初始 bundle 大小（仅在文章中使用代码沙盒时加载）
+// 动态导入 CodeSandpack 以减少初始 bundle 大小
 const CodeSandpack = dynamic(() => import('@/components/integrations/CodeSandpack'), {
-  loading: () => <div className='bg-bg-muted min-h-[400px] w-full animate-pulse rounded-lg' />,
+  loading: () => <div className='bg-bg-muted min-h-[400px] w-full animate-pulse rounded-2xl' />,
 });
 
-// ISR 缓存配置：每小时重新验证页面，提升性能和 SEO
+// ISR 缓存配置：每小时重新验证页面
 export const revalidate = 3600; // 1 小时
 
 async function getData(id: string) {
@@ -38,7 +38,8 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
   const params = await props.params;
   const data = await getData(params.id);
   return {
-    title: data?.title || '文章详情',
+    title: data?.title ? `${data.title} · 奇趣生活实验室` : '文章详情',
+    description: data?.summary || data?.title,
   };
 }
 
@@ -51,53 +52,74 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
 
   return (
     <ArticleState articleState={data}>
-      <div className='bg-bg-default min-h-screen pb-20'>
-        <div className='mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 pt-10 md:grid md:grid-cols-[minmax(0,1fr)_340px]'>
-          <main className='flex flex-col gap-10 md:col-start-1'>
+      <div className='min-h-screen pb-20'>
+        <div className='mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 pt-6 md:grid md:grid-cols-[minmax(0,1fr)_280px] lg:grid-cols-[minmax(0,1fr)_320px]'>
+          <main className='flex flex-col gap-6 min-w-0'>
+            {/* 返回面包屑 */}
+            <div className='flex items-center justify-between'>
+              <Link
+                href='/post'
+                className='group inline-flex items-center gap-1.5 text-xs font-medium text-fg-muted transition-colors hover:text-fg-default'
+              >
+                <ArrowLeft size={14} className='transition-transform group-hover:-translate-x-1' />
+                <span>返回文章列表</span>
+              </Link>
+              <div className='inline-flex items-center gap-1 rounded-full border border-border-muted/60 bg-bg-muted/40 px-2.5 py-0.5 text-[11px] font-mono text-fg-muted'>
+                <Tag size={11} />
+                <span>{data.tag}</span>
+              </div>
+            </div>
+
             {/* 文章顶部信息卡片 */}
-            <Card className='relative overflow-visible !p-8 md:!p-12'>
-              <h1 className='text-fg-default mb-8 text-4xl leading-[1.2] font-semibold tracking-tight md:text-5xl lg:text-6xl'>
+            <header className='bento-card relative overflow-hidden p-6 sm:p-10'>
+              {/* 背景环境柔光 */}
+              <div className='pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gradient-to-br from-purple-500/10 via-indigo-500/10 to-transparent blur-2xl dark:from-purple-500/20' />
+
+              <h1 className='text-2xl font-bold leading-tight tracking-tight text-fg-default sm:text-3xl lg:text-4xl'>
                 {data.title}
               </h1>
 
-              <div className='text-fg-muted border-border-muted flex flex-wrap items-center gap-6 border-t pt-8 text-sm font-medium'>
+              {/* 元数据行 */}
+              <div className='mt-6 flex flex-wrap items-center gap-4 border-t border-border-muted/40 pt-5 text-xs text-fg-muted'>
                 <Tooltip content={format(data.createdAt)}>
-                  <div className='flex items-center gap-2'>
-                    <Clock size={16} className='text-fg-muted' />
-                    <span>创建于 {diff(data.createdAt)}</span>
+                  <div className='flex items-center gap-1.5 font-mono'>
+                    <Clock size={13} className='text-fg-muted' />
+                    <span>发布于 {diff(data.createdAt)}</span>
                   </div>
                 </Tooltip>
 
                 <Tooltip content={format(data.updatedAt)}>
-                  <div className='flex items-center gap-2'>
-                    <RefreshCw size={16} className='text-fg-muted' />
+                  <div className='flex items-center gap-1.5 font-mono'>
+                    <RefreshCw size={13} className='text-fg-muted' />
                     <span>更新于 {diff(data.updatedAt)}</span>
                   </div>
                 </Tooltip>
 
-                <div className='flex items-center gap-2'>
-                  <Eye size={16} className='text-fg-muted' />
+                <div className='flex items-center gap-1.5 font-mono'>
+                  <Eye size={13} className='text-fg-muted' />
                   <span>
                     <ArticleCount id={data.id} /> 次阅读
                   </span>
                 </div>
               </div>
 
-              {data.summary && (
-                <div className='mt-10'>
-                  <AI summary={data.summary} />
-                </div>
-              )}
-            </Card>
+              {/* AI 智能摘要 */}
+              {data.summary && <AI summary={data.summary} />}
+            </header>
 
             {/* 文章主体内容 */}
-            <Card className='overflow-hidden !p-0'>
-              <article
+            <article className='bento-card overflow-hidden p-6 sm:p-10'>
+              <div
                 className={classNames(
-                  'prose prose-headings:scroll-mt-24 max-w-none px-6 py-10 md:px-12 md:py-16',
-                  'prose-p:text-lg prose-p:leading-relaxed prose-headings:font-semibold prose-headings:text-fg-default',
-                  'prose-a:text-fg-accent prose-a:no-underline hover:prose-a:underline',
-                  'prose-img:rounded-lg prose-img:border prose-img:border-border-muted',
+                  'prose max-w-none text-fg-default leading-relaxed',
+                  'prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-fg-default',
+                  'prose-h2:text-2xl prose-h2:border-b prose-h2:border-border-muted/40 prose-h2:pb-3 prose-h2:mt-10',
+                  'prose-h3:text-xl prose-h3:mt-8',
+                  'prose-p:text-[15px] prose-p:leading-7 prose-p:my-4',
+                  'prose-a:text-fg-accent prose-a:font-medium prose-a:no-underline hover:prose-a:underline',
+                  'prose-blockquote:border-l-2 prose-blockquote:border-fg-accent prose-blockquote:bg-bg-muted/30 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-xl prose-blockquote:text-fg-muted',
+                  'prose-code:font-mono prose-code:text-xs prose-code:bg-bg-muted/70 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md',
+                  'prose-img:rounded-2xl prose-img:border prose-img:border-border-muted/50 prose-img:shadow-sm',
                 )}
               >
                 <Suspense fallback={<Loading />}>
@@ -105,17 +127,17 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
                     source={data.content}
                     components={{
                       a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-                        return <a target='_blank' className='text-fg-accent' {...props} />;
+                        return <a target='_blank' rel='noreferrer' className='text-fg-accent' {...props} />;
                       },
                       img: MdImage,
                       code: MdCode,
-                      pre: (props) => <pre className='group relative' {...props} />,
+                      pre: (props) => <pre className='group relative rounded-2xl overflow-hidden' {...props} />,
                       Space: MdSpace,
                       Alert: Alert,
                       CodeSandpack: CodeSandpack,
                       table: (props) => (
-                        <div className='markdown-table'>
-                          <table>{props.children}</table>
+                        <div className='markdown-table my-6 overflow-x-auto rounded-xl border border-border-muted/60'>
+                          <table className='w-full text-left text-sm'>{props.children}</table>
                         </div>
                       ),
                     }}
@@ -127,28 +149,26 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
                     }}
                   />
                 </Suspense>
-              </article>
-            </Card>
+              </div>
+            </article>
 
-            {/* 评论区 */}
-            <Card className='!p-8'>
-              <h2 className='mb-8 flex items-center gap-3 text-2xl font-semibold'>
-                <BookOpen className='text-fg-muted' /> 讨论与反馈
-              </h2>
+            {/* 讨论与评论区 */}
+            <section className='bento-card p-6 sm:p-8'>
+              <div className='mb-6 flex items-center gap-2 border-b border-border-muted/50 pb-3'>
+                <MessageSquare size={16} className='text-fg-accent' />
+                <h2 className='text-base font-bold text-fg-default'>讨论与反馈</h2>
+              </div>
               <Comment params={{ objectType: 'article', objectId: data.id }} />
-            </Card>
+            </section>
           </main>
 
           {/* 侧边栏 */}
-          <aside className='flex flex-col gap-8'>
-            <Card className='!p-6'>
-              <h3 className='mb-4 flex items-center gap-2 text-lg font-semibold'>
-                <Sparkles size={18} className='text-fg-muted' /> 内容导航
-              </h3>
-              <div className='custom-scrollbar max-h-[60vh] overflow-y-auto'>
+          <aside className='hidden md:block'>
+            <div className='sticky top-24'>
+              <div className='bento-card p-5'>
                 <ArticleNav source={data.content} />
               </div>
-            </Card>
+            </div>
           </aside>
         </div>
       </div>

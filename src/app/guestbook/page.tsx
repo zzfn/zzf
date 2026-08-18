@@ -18,11 +18,10 @@ const Page = async () => {
         </div>
 
         <div className='prose dark:prose-invert'>
-          <p className='text-fg-muted/80 text-sm leading-relaxed'>
-            欢迎在这里分享您的想法，留下您的足迹。 这里可以畅所欲言，交流讨论，分享心得。
-            期待与您的互动交流！
+          <p className='text-fg-muted text-sm leading-relaxed'>
+            欢迎在这里分享您的想法，留下您的足迹。交流讨论，分享心得。
           </p>
-          <p className='text-fg-muted/60 mt-2 text-xs'>💡 登录后评论 | 文明交流</p>
+          <p className='text-fg-muted/60 mt-2 text-xs font-mono'>登录后参与讨论 · 保持友善交流</p>
         </div>
       </div>
 

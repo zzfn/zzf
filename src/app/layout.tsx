@@ -8,14 +8,6 @@ import { ThemeProvider } from 'next-themes';
 import classNames from 'classnames';
 import Script from 'next/script';
 import { ConfigProvider } from '@/components/ui';
-import { JetBrains_Mono } from 'next/font/google';
-
-// 优化字体加载：使用 next/font 优化 JetBrains Mono
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-jetbrains-mono',
-});
 
 export const metadata: Metadata = {
   title: {
@@ -66,7 +58,6 @@ function RootLayout({ children }: { children: ReactNode }) {
           'bg-bg-default',
           'transition-all',
           'duration-300',
-          jetbrainsMono.variable,
         )}
       >
         <ThemeProvider attribute='data-color-mode'>
@@ -75,6 +66,16 @@ function RootLayout({ children }: { children: ReactNode }) {
               prefix: 'cw',
             }}
           >
+            {/* 2026 Ambient Background Glow Layer */}
+            <div
+              className='pointer-events-none fixed inset-0 -z-10 overflow-hidden'
+              aria-hidden='true'
+            >
+              <div className='absolute -top-[15%] left-1/2 h-[480px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-purple-500/8 via-cyan-500/8 to-indigo-500/8 blur-[100px] opacity-80 dark:opacity-40' />
+              <div className='absolute top-[35%] -left-[5%] h-[400px] w-[500px] rounded-full bg-gradient-to-br from-amber-500/5 via-rose-500/5 to-transparent blur-[90px] opacity-60 dark:opacity-25' />
+              <div className='absolute top-[65%] -right-[5%] h-[400px] w-[500px] rounded-full bg-gradient-to-tl from-emerald-500/5 via-blue-500/5 to-transparent blur-[90px] opacity-60 dark:opacity-25' />
+            </div>
+
             <Header />
             <main className='relative container mx-auto grow px-4 pt-20 pb-12 md:px-6'>
               <div className='relative space-y-8'>{children}</div>

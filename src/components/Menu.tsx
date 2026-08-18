@@ -32,15 +32,15 @@ const MenuItem = ({ navLinks }: MenuItemProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className='bg-bg-emphasis/60 fixed inset-0 z-50'
+            className='bg-black/30 backdrop-blur-sm fixed inset-0 z-50'
             onClick={() => setVisible(false)}
           >
             <motion.div
-              initial={{ y: -10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.16, ease: 'easeOut' }}
-              className='border-jan-ink bg-bg-default absolute top-16 left-4 w-48 rounded-2xl border-2 p-2 shadow-[5px_5px_0_var(--color-jan-ink)]'
+              initial={{ y: -10, opacity: 0, scale: 0.95 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: -10, opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className='glass-panel absolute top-20 left-4 w-52 rounded-2xl p-2 shadow-lg dark:bg-bg-default/90'
               onClick={(event) => event.stopPropagation()}
             >
               <nav className='space-y-1'>
@@ -50,17 +50,17 @@ const MenuItem = ({ navLinks }: MenuItemProps) => {
                   return (
                     <motion.div
                       key={link.name}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: index * 0.05 }}
+                      initial={{ opacity: 0, x: -6 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.04 }}
                     >
                       <Link
                         href={link.href}
                         className={classNames(
-                          'group flex items-center justify-between rounded-xl px-3 py-2 text-sm transition-all duration-200 ease-out',
+                          'group flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium transition-all duration-150',
                           isActive
-                            ? 'bg-bg-accent text-fg-accent'
-                            : 'text-fg-default hover:bg-bg-muted',
+                            ? 'bg-fg-default text-bg-default'
+                            : 'text-fg-default hover:bg-bg-muted/70',
                         )}
                         onClick={() => setVisible(false)}
                       >

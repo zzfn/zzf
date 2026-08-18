@@ -66,11 +66,10 @@ const ThemeSwitch = () => {
     id: ThemeOption;
     icon: LucideIcon;
     label: string;
-    emoji: string;
   }> = [
-    { id: 'light', icon: Sun, label: '浅色', emoji: '☀️' },
-    { id: 'auto', icon: SunMoon, label: '自动', emoji: '🌗' },
-    { id: 'dark', icon: Moon, label: '深色', emoji: '🌙' },
+    { id: 'light', icon: Sun, label: '浅色模式' },
+    { id: 'auto', icon: SunMoon, label: '跟随系统' },
+    { id: 'dark', icon: Moon, label: '深色模式' },
   ];
 
   const normalizedTheme: ThemeOption =
@@ -83,26 +82,27 @@ const ThemeSwitch = () => {
   return (
     <div
       role='radiogroup'
-      className='border-border-muted bg-bg-default relative flex h-10 items-center gap-1 rounded-2xl border p-1'
+      className='border border-border-muted/60 bg-bg-muted/40 relative flex h-9 items-center gap-0.5 rounded-full p-1'
     >
       {/* 滑动指示器 */}
       <motion.div
-        className='bg-bg-emphasis pointer-events-none absolute top-1 bottom-1 left-1 rounded-xl'
+        className='bg-fg-default pointer-events-none absolute top-1 bottom-1 left-1 rounded-full'
         style={{
           width: `calc((100% - 8px) / ${themes.length})`,
         }}
         animate={{
-          x: activeIndex * 44,
+          x: activeIndex * 36,
         }}
         transition={{
           type: 'spring',
           stiffness: 500,
-          damping: 30,
+          damping: 35,
         }}
       />
 
       {themes.map((themeOption) => {
         const isActive = normalizedTheme === themeOption.id;
+        const Icon = themeOption.icon;
 
         return (
           <Tooltip key={themeOption.id} content={themeOption.label}>
@@ -119,21 +119,14 @@ const ThemeSwitch = () => {
                 });
               }}
               className={classNames(
-                'relative z-10 flex h-8 w-10 items-center justify-center rounded-xl',
-                'text-sm font-medium transition-colors duration-200',
-                'focus-visible:ring-border-accent-emphasis focus-visible:ring-2 focus-visible:outline-none',
-                isActive ? 'text-fg-onEmphasis' : 'text-fg-muted',
+                'relative z-10 flex h-7 w-9 items-center justify-center rounded-full',
+                'transition-colors duration-200 cursor-pointer',
+                isActive ? 'text-bg-default' : 'text-fg-muted hover:text-fg-default',
               )}
-              whileHover={isActive ? undefined : { scale: 0.95 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={isActive ? undefined : { scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <motion.span
-                className='text-base'
-                animate={isActive ? { rotate: [0, 10, -10, 0], scale: [1, 1.2, 1] } : {}}
-                transition={{ duration: 0.5 }}
-              >
-                {themeOption.emoji}
-              </motion.span>
+              <Icon size={14} />
             </motion.button>
           </Tooltip>
         );

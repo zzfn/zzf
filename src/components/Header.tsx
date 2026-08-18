@@ -5,34 +5,35 @@ import Logo from './Logo';
 import GlobalSearch from './GlobalSearch';
 import classNames from 'classnames';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { name: '文章', href: '/post' },
-  { name: '问答', href: '/ask' },
   { name: '留言', href: '/guestbook' },
   { name: '友链', href: '/friends' },
   { name: '心情', href: '/moments' },
 ];
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      setIsScrolled(window.scrollY > 30);
     };
-    // 检查初始滚动位置
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className='fixed top-0 z-10 flex h-16 w-full items-center'>
+    <header className='fixed top-0 z-40 flex h-20 w-full items-center transition-all duration-300'>
       <div
         className={classNames(
-          'mx-auto flex items-center justify-between px-4 transition-all duration-[250ms] ease-out',
+          'mx-auto flex items-center justify-between px-4 transition-all duration-300 ease-out',
           isScrolled
-            ? 'border-jan-ink bg-bg-default relative w-[640px] overflow-hidden rounded-2xl border-2 py-2 shadow-[3px_3px_0_var(--color-jan-ink)]'
+            ? 'w-[92%] max-w-2xl rounded-full border border-border-muted/60 bg-bg-default/80 py-2.5 shadow-md backdrop-blur-xl dark:border-white/[0.08] dark:bg-bg-default/70'
             : 'container',
         )}
       >
@@ -42,35 +43,44 @@ const Header = () => {
         </span>
 
         {/* Logo */}
-        <Link href='/' className='logo-spin-hover relative z-10' aria-label='返回首页'>
-          <Logo width={75} height={25} />
+        <Link
+          href='/'
+          className='logo-spin-hover relative z-10 flex items-center gap-2'
+          aria-label='返回首页'
+        >
+          <Logo width={76} height={26} />
         </Link>
 
         {/* 导航 */}
         <nav
           aria-label='主导航'
           className={classNames(
-            'relative z-10 hidden items-center gap-x-1 md:flex',
+            'relative z-10 hidden items-center gap-1 md:flex',
             isScrolled
               ? ''
-              : 'border-jan-ink bg-bg-default overflow-hidden rounded-2xl border-2 px-4 py-2 shadow-[3px_3px_0_var(--color-jan-ink)]',
+              : 'rounded-full border border-border-muted/50 bg-bg-default/60 px-2 py-1.5 shadow-sm backdrop-blur-lg dark:border-white/[0.06] dark:bg-bg-default/50',
           )}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={classNames(
-                'text-fg-muted relative z-10 px-3 py-1.5 text-sm font-medium',
-                'rounded-2xl transition-all duration-200 ease-out',
-                'hover:text-fg-default hover:bg-jan-yellow/20',
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={classNames(
+                  'relative rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200 ease-out',
+                  isActive
+                    ? 'bg-fg-default text-bg-default shadow-xs'
+                    : 'text-fg-muted hover:bg-bg-muted/70 hover:text-fg-default',
+                )}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
         </nav>
-        <div className='relative z-10'>
+
+        <div className='relative z-10 flex items-center gap-2'>
           <GlobalSearch />
         </div>
       </div>

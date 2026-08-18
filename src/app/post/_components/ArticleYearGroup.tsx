@@ -9,43 +9,37 @@ interface ArticleYearGroupProps {
 
 export function ArticleYearGroup({ year, articles }: ArticleYearGroupProps) {
   return (
-    <div className='border-jan-ink bg-bg-default rounded-3xl border-2 p-8 shadow-[3px_3px_0_var(--color-jan-ink)]'>
-      <header className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
+    <div className='bento-card p-6 sm:p-8'>
+      <header className='flex items-center justify-between border-b border-border-muted/50 pb-4'>
         <div className='flex items-baseline gap-3'>
-          <h3 className='text-fg-default text-2xl font-semibold sm:text-3xl'>{year}</h3>
-          <span className='text-fg-muted font-mono text-xs tracking-[0.35em] uppercase'>
-            {articles.length.toString().padStart(2, '0')} entries
+          <h3 className='text-fg-default text-2xl font-bold font-mono'>{year}</h3>
+          <span className='text-fg-muted font-mono text-xs uppercase'>
+            {articles.length} 篇存档
           </span>
-        </div>
-        <div className='border-border-muted bg-bg-muted text-fg-muted flex items-center gap-2 rounded-full border px-3 py-1 text-xs'>
-          <span className='font-mono tracking-[0.3em] uppercase'>Archive</span>
         </div>
       </header>
 
-      <div className='mt-6 space-y-3'>
+      <div className='mt-5 space-y-2.5'>
         {articles.map((article: Article) => (
           <Link
             key={article.id}
             href={`/post/${article.id}`}
-            className='group border-border-muted hover:border-border-default flex flex-col gap-3 rounded-2xl border px-5 py-4 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-sm sm:flex-row sm:items-center sm:justify-between'
+            className='group flex flex-col gap-2 rounded-xl border border-border-muted/50 bg-bg-muted/20 px-4 py-3.5 transition-all duration-150 hover:border-fg-accent/30 hover:bg-bg-muted/60 hover:translate-x-1 sm:flex-row sm:items-center sm:justify-between'
           >
-            <div className='flex flex-col gap-2'>
-              <span className='text-fg-default group-hover:text-fg-accent text-base font-medium transition-colors duration-200'>
+            <div className='flex items-center gap-3'>
+              <span className='text-fg-default group-hover:text-fg-accent text-sm font-medium transition-colors'>
                 {article.title}
               </span>
-              <div className='text-fg-muted flex flex-wrap items-center gap-3 text-xs'>
-                <span className='font-mono tracking-[0.3em] uppercase'>{article.tag}</span>
-                <time className='font-mono tabular-nums'>
-                  {dayjs(article.createdAt).format('MM-DD')}
-                </time>
-              </div>
             </div>
 
-            {dayjs().diff(article.createdAt, 'day') < 7 && (
-              <span className='bg-bg-success-muted text-fg-default shrink-0 rounded-full px-3 py-1 text-xs font-medium tracking-[0.2em] uppercase'>
-                New
+            <div className='text-fg-muted flex items-center gap-3 text-xs flex-shrink-0'>
+              <span className='rounded-md border border-border-muted/60 bg-bg-muted/50 px-2 py-0.5 font-mono text-[11px] text-fg-muted'>
+                {article.tag}
               </span>
-            )}
+              <time className='font-mono tabular-nums text-fg-muted text-xs'>
+                {dayjs(article.createdAt).format('MM-DD')}
+              </time>
+            </div>
           </Link>
         ))}
       </div>
