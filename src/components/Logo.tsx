@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 
 interface LogoProps {
+  width?: number;
+  height?: number;
   className?: string;
 }
 
