@@ -14,10 +14,11 @@ import MdSpace from './_components/MdSpace';
 import Loading from 'components/loading';
 import MdCode from './_components/MdCode';
 import ArticleNav from 'components/ArticleNav';
+import { MobileTOC } from './_components/MobileTOC';
 import remarkGfm from 'remark-gfm';
 import dynamic from 'next/dynamic';
 import AI from './_components/AI';
-import { Clock, RefreshCw, Eye, Tag, ArrowLeft, MessageSquare } from 'lucide-react';
+import { Clock, RefreshCw, Eye, Tag, ArrowLeft, MessageSquare, Compass, CheckCheck } from 'lucide-react';
 import Link from 'next/link';
 
 // 动态导入 CodeSandpack 以减少初始 bundle 大小
@@ -150,6 +151,21 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
                   />
                 </Suspense>
               </div>
+
+              {/* 读毕致谢微胶囊 */}
+              <div className='mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border-muted/50 bg-bg-muted/20 p-5 text-xs text-fg-muted'>
+                <div className='flex items-center gap-2'>
+                  <CheckCheck size={16} className='text-emerald-500' />
+                  <span>感谢阅读本文 · 欢迎在下方留言交流你的想法</span>
+                </div>
+                <Link
+                  href='/post'
+                  className='inline-flex items-center gap-1 font-semibold text-fg-default hover:text-fg-accent transition-colors'
+                >
+                  <Compass size={14} />
+                  <span>探索更多文章 →</span>
+                </Link>
+              </div>
             </article>
 
             {/* 讨论与评论区 */}
@@ -162,7 +178,7 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
             </section>
           </main>
 
-          {/* 侧边栏 */}
+          {/* 桌面端侧边栏 */}
           <aside className='hidden md:block'>
             <div className='sticky top-24'>
               <div className='bento-card p-5'>
@@ -171,6 +187,9 @@ const Page = async (props0: { params: Promise<{ id: string }> }) => {
             </div>
           </aside>
         </div>
+
+        {/* 移动端浮动目录抽屉 */}
+        <MobileTOC source={data.content} />
       </div>
     </ArticleState>
   );
